@@ -1,0 +1,38 @@
+$c-background: rgb(45, 45, 45);
+$c-background-lightish: lighten($c-background, 4%);
+$c-background-light: lighten($c-background, 8%);
+$c-background-darkish: darken($c-background, 2%);
+$c-background-dark: darken($c-background, 4%);
+$c-background-darker: darken($c-background, 6%);
+
+$c-text-dark: rgb(46, 46, 46);
+$c-text-light: rgb(215, 215, 215);
+$c-text-bright: rgb(255, 255, 255);
+
+$c-gray: rgb(180, 180, 180);
+$c-gray-light: rgb(220, 220, 220);
+$c-gray-dark: rgb(90, 90, 90);
+
+$c-accent: rgb(190, 111, 255);
+$c-accent-light: lighten($c-accent, 8%);
+$c-accent-lighter: lighten($c-accent, 16%);
+$c-accent-dark: darken($c-accent, 8%);
+
+$c-blue: rgb(65, 187, 217);
+$c-blue-light: lighten($c-blue, 8%);
+$c-blue-lighter: lighten($c-blue, 16%);
+$c-blue-dark: darken($c-blue, 8%);
+
+$c-orange: rgb(243, 130, 55);
+$c-orange-light: lighten($c-orange, 8%);
+$c-orange-lighter: lighten($c-orange, 16%);
+$c-orange-dark: darken($c-orange, 8%);
+
+$c-green: rgb(161, 208, 77);
+$c-green-light: lighten($c-green, 8%);
+$c-green-lighter: lighten($c-green, 16%);
+$c-green-dark: darken($c-green, 8%);
+
+$c-red: rgb(249, 104, 84);
+$c-red-light: lighten($c-red, 5%);
+$c-yellow: rgb(242, 191, 56);

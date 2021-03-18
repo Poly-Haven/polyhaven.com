@@ -1,0 +1,19 @@
+@import "../../constants/colors";
+
+.header {
+  background: $c-background-dark;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 700;
+
+    .logo_image {
+      display: inline-block;
+      padding: 10px;
+    }
+  }
+}

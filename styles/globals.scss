@@ -1,0 +1,9 @@
+@import '../constants/colors';
+
+body {
+  background: $c-background;
+  color: $c-text-light;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
