@@ -25,7 +25,7 @@ const Grid = (props) => {
   return (
     <div>
       {Object.keys(data).map(asset => {
-        return (<GridItem id={asset} key={asset}></GridItem>);
+        return (<GridItem assetID={asset} key={asset}></GridItem>);
       })}
     </div>
   );
