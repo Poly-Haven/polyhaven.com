@@ -12,15 +12,15 @@ const fetcher = async (url) => {
 const Grid = (props) => {
   const type = props.type ? props.type : "";
 
-  const {data, error} = useSWR(`/api/assets/${type}`, fetcher, {revalidateOnFocus: false});
+  const { data, error } = useSWR(`https://api.polyhaven.com/assets?t=textures&test`, fetcher, { revalidateOnFocus: false });
 
-  if (error){
+  if (error) {
     return (
       <div>Error</div>
     )
   }
 
-  if (!data){
+  if (!data) {
     return (
       <div>Loading...</div>
     )
@@ -32,7 +32,7 @@ const Grid = (props) => {
         return (<GridItem id={asset} key={asset}></GridItem>);
       })}
     </div>
-   );
+  );
 }
 
 Grid.get
