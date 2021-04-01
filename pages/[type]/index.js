@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import Layout from '../../components/Layout/Layout'
+import Layout from 'components/Layout/Layout'
 
 export default function Home() {
   const router = useRouter()

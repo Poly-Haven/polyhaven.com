@@ -4,10 +4,10 @@ import styles from './Footer.module.scss';
 
 const footer = () => {
   return (
-    <div className={styles.footer}>
+    <div id={styles.footer}>
       Footer
     </div>
-   );
+  );
 }
 
 export default footer;

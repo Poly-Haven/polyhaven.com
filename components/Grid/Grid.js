@@ -1,18 +1,14 @@
 import React from 'react';
 import useSWR from 'swr';
 
-import GridItem from './GridItem/GridItem'
+import fetcher from 'utils/fetcher';
 
-const fetcher = async (url) => {
-  const res = await fetch(url);
-  const data = await res.json();
-  return data;
-}
+import GridItem from './GridItem/GridItem'
 
 const Grid = (props) => {
   const type = props.type ? props.type : "";
 
-  const { data, error } = useSWR(`https://api.polyhaven.com/assets?t=textures&test`, fetcher, { revalidateOnFocus: false });
+  const { data, error } = useSWR(`https://api.polyhaven.com/assets?t=textures`, fetcher, { revalidateOnFocus: false });
 
   if (error) {
     return (
