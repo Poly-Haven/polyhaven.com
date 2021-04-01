@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <header className="App-header">
-        <Layout />
+        Home page, weeeeeeeee
       </header>
     </div>
   )
