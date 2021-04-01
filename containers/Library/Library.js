@@ -8,7 +8,7 @@ import Grid from 'components/Grid/Grid';
 const Library = () => {
   return (
     <div id={styles.library}>
-      <Sidebar />
+      <Sidebar type='textures' />
       <Grid type='textures' />
     </div>
   );

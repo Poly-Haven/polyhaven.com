@@ -1,0 +1,14 @@
+{
+  "hdris": [
+    "outdoor",
+    "indoor"
+  ],
+  "textures": [
+    "terrain",
+    "wood"
+  ],
+  "models": [
+    "furniture",
+    "appliances"
+  ]
+}

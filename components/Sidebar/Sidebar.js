@@ -1,11 +1,19 @@
 import React from 'react';
 
-const sidebar = () => {
+import tlc from 'constants/tlc.json';
+
+import styles from './Sidebar.module.scss';
+
+const Sidebar = (props) => {
+  const type = props.type ? props.type : "";
+
   return (
-    <div>
-      sidebar
+    <div id={styles.sidebar}>
+      {tlc[type].map(tlc => {
+        return (<div>{tlc}</div>);
+      })}
     </div>
-   );
+  );
 }
 
-export default sidebar;
+export default Sidebar;
