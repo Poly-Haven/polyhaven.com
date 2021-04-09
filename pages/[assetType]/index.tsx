@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import asset_types from 'constants/asset_types.json';
+import typesAvailable from 'constants/asset_types.json';
 
 import Library from 'containers/Library/Library'
 
@@ -9,7 +9,6 @@ const Page = () => {
   const router = useRouter()
 
   const { assetType } = router.query;
-  // const assetType = "textures";
 
   return (
     <div className="App">
@@ -35,7 +34,6 @@ const Page = () => {
 }
 
 export async function getStaticPaths() {
-  const typesAvailable = asset_types;
   const paths = Object.keys(typesAvailable).map((t) => ({
     params: { assetType: t }
   }))

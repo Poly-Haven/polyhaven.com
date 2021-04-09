@@ -28,6 +28,4 @@ const Grid = (props) => {
   );
 }
 
-Grid.get
-
 export default Grid;
