@@ -9,9 +9,7 @@ export default function Home() {
         <title>Poly Haven</title>
       </Head>
 
-      <header className="App-header">
-        Home page, weeeeeeeee
-      </header>
+      <h1>Home page, weeeeeeeee</h1>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import Layout from 'components/Layout/Layout'
+import Library from 'containers/Library/Library'
 
 export default function Home() {
   const router = useRouter()
@@ -23,7 +23,7 @@ export default function Home() {
       </Head>
 
       <header className="App-header">
-        <Layout />
+        <Library />
       </header>
     </div>
   )

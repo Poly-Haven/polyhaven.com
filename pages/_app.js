@@ -1,14 +1,13 @@
-import Head from 'next/head'
+import Layout from 'components/Layout/Layout'
 
 import 'styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <title>Poly Haven</title>
-      </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
