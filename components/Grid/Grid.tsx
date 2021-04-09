@@ -5,7 +5,11 @@ import fetcher from 'utils/fetcher';
 import GridItem from './GridItem/GridItem'
 
 const Grid = (props) => {
-  const { data, error } = useSWR(`https://api.polyhaven.com/assets?t=${props.assetType}`, fetcher, { revalidateOnFocus: false });
+  let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
+  if (props.categories) {
+    url += "&c=" + props.categories.join(',')
+  }
+  const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
 
   if (error) {
     return (

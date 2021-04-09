@@ -4,12 +4,11 @@ import Grid from 'components/Grid/Grid';
 import styles from './Library.module.scss';
 
 const Library = (props) => {
-  const assetType = props.assetType
 
   return (
     <div id={styles.library}>
-      <Sidebar assetType={assetType} />
-      <Grid assetType={assetType} />
+      <Sidebar assetType={props.assetType} categories={props.categories} />
+      <Grid assetType={props.assetType} categories={props.categories} />
     </div>
   );
 }
