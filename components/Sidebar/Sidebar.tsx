@@ -1,4 +1,4 @@
-import tlc from 'constants/tlc.json';
+import tlc from 'constants/top_level_categories.json';
 
 import styles from './Sidebar.module.scss';
 
