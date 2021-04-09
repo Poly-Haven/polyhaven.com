@@ -1,14 +1,30 @@
 {
   "hdris": [
     "outdoor",
-    "indoor"
+    "skies",
+    "indoor",
+    "studio",
+    "sunrise/sunset",
+    "night",
+    "nature",
+    "urban"
   ],
   "textures": [
-    "terrain",
-    "wood"
+    "ground",
+    "brick",
+    "wood",
+    "plaster/concrete",
+    "fabric",
+    "metal",
+    "roofing",
+    "rock",
+    "snow"
   ],
   "models": [
     "furniture",
-    "appliances"
+    "appliances",
+    "props",
+    "plants",
+    "weapons"
   ]
 }
