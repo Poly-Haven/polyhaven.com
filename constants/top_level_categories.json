@@ -22,9 +22,11 @@
   ],
   "models": [
     "furniture",
+    "industrial",
     "appliances",
     "props",
     "plants",
-    "weapons"
+    "weapons",
+    "wall art"
   ]
 }

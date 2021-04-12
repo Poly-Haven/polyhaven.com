@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-
 import fetcher from 'utils/fetcher';
 
 import GridItem from './GridItem/GridItem'
+import Spinner from 'components/Spinner/Spinner';
 
 const Grid = (props) => {
   let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
@@ -19,7 +19,7 @@ const Grid = (props) => {
 
   if (!data) {
     return (
-      <div>Loading...</div>
+      <div><Spinner /></div>
     )
   }
 

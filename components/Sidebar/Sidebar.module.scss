@@ -3,4 +3,32 @@
 #sidebar {
   background: $c-background-dark;
   width: 210px;
+  text-transform: capitalize;
+}
+
+.tlc {
+  padding: 0.3em;
+  cursor: pointer;
+
+  &:hover {
+    background: $c-background-light;
+  }
+}
+
+.num {
+  display: inline-block;
+  line-height: 22px;
+  width: 22px;
+  height: 22px;
+  margin-left: 0.5em;
+  margin-top: -1px;
+  vertical-align: top;
+  text-align: center;
+  font-size: 70%;
+  font-weight: 700;
+  border: 1px solid rgba($c-text-light, 0.1);
+  border-radius: 50%;
+  background-color: $c-background-darkish;
+  color: $c-text-light;
+  opacity: 0.9;
 }
