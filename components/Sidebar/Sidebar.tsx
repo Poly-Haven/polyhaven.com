@@ -27,7 +27,7 @@ const Sidebar = (props) => {
       </Link>
       {tlc[props.assetType].map(tlc => (
         <Link href={`/${props.assetType}/${tlc}`} key={tlc}>
-          <div className={styles.tlc}>{tlc}
+          <div className={`${styles.tlc} ${tlc === props.categories[0] ? styles.tlcActive : ""}`}>{tlc}
             <div className={styles.num} id={`tlc_${tlc}`}>
               {data[tlc] ? data[tlc] : 0}
             </div>

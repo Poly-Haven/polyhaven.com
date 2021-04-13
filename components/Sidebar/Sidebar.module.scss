@@ -10,25 +10,36 @@
   padding: 0.3em;
   cursor: pointer;
 
+  .num {
+    display: inline-block;
+    line-height: 22px;
+    width: 22px;
+    height: 22px;
+    margin-left: 0.5em;
+    margin-top: -1px;
+    vertical-align: top;
+    text-align: center;
+    font-size: 70%;
+    font-weight: 700;
+    border: 1px solid rgba($c-text-light, 0.1);
+    border-radius: 50%;
+    background-color: rgba(white, 0.05);
+    color: $c-text-light;
+    opacity: 0.9;
+  }
+
   &:hover {
-    background: $c-background-light;
+    background: $c-accent;
+
+    .num {
+      background-color: rgba(white, 0.15);
+    }
   }
 }
+.tlcActive {
+  background: $c-accent;
 
-.num {
-  display: inline-block;
-  line-height: 22px;
-  width: 22px;
-  height: 22px;
-  margin-left: 0.5em;
-  margin-top: -1px;
-  vertical-align: top;
-  text-align: center;
-  font-size: 70%;
-  font-weight: 700;
-  border: 1px solid rgba($c-text-light, 0.1);
-  border-radius: 50%;
-  background-color: $c-background-darkish;
-  color: $c-text-light;
-  opacity: 0.9;
+  .num {
+    background-color: rgba(white, 0.15);
+  }
 }
