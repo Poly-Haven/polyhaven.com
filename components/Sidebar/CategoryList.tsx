@@ -20,21 +20,24 @@ const CategoryList = (props) => {
   }
   const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
 
+  const level = props.level + 1;
 
   if (error) {
     return <div>Error</div>;
   }
 
   if (!data) {
-    return <Spinner />;
+    return (
+      <div className={`${level > 0 ? styles.subCat : ""}`}>
+        <Spinner />
+      </div>
+    )
   }
 
   const wholeList = props.level === -1 ? tlc[props.assetType] : Object.keys(data);
   const list = wholeList.filter(cat => (
     data[cat] > 2
   ))
-
-  const level = props.level + 1;
 
   return (
     <div className={`${level > 0 ? styles.subCat : ""}`}>

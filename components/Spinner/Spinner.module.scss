@@ -1,5 +1,36 @@
 @import 'constants/colors';
 
+@keyframes spawn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+
 .spinner {
-  color: $c-text-light;
+  content: '';
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid $c-accent;
+  border-top-color: $c-blue;
+  border-right-color: $c-orange;
+  border-bottom-color: $c-green;
+  animation: spawn .5s, spinner .8s linear infinite;
 }

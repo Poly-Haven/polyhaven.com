@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import tlc from 'constants/top_level_categories.json';
-
 import CategoryList from './CategoryList';
 
 import styles from './Sidebar.module.scss';

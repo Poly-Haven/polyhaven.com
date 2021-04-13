@@ -1,9 +1,10 @@
 import styles from './Spinner.module.scss';
 
 const Spinner = (props) => {
-  // TODO
   return (
-    <div className={styles.spinner}>Loading...</div>
+    <div className={styles.spinnerWrapper}>
+      <div className={styles.spinner}></div>
+    </div>
   );
 }
 
