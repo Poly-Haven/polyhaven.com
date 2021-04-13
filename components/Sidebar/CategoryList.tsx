@@ -9,7 +9,7 @@ import Spinner from 'components/Spinner/Spinner';
 import styles from './Sidebar.module.scss';
 
 const CategoryList = (props) => {
-  if (props.level > 2) {
+  if (props.level >= 3) {
     return <></>
   }
   const activeCat = props.categories[props.level + 1];
