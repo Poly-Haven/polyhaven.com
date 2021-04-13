@@ -16,7 +16,7 @@ const CategoryList = (props) => {
   let url = `https://api.polyhaven.com/categories/${props.assetType}`;
   const in_cats = props.categories.slice(0, Math.max(0, props.level + 1))
   if (in_cats.length) {
-    url += `?in=${in_cats.join(',')}`
+    url += `?in=${[...in_cats].sort().join(',')}`
   }
   const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
 
