@@ -6,7 +6,7 @@
   text-transform: capitalize;
 }
 
-.tlc {
+.cat {
   padding: 0.3em;
   cursor: pointer;
 
@@ -36,10 +36,16 @@
     }
   }
 }
-.tlcActive {
+.catActive {
   background: $c-accent;
+  // box-shadow: 0px -1px 0px 0px rgba($c-background, 0.2);
 
   .num {
     background-color: rgba(white, 0.15);
   }
+}
+.subCat {
+  padding-left: 15px;
+  box-shadow: inset 2px -2px 0px 0px rgba($c-accent, 0.2);
+  background: rgba($c-text-light, 0.02);
 }

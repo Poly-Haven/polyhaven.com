@@ -1,6 +1,7 @@
 $c-background: rgb(45, 45, 45);
 $c-background-lightish: lighten($c-background, 4%);
 $c-background-light: lighten($c-background, 8%);
+$c-background-lighter: lighten($c-background, 12%);
 $c-background-darkish: darken($c-background, 2%);
 $c-background-dark: darken($c-background, 4%);
 $c-background-darker: darken($c-background, 6%);
