@@ -1,4 +1,5 @@
 @import "constants/colors";
+@import "constants/variables";
 
 .header {
   background: $c-background-dark;
@@ -6,6 +7,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: fixed;
+  height: $v-header-height;
+  width: 100%;
+  z-index: 20;
 
   .logo {
     font-size: 2rem;

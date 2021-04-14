@@ -4,6 +4,8 @@ import fetcher from 'utils/fetcher';
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
 
+import styles from './Grid.module.scss';
+
 const Grid = (props) => {
   let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
   if (props.categories) {
@@ -24,9 +26,12 @@ const Grid = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.grid}>
       {Object.keys(data).map(asset => {
-        return (<GridItem assetID={asset} key={asset}></GridItem>);
+        return (<GridItem
+          asset={data[asset]}
+          assetID={asset}
+          key={asset}></GridItem>);
       })}
     </div>
   );

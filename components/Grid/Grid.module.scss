@@ -1,0 +1,14 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.grid {
+  display: grid;
+  position: relative;
+  margin-top: $v-header-height;
+  left: $v-sidebar-width;
+  width: calc(100% - #{$v-sidebar-width});
+  height: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
