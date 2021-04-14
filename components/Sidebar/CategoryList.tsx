@@ -44,7 +44,11 @@ const CategoryList = (props) => {
       {list.map(cat => (
         <div key={cat}>
           <Link href={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
-            <div className={` ${styles.cat} ${cat === activeCat ? styles.catActive : ""}`}>{cat}
+            <div className={`
+            ${styles.cat}
+            ${cat === activeCat ? styles.catSemiActive : ""}
+            ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ""}
+            `}>{cat}
               <div className={styles.num}>
                 {data[cat] ? data[cat] : 0}
               </div>

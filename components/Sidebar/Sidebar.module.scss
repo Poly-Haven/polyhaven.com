@@ -1,9 +1,17 @@
 @import "constants/colors";
+@import "constants/mixins";
 
 #sidebar {
   background: $c-background-dark;
   width: 210px;
   text-transform: capitalize;
+
+  .sidebarInner {
+    overflow: auto;
+    overflow-x: hidden;
+    flex-grow: 100;
+    @include dark_scrollbar;
+  }
 }
 
 .cat {
@@ -38,16 +46,24 @@
     }
   }
 }
+
+.subCat {
+  margin-left: 5px;
+  padding-left: 15px;
+  border-bottom-left-radius: 20px;
+  box-shadow: inset 2px -2px 0px 0px rgba($c-accent, 0.2);
+  background: rgba($c-text-light, 0.02);
+}
+
+.catSemiActive {
+  background: rgba($c-accent, 0.5);
+  color: white;
+}
 .catActive {
   background: $c-accent;
-  // box-shadow: 0px -1px 0px 0px rgba($c-background, 0.2);
+  color: white;
 
   .num {
     background-color: rgba(white, 0.15);
   }
-}
-.subCat {
-  padding-left: 15px;
-  box-shadow: inset 2px -2px 0px 0px rgba($c-accent, 0.2);
-  background: rgba($c-text-light, 0.02);
 }
