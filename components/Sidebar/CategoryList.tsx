@@ -43,29 +43,32 @@ const CategoryList = (props) => {
   return (
     <div className={`${level > 0 ? styles.subCat : ""}`}>
       {list.map(cat => (
-        <div key={cat}>
-          <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
-            <a className={`
+        <>{props.numInParent != data[cat] ?
+          <div key={cat}>
+            <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
+              <a className={`
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
             ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ""}
             `}>
-              {level === 0 ?
-                <MdKeyboardArrowRight className={styles.caret} /> :
-                <MdKeyboardArrowRight className={styles.smallCaret} />}
-              {cat}
-              <div className={styles.num}>
-                {data[cat] ? data[cat] : 0}
-              </div>
-            </a>
-          </Link>
-          {cat === activeCat ?
-            <CategoryList
-              assetType={props.assetType}
-              categories={props.categories}
-              level={level} />
-            : ""}
-        </div>
+                {level === 0 ?
+                  <MdKeyboardArrowRight className={styles.caret} /> :
+                  <MdKeyboardArrowRight className={styles.smallCaret} />}
+                {cat}
+                <div className={styles.num}>
+                  {data[cat] ? data[cat] : 0}
+                </div>
+              </a>
+            </Link>
+            {cat === activeCat ?
+              <CategoryList
+                assetType={props.assetType}
+                categories={props.categories}
+                level={level}
+                numInParent={data[cat] ? data[cat] : 0} />
+              : ""}
+          </div>
+          : ""}</>
       ))}
     </div>
   );
