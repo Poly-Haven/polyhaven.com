@@ -15,10 +15,23 @@
 }
 
 .cat {
+  display: block;
+  text-decoration: none;
+  color: $c-text-light;
   padding: 0.3em;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
+
+  .caret {
+    position: relative;
+    font-size: 140%;
+    vertical-align: middle;
+  }
+  .smallCaret {
+    @extend .caret;
+    font-size: 90%;
+  }
 
   .num {
     display: inline-block;
@@ -57,7 +70,7 @@
 
 .catSemiActive {
   background: rgba($c-accent, 0.5);
-  color: white;
+  // color: white;
 }
 .catActive {
   background: $c-accent;

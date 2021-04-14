@@ -5,6 +5,7 @@ import fetcher from 'utils/fetcher';
 import tlc from 'constants/top_level_categories.json';
 
 import Spinner from 'components/Spinner/Spinner';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import styles from './Sidebar.module.scss';
 
@@ -43,16 +44,20 @@ const CategoryList = (props) => {
     <div className={`${level > 0 ? styles.subCat : ""}`}>
       {list.map(cat => (
         <div key={cat}>
-          <Link href={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
-            <div className={`
+          <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
+            <a className={`
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
             ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ""}
-            `}>{cat}
+            `}>
+              {level === 0 ?
+                <MdKeyboardArrowRight className={styles.caret} /> :
+                <MdKeyboardArrowRight className={styles.smallCaret} />}
+              {cat}
               <div className={styles.num}>
                 {data[cat] ? data[cat] : 0}
               </div>
-            </div>
+            </a>
           </Link>
           {cat === activeCat ?
             <CategoryList

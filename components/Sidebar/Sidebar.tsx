@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import CategoryList from './CategoryList';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import styles from './Sidebar.module.scss';
 
@@ -8,8 +9,11 @@ const Sidebar = (props) => {
   return (
     <div id={styles.sidebar}>
       <div className={styles.sidebarInner}>
-        <Link href={`/${props.assetType}`}>
-          <div className={styles.cat} key="all">All</div>
+        <Link href="/[...assets]" as={`/${props.assetType}`}>
+          <a className={styles.cat}>
+            <MdKeyboardArrowRight className={styles.caret} />
+            All
+          </a>
         </Link>
         <CategoryList
           assetType={props.assetType}
