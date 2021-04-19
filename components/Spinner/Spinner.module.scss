@@ -1,4 +1,4 @@
-@import 'constants/colors';
+@import "constants/colors";
 
 @keyframes spawn {
   from {
@@ -23,7 +23,7 @@
 }
 
 .spinner {
-  content: '';
+  content: "";
   box-sizing: border-box;
   width: 30px;
   height: 30px;
@@ -32,5 +32,5 @@
   border-top-color: $c-blue;
   border-right-color: $c-orange;
   border-bottom-color: $c-green;
-  animation: spawn .5s, spinner .8s linear infinite;
+  animation: spawn 0.5s, spinner 0.8s linear infinite;
 }

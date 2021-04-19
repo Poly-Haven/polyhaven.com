@@ -1,5 +1,6 @@
 {
   "hdris": [
+    "all",
     "outdoor",
     "skies",
     "indoor",
@@ -10,6 +11,7 @@
     "urban"
   ],
   "textures": [
+    "all",
     "ground",
     "brick",
     "wood",
@@ -21,6 +23,7 @@
     "snow"
   ],
   "models": [
+    "all",
     "furniture",
     "industrial",
     "appliances",

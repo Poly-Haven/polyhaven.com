@@ -37,7 +37,7 @@ const CategoryList = (props) => {
 
   const wholeList = props.level === -1 ? tlc[props.assetType] : Object.keys(data);
   const list = wholeList.filter(cat => (
-    data[cat] > 2
+    data[cat] > 1
   ))
 
   return (
@@ -45,7 +45,7 @@ const CategoryList = (props) => {
       {list.map(cat => (
         <>{props.numInParent != data[cat] ?
           <div key={cat}>
-            <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat}`} >
+            <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat !== 'all' ? cat : ''}`} >
               <a className={`
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
