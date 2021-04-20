@@ -25,14 +25,36 @@
   .type {
     flex-basis: 0;
     flex-grow: 1;
-    padding: 0.5rem;
     text-align: center;
     text-decoration: none;
     color: $c-text-light;
+    filter: saturate(0);
     @include transition();
 
+    img {
+      width: 1.5rem;
+      display: block;
+      margin: auto;
+      background: $c-background;
+      padding: 0.5rem;
+      border-radius: 50%;
+      box-shadow: inset 0px 0px 0px 1px rgba(white, 0.05);
+    }
+
     &:hover {
-      background: $c-accent;
+      img {
+        background: $c-background-lighter;
+        box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.5);
+      }
+    }
+  }
+
+  .activeType {
+    filter: saturate(1);
+
+    img {
+      background: $c-background-lighter;
+      box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.9);
     }
   }
 }

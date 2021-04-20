@@ -9,14 +9,20 @@ const Sidebar = (props) => {
     <div id={styles.sidebar}>
       <div className={styles.sidebarInner}>
         <div className={styles.typeSelector}>
-          <Link href="/hdris"><a className={styles.type}>
-            H
+          <Link href="/hdris"><a className={
+            `${styles.type} ${props.assetType === 'hdris' ? styles.activeType : ''}`
+          }>
+            <img src="/icons/type_H.svg" />
           </a></Link>
-          <Link href="/textures"><a className={styles.type}>
-            T
+          <Link href="/textures"><a className={
+            `${styles.type} ${props.assetType === 'textures' ? styles.activeType : ''}`
+          }>
+            <img src="/icons/type_T.svg" />
           </a></Link>
-          <Link href="/models"><a className={styles.type}>
-            M
+          <Link href="/models"><a className={
+            `${styles.type} ${props.assetType === 'models' ? styles.activeType : ''}`
+          }>
+            <img src="/icons/type_M.svg" />
           </a></Link>
         </div>
         <CategoryList
