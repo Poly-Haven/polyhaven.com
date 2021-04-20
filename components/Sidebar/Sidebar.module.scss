@@ -18,6 +18,25 @@
   padding-bottom: 3em;
 }
 
+.typeSelector {
+  display: flex;
+  flex-direction: row;
+
+  .type {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: $c-text-light;
+    @include transition();
+
+    &:hover {
+      background: $c-accent;
+    }
+  }
+}
+
 .cat {
   display: block;
   text-decoration: none;
@@ -26,6 +45,7 @@
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
+  @include transition();
 
   .caret {
     position: relative;
@@ -53,6 +73,7 @@
     background-color: rgba(white, 0.05);
     color: $c-text-light;
     opacity: 0.9;
+    @include transition();
   }
 
   &:hover {
