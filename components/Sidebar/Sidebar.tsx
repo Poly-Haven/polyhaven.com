@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import asset_types from 'constants/asset_types.json'
+import asset_type_names from 'constants/asset_type_names.json'
 
 import CategoryList from './CategoryList';
 
@@ -25,6 +27,7 @@ const Sidebar = (props) => {
             <img src="/icons/type_M.svg" />
           </a></Link>
         </div>
+        <h2>{asset_type_names[asset_types[props.assetType]]}s</h2>
         <CategoryList
           assetType={props.assetType}
           categories={props.categories}

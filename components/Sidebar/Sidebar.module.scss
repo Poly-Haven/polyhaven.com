@@ -16,11 +16,22 @@
 }
 .sidebarInner {
   padding-bottom: 3em;
+
+  h2 {
+    margin: 0;
+    margin-bottom: 0.7rem;
+    padding: 0.7rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid $c-background;
+  }
 }
 
 .typeSelector {
   display: flex;
   flex-direction: row;
+  padding-top: 0.7rem;
+  border-top: 1px solid $c-background;
 
   .type {
     flex-basis: 0;
