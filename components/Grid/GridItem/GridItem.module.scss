@@ -8,4 +8,11 @@
   padding: 1em;
   height: 200px;
   box-shadow: inset 0px 0px 0px 1px $c-background-light;
+  text-decoration: none;
+  color: $c-text-light;
+  @include transition();
+
+  &:hover {
+    background: $c-background-light;
+  }
 }
