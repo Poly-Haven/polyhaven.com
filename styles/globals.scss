@@ -1,9 +1,18 @@
-@import 'constants/colors';
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
 
 body {
   background: $c-background;
   color: $c-text-light;
   margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 400;
+}
+
+.content {
+  position: relative;
+  margin-top: $v-header-height;
+  width: 100%;
+  flex-grow: 1;
 }

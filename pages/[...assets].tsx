@@ -4,7 +4,7 @@ import typesAvailable from 'constants/asset_types.json';
 
 const Page = (props) => {
   return (
-    <div className="App">
+    <div className="content">
       <Library assetType={props.assetType} categories={props.categories} />
     </div>
   )
