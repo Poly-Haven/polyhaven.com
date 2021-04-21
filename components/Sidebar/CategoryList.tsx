@@ -43,8 +43,8 @@ const CategoryList = (props) => {
   return (
     <div className={`${level > 0 ? styles.subCat : ""}`}>
       {list.map(cat => (
-        <>{props.numInParent != data[cat] ?
-          <div key={cat}>
+        <div key={cat}>{props.numInParent != data[cat] ?
+          <div>
             <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat !== 'all' ? cat : ''}`} >
               <a className={`
             ${styles.cat}
@@ -68,7 +68,7 @@ const CategoryList = (props) => {
                 numInParent={data[cat] ? data[cat] : 0} />
               : ""}
           </div>
-          : ""}</>
+          : null}</div>
       ))}
     </div>
   );

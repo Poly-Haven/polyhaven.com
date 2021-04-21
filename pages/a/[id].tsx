@@ -16,7 +16,6 @@ const Page = ({ assetID, data }) => {
   if (assetID === 404) {
     return (<DefaultErrorPage statusCode={404} />)
   }
-  console.log(data)
   return (
     <div className="content">
       <Head>
