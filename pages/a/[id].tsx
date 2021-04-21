@@ -13,7 +13,7 @@ function handleErrors(response) {
 }
 
 const Page = ({ assetID, data }) => {
-  if (assetID === 404) {
+  if (!data) {
     return (<DefaultErrorPage statusCode={404} />)
   }
   return (
@@ -39,9 +39,7 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {
-        assetID: 404
-      }
+      props: {}
     }
   }
 
