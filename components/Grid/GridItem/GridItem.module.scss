@@ -5,14 +5,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em;
-  height: 200px;
-  box-shadow: inset 0px 0px 0px 1px $c-background-light;
+  padding: 1rem;
   text-decoration: none;
   color: $c-text-light;
   @include transition();
 
   &:hover {
     background: $c-background-light;
+  }
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+
+  img {
+    display: block;
+    width: 100%;
   }
 }

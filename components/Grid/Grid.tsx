@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
@@ -31,10 +32,11 @@ const Grid = (props) => {
         return (<GridItem
           asset={data[asset]}
           assetID={asset}
-          key={asset}></GridItem>);
+          key={asset}
+          scrollPosition={props.scrollPosition} />);
       })}
     </div>
   );
 }
 
-export default Grid;
+export default trackWindowScroll(Grid);
