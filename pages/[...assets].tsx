@@ -6,7 +6,7 @@ import typesAvailable from 'constants/asset_types.json';
 import assetTypeNames from 'constants/asset_type_names.json'
 import { titleCase } from 'utils/stringUtils'
 
-const Page = (props) => {
+const LibraryPage = (props) => {
   let title = assetTypeNames[typesAvailable[props.assetType]] + 's'
   if (props.categories.length) {
     title += ": " + titleCase(props.categories.join(' > '))
@@ -14,12 +14,12 @@ const Page = (props) => {
   title += " • Poly Haven"
 
   return (
-    <div className="content">
+    <>
       <Head>
         <title>{title}</title>
       </Head>
       <Library assetType={props.assetType} categories={props.categories} />
-    </div>
+    </>
   )
 }
 
@@ -40,4 +40,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default Page;
+export default LibraryPage;

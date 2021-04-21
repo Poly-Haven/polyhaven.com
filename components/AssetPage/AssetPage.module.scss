@@ -7,18 +7,10 @@
   flex-direction: row;
 }
 
-.pageWrapper {
-  flex-grow: 1;
-  min-height: calc(100vh - 53px);
-  display: flex;
-  flex-direction: column;
-}
-.page {
-  flex-grow: 1;
-}
-
 .sidebar {
   width: 336px;
-  height: 100%;
   background: $c-background-dark;
+  overflow-y: auto;
+  height: calc(100vh - #{$v-header-height});
+  @include dark_scrollbar();
 }

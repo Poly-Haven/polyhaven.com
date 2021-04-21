@@ -3,15 +3,12 @@
 @import "constants/variables";
 
 #sidebar {
-  position: fixed;
-  top: $v-header-height;
-  height: calc(100% - #{$v-header-height});
+  height: calc(100vh - #{$v-header-height});
   width: 210px;
   background: $c-background-dark;
   text-transform: capitalize;
   overflow: auto;
   overflow-x: hidden;
-  flex-grow: 100;
   @include dark_scrollbar;
 }
 .sidebarInner {
