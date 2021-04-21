@@ -1,4 +1,4 @@
-import Header from 'components/Header/Header'
+import Header from 'components/Layout/Header/Header'
 
 import styles from './Layout.module.scss'
 

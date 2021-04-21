@@ -1,6 +1,6 @@
 import Sidebar from 'components/Sidebar/Sidebar';
 import Grid from 'components/Grid/Grid';
-import Page from 'components/Page/Page'
+import Page from 'components/Layout/Page/Page'
 
 import styles from './Library.module.scss';
 

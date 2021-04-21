@@ -1,4 +1,4 @@
-import Page from 'components/Page/Page'
+import Page from 'components/Layout/Page/Page'
 
 import styles from './AssetPage.module.scss'
 
