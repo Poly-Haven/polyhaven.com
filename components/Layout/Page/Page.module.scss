@@ -11,3 +11,11 @@
 .pageContent {
   flex-grow: 1;
 }
+
+.pageContentCentered {
+  @extend .pageContent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

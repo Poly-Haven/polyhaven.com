@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import DefaultErrorPage from 'next/error'
 
 import assetTypeNames from 'constants/asset_type_names.json'
 
 import AssetPage from 'components/AssetPage/AssetPage'
+import ErrorPage from 'components/Layout/Page/CenteredPage'
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -14,7 +14,15 @@ function handleErrors(response) {
 
 const Page = ({ assetID, data }) => {
   if (!data) {
-    return (<DefaultErrorPage statusCode={404} />)
+    return (
+      <ErrorPage>
+        <Head>
+          <title>Error: 404</title>
+        </Head>
+        <h1>404</h1>
+        <p>No asset with id: "{assetID}"</p>
+      </ErrorPage>
+    )
   }
   return (
     <div className="content">
@@ -39,7 +47,9 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {}
+      props: {
+        assetID: id
+      }
     }
   }
 
