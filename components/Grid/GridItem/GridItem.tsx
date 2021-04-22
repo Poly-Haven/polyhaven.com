@@ -1,6 +1,7 @@
 import Link from 'next/link'
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import timeago from 'epoch-timeago';
 
 import styles from './GridItem.module.scss';
 
@@ -13,11 +14,16 @@ const GridItem = ({ asset, assetID, scrollPosition }) => {
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.${ext[asset.type]}?width=379&sharpen=true`
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem}>
-      <span className={styles.thumb}><LazyLoadImage
+      <div className={styles.thumb}><LazyLoadImage
         src={img_src}
         alt={asset.name}
         scrollPosition={scrollPosition}
-      /></span>
+        placeholder={<div className={styles.skelly}></div>}
+      /></div>
+      <div className={styles.text}>
+        <h3>{asset.name}</h3>
+        <p>{timeago(asset.date_published * 1000)}</p>
+      </div>
     </a></Link>
   );
 }

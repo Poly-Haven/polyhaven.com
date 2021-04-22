@@ -2,6 +2,7 @@
 @import "constants/mixins";
 
 .gridItem {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +12,19 @@
   @include transition();
 
   &:hover {
-    background: $c-background-light;
+    filter: brightness(1.1);
+
+    .text {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
   }
+}
+
+.skelly {
+  background: rgba($c-background-light, 0.5);
+  min-height: 280px;
 }
 
 .thumb {
@@ -23,5 +35,34 @@
   img {
     display: block;
     width: 100%;
+  }
+}
+
+.text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: radial-gradient(rgba($c-background, 0.1), transparent);
+  transform: scaleY(0.05);
+  filter: blur(10px);
+  @include transition(0.2s);
+
+  h3 {
+    color: white;
+    padding-bottom: 0.2em;
+    margin: 0;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  p {
+    text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1;
+    font-size: 1em;
   }
 }
