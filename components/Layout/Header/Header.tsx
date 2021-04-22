@@ -1,3 +1,5 @@
+import Nav from './Nav/Nav'
+
 import styles from './Header.module.scss';
 
 const header = () => {
@@ -9,6 +11,8 @@ const header = () => {
         </div>
         Poly Haven
       </div>
+      <div className={styles.spacer} />
+      <Nav />
     </div>
   );
 }

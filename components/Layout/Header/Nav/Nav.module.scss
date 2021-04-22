@@ -1,0 +1,56 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.8rem;
+  border-left: 1px solid $c-background;
+  text-decoration: none;
+  color: $c-text-light;
+  font-size: 1rem;
+  position: relative;
+
+  &:hover {
+    background: $c-accent;
+
+    .subNav {
+      visibility: visible;
+      opacity: 1;
+
+      .navItem {
+        height: 2rem;
+      }
+    }
+  }
+
+  .subNav {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: $c-background-dark;
+    @include transition();
+
+    .navItem {
+      padding: 0.3rem 0.8rem;
+      border-bottom: 1px solid $c-background;
+      height: 0;
+      overflow: clip;
+      @include transition();
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
+}
