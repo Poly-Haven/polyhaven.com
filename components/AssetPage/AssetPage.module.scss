@@ -8,9 +8,15 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   width: 336px;
   background: $c-background-dark;
   overflow-y: auto;
   height: calc(100vh - #{$v-header-height});
   @include dark_scrollbar();
+
+  .info {
+    flex-grow: 1;
+  }
 }

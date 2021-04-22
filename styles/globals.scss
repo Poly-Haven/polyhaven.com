@@ -15,3 +15,24 @@ body {
   width: 100%;
   flex-grow: 1;
 }
+
+.titlecase {
+  text-transform: capitalize;
+}
+
+.Dropdown-option {
+  color: $c-text-light !important;
+  background-color: $c-background;
+
+  &:hover {
+    background-color: $c-accent !important;
+  }
+}
+.Dropdown-option.is-selected {
+  background-color: $c-background !important;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $c-accent !important;
+  }
+}
