@@ -3,6 +3,7 @@
 @import "constants/variables";
 
 #sidebar {
+  flex-shrink: 0;
   height: calc(100vh - #{$v-header-height});
   width: 210px;
   background: $c-background-dark;

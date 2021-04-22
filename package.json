@@ -11,6 +11,7 @@
     "epoch-timeago": "^1.1.9",
     "firebase": "^8.3.0",
     "firebase-admin": "^9.5.0",
+    "fuse.js": "^6.4.6",
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",

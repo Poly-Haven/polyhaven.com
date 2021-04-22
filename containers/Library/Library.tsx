@@ -8,6 +8,7 @@ import styles from './Library.module.scss';
 
 const Library = (props) => {
   const [sort, setSort] = useState('hot')
+  const [search, setSearch] = useState()
 
   return (
     <div id={styles.library}>
@@ -18,6 +19,8 @@ const Library = (props) => {
           categories={props.categories}
           sort={sort}
           setSort={setSort}
+          search={search}
+          setSearch={setSearch}
         />
       </Page>
     </div>

@@ -11,9 +11,16 @@
 
   .options {
     flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .menuSelection {
+      display: block;
+    }
 
     .menu {
-      max-width: 180px;
+      width: 200px;
       text-transform: capitalize;
 
       &:hover {
@@ -54,6 +61,38 @@
         }
       }
     }
+
+    .search {
+      display: flex;
+      align-items: center;
+      height: calc(2.5rem - 2px);
+      width: calc(198px - 0.6rem);
+      padding: 0 0.3rem;
+      border: 1px solid rgba($c-text-light, 0.2);
+      margin-left: 1rem;
+
+      .searchIcon {
+        font-size: 1.5rem;
+      }
+
+      input {
+        width: calc(100% - 2px);
+        background-color: $c-background;
+        margin: 0;
+        padding: 0.2rem;
+        border: 0;
+        color: $c-text-light;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  p {
+    padding: 1rem;
+    margin: 0;
   }
 }
 
@@ -64,4 +103,12 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
+}
+
+.noResults {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,9 +1,12 @@
 import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
+import Fuse from 'fuse.js';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { daysOld, weightedDownloadsPerDay } from 'utils/dateUtils'
+import { MdSearch } from 'react-icons/md'
+
+import fetcher from 'utils/fetcher';
+import { weightedDownloadsPerDay } from 'utils/dateUtils'
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
@@ -34,9 +37,16 @@ const Grid = (props) => {
       })
     },
   }
+
   const setSort = selectedOption => {
     props.setSort(selectedOption.value)
   };
+  const setSearch = event => {
+    props.setSearch(event.target.value);
+  }
+  const submitSearch = event => {
+    event.preventDefault();
+  }
 
 
   let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
@@ -46,6 +56,24 @@ const Grid = (props) => {
   const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
   if (error) return <div>Error</div>
   if (!data) return <div><Spinner /></div>
+
+  let sortedKeys = sortBy[props.sort](data);
+
+  if (props.search) {
+    const fuse = new Fuse(Object.values(data), {
+      keys: ['categories', 'tags', 'name'],
+      includeScore: true,
+      threshold: 0.2
+    })
+    const searchResults = fuse.search(props.search);
+    const filteredData = {};
+    for (const sr of searchResults) {
+      let srID = Object.keys(data)[sr.refIndex];
+      filteredData[srID] = data[srID];
+    }
+    sortedKeys = Object.keys(filteredData)
+  }
+
 
   return (
     <>
@@ -63,20 +91,39 @@ const Grid = (props) => {
               placeholder="Select an option"
               onChange={setSort} />
           </div>
+          <div className={styles.search}>
+            <MdSearch className={styles.searchIcon} />
+            <form onSubmit={submitSearch}>
+              <input
+                type="text"
+                placeholder="Search..."
+                value={props.search}
+                onChange={setSearch} />
+            </form>
+          </div>
+          {props.search ? <p>{sortedKeys.length} results</p> : null}
         </div>
         <div className={styles.adGridTop}>
           <AdTop />
         </div>
       </div>
-      <div className={styles.grid}>
-        {sortBy[props.sort](data).map(asset => {
-          return (<GridItem
-            asset={data[asset]}
-            assetID={asset}
-            key={asset}
-            scrollPosition={props.scrollPosition} />);
-        })}
-      </div>
+
+      {sortedKeys.length ?
+        <div className={styles.grid}>
+          {sortedKeys.map(asset => {
+            return (<GridItem
+              asset={data[asset]}
+              assetID={asset}
+              key={asset}
+              scrollPosition={props.scrollPosition} />);
+          })}
+        </div>
+        :
+        <div className={styles.noResults}>
+          <h2>No results :(</h2>
+          {props.search ? <p>Try using a different keyword</p> : null}
+        </div>
+      }
     </>
   );
 }
