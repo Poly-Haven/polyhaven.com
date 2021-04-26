@@ -112,30 +112,3 @@
     }
   }
 }
-
-.communityIcons a {
-  padding: 0.2rem;
-  margin: 0.8rem;
-  display: inline-block;
-  line-height: 0;
-  background: transparent;
-  border-radius: 50%;
-  @include transition(0.1s);
-
-  svg {
-    $size: 2rem;
-    width: $size;
-    height: $size;
-    color: $c-text-light;
-    @include transition(0.1s);
-  }
-
-  &:hover {
-    padding: 0.8rem;
-    margin: 0.2rem;
-    background: $c-accent;
-    svg {
-      color: white;
-    }
-  }
-}

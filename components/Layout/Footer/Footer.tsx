@@ -2,12 +2,8 @@ import Link from 'next/link';
 
 import { randomArraySelection } from 'utils/arrayUtils'
 
-import { SiDiscord } from "react-icons/si";
-import { SiPatreon } from "react-icons/si";
-import { SiFacebook } from "react-icons/si";
-import { SiTwitter } from "react-icons/si";
-
 import Todo from 'components/Todo/Todo'
+import SocialIcons from 'components/SocialIcons/SocialIcons'
 
 import styles from './Footer.module.scss';
 
@@ -75,12 +71,7 @@ const footer = () => {
               <Link href="https://blog.hdrihaven.com"><a>Blog</a></Link>
             </div>
           </div>
-          <div className={styles.communityIcons}>
-            <a href="https://discord.gg/Dms7Mrs"><SiDiscord /></a>
-            <a href="https://polyhaven.com/support-us"><SiPatreon /></a>
-            <a href="https://polyhaven.com/facebook"><SiFacebook /></a>
-            <a href="https://polyhaven.com/twitter"><SiTwitter /></a>
-          </div>
+          <SocialIcons />
         </div>
       </div>
     </div>

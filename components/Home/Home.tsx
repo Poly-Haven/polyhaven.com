@@ -4,11 +4,7 @@ import Heart from './Heart'
 import Button from 'components/Button/Button'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Todo from 'components/Todo/Todo'
-
-import { SiDiscord } from "react-icons/si";
-import { SiPatreon } from "react-icons/si";
-import { SiFacebook } from "react-icons/si";
-import { SiTwitter } from "react-icons/si";
+import SocialIcons from 'components/SocialIcons/SocialIcons'
 
 import styles from './Home.module.scss'
 
@@ -134,12 +130,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             <p>Everything we do, we do with your help, for the greater 3D community.</p>
           </div>
           <div className={styles.subSection}>
-            <div className={styles.communityIcons}>
-              <a href="https://discord.gg/Dms7Mrs"><SiDiscord /></a>
-              <a href="https://polyhaven.com/support-us"><SiPatreon /></a>
-              <a href="https://polyhaven.com/facebook"><SiFacebook /></a>
-              <a href="https://polyhaven.com/twitter"><SiTwitter /></a>
-            </div>
+            <SocialIcons />
           </div>
         </div>
       </div>
