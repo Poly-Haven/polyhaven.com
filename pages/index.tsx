@@ -1,14 +1,15 @@
 import Head from 'next/head'
 
 import Page from 'components/Layout/Page/Page'
+import Home from 'components/Home/Home'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <Page>
       <Head>
         <title>Poly Haven</title>
       </Head>
-      <h1>Home page, weeeeeeeee</h1>
+      <Home patreonGoal="TODO" patreonProgress={80} />
     </Page>
   )
 }

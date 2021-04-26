@@ -11,6 +11,29 @@ body {
   line-height: normal;
 }
 
+h1,
+h2,
+h3 {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: $c-accent;
+}
+p {
+  a {
+    border-bottom: 1px solid $c-accent;
+    @include transition();
+
+    &:hover {
+      color: $c-accent-light;
+      border-bottom: 3px solid $c-accent-light;
+      // border-color: $c-accent-lighter;
+    }
+  }
+}
+
 .content {
   position: relative;
   width: 100%;
@@ -19,6 +42,19 @@ body {
 
 .titlecase {
   text-transform: capitalize;
+}
+
+.text-accent {
+  color: $c-accent;
+}
+.text-blue {
+  color: $c-blue;
+}
+.text-orange {
+  color: $c-orange;
+}
+.text-green {
+  color: $c-green;
 }
 
 .Dropdown-option {

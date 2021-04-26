@@ -1,0 +1,57 @@
+@import "constants/colors";
+
+.home {
+  text-align: center;
+}
+
+.sectionWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:nth-last-child(even) {
+    background: $c-background-dark;
+  }
+}
+.section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  max-width: 1300px;
+
+  h2 {
+    font-size: 2rem;
+
+    svg {
+      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .text {
+    width: clamp(250px, 100%, 512px);
+    margin: auto;
+
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .textLeft {
+    @extend .text;
+    text-align: left;
+  }
+
+  .subSection {
+    flex-basis: 0;
+    flex-grow: 1;
+
+    // .text {
+    //   width: clamp(250px, 60%, 512px);
+    // }
+  }
+}

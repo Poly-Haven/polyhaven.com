@@ -1,0 +1,36 @@
+@import "constants/colors";
+
+.barWrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+.barOuter {
+  width: calc(100% - 1em);
+  height: 2em;
+  border: 0.5em solid $c-accent;
+  border-radius: 2em;
+}
+.barInnerWrapper {
+  width: calc(100% - 4px);
+}
+.barInner {
+  height: calc(2em - 4px);
+  margin: 2px;
+  border-radius: 2em;
+  background-color: $c-accent;
+  max-width: 100%;
+  min-width: calc(2em - 2px);
+}
+.label {
+  color: $c-accent-light;
+  opacity: 0.9;
+  text-align: right;
+  padding: 0 0.3em 0.5em;
+  width: 100%;
+
+  svg {
+    position: relative;
+    top: -0.2em;
+    font-size: 1.2em;
+  }
+}

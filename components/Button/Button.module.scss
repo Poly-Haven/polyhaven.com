@@ -1,0 +1,53 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  padding: 0.75em 1em;
+  margin: 0.5rem;
+  @include transition();
+  @include drop-shadow();
+}
+
+.accent {
+  background: $c-accent;
+
+  &:hover {
+    background: $c-accent-light;
+  }
+}
+.blue {
+  background: $c-blue;
+
+  &:hover {
+    background: $c-blue-light;
+  }
+}
+.orange {
+  background: $c-orange;
+
+  &:hover {
+    background: $c-orange-light;
+  }
+}
+.green {
+  background: $c-green;
+
+  &:hover {
+    background: $c-green-light;
+  }
+}
+
+.hollow {
+  color: $c-text-light;
+  background: none;
+  box-shadow: inset 0px 0px 0px 1px $c-accent;
+
+  &:hover {
+    color: white;
+    background: $c-accent-light;
+    box-shadow: inset 0px 0px 0px 1px $c-accent-light;
+  }
+}
