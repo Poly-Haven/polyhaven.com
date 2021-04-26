@@ -44,6 +44,7 @@
     .navItem {
       padding: 0.3rem 0.8rem;
       border-bottom: 1px solid $c-background;
+      border-left: none;
       height: 0;
       overflow: clip;
       @include transition();

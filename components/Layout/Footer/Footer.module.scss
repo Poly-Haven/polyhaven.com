@@ -2,4 +2,50 @@
 
 #footer {
   background: $c-background-dark;
+  text-align: center;
+  padding: 1rem;
+}
+
+.patrons {
+  padding: 0 0.5em 1em;
+  font-size: 0.85em;
+
+  .patron-list {
+    padding: 0 0.5em 1em;
+    font-size: 0.95em;
+  }
+
+  p {
+    padding: 0 0.4em;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .patron-rank-1 {
+    opacity: 0.45;
+  }
+  .patron-rank-2 {
+    opacity: 0.75;
+  }
+  .patron-rank-3 {
+    color: white;
+  }
+  .patron-rank-4 {
+    font-weight: bold;
+  }
+  .patron-rank-5,
+  .patron-rank-6 {
+    font-weight: bold;
+    color: white;
+    font-size: 115%;
+    line-height: 0.74em;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .button {
+    margin: 0 1em;
+  }
 }
