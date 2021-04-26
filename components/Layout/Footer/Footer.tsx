@@ -40,6 +40,7 @@ const footer = () => {
   return (
     <div id={styles.footer}>
       <h2>Patrons</h2>
+      <Todo>Note: Placeholder names</Todo>
       <div className={styles.patrons}>
         {names_list.map((n, i) => <p key={i} className={styles[`patron-rank-${randomArraySelection(pledge_rank_weights)}`]}>{n}</p>)}
       </div>

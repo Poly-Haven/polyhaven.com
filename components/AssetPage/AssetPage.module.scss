@@ -8,6 +8,7 @@
 }
 
 .sidebar {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   width: 336px;
