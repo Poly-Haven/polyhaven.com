@@ -39,4 +39,20 @@
   .spacer {
     flex-grow: 1;
   }
+
+  .beta {
+    color: $c-orange;
+    border: 1px solid $c-orange;
+    border-radius: 8px;
+    padding: 0.2rem 0.8rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+      margin: 0;
+      padding-left: 0.5rem;
+    }
+  }
 }

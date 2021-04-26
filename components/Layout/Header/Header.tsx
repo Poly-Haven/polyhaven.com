@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ImWarning } from 'react-icons/im'
 
 import Nav from './Nav/Nav'
 
@@ -13,6 +14,8 @@ const header = () => {
         </div>
         Poly Haven
       </a></Link>
+      <div className={styles.spacer} />
+      <div className={styles.beta}><ImWarning /> <p>BETA {process.env.CONFIG_BUILD_ID}</p></div>
       <div className={styles.spacer} />
       <Nav />
     </div>
