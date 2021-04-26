@@ -23,13 +23,12 @@ a {
 }
 p {
   a {
-    border-bottom: 1px solid $c-accent;
+    box-shadow: 0 1px 0 $c-accent;
     @include transition();
 
     &:hover {
       color: $c-accent-light;
-      border-bottom: 3px solid $c-accent-light;
-      // border-color: $c-accent-lighter;
+      box-shadow: 0 3px 0 $c-accent;
     }
   }
 }

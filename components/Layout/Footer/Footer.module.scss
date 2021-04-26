@@ -1,13 +1,14 @@
 @import "constants/colors";
+@import "constants/mixins";
 
 #footer {
   background: $c-background-dark;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .patrons {
-  padding: 0 0.5em 1em;
+  padding: 0 2em 1em;
   font-size: 0.85em;
 
   .patron-list {
@@ -47,5 +48,94 @@
 
   .button {
     margin: 0 1em;
+  }
+}
+
+.linksWrapper {
+  border-top: 1px solid $c-background-light;
+  padding: 2rem 1rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.links {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 1300px;
+}
+.links > * {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .logo {
+    height: 5rem;
+  }
+
+  h1 {
+    margin: 0.75rem 1rem 0.5rem;
+  }
+
+  p {
+    color: $c-text-light;
+    margin: 0;
+  }
+}
+
+.linkListWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.linkList {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: $c-text-light;
+    text-align: left;
+    padding: 0.5rem;
+    @include transition(0.1s);
+
+    &:hover {
+      color: white;
+      box-shadow: inset 0 -2px 0 $c-accent;
+    }
+  }
+}
+
+.communityIcons a {
+  padding: 0.2rem;
+  margin: 0.8rem;
+  display: inline-block;
+  line-height: 0;
+  background: transparent;
+  border-radius: 50%;
+  @include transition(0.1s);
+
+  svg {
+    $size: 2rem;
+    width: $size;
+    height: $size;
+    color: $c-text-light;
+    @include transition(0.1s);
+  }
+
+  &:hover {
+    padding: 0.8rem;
+    margin: 0.2rem;
+    background: $c-accent;
+    svg {
+      color: white;
+    }
   }
 }
