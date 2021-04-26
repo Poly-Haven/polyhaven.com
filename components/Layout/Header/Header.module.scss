@@ -42,8 +42,9 @@
 
   .beta {
     color: $c-orange;
-    border: 1px solid $c-orange;
-    border-radius: 8px;
+    background: rgba($c-orange, 0.1);
+    border: 2px dashed $c-orange;
+    border-radius: 1em;
     padding: 0.2rem 0.8rem;
     margin: 0.5rem;
     display: flex;
@@ -52,7 +53,11 @@
 
     p {
       margin: 0;
-      padding-left: 0.5rem;
+      padding: 0 0.5rem;
+    }
+    pre {
+      margin: 0;
+      font-size: 0.8em;
     }
   }
 }
