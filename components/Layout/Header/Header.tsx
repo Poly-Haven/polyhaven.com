@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { MdWarning } from 'react-icons/md'
 
 import Nav from './Nav/Nav'
+import Todo from 'components/Todo/Todo'
 
 import styles from './Header.module.scss';
 
@@ -15,11 +15,10 @@ const header = () => {
         Poly Haven
       </a></Link>
       <div className={styles.spacer} />
-      <div className={styles.beta}>
-        <MdWarning />
+      <Todo>
         <p>BETA</p>
         <pre>{process.env.CONFIG_BUILD_ID.substring(0, 7)}</pre>
-      </div>
+      </Todo>
       <div className={styles.spacer} />
       <Nav />
     </div>

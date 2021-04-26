@@ -1,0 +1,31 @@
+@import "constants/colors";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo {
+  color: $c-orange;
+  background: rgba($c-orange, 0.1);
+  border: 2px dashed $c-orange;
+  border-radius: 1em;
+  padding: 0.2rem 0.8rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  pre {
+    margin: 0;
+    font-size: 0.8em;
+  }
+}

@@ -3,6 +3,7 @@ import Slider from './Slider/Slider'
 import Heart from './Heart'
 import Button from 'components/Button/Button'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
+import Todo from 'components/Todo/Todo'
 
 import { SiDiscord } from "react-icons/si";
 import { SiPatreon } from "react-icons/si";
@@ -52,13 +53,17 @@ const Home = ({ patreonGoal, patreonProgress }) => {
               <p>No paywalls or signup required, simply download what you want.</p>
             </div>
           </div>
-          <div className={styles.subSection}></div>
+          <div className={styles.subSection}>
+            <Todo />
+          </div>
         </div>
       </div>
 
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
-          <div className={styles.subSection}></div>
+          <div className={styles.subSection}>
+            <Todo />
+          </div>
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>High quality</h2>
@@ -86,6 +91,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
         </div>
+        <Todo>TODO Corporate Sponsor Logos</Todo>
       </div>
 
       <div className={styles.sectionWrapper}>
@@ -105,7 +111,9 @@ const Home = ({ patreonGoal, patreonProgress }) => {
               <p>If you like what we do and want to keep this site alive, consider <a href="https://polyhaven.com/support-us">supporting us on Patreon</a>.</p>
             </div>
           </div>
-          <div className={styles.subSection}></div>
+          <div className={styles.subSection}>
+            <Todo>TODO Avatars</Todo>
+          </div>
         </div>
       </div>
 
@@ -113,7 +121,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         <div className={styles.section}>
           <div className={styles.subSection}>
             <h2>User Renders</h2>
-            <p>TODO</p>
+            <Todo />
           </div>
         </div>
       </div>
