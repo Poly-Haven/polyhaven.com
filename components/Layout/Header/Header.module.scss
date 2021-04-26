@@ -1,5 +1,6 @@
 @import "constants/colors";
 @import "constants/variables";
+@import "constants/mixins";
 
 .header {
   background: $c-background-dark;
@@ -16,10 +17,17 @@
     align-items: center;
     font-size: 1.45rem;
     font-weight: 700;
+    text-decoration: none;
+    color: $c-text-light;
+    @include transition();
+
+    &:hover {
+      filter: brightness(1.2);
+    }
 
     .logo_image {
       display: inline-block;
-      padding: 0 1rem;
+      padding: 0 0.75rem;
       line-height: 0;
 
       img {
