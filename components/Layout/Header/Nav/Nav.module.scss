@@ -21,36 +21,42 @@
 
   &:hover {
     background: $c-accent;
+  }
+}
 
+.subNav {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: $c-background-dark;
+  @include transition();
+
+  .navItem {
+    padding: 0.3rem 0.8rem;
+    border-bottom: 1px solid $c-background;
+    border-left: none;
+    height: 0;
+    overflow: clip;
+    @include transition();
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
+
+.navItemWrapper {
+  position: relative;
+
+  &:hover {
     .subNav {
       visibility: visible;
       opacity: 1;
 
       .navItem {
         height: 2rem;
-      }
-    }
-  }
-
-  .subNav {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: $c-background-dark;
-    @include transition();
-
-    .navItem {
-      padding: 0.3rem 0.8rem;
-      border-bottom: 1px solid $c-background;
-      border-left: none;
-      height: 0;
-      overflow: clip;
-      @include transition();
-
-      &:last-of-type {
-        border-bottom: none;
       }
     }
   }

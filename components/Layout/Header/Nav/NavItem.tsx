@@ -4,12 +4,14 @@ import styles from './Nav.module.scss'
 
 const NavItem = ({ text, link, children }) => {
   return (
-    <Link href={link}><a className={styles.navItem}>
-      {text}
+    <div className={styles.navItemWrapper}>
+      <Link href={link}><a className={styles.navItem}>
+        {text}
+      </a></Link>
       {children ?
         <div className={styles.subNav}>{children}</div>
         : null}
-    </a></Link>
+    </div>
   )
 }
 
