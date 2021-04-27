@@ -32,9 +32,7 @@ const Grid = (props) => {
       })
     },
     name: (d: Object) => {
-      return Object.keys(d).sort(function (a, b) {
-        return (d[b].name - d[a].name);
-      })
+      return Object.keys(d).sort((a, b) => d[a].name.localeCompare(d[b].name))
     },
   }
 
