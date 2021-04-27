@@ -15,25 +15,31 @@ const Home = ({ patreonGoal, patreonProgress }) => {
       <Slider />
 
       <div className={styles.sectionWrapper}>
-        <div className={styles.section}>
-          <div className={styles.subSection}>
+        <div className={styles.assetTypeBanner}>
+          <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
+            <div className={styles.assetTypeBannerHover} />
             <div className={styles.text}>
+              <img src="/icons/type_H.svg" className={styles.assetTypeImage} />
               <h2>HDRIs</h2>
               <p>16k+ resolution, and always unclipped for one-click realistic lighting.</p>
               <Button text="Browse HDRIs" href="/hdris" color='blue' />
             </div>
           </div>
-          <div className={styles.subSection}>
+          <div className={`${styles.subSection} ${styles.subSectionTex}`}>
+            <div className={styles.assetTypeBannerHover} />
             <div className={styles.text}>
+              <img src="/icons/type_T.svg" className={styles.assetTypeImage} />
               <h2>Textures</h2>
               <p>Photoscanned seamless PBR materials, at least 8k resolution.</p>
               <Button text="Browse Textures" href="/textures" color='orange' />
             </div>
           </div>
-          <div className={styles.subSection}>
+          <div className={`${styles.subSection} ${styles.subSectionMod}`}>
+            <div className={styles.assetTypeBannerHover} />
             <div className={styles.text}>
+              <img src="/icons/type_M.svg" className={styles.assetTypeImage} />
               <h2>Models</h2>
-              <p>Hyperreal 3D models optimized for visual effects and next-gen video games.</p>
+              <p>Hyperreal 3D models, for visual effects and next-gen video games.</p>
               <Button text="Browse Models" href="/models" color='green' />
             </div>
           </div>

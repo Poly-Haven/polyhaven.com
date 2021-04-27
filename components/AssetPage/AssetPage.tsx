@@ -1,5 +1,6 @@
 import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
+import Todo from 'components/Todo/Todo'
 
 import styles from './AssetPage.module.scss'
 
@@ -9,6 +10,7 @@ const AssetPage = ({ assetID, data }) => {
       <Page>
         <h1>{data.name}</h1>
         <p>by {Object.keys(data.authors).join(', ')}</p>
+        <Todo />
       </Page>
       <div className={styles.sidebar}>
         <div className={styles.info}>
