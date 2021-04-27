@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { randomArraySelection } from 'utils/arrayUtils'
 
 import Todo from 'components/Todo/Todo'
+import Button from 'components/Button/Button'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 
 import styles from './Footer.module.scss';
@@ -31,6 +32,8 @@ const footer = () => {
   }
   const pledge_rank_weights = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5];
 
+  const patronNamesJSX = (<>{names_list.map((n, i) => <p key={i} className={styles[`patron-rank-${randomArraySelection(pledge_rank_weights)}`]}>{n}</p>)}</>);
+
 
   // TODO Patreon connection
   return (
@@ -38,9 +41,20 @@ const footer = () => {
       <h2>Patrons</h2>
       <Todo>Note: Placeholder names</Todo>
       <div className={styles.patrons}>
-        {names_list.map((n, i) => <p key={i} className={styles[`patron-rank-${randomArraySelection(pledge_rank_weights)}`]}>{n}</p>)}
+        <div className={styles.patronsScrollWrapper}>
+          <div className={styles.patronsScroll}>
+            <div className={styles.patronsSetA}>
+              {patronNamesJSX}
+            </div>
+            <div className={styles.patronsSetB}>
+              {patronNamesJSX}
+            </div>
+          </div>
+        </div>
+        <div className={styles.fade} />
       </div>
       <Todo>TODO Corporate Sponsor Logos</Todo>
+      <Button text="Join the ranks, support Poly Haven on Patreon" href="https://polyhaven.com/support-us" />
       <div className={styles.linksWrapper}>
         <div className={styles.links}>
           <Link href="/"><a>

@@ -3,3 +3,12 @@ export function titleCase(str) {
     return (word.charAt(0).toUpperCase() + word.slice(1));
   }).join(' ');
 }
+
+export function stringValue(str) {
+  let sum = 0;
+  let i = str.length;
+  while (i--) {
+    sum += str.charCodeAt(i)
+  }
+  return sum
+}
