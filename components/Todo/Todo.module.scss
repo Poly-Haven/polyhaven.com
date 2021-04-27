@@ -20,12 +20,22 @@
 
   p {
     margin: 0;
-    padding: 0 0.5rem;
     font-size: 1rem;
     font-weight: bold;
   }
   pre {
     margin: 0;
     font-size: 0.8em;
+  }
+
+  * {
+    padding: 0 0.2rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 }

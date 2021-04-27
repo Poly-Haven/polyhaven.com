@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MdInfoOutline } from 'react-icons/md'
 
 import Nav from './Nav/Nav'
 import Todo from 'components/Todo/Todo'
@@ -15,10 +16,13 @@ const header = () => {
         Poly Haven
       </a></Link>
       <div className={styles.spacer} />
-      <Todo>
-        <p>BETA</p>
-        <pre>{process.env.CONFIG_BUILD_ID.substring(0, 7)}</pre>
-      </Todo>
+      <a href="https://trello.com/b/7zT1j901/poly-haven-beta">
+        <Todo>
+          <p>BETA</p>
+          <pre>{process.env.CONFIG_BUILD_ID.substring(0, 7)}</pre>
+          <MdInfoOutline />
+        </Todo>
+      </a>
       <div className={styles.spacer} />
       <Nav />
     </div>
