@@ -5,6 +5,7 @@ import { randomArraySelection } from 'utils/arrayUtils'
 import Todo from 'components/Todo/Todo'
 import Button from 'components/Button/Button'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
+import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 import styles from './Footer.module.scss';
 
@@ -53,7 +54,7 @@ const footer = () => {
         </div>
         <div className={styles.fade} />
       </div>
-      <Todo>TODO Corporate Sponsor Logos</Todo>
+      <CorporateSponsors footer={true} />
       <Button text="Join the ranks, support Poly Haven on Patreon" href="https://polyhaven.com/support-us" />
       <div className={styles.linksWrapper}>
         <div className={styles.links}>

@@ -1,0 +1,40 @@
+.wrapper {
+  padding: 1rem;
+  width: calc(100% - 2rem);
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.group {
+  a {
+    font-size: 0; // For some reason there's padding under the images?
+  }
+  img {
+    margin: 0 1rem 1rem;
+    display: inline-block;
+  }
+}
+
+.groupDiamond {
+  @extend .group;
+  img {
+    max-width: 340px;
+    max-height: 128px;
+  }
+}
+.groupGold {
+  @extend .group;
+  img {
+    max-width: 192px;
+    max-height: 66px;
+  }
+}
+.groupSilver {
+  @extend .group;
+  img {
+    max-width: 150px;
+    max-height: 50px;
+  }
+}

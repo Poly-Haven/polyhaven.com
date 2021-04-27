@@ -5,6 +5,7 @@ import Button from 'components/Button/Button'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Todo from 'components/Todo/Todo'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
+import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 import styles from './Home.module.scss'
 
@@ -93,7 +94,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
         </div>
-        <Todo>TODO Corporate Sponsor Logos</Todo>
+        <CorporateSponsors />
       </div>
 
       <div className={styles.sectionWrapper}>
