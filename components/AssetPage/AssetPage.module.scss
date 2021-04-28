@@ -9,7 +9,6 @@
 
 .header {
   @include flex(row, true);
-  border-bottom: 3px solid $c-background-dark; // TEMP?
 
   h1 {
     margin: 0.2em 1em;
@@ -21,6 +20,28 @@
 
   .spacer {
     flex-grow: 1;
+  }
+}
+
+.previewWrapper {
+  @include flex(row, true, true);
+  background: $c-background-dark;
+  padding: 0.25rem;
+  min-height: 600px;
+
+  .carousel {
+    width: 120px;
+    flex-shrink: 0;
+    @include flex(column, true, true);
+  }
+
+  .activePreview {
+    flex-grow: 1;
+    @include flex(row, true, true);
+
+    img {
+      max-width: 100%;
+    }
   }
 }
 
