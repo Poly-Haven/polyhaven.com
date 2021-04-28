@@ -1,6 +1,6 @@
 import Slider from './Slider/Slider'
 
-import Heart from './Heart'
+import Heart from 'components/Heart/Heart'
 import Button from 'components/Button/Button'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Todo from 'components/Todo/Todo'
@@ -80,7 +80,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
           <div className={styles.subSection}>
-            <h2>Supported by you <Heart /></h2>
+            <h2>Supported by you <Heart color="#F96854" /></h2>
             <ProgressBar progress={patreonProgress} label="Current goal" labelValue={patreonGoal} />
             <Button text="Become a Patron" href="https://polyhaven.com/support-us" />
             <Button text="Finance Reports" href="/finance-reports" color='hollow' />
