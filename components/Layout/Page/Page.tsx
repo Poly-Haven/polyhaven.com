@@ -2,13 +2,17 @@ import Footer from 'components/Layout/Footer/Footer'
 
 import styles from './Page.module.scss'
 
-const Page = ({ children }) => {
+const Page = ({ children, immersiveScroll }) => {
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${immersiveScroll ? styles.immersiveScroll : ""}`}>
       <div className={styles.pageContent}>{children}</div>
       <Footer />
     </div>
   )
+}
+
+Page.defaultProps = {
+  immersiveScroll: false
 }
 
 export default Page

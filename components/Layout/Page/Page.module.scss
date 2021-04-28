@@ -1,4 +1,6 @@
+@import "constants/colors";
 @import "constants/variables";
+@import "constants/mixins";
 
 .page {
   flex-grow: 1;
@@ -6,6 +8,10 @@
   height: calc(100vh - #{$v-header-height});
   display: flex;
   flex-direction: column;
+}
+
+.immersiveScroll {
+  @include immersive_scrollbar();
 }
 
 .pageContent {

@@ -35,6 +35,25 @@
   }
 }
 
+@mixin immersive_scrollbar() {
+  scrollbar-color: $c-background-lighterer $c-background-light;
+
+  &::-webkit-scrollbar {
+    width: 17px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $c-background-light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $c-background-lighterer;
+    border-radius: 8px;
+    border-top: 2px solid rgba(black, 0.5);
+    border-bottom: 2px solid rgba(black, 0.5);
+  }
+}
+
 @mixin flex($direction, $align: false, $justify: false) {
   display: flex;
   flex-direction: $direction;
