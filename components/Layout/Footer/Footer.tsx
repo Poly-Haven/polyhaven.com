@@ -67,9 +67,10 @@ const footer = () => {
           </a></Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
+              <Link href="/faq"><a>FAQ</a></Link>
               <Link href="/about-contact"><a>About</a></Link>
               <Link href="/about-contact"><a>Contact</a></Link>
-              <Link href="https://bit.ly/ph-advertising"><a>Advertising</a></Link>
+              <Link href="/map"><a>Map</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
@@ -77,13 +78,15 @@ const footer = () => {
               <Link href="/license"><a>License</a></Link>
               <Link href="/privacy"><a>Privacy</a></Link>
               <Link href="/finance-reports"><a>Finance Reports</a></Link>
+              <Link href="https://bit.ly/ph-advertising"><a>Advertising</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="/faq"><a>FAQ</a></Link>
-              <Link href="/contribute"><a>Contribute</a></Link>
               <Link href="https://blog.hdrihaven.com"><a>Blog</a></Link>
+              <Link href="/contribute"><a>Contribute</a></Link>
+              <Link href="https://github.com/Poly-Haven/Public-API"><a>API</a></Link>
+              <Link href="https://github.com/Poly-Haven/polyhaven.com"><a>Source</a></Link>
             </div>
           </div>
           <SocialIcons />
