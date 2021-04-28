@@ -7,6 +7,23 @@
   flex-direction: row;
 }
 
+.header {
+  @include flex(row, true);
+  border-bottom: 3px solid $c-background-dark; // TEMP?
+
+  h1 {
+    margin: 0.2em 1em;
+  }
+
+  .authors {
+    @include flex(row, true, true);
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+}
+
 .sidebar {
   flex-shrink: 0;
   display: flex;
@@ -19,5 +36,32 @@
 
   .info {
     flex-grow: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .downloadBtn {
+    background: $c-accent;
+    margin: 1rem;
+    padding: 0.75rem;
+    font-size: 1.3em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    @include transition();
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+      padding-right: 0.2em;
+    }
+
+    &:hover {
+      background: $c-accent-light;
+    }
   }
 }

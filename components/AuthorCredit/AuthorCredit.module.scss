@@ -1,0 +1,24 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.author {
+  @include flex(row, true, true);
+  padding: 0.5em;
+
+  .avatar {
+    display: flex;
+    padding-right: 0.5rem;
+  }
+
+  .name {
+    @include flex(column, true, true);
+    line-height: 1em;
+
+    .credit {
+      font-size: 0.8em;
+      font-style: italic;
+      opacity: 0.6;
+    }
+  }
+}
