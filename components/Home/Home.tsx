@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import Slider from './Slider/Slider'
 
 import Heart from 'components/Heart/Heart'
@@ -52,8 +54,8 @@ const Home = ({ patreonGoal, patreonProgress }) => {
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>100% Free</h2>
-              <p>Not just free, but CC0, meaning you can use them for absolutely any purpose without restrictions.</p>
-              <p>No paywalls or signup required, simply download what you want.</p>
+              <p>Not just free, but <Link href="/license">CC0</Link>, meaning you can use them for absolutely any purpose <strong>without restrictions</strong>.</p>
+              <p>No paywalls or signup required, simply download what you want and use it immediately without worry.</p>
             </div>
           </div>
           <div className={styles.subSection}>
@@ -71,7 +73,8 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             <div className={styles.text}>
               <h2>High quality</h2>
               <p>"Free" and "quality" don't always have to be mutually exclusive.</p>
-              <p>We don't want to pollute the web with more trash, so we focus on creating the best assets that you can actually use.</p>
+              <p>We don't want to pollute the web with more trash, so we focus on creating the best <strong>assets that you can actually use</strong>.</p>
+              <p>Our target is to create content that will not just hold up to today's standards, but higher future standards, and the potential of future hardware too.</p>
             </div>
           </div>
         </div>
