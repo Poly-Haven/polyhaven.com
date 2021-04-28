@@ -29,21 +29,21 @@ const CorporateSponsors = ({ header, footer }) => {
       <div className={styles.groupDiamond}>
         {diamondSponsors.map(id => {
           return (
-            <CorporateSponsorLogo id={id} data={data[id]} />
+            <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
       </div>
       <div className={styles.groupGold}>
         {goldSponsors.map(id => {
           return (
-            <CorporateSponsorLogo id={id} data={data[id]} />
+            <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
       </div>
       <div className={styles.groupSilver}>
         {silverSponsors.map(id => {
           return (
-            <CorporateSponsorLogo id={id} data={data[id]} />
+            <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
       </div>
