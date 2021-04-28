@@ -1,0 +1,17 @@
+@import "constants/colors";
+
+.page {
+  width: calc(100% - 2rem);
+  max-width: 1024px;
+  padding: 1rem;
+  margin: auto;
+
+  q {
+    display: block;
+    padding-left: 1rem;
+    border-left: 2px solid $c-accent;
+    font-style: italic;
+    opacity: 0.75;
+    font-weight: bold;
+  }
+}
