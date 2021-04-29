@@ -27,7 +27,7 @@ const Page = ({ assetID, data }) => {
   return (
     <div className="content">
       <Head>
-        <title>{assetTypeNames[data.type]}: {data.name} • Poly Haven</title>
+        <title>{data.name} {assetTypeNames[data.type]} • Poly Haven</title>
       </Head>
       <div>
         <AssetPage assetID={assetID} data={data} />

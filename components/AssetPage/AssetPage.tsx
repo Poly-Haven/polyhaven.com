@@ -1,9 +1,14 @@
+import Link from 'next/link';
+
 import { MdFileDownload } from 'react-icons/md'
+
+import asset_types from 'constants/asset_types.json'
 
 import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
 import Todo from 'components/Todo/Todo'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
+import InfoItem from './InfoItem'
 
 import styles from './AssetPage.module.scss'
 
@@ -26,13 +31,55 @@ const AssetPage = ({ assetID, data }) => {
         </div>
         <Todo>Backplates, similar assets, user renders</Todo>
       </Page>
+
       <div className={styles.sidebar}>
+
         <div className={styles.info}>
           <h1>{data.name}</h1>
           <div className={styles.authors}>
             {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
           </div>
+          <InfoItem label="Published" condition={true}>
+            {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
+          </InfoItem>
+          <InfoItem label="Dynamic Range" condition={data.evs_cap}>
+            {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
+          </InfoItem>
+          <InfoItem label="Scale" condition={data.scale}>
+            {data.scale}
+          </InfoItem>
+          <InfoItem label="Captured" condition={data.date_taken}>
+            {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
+          </InfoItem>
+          <InfoItem label="Location" condition={data.coords}>
+            {data.coords ? data.coords.join(', ') : null}
+          </InfoItem>
+          <InfoItem label="Downloads" condition={true}>
+            {data.download_count}
+          </InfoItem>
+          <div className={styles.spacer} />
+          <Todo>Sponsor</Todo>
+          <div className={styles.spacer} />
+          <InfoItem label="Categories" condition={true}>
+            <div className={styles.tagsList}>
+              {data.categories.map(i =>
+                <Link href={`/${Object.keys(asset_types)[data.type]}/${i}`} key={i}><a>
+                  <div className={styles.tag}>{i}</div>
+                </a></Link>
+              )}
+            </div>
+          </InfoItem>
+          <InfoItem label="Tags" condition={true}>
+            <div className={styles.tagsList}>
+              {data.tags.map(i =>
+                <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>
+                  <span className={styles.tag}>{i}</span>
+                </a></Link>
+              )}
+            </div>
+          </InfoItem>
         </div>
+
         <div id="download-btn" className={styles.downloadBtn}>
           <MdFileDownload />
             Download
