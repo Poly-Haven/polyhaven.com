@@ -118,7 +118,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
           <div className={styles.subSection}>
-            <Todo>TODO Avatars</Todo>
+            <Todo>Avatars</Todo>
           </div>
         </div>
       </div>

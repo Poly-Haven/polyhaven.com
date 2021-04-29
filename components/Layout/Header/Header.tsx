@@ -17,7 +17,7 @@ const header = () => {
       </a></Link>
       <div className={styles.spacer} />
       <a href="https://trello.com/b/7zT1j901/poly-haven-beta">
-        <Todo>
+        <Todo raw={true}>
           <p>BETA</p>
           <pre>{process.env.CONFIG_BUILD_ID.substring(0, 7)}</pre>
           <MdInfoOutline />
