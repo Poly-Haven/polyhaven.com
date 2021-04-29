@@ -7,24 +7,8 @@
   flex-direction: row;
 }
 
-.header {
-  @include flex(row, true);
-
-  h1 {
-    margin: 0.2em 1em;
-  }
-
-  .authors {
-    @include flex(row, true, true);
-  }
-
-  .spacer {
-    flex-grow: 1;
-  }
-}
-
 .previewWrapper {
-  @include flex(row, true, true);
+  @include flex(column, true, true);
   background: $c-background-dark;
   padding: 0.25rem;
   min-height: 600px;
@@ -53,13 +37,25 @@
   background: $c-background-dark;
   overflow-y: auto;
   height: calc(100vh - #{$v-header-height});
-  @include dark_scrollbar();
 
   .info {
     flex-grow: 1;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    @include dark_scrollbar();
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0.2em 1em;
+      text-align: center;
+    }
+
+    .authors {
+      @include flex(row, true, true);
+      text-align: center;
+    }
   }
 
   .downloadBtn {

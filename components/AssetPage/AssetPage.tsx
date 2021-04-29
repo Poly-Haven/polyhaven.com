@@ -18,25 +18,20 @@ const AssetPage = ({ assetID, data }) => {
   return (
     <div className={styles.wrapper}>
       <Page immersiveScroll={true}>
-        <div className={styles.header}>
-          <h1>{data.name}</h1>
-          <div className={styles.spacer} />
-          <div className={styles.authors}>
-            Author{multiAuthor ? "s" : ""}:
-            {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
-          </div>
-        </div>
         <div className={styles.previewWrapper}>
-          <div className={styles.carousel}><Todo>Image carousel</Todo></div>
           <div className={styles.activePreview}>
-            <img src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.${ext[data.type]}?width=1439&sharpen=true`} />
+            <img src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.${ext[data.type]}?width=1559&sharpen=true`} />
           </div>
+          <div className={styles.carousel}><Todo>Image carousel</Todo></div>
         </div>
-        <Todo />
+        <Todo>Backplates, similar assets, user renders</Todo>
       </Page>
       <div className={styles.sidebar}>
         <div className={styles.info}>
-          <h2>Info</h2>
+          <h1>{data.name}</h1>
+          <div className={styles.authors}>
+            {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
+          </div>
         </div>
         <div id="download-btn" className={styles.downloadBtn}>
           <MdFileDownload />
