@@ -6,17 +6,17 @@ import Page from 'components/Layout/Page/Page'
 
 import styles from './Library.module.scss';
 
-const Library = (props) => {
+const Library = ({ assetType, categories }) => {
   const [sort, setSort] = useState('hot')
   const [search, setSearch] = useState()
 
   return (
     <div id={styles.library}>
-      <Sidebar assetType={props.assetType} categories={props.categories} />
+      <Sidebar assetType={assetType} categories={categories} />
       <Page>
         <Grid
-          assetType={props.assetType}
-          categories={props.categories}
+          assetType={assetType}
+          categories={categories}
           sort={sort}
           setSort={setSort}
           search={search}
