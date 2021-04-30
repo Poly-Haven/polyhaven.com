@@ -5,7 +5,7 @@
     "skies",
     "indoor",
     "studio",
-    "sunrise/sunset",
+    "sunrise-sunset",
     "night",
     "nature",
     "urban"
@@ -15,7 +15,7 @@
     "ground",
     "brick",
     "wood",
-    "plaster/concrete",
+    "plaster-concrete",
     "fabric",
     "metal",
     "roofing",
