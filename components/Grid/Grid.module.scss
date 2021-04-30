@@ -9,8 +9,21 @@
   padding: 2rem;
   padding-bottom: 0;
 
-  .options {
+  .gridHeader {
     flex-grow: 1;
+    @include flex(column);
+
+    h1 {
+      padding: 0;
+      margin: 0;
+
+      p {
+        padding: 0;
+      }
+    }
+  }
+
+  .options {
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -11,6 +11,7 @@ import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
 import AdTop from 'components/Ads/GridTop'
+import Todo from 'components/Todo/Todo'
 
 import styles from './Grid.module.scss';
 
@@ -76,30 +77,33 @@ const Grid = (props) => {
   return (
     <>
       <div className={styles.optionsBar}>
-        <div className={styles.options}>
-          <div className={styles.menuSelection}>
-            <Dropdown
-              className={styles.menu}
-              controlClassName={styles.control}
-              menuClassName={styles.dropdown}
-              placeholderClassName={styles.labelSort}
-              arrowClassName={styles.arrow}
-              options={Object.keys(sortBy)}
-              value={props.sort}
-              placeholder="Select an option"
-              onChange={setSort} />
+        <div className={styles.gridHeader}>
+          <h1><Todo>Title</Todo></h1>
+          <div className={styles.options}>
+            <div className={styles.menuSelection}>
+              <Dropdown
+                className={styles.menu}
+                controlClassName={styles.control}
+                menuClassName={styles.dropdown}
+                placeholderClassName={styles.labelSort}
+                arrowClassName={styles.arrow}
+                options={Object.keys(sortBy)}
+                value={props.sort}
+                placeholder="Select an option"
+                onChange={setSort} />
+            </div>
+            <div className={styles.search}>
+              <MdSearch className={styles.searchIcon} />
+              <form onSubmit={submitSearch}>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={props.search}
+                  onChange={setSearch} />
+              </form>
+            </div>
+            {props.search ? <p>{sortedKeys.length} results</p> : null}
           </div>
-          <div className={styles.search}>
-            <MdSearch className={styles.searchIcon} />
-            <form onSubmit={submitSearch}>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={props.search}
-                onChange={setSearch} />
-            </form>
-          </div>
-          {props.search ? <p>{sortedKeys.length} results</p> : null}
         </div>
         <div className={styles.adGridTop}>
           <AdTop />
