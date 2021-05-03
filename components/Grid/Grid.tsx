@@ -7,11 +7,13 @@ import { MdSearch } from 'react-icons/md'
 
 import fetcher from 'utils/fetcher';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
+import { titleCase } from 'utils/stringUtils'
+import asset_types from 'constants/asset_types.json'
+import asset_type_names from 'constants/asset_type_names.json'
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
 import AdTop from 'components/Ads/GridTop'
-import Todo from 'components/Todo/Todo'
 
 import styles from './Grid.module.scss';
 
@@ -49,7 +51,7 @@ const Grid = (props) => {
 
 
   let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
-  if (props.categories) {
+  if (props.categories.length) {
     url += "&c=" + props.categories.join(',')
   }
   const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
@@ -73,12 +75,19 @@ const Grid = (props) => {
     sortedKeys = Object.keys(filteredData)
   }
 
+  let title = "All ";
+  const asset_type_name = asset_type_names[asset_types[props.assetType]] + 's'
+  title += asset_type_name
+  if (props.categories.length) {
+    title = asset_type_name + ": " + titleCase(props.categories.join(' > '))
+  }
+  const fSize = Math.floor(title.length / 17.5);  // Rough detection of line length used to reduce font size.
 
   return (
     <>
       <div className={styles.optionsBar}>
         <div className={styles.gridHeader}>
-          <h1><Todo>Title</Todo></h1>
+          <h1 className={styles['s' + fSize]}>{title}</h1>
           <div className={styles.options}>
             <div className={styles.menuSelection}>
               <Dropdown
