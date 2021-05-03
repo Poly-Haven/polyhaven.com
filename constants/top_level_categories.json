@@ -12,24 +12,27 @@
   ],
   "textures": [
     "all",
-    "ground",
+    "terrain",
+    "floor",
     "brick",
     "wood",
     "plaster-concrete",
     "fabric",
     "metal",
     "roofing",
-    "rock",
-    "snow"
+    "rock"
   ],
   "models": [
     "all",
+    "props",
     "furniture",
     "industrial",
     "appliances",
-    "props",
     "plants",
     "weapons",
-    "wall art"
+    "wall art",
+    "electronics",
+    "tools",
+    "lighting"
   ]
 }
