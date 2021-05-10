@@ -40,6 +40,10 @@ const CategoryList = (props) => {
     data[cat] > 1
   ))
 
+  const scrollToTop = () => {
+    document.getElementById('page').scrollTop = 0
+  }
+
   return (
     <div className={`${level > 0 ? styles.subCat : ""}`}>
       {list.map(cat => (
@@ -50,7 +54,7 @@ const CategoryList = (props) => {
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
             ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ""}
-            `}>
+            `} onClick={scrollToTop}>
                 {level === 0 ?
                   <MdKeyboardArrowRight className={styles.caret} /> :
                   <MdKeyboardArrowRight className={styles.smallCaret} />}
