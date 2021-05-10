@@ -18,7 +18,13 @@ const LibraryPage = (props) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Library assetType={props.assetType} categories={props.categories} />
+      <Library
+        assetType={props.assetType}
+        categories={props.categories}
+        author={props.author}
+        search={props.search}
+        sort={props.sort}
+      />
     </>
   )
 }
@@ -26,16 +32,33 @@ const LibraryPage = (props) => {
 export async function getServerSideProps(context) {
   const params = context.params.assets
   const assetType = params.shift()
+  const author = context.query.a
+  const search = context.query.s
+  let sort = context.query.o
 
   if (typesAvailable[assetType] === undefined) {
     return {
       notFound: true,
     }
   }
+
+  const allowedSorts = [
+    "hot",
+    "latest",
+    "top",
+    "name"
+  ]
+  if (!allowedSorts.includes(sort)) {
+    sort = "hot";
+  }
+
   return {
     props: {
       assetType: assetType,
-      categories: params
+      categories: params,
+      author: author ? author : "",
+      search: search ? search : "",
+      sort: sort ? sort : "hot"
     }
   }
 }

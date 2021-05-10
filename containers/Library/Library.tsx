@@ -6,9 +6,10 @@ import Page from 'components/Layout/Page/Page'
 
 import styles from './Library.module.scss';
 
-const Library = ({ assetType, categories }) => {
-  const [sort, setSort] = useState('hot')
-  const [search, setSearch] = useState()
+const Library = ({ assetType, categories, author, search, sort }) => {
+  const [authorState, setAuthor] = useState(author)
+  const [searchState, setSearch] = useState(search)
+  const [sortState, setSort] = useState(sort)
 
   return (
     <div id={styles.library}>
@@ -17,10 +18,12 @@ const Library = ({ assetType, categories }) => {
         <Grid
           assetType={assetType}
           categories={categories}
-          sort={sort}
-          setSort={setSort}
-          search={search}
+          author={authorState}
+          setAuthor={setAuthor}
+          search={searchState}
           setSearch={setSearch}
+          sort={sortState}
+          setSort={setSort}
         />
       </Page>
     </div>

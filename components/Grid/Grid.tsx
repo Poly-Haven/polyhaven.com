@@ -75,11 +75,18 @@ const Grid = (props) => {
     sortedKeys = Object.keys(filteredData)
   }
 
+  if (props.author) {
+    sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
+  }
+
   let title = "All ";
   const asset_type_name = asset_type_names[asset_types[props.assetType]] + 's'
   title += asset_type_name
   if (props.categories.length) {
     title = asset_type_name + ": " + titleCase(props.categories.join(' > '))
+  }
+  if (props.author) {
+    title += ` (by ${props.author})`;
   }
   const fSize = Math.floor(title.length / 17.5);  // Rough detection of line length used to reduce font size.
 
