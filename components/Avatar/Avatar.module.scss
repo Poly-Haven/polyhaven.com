@@ -1,3 +1,30 @@
+@import "constants/colors";
+@import "constants/mixins";
+
 .avatar {
   border-radius: 50%;
+}
+
+.patron {
+  @include flex(row, true, true);
+  margin-left: 2rem;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    font-size: 0.8em;
+    text-align: left;
+    line-height: 1.2em;
+
+    strong {
+      font-size: 1.2em;
+      opacity: 1;
+    }
+
+    * {
+      opacity: 0.5;
+    }
+  }
 }

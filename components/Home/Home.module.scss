@@ -129,3 +129,24 @@
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
   }
 }
+
+.newestPatrons {
+  position: relative;
+  @include flex(row, true);
+  padding: 0 2em;
+  margin: 1rem 0;
+  width: calc(100% - 4rem);
+  overflow-x: hidden;
+  white-space: nowrap;
+  background: rgba($c-background-dark, 0.5);
+
+  h4 {
+    font-weight: normal;
+  }
+
+  .fade {
+    @include absolute_cover();
+    left: 90%;
+    background: linear-gradient(to right, transparent, $c-background-dark);
+  }
+}
