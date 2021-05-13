@@ -76,7 +76,6 @@
       h2,
       p {
         color: white;
-        text-shadow: 1px 1px 2px black;
         padding: 0 0.5rem;
       }
     }
@@ -98,6 +97,33 @@
       @include transition(1s);
     }
   }
+}
+
+.windowBanner {
+  min-height: 400px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+
+  .text {
+    background: rgba(black, 0.3);
+    padding: 1rem;
+    padding-top: 0.5rem;
+    @include rounded;
+  }
+}
+.windowBannerFree {
+  @extend .windowBanner;
+  background: url(https://cdn.polyhaven.com/site_images/home/window_free.png?width=1920&sharpen=true) no-repeat center
+    center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+.windowBannerQuality {
+  @extend .windowBanner;
+  background: url(https://cdn.polyhaven.com/site_images/home/window_quality.png?width=1920&sharpen=true) no-repeat
+    center center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
 }
 
 .newestPatrons {

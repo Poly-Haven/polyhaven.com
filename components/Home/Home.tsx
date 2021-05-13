@@ -96,8 +96,9 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
       </div>
 
-      <div className={styles.sectionWrapper}>
+      <div className={`${styles.sectionWrapper} ${styles.windowBannerFree}`}>
         <div className={styles.section}>
+          <div className={styles.subSection} />
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>100% Free</h2>
@@ -105,17 +106,11 @@ const Home = ({ patreonGoal, patreonProgress }) => {
               <p>No paywalls or signup required, simply download what you want and use it immediately without worry.</p>
             </div>
           </div>
-          <div className={styles.subSection}>
-            <Todo />
-          </div>
         </div>
       </div>
 
-      <div className={styles.sectionWrapper}>
+      <div className={`${styles.sectionWrapper} ${styles.windowBannerQuality}`}>
         <div className={styles.section}>
-          <div className={styles.subSection}>
-            <Todo />
-          </div>
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>High quality</h2>
@@ -124,6 +119,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
               <p>Our target is to create content that will not just hold up to today's standards, but higher future standards, and the potential of future hardware too.</p>
             </div>
           </div>
+          <div className={styles.subSection} />
         </div>
       </div>
 

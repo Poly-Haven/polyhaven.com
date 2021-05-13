@@ -13,6 +13,10 @@
   text-shadow: 1px 1px 0 rgba(black, $opacity);
 }
 
+@mixin rounded() {
+  border-radius: 0.3rem;
+}
+
 @mixin scale($s) {
   transform: scale($s);
 }
