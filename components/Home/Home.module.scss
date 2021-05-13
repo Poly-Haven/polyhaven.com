@@ -58,75 +58,45 @@
 .assetTypeBanner {
   @extend .section;
   padding: 0;
-  padding-top: 1px;
   max-width: 100%;
+
+  img {
+    width: 300px;
+  }
 
   .subSection {
     position: relative;
-    padding: 3rem 1rem;
+    text-align: left;
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 2rem;
+    @include flex(row, true, true);
 
     .text {
       h2,
       p {
         color: white;
         text-shadow: 1px 1px 2px black;
+        padding: 0 0.5rem;
       }
     }
 
-    .assetTypeBannerHover {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      @include transition(1s);
-    }
-
     &:hover {
-      .assetTypeBannerHover {
+      .hover {
         opacity: 1;
         @include transition(0.5s);
       }
     }
   }
 
-  .subSectionHDRI {
-    background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_hdri.jpg?width=840) no-repeat center center;
-    background-size: cover;
-    .assetTypeBannerHover {
-      background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_hdri_hover.jpg?width=840) no-repeat
-        center center;
-      background-size: cover;
-    }
-  }
-
-  .subSectionTex {
-    background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_tex.jpg?width=840) no-repeat center center;
-    background-size: cover;
-    .assetTypeBannerHover {
-      background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_tex_hover.jpg?width=840) no-repeat center
-        center;
-      background-size: cover;
-    }
-  }
-
-  .subSectionMod {
-    background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_model.jpg?width=840) no-repeat center
-      center;
-    background-size: cover;
-    .assetTypeBannerHover {
-      background: url(https://cdn.polyhaven.com/site_images/home_banner/banner_model_hover.jpg?width=840) no-repeat
-        center center;
-      background-size: cover;
-    }
-  }
-
   .assetTypeImage {
-    display: block;
-    margin: auto;
-    width: 64px;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+    position: relative;
+
+    .hover {
+      @include absolute_cover();
+      opacity: 0;
+      @include transition(1s);
+    }
   }
 }
 
