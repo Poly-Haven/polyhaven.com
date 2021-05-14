@@ -115,7 +115,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         <div className={styles.section}>
           <div className={styles.subSection}>
             <div className={styles.text}>
-              <h2>High quality</h2>
+              <h2>High Quality</h2>
               <p>"Free" and "quality" don't always have to be mutually exclusive.</p>
               <p>We don't want to pollute the web with more trash, so we focus on creating the best <strong>assets that you can actually use</strong>.</p>
               <p>Our target is to create content that will not just hold up to today's standards, but higher future standards, and the potential of future hardware too.</p>
