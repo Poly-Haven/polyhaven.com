@@ -144,7 +144,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
         <div className={styles.newestPatrons}>
           <h4>Newest Patrons:</h4>
-          {Object.keys(newestPatrons).map(n => <Patron name={n} image={newestPatrons[n].image} size={36} timestamp={newestPatrons[n].age} />)}
+          {Object.keys(newestPatrons).map(n => <Patron key={n + newestPatrons[n].age} name={n} image={newestPatrons[n].image} size={36} timestamp={newestPatrons[n].age} />)}
           <div className={styles.fade} />
         </div>
         <CorporateSponsors />
