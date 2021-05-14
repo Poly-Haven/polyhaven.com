@@ -10,7 +10,7 @@ const Nav = () => {
         <NavItem text="Textures" link="/textures" />
         <NavItem text="Models" link="/models" />
       </NavItem>
-      <NavItem text="News" link="/news" />
+      <NavItem text="News" link="https://www.patreon.com/hdrihaven/posts?public=true" />
       <NavItem text="Support Us" link="https://polyhaven.com/support-us" />
       <NavItem text="About/Contact" link="/about-contact" />
     </div>
