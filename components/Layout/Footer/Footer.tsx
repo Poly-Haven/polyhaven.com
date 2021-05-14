@@ -47,12 +47,8 @@ const footer = () => {
             <div className={styles.patronsSetA}>
               {patronNamesJSX}
             </div>
-            <div className={styles.patronsSetB}>
-              {patronNamesJSX}
-            </div>
           </div>
         </div>
-        <div className={styles.fade} />
       </div>
       <CorporateSponsors footer={true} />
       <Button text="Join the ranks, support Poly Haven on Patreon" href="https://polyhaven.com/support-us" />

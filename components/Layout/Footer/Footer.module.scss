@@ -7,46 +7,9 @@
   padding: 1rem 0;
 }
 
-@keyframes slidePatrons {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: -50%;
-  }
-}
-
 .patrons {
   padding: 0 2em 1em;
   font-size: 0.85em;
-  height: 512px;
-  overflow-y: hidden;
-  position: relative;
-
-  .fade {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(
-      $c-background-dark,
-      transparent,
-      transparent,
-      transparent,
-      transparent,
-      transparent,
-      $c-background-dark
-    );
-  }
-
-  .patronsScrollWrapper {
-    position: relative;
-  }
-  .patronsScroll {
-    position: relative;
-    animation: slidePatrons 60s linear infinite;
-  }
 
   p {
     padding: 0 0.4em;
