@@ -96,6 +96,17 @@
 
       .searchIcon {
         font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+      .resetSearchIcon {
+        @extend .searchIcon;
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+          transform: rotate(-90deg);
+          @include transition;
+        }
       }
 
       input {

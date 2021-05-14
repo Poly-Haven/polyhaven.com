@@ -4,6 +4,7 @@ import { trackWindowScroll } from 'react-lazy-load-image-component';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { MdSearch } from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
 
 import fetcher from 'utils/fetcher';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
@@ -47,6 +48,9 @@ const Grid = (props) => {
   }
   const submitSearch = event => {
     event.preventDefault();
+  }
+  const resetSearch = () => {
+    props.setSearch("");
   }
 
 
@@ -117,6 +121,9 @@ const Grid = (props) => {
                   value={props.search}
                   onChange={setSearch} />
               </form>
+              {props.search ?
+                <MdClose className={styles.resetSearchIcon} onClick={resetSearch} />
+                : null}
             </div>
             {props.search ? <p>{sortedKeys.length} results</p> : null}
           </div>
