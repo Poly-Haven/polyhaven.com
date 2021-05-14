@@ -1,9 +1,11 @@
 .wrapper {
   padding: 1rem;
   width: calc(100% - 2rem);
+  text-align: center;
 
   h2 {
     margin-top: 0;
+    margin-bottom: 0.85em !important;
   }
 }
 

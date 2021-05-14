@@ -8,6 +8,7 @@ import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Todo from 'components/Todo/Todo'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
+import Avatar from './Avatar'
 
 import styles from './Home.module.scss'
 
@@ -168,7 +169,19 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
           <div className={styles.subSection}>
-            <Todo>Avatars</Todo>
+            <div className={styles.avatars}>
+              <div className={styles.avatarRow}>
+                <Avatar id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" />
+                <Avatar id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" />
+                <Avatar id="Rico Cilliers" name="Rico Cilliers" role="Textures, Models" />
+                <div className={styles.dummy} />
+              </div>
+              <div className={styles.avatarRow}>
+                <Avatar id="James Ray Cock" name="James Ray Cock" role="Models" />
+                <Avatar id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" />
+                <Avatar id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

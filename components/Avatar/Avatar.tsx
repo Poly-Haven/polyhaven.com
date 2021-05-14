@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import styles from './Avatar.module.scss'
 
 const Avatar = ({ id, size }) => {

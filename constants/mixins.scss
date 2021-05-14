@@ -13,6 +13,17 @@
   text-shadow: 1px 1px 0 rgba(black, $opacity);
 }
 
+@mixin visibility-hide() {
+  visibility: hidden;
+  opacity: 0;
+  @include transition;
+}
+@mixin visibility-show() {
+  visibility: visible;
+  opacity: 1;
+  @include transition;
+}
+
 @mixin rounded() {
   border-radius: 0.3rem;
 }
