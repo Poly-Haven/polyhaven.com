@@ -186,14 +186,14 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
       </div>
 
-      <div className={styles.sectionWrapper}>
+      {/* TODO User renders */}
+      {/* <div className={styles.sectionWrapper}>
         <div className={styles.section}>
           <div className={styles.subSection}>
             <h2>User Renders</h2>
-            <Todo />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
