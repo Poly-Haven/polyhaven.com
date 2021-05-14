@@ -13,15 +13,15 @@
   text-shadow: 1px 1px 0 rgba(black, $opacity);
 }
 
-@mixin visibility-hide() {
+@mixin visibility-hide($duration: 0.15s) {
   visibility: hidden;
   opacity: 0;
-  @include transition;
+  @include transition($duration);
 }
-@mixin visibility-show() {
+@mixin visibility-show($duration: 0.15s) {
   visibility: visible;
   opacity: 1;
-  @include transition;
+  @include transition($duration);
 }
 
 @mixin rounded() {

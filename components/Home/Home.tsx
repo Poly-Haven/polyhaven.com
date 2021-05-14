@@ -151,10 +151,23 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         <CorporateSponsors />
       </div>
 
-      <div className={styles.sectionWrapper}>
-        <div className={styles.section}>
-          <Button text="Browse Assets" href="/assets" />
+      <div className={`${styles.sectionWrapper} ${styles.sectionBrowse}`}>
+        <div className={`${styles.btnBrowse} ${styles.btnBrowseAll}`}>
+          <Button text="Browse All Assets" href="/assets" />
         </div>
+        <div className={`${styles.btnBrowse} ${styles.btnBrowseHDRIs}`}>
+          <Button text="Browse HDRIs" href="/hdris" color='blue' />
+        </div>
+        <div className={`${styles.btnBrowse} ${styles.btnBrowseTextures}`}>
+          <Button text="Browse Textures" href="/textures" color='orange' />
+        </div>
+        <div className={`${styles.btnBrowse} ${styles.btnBrowseModels}`}>
+          <Button text="Browse Models" href="/models" color='green' />
+        </div>
+        <div className={styles.hoverBrowseAll} />
+        <div className={styles.hoverBrowseHDRIs} />
+        <div className={styles.hoverBrowseTextures} />
+        <div className={styles.hoverBrowseModels} />
       </div>
 
       <div className={styles.sectionWrapper}>

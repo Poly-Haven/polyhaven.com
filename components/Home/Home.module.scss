@@ -164,6 +164,73 @@
   }
 }
 
+.sectionBrowse {
+  @include flex(row, true, true);
+  position: relative;
+  min-height: 45vh;
+  background: url(https://file.coffee/u/uqsKV8DYwFwlXA.png) no-repeat center center !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  pointer-events: none;
+
+  .hoverBrowseAll {
+    @include absolute_cover;
+    background: url(https://file.coffee/u/1lomq88D-YSFsK.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    @include visibility-hide(1s);
+  }
+  .hoverBrowseHDRIs {
+    @include absolute_cover;
+    background: url(https://file.coffee/u/oo7fkTmt2qydSa.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    @include visibility-hide(1s);
+  }
+  .hoverBrowseTextures {
+    @include absolute_cover;
+    background: url(https://file.coffee/u/tXtKAjPsLUHWI6.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    @include visibility-hide(1s);
+  }
+  .hoverBrowseModels {
+    @include absolute_cover;
+    background: url(https://file.coffee/u/713wQ2ObhOtAF-.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    @include visibility-hide(1s);
+  }
+
+  &:hover .btnBrowse {
+    opacity: 0.3;
+    @include transition;
+  }
+
+  .btnBrowse {
+    z-index: 20;
+    @include visibility-show;
+    pointer-events: visible;
+
+    &:hover {
+      @include visibility-show;
+    }
+  }
+
+  .btnBrowseAll:hover ~ .hoverBrowseAll {
+    @include visibility-show;
+  }
+  .btnBrowseHDRIs:hover ~ .hoverBrowseHDRIs {
+    @include visibility-show;
+  }
+  .btnBrowseTextures:hover ~ .hoverBrowseTextures {
+    @include visibility-show;
+  }
+  .btnBrowseModels:hover ~ .hoverBrowseModels {
+    @include visibility-show;
+  }
+}
+
 .avatars {
   @include flex(column, true, true);
 
@@ -207,6 +274,7 @@
     padding: 0.7em 1em;
     white-space: nowrap;
     text-align: center;
+    @include drop-shadow;
 
     strong {
       color: white;
