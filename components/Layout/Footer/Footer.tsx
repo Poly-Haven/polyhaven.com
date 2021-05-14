@@ -53,6 +53,7 @@ const footer = () => {
       <CorporateSponsors footer={true} />
       <Button text="Join the ranks, support Poly Haven on Patreon" href="https://polyhaven.com/support-us" />
       <div className={styles.linksWrapper}>
+        <a id="social" />
         <div className={styles.links}>
           <Link href="/"><a>
             <div className={styles.logoWrapper}>

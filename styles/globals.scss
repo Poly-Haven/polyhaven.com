@@ -21,7 +21,8 @@ a {
   text-decoration: none;
   color: $c-accent;
 }
-p {
+p,
+li {
   a {
     box-shadow: 0 1px 0 $c-accent;
     @include transition();

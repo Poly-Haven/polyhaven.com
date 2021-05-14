@@ -173,7 +173,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
               <div className={styles.avatarRow}>
                 <Avatar id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" />
                 <Avatar id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" />
-                <Avatar id="Rico Cilliers" name="Rico Cilliers" role="Textures, Models" />
+                <Avatar id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" />
                 <div className={styles.dummy} />
               </div>
               <div className={styles.avatarRow}>
