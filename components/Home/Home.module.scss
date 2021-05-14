@@ -100,7 +100,8 @@
 }
 
 .windowBanner {
-  min-height: 400px;
+  position: relative;
+  min-height: 45vh;
   color: white;
   text-shadow: 1px 1px 2px black;
 
@@ -110,18 +111,34 @@
     padding-top: 0.5rem;
     @include rounded;
   }
+
+  .section {
+    max-width: calc(100% - 2rem);
+  }
+
+  .gradientRight {
+    @include absolute_cover;
+    background: linear-gradient(70deg, transparent 35%, $c-background 65%);
+    opacity: 0.5;
+  }
+
+  .gradientLeft {
+    @include absolute_cover;
+    background: linear-gradient(70deg, $c-background-dark 35%, transparent 65%);
+    opacity: 0.5;
+  }
 }
-.windowBannerFree {
+.windowBannerRend {
   @extend .windowBanner;
-  background: url(https://cdn.polyhaven.com/site_images/home/window_free.png?width=1920&sharpen=true) no-repeat center
+  background: url(https://cdn.polyhaven.com/site_images/home/window_rend.jpg?width=1920&sharpen=true) no-repeat center
     center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
 }
-.windowBannerQuality {
+.windowBannerClay {
   @extend .windowBanner;
-  background: url(https://cdn.polyhaven.com/site_images/home/window_quality.png?width=1920&sharpen=true) no-repeat
-    center center !important;
+  background: url(https://cdn.polyhaven.com/site_images/home/window_clay.jpg?width=1920&sharpen=true) no-repeat center
+    center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
 }

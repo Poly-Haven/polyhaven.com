@@ -96,7 +96,8 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
       </div>
 
-      <div className={`${styles.sectionWrapper} ${styles.windowBannerFree}`}>
+      <div className={`${styles.sectionWrapper} ${styles.windowBannerRend}`}>
+        <div className={styles.gradientRight} />
         <div className={styles.section}>
           <div className={styles.subSection} />
           <div className={styles.subSection}>
@@ -109,7 +110,8 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
       </div>
 
-      <div className={`${styles.sectionWrapper} ${styles.windowBannerQuality}`}>
+      <div className={`${styles.sectionWrapper} ${styles.windowBannerClay}`}>
+        <div className={styles.gradientLeft} />
         <div className={styles.section}>
           <div className={styles.subSection}>
             <div className={styles.text}>
