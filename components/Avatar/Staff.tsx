@@ -9,7 +9,7 @@ const Staff = ({ id, name, role, country, mode }) => {
 
   return (
     <div className={styles.staffAvatar}>
-      <Link href={`/assets?a=${id}`}><a>
+      <Link href={`/all?a=${id}`}><a>
         <img
           src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}`}
           width={size}

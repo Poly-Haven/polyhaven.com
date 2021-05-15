@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import asset_types from 'constants/asset_types.json'
-import asset_type_names from 'constants/asset_type_names.json'
+import { assetTypeName } from 'utils/assetTypeName'
+import { MdApps } from 'react-icons/md'
 
 import CategoryList from './CategoryList';
 
@@ -11,6 +11,11 @@ const Sidebar = (props) => {
     <div id={styles.sidebar}>
       <div className={styles.sidebarInner}>
         <div className={styles.typeSelector}>
+          <Link href="/all"><a className={
+            `${styles.type} ${props.assetType === 'all' ? styles.activeType : ''}`
+          }>
+            <MdApps />
+          </a></Link>
           <Link href="/hdris"><a className={
             `${styles.type} ${props.assetType === 'hdris' ? styles.activeType : ''}`
           }>
@@ -27,7 +32,7 @@ const Sidebar = (props) => {
             <img src="/icons/type_M.svg" />
           </a></Link>
         </div>
-        <h2>{asset_type_names[asset_types[props.assetType]]}s</h2>
+        <h2>{assetTypeName(props.assetType)}</h2>
         <CategoryList
           assetType={props.assetType}
           categories={props.categories}

@@ -152,7 +152,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
 
       <div className={`${styles.sectionWrapper} ${styles.sectionBrowse}`}>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseAll}`}>
-          <Button text="Browse All Assets" href="/assets" />
+          <Button text="Browse All Assets" href="/all" />
         </div>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseHDRIs}`}>
           <Button text="Browse HDRIs" href="/hdris" color='blue' />

@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 
 import tlc from 'constants/top_level_categories.json';
+import { assetTypeName } from 'utils/assetTypeName'
 
 import Spinner from 'components/Spinner/Spinner';
 import { MdKeyboardArrowRight } from 'react-icons/md';
@@ -49,7 +50,7 @@ const CategoryList = (props) => {
       {list.map(cat => (
         <div key={cat}>{props.numInParent != data[cat] ?
           <div>
-            <Link href="/[...assets]" as={`/${props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat !== 'all' ? cat : ''}`} >
+            <Link href="/[...assets]" as={`${props.assetType === 'all' ? (cat === 'all' ? 'all' : '') : props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat !== 'all' ? cat : ''}`} >
               <a className={`
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
@@ -58,7 +59,7 @@ const CategoryList = (props) => {
                 {level === 0 ?
                   <MdKeyboardArrowRight className={styles.caret} /> :
                   <MdKeyboardArrowRight className={styles.smallCaret} />}
-                {cat}
+                {props.assetType === 'all' ? assetTypeName(cat) : cat}
                 <div className={styles.num}>
                   {data[cat] ? data[cat] : 0}
                 </div>

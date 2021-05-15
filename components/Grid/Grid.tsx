@@ -9,8 +9,7 @@ import { MdClose } from 'react-icons/md'
 import fetcher from 'utils/fetcher';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
-import asset_types from 'constants/asset_types.json'
-import asset_type_names from 'constants/asset_type_names.json'
+import { assetTypeName } from 'utils/assetTypeName'
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
@@ -83,11 +82,12 @@ const Grid = (props) => {
     sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
   }
 
-  let title = "All ";
-  const asset_type_name = asset_type_names[asset_types[props.assetType]] + 's'
-  title += asset_type_name
+  let title = assetTypeName(props.assetType);
+  const asset_type_name = assetTypeName(props.assetType)
   if (props.categories.length) {
     title = asset_type_name + ": " + titleCase(props.categories.join(' > '))
+  } else if (props.assetType !== "all") {
+    title = "All " + title;
   }
   if (props.author) {
     title += ` (by ${props.author})`;

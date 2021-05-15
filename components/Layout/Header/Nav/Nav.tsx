@@ -5,7 +5,7 @@ import styles from './Nav.module.scss'
 const Nav = () => {
   return (
     <div className={styles.nav}>
-      <NavItem text="Assets" link="/">
+      <NavItem text="Assets" link="/all">
         <NavItem text="HDRIs" link="/hdris" />
         <NavItem text="Textures" link="/textures" />
         <NavItem text="Models" link="/models" />

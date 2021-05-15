@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import assetTypeNames from 'constants/asset_type_names.json'
+import { assetTypeName } from 'utils/assetTypeName'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
@@ -27,7 +27,7 @@ const Page = ({ assetID, data }) => {
   return (
     <div className="content">
       <Head>
-        <title>{data.name} {assetTypeNames[data.type]} • Poly Haven</title>
+        <title>{data.name} {assetTypeName(data.type, false)} • Poly Haven</title>
       </Head>
       <div>
         <AssetPage assetID={assetID} data={data} />

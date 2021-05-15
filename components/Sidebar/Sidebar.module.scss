@@ -26,12 +26,12 @@
 }
 
 .typeSelector {
-  display: flex;
-  flex-direction: row;
-  padding-top: 0.7rem;
+  @include flex(row, true, true);
+  padding: 0.7rem 0.5rem 0;
   border-top: 1px solid $c-background;
 
   .type {
+    @include flex(row, true, true);
     flex-basis: 0;
     flex-grow: 1;
     text-align: center;
@@ -40,10 +40,10 @@
     filter: saturate(0);
     @include transition();
 
-    img {
+    img,
+    svg {
       width: 1.5rem;
-      display: block;
-      margin: auto;
+      height: 1.5rem;
       background: $c-background;
       padding: 0.5rem;
       border-radius: 50%;
@@ -51,7 +51,8 @@
     }
 
     &:hover {
-      img {
+      img,
+      svg {
         background: $c-background-lighter;
         box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.5);
       }
@@ -61,7 +62,8 @@
   .activeType {
     filter: saturate(1);
 
-    img {
+    img,
+    svg {
       background: $c-background-lighter;
       box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.9);
     }

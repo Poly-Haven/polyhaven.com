@@ -3,11 +3,11 @@ import Head from 'next/head';
 import Library from 'containers/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json';
-import assetTypeNames from 'constants/asset_type_names.json'
+import { assetTypeName } from 'utils/assetTypeName'
 import { titleCase } from 'utils/stringUtils'
 
 const LibraryPage = (props) => {
-  let title = assetTypeNames[typesAvailable[props.assetType]] + 's'
+  let title = assetTypeName(props.assetType)
   if (props.categories.length) {
     title += ": " + titleCase(props.categories.join(' > '))
   }
