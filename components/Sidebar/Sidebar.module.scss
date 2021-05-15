@@ -14,26 +14,18 @@
 }
 .sidebarInner {
   padding-bottom: 3em;
-
-  h2 {
-    margin: 0;
-    margin-bottom: 0.7rem;
-    padding: 0.7rem;
-    font-size: 1.2rem;
-    text-align: center;
-    border-bottom: 1px solid $c-background;
-  }
 }
 
 .typeSelector {
-  @include flex(row, true, true);
   padding: 0.7rem 0.5rem 0;
   border-top: 1px solid $c-background;
+  text-align: center;
+  border-bottom: 1px solid $c-background;
+  margin-bottom: 0.7rem;
 
   .type {
-    @include flex(row, true, true);
-    flex-basis: 0;
-    flex-grow: 1;
+    display: inline;
+    padding: 0 0.2em;
     text-align: center;
     text-decoration: none;
     color: $c-text-light;
@@ -56,6 +48,16 @@
         background: $c-background-lighter;
         box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.5);
       }
+
+      & ~ h2 {
+        visibility: hidden;
+        font-size: 0;
+
+        &:after {
+          visibility: visible;
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 
@@ -67,6 +69,28 @@
       background: $c-background-lighter;
       box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.9);
     }
+  }
+
+  .typeAll:hover ~ h2:after {
+    content: "All Assets";
+  }
+  .typeHDRI:hover ~ h2:after {
+    content: "HDRIs";
+  }
+  .typeTex:hover ~ h2:after {
+    content: "Textures";
+  }
+  .typeMod:hover ~ h2:after {
+    content: "Models";
+  }
+
+  h2 {
+    display: block;
+    margin: 0;
+    padding: 0.7rem;
+    padding-top: 0.35rem;
+    font-size: 1.2rem;
+    text-align: center;
   }
 }
 

@@ -7,32 +7,45 @@ import CategoryList from './CategoryList';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = (props) => {
+  const hoverType = event => {
+    console.log(event.target.id)
+    document.getElementById("typeHeader")
+  }
+
   return (
     <div id={styles.sidebar}>
       <div className={styles.sidebarInner}>
         <div className={styles.typeSelector}>
           <Link href="/all"><a className={
-            `${styles.type} ${props.assetType === 'all' ? styles.activeType : ''}`
+            `${styles.type}
+            ${styles.typeAll}
+            ${props.assetType === 'all' ? styles.activeType : ''}`
           }>
             <MdApps />
           </a></Link>
           <Link href="/hdris"><a className={
-            `${styles.type} ${props.assetType === 'hdris' ? styles.activeType : ''}`
+            `${styles.type}
+            ${styles.typeHDRI}
+            ${props.assetType === 'hdris' ? styles.activeType : ''}`
           }>
             <img src="/icons/type_H.svg" />
           </a></Link>
           <Link href="/textures"><a className={
-            `${styles.type} ${props.assetType === 'textures' ? styles.activeType : ''}`
+            `${styles.type}
+            ${styles.typeTex}
+            ${props.assetType === 'textures' ? styles.activeType : ''}`
           }>
             <img src="/icons/type_T.svg" />
           </a></Link>
           <Link href="/models"><a className={
-            `${styles.type} ${props.assetType === 'models' ? styles.activeType : ''}`
+            `${styles.type}
+            ${styles.typeMod}
+            ${props.assetType === 'models' ? styles.activeType : ''}`
           }>
             <img src="/icons/type_M.svg" />
           </a></Link>
+          <h2 id="typeHeader">{assetTypeName(props.assetType)}</h2>
         </div>
-        <h2>{assetTypeName(props.assetType)}</h2>
         <CategoryList
           assetType={props.assetType}
           categories={props.categories}
