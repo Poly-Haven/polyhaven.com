@@ -1,6 +1,8 @@
+import CountryFlag from 'components/CountryFlag/CountryFlag'
+
 import styles from './Home.module.scss'
 
-const Avatar = ({ id, name, role }) => {
+const Avatar = ({ id, name, role, country }) => {
   const size = 150;
 
   return (
@@ -10,7 +12,7 @@ const Avatar = ({ id, name, role }) => {
         width={size}
         height={size}
       />
-      <div className={styles.avatarInfo}><strong>{name}</strong><br /><em>{role}</em></div>
+      <div className={styles.avatarInfo}><CountryFlag code={country} /><strong>{name}</strong><br /><em>{role}</em></div>
     </div>
   )
 }

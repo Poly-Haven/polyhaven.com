@@ -14,57 +14,8 @@
   }
 }
 
-.avatars {
+.staff {
   @include flex(row, true, true);
   text-align: center;
   padding: 3rem 0 1rem;
-
-  img,
-  .dummy {
-    padding: 0.2rem;
-    border-radius: 50%;
-  }
-
-  .avatarRow {
-    @include flex(row, true, true);
-    height: calc((150px * 0.81649) + 0.7rem);
-
-    .dummy {
-      display: inline-block;
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-  .avatar {
-    position: relative;
-    text-align: center;
-    border-radius: 50%;
-    @include flex(column, true, true);
-
-    &:hover {
-      .avatarInfo {
-        @include visibility-show;
-      }
-    }
-  }
-
-  .avatarInfo {
-    @include visibility-hide;
-    position: absolute;
-    top: 85%;
-    z-index: 20;
-    background: $c-background-dark;
-    border: 1px solid $c-background-light;
-    padding: 0.7em 1em;
-    white-space: nowrap;
-    text-align: center;
-
-    strong {
-      color: white;
-    }
-    em {
-      font-size: 0.9em;
-    }
-  }
 }

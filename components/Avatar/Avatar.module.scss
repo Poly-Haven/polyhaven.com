@@ -28,3 +28,61 @@
     }
   }
 }
+
+.staffAvatar {
+  position: relative;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0.2rem;
+  @include transition;
+  @include flex(column, true, true);
+
+  a,
+  img {
+    border-radius: 50%;
+    @include transition;
+  }
+
+  &:hover {
+    img {
+      box-shadow: 0 0 0 4px $c-accent;
+      @include transition;
+    }
+    .staffInfoCompact {
+      @include visibility-show;
+    }
+  }
+}
+
+.staffInfo {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0.85em;
+
+  img {
+    box-shadow: none !important;
+    height: 1em;
+    vertical-align: middle;
+    padding: 0;
+    margin-right: 0.4em;
+    border-radius: 0.1rem;
+  }
+  strong {
+    color: white;
+    vertical-align: middle;
+  }
+  em {
+    font-size: 0.9em;
+  }
+}
+
+.staffInfoCompact {
+  @include visibility-hide;
+  position: absolute;
+  top: 85%;
+  z-index: 20;
+  background: $c-background-dark;
+  border: 1px solid $c-background-light;
+  padding: 0.7em 1em;
+  @include drop-shadow;
+}

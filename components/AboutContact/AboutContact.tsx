@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Avatar from 'components/Home/Avatar'
+import Staff from 'components/Avatar/Staff'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 import styles from './AboutContact.module.scss'
@@ -19,13 +19,13 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <div className={styles.avatars}>
-        <Avatar id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" />
-        <Avatar id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" />
-        <Avatar id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" />
-        <Avatar id="James Ray Cock" name="James Ray Cock" role="Models" />
-        <Avatar id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" />
-        <Avatar id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" />
+      <div className={styles.staff}>
+        <Staff id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" country="ZA" mode="full" />
+        <Staff id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" country="NL" mode="full" />
+        <Staff id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" country="ZA" mode="full" />
+        <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="full" />
+        <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="full" />
+        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="full" />
       </div>
 
       <CorporateSponsors header="Corporate Sponsors:" />

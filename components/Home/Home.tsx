@@ -5,10 +5,9 @@ import Heart from 'components/Heart/Heart'
 import Button from 'components/Button/Button'
 import Patron from 'components/Avatar/Patron'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
-import Todo from 'components/Todo/Todo'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
-import Avatar from './Avatar'
+import Staff from 'components/Avatar/Staff'
 
 import styles from './Home.module.scss'
 
@@ -175,24 +174,24 @@ const Home = ({ patreonGoal, patreonProgress }) => {
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2 style={{ textAlign: 'center' }}>About Us</h2>
-              <p>Poly Haven is a small company located in South Africa, working with artists around the world.</p>
+              <p>Poly Haven is a small company based in South Africa, working with artists around the world.</p>
               <p>Our goal is to create a constantly growing community-funded resource of open content, for complete freedom and usability by professionals and hobbyists alike. </p>
               <p>Previously we ran <span className='text-blue'>HDRI Haven</span>, <span className='text-orange'>Texture Haven</span> and <span className='text-green'>3D Model Haven</span> as separate independant projects, but ultimately decided we could serve the community better by joining forces and creating a single new platform: <span className='text-accent'>Poly Haven</span>.</p>
               <p>If you like what we do and want to keep this site alive, consider <a href="https://polyhaven.com/support-us">supporting us on Patreon</a>.</p>
             </div>
           </div>
           <div className={styles.subSection}>
-            <div className={styles.avatars}>
+            <div className={styles.staff}>
               <div className={styles.avatarRow}>
-                <Avatar id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" />
-                <Avatar id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" />
-                <Avatar id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" />
+                <Staff id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" country="ZA" mode="compact" />
+                <Staff id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" country="NL" mode="compact" />
+                <Staff id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" country="ZA" mode="compact" />
                 <div className={styles.dummy} />
               </div>
               <div className={styles.avatarRow}>
-                <Avatar id="James Ray Cock" name="James Ray Cock" role="Models" />
-                <Avatar id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" />
-                <Avatar id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" />
+                <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="compact" />
+                <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="compact" />
+                <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="compact" />
               </div>
             </div>
           </div>
