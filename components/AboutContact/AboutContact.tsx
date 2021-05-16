@@ -65,7 +65,7 @@ const AboutPage = () => {
 
       <h2>2. Donate your assets</h2>
       <p>Have a top-notch 3D model, texture or HDRI you'd like to share with the community? We'd love to publish it for you :)</p>
-      <p>We have a strict standard of quality to maintain, and everything we publish has to be CC0, but if your asset is accepted the whole 3D community will benefit from it. <Link href="/contribute"><a>Read more and submit your asset here</a></Link>.</p>
+      <p>We have a strict standard of quality to maintain, and everything we publish has to be <Link href="/license"><a>CC0</a></Link>, but if your asset is accepted the whole 3D community will benefit from it. <Link href="/contribute"><a>Read more and submit your asset here</a></Link>.</p>
 
       <h2>3. Spread the word</h2>
       <p>It's OK if you can't afford to, or don't want to donate to us :) You can still help us grow by making sure your friends and co-workers know about us, the more people we can help the better!</p>
