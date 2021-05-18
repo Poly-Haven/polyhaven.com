@@ -23,7 +23,7 @@ const LicensePage = () => {
       <p>But what the 3D industry as a whole gains from our work being so freely available is immeasurable.</p>
       <p>3D art is also only the tip of the iceberg, we've heard from numerous data scientists, software developers, automotive engineers and AI researchers all using our assets in their work, which simply wouldn't be possible with more restrictive (even open source) licenses.</p>
       <p>We don't have anything against Copyright in general, we simply believe we can do more good in the world by providing as much freedom as possible.</p>
-      <p>If you benefit from our work financially, e.g. by including our assets in a product you sell, or simply make frequent use of them in your own work, please consider <Link href="https://polyhaven.com/support-us">supporting us on Patreon</Link> with a small monthly donation in order to help us continue to produce more assets and maintain this platform.</p>
+      <p>If you benefit from our work financially, e.g. by including our assets in a product you sell, or simply make frequent use of them in your own work, please consider <Link href="https://www.patreon.com/hdrihaven/overview">supporting us on Patreon</Link> with a small monthly donation in order to help us continue to produce more assets and maintain this platform.</p>
     </TextPage>
   )
 }

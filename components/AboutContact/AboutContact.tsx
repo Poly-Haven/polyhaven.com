@@ -37,7 +37,7 @@ const AboutPage = () => {
 
       <h1>How are we doing this?</h1>
       <p>We're a small remote studio based in South Africa, working with creators around the world who share our vision.</p>
-      <p>Funding-wise, we're supported primarily by donations from people like you on <Link href="/support-us"><a>Patreon</a></Link>, advertising revenue, and corporate sponsors who believe they can benefit from supporting our work in the long term.</p>
+      <p>Funding-wise, we're supported primarily by donations from people like you on <Link href="https://www.patreon.com/hdrihaven/overview"><a>Patreon</a></Link>, advertising revenue, and corporate sponsors who believe they can benefit from supporting our work in the long term.</p>
       <p>For the creation of assets, there are three sources:</p>
       <ol>
         <li>Artists employed by Poly Haven, focusing on the big picture.</li>
@@ -59,7 +59,7 @@ const AboutPage = () => {
       <h1>How you can help</h1>
 
       <h2>1. Support us on Patreon</h2>
-      <p>If you have some disposable income and you want to help us publish more free HDRIs, textures and 3D models, you can support us with a small monthly donation on <Link href="/support-us"><a>Patreon</a></Link> :)</p>
+      <p>If you have some disposable income and you want to help us publish more free HDRIs, textures and 3D models, you can support us with a small monthly donation on <Link href="https://www.patreon.com/hdrihaven/overview"><a>Patreon</a></Link> :)</p>
       <p>In return, we can give you some small token of thanks, like access to a cloud folder that you can sync to your hard drive so you always have our latest assets at your fingertips, or immortalize your name on our site.</p>
       <p>We use your donations directly to cover our expenses and fund new assets, as verified by our <Link href="/finance-reports"><a>finance reports</a></Link>.</p>
 

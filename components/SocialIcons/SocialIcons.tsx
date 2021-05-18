@@ -10,9 +10,9 @@ const SocialIcons = () => {
   return (
     <div className={styles.communityIcons}>
       <a href="https://discord.gg/Dms7Mrs"><SiDiscord /></a>
-      <a href="https://polyhaven.com/support-us"><SiPatreon /></a>
-      <a href="https://polyhaven.com/facebook"><SiFacebook /></a>
-      <a href="https://polyhaven.com/twitter"><SiTwitter /></a>
+      <a href="https://www.patreon.com/hdrihaven/overview"><SiPatreon /></a>
+      <a href="https://www.facebook.com/polyhaven"><SiFacebook /></a>
+      <a href="https://twitter.com/polyhaven"><SiTwitter /></a>
       <a href="https://www.youtube.com/c/PolyHaven"><SiYoutube /></a>
     </div>
   )
