@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
 import timeago from 'epoch-timeago';
+
+import { daysOld } from 'utils/dateUtils'
 
 import styles from './GridItem.module.scss';
 
@@ -24,6 +25,7 @@ const GridItem = ({ asset, assetID, scrollPosition }) => {
         <h3>{asset.name}</h3>
         <p>{timeago(asset.date_published * 1000)}</p>
       </div>
+      {daysOld(asset.date_published) < 7 ? <div className={styles.new}>New!</div> : null}
     </a></Link>
   );
 }

@@ -19,6 +19,15 @@
       transform: none;
       filter: none;
     }
+
+    .new {
+      width: 2.6rem;
+      height: 2.6rem;
+      font-size: 1em;
+      color: white;
+      @include text-shadow-fine;
+      @include transition;
+    }
   }
 }
 
@@ -65,4 +74,21 @@
     line-height: 1;
     font-size: 1em;
   }
+}
+
+.new {
+  @include flex(row, true, true);
+  $v-margin: 1.5rem;
+  $v-size: 1.5rem;
+  position: absolute;
+  right: $v-margin;
+  top: $v-margin;
+  width: $v-size;
+  height: $v-size;
+  border-radius: 50%;
+  background: $c-green;
+  color: rgba($c-green, 0);
+  font-size: 0.5em;
+  @include drop-shadow;
+  @include transition;
 }
