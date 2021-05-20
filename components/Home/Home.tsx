@@ -61,10 +61,12 @@ const Home = ({ patreonGoal, patreonProgress }) => {
       <div className={styles.sectionWrapper}>
         <div className={styles.assetTypeBanner}>
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
-            <div className={styles.assetTypeImage}>
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300" className={styles.hover} />
-            </div>
+            <Link href="/hdris"><a>
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300" className={styles.hover} />
+              </div>
+            </a></Link>
             <div className={styles.text}>
               <h2>HDRIs</h2>
               <p>16k+ resolution, and always unclipped for one-click realistic lighting.</p>
@@ -72,10 +74,12 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
-            <div className={styles.assetTypeImage}>
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300" className={styles.hover} />
-            </div>
+            <Link href="/textures"><a>
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300" className={styles.hover} />
+              </div>
+            </a></Link>
             <div className={styles.text}>
               <h2>Textures</h2>
               <p>Photoscanned seamless PBR materials, at least 8k resolution.</p>
@@ -83,10 +87,12 @@ const Home = ({ patreonGoal, patreonProgress }) => {
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
-            <div className={styles.assetTypeImage}>
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
-              <img src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300" className={styles.hover} />
-            </div>
+            <Link href="/models"><a>
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300" className={styles.hover} />
+              </div>
+            </a></Link>
             <div className={styles.text}>
               <h2>Models</h2>
               <p>Hyperreal 3D models, for visual effects and next-gen video games.</p>
