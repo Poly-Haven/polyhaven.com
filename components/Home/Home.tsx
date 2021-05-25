@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Slider from './Slider/Slider'
 import Heart from 'components/Heart/Heart'
 import Button from 'components/Button/Button'
-import Patron from 'components/Avatar/Patron'
+import LatestPatrons from './LatestPatrons'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
@@ -12,47 +12,6 @@ import Staff from 'components/Avatar/Staff'
 import styles from './Home.module.scss'
 
 const Home = ({ patreonGoal, patreonProgress }) => {
-  const exampleNames = [
-    "Joni Mercado",
-    "S J Bennett",
-    "Adam Nordgren",
-    "RENDER WORX",
-    "Pierre Beranger",
-    "Pablo Lopez Soriano",
-    "Frank Busch",
-    "Sterling Roth",
-    "Jonathan Sargent",
-    "hector gil",
-    "Philip bazel",
-    "Llynara",
-    "BlenderBrit",
-    "william norberg",
-    "Michael Szalapski",
-    "Joni Mercado",
-    "S J Bennett",
-    "Adam Nordgren",
-    "RENDER WORX",
-    "Pierre Beranger",
-    "Pablo Lopez Soriano",
-    "Frank Busch",
-    "Sterling Roth",
-    "Jonathan Sargent",
-    "hector gil",
-    "Philip bazel",
-    "Llynara",
-    "BlenderBrit",
-    "william norberg",
-    "Michael Szalapski",
-  ]
-
-  let newestPatrons = {};
-  for (const p of exampleNames) {
-    newestPatrons[p] = {
-      image: `https://picsum.photos/seed/${p}/36`,
-      age: 1620830938000
-    }
-  }
-
   return (
     <div className={styles.home}>
 
@@ -150,7 +109,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         </div>
         <div className={styles.newestPatrons}>
           <h4>Newest Patrons:</h4>
-          {Object.keys(newestPatrons).map(n => <Patron key={n + newestPatrons[n].age} name={n} image={newestPatrons[n].image} size={36} timestamp={newestPatrons[n].age} />)}
+          <LatestPatrons />
           <div className={styles.fade} />
         </div>
         <CorporateSponsors />
