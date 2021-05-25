@@ -9,7 +9,7 @@ export default function HomePage() {
       <Head>
         <title>Poly Haven</title>
       </Head>
-      <Home patreonGoal="TODO" patreonProgress={80} />
+      <Home />
     </Page>
   )
 }

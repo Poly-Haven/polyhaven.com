@@ -4,14 +4,14 @@ import Slider from './Slider/Slider'
 import Heart from 'components/Heart/Heart'
 import Button from 'components/Button/Button'
 import LatestPatrons from './LatestPatrons'
-import ProgressBar from 'components/ProgressBar/ProgressBar'
+import GoalProgress from 'components/ProgressBar/GoalProgress'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/Avatar/Staff'
 
 import styles from './Home.module.scss'
 
-const Home = ({ patreonGoal, patreonProgress }) => {
+const Home = () => {
   return (
     <div className={styles.home}>
 
@@ -94,7 +94,7 @@ const Home = ({ patreonGoal, patreonProgress }) => {
         <div className={styles.section}>
           <div className={styles.subSection}>
             <h2>Supported by you <Heart color="#F96854" /></h2>
-            <ProgressBar progress={patreonProgress} label="Current goal" labelValue={patreonGoal} />
+            <GoalProgress mode="big" />
             <Button text="Become a Patron" href="https://www.patreon.com/hdrihaven/overview" />
             <Button text="Finance Reports" href="/finance-reports" color='hollow' />
           </div>

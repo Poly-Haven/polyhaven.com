@@ -22,6 +22,7 @@ $border-thickness: 0.4em;
   background-color: $c-accent;
   max-width: 100%;
   min-width: calc(2em - 2px);
+  transition: width 2s ease;
 }
 .label {
   color: $c-accent-light;
