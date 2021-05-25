@@ -1,51 +1,21 @@
 import Link from 'next/link';
 
-import { randomArraySelection } from 'utils/arrayUtils'
-
-import Todo from 'components/Todo/Todo'
 import Button from 'components/Button/Button'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
+import PatronList from './PatronList'
 
 import styles from './Footer.module.scss';
 
 const footer = () => {
-  const example_names = [
-    "Joni Mercado",
-    "S J Bennett",
-    "Adam Nordgren",
-    "RENDER WORX",
-    "Pierre Beranger",
-    "Pablo Lopez Soriano",
-    "Frank Busch",
-    "Sterling Roth",
-    "Jonathan Sargent",
-    "hector gil",
-    "Philip bazel",
-    "Llynara",
-    "BlenderBrit",
-    "william norberg",
-    "Michael Szalapski",
-  ]
-  let names_list = [];
-  for (let i = 0; i < 1040; i++) {
-    names_list[i] = example_names[Math.floor(Math.random() * example_names.length)];
-  }
-  const pledge_rank_weights = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5];
-
-  const patronNamesJSX = (<>{names_list.map((n, i) => <p key={i} className={styles[`patron-rank-${randomArraySelection(pledge_rank_weights)}`]}>{n}</p>)}</>);
-
-
-  // TODO Patreon connection
   return (
     <div id={styles.footer}>
       <h2>Patrons</h2>
-      <Todo>Note: Placeholder names</Todo>
       <div className={styles.patrons}>
         <div className={styles.patronsScrollWrapper}>
           <div className={styles.patronsScroll}>
             <div className={styles.patronsSetA}>
-              {patronNamesJSX}
+              <PatronList />
             </div>
           </div>
         </div>
