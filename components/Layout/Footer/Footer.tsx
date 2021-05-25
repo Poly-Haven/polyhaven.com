@@ -34,10 +34,10 @@ const footer = () => {
           </a></Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
+              <Link href="/"><a>Home</a></Link>
+              <Link href="/all"><a>Assets</a></Link>
               <Link href="/faq"><a>FAQ</a></Link>
-              <Link href="/about-contact"><a>About</a></Link>
-              <Link href="/about-contact"><a>Contact</a></Link>
-              <Link href="/map"><a>Map</a></Link>
+              <Link href="/about-contact"><a>About / Contact</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
@@ -45,7 +45,7 @@ const footer = () => {
               <Link href="/license"><a>License</a></Link>
               <Link href="/privacy"><a>Privacy</a></Link>
               <Link href="/finance-reports"><a>Finance Reports</a></Link>
-              <Link href="https://bit.ly/ph-advertising"><a>Advertising</a></Link>
+              <Link href="/map"><a>Map</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
