@@ -20,6 +20,7 @@
     "react-dropdown": "^1.9.2",
     "react-icons": "^4.2.0",
     "react-lazy-load-image-component": "^1.5.1",
+    "react-tooltip": "^4.2.19",
     "sass": "^1.32.8",
     "swr": "^0.5.3"
   },
