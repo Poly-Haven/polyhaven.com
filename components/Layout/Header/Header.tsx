@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MdInfoOutline } from 'react-icons/md'
 
+import GoalProgress from 'components/ProgressBar/GoalProgress'
 import Nav from './Nav/Nav'
 import Todo from 'components/Todo/Todo'
 
@@ -24,6 +25,9 @@ const header = () => {
         </Todo>
       </a>
       <div className={styles.spacer} />
+      <a href="https://www.patreon.com/hdrihaven/overview">
+        <GoalProgress mode="small" />
+      </a>
       <Nav />
     </div>
   );

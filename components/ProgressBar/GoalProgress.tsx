@@ -1,16 +1,14 @@
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
-import ReactTooltip from 'react-tooltip'
 
 import ProgressBar from 'components/ProgressBar/ProgressBar'
-
-import styles from './ProgressBar.module.scss'
+import Tooltip from 'components/Tooltip/Tooltip'
 
 const GoalProgress = ({ mode }) => {
-  let { data, error } = useSWR(`https://api.polyhaven.com/funding_detail?tmps`, fetcher, { revalidateOnFocus: false });
-  if (error) return <ProgressBar progress={0} label="Current goal" labelValue={"ERROR"} />
+  let { data, error } = useSWR(`https://api.polyhaven.com/funding_detail?tmpsxcsv`, fetcher, { revalidateOnFocus: false });
+  if (error) return <ProgressBar labelValue={"ERROR"} mode={mode} />
   if (!data) {
-    return (<ProgressBar progress={0} label="Current goal" labelValue={"Loading..."} />)
+    return (<ProgressBar labelValue={"Loading..."} mode={mode} />)
   }
 
   let currentGoalIndex = -1
@@ -22,15 +20,26 @@ const GoalProgress = ({ mode }) => {
   }
 
   const currentGoal = data.goals[currentGoalIndex]
-  const progress = data.totalFunds / currentGoal.target * 100
-  const description = `Goal Progress: $${data.totalFunds} of $${currentGoal.target}<br/>${currentGoal.description}`
+  const progress1 = data.totalFunds / currentGoal.target * 100
+  const progress2 = data.corpFunds / currentGoal.target * 100
+  const label = mode === 'big' ? "Current goal:" : `$${Math.max(0, currentGoal.target - data.totalFunds)} to go`
+  const description = `Goal Progress: $${data.totalFunds} of $${currentGoal.target} per month<br/>${currentGoal.description}`
+  const tooltipCorp = `${data.numCorps} corporate sponsors: $${data.corpFunds}`
+  const tooltipPatron = `${data.numPatrons} patrons: $${data.patronFunds}`
 
   return (
     <>
-      <div data-tip={description}>
-        <ProgressBar progress={progress} label="Current goal" labelValue={currentGoal.title} />
-      </div>
-      <ReactTooltip multiline border borderColor="rgba(190, 111, 255, 0.5)" backgroundColor="rgb(60, 60, 60)" className={styles.tooltip} />
+      <ProgressBar
+        progress1={progress1}
+        progress2={progress2}
+        label={label}
+        labelValue={currentGoal.title}
+        mode={mode}
+        tooltipLabel={description}
+        tooltip1={tooltipPatron}
+        tooltip2={tooltipCorp}
+      />
+      <Tooltip />
     </>
   )
 }
