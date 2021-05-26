@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-
 import fetcher from 'utils/fetcher';
 
 import { MdLink } from 'react-icons/md'

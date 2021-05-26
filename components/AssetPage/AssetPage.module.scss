@@ -41,7 +41,6 @@
   .info {
     flex-grow: 1;
     padding: 1rem;
-    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -110,6 +109,28 @@
     &:hover {
       background: $c-accent-light;
     }
+  }
+}
+
+.sponsor {
+  @include flex(column, true, true);
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin: 0;
+
+    &:first-of-type {
+      margin-bottom: 0.5em;
+    }
+    &:last-of-type {
+      margin-top: 0.5em;
+    }
+  }
+  p {
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: bold;
   }
 }
 

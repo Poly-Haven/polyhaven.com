@@ -9,6 +9,7 @@ import AdAssetSidebar from 'components/Ads/AssetSidebar'
 import Todo from 'components/Todo/Todo'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import InfoItem from './InfoItem'
+import Sponsor from './Sponsor'
 
 import styles from './AssetPage.module.scss'
 
@@ -39,6 +40,12 @@ const AssetPage = ({ assetID, data }) => {
           <div className={styles.authors}>
             {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
           </div>
+
+          <div id="download-btn" className={styles.downloadBtn}>
+            <MdFileDownload />
+            Download
+          </div>
+
           <InfoItem label="Published" condition={true}>
             {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
           </InfoItem>
@@ -57,9 +64,11 @@ const AssetPage = ({ assetID, data }) => {
           <InfoItem label="Downloads" condition={true}>
             {data.download_count}
           </InfoItem>
+
           <div className={styles.spacer} />
-          <Todo>Sponsor</Todo>
+          <Sponsor assetID={assetID} sponsors={data.sponsors} />
           <div className={styles.spacer} />
+
           <InfoItem label="Categories" condition={true}>
             <div className={styles.tagsList}>
               {data.categories.map(i =>
@@ -80,10 +89,6 @@ const AssetPage = ({ assetID, data }) => {
           </InfoItem>
         </div>
 
-        <div id="download-btn" className={styles.downloadBtn}>
-          <MdFileDownload />
-            Download
-          </div>
         <div className={styles.sidebarAd}><AdAssetSidebar /></div>
       </div>
     </div>
