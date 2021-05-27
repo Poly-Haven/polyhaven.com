@@ -29,7 +29,7 @@ $height-small: 1.2em;
   border-radius: 5em;
   background-color: $c-accent;
   max-width: 100%;
-  min-width: calc(2em - 2px);
+  min-width: calc(1.9em - 2px);
   transition: width 2s ease;
   &:last-of-type {
     background: lighten($c-accent, 2%);
@@ -64,6 +64,7 @@ $height-small: 1.2em;
     position: relative;
     height: calc(#{$height-small} - 4px);
     background-color: $c-text-light;
+    min-width: 0;
   }
 }
 
