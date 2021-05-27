@@ -6,10 +6,11 @@ import { daysOld } from 'utils/dateUtils'
 
 import styles from './GridItem.module.scss';
 
-const GridItem = ({ asset, assetID, scrollPosition }) => {
+const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
+
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=379`
   return (
-    <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem}>
+    <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem} onClick={onClick}>
       <div className={styles.thumb}><LazyLoadImage
         src={img_src}
         alt={asset.name}

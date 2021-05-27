@@ -10,7 +10,7 @@
 .previewWrapper {
   @include flex(column, true, true);
   background: $c-background-dark;
-  padding: 0.25rem;
+  padding: 0 0.25rem;
   min-height: 600px;
 
   .carousel {
@@ -55,11 +55,17 @@
     .authors {
       @include flex(row, true, true);
       text-align: center;
+      a {
+        box-shadow: none;
+      }
     }
 
     .infoItem {
       padding: 0.2rem 0;
       margin: 0;
+    }
+    .flex {
+      @include flex(row, true, false);
     }
 
     .tagsList {

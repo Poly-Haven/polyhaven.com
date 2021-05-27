@@ -52,6 +52,21 @@ const Grid = (props) => {
     props.setSearch("");
   }
 
+  const asset_type_name = assetTypeName(props.assetType)
+
+  const setHeaderPath = () => {
+    let path = ''
+    let link = ''
+    if (props.assetType !== 'all') {
+      link += `/${props.assetType}`
+      path += `<a href=${encodeURI(link)}>${asset_type_name}</a> /`
+    }
+    for (const c of props.categories) {
+      link += `/${c}`
+      path += ` <a href=${encodeURI(link)}>${c}</a> /`
+    }
+    document.getElementById('header-frompath').innerHTML = path.trim()
+  }
 
   let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
   if (props.categories.length) {
@@ -83,7 +98,6 @@ const Grid = (props) => {
   }
 
   let title = assetTypeName(props.assetType);
-  const asset_type_name = assetTypeName(props.assetType)
   if (props.categories.length) {
     title = asset_type_name + ": " + titleCase(props.categories.join(' > '))
   } else if (props.assetType !== "all") {
@@ -137,9 +151,10 @@ const Grid = (props) => {
         <div className={styles.grid}>
           {sortedKeys.map(asset => {
             return (<GridItem
+              key={asset}
               asset={data[asset]}
               assetID={asset}
-              key={asset}
+              onClick={setHeaderPath}
               scrollPosition={props.scrollPosition} />);
           })}
         </div>

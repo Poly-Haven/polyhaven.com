@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import Link from 'next/link';
 
 import { MdFileDownload } from 'react-icons/md'
 
 import asset_types from 'constants/asset_types.json'
+import asset_type_names from 'constants/asset_type_names.json'
 
 import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
@@ -21,6 +23,17 @@ const AssetPage = ({ assetID, data }) => {
   }
   const authors = Object.keys(data.authors)
   const multiAuthor = authors.length > 1;
+
+  useEffect(() => {
+    document.getElementById('header-title').innerHTML = data.name
+    let path = document.getElementById('header-frompath').innerHTML
+    if (!path) {
+      path = `<a href="/${Object.keys(asset_types)[data.type]}">${asset_type_names[data.type]}s</a> /`
+    }
+    document.getElementById('header-path').innerHTML = path
+    document.getElementById('header-frompath').innerHTML = ""
+  });
+
   return (
     <div className={styles.wrapper}>
       <Page immersiveScroll={true}>
@@ -36,20 +49,15 @@ const AssetPage = ({ assetID, data }) => {
       <div className={styles.sidebar}>
 
         <div className={styles.info}>
-          <h1>{data.name}</h1>
-          <div className={styles.authors}>
-            {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
-          </div>
-
-          <div id="download-btn" className={styles.downloadBtn}>
-            <MdFileDownload />
-            Download
-          </div>
-
-          <InfoItem label="License" condition={true}>
+          <InfoItem label="Author" flex>
+            <div className={styles.authors}>
+              {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
+            </div>
+          </InfoItem>
+          <InfoItem label="License">
             <Link href="/license">CC0</Link> (public domain)
           </InfoItem>
-          <InfoItem label="Published" condition={true}>
+          <InfoItem label="Published">
             {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
           </InfoItem>
           <InfoItem label="Dynamic Range" condition={data.evs_cap}>
@@ -67,7 +75,7 @@ const AssetPage = ({ assetID, data }) => {
           <InfoItem label="Whitebalance" condition={data.whitebalance}>
             {data.whitebalance}K
           </InfoItem>
-          <InfoItem label="Downloads" condition={true}>
+          <InfoItem label="Downloads">
             {data.download_count}
           </InfoItem>
 
@@ -75,7 +83,12 @@ const AssetPage = ({ assetID, data }) => {
           <Sponsor assetID={assetID} sponsors={data.sponsors} />
           <div className={styles.spacer} />
 
-          <InfoItem label="Categories" condition={true}>
+          <div id="download-btn" className={styles.downloadBtn}>
+            <MdFileDownload />
+            Download
+          </div>
+
+          <InfoItem label="Categories">
             <div className={styles.tagsList}>
               {data.categories.map(i =>
                 <Link href={`/${Object.keys(asset_types)[data.type]}/${i}`} key={i}><a>
@@ -84,7 +97,7 @@ const AssetPage = ({ assetID, data }) => {
               )}
             </div>
           </InfoItem>
-          <InfoItem label="Tags" condition={true}>
+          <InfoItem label="Tags">
             <div className={styles.tagsList}>
               {data.tags.map(i =>
                 <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>

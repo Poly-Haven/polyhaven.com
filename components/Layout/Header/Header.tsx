@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from 'next/link';
 import { MdInfoOutline } from 'react-icons/md'
 
@@ -8,6 +9,12 @@ import Todo from 'components/Todo/Todo'
 import styles from './Header.module.scss';
 
 const header = () => {
+
+  useEffect(() => {
+    document.getElementById('header-path').innerHTML = ""
+    document.getElementById('header-title').innerHTML = ""
+  });
+
   return (
     <div className={styles.header}>
       <Link href='/'><a className={styles.logo}>
@@ -16,7 +23,6 @@ const header = () => {
         </div>
         Poly Haven
       </a></Link>
-      <div className={styles.spacer} />
       <a href="https://trello.com/b/7zT1j901/poly-haven-beta">
         <Todo raw={true}>
           <p>BETA</p>
@@ -24,6 +30,9 @@ const header = () => {
           <MdInfoOutline />
         </Todo>
       </a>
+      <div className={styles.spacer} />
+      <div><h2 id='header-path' /> <h1 id='header-title' /></div>
+      <div style={{ display: 'none' }} id='header-frompath' />
       <div className={styles.spacer} />
       <a href="https://www.patreon.com/hdrihaven/overview">
         <GoalProgress mode="small" />
