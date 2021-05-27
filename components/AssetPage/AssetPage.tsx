@@ -46,6 +46,9 @@ const AssetPage = ({ assetID, data }) => {
             Download
           </div>
 
+          <InfoItem label="License" condition={true}>
+            <Link href="/license">CC0</Link> (public domain)
+          </InfoItem>
           <InfoItem label="Published" condition={true}>
             {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
           </InfoItem>
@@ -60,6 +63,9 @@ const AssetPage = ({ assetID, data }) => {
           </InfoItem>
           <InfoItem label="Location" condition={data.coords}>
             {data.coords ? data.coords.join(', ') : null}
+          </InfoItem>
+          <InfoItem label="Whitebalance" condition={data.whitebalance}>
+            {data.whitebalance}K
           </InfoItem>
           <InfoItem label="Downloads" condition={true}>
             {data.download_count}
@@ -82,7 +88,7 @@ const AssetPage = ({ assetID, data }) => {
             <div className={styles.tagsList}>
               {data.tags.map(i =>
                 <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>
-                  <span className={styles.tag}>{i}</span>
+                  <div className={styles.tag}>{i}</div>
                 </a></Link>
               )}
             </div>

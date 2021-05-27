@@ -1,6 +1,10 @@
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 
+import { MdHelp } from 'react-icons/md'
+
+import Tooltip from 'components/Tooltip/Tooltip'
+
 import styles from './AssetPage.module.scss'
 
 const Sponsor = ({ assetID, sponsors }) => {
@@ -19,7 +23,8 @@ const Sponsor = ({ assetID, sponsors }) => {
 
   return (
     <div className={styles.sponsor}>
-      <h4>Sponsored by:</h4>
+      <Tooltip />
+      <h4>Sponsored by: <a href="https://www.patreon.com/hdrihaven/overview" data-tip="Support Poly Haven on Patreon to add your name here."><MdHelp /></a></h4>
       {sponsorData.length ?
         sponsorData.map((s, i) => <p key={i}>{
           s.url ?
@@ -27,7 +32,6 @@ const Sponsor = ({ assetID, sponsors }) => {
             : s.name
         }</p>)
         : null}
-      <h4><a href="https://www.patreon.com/hdrihaven/overview">Support Poly Haven</a> to add your name here.</h4>
     </div>
   )
 }

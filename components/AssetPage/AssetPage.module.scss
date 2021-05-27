@@ -126,6 +126,15 @@
     &:last-of-type {
       margin-top: 0.5em;
     }
+
+    a {
+      box-shadow: none;
+      color: $c-text-light;
+
+      &:hover {
+        color: $c-accent-light;
+      }
+    }
   }
   p {
     font-size: 1.1em;
