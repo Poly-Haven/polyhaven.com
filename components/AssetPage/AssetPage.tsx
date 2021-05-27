@@ -60,19 +60,19 @@ const AssetPage = ({ assetID, data }) => {
           <InfoItem label="Published">
             {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
           </InfoItem>
-          <InfoItem label="Dynamic Range" condition={data.evs_cap}>
+          <InfoItem label="Dynamic Range" condition={data.evs_cap !== undefined}>
             {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
           </InfoItem>
-          <InfoItem label="Scale" condition={data.scale}>
+          <InfoItem label="Scale" condition={data.scale !== undefined}>
             {data.scale}
           </InfoItem>
-          <InfoItem label="Captured" condition={data.date_taken}>
+          <InfoItem label="Captured" condition={data.date_taken !== undefined}>
             {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
           </InfoItem>
-          <InfoItem label="Location" condition={data.coords}>
+          <InfoItem label="Location" condition={data.coords !== undefined}>
             {data.coords ? data.coords.join(', ') : null}
           </InfoItem>
-          <InfoItem label="Whitebalance" condition={data.whitebalance}>
+          <InfoItem label="Whitebalance" condition={data.whitebalance !== undefined}>
             {data.whitebalance}K
           </InfoItem>
           <InfoItem label="Downloads">
