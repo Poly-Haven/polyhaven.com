@@ -26,7 +26,7 @@ const AssetPage = ({ assetID, data }) => {
       <Page immersiveScroll={true}>
         <div className={styles.previewWrapper}>
           <div className={styles.activePreview}>
-            <img src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.${ext[data.type]}?width=1559&sharpen=true`} />
+            <img src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.${ext[data.type]}?width=1559`} />
           </div>
           <div className={styles.carousel}><Todo>Image carousel</Todo></div>
         </div>
