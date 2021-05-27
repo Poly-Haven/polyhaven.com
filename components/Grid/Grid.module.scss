@@ -3,19 +3,23 @@
 @import "constants/variables";
 
 .optionsBar {
+  position: fixed;
+  z-index: 10;
+  width: calc(100% - #{$v-sidebar-width} - 1rem - 17px);
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 2rem;
-  padding-bottom: 0;
+  padding: 0.5rem;
+  background: rgba($c-background, 0.8);
 
   .gridHeader {
     flex-grow: 1;
-    @include flex(column);
+    @include flex(row, true, false);
+    padding: 0 1rem;
 
     h1 {
-      padding: 0;
-      padding-bottom: 0.4rem;
+      flex-grow: 1;
+      padding: 0.4rem;
       margin: 0;
 
       p {
@@ -93,6 +97,7 @@
       padding: 0 0.3rem;
       border: 1px solid rgba($c-text-light, 0.2);
       margin-left: 1rem;
+      background-color: $c-background;
 
       .searchIcon {
         font-size: 1.5rem;
@@ -137,6 +142,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
+  margin-top: 2.75rem;
 }
 
 .noResults {
