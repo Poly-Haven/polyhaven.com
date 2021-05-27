@@ -1,0 +1,18 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.optionsWrapper {
+  @include absolute_cover;
+  top: 4rem;
+  background: $c-background-dark;
+  padding: 1rem;
+  overflow-y: auto;
+  @include dark_scrollbar();
+  @include transition;
+  visibility: visible;
+}
+.optionsHidden {
+  transform: translateX(100%);
+  visibility: hidden;
+}

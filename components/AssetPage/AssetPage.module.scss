@@ -39,10 +39,12 @@
   height: calc(100vh - #{$v-header-height});
 
   .info {
+    position: relative;
     flex-grow: 1;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     overflow-y: auto;
     @include dark_scrollbar();
 
@@ -93,27 +95,44 @@
     }
   }
 
+  .downloadBtnWrapper {
+    @include flex(row);
+  }
   .downloadBtn {
+    flex-shrink: 0;
+    flex-grow: 1;
     background: $c-accent;
-    margin: 1rem;
-    padding: 0.75rem;
-    font-size: 1.3em;
+    height: 3rem;
+    min-width: 3rem;
     color: white;
+    border-right: 1px solid $c-accent-light;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     cursor: pointer;
+    user-select: none;
     @include transition();
 
     svg {
       width: 1.5em;
       height: 1.5em;
-      padding-right: 0.2em;
     }
 
     &:hover {
       background: $c-accent-light;
+    }
+
+    &:last-of-type {
+      border: none;
+    }
+  }
+  .downloadBtnSml {
+    @extend .downloadBtn;
+    flex-grow: 0;
+
+    .resIcon {
+      text-transform: uppercase;
     }
   }
 }
