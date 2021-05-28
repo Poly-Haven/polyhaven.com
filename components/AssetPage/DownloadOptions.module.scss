@@ -5,6 +5,7 @@
 .optionsWrapper {
   @include absolute_cover;
   top: 4rem;
+  z-index: 1; // For some reason author credit tries to pop above this
   background: $c-background-dark;
   padding: 1rem;
   overflow-y: auto;
