@@ -1,0 +1,46 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.menu {
+  width: 200px;
+  text-transform: capitalize;
+
+  &:hover {
+    .control {
+      background-color: $c-background-light;
+    }
+  }
+
+  .control {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    padding: 0 1rem;
+    background: $c-background;
+    color: $c-text-light;
+    border-radius: 0;
+    border: 1px solid rgba($c-text-light, 0.2);
+  }
+
+  .dropdown {
+    background: $c-background;
+    border: 1px solid rgba($c-text-light, 0.2);
+  }
+
+  .arrow {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  .labelSort {
+    font-weight: bold;
+    flex-grow: 1;
+
+    &::before {
+      content: "Sort by: ";
+      font-weight: normal;
+    }
+  }
+}

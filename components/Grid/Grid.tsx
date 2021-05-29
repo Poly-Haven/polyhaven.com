@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import Fuse from 'fuse.js';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { MdSearch } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
@@ -14,6 +13,7 @@ import { assetTypeName } from 'utils/assetTypeName'
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
 import AdTop from 'components/Ads/GridTop'
+import Dropdown from 'components/UI/Dropdown/Dropdown'
 
 import styles from './Grid.module.scss';
 
@@ -116,15 +116,10 @@ const Grid = (props) => {
           <div className={styles.options}>
             <div className={styles.menuSelection}>
               <Dropdown
-                className={styles.menu}
-                controlClassName={styles.control}
-                menuClassName={styles.dropdown}
-                placeholderClassName={styles.labelSort}
-                arrowClassName={styles.arrow}
-                options={Object.keys(sortBy)}
                 value={props.sort}
-                placeholder="Select an option"
-                onChange={setSort} />
+                options={Object.keys(sortBy)}
+                onChange={setSort}
+              />
             </div>
             <div className={styles.search}>
               <MdSearch className={styles.searchIcon} />
