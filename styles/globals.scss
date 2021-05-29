@@ -70,6 +70,7 @@ span {
 .Dropdown-option.is-selected {
   background-color: $c-background !important;
   font-weight: bold;
+  color: white !important;
 
   &:hover {
     background-color: $c-accent !important;

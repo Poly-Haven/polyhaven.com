@@ -1,8 +1,5 @@
 import { useEffect } from "react";
-import { useState } from 'react'
 import Link from 'next/link';
-
-import { MdFileDownload, MdTune, MdArrowBack } from 'react-icons/md'
 
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
@@ -11,18 +8,13 @@ import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
 import Todo from 'components/Todo/Todo'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
-import DownloadOptions from './DownloadOptions'
+import Download from './Download/Download'
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
 
 import styles from './AssetPage.module.scss'
 
 const AssetPage = ({ assetID, data }) => {
-  const [dlOptions, setDlOptions] = useState(false)
-
-  const toggleOptions = () => {
-    setDlOptions(!dlOptions);
-  }
 
   const ext = {
     0: 'jpg',
@@ -58,19 +50,7 @@ const AssetPage = ({ assetID, data }) => {
 
         <div className={styles.info}>
 
-          <div className={styles.downloadBtnWrapper}>
-            <div className={styles.downloadBtnSml}>
-              <div id='active-res' className={styles.resIcon}>4k</div>
-            </div>
-            <div id="download-btn" className={styles.downloadBtn}>
-              <MdFileDownload />
-              Download
-            </div>
-            <div className={styles.downloadBtnSml} onClick={toggleOptions}>
-              {dlOptions ? <MdArrowBack /> : <MdTune />}
-            </div>
-          </div>
-          <DownloadOptions open={dlOptions} />
+          <Download />
 
           <InfoItem label="Author" flex>
             <div className={styles.authors}>

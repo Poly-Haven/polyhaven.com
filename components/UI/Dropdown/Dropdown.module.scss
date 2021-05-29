@@ -44,3 +44,50 @@
     }
   }
 }
+.menuSml {
+  @extend .menu;
+  border: none;
+  border-right: 1px solid $c-accent-light;
+  width: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  &:hover {
+    .control {
+      background-color: $c-accent-light;
+    }
+  }
+
+  .control {
+    display: grid;
+    place-items: center;
+    border: none;
+    padding: 0;
+    padding-top: 0.4em;
+    height: 3rem;
+    background: $c-accent;
+    min-width: 3rem;
+    color: white;
+    @include transition();
+
+    &:hover {
+      background: $c-accent-light;
+    }
+  }
+
+  .dropdown {
+    margin-top: 0;
+    width: calc(100% + 1px);
+  }
+
+  .arrow {
+    filter: brightness(2); // Hack to easily change arrow color without fiddling with borders.
+    top: -0.6em;
+  }
+
+  .labelSort {
+    &::before {
+      content: none;
+    }
+  }
+}

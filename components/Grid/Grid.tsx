@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import Fuse from 'fuse.js';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
-import 'react-dropdown/style.css';
 import { MdSearch } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 

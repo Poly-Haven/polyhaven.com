@@ -94,47 +94,6 @@
       }
     }
   }
-
-  .downloadBtnWrapper {
-    @include flex(row);
-  }
-  .downloadBtn {
-    flex-shrink: 0;
-    flex-grow: 1;
-    background: $c-accent;
-    height: 3rem;
-    min-width: 3rem;
-    color: white;
-    border-right: 1px solid $c-accent-light;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    @include transition();
-
-    svg {
-      width: 1.5em;
-      height: 1.5em;
-    }
-
-    &:hover {
-      background: $c-accent-light;
-    }
-
-    &:last-of-type {
-      border: none;
-    }
-  }
-  .downloadBtnSml {
-    @extend .downloadBtn;
-    flex-grow: 0;
-
-    .resIcon {
-      text-transform: uppercase;
-    }
-  }
 }
 
 .sponsor {

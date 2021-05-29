@@ -1,0 +1,71 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.downloadBtnWrapper {
+  @include flex(row);
+}
+.downloadBtn {
+  flex-shrink: 0;
+  flex-grow: 1;
+  background: $c-accent;
+  height: 3rem;
+  min-width: 3rem;
+  color: white;
+  border-right: 1px solid $c-accent-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  line-height: 1em;
+  cursor: pointer;
+  user-select: none;
+  @include transition();
+
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.2em;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1em;
+  }
+  p {
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    background: $c-accent-light;
+  }
+
+  &:last-of-type {
+    border: none;
+  }
+}
+.downloadBtnSml {
+  @extend .downloadBtn;
+  flex-grow: 0;
+  text-align: center;
+
+  .resIcon {
+    text-transform: uppercase;
+    line-height: 1em;
+    margin-top: 0.5em;
+
+    svg {
+      margin-top: -0.5em;
+      margin-right: 0;
+    }
+  }
+}
+
+.resBtnCtrl {
+  @include flex(column, true, true);
+  width: 100%;
+  height: 100%;
+}
