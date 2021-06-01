@@ -50,7 +50,7 @@ const AssetPage = ({ assetID, data }) => {
 
         <div className={styles.info}>
 
-          <Download />
+          <Download assetID={assetID} data={data} />
 
           <InfoItem label="Author" flex>
             <div className={styles.authors}>

@@ -26,6 +26,7 @@
   .dropdown {
     background: $c-background;
     border: 1px solid rgba($c-text-light, 0.2);
+    white-space: nowrap;
   }
 
   .arrow {
@@ -49,7 +50,6 @@
   border: none;
   border-right: 1px solid $c-accent-light;
   width: 3rem;
-  text-transform: uppercase;
   text-align: center;
 
   &:hover {
@@ -77,7 +77,8 @@
 
   .dropdown {
     margin-top: 0;
-    width: calc(100% + 1px);
+    min-width: calc(100% + 1px);
+    width: auto;
   }
 
   .arrow {

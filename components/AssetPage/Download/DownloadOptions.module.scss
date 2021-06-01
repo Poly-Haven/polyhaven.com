@@ -6,7 +6,7 @@
   @include absolute_cover;
   top: 4rem;
   z-index: 1; // For some reason author credit tries to pop above this
-  background: $c-background-dark;
+  background: rgba($c-background-dark, 0.95);
   padding: 1rem;
   overflow-y: auto;
   @include dark_scrollbar();
@@ -16,4 +16,38 @@
 .optionsHidden {
   transform: translateX(100%);
   visibility: hidden;
+}
+
+.optionRow {
+  @include flex(row, true, false);
+  width: 100%;
+  margin: 1em 0;
+
+  p {
+    margin: 0.2em;
+    flex-grow: 1;
+  }
+
+  .format {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0.3em 0.5em;
+    min-width: 1.8em;
+    text-align: center;
+    border: 1px solid rgba($c-accent, 0.5);
+    border-right: none;
+    color: $c-text-light;
+    text-transform: uppercase;
+    @include transition;
+
+    &:last-of-type {
+      border-right: 1px solid rgba($c-accent, 0.5);
+    }
+
+    &:hover {
+      color: white;
+      background: $c-accent;
+      border-color: $c-accent;
+    }
+  }
 }

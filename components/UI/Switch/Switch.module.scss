@@ -1,0 +1,44 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  @include flex(row, true, true);
+  position: relative;
+  box-shadow: 0 0 0 2px $c-accent;
+  margin: 0 0.4rem;
+  height: 1.5em;
+  border-radius: 1em;
+  user-select: none;
+  cursor: pointer;
+}
+
+.label {
+  @include flex(row, true, true);
+  position: relative;
+  font-size: 0.8em;
+  width: 1.5rem;
+  font-weight: bold;
+  opacity: 0.5;
+  @include transition;
+}
+.sel {
+  color: white;
+  opacity: 1;
+}
+
+.toggle {
+  position: absolute;
+  left: 0;
+  right: 50%;
+  background: $c-accent;
+  height: 1.5em;
+  border-radius: 1em;
+  box-shadow: 0 0 0 1px $c-accent;
+  @include transition;
+}
+
+.on {
+  left: 50%;
+  right: 0;
+}
