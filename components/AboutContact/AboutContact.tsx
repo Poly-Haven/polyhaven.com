@@ -37,7 +37,7 @@ const AboutPage = () => {
 
       <h1>How are we doing this?</h1>
       <p>We're a small remote studio based in South Africa, working with creators around the world who share our vision.</p>
-      <p>Funding-wise, we're supported primarily by donations from people like you on <Link href="https://www.patreon.com/hdrihaven/overview"><a>Patreon</a></Link>, advertising revenue, and corporate sponsors who believe they can benefit from supporting our work in the long term.</p>
+      <p>Funding-wise, we're supported primarily by donations from people like you on <Link href="https://www.patreon.com/polyhaven/overview"><a>Patreon</a></Link>, advertising revenue, and corporate sponsors who believe they can benefit from supporting our work in the long term.</p>
       <p>For the creation of assets, there are three sources:</p>
       <ol>
         <li>Artists employed by Poly Haven, focusing on the big picture.</li>
@@ -50,7 +50,7 @@ const AboutPage = () => {
       <p>Sharing our assets is our priority, but we also want to share our knowledge, so that others might learn how to create assets like ours and perhaps share them as well.</p>
       <ul>
         <li>We write regular Dev Logs on <a href="https://blog.hdrihaven.com/">our blog</a> to share what we've been working on recently.</li>
-        <li>Our <a href="https://www.patreon.com/hdrihaven/posts?public=true">posts on Patreon</a> are also a good place to find smaller updates and polls when we need help making decisions.</li>
+        <li>Our <a href="https://www.patreon.com/polyhaven/posts?public=true">posts on Patreon</a> are also a good place to find smaller updates and polls when we need help making decisions.</li>
         <li><a href="https://discord.gg/Dms7Mrs">Discord</a> is where we hang out every day, feel free to say hi!</li>
         <li>Our social media is primarily automated for posting our latest assets, but we're occasionally active there too (links in the <a href="#social">footer</a>).</li>
         <li>Our <Link href="/finance-reports"><a>finance reports</a></Link> detail exactly how we spend or save our funds.</li>
@@ -59,7 +59,7 @@ const AboutPage = () => {
       <h1>How you can help</h1>
 
       <h2>1. Support us on Patreon</h2>
-      <p>If you have some disposable income and you want to help us publish more free HDRIs, textures and 3D models, you can support us with a small monthly donation on <Link href="https://www.patreon.com/hdrihaven/overview"><a>Patreon</a></Link> :)</p>
+      <p>If you have some disposable income and you want to help us publish more free HDRIs, textures and 3D models, you can support us with a small monthly donation on <Link href="https://www.patreon.com/polyhaven/overview"><a>Patreon</a></Link> :)</p>
       <p>In return, we can give you some small token of thanks, like access to a cloud folder that you can sync to your hard drive so you always have our latest assets at your fingertips, or immortalize your name on our site.</p>
       <p>We use your donations directly to cover our expenses and fund new assets, as verified by our <Link href="/finance-reports"><a>finance reports</a></Link>.</p>
 

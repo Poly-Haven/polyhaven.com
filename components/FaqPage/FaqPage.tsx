@@ -14,7 +14,7 @@ const FaqPage = () => {
       <FaqItem question="Can I include these assets in a product I sell?">
         <p>Yes. The only thing you can't do is claim to be the <em>original</em> author or re-license them. <Link href="/license">More about the CC0 license here</Link>.</p>
         <p>Please make it clear to your customers that these assets are free and public domain, and if possible include a link to Poly Haven.</p>
-        <p>If your product sells well, consider supporting the creation of these assets <a href="https://www.patreon.com/hdrihaven/overview">on Patreon</a>.</p>
+        <p>If your product sells well, consider supporting the creation of these assets <a href="https://www.patreon.com/polyhaven/overview">on Patreon</a>.</p>
       </FaqItem>
       <FaqItem question="Do you do commissions?">
         <p>Poly Haven does not itself do commissions, but our artists may be happy to work with you. Please <Link href="/about-contact">get in touch</Link> and we can point you in the right direction.</p>

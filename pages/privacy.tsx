@@ -20,7 +20,7 @@ const PrivacyPage = () => {
       <p>If you customize the resolution or format options when downloading an asset, this information is stored permanently in your browser so that it can be used again for subsequent downloads to save you time.</p>
 
       <h2>Patron Names in Footer</h2>
-      <p>The user names of all active supporters on <a href="https://www.patreon.com/hdrihaven/overview">Patreon</a> are automatically shown in the footer of every page on this site.</p>
+      <p>The user names of all active supporters on <a href="https://www.patreon.com/polyhaven/overview">Patreon</a> are automatically shown in the footer of every page on this site.</p>
       <p>These names are publically accessibly on the Patreon website, but if you would like your name in the footer removed or changed, please contact me by direct message on Patreon.</p>
 
       <hr />

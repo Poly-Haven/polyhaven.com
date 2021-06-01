@@ -34,7 +34,7 @@ const header = () => {
       <div><h2 id='header-path' /> <h1 id='header-title' /></div>
       <div style={{ display: 'none' }} id='header-frompath' />
       <div className={styles.spacer} />
-      <a href="https://www.patreon.com/hdrihaven/overview">
+      <a href="https://www.patreon.com/polyhaven/overview">
         <GoalProgress mode="small" />
       </a>
       <Nav />

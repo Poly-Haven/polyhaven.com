@@ -20,7 +20,7 @@ module.exports = {
     return [
       {
         source: '/support-us',
-        destination: 'https://www.patreon.com/hdrihaven/overview',
+        destination: 'https://www.patreon.com/polyhaven/overview',
         permanent: true,
       },
       {

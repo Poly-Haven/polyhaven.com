@@ -21,7 +21,7 @@ const footer = () => {
         </div>
       </div>
       <CorporateSponsors footer={true} />
-      <Button text="Join the ranks, support Poly Haven on Patreon" href="https://www.patreon.com/hdrihaven/overview" />
+      <Button text="Join the ranks, support Poly Haven on Patreon" href="https://www.patreon.com/polyhaven/overview" />
       <div className={styles.linksWrapper}>
         <a id="social" />
         <div className={styles.links}>

@@ -24,7 +24,7 @@ const Sponsor = ({ assetID, sponsors }) => {
   return (
     <div className={styles.sponsor}>
       <Tooltip />
-      <h4>Sponsored by: <a href="https://www.patreon.com/hdrihaven/overview" data-tip="Support Poly Haven on Patreon to add your name here."><MdHelp /></a></h4>
+      <h4>Sponsored by: <a href="https://www.patreon.com/polyhaven/overview" data-tip="Support Poly Haven on Patreon to add your name here."><MdHelp /></a></h4>
       {sponsorData.length ?
         sponsorData.map((s, i) => <p key={i}>{
           s.url ?

@@ -95,7 +95,7 @@ const Home = () => {
           <div className={styles.subSection}>
             <h2>Supported by you <Heart color="#F96854" /></h2>
             <GoalProgress mode="big" />
-            <Button text="Become a Patron" href="https://www.patreon.com/hdrihaven/overview" />
+            <Button text="Become a Patron" href="https://www.patreon.com/polyhaven/overview" />
             <Button text="Finance Reports" href="/finance-reports" color='hollow' />
           </div>
           <div className={styles.subSection}>
@@ -142,7 +142,7 @@ const Home = () => {
               <p>Poly Haven is a small company based in South Africa, working with artists around the world.</p>
               <p>Our goal is to create a constantly growing community-funded resource of open content, for complete freedom and usability by professionals and hobbyists alike. </p>
               <p>Previously we ran <span className='text-blue'>HDRI Haven</span>, <span className='text-orange'>Texture Haven</span> and <span className='text-green'>3D Model Haven</span> as separate independant projects, but ultimately decided we could serve the community better by joining forces and creating a single new platform: <span className='text-accent'>Poly Haven</span>.</p>
-              <p>If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/hdrihaven/overview">supporting us on Patreon</a>.</p>
+              <p>If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/polyhaven/overview">supporting us on Patreon</a>.</p>
             </div>
           </div>
           <div className={styles.subSection}>
