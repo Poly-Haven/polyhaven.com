@@ -19,6 +19,7 @@ declare const testDownload
 declare const startDownload
 
 const Download = ({ assetID, data }) => {
+  const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
@@ -77,7 +78,11 @@ const Download = ({ assetID, data }) => {
     }
   }
 
-  const downloadZip = () => {
+  const downloadZip = async () => {
+    if (busyDownloading) {
+      return
+    }
+    setBusyDownloading(true)
     let dlFiles = []
     const fileInfo = files[dlFmt][dlRes][dlFmt]
     const name = urlBaseName(fileInfo.url)
@@ -95,6 +100,11 @@ const Download = ({ assetID, data }) => {
     }
     // testDownload(name, dlFiles)
     startDownload(name, dlFiles)
+
+    await new Promise(r => setTimeout(r, 2000)).then(_ => {
+      // Purely for a visual indication that something is happending, and to prevent accidental double clicks.
+      setBusyDownloading(false)
+    })
   }
 
   return (
@@ -112,12 +122,13 @@ const Download = ({ assetID, data }) => {
           onChange={setFmtValue}
           small={true} />
 
-        <div id="download-btn" className={styles.downloadBtn} onClick={downloadZip}>
+        <div id="download-btn" className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`} onClick={downloadZip}>
           <MdFileDownload />
           <div>
             <h3>Download</h3>
             <p>{filesize(fsize)}</p>
           </div>
+          <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}><Loader /></div>
         </div>
         <div className={styles.downloadBtnSml} onClick={toggleDlOptions}>
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
