@@ -1,15 +1,13 @@
-import useSWR from 'swr';
-
-import fetcher from 'utils/fetcher';
-import { sortDictByValue } from 'utils/arrayUtils'
-
 import CorporateSponsorLogo from './CorporateSponsorLogo'
 import Spinner from 'components/Spinner/Spinner'
+
+import apiSWR from 'utils/apiSWR'
+import { sortDictByValue } from 'utils/arrayUtils'
 
 import styles from './CorporateSponsors.module.scss'
 
 const CorporateSponsors = ({ header, footer }) => {
-  const { data, error } = useSWR("https://api.polyhaven.com/corporate", fetcher, { revalidateOnFocus: false });
+  const { data, error } = apiSWR("/corporate", { revalidateOnFocus: false });
   if (error) return <div className={styles.wrapper}>Error fetching corporate sponsors</div>
   if (!data) return <div className={styles.wrapper}><Spinner /></div>
 

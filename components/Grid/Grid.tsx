@@ -1,13 +1,12 @@
-import useSWR from 'swr';
 import Fuse from 'fuse.js';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 
-import fetcher from 'utils/fetcher';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { assetTypeName } from 'utils/assetTypeName'
+import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
@@ -67,11 +66,11 @@ const Grid = (props) => {
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
 
-  let url = `https://api.polyhaven.com/assets?t=${props.assetType}`
+  let url = `/assets?t=${props.assetType}`
   if (props.categories.length) {
     url += "&c=" + props.categories.join(',')
   }
-  const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
+  const { data, error } = apiSWR(url, { revalidateOnFocus: false });
   if (error) return <div>Error</div>
   if (!data) return <div><Spinner /></div>
 

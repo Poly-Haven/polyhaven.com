@@ -1,11 +1,10 @@
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-
 import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
 import Heart from 'components/Heart/Heart'
 
 import Avatar from 'components/Avatar/Avatar'
+
+import apiSWR from 'utils/apiSWR'
 
 import styles from './AuthorCredit.module.scss'
 
@@ -15,7 +14,7 @@ const AuthorCredit = ({ id, size, credit }) => {
   let email = ""
   let donate = ""
 
-  const { data, error } = useSWR(`https://api.polyhaven.com/author/${id}`, fetcher, { revalidateOnFocus: false });
+  const { data, error } = apiSWR(`/author/${id}`, { revalidateOnFocus: false });
   if (error) {
     link = null
   } else if (data) {

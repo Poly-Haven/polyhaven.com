@@ -1,11 +1,10 @@
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Tooltip from 'components/Tooltip/Tooltip'
 
+import apiSWR from 'utils/apiSWR'
+
 const GoalProgress = ({ mode }) => {
-  let { data, error } = useSWR(`https://api.polyhaven.com/funding`, fetcher, { revalidateOnFocus: false });
+  let { data, error } = apiSWR(`/funding`, { revalidateOnFocus: false });
   if (error) return <ProgressBar labelValue={"ERROR"} mode={mode} />
   if (!data) {
     return (<ProgressBar labelValue={"Loading..."} mode={mode} />)

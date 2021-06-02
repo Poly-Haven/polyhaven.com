@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
 
 import tlc from 'constants/top_level_categories.json';
 import { assetTypeName } from 'utils/assetTypeName'
+import apiSWR from 'utils/apiSWR'
 
 import Spinner from 'components/Spinner/Spinner';
 import { MdKeyboardArrowRight } from 'react-icons/md';
@@ -15,12 +14,12 @@ const CategoryList = (props) => {
     return <></>
   }
   const activeCat = props.categories[props.level + 1];
-  let url = `https://api.polyhaven.com/categories/${props.assetType}`;
+  let url = `/categories/${props.assetType}`;
   const in_cats = props.categories.slice(0, Math.max(0, props.level + 1))
   if (in_cats.length) {
     url += `?in=${[...in_cats].sort().join(',')}`
   }
-  const { data, error } = useSWR(url, fetcher, { revalidateOnFocus: false });
+  const { data, error } = apiSWR(url, { revalidateOnFocus: false });
 
   const level = props.level + 1;
 

@@ -1,11 +1,10 @@
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-
 import Patron from 'components/Avatar/Patron'
 import Spinner from 'components/Spinner/Spinner'
 
+import apiSWR from 'utils/apiSWR'
+
 const LatestPatrons = () => {
-  let { data, error } = useSWR(`https://api.polyhaven.com/patrons_latest`, fetcher, { revalidateOnFocus: false });
+  let { data, error } = apiSWR(`/patrons_latest`, { revalidateOnFocus: false });
   if (error) return <div />
   if (!data) {
     return (<Spinner />)

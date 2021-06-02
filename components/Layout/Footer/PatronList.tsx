@@ -1,12 +1,11 @@
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-
 import Spinner from 'components/Spinner/Spinner'
+
+import apiSWR from 'utils/apiSWR'
 
 import styles from './Footer.module.scss';
 
 const PatronList = () => {
-  let { data, error } = useSWR(`https://api.polyhaven.com/patrons`, fetcher, { revalidateOnFocus: false });
+  let { data, error } = apiSWR(`/patrons`, { revalidateOnFocus: false });
   if (error) return <div>Failed to fetch list of patrons :(</div>
   if (!data) {
     return (<Spinner />)

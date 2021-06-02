@@ -1,9 +1,8 @@
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
-
 import { MdHelp } from 'react-icons/md'
 
 import Tooltip from 'components/Tooltip/Tooltip'
+
+import apiSWR from 'utils/apiSWR'
 
 import styles from './AssetPage.module.scss'
 
@@ -14,7 +13,7 @@ const Sponsor = ({ assetID, sponsors }) => {
     if (typeof s === 'object') {
       sponsorData.push(s)
     } else {
-      const { data, error } = useSWR(`https://api.polyhaven.com/sponsor/${s}`, fetcher, { revalidateOnFocus: false });
+      const { data, error } = apiSWR(`/sponsor/${s}`, { revalidateOnFocus: false });
       if (!error && data) {
         sponsorData.push(data)
       }
