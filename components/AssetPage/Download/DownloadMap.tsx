@@ -18,6 +18,12 @@ const DownloadMap = ({ name, res, data }) => {
   if (name === 'rough_ao') {
     displayName = "Rough AO"
   }
+  if (name === 'arm') {
+    displayName = "AO/Rough/Metal"
+  }
+  if (name === 'rma') {
+    displayName = "Rough/Metal/AO"
+  }
 
   return (
     <div className={styles.optionRow}>
