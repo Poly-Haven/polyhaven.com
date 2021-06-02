@@ -18,6 +18,11 @@ export default class CustomDocument extends Document {
             content="The Public Asset Library"
           />
 
+          {/* Download service worker */}
+          <script src="/download-js/ua-parser.min.js"></script>
+          <script src="/download-js/zip.js"></script>
+          <script src="/download-js/download.js"></script>
+
           {/* Global site tag (gtag.js) - Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}></script>
           <script

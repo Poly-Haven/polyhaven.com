@@ -12,3 +12,7 @@ export function stringValue(str) {
   }
   return sum
 }
+
+export function urlBaseName(str) {
+  return str.split('/').pop()
+}

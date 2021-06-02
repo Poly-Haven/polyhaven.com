@@ -9,9 +9,14 @@ import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
 
 import { sortRes } from 'utils/arrayUtils'
+import { urlBaseName } from 'utils/stringUtils'
 import apiSWR from 'utils/apiSWR'
 
 import styles from './Download.module.scss'
+
+// Just to keep TS happy, these funcitons exists in /public/download-js/download.js, which are loaded in _document.tsx
+declare const testDownload
+declare const startDownload
 
 const Download = ({ assetID, data }) => {
   const [dlOptions, setDlOptions] = useState(false)
@@ -54,7 +59,7 @@ const Download = ({ assetID, data }) => {
   }
   const dlRes = resOptions.includes(prefRes) ? prefRes : resOptions.slice(-1)[0]
 
-  const fmtOptions = data.type === 0 ? ['hdr', 'exr'] : ['blend', 'gltf', 'zip'];
+  const fmtOptions = data.type === 0 ? ['hdr', 'exr'] : ['blend', 'gltf'];
   const setFmtValue = v => {
     setFmt(v.value)
     localStorage.setItem(`assetPref_${data.type}_format`, v.value)
@@ -72,6 +77,26 @@ const Download = ({ assetID, data }) => {
     }
   }
 
+  const downloadZip = () => {
+    let dlFiles = []
+    const fileInfo = files[dlFmt][dlRes][dlFmt]
+    const name = urlBaseName(fileInfo.url)
+    dlFiles.push({
+      url: fileInfo.url,
+      path: name
+    })
+    if (fileInfo.include) {
+      for (const path of Object.keys(fileInfo.include)) {
+        dlFiles.push({
+          url: fileInfo.include[path].url,
+          path: path
+        })
+      }
+    }
+    // testDownload(name, dlFiles)
+    startDownload(name, dlFiles)
+  }
+
   return (
     <div>
       <div className={styles.downloadBtnWrapper}>
@@ -87,7 +112,7 @@ const Download = ({ assetID, data }) => {
           onChange={setFmtValue}
           small={true} />
 
-        <div id="download-btn" className={styles.downloadBtn}>
+        <div id="download-btn" className={styles.downloadBtn} onClick={downloadZip}>
           <MdFileDownload />
           <div>
             <h3>Download</h3>
