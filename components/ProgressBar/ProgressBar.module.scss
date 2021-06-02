@@ -30,7 +30,7 @@ $height-small: 1.2em;
   background-color: $c-accent;
   max-width: 100%;
   min-width: calc(1.9em - 2px);
-  transition: width 2s ease;
+  transition: width 1.2s ease;
   &:last-of-type {
     background: lighten($c-accent, 2%);
     box-shadow: 2px 0 5px -2px rgba(black, 0.5);
