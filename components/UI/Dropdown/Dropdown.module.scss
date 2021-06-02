@@ -21,12 +21,14 @@
     color: $c-text-light;
     border-radius: 0;
     border: 1px solid rgba($c-text-light, 0.2);
+    cursor: pointer;
   }
 
   .dropdown {
     background: $c-background;
     border: 1px solid rgba($c-text-light, 0.2);
     white-space: nowrap;
+    max-height: unset;
   }
 
   .arrow {
