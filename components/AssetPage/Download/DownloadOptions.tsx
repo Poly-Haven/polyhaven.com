@@ -17,6 +17,15 @@ const Download = ({ open, files, res, format }) => {
   return (
     <div className={styles.wrapper}>
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
+        {sortCaseInsensitive(Object.keys(files)).map((m, i) =>
+          !['blend', 'gltf'].includes(m) ?
+            m !== 'nor_dx' || !norGl ?
+              m !== 'nor_gl' || norGl ?
+                <DownloadMap key={i} name={m} res={res} data={files[m][res]} />
+                : null
+              : null
+            : null
+        )}
         <div className={styles.optionRow}>
           <p style={{ textAlign: 'right' }}>Normal Map Standard:</p>
           <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / Godot / 3ds Max.">
@@ -28,15 +37,6 @@ const Download = ({ open, files, res, format }) => {
             />
           </div>
         </div>
-        {sortCaseInsensitive(Object.keys(files)).map((m, i) =>
-          !['blend', 'gltf'].includes(m) ?
-            m !== 'nor_dx' || !norGl ?
-              m !== 'nor_gl' || norGl ?
-                <DownloadMap key={i} name={m} res={res} data={files[m][res]} />
-                : null
-              : null
-            : null
-        )}
       </div>
     </div>
   )
