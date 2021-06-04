@@ -52,7 +52,7 @@ const CategoryList = (props) => {
             <Link href="/[...assets]" as={
               `${props.assetType === 'all' ?
                 (cat === 'all' ? 'all' : '') :
-                props.assetType}/${in_cats.length ?
+                `/${props.assetType}`}/${in_cats.length ?
                   in_cats.join('/') + '/' :
                   ''}${cat !== 'all' ? cat : ''}`
             } >
