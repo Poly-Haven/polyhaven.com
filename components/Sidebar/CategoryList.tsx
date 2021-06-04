@@ -49,7 +49,13 @@ const CategoryList = (props) => {
       {list.map(cat => (
         <div key={cat}>{props.numInParent != data[cat] ?
           <div>
-            <Link href="/[...assets]" as={`${props.assetType === 'all' ? (cat === 'all' ? 'all' : '') : props.assetType}/${in_cats.length ? in_cats.join('/') + '/' : ''}${cat !== 'all' ? cat : ''}`} >
+            <Link href="/[...assets]" as={
+              `${props.assetType === 'all' ?
+                (cat === 'all' ? 'all' : '') :
+                props.assetType}/${in_cats.length ?
+                  in_cats.join('/') + '/' :
+                  ''}${cat !== 'all' ? cat : ''}`
+            } >
               <a className={`
             ${styles.cat}
             ${cat === activeCat ? styles.catSemiActive : ""}
