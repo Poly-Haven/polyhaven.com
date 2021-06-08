@@ -2,7 +2,6 @@ import CorporateSponsorLogo from './CorporateSponsorLogo'
 import Spinner from 'components/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'
-import { sortDictByValue } from 'utils/arrayUtils'
 
 import styles from './CorporateSponsors.module.scss'
 

@@ -1,0 +1,107 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.page {
+  @include flex(column, true, true);
+  margin: 1em;
+}
+
+.textBlock {
+  max-width: 1024px;
+}
+
+.row {
+  @include flex(row);
+  width: 100%;
+
+  .half {
+    @include flex(column);
+    flex: 1 0 0;
+    width: 100%;
+    margin: 1em;
+
+    h2 {
+      margin: 1rem;
+      text-align: center;
+    }
+  }
+
+  .divider {
+    position: relative;
+    left: 1px;
+    border-right: 2px solid rgba($c-text-light, 0.2);
+  }
+}
+
+.mainGraph {
+  width: 100%;
+  height: 50vh;
+}
+
+.barSection {
+  flex-grow: 1;
+  width: 100%;
+  @include flex(column);
+}
+
+.bumperWrapper {
+  @include flex(row, true, true);
+
+  .bumper {
+    font-size: 2em;
+    line-height: 0;
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.barWrapper {
+  @include flex(row, true, true);
+
+  .barContainer {
+    margin: 1em 0;
+    width: calc(100% - 2em);
+  }
+
+  p {
+    margin: 0 1em;
+    flex: 1 1 0;
+  }
+
+  .bar {
+    @include flex(row, true, true);
+    width: 100%;
+    overflow-x: hidden;
+
+    .sumCat {
+      @include flex(row, true, true);
+      height: 3em;
+      box-shadow: inset 0 0 0 1px rgba(black, 0.1);
+      color: white;
+      white-space: pre-line;
+      line-height: 0.9em;
+      overflow: clip;
+      position: relative;
+
+      p {
+        @include text-shadow;
+        @include absolute_cover;
+        text-align: center;
+        position: absolute;
+        margin: 0;
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    .space {
+      flex-grow: 1;
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+}
