@@ -9,22 +9,36 @@
 
 .previewWrapper {
   @include flex(column, true, true);
-  background: $c-background-dark;
-  padding: 0 0.25rem;
-  min-height: 600px;
+  background: $c-background;
 
   .carousel {
-    width: 120px;
+    width: 100%;
     flex-shrink: 0;
     @include flex(column, true, true);
+    background: $c-background-dark;
   }
 
   .activePreview {
     flex-grow: 1;
     @include flex(row, true, true);
+    padding: 0 0.25rem;
+    height: 780px;
+    position: relative;
 
     img {
       max-width: 100%;
+    }
+
+    .loading {
+      @include absolute_cover;
+      @include flex(row, true, true);
+      background: rgba(black, 0.3);
+      opacity: 1;
+      @include transition;
+    }
+    .hidden {
+      visibility: hidden;
+      opacity: 0;
     }
   }
 }

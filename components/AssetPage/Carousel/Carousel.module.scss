@@ -1,0 +1,19 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.imageRow {
+  @include flex(row, true, true);
+  width: 100%;
+  overflow-x: auto;
+}
+
+.image {
+  line-height: 0;
+  padding: 0.3em 0.5em;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}

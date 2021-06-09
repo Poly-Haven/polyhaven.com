@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useEffect } from "react";
 import Link from 'next/link';
 
@@ -8,6 +9,8 @@ import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
 import Todo from 'components/Todo/Todo'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
+import Spinner from 'components/Spinner/Spinner'
+import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
@@ -15,12 +18,8 @@ import Sponsor from './Sponsor'
 import styles from './AssetPage.module.scss'
 
 const AssetPage = ({ assetID, data }) => {
+  const [imageLoading, setImageLoading] = useState(false)
 
-  const ext = {
-    0: 'jpg',
-    1: 'png',
-    2: 'png'
-  }
   const authors = Object.keys(data.authors)
   const multiAuthor = authors.length > 1;
 
@@ -34,14 +33,31 @@ const AssetPage = ({ assetID, data }) => {
     document.getElementById('header-frompath').innerHTML = ""
   });
 
+  const setPreviewImage = (src) => {
+    setImageLoading(true)
+    document.getElementById('activePreview').setAttribute('src', src + "?height=780");
+  }
+  const hideSpinner = (e) => {
+    setImageLoading(false)
+  }
+
   return (
     <div className={styles.wrapper}>
       <Page immersiveScroll={true}>
         <div className={styles.previewWrapper}>
           <div className={styles.activePreview}>
-            <img src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.${ext[data.type]}?width=1559`} />
+            <img
+              id="activePreview"
+              onLoad={hideSpinner}
+              src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
+            />
+            <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
+              <Spinner />
+            </div>
           </div>
-          <div className={styles.carousel}><Todo>Image carousel</Todo></div>
+          <div className={styles.carousel}>
+            <Carousel slug={assetID} setter={setPreviewImage} />
+          </div>
         </div>
         <Todo>Backplates, similar assets, user renders</Todo>
       </Page>
