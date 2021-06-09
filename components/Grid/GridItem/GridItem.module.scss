@@ -39,7 +39,7 @@
 .thumb {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: 140px;
 
   img {
     display: block;
@@ -66,6 +66,7 @@
     padding-bottom: 0.2em;
     margin: 0;
     text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
   }
   p {
     text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);

@@ -1,0 +1,12 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  @include flex(row, true);
+  padding: 1em;
+}
+
+.item {
+  flex: 1 0 0;
+}

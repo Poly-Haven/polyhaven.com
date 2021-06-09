@@ -26,4 +26,8 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
   );
 }
 
+GridItem.defaultProps = {
+  onClick: null
+}
+
 export default GridItem;

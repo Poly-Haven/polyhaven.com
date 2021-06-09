@@ -1,23 +1,25 @@
 import { useState } from 'react'
 import { useEffect } from "react";
 import Link from 'next/link';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 
 import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
-import Todo from 'components/Todo/Todo'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import Spinner from 'components/Spinner/Spinner'
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
+import Similar from './Similar/Similar'
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
 
 import styles from './AssetPage.module.scss'
 
-const AssetPage = ({ assetID, data }) => {
+const AssetPage = ({ assetID, data, scrollPosition }) => {
+  const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
 
   const authors = Object.keys(data.authors)
@@ -33,22 +35,31 @@ const AssetPage = ({ assetID, data }) => {
     document.getElementById('header-frompath').innerHTML = ""
   });
 
+  const clickSimilar = () => {
+    document.getElementById('page').scrollTop = 0
+    setPageLoading(true)
+  }
+
   const setPreviewImage = (src) => {
     setImageLoading(true)
     document.getElementById('activePreview').setAttribute('src', src + "?height=780");
   }
-  const hideSpinner = (e) => {
+  const imageLoaded = (e) => {
     setImageLoading(false)
+    setPageLoading(false)
   }
 
   return (
     <div className={styles.wrapper}>
+      <div className={`${styles.loading} ${!pageLoading ? styles.hidden : null}`}>
+        <Spinner />
+      </div>
       <Page immersiveScroll={true}>
         <div className={styles.previewWrapper}>
           <div className={styles.activePreview}>
             <img
               id="activePreview"
-              onLoad={hideSpinner}
+              onLoad={imageLoaded}
               src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
             />
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
@@ -59,7 +70,10 @@ const AssetPage = ({ assetID, data }) => {
             <Carousel slug={assetID} setter={setPreviewImage} />
           </div>
         </div>
-        <Todo>Backplates, similar assets, user renders</Todo>
+        <div className={styles.similar}>
+          <h2>Similar Assets:</h2>
+          <Similar slug={assetID} scrollPosition={scrollPosition} onClick={clickSimilar} />
+        </div>
       </Page>
 
       <div className={styles.sidebar}>
@@ -128,4 +142,4 @@ const AssetPage = ({ assetID, data }) => {
   )
 }
 
-export default AssetPage
+export default trackWindowScroll(AssetPage)
