@@ -62,9 +62,8 @@ const Home = () => {
       </div>
 
       <div className={`${styles.sectionWrapper} ${styles.windowBannerRend}`}>
-        <div className={styles.gradientRight} />
+        <div className={styles.gradientLeft} />
         <div className={styles.section}>
-          <div className={styles.subSection} />
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>100% Free</h2>
@@ -72,12 +71,13 @@ const Home = () => {
               <p>No paywalls or signup required, simply download what you want and use it immediately without worry.</p>
             </div>
           </div>
+          <div className={styles.subSection} />
         </div>
       </div>
-
       <div className={`${styles.sectionWrapper} ${styles.windowBannerClay}`}>
-        <div className={styles.gradientLeft} />
+        <div className={styles.gradientRight} />
         <div className={styles.section}>
+          <div className={styles.subSection} />
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>High Quality</h2>
@@ -86,7 +86,6 @@ const Home = () => {
               <p>Our target is to create content that will not just hold up to today's standards, but higher future standards, and the potential of future hardware too.</p>
             </div>
           </div>
-          <div className={styles.subSection} />
         </div>
       </div>
 
