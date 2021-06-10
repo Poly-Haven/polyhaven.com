@@ -2,10 +2,13 @@ import apiSWR from 'utils/apiSWR'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, setter }) => {
+const Carousel = ({ slug, assetType, setter }) => {
   let images = {
-    "Sphere": `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png`,
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
+  }
+  if (assetType !== 2) {
+    // Model thumb and primary are the same, don't need to show both.
+    images["Thumb"] = `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png`
   }
 
   const { data, error } = apiSWR(`/renders/${slug}`, { revalidateOnFocus: false });
@@ -14,13 +17,43 @@ const Carousel = ({ slug, setter }) => {
       images[i] = `https://cdn.polyhaven.com/asset_img/renders/${slug}/${i}`
   }
 
+  const sortPreference = {
+    "Thumb": 1,
+    "Preview": 2,
+    "clay.png": 3,
+    "cam_": 4,
+    "ANYTHING ELSE": 5,
+    "orth_": 6
+  }
+  let sortedKeys = Object.keys(images).sort((a, b) => {
+    const startsWithPrefs = ["cam_", "orth_"]
+    let prefA = sortPreference[a]
+    let prefB = sortPreference[b]
+    for (const swp of startsWithPrefs) {
+      if (!prefA && a.startsWith(swp)) {
+        prefA = sortPreference[swp]
+      }
+      if (!prefB && b.startsWith(swp)) {
+        prefB = sortPreference[swp]
+      }
+    }
+    prefA = prefA || sortPreference["ANYTHING ELSE"]
+    prefB = prefB || sortPreference["ANYTHING ELSE"]
+    let result = 0;
+    if (prefA === prefB) {
+      result = (a.toLowerCase() < b.toLowerCase()) ? -1 : 1;
+    }
+    result = prefA < prefB ? -1 : 1
+    return result
+  })
+
   const click = (e) => {
     setter(e.currentTarget.title)
   }
 
   return (
     <div className={styles.imageRow}>
-      {Object.keys(images).map((i, k) =>
+      {sortedKeys.map((i, k) =>
         <div key={k} title={images[i]} onClick={click} className={styles.image}>
           <img src={images[i] + "?height=110"} />
         </div>

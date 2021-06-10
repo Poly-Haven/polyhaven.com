@@ -67,7 +67,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} setter={setPreviewImage} />
+            <Carousel slug={assetID} assetType={data.type} setter={setPreviewImage} />
           </div>
         </div>
         <div className={styles.similar}>
