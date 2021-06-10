@@ -8,7 +8,7 @@ const Avatar = ({ id, size }) => {
       height={size}
       onError={e => {
         const target = e.target as HTMLImageElement;
-        target.style.display = 'none'
+        target.src = `https://cdn.polyhaven.com/people/fallback.png?width=${size}`
       }}
       className={styles.avatar}
     />
