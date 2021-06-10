@@ -22,7 +22,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
 
-  const authors = Object.keys(data.authors)
+  const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
           <Download assetID={assetID} data={data} />
 
-          <InfoItem label="Author" flex>
+          <InfoItem label={`${multiAuthor ? "Authors" : "Author"}`} flex>
             <div className={styles.authors}>
               {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
             </div>

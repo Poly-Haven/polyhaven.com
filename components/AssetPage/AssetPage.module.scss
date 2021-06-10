@@ -57,7 +57,8 @@
     }
 
     .authors {
-      @include flex(row, true, true);
+      flex-grow: 1;
+      @include flex(column, true, true);
       text-align: center;
       a {
         box-shadow: none;

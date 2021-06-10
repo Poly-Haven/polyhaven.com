@@ -23,10 +23,12 @@
   }
 
   .links {
-    @include flex(column, true, true);
+    @include flex(row, true, true);
     padding-right: 0.3em;
 
     a {
+      padding: 0.1em;
+      padding-bottom: 0;
       display: flex;
       @include transition();
 

@@ -24,19 +24,24 @@ const AuthorCredit = ({ id, size, credit }) => {
     donate = data.donate
   }
 
+  if (donate && donate.startsWith('paypal:')) {
+    const paypalEmailToLink = (email, description) => `https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=${email}&item_name=${description}`;
+    donate = paypalEmailToLink(donate.slice('paypal:'.length), "Poly Haven: " + name)
+  }
+
   return (
     <div className={styles.author}>
       <div className={styles.avatar}>
         <Avatar id={id} size={50} />
       </div>
-      <div className={styles.links}>
-        {link ? <a href={link} target="_blank"><MdLink /></a> : ""}
-        {email ? <a href={`mailto:${email}`} target="_blank"><MdMail /></a> : ""}
-        {donate ? <a href={donate} target="_blank"><Heart /></a> : ""}
-      </div>
       <div className={styles.name}>
         <strong>{id}</strong>
         {credit ? <span className={styles.credit}>{credit}</span> : ""}
+        <div className={styles.links}>
+          {link ? <a href={link} target="_blank"><MdLink /></a> : ""}
+          {email ? <a href={`mailto:${email}`} target="_blank"><MdMail /></a> : ""}
+          {donate ? <a href={donate} target="_blank"><Heart /></a> : ""}
+        </div>
       </div>
     </div>
   )
