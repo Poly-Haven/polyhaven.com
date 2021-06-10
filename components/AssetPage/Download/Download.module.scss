@@ -23,6 +23,15 @@
   user-select: none;
   @include transition();
 
+  .error {
+    text-align: center;
+    padding: 0 0.5em;
+    em {
+      font-weight: normal;
+      font-size: 0.8em;
+    }
+  }
+
   svg {
     width: 1.5em;
     height: 1.5em;

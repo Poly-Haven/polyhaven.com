@@ -33,7 +33,7 @@ const Download = ({ assetID, data }) => {
 
   const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
   if (error) {
-    return <div><div className={styles.downloadBtn}>Error!</div></div>
+    return <div><div className={styles.downloadBtn}><span className={styles.error}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></span></div></div>
   } else if (!files) {
     return <div><div className={styles.downloadBtn}><Loader /></div></div>
   }
