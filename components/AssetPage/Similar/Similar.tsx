@@ -14,8 +14,7 @@ const Similar = ({ slug, scrollPosition, onClick }) => {
   return (
     <div className={styles.wrapper}>
       {Object.keys(data).map(asset => {
-        return (<div className={styles.item}><GridItem
-          key={asset}
+        return (<div className={styles.item} key={asset}><GridItem
           asset={data[asset]}
           assetID={asset}
           scrollPosition={scrollPosition}
