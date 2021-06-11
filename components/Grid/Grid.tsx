@@ -139,7 +139,7 @@ const Grid = (props) => {
                 <MdClose className={styles.resetSearchIcon} onClick={resetSearch} />
                 : null}
             </div>
-            {props.search ? <p>{sortedKeys.length} results</p> : null}
+            {<p className={styles.numResults}>{sortedKeys.length} results</p>}
           </div>
         </div>
         <div className={styles.adGridTop}>
