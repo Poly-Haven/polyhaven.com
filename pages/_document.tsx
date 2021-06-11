@@ -18,7 +18,6 @@ export default class CustomDocument extends Document {
           <meta property="og:site_name" content="Poly Haven" />
           <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
           <meta content="utf-8" http-equiv="encoding" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="theme-color" content="rgb(190, 111, 255)" />
 
           {/* Download service worker */}
