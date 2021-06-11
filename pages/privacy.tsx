@@ -4,7 +4,11 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 
 const PrivacyPage = () => {
   return (
-    <TextPage title="Privacy Policy">
+    <TextPage
+      title="Privacy Policy"
+      description="Read our Privacy Policy, including information about third party services."
+      url="/privacy"
+    >
       <h1>Privacy Policy</h1>
 
       <h2>Third Party Cookies</h2>

@@ -6,9 +6,11 @@ export default function Custom404() {
   return (
     <Page>
       <Head>
-        <title>
-          Error: 404
-        </title>
+        <title>¯\_(ツ)_/¯</title>
+        <meta
+          name="description"
+          content="Page not found."
+        />
       </Head>
       <h1>404</h1>
       <p>Page Not Found</p>

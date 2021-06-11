@@ -4,7 +4,11 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 
 const LicensePage = () => {
   return (
-    <TextPage title="License">
+    <TextPage
+      title="License"
+      description="CC0 means absolute freedom."
+      url="/license"
+    >
       <h1>Asset License</h1>
       <p>All assets (<Link href="/hdris">HDRIs</Link>, <Link href="/textures">textures</Link> and <Link href="/models">3D models</Link>) on this site are the original work of Poly Haven staff, or artists who willingly and directly donate/sell their work to Poly Haven.</p>
       <p>Our assets are all licensed as <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>, which is effectively <a href="https://en.wikipedia.org/wiki/Public_domain">Public Domain</a> even in jurisdictions that do not support the Public Domain.</p>

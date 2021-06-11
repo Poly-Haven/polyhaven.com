@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from 'components/Head/Head'
 
 import Library from 'containers/Library/Library'
 
@@ -11,13 +11,13 @@ const LibraryPage = (props) => {
   if (props.categories.length) {
     title += ": " + titleCase(props.categories.join(' > '))
   }
-  title += " • Poly Haven"
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <Head
+        title={title}
+        url={`/${props.assetType}/${props.categories.join('/')}`}
+      />
       <Library
         assetType={props.assetType}
         categories={props.categories}

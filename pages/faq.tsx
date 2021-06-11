@@ -3,7 +3,11 @@ import FaqPage from 'components/FaqPage/FaqPage'
 
 const FAQ = () => {
   return (
-    <TextPage title="FAQ">
+    <TextPage
+      title="FAQ"
+      description="Frequently questions and their answers."
+      url="/faq"
+    >
       <FaqPage />
     </TextPage>
   )

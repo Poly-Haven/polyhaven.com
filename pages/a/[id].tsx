@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'components/Head/Head'
 
 import { assetTypeName } from 'utils/assetTypeName'
 
@@ -13,12 +13,11 @@ function handleErrors(response) {
 }
 
 const Page = ({ assetID, data }) => {
+  const pageUrl = `/a/${assetID}`
   if (!data) {
     return (
       <ErrorPage>
-        <Head>
-          <title>Error: 404</title>
-        </Head>
+        <Head title="Error: 404" url={pageUrl} />
         <h1>404</h1>
         <p>No asset with id: "{assetID}"</p>
       </ErrorPage>
@@ -26,9 +25,15 @@ const Page = ({ assetID, data }) => {
   }
   return (
     <div className="content">
-      <Head>
-        <title>{data.name} {assetTypeName(data.type, false)} • Poly Haven</title>
-      </Head>
+      <Head
+        title={`${data.name} ${assetTypeName(data.type, false)}`}
+        description={`Download this free ${assetTypeName(data.type, false)} from Poly Haven`}
+        url={pageUrl}
+        assetType={data.type}
+        author={Object.keys(data.authors).join(', ')}
+        keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
+        image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630`}
+      />
       <div>
         <AssetPage assetID={assetID} data={data} />
       </div>
