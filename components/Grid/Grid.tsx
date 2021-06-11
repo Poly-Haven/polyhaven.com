@@ -12,6 +12,7 @@ import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
 import AdTop from 'components/Ads/GridTop'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
+import Disabled from 'components/UI/Disabled/Disabled'
 
 import styles from './Grid.module.scss';
 
@@ -113,11 +114,17 @@ const Grid = (props) => {
           <h1 className={styles['s' + fSize]}>{title}</h1>
           <div className={styles.options}>
             <div className={styles.menuSelection}>
-              <Dropdown
-                value={props.sort}
-                options={Object.keys(sortBy)}
-                onChange={setSort}
-              />
+              <Disabled
+                disabled={Boolean(props.search)}
+                tooltip="Sorting by search relevance."
+                tooltipSide={"bottom"}
+              >
+                <Dropdown
+                  value={props.sort}
+                  options={Object.keys(sortBy)}
+                  onChange={setSort}
+                />
+              </Disabled>
             </div>
             <div className={styles.search}>
               <MdSearch className={styles.searchIcon} />

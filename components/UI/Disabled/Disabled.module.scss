@@ -1,0 +1,8 @@
+.disabled {
+  cursor: not-allowed;
+
+  .contents {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
