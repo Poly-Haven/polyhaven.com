@@ -14,7 +14,7 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
   const fullUrl = "https://polyhaven.com" + url
   return (
     <Head>
-      <title>{title} • Poly Haven</title>
+      <title>{title}{title !== 'Poly Haven' ? ` • Poly Haven` : ''}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={`${keywords}${keywords ? ',' : ''}${defaultKeywords}`} />
       <meta name="author" content={author} />
