@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from 'react'
+import { useState, useEffect } from "react";
 import filesize from 'filesize'
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
@@ -14,8 +13,7 @@ import apiSWR from 'utils/apiSWR'
 
 import styles from './Download.module.scss'
 
-// Just to keep TS happy, these funcitons exists in /public/download-js/download.js, which are loaded in _document.tsx
-declare const testDownload
+// Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
 const Download = ({ assetID, data }) => {
@@ -29,7 +27,7 @@ const Download = ({ assetID, data }) => {
   useEffect(() => {
     setRes(localStorage.getItem(`assetPref_${data.type}_resolution`) || '4k')
     setFmt(localStorage.getItem(`assetPref_${data.type}_format`) || 'exr')
-  });
+  }, [prefRes, prefFmt]);
 
   const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
   if (error) {
@@ -98,7 +96,6 @@ const Download = ({ assetID, data }) => {
         })
       }
     }
-    // testDownload(name, dlFiles)
     startDownload(name, dlFiles)
 
     await new Promise(r => setTimeout(r, 2000)).then(_ => {
