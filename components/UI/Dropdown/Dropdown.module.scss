@@ -108,6 +108,7 @@
   background: $c-background;
   border: 1px solid rgba($c-text-light, 0.2);
   border-top: none;
+  z-index: 2;
   @include transition(0.1s);
 
   .option {
