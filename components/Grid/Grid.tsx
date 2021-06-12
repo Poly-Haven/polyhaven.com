@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
-import { MdSearch } from 'react-icons/md'
-import { MdClose } from 'react-icons/md'
+import { MdSearch, MdClose } from 'react-icons/md'
+import { MdWhatshot, MdEvent, MdStar, MdSortByAlpha } from 'react-icons/md'
 
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
@@ -39,7 +39,7 @@ const Grid = (props) => {
   }
 
   const setSort = selectedOption => {
-    props.setSort(selectedOption.value)
+    props.setSort(selectedOption)
   };
   const setSearch = event => {
     props.setSearch(event.target.value);
@@ -107,6 +107,29 @@ const Grid = (props) => {
   }
   const fSize = Math.floor(title.length / 17.5);  // Rough detection of line length used to reduce font size.
 
+  const sortOptions = {
+    hot: {
+      label: "Hot",
+      tooltip: "Downloads per day, with newer assets weighted slightly higher.",
+      icon: <MdWhatshot />
+    },
+    latest: {
+      label: "Latest",
+      tooltip: "Most recently published.",
+      icon: <MdEvent />
+    },
+    top: {
+      label: "Top",
+      tooltip: "Total download count of all time.",
+      icon: <MdStar />
+    },
+    name: {
+      label: "Name",
+      tooltip: "Sorted alphabetically.",
+      icon: <MdSortByAlpha />
+    }
+  }
+
   return (
     <>
       <div className={styles.optionsBar}>
@@ -121,7 +144,8 @@ const Grid = (props) => {
               >
                 <Dropdown
                   value={props.sort}
-                  options={Object.keys(sortBy)}
+                  options={sortOptions}
+                  label="Sort by"
                   onChange={setSort}
                 />
               </Disabled>

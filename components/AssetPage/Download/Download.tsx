@@ -3,9 +3,12 @@ import filesize from 'filesize'
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
 
-import Dropdown from 'components/UI/Dropdown/Dropdown';
+import Dropdown from 'components/UI/Dropdown/Dropdown'
 import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
+import IconBlender from 'components/UI/Icons/Blender'
+import IconGltf from 'components/UI/Icons/glTF'
+import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
@@ -53,19 +56,43 @@ const Download = ({ assetID, data }) => {
     setDlOptions(!dlOptions);
   }
 
-  const resOptions = sortRes(Object.keys(files[baseKey]));
+  const resOptionKeys = sortRes(Object.keys(files[baseKey]));
+  const resOptions = {}
+  for (const r of resOptionKeys) {
+    resOptions[r] = { label: r.toUpperCase() }
+  }
   const setResValue = v => {
-    setRes(v.value)
-    localStorage.setItem(`assetPref_${data.type}_resolution`, v.value)
+    setRes(v)
+    localStorage.setItem(`assetPref_${data.type}_resolution`, v)
   }
-  const dlRes = resOptions.includes(prefRes) ? prefRes : resOptions.slice(-1)[0]
+  const dlRes = resOptionKeys.includes(prefRes) ? prefRes : resOptionKeys.slice(-1)[0]
 
-  const fmtOptions = isHDRI ? ['hdr', 'exr'] : ['blend', 'gltf'];
+  const fmtOptions = isHDRI ? {
+    hdr: {
+      label: "HDR",
+      tooltip: "Radiance RGBE (.hdr)<br/>Usually smaller and more widely supported than EXR, but may very rarely have less accurate colors."
+    },
+    exr: {
+      label: "EXR",
+      tooltip: "Open EXR (.exr)<br/>True 32-bit per channel, losslessly compressed."
+    },
+  } : {
+    blend: {
+      label: "Blend",
+      tooltip: "Blender 2.8+<br/>Includes all required texture maps.",
+      icon: <IconBlender />
+    },
+    gltf: {
+      label: "glTF",
+      tooltip: "glTF 2.0, supported by most 3D software.<br/>Includes all required texture maps.",
+      icon: <IconGltf />
+    },
+  };
   const setFmtValue = v => {
-    setFmt(v.value)
-    localStorage.setItem(`assetPref_${data.type}_format`, v.value)
+    setFmt(v)
+    localStorage.setItem(`assetPref_${data.type}_format`, v)
   }
-  const dlFmt = fmtOptions.includes(prefFmt) ? prefFmt : (isHDRI ? 'hdr' : 'blend')
+  const dlFmt = Object.keys(fmtOptions).includes(prefFmt) ? prefFmt : (isHDRI ? 'hdr' : 'blend')
 
   let fsize = 0
   const fileInfo = files[isHDRI ? 'hdri' : dlFmt][dlRes][dlFmt]
@@ -111,13 +138,18 @@ const Download = ({ assetID, data }) => {
           value={dlRes}
           options={resOptions}
           onChange={setResValue}
-          small={true} />
+          small={true}
+          tooltipID="dropdown-res"
+        />
 
         <Dropdown
           value={dlFmt}
           options={fmtOptions}
           onChange={setFmtValue}
-          small={true} />
+          small={true}
+          tooltipSide="left"
+          tooltipID="dropdown-fmt"
+        />
 
         <a
           href={isHDRI ? files['hdri'][dlRes][dlFmt].url : null}
@@ -138,6 +170,7 @@ const Download = ({ assetID, data }) => {
         }
       </div>
       <DownloadOptions open={dlOptions} files={files} res={dlRes} format={dlFmt} />
+      <Tooltip id='dropdown' place='left' />
     </div>
   )
 }

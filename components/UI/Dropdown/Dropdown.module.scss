@@ -2,95 +2,139 @@
 @import "constants/mixins";
 @import "constants/variables";
 
-.menu {
+.wrapper {
+  position: relative;
   width: 200px;
-  text-transform: capitalize;
 
   &:hover {
-    .control {
+    .button {
       background-color: $c-background-light;
-    }
-  }
 
-  .control {
-    display: flex;
-    align-items: center;
-    height: 2.5rem;
-    padding: 0 1rem;
-    background: $c-background;
-    color: $c-text-light;
-    border-radius: 0;
-    border: 1px solid rgba($c-text-light, 0.2);
-    cursor: pointer;
-  }
-
-  .dropdown {
-    background: $c-background;
-    border: 1px solid rgba($c-text-light, 0.2);
-    white-space: nowrap;
-    max-height: unset;
-  }
-
-  .arrow {
-    position: relative;
-    top: 0;
-    right: 0;
-  }
-
-  .labelSort {
-    font-weight: bold;
-    flex-grow: 1;
-
-    &::before {
-      content: "Sort by: ";
-      font-weight: normal;
+      .arrow {
+        transform: rotate(90deg);
+      }
     }
   }
 }
-.menuSml {
-  @extend .menu;
-  border: none;
-  border-right: 1px solid $c-accent-light;
+
+.wrapperSmall {
+  position: relative;
   width: 3rem;
-  text-align: center;
+  height: 3rem;
 
   &:hover {
-    .control {
+    .buttonSmall {
       background-color: $c-accent-light;
     }
   }
+}
 
-  .control {
-    display: grid;
-    place-items: center;
-    border: none;
-    padding: 0;
-    padding-top: 0.4em;
-    height: 3rem;
-    background: $c-accent;
-    min-width: 3rem;
-    color: white;
-    @include transition();
+.button {
+  @include flex(row, true);
+  height: calc(2.5rem - 2px);
+  padding: 0 0.5rem 0 1rem;
+  background: $c-background;
+  color: $c-text-light;
+  border-radius: 0;
+  border: 1px solid rgba($c-text-light, 0.2);
+  cursor: pointer;
+  user-select: none;
+  @include transition;
 
-    &:hover {
-      background: $c-accent-light;
+  .buttonValue {
+    flex-grow: 1;
+    @include flex(row, true);
+    font-weight: bold;
+    padding-left: 0.3em;
+    user-select: none;
+
+    svg {
+      pointer-events: none;
+      flex-shrink: 0;
+      font-size: 1.4em;
+      padding-right: 0.1em;
     }
-  }
-
-  .dropdown {
-    margin-top: 0;
-    min-width: calc(100% + 1px);
-    width: auto;
   }
 
   .arrow {
-    filter: brightness(2); // Hack to easily change arrow color without fiddling with borders.
-    top: -0.6em;
+    flex-shrink: 0;
+    font-size: 1.5em;
+    line-height: 0;
+    @include transition(0.1s);
   }
+}
 
-  .labelSort {
-    &::before {
-      content: none;
+.buttonSmall {
+  @include flex(row, true, true);
+  height: 100%;
+  background: $c-accent;
+  color: white;
+  border: none;
+  border-right: 1px solid $c-accent-light;
+  cursor: pointer;
+  user-select: none;
+  @include transition;
+
+  .buttonValue {
+    flex-grow: 1;
+    @include flex(row, true, true);
+    padding-bottom: 0.4em;
+    font-weight: bold;
+    user-select: none;
+
+    svg {
+      pointer-events: none;
+      flex-shrink: 0;
+      font-size: 1.4em;
     }
   }
+
+  .arrow {
+    position: absolute;
+    bottom: 0.25em;
+    font-size: 1em;
+    line-height: 0;
+  }
+}
+
+.menu {
+  position: absolute;
+  left: 0;
+  min-width: calc(100% - 2px);
+  top: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background: $c-background;
+  border: 1px solid rgba($c-text-light, 0.2);
+  border-top: none;
+  @include transition(0.1s);
+
+  .option {
+    @include flex(row, true);
+    padding: 0 1rem;
+    height: 2.5rem;
+    user-select: none;
+
+    &:hover {
+      background-color: $c-accent;
+      cursor: pointer;
+      color: white;
+    }
+
+    svg {
+      pointer-events: none;
+      flex-shrink: 0;
+      font-size: 1.4em;
+      padding-right: 0.2em;
+    }
+  }
+  .active {
+    font-weight: bold;
+    color: white;
+  }
+}
+.show {
+  opacity: 1;
+  visibility: visible;
 }

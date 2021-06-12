@@ -1,25 +1,72 @@
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import { useState, useEffect, useRef } from 'react'
+
+import { MdExpandMore } from 'react-icons/md'
+
+import Tooltip from 'components/Tooltip/Tooltip'
 
 import styles from './Dropdown.module.scss'
 
-const WrapperDropdown = ({ value, options, onChange, small }) => {
+const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltipID }) => {
+  const [expand, setExpand] = useState(false);
+  const ref = useRef(null);
+
+  const toggle = () => {
+    setExpand(!expand)
+  }
+
+  const handleClickOutside = (event) => {
+    if (expand && ref.current && !ref.current.contains(event.target)) {
+      setExpand(false);
+    }
+  };
+
+  const setValue = (e) => {
+    setExpand(false);
+    onChange(e.target.dataset.value);
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  });
+
+  const buttonValue = small ? <>{options[value].icon || options[value].label}</> : <>{options[value].icon ? options[value].icon : null}{options[value].label}</>
+
   return (
-    <Dropdown
-      className={small ? styles.menuSml : styles.menu}
-      controlClassName={styles.control}
-      menuClassName={styles.dropdown}
-      placeholderClassName={styles.labelSort}
-      arrowClassName={styles.arrow}
-      options={options}
-      value={value}
-      placeholder="Select an option"
-      onChange={onChange} />
+    <div className={small ? styles.wrapperSmall : styles.wrapper} ref={ref}>
+      <div className={small ? styles.buttonSmall : styles.button} onClick={toggle}>
+        {label ? `${label}:` : null}
+        <div className={styles.buttonValue}>{buttonValue}</div>
+        <div className={styles.arrow}>
+          <MdExpandMore />
+        </div>
+      </div>
+      <div className={`${styles.menu} ${expand ? styles.show : null}`}>
+        {Object.keys(options).map((k, i) =>
+          <div
+            key={i}
+            data-value={k}
+            data-tip={options[k].tooltip || null}
+            data-for={tooltipID}
+            className={`${styles.option} ${k === value ? styles.active : null}`} onClick={setValue}
+          >
+            {options[k].icon ? options[k].icon : null}
+            {options[k].label}
+          </div>
+        )}
+      </div>
+      <Tooltip id={tooltipID} place={tooltipSide} />
+    </div>
   )
 }
 
-WrapperDropdown.defaultProps = {
-  small: false
+Dropdown.defaultProps = {
+  label: null,
+  small: false,
+  tooltipSide: "right",
+  tooltipID: "dropdown"
 }
 
-export default WrapperDropdown
+export default Dropdown
