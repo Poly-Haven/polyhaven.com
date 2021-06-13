@@ -163,13 +163,11 @@ const Download = ({ assetID, data }) => {
           </div>
           <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}><Loader /></div>
         </a>
-        {isHDRI ? null :
-          <div className={styles.downloadBtnSml} onClick={toggleDlOptions}>
-            {dlOptions ? <MdArrowBack /> : <MdMenu />}
-          </div>
-        }
+        <div className={styles.downloadBtnSml} onClick={toggleDlOptions}>
+          {dlOptions ? <MdArrowBack /> : <MdMenu />}
+        </div>
       </div>
-      <DownloadOptions open={dlOptions} files={files} res={dlRes} format={dlFmt} />
+      <DownloadOptions open={dlOptions} files={files} res={dlRes} type={data.type} />
       <Tooltip id='dropdown' place='left' />
     </div>
   )

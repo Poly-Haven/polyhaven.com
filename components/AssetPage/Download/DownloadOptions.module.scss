@@ -29,6 +29,7 @@
   }
 
   .format {
+    @include flex(row, true, true);
     font-size: 0.9em;
     font-weight: bold;
     padding: 0.3em 0.5em;
@@ -49,5 +50,17 @@
       background: $c-accent;
       border-color: $c-accent;
     }
+
+    svg {
+      height: 1.3em;
+      padding-right: 0.5em;
+    }
+  }
+}
+
+.wideOptionRow {
+  .format {
+    text-transform: none;
+    width: 100%;
   }
 }
