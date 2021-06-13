@@ -93,22 +93,22 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           <InfoItem label="Published">
             {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
           </InfoItem>
-          <InfoItem label="Dynamic Range" condition={data.evs_cap !== undefined}>
+          <InfoItem label="Dynamic Range" condition={Boolean(data.evs_cap)}>
             {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
           </InfoItem>
-          <InfoItem label="Scale" condition={data.scale !== undefined}>
+          <InfoItem label="Scale" condition={Boolean(data.scale)}>
             {data.scale}
           </InfoItem>
-          <InfoItem label="Captured" condition={data.date_taken !== undefined}>
+          <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
             {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
           </InfoItem>
-          <InfoItem label="Location" condition={data.coords !== undefined}>
+          <InfoItem label="Location" condition={Boolean(data.coords)}>
             {data.coords ? data.coords.join(', ') : null}
           </InfoItem>
-          <InfoItem label="Whitebalance" condition={data.whitebalance !== undefined}>
+          <InfoItem label="Whitebalance" condition={Boolean(data.whitebalance)}>
             {data.whitebalance}K
           </InfoItem>
-          <InfoItem label="Downloads">
+          <InfoItem label="Downloads" condition={Boolean(data.download_count)}>
             {data.download_count}
           </InfoItem>
 
