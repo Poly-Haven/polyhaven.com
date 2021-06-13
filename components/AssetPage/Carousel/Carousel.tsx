@@ -48,13 +48,13 @@ const Carousel = ({ slug, assetType, setter }) => {
   })
 
   const click = (e) => {
-    setter(e.currentTarget.title)
+    setter(e.currentTarget.dataset.src)
   }
 
   return (
     <div className={styles.imageRow}>
       {sortedKeys.map((i, k) =>
-        <div key={k} title={images[i]} onClick={click} className={styles.image}>
+        <div key={k} data-src={images[i]} onClick={click} className={styles.image}>
           <img src={images[i] + "?height=110"} />
         </div>
       )}
