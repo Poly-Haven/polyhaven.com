@@ -23,7 +23,10 @@ const BackplateList = ({ assetID, files, setPreview }) => {
         {Object.keys(files).sort().map((n, i) => {
           const bp = files[n]
           return <div key={i} className={styles.thumbnail}>
-            <img src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=144`} />
+            <img
+              src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=144`}
+              data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg`}
+              onClick={preview} />
             <div className={styles.buttonWrapper}>
               <div
                 className={styles.button}
