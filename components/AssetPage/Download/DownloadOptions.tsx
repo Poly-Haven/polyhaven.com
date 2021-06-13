@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import filesize from 'filesize'
 
+import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
 import Switch from 'components/UI/Switch/Switch'
 import IconMacbeth from 'components/UI/Icons/Macbeth'
@@ -9,7 +10,7 @@ import { sortCaseInsensitive } from 'utils/arrayUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, files, res, type }) => {
+const DownloadOptions = ({ open, assetID, files, res, type, setPreview }) => {
   const [norMode, setNorMode] = useState('gl')
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const DownloadOptions = ({ open, files, res, type }) => {
             <a href={files['colorchart'].url} className={styles.format}><IconMacbeth />Color Chart • {filesize(files['colorchart'].size)}</a>
           </div>
         </> : null}
+        {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} setPreview={setPreview} /> : null}
       </div>
     </div>
   )

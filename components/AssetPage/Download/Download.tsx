@@ -19,7 +19,7 @@ import styles from './Download.module.scss'
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data }) => {
+const Download = ({ assetID, data, setPreview }) => {
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [prefRes, setRes] = useState('4k')
@@ -167,7 +167,14 @@ const Download = ({ assetID, data }) => {
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
         </div>
       </div>
-      <DownloadOptions open={dlOptions} files={files} res={dlRes} type={data.type} />
+      <DownloadOptions
+        open={dlOptions}
+        assetID={assetID}
+        files={files}
+        res={dlRes}
+        type={data.type}
+        setPreview={setPreview}
+      />
       <Tooltip id='dropdown' place='left' />
     </div>
   )

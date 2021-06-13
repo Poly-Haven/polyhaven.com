@@ -80,7 +80,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
         <div className={styles.info}>
 
-          <Download assetID={assetID} data={data} />
+          <Download assetID={assetID} data={data} setPreview={setPreviewImage} />
 
           <InfoItem label={`${multiAuthor ? "Authors" : "Author"}`} flex>
             <div className={styles.authors}>
