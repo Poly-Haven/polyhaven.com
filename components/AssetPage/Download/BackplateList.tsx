@@ -5,7 +5,7 @@ import { MdHelp, MdVisibility, MdFileDownload } from 'react-icons/md'
 
 import styles from './DownloadOptions.module.scss'
 
-const BackplateList = ({ assetID, files, setPreview }) => {
+const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
   const types = {
     jpg_pretty: { name: "Pretty JPG", tip: "With some visual improvements (as shown)." },
     jpg_plain: { name: "Plain JPG", tip: "No adjustments, converted straight from RAW." },
@@ -42,6 +42,9 @@ const BackplateList = ({ assetID, files, setPreview }) => {
                       className={styles.download}
                       href={bp[t].url}
                       target="_blank"
+                      onClick={trackDownload}
+                      data-res="backplate"
+                      data-format={t}
                       data-tip={types[t].tip + `<br/>(${filesize(bp[t].size)})`}
                     >
                       {types[t].name}

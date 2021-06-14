@@ -6,7 +6,7 @@ import { titleCase } from 'utils/stringUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadMap = ({ name, res, data }) => {
+const DownloadMap = ({ name, res, data, trackDownload }) => {
 
   let displayName = titleCase(name.replace('_', ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
@@ -32,8 +32,11 @@ const DownloadMap = ({ name, res, data }) => {
         <a
           key={i}
           href={data[f].url}
-          target="_blank"
           className={styles.format}
+          target="_blank"
+          data-res={res}
+          data-format={`${name}:${f}`}
+          onClick={trackDownload}
           data-tip={`${res} ${f}: ${filesize(data[f].size)}`}
         >
           {f}

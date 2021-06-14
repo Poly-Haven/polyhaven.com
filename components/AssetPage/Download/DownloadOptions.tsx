@@ -10,7 +10,7 @@ import { sortCaseInsensitive } from 'utils/arrayUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, assetID, files, res, type, setPreview }) => {
+const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview }) => {
   const [norMode, setNorMode] = useState('gl')
 
   useEffect(() => {
@@ -23,6 +23,24 @@ const DownloadOptions = ({ open, assetID, files, res, type, setPreview }) => {
     localStorage.setItem(`assetPref_normalType`, v)
   }
 
+  const trackDownload = async (e) => {
+    const data = {
+      uuid: localStorage.getItem(`uuid`) || tempUUID,
+      asset_id: assetID,
+      res: e.currentTarget.dataset.res,
+      format: e.currentTarget.dataset.format
+    }
+    await fetch(`/api/dlTrack`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(_ => {
+      console.log("Tracked download:", data)
+    })
+  }
+
   return (
     <div className={styles.wrapper}>
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
@@ -30,7 +48,7 @@ const DownloadOptions = ({ open, assetID, files, res, type, setPreview }) => {
           !['blend', 'gltf'].includes(m) ?
             m !== 'nor_dx' || norMode === 'dx' ?
               m !== 'nor_gl' || norMode === 'gl' ?
-                <DownloadMap key={i} name={m} res={res} data={files[m][res]} />
+                <DownloadMap key={i} name={m} res={res} data={files[m][res]} trackDownload={trackDownload} />
                 : null
               : null
             : null
@@ -50,15 +68,27 @@ const DownloadOptions = ({ open, assetID, files, res, type, setPreview }) => {
         }
         {type === 0 && files['tonemapped'] ? <>
           <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip="A low dynamic range preview of the HDRI. Sometimes useful as a preview, or for non-CG related uses, but do not use for lighting.">
-            <a href={files['tonemapped'].url} className={styles.format}>8K Tonemapped JPG • {filesize(files['tonemapped'].size)}</a>
+            <a
+              href={files['tonemapped'].url}
+              className={styles.format}
+              target="_blank"
+              data-res="tm"
+              onClick={trackDownload}
+            >8K Tonemapped JPG • {filesize(files['tonemapped'].size)}</a>
           </div>
         </> : null}
         {type === 0 && files['colorchart'] ? <>
           <div className={`${styles.optionRow} ${styles.wideOptionRow}`}>
-            <a href={files['colorchart'].url} className={styles.format}><IconMacbeth />Color Chart • {filesize(files['colorchart'].size)}</a>
+            <a
+              href={files['colorchart'].url}
+              className={styles.format}
+              target="_blank"
+              data-res="cc"
+              onClick={trackDownload}
+            ><IconMacbeth />Color Chart • {filesize(files['colorchart'].size)}</a>
           </div>
         </> : null}
-        {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} setPreview={setPreview} /> : null}
+        {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
       </div>
     </div>
   )

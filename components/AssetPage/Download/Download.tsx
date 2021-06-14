@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import filesize from 'filesize'
+import { v4 as uuid } from 'uuid';
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
 
@@ -24,6 +25,7 @@ const Download = ({ assetID, data, setPreview }) => {
   const [dlOptions, setDlOptions] = useState(false)
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
+  const [tempUUID, setTempUUID] = useState(uuid())  // Used if storage consent not given.
 
   const isHDRI = data.type === 0
 
@@ -103,6 +105,24 @@ const Download = ({ assetID, data, setPreview }) => {
     }
   }
 
+  const trackDownload = async () => {
+    const data = {
+      uuid: localStorage.getItem(`uuid`) || tempUUID,
+      asset_id: assetID,
+      res: dlRes,
+      format: dlFmt
+    }
+    await fetch(`/api/dlTrack`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(_ => {
+      console.log("Tracked download:", data)
+    })
+  }
+
   const downloadZip = async () => {
     if (busyDownloading) {
       return
@@ -129,6 +149,7 @@ const Download = ({ assetID, data, setPreview }) => {
       // Purely for a visual indication that something is happending, and to prevent accidental double clicks.
       setBusyDownloading(false)
     })
+    await trackDownload();
   }
 
   return (
@@ -153,8 +174,9 @@ const Download = ({ assetID, data, setPreview }) => {
 
         <a
           href={isHDRI ? files['hdri'][dlRes][dlFmt].url : null}
+          target="_blank"
           className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
-          onClick={isHDRI ? null : downloadZip}
+          onClick={isHDRI ? trackDownload : downloadZip}
         >
           <MdFileDownload />
           <div>
@@ -170,6 +192,7 @@ const Download = ({ assetID, data, setPreview }) => {
       <DownloadOptions
         open={dlOptions}
         assetID={assetID}
+        tempUUID={tempUUID}
         files={files}
         res={dlRes}
         type={data.type}
