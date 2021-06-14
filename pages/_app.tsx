@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Head from 'next/head'
 import Link from 'next/link';
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+import { v4 as uuid } from 'uuid';
 
 import Layout from 'components/Layout/Layout'
 
@@ -14,12 +15,18 @@ function MyApp({ Component, pageProps }) {
       'ad_storage': 'granted',
       'analytics_storage': 'granted'
     });
+    if (!localStorage.getItem(`uuid`)) {
+      localStorage.setItem(`uuid`, uuid())
+    }
   }
 
   useEffect(() => {
     const isConsent = getCookieConsentValue();
     if (isConsent === "true") {
       consentGranted();
+      if (!localStorage.getItem(`uuid`)) {
+        localStorage.setItem(`uuid`, uuid())
+      }
     }
   }, []);
 

@@ -24,7 +24,8 @@
     "react-tooltip": "^4.2.19",
     "recharts": "^2.0.9",
     "sass": "^1.32.8",
-    "swr": "^0.5.3"
+    "swr": "^0.5.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.3",
