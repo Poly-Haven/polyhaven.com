@@ -43,7 +43,7 @@ const Download = ({ assetID, data, setPreview }) => {
 
   // Find a key that we can use to fetch available resolutions and formats.
   let baseKey = 'UNKNOWN'
-  const baseKeys = ['hdri', 'Diffuse', 'nor_gl', 'Rough', 'Displacement']
+  const baseKeys = ['hdri', 'blend', 'Diffuse', 'nor_gl', 'Rough', 'Displacement']
   for (const k of baseKeys) {
     if (Object.keys(files).includes(k)) {
       baseKey = k
