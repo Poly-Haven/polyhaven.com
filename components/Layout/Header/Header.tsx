@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import Link from 'next/link';
-import { MdInfoOutline } from 'react-icons/md'
 
 import GoalProgress from 'components/ProgressBar/GoalProgress'
 import Nav from './Nav/Nav'
-import Todo from 'components/Todo/Todo'
 
 import styles from './Header.module.scss';
 
