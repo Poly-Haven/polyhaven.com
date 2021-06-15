@@ -90,7 +90,7 @@ const Home = () => {
       </div>
 
       <div className={styles.sectionWrapper}>
-        <div className={styles.section}>
+        <div className={`${styles.section} ${styles.sectionHalfMobile}`}>
           <div className={styles.subSection}>
             <h2>Supported by you <Heart color="#F96854" /></h2>
             <GoalProgress mode="big" />

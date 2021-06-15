@@ -267,6 +267,13 @@
   .hideMobileStaff {
     display: none;
   }
+  .sectionHalfMobile {
+    flex-direction: column;
+
+    .subSection {
+      width: calc(100% - 2rem);
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
