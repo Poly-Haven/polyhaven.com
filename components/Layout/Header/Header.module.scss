@@ -3,6 +3,7 @@
 @import "constants/mixins";
 
 .header {
+  position: relative;
   background: $c-background-dark;
   font-size: 1.2rem;
   display: flex;
@@ -10,6 +11,7 @@
   align-items: center;
   height: $v-header-height;
   width: 100%;
+  white-space: nowrap;
   z-index: 20;
 
   .logo {
@@ -87,6 +89,12 @@
     pre {
       margin: 0;
       font-size: 0.8em;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .progressBar {
+      display: none;
     }
   }
 }

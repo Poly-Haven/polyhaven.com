@@ -23,18 +23,11 @@ const header = () => {
         </div>
         Poly Haven
       </a></Link>
-      <a href="https://trello.com/b/7zT1j901/poly-haven-beta">
-        <Todo raw={true}>
-          <p>BETA</p>
-          <pre>{process.env.CONFIG_BUILD_ID.substring(0, 7)}</pre>
-          <MdInfoOutline />
-        </Todo>
-      </a>
       <div className={styles.spacer} />
       <div><h2 id='header-path' /> <h1 id='header-title' /></div>
       <div style={{ display: 'none' }} id='header-frompath' />
       <div className={styles.spacer} />
-      <a href="https://www.patreon.com/polyhaven/overview">
+      <a href="https://www.patreon.com/polyhaven/overview" className={styles.progressBar}>
         <GoalProgress mode="small" />
       </a>
       <Nav />

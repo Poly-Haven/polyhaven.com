@@ -3,9 +3,37 @@
 @import "constants/variables";
 
 .nav {
-  display: flex;
-  flex-direction: row;
+  @include flex(row);
   height: 100%;
+
+  @media screen and (max-width: 590px) {
+    @include flex(column);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 50%;
+    background: $c-background-dark;
+    height: auto;
+
+    .navItem {
+      min-height: 3em;
+    }
+
+    .subNav {
+      visibility: visible;
+      opacity: 1;
+      position: relative;
+
+      .navItem {
+        padding: 0 0.8rem;
+        border-left: 1em solid $c-background-light;
+
+        &:hover {
+          border-left: 1em solid $c-accent-light;
+        }
+      }
+    }
+  }
 }
 
 .navItem {
@@ -59,5 +87,31 @@
         height: 2rem;
       }
     }
+  }
+}
+
+.menuToggle {
+  display: none;
+  place-items: center;
+  font-size: 1.3em;
+  height: 100%;
+  padding: 0 1rem;
+  line-height: 0;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    background: $c-accent;
+    color: white;
+  }
+
+  @media screen and (max-width: 590px) {
+    display: grid;
+  }
+}
+
+.hiddenMobile {
+  @media screen and (max-width: 590px) {
+    display: none;
   }
 }
