@@ -22,21 +22,21 @@
 .groupDiamond {
   @extend .group;
   img {
-    max-width: 340px;
+    max-width: min(340px, calc(100% - 2rem));
     max-height: 128px;
   }
 }
 .groupGold {
   @extend .group;
   img {
-    max-width: 192px;
+    max-width: min(192px, calc(100% - 2rem));
     max-height: 66px;
   }
 }
 .groupSilver {
   @extend .group;
   img {
-    max-width: 150px;
+    max-width: min(150px, calc(100% - 2rem));
     max-height: 50px;
   }
 }

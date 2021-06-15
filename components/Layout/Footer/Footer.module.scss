@@ -48,7 +48,7 @@
 
 .linksWrapper {
   border-top: 1px solid $c-background-light;
-  padding: 2rem 1rem 1rem;
+  padding: 1rem;
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
@@ -56,15 +56,12 @@
 }
 .links {
   flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  max-width: 1300px;
+  @include flex(row, true, true);
+  flex-wrap: wrap;
 }
 .links > * {
-  flex-basis: 0;
-  flex-grow: 1;
+  padding: 1rem 0;
+  flex: 0 1 260px;
 }
 
 .logoWrapper {
