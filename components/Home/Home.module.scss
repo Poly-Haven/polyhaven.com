@@ -16,11 +16,8 @@
   }
 }
 .section {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  @include flex(row, true, true);
+  width: calc(100% - 2rem);
   padding: 2rem 1rem;
   max-width: 1300px;
 
@@ -36,7 +33,7 @@
 
   .text {
     position: relative; // Needed to keep above .assetTypeBannerHover
-    width: clamp(250px, 100%, 512px);
+    width: min(calc(100% - 2rem), 512px);
     margin: auto;
 
     h2 {
@@ -57,14 +54,20 @@
 }
 .assetTypeBanner {
   @extend .section;
+  flex-wrap: wrap;
   padding: 0;
   max-width: 100%;
 
   img {
     width: 300px;
+
+    @media screen and (max-width: 505px) {
+      width: 150px;
+    }
   }
 
   .subSection {
+    flex: 1 1 475px;
     position: relative;
     text-align: left;
     padding: 1rem;
@@ -72,7 +75,17 @@
     padding-right: 2rem;
     @include flex(row, true, true);
 
+    @media screen and (max-width: 355px) {
+      flex-direction: column;
+      padding-right: 0;
+
+      .text {
+        text-align: center;
+      }
+    }
+
     .text {
+      margin: 0;
       h2,
       p {
         color: white;
@@ -164,6 +177,7 @@
 
 .sectionBrowse {
   @include flex(row, true, true);
+  flex-wrap: wrap;
   position: relative;
   min-height: 45vh;
   background: url(https://file.coffee/u/1lomq88D-YSFsK.jpg) no-repeat center center !important;
@@ -209,6 +223,7 @@
     z-index: 20;
     @include visibility-show;
     pointer-events: visible;
+    flex: 0 1 180px;
 
     &:hover {
       @include visibility-show;
@@ -245,5 +260,17 @@
   .avatarRow {
     @include flex(row, true, true);
     height: calc((150px * 0.81649) + 0.7rem);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .hideMobileStaff {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hideMobileHalf {
+    display: none;
   }
 }

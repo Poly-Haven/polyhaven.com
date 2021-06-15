@@ -71,13 +71,13 @@ const Home = () => {
               <p>No paywalls or signup required, simply download what you want and use it immediately without worry.</p>
             </div>
           </div>
-          <div className={styles.subSection} />
+          <div className={`${styles.subSection} ${styles.hideMobileHalf}`} />
         </div>
       </div>
       <div className={`${styles.sectionWrapper} ${styles.windowBannerClay}`}>
         <div className={styles.gradientRight} />
         <div className={styles.section}>
-          <div className={styles.subSection} />
+          <div className={`${styles.subSection} ${styles.hideMobileHalf}`} />
           <div className={styles.subSection}>
             <div className={styles.text}>
               <h2>High Quality</h2>
@@ -144,7 +144,7 @@ const Home = () => {
               <p>If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/polyhaven/overview">supporting us on Patreon</a>.</p>
             </div>
           </div>
-          <div className={styles.subSection}>
+          <div className={`${styles.subSection} ${styles.hideMobileStaff}`}>
             <div className={styles.staff}>
               <div className={styles.avatarRow}>
                 <Staff id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" country="ZA" mode="compact" />
