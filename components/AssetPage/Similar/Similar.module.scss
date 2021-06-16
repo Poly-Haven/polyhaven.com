@@ -3,10 +3,15 @@
 @import "constants/mixins";
 
 .wrapper {
-  @include flex(row, true);
-  padding: 1em;
+  flex-grow: 1;
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  // gap: 1rem;
 }
 
 .item {
-  flex: 1 0 0;
+  flex: 0 0 auto;
+  max-width: calc(100% / 6);
+  min-width: 200px;
 }
