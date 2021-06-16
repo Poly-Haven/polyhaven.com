@@ -8,7 +8,14 @@ import styles from './GridItem.module.scss';
 
 const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
 
-  const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=379&height=379`
+  let size = [371, 278];
+  if (asset.type === 1) {
+    size = [285, 285]
+  } else if (asset.type === 2) {
+    size = [450, 300]
+  }
+
+  const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem} onClick={onClick}>
       <div className={styles.thumb}><LazyLoadImage

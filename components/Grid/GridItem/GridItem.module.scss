@@ -2,6 +2,8 @@
 @import "constants/mixins";
 
 .gridItem {
+  flex: 0 1 auto;
+  min-width: 200px;
   position: relative;
   display: flex;
   justify-content: center;

@@ -98,10 +98,11 @@
 }
 
 .grid {
-  display: grid;
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   position: relative;
   width: calc(100% - 2rem);
-  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
   margin-top: 2.75rem;
