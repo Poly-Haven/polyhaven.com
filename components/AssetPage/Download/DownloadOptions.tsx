@@ -5,6 +5,7 @@ import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
 import Switch from 'components/UI/Switch/Switch'
 import IconMacbeth from 'components/UI/Icons/Macbeth'
+import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortCaseInsensitive } from 'utils/arrayUtils'
 
@@ -91,6 +92,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
         </> : null}
         {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
       </div>
+      <Tooltip />
     </div>
   )
 }
