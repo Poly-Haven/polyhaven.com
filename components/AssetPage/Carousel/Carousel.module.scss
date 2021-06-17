@@ -9,11 +9,19 @@
 }
 
 .image {
+  display: grid;
+  place-items: center;
   line-height: 0;
   padding: 0.3em 0.5em;
   cursor: pointer;
+  min-width: 50px;
+  max-width: 250px;
 
   &:hover {
     filter: brightness(1.1);
+  }
+
+  img {
+    max-width: 100%;
   }
 }
