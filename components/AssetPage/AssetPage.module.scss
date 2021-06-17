@@ -139,6 +139,16 @@
   }
 }
 
+.heart {
+  color: $c-red;
+  border-bottom: 1px solid $c-red;
+
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
 .spacer {
   flex-grow: 1;
 }

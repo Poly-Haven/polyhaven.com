@@ -10,6 +10,7 @@ import Page from 'components/Layout/Page/Page'
 import AdAssetSidebar from 'components/Ads/AssetSidebar'
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import Spinner from 'components/Spinner/Spinner'
+import Heart from 'components/Heart/Heart'
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import Similar from './Similar/Similar'
@@ -86,6 +87,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             <div className={styles.authors}>
               {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
             </div>
+            {data.donated ? <div className={styles.heart} title="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
           </InfoItem>
           <InfoItem label="License">
             <Link href="/license">CC0</Link> (public domain)
