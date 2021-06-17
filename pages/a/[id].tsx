@@ -62,7 +62,8 @@ export async function getStaticProps(context) {
     props: {
       assetID: id,
       data: data
-    }
+    },
+    revalidate: 60 * 30 // 30 minutes
   }
 }
 
@@ -76,7 +77,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true
+    fallback: 'blocking'
   };
 }
 
