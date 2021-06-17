@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { MdMenu } from 'react-icons/md'
+import { MdMenu, MdHelp, MdDescription } from 'react-icons/md'
 
 import NavItem from './NavItem'
 
@@ -23,7 +23,10 @@ const Nav = () => {
         </NavItem>
         <NavItem text="News" link="https://www.patreon.com/polyhaven/posts?public=true" />
         <NavItem text="Support Us" link="https://www.patreon.com/polyhaven/overview" />
-        <NavItem text="About/Contact" link="/about-contact" />
+        <NavItem text="About/Contact" link="/about-contact">
+          <NavItem text={<><MdHelp />FAQ</>} link="/faq" />
+          <NavItem text={<><MdDescription />License</>} link="/license" />
+        </NavItem>
       </div>
       <div className={styles.menuToggle} onClick={toggle}><MdMenu /></div>
     </>
