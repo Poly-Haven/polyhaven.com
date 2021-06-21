@@ -25,15 +25,14 @@ export default class CustomDocument extends Document {
           <script src="/download-js/zip.js"></script>
           <script src="/download-js/download.js"></script>
 
-          {/* Global site tag (gtag.js) - Google Analytics */}
+          {/* Google Analytics & AdSense with consent */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}></script>
+          <script data-ad-client="ca-pub-2284751191864068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-
-            testvar = "Yep!";
 
             gtag('consent', 'default', {
               'ad_storage': 'denied',
