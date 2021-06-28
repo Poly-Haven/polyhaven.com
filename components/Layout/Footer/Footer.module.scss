@@ -10,6 +10,12 @@
 .patrons {
   padding: 0 2em 1em;
   font-size: 0.85em;
+  line-height: 1.4em;
+
+  @media screen and (max-width: 590px) {
+    padding: 0 0.3em 1em;
+    font-size: 0.65em;
+  }
 
   p {
     padding: 0 0.4em;
