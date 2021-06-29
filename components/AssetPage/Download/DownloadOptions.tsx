@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import filesize from 'filesize'
 
+import { GoLinkExternal } from 'react-icons/go'
+
 import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
 import Switch from 'components/UI/Switch/Switch'
 import IconMacbeth from 'components/UI/Icons/Macbeth'
+import IconPatreon from 'components/UI/Icons/Patreon'
 import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortCaseInsensitive } from 'utils/arrayUtils'
@@ -90,6 +93,16 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
             ><IconMacbeth />Color Chart • {filesize(files['colorchart'].size)}</a>
           </div>
         </> : null}
+        <div
+          className={`${styles.optionRow} ${styles.wideOptionRow}`}
+          data-tip="Support us with $5 per month and receive access to our cloud system, allowing you to sync our entire library to your hard drive."
+        >
+          <a
+            href="https://www.patreon.com/polyhaven/overview"
+            className={styles.format}
+            target="_blank"
+          ><IconPatreon color="#f96753" />Offline Access <GoLinkExternal style={{ marginLeft: "0.5em" }} /></a>
+        </div>
         {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
       </div>
       <Tooltip />
