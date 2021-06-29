@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Button from 'components/Button/Button'
+import Heart from 'components/Heart/Heart'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import PatronList from './PatronList'
@@ -10,7 +11,7 @@ import styles from './Footer.module.scss';
 const footer = () => {
   return (
     <div id={styles.footer}>
-      <h2>Patrons</h2>
+      <h2>Thanks to our <a href="https://www.patreon.com/polyhaven/overview">Patrons</a> for making Poly Haven possible <Heart color="#F96854" /></h2>
       <div className={styles.patrons}>
         <div className={styles.patronsScrollWrapper}>
           <div className={styles.patronsScroll}>

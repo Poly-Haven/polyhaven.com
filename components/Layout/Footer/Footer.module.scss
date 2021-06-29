@@ -5,6 +5,16 @@
   background: $c-background-dark;
   text-align: center;
   padding: 1rem 0;
+
+  h2 a {
+    color: white;
+    box-shadow: 0 1px 0 $c-text-light;
+    @include transition;
+
+    &:hover {
+      box-shadow: 0 3px 0 $c-accent;
+    }
+  }
 }
 
 .patrons {
