@@ -1,5 +1,7 @@
 import { MdArrowUpward } from 'react-icons/md'
 
+import IconPatreon from 'components/UI/Icons/Patreon'
+
 import styles from './ProgressBar.module.scss'
 
 const ProgressBar = ({ progress1, progress2, label, labelValue, mode, tooltipLabel, tooltip1, tooltip2 }) => {
@@ -8,7 +10,7 @@ const ProgressBar = ({ progress1, progress2, label, labelValue, mode, tooltipLab
       <div data-tip={tooltipLabel} className={styles.barOuter}>
         <div className={styles.barInnerWrapper}>
           <div data-tip={mode === 'big' ? tooltip1 : null} className={styles.barInner} style={{ width: `${progress1}%` }}>
-            {mode !== 'big' ? <div className={styles.innerText}><img src="/icons/patreon_logo.svg" />{label}</div> : null}
+            {mode !== 'big' ? <div className={styles.innerText}><IconPatreon />{label}</div> : null}
           </div>
           {mode === 'big' ? <div data-tip={tooltip2} className={styles.barInner} style={{ width: `${progress2}%` }} /> : null}
         </div>
