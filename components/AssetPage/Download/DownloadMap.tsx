@@ -34,6 +34,7 @@ const DownloadMap = ({ name, res, data, trackDownload }) => {
           href={data[f].url}
           className={styles.format}
           target="_blank"
+          rel="noopener"
           data-res={res}
           data-format={`${name}:${f}`}
           onClick={trackDownload}

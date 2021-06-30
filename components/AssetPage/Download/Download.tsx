@@ -176,6 +176,7 @@ const Download = ({ assetID, data, setPreview }) => {
         <a
           href={isHDRI ? files['hdri'][dlRes][dlFmt].url : null}
           target="_blank"
+          rel="noopener"
           className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
           onClick={isHDRI ? trackDownload : downloadZip}
         >

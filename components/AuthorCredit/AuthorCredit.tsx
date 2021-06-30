@@ -38,9 +38,9 @@ const AuthorCredit = ({ id, size, credit }) => {
         <strong>{id}</strong>
         {credit ? <span className={styles.credit}>{credit}</span> : ""}
         <div className={styles.links}>
-          {link ? <a href={link} target="_blank"><MdLink /></a> : ""}
-          {email ? <a href={`mailto:${email}`} target="_blank"><MdMail /></a> : ""}
-          {donate ? <a href={donate} target="_blank"><Heart /></a> : ""}
+          {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
+          {email ? <a href={`mailto:${email}`} target="_blank" rel="noopener"><MdMail /></a> : ""}
+          {donate ? <a href={donate} target="_blank" rel="noopener"><Heart /></a> : ""}
         </div>
       </div>
     </div>

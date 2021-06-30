@@ -77,6 +77,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
               href={files['tonemapped'].url}
               className={styles.format}
               target="_blank"
+              rel="noopener"
               data-res="tm"
               onClick={trackDownload}
             >8K Tonemapped JPG • {filesize(files['tonemapped'].size)}</a>
@@ -88,6 +89,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
               href={files['colorchart'].url}
               className={styles.format}
               target="_blank"
+              rel="noopener"
               data-res="cc"
               onClick={trackDownload}
             ><IconMacbeth />Color Chart • {filesize(files['colorchart'].size)}</a>

@@ -42,6 +42,7 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
                       className={styles.download}
                       href={bp[t].url}
                       target="_blank"
+                      rel="noopener"
                       onClick={trackDownload}
                       data-res="backplate"
                       data-format={t}
