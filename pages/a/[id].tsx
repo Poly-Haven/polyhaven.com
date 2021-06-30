@@ -54,7 +54,8 @@ export async function getStaticProps(context) {
     return {
       props: {
         assetID: id
-      }
+      },
+      revalidate: 60 * 5 // 5 minutes
     }
   }
 
