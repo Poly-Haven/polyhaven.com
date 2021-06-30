@@ -30,6 +30,10 @@ const AboutPage = () => {
 
       <CorporateSponsors header="Corporate Sponsors:" />
 
+      <h1>Contact</h1>
+      <p>Got a question? Please read the <Link href="/faq"><a>FAQ</a></Link> first :)</p>
+      <p>The easiest ways to get hold of us is through email: <a href="mailto:info@polyhaven.com">info@polyhaven.com</a></p>
+
       <h1>Why are we doing this?</h1>
       <p>Because we can!</p>
       <p>And because we believe we can help the greater 3D community grow by providing our assets for free rather than selling them.</p>
@@ -70,10 +74,6 @@ const AboutPage = () => {
       <h2>3. Spread the word</h2>
       <p>It's OK if you can't afford to, or don't want to donate to us :) You can still help us grow by making sure your friends and co-workers know about us, the more people we can help the better!</p>
       <p>It's not required at all, but if you use our assets in your work you can mention where you got them from and that'll help show more people that we exist.</p>
-
-      <h1>Contact</h1>
-      <p>Got a question? Please read the <Link href="/faq"><a>FAQ</a></Link> first :)</p>
-      <p>The easiest ways to get hold of us is through email: <a href="mailto:info@polyhaven.com">info@polyhaven.com</a></p>
 
     </div>
   )
