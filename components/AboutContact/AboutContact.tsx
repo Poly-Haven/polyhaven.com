@@ -32,7 +32,7 @@ const AboutPage = () => {
 
       <h1>Contact</h1>
       <p>Got a question? Please read the <Link href="/faq"><a>FAQ</a></Link> first :)</p>
-      <p>The easiest ways to get hold of us is through email: <a href="mailto:info@polyhaven.com">info@polyhaven.com</a></p>
+      <p>The easiest ways to get hold of us is through email (<a href="mailto:info@polyhaven.com">info@polyhaven.com</a>) or on <a href="https://discord.gg/Dms7Mrs">Discord</a>.</p>
 
       <h1>Why are we doing this?</h1>
       <p>Because we can!</p>
