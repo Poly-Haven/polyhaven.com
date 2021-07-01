@@ -90,6 +90,10 @@ const Download = ({ assetID, data, setPreview }) => {
       icon: <IconGltf />
     },
   };
+  if (!Object.keys(files).includes('gltf')) {
+    delete fmtOptions.gltf
+  }
+
   const setFmtValue = v => {
     setFmt(v)
     localStorage.setItem(`assetPref_${data.type}_format`, v)
