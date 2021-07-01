@@ -4,8 +4,8 @@
 
 .imageRow {
   @include flex(row, true, true);
+  flex-wrap: wrap;
   width: 100%;
-  overflow-x: auto;
 }
 
 .image {

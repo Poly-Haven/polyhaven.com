@@ -25,7 +25,8 @@ const Carousel = ({ slug, assetType, setter }) => {
     "ANYTHING ELSE": 5,
     "orth_": 6
   }
-  let sortedKeys = Object.keys(images).sort((a, b) => {
+  let sortedKeys = Object.keys(images).sort((a, b) => (a.toLowerCase() > b.toLowerCase()) ? -1 : 1)  // Alphabetically
+  sortedKeys = sortedKeys.sort((a, b) => {  // Then in order of preference
     const startsWithPrefs = ["cam_", "orth_"]
     let prefA = sortPreference[a]
     let prefB = sortPreference[b]
