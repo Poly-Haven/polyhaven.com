@@ -30,7 +30,7 @@ const Carousel = ({ slug, assetType, setter }) => {
     "ANYTHING ELSE": 5,
     "orth_": 6
   }
-  let sortedKeys = Object.keys(images).sort((a, b) => (a.toLowerCase() > b.toLowerCase()) ? -1 : 1)  // Alphabetically
+  let sortedKeys = Object.keys(images).sort((a, b) => a.localeCompare(b))  // Alphabetically
   sortedKeys = sortedKeys.sort((a, b) => {  // Then in order of preference
     const startsWithPrefs = ["cam_", "orth_"]
     let prefA = sortPreference[a]
@@ -46,10 +46,9 @@ const Carousel = ({ slug, assetType, setter }) => {
     prefA = prefA || sortPreference["ANYTHING ELSE"]
     prefB = prefB || sortPreference["ANYTHING ELSE"]
     let result = 0;
-    if (prefA === prefB) {
-      result = (a.toLowerCase() < b.toLowerCase()) ? -1 : 1;
+    if (prefA !== prefB) {
+      result = prefA < prefB ? -1 : 1
     }
-    result = prefA < prefB ? -1 : 1
     return result
   })
 
