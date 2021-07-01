@@ -11,6 +11,7 @@
 .image {
   display: grid;
   place-items: center;
+  position: relative;
   line-height: 0;
   padding: 0.3em 0.5em;
   cursor: pointer;
@@ -19,9 +20,65 @@
 
   &:hover {
     filter: brightness(1.1);
+    z-index: 5;
+
+    .credit {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   img {
     max-width: 100%;
+    position: relative;
+  }
+}
+
+.credit {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: calc(100% - 0.3em);
+  width: 120%;
+  z-index: 6;
+  padding: 0 1rem;
+  line-height: 1;
+  background: $c-background;
+  border: 1px solid rgba($c-accent, 0.3);
+  @include transition;
+
+  .sources {
+    margin-bottom: 1em;
+  }
+
+  ul {
+    display: inline-block;
+    gap: 0.3em;
+    margin: 0;
+    padding: 0 0.5em;
+
+    li {
+      list-style-type: none;
+      display: inline-block;
+      padding-right: 0.3em;
+
+      a {
+        display: grid;
+        place-items: center;
+        box-shadow: none;
+        border: 1px solid $c-background-light;
+        color: $c-text-light;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        @include transition;
+
+        &:hover {
+          background: $c-accent;
+          color: white;
+          border-color: $c-accent;
+        }
+      }
+    }
   }
 }

@@ -11,10 +11,15 @@ const Carousel = ({ slug, assetType, setter }) => {
     images["Thumb"] = `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png`
   }
 
+  let image_info = {}
   const { data, error } = apiSWR(`/renders/${slug}`, { revalidateOnFocus: false });
   if (!error && data) {
-    for (const i of Object.keys(data))
+    for (const i of Object.keys(data)) {
       images[i] = `https://cdn.polyhaven.com/asset_img/renders/${slug}/${i}`
+      if (typeof data[i] === 'object') {
+        image_info[i] = data[i]
+      }
+    }
   }
 
   const sortPreference = {
@@ -57,6 +62,13 @@ const Carousel = ({ slug, assetType, setter }) => {
       {sortedKeys.map((i, k) =>
         <div key={k} data-src={images[i]} onClick={click} className={styles.image}>
           <img src={images[i] + "?height=110"} />
+          {Object.keys(image_info).includes(i) ? <div className={styles.credit}>
+            <p>{image_info[i].title} by {image_info[i].url ? <a href={image_info[i].url} rel="noopener">{image_info[i].author}</a> : image_info[i].author}</p>
+            {image_info[i].sources ? <div className={styles.sources}>
+              {image_info[i].sources.length > 1 ? "Sources:" : "Source:"}
+              <ul>{image_info[i].sources.map((link, k) => <li key={k}><a href={link} rel="noopener">{k + 1}</a></li>)}</ul>
+            </div> : null}
+          </div> : null}
         </div>
       )}
     </div>
