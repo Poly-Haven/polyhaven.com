@@ -8,7 +8,7 @@ import styles from './DownloadOptions.module.scss'
 
 const DownloadMap = ({ name, res, data, trackDownload }) => {
 
-  let displayName = titleCase(name.replace('_', ' '))
+  let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
     displayName = "Normal"
   }
