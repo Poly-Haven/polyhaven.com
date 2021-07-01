@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from "react";
 import Link from 'next/link';
+import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import asset_types from 'constants/asset_types.json'
@@ -89,6 +90,13 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             </div>
             {data.donated ? <div className={styles.heart} title="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
           </InfoItem>
+
+          {data.info ? <div>
+            <div className={styles.infoText} lang="en">
+              <Markdown>{data.info.replace(/\\n/g, '\n')}</Markdown>
+            </div>
+          </div> : null}
+
           <InfoItem label="License">
             <Link href="/license">CC0</Link> (public domain)
           </InfoItem>
