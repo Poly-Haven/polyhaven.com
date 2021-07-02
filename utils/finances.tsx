@@ -1,5 +1,13 @@
-export function getCurrency(v, c) {
-  // TODO convert using https://github.com/nikhils4/react-currency-conv/blob/main/src/components/currencyConverter.js
+export function getCurrency(v, c, rates) {
+  const defaultRates = {
+    ZAR: 1,
+    USD: 1,
+    EUR: 1,
+  }
+  for (const k of Object.keys(defaultRates)) {
+    rates[k] = rates[k] || defaultRates[k]
+  }
+  v = v / rates[c]
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: c !== 'ZAR' ? c : 'USD',
@@ -7,7 +15,7 @@ export function getCurrency(v, c) {
   if (c === 'ZAR') {
     return formatter.format(Math.abs(v)).replace('$', 'R')
   } else {
-    return "TODO"
+    return formatter.format(Math.abs(v))
   }
 }
 

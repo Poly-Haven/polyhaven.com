@@ -8,6 +8,10 @@ const CountryFlag = ({ code }) => {
       return <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" />
     case 'UL':
       return <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg" />
+    case 'US':
+      return <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" />
+    case 'EU':
+      return <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg" />
     default:
       return null;
   }

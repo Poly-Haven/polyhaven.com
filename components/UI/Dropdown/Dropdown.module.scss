@@ -4,7 +4,7 @@
 
 .wrapper {
   position: relative;
-  width: 200px;
+  min-width: 200px;
 
   &:hover {
     .button {
@@ -48,11 +48,16 @@
     padding-left: 0.3em;
     user-select: none;
 
+    img,
     svg {
       pointer-events: none;
       flex-shrink: 0;
       font-size: 1.4em;
-      padding-right: 0.1em;
+      padding-right: 0.2em;
+    }
+    img {
+      max-height: 1em;
+      max-width: 1em;
     }
   }
 
@@ -82,10 +87,15 @@
     font-weight: bold;
     user-select: none;
 
+    img,
     svg {
       pointer-events: none;
       flex-shrink: 0;
       font-size: 1.4em;
+    }
+    img {
+      max-height: 1em;
+      max-width: 1em;
     }
   }
 
@@ -123,11 +133,16 @@
       color: white;
     }
 
+    img,
     svg {
       pointer-events: none;
       flex-shrink: 0;
       font-size: 1.4em;
       padding-right: 0.2em;
+    }
+    img {
+      max-height: 1em;
+      max-width: 1em;
     }
   }
   .active {

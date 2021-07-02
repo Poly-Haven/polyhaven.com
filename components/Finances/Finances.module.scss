@@ -7,6 +7,13 @@
   margin: 1em;
 }
 
+.header {
+  @include flex(row, true);
+  h1 {
+    flex-grow: 1;
+  }
+}
+
 .textBlock {
   max-width: 1024px;
 }
@@ -71,6 +78,7 @@
   p {
     margin: 0 1em;
     flex: 1 1 0;
+    min-width: 92px;
   }
 
   .bar {

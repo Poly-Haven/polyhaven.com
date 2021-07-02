@@ -14,7 +14,11 @@ const Monthly = ({ data, currency }) => {
   let colors = {}
   let graphData = []
   for (const [month, v] of Object.entries(data)) {
-    const values = v['income']
+    let values = {}
+    for (const k of Object.keys(v['income'])) {
+      v['rates']['ZAR'] = 1
+      values[k] = v['income'][k] / v['rates'][currency]
+    }
     graphData.push({
       name: month,
       ...values
@@ -60,9 +64,9 @@ const Monthly = ({ data, currency }) => {
                 padding: 0,
                 fontSize: '0.8em'
               }}
-              formatter={(value, name) => getCurrency(value, currency)}
+              formatter={(value, name) => getCurrency(value, currency, {})}
             />
-            {Object.keys(areas).map((a, i) => <Area key={i} type="linear" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} />)}
+            {Object.keys(areas).map((a, i) => <Area key={i} type="linear" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={500} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>

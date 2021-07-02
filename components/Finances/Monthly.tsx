@@ -9,11 +9,11 @@ import Tooltip from 'components/Tooltip/Tooltip';
 
 import styles from './Finances.module.scss'
 
-const Bar = ({ label, data, total, max, currency }) => {
+const Bar = ({ label, data, total, max, currency, rates }) => {
   if (total === 0) return null
   return (
     <div className={styles.barWrapper}>
-      <p>{label}: {getCurrency(total, currency)}</p>
+      <p>{label}: {getCurrency(total, currency, rates)}</p>
       <div className={styles.barContainer}>
         <div className={styles.bar}>
           {Object.keys(data).map((c, i) => {
@@ -22,7 +22,7 @@ const Bar = ({ label, data, total, max, currency }) => {
             return <div key={i} className={styles.sumCat} style={{
               width: `${percent}%`,
               background: catColor(c)
-            }} data-tip={`${c}:<br/>${getCurrency(data[c], currency)} (${percentStr}%)`}>
+            }} data-tip={`${c}:<br/>${getCurrency(data[c], currency, rates)} (${percentStr}%)`}>
               <p>{c}</p>
             </div>
           }
@@ -67,6 +67,9 @@ const Monthly = ({ data, currency }) => {
   const totalExpense: any = Object.values(data[month].expense).reduce((a: number, b: number) => a + b, 0);
   const barMax = Math.max(totalIncome, totalExpense);
 
+  const rates = data[month].rates
+  const latestRates = data[Object.keys(data).pop()].rates
+
   return (
     <div className={styles.barSection}>
       <div className={styles.bumperWrapper}>
@@ -78,31 +81,34 @@ const Monthly = ({ data, currency }) => {
           <MdChevronRight />
         </div>
       </div>
-      <Bar label="Income" data={sortObjByValue(data[month].income)} total={totalIncome} max={barMax} currency={currency} />
-      <Bar label="Expenses" data={sortObjByValue(data[month].expense)} total={totalExpense} max={barMax} currency={currency} />
+      <Bar label="Income" data={sortObjByValue(data[month].income)} total={totalIncome} max={barMax} currency={currency} rates={rates} />
+      <Bar label="Expenses" data={sortObjByValue(data[month].expense)} total={totalExpense} max={barMax} currency={currency} rates={rates} />
       <ul>
+        {currency !== 'ZAR' ? <li>
+          Exchange Rate in {month}: {getCurrency(1 * rates[currency], currency, rates)} = {getCurrency(1 * rates[currency], 'ZAR', rates)}
+        </li> : null}
         <li>
-          Current Balance: {getCurrency(balance, currency)}
+          Current Balance: {getCurrency(balance, currency, latestRates)}
           <MdHelp data-tip="Actual balance of our combined accounts, ignoring interest earned." />
         </li>
         <li>
-          Target Emergency Savings: {getCurrency(targetEmergencyFund, currency)}
+          Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
           <MdHelp data-tip="Enough to cover our operating costs for 2 months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is." />
         </li>
         {savings >= 0 ?
           <li>
-            <strong>Usable Funds: {getCurrency(savings, currency)}</strong>
+            <strong>Usable Funds: {getCurrency(savings, currency, latestRates)}</strong>
             <MdHelp data-tip="Balance minus emergency savings." />
           </li>
           :
           <li>
-            <strong>Deficit: {getCurrency(savings, currency)}</strong>
-            <MdHelp data-tip={`We need to save an additional ${getCurrency(savings, currency)} to satisfy our emergency fund, before we can have any money to spend.`} />
+            <strong>Deficit: {getCurrency(savings, currency, latestRates)}</strong>
+            <MdHelp data-tip={`We need to save an additional ${getCurrency(savings, currency, latestRates)} to satisfy our emergency fund, before we can have any money to spend.`} />
           </li>
         }
       </ul>
       <div style={{ flexGrow: 1 }} />
-      <p style={{ textAlign: 'right' }}><strong>Coming soon:</strong> Comparison of Patreon tiers; Choose currency</p>
+      <p style={{ textAlign: 'right' }}><strong>Coming soon:</strong> Comparison of Patreon tiers</p>
       <Tooltip />
     </div>
   )
