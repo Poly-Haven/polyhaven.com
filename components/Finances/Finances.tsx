@@ -48,6 +48,13 @@ const Finances = () => {
           <Monthly data={finances} currency={currency} />
         </div>
       </div>
+      <div className={styles.textBlock}>
+        <p><strong>Note:</strong> The "Patreon" income shown above is different from what's seen on the <Link href="/">Home page</Link> for two reasons:</p>
+        <ol>
+          <li>It includes the income from the old discontinued Haven pages (Texture Haven and 3D Model Haven), and the Home page info only includes the new Poly Haven data. Due to technical limitations we cannot include the old Haven data on the Home page.</li>
+          <li>The Home page info is the total sum of pledges to the Poly Haven Patreon page, before any fees from Patreon and PayPal are deducted. The figures on this page are after the fees are deducted.</li>
+        </ol>
+      </div>
     </div>
   )
 }
