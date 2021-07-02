@@ -1,6 +1,7 @@
 import { getCurrency, catColor } from 'utils/finances';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+import { sortObjByValue } from 'utils/arrayUtils'
 
 import Spinner from 'components/Spinner/Spinner'
 
@@ -10,16 +11,21 @@ const Monthly = ({ data, currency }) => {
   if (!data) return <Spinner />
 
   let areas = {}
+  let colors = {}
   let graphData = []
   for (const [month, v] of Object.entries(data)) {
+    const values = v['income']
     graphData.push({
       name: month,
-      ...v['income']
+      ...values
     })
-    for (const cat of Object.keys(v['income'])) {
-      areas[cat] = catColor(cat)
+    for (const cat of Object.keys(values)) {
+      areas[cat] = areas[cat] || 0
+      areas[cat] = areas[cat] + values[cat]
+      colors[cat] = catColor(cat)
     }
   }
+  areas = sortObjByValue(areas)
 
   // Fill missing values
   for (const month of graphData) {
@@ -56,7 +62,7 @@ const Monthly = ({ data, currency }) => {
               }}
               formatter={(value, name) => getCurrency(value, currency)}
             />
-            {Object.keys(areas).map((a, i) => <Area key={i} type="linear" dataKey={a} stackId="1" stroke={areas[a]} fill={areas[a]} />)}
+            {Object.keys(areas).map((a, i) => <Area key={i} type="linear" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>

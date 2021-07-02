@@ -24,6 +24,7 @@ export function catColor(t) {
     "Founder Salaries": `#9C27B0`,
     "Staff Salaries": `#AB47BC`,
     "Staff Overhead (Taxes)": `#CE93D8`,
+    "Training": `#CE93D8`,
     "Contractors": `#BA68C8`,
     "Taxes": `#009688`,
     "Savings (Transfer)": `#FFEB3B`,
