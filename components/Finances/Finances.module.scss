@@ -43,6 +43,10 @@
   flex-grow: 1;
   width: 100%;
   @include flex(column);
+
+  li svg {
+    padding-left: 0.3em;
+  }
 }
 
 .bumperWrapper {
