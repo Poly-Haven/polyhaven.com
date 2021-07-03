@@ -6,6 +6,9 @@ import styles from './GLTFViewer.module.scss'
 
 import init from './scene'
 
+import { OrbitControls } from './controls/OrbitControls';
+
+
 const GLTFViewer = ({ show, assetID }) => {
 
   if (!show) return null
@@ -31,6 +34,8 @@ const GLTFViewer = ({ show, assetID }) => {
   init(id);
 
   const modelURL = gltfFiles.url;
+
+  console.log(OrbitControls)
 
   return (
     // TODO: maybe replace the id with some sort of binding??
