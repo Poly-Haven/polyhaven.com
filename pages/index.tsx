@@ -8,7 +8,7 @@ export default function HomePage() {
     <Page>
       <Head
         title="Poly Haven"
-        description="The Public Asset Library"
+        description="The Public 3D Asset Library"
         url="/"
         image="https://cdn.polyhaven.com/site_images/home/window_rend.jpg?width=630"
       />

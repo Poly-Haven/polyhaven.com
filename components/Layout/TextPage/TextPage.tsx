@@ -19,7 +19,7 @@ const TextPage = ({ title, description, url, children }) => {
 }
 
 TextPage.defaultProps = {
-  description: "The Public Asset Library"
+  description: "The Public 3D Asset Library"
 }
 
 export default TextPage

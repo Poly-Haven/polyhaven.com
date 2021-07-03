@@ -37,7 +37,7 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
 }
 
 HeadComponent.defaultProps = {
-  description: "The Public Asset Library",
+  description: "The Public 3D Asset Library",
   keywords: "",
   author: "Poly Haven",
   assetType: null,

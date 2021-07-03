@@ -30,7 +30,7 @@ const footer = () => {
             <div className={styles.logoWrapper}>
               <img src='/Logo 256.png' className={styles.logo} />
               <h1>Poly Haven</h1>
-              <p>The Public Asset Library</p>
+              <p>The Public 3D Asset Library</p>
             </div>
           </a></Link>
           <div className={styles.linkListWrapper}>

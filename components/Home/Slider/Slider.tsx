@@ -5,7 +5,7 @@ const Slider = () => {
     <div className={styles.wrapper}>
       <img src='/Logo 256.png' className={styles.logo} />
       <h1>Poly Haven</h1>
-      <p>The Public Asset Library</p>
+      <p>The Public 3D Asset Library</p>
     </div>
   )
 }
