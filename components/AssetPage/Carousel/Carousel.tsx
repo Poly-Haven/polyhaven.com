@@ -1,8 +1,10 @@
 import apiSWR from 'utils/apiSWR'
 
+import { Md3DRotation } from 'react-icons/md'
+
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, assetType, setter }) => {
+const Carousel = ({ slug, assetType, setter, showWebGL }) => {
   let images = {
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -52,14 +54,15 @@ const Carousel = ({ slug, assetType, setter }) => {
     return result
   })
 
-  const click = (e) => {
+  const clickImage = (e) => {
     setter(e.currentTarget.dataset.src)
   }
 
   return (
     <div className={styles.imageRow}>
+      {assetType !== 0 ? <div className={styles.iconBtn} onClick={showWebGL}><Md3DRotation /></div> : null}
       {sortedKeys.map((i, k) =>
-        <div key={k} data-src={images[i]} onClick={click} className={styles.image}>
+        <div key={k} data-src={images[i]} onClick={clickImage} className={styles.image}>
           <img src={images[i] + "?height=110"} />
           {Object.keys(image_info).includes(i) ? <div className={styles.credit}>
             <p>{image_info[i].title} by {image_info[i].url ? <a href={image_info[i].url} rel="noopener">{image_info[i].author}</a> : image_info[i].author}</p>

@@ -1,0 +1,9 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include absolute_cover;
+  @include flex(column, true, true);
+  background-color: $c-background;
+}

@@ -17,12 +17,14 @@ import Download from './Download/Download'
 import Similar from './Similar/Similar'
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
+import GLTFViewer from './WebGL/GLTFViewer'
 
 import styles from './AssetPage.module.scss'
 
 const AssetPage = ({ assetID, data, scrollPosition }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
+  const [showWebGL, setShowWebGL] = useState(false)
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
@@ -40,6 +42,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
   const clickSimilar = () => {
     setPageLoading(true)
+    setShowWebGL(false)
   }
 
   const setPreviewImage = (src) => {
@@ -49,6 +52,11 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
   const imageLoaded = (e) => {
     setImageLoading(false)
     setPageLoading(false)
+    setShowWebGL(false)
+  }
+
+  const clickShowWebGL = _ => {
+    setShowWebGL(true)
   }
 
   return (
@@ -64,12 +72,13 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
               onLoad={imageLoaded}
               src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
             />
+            <GLTFViewer show={showWebGL} assetID={assetID} />
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
               <Spinner />
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} assetType={data.type} setter={setPreviewImage} />
+            <Carousel slug={assetID} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} />
           </div>
         </div>
         <div className={styles.similar}>
