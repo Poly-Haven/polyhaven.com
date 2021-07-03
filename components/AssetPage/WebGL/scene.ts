@@ -19,6 +19,7 @@ function setupScene(id: string) {
     1000
   );
 
+  // TODO: reuse webgl context
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
@@ -28,7 +29,10 @@ function setupScene(id: string) {
   const cube = new THREE.Mesh(geometry, material);
   // scene.add(cube);
 
-  camera.position.z = 1;
+  const light = new THREE.HemisphereLight(0xffffff, 0x555555, 1);
+  scene.add(light);
+
+  camera.position.z = 0.1;
 
   const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -44,11 +48,30 @@ function setupScene(id: string) {
 }
 
 function loadModel() {
-  const loader = new GLTFLoader();
+  const gltfLoader = new GLTFLoader();
+  const texLoader = new THREE.TextureLoader();
 
   console.log(gltfFiles);
 
-  loader.load(
+  // TODO: fix map urls in GLTFLoader so we don't see error warnings
+  function getMap(id: string) {
+    const keys = Object.keys(gltfFiles.gltf.include);
+    let key = keys.find((e) => e.includes(`_${id}_`));
+
+    if (!key) {
+      key = keys.find((e) => e.includes(`_arm_`));
+    }
+
+    return gltfFiles.gltf.include[key];
+  }
+
+  const material = new THREE.MeshStandardMaterial({
+    map: texLoader.load(getMap('diff').url),
+    normalMap: texLoader.load(getMap('nor').url),
+    roughness: 0.1,
+  });
+
+  gltfLoader.load(
     gltfFiles.gltf.url,
     function (gltf) {
       scene.add(gltf.scene);
@@ -57,7 +80,7 @@ function loadModel() {
       gltf.scene.traverse((child) => {
         if (child.type == 'Mesh') {
           const mesh = child as THREE.Mesh;
-          mesh.material = new THREE.MeshNormalMaterial();
+          mesh.material = material;
         }
       });
     },

@@ -24,7 +24,7 @@ import styles from './AssetPage.module.scss'
 const AssetPage = ({ assetID, data, scrollPosition }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
-  const [showWebGL, setShowWebGL] = useState(false)
+  const [showWebGL, setShowWebGL] = useState(true)
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
