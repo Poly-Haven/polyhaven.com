@@ -4,7 +4,10 @@ import Loader from 'components/UI/Loader/Loader'
 
 import styles from './GLTFViewer.module.scss'
 
+import init from './scene'
+
 const GLTFViewer = ({ show, assetID }) => {
+
   if (!show) return null
 
   const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
@@ -23,11 +26,15 @@ const GLTFViewer = ({ show, assetID }) => {
 
   const gltfFiles = files['gltf']['4k']
 
-  // Replace the block below with the actual webGL code!
+  const id = "3d-viewer";
+
+  init(id);
+
+  const modelURL = gltfFiles.url;
+
   return (
-    <div className={styles.wrapper}>
-      <h1>WebGL goes here :)</h1>
-      <pre>{JSON.stringify(gltfFiles, null, 2)}</pre>
+    // TODO: maybe replace the id with some sort of binding??
+    <div id={id} className={styles.wrapper}>
     </div>
   )
 }
