@@ -29,6 +29,7 @@
     "sass": "^1.32.8",
     "swr": "^0.5.3",
     "three": "^0.130.0",
+    "three-stdlib": "^2.3.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

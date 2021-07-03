@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { OrbitControls } from './controls/OrbitControls';
+// import { OrbitControls } from './controls/OrbitControls';
+import { OrbitControls } from 'three-stdlib';
 import { GLTFLoader } from './loaders/GLTFLoader';
 
 let scene: THREE.Scene;
