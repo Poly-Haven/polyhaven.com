@@ -65,7 +65,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
         <Spinner />
       </div>
       <Page immersiveScroll={true}>
-        <div className={styles.previewWrapper}>
+        <div id="preview-container" className={styles.previewWrapper}>
           <div className={styles.activePreview}>
             <img
               id="activePreview"

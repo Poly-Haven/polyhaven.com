@@ -7,31 +7,37 @@ let gltfFiles: any;
 const material = new THREE.MeshStandardMaterial();
 
 function setupScene(id: string) {
-  const container = document.getElementById(id);
+  const inner_container = document.getElementById(id);
+  const container = document.getElementById('preview-container');
 
+  console.log(container);
   // this is just for development purposes, so we don't create a new canvas every time the page hot-reloads
-  container.innerHTML = '';
+  inner_container.innerHTML = '';
 
   scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
     75,
-    container.clientWidth / container.clientHeight,
+    container.clientWidth / inner_container.clientHeight,
     0.01,
     1000
   );
 
   // TODO: reuse webgl context
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
+  renderer.setSize(container.clientWidth, inner_container.clientHeight);
+  renderer.toneMapping = THREE.ReinhardToneMapping;
+  renderer.physicallyCorrectLights = true;
+  renderer.toneMappingExposure = 2;
+
+  inner_container.appendChild(renderer.domElement);
 
   const geometry = new THREE.BoxGeometry();
   const material = new THREE.MeshNormalMaterial();
   const cube = new THREE.Mesh(geometry, material);
   // scene.add(cube);
 
-  const light = new THREE.HemisphereLight(0xffffff, 0x555555, 1);
-  scene.add(light);
+  // const light = new THREE.HemisphereLight(0xffffff, 0x555555, 1);
+  // scene.add(light);
 
   camera.position.z = 0.1;
 
@@ -108,6 +114,7 @@ function loadEnvironment(renderer) {
 
         texture.dispose();
         material.envMap = exrBackground;
+        scene.background = exrBackground;
       }
     );
 }
