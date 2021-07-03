@@ -1,10 +1,10 @@
 import * as THREE from 'three';
-// import { OrbitControls } from './controls/OrbitControls';
-import { OrbitControls } from 'three-stdlib';
+import { OrbitControls, EXRLoader } from 'three-stdlib';
 import { GLTFLoader } from './loaders/GLTFLoader';
 
 let scene: THREE.Scene;
 let gltfFiles: any;
+const material = new THREE.MeshStandardMaterial();
 
 function setupScene(id: string) {
   const container = document.getElementById(id);
@@ -38,6 +38,7 @@ function setupScene(id: string) {
   const controls = new OrbitControls(camera, renderer.domElement);
 
   loadModel();
+  loadEnvironment(renderer);
 
   const animate = function () {
     requestAnimationFrame(animate);
@@ -66,11 +67,9 @@ function loadModel() {
     return gltfFiles.gltf.include[key];
   }
 
-  const material = new THREE.MeshStandardMaterial({
-    map: texLoader.load(getMap('diff').url),
-    normalMap: texLoader.load(getMap('nor').url),
-    roughness: 0.1,
-  });
+  material.map = texLoader.load(getMap('diff').url);
+  material.normalMap = texLoader.load(getMap('nor').url);
+  material.roughness = 0.1;
 
   gltfLoader.load(
     gltfFiles.gltf.url,
@@ -94,6 +93,23 @@ function loadModel() {
       console.log('An error happened');
     }
   );
+}
+
+function loadEnvironment(renderer) {
+  new EXRLoader()
+    .setDataType(THREE.UnsignedByteType)
+    .load(
+      'https://dl.polyhaven.com/file/ph-assets/HDRIs/exr/1k/phalzer_forest_01_1k.exr',
+      function (texture) {
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+
+        const exrCubeRenderTarget = pmremGenerator.fromEquirectangular(texture);
+        const exrBackground = exrCubeRenderTarget.texture;
+
+        texture.dispose();
+        material.envMap = exrBackground;
+      }
+    );
 }
 
 export default function init(id: string, _gltfFiles: any) {
