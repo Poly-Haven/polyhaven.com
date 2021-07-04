@@ -8,6 +8,7 @@ let gltfFiles: any;
 const material = new THREE.MeshStandardMaterial();
 const diffuseMaterial = new THREE.MeshBasicMaterial();
 const normalMaterial = new THREE.MeshBasicMaterial();
+const roughMaterial = new THREE.MeshBasicMaterial();
 
 const meshes: THREE.Mesh[] = [];
 const mapsMaterials: THREE.MeshBasicMaterial[] = [];
@@ -74,19 +75,43 @@ function loadModel() {
     const keys = Object.keys(gltfFiles.gltf.include);
     let key = keys.find((e) => e.includes(`_${id}_`));
 
-    if (!key) {
-      key = keys.find((e) => e.includes(`_arm_`));
-    }
-
     return gltfFiles.gltf.include[key];
   }
 
-  const diffuseMap = texLoader.load(getMap('diff').url);
-  diffuseMap.flipY = false;
-  material.map = diffuseMap;
-  diffuseMaterial.map = diffuseMap;
+  function setMapIfExists(
+    id: string,
+    map: string,
+    previewMaterial: THREE.MeshBasicMaterial
+  ) {
+    if (getMap(id)) {
+      const _map = texLoader.load(getMap(id).url);
+      _map.flipY = false;
+      material[map] = _map;
+      previewMaterial.map = _map;
+      mapsMaterials.push(previewMaterial);
+    }
+  }
 
-  mapsMaterials.push(diffuseMaterial);
+  setMapIfExists('diff', 'map', diffuseMaterial);
+
+  // const diffuseMap = texLoader.load(getMap('diff').url);
+  // diffuseMap.flipY = false;
+  // material.map = diffuseMap;
+  // diffuseMaterial.map = diffuseMap;
+  // mapsMaterials.push(diffuseMaterial);
+
+  if (getMap('rough')) {
+    const roughMap = texLoader.load(getMap('rough').url);
+    roughMap.flipY = false;
+    material.roughnessMap = roughMap;
+    roughMaterial.map = roughMap;
+    mapsMaterials.push(roughMaterial);
+  } else {
+    // TODO: ARM
+
+    material.roughness = 0.1;
+    console.log('roughness does not exist');
+  }
 
   const normalMap = texLoader.load(getMap('nor').url);
   normalMap.flipY = false;
@@ -94,8 +119,6 @@ function loadModel() {
   normalMaterial.map = normalMap;
 
   mapsMaterials.push(normalMaterial);
-
-  material.roughness = 0.1;
 
   gltfLoader.load(
     gltfFiles.gltf.url,
