@@ -18,7 +18,7 @@ import { GLTFLoader } from './loaders/GLTFLoader';
 let scene: THREE.Scene;
 let gltfFiles: any;
 let renderer: THREE.WebGLRenderer;
-const material = new THREE.MeshStandardMaterial();
+let material: THREE.MeshStandardMaterial;
 const diffuseMaterial = new THREE.MeshBasicMaterial();
 diffuseMaterial.toneMapped = false;
 const normalMaterial = new THREE.MeshBasicMaterial();
@@ -41,6 +41,8 @@ function setupScene(id: string) {
   meshes = [];
   mapsMaterials = [];
   wireframes = [];
+
+  material = new THREE.MeshStandardMaterial();
 
   scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
