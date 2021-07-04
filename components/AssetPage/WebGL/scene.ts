@@ -74,7 +74,11 @@ function loadModel() {
   }
 
   material.map = texLoader.load(getMap('diff').url);
+  material.map.flipY = false;
+
   material.normalMap = texLoader.load(getMap('nor').url);
+  material.normalMap.flipY = false;
+
   material.roughness = 0.1;
 
   gltfLoader.load(
