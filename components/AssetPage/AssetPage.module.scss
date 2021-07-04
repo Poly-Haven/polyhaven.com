@@ -25,10 +25,16 @@
     height: 780px;
     position: relative;
 
+    &GLTF {
+      width: 100%;
+    }
+
     img {
       max-width: 100%;
     }
   }
+
+
 }
 
 .sidebar {

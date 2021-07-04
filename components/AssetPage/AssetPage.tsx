@@ -66,7 +66,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
       </div>
       <Page immersiveScroll={true}>
         <div className={styles.previewWrapper}>
-          <div className={styles.activePreview}>
+          <div className={`${styles.activePreview}${showWebGL ? " " + styles.activePreviewGLTF : ""}`}>
             <img
               id="activePreview"
               onLoad={imageLoaded}
