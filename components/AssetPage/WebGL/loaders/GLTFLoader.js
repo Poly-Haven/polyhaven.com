@@ -2548,6 +2548,9 @@ class GLTFParser {
 
 		const URL = self.URL || self.webkitURL;
 
+		// PolyHaven specific (so we don't try to fetch textures that don't exist)
+		source.uri = source.uri.replace("textures/", "https://dl.polyhaven.com/file/ph-assets/Models/jpg/4k/baseball_01/");
+
 		let sourceURI = source.uri || '';
 		let isObjectURL = false;
 		let hasAlpha = true;
