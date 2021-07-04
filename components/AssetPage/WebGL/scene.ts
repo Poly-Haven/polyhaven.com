@@ -1,4 +1,3 @@
-import { SiMaterialdesign } from 'react-icons/si';
 import * as THREE from 'three';
 import { OrbitControls, EXRLoader } from 'three-stdlib';
 import { GLTFLoader } from './loaders/GLTFLoader';
@@ -12,6 +11,7 @@ const roughMaterial = new THREE.MeshBasicMaterial();
 
 const meshes: THREE.Mesh[] = [];
 const mapsMaterials: THREE.MeshBasicMaterial[] = [];
+const wireframes: THREE.LineSegments[] = [];
 
 function setupScene(id: string) {
   const inner_container = document.getElementById(id);
@@ -131,6 +131,13 @@ function loadModel() {
           const mesh = child as THREE.Mesh;
           mesh.material = material;
           meshes.push(mesh);
+
+          const wireframeGeo = new THREE.WireframeGeometry(mesh.geometry); // or WireframeGeometry
+          const wireframeMat = new THREE.LineBasicMaterial({ color: 0x000000 });
+          const wireframe = new THREE.LineSegments(wireframeGeo, wireframeMat);
+          wireframe.visible = false;
+          mesh.add(wireframe);
+          wireframes.push(wireframe);
         }
       });
     },
@@ -140,7 +147,7 @@ function loadModel() {
     },
     // called when loading has errors
     function (error) {
-      console.log('An error happened');
+      console.error(error);
     }
   );
 }
@@ -194,6 +201,12 @@ function handleKeydown(e: KeyboardEvent) {
 
       mapsMaterialsIndex++;
       mapsMaterialsIndex %= mapsMaterials.length;
+      break;
+
+    case '5':
+      wireframes.forEach((w) => {
+        w.visible = !w.visible;
+      });
       break;
   }
 }
