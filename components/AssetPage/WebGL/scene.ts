@@ -17,9 +17,8 @@ function setupScene(id: string) {
   const inner_container = document.getElementById(id);
   const container = document.getElementById('preview-container');
 
-  console.log(container);
   // this is just for development purposes, so we don't create a new canvas every time the page hot-reloads
-  inner_container.innerHTML = '';
+  if (inner_container) inner_container.innerHTML = '';
 
   scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
