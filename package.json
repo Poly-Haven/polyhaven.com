@@ -8,6 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/drei": "^7.0.6",
+    "@react-three/fiber": "^7.0.2",
+    "@types/three": "^0.129.2",
     "dotenv": "^10.0.0",
     "epoch-timeago": "^1.1.9",
     "filesize": "^6.3.0",
@@ -27,6 +30,7 @@
     "recharts": "^2.0.9",
     "sass": "^1.32.8",
     "swr": "^0.5.3",
+    "three": "^0.130.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
