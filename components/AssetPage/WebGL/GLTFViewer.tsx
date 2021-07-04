@@ -6,13 +6,12 @@ import styles from './GLTFViewer.module.scss'
 import { Suspense } from "react";
 
 import * as THREE from 'three'
-import React, { FC, useRef, useReducer, useState } from 'react'
+import React, { FC, useReducer, useState } from 'react'
 
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls, useGLTF } from '@react-three/drei'
 import { useEffect } from 'react';
 import { GLTF } from 'three-stdlib';
-import { Object3D, Texture } from 'three';
 
 import {
   reducer as GLTF_Visibility_reducer,
@@ -69,8 +68,9 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   try {
     gltf = useGLTF(url) as GLTFResult;
   } catch(err) {
-    // what horrible interface is this... why doesn't useGLTF just return a promise?!
+    // what weird interface is this... why doesn't useGLTF just return a promise?!
     // as a custom hook it just breaks, unless I'm using it wrong
+    // TODO .. fix this ASAP!
     // useLoader is not the correct module type (?) so would need fixing?
     // GLTFLoader.loadAsync returns a promise.. maybe this is the better way?
     err.then(() => {
@@ -82,7 +82,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   }
 
   useEffect(() => {
-    console.log("gltf", gltf)
+    // console.log("gltf", gltf)
     if (!gltf) return;
 
     Object.values(gltf.nodes).filter(node => node.type === "Mesh").map(node => dispatch(addMesh(node)));
@@ -115,6 +115,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
                     }
                   </mesh>
 
+                  // to just load the full scene in on
                   // <primitive scale={TMP_SCALE} object={gltf.scene} />
               })
           }
@@ -122,7 +123,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
         </Canvas>
       </div>
 
-      
       <div style={{width: "320px", height: "100%", background: "white", position: "absolute", right: "0" }}>
         <div><b>Controls</b></div>
         <button onClick={() => { dispatch(toggleWireframe()) }}>

@@ -1,15 +1,13 @@
-
-
 const ADD_MESH = 'ADD_MESH' as const;
 
 const SOLO_MESH = 'SOLO_MESH' as const;
 const TOGGLE_MESH = 'TOGGLE_MESH' as const;
 const UNSOLO_MESH = 'UNSOLO_MESH' as const;
-    
+
+const TOGGLE_WIREFRAME = 'TOGGLE_WIREFRAME' as const;
+
 const SOLO_TEXTURE = 'SOLO_TEXTURE' as const;
 const UNSOLO_TEXTURE = 'UNSOLO_TEXTURE' as const;
-    
-const TOGGLE_WIREFRAME = 'TOGGLE_WIREFRAME' as const;
 
 const RESET_DISPLAY = 'RESET_DISPLAY' as const;
 
@@ -44,12 +42,15 @@ export const toggleMesh = (uuid: string) => {
 export const toggleWireframe = (uuid?: string) => {
     return {
         type: TOGGLE_WIREFRAME,
-        payload: {
-            uuid
-        }
+        payload: { uuid }
     };
 };
 
+export const resetDisplay = (uuid?: string) => {
+    return {
+        type: RESET_DISPLAY,
+    };
+};
 
 
 
@@ -58,12 +59,14 @@ type SoloMeshAction = ReturnType<typeof soloMesh>;
 type ToggleMeshAction = ReturnType<typeof toggleMesh>;
 type UnsoloMeshAction = ReturnType<typeof unsoloMesh>;
 type ToggleWireframeAction = ReturnType<typeof toggleWireframe>;
+type ResetDisplayAction = ReturnType<typeof resetDisplay>;
 
 type Action = AddMeshAction
     | SoloMeshAction
     | ToggleMeshAction
     | UnsoloMeshAction
     | ToggleWireframeAction
+    | ResetDisplayAction
     ;
 
 interface MeshState {
@@ -96,13 +99,13 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                 ...state,
                 meshes: [
                     ...state.meshes,
-                    // [action.payload.mesh.name]: 
                     {
                         mesh: action.payload.mesh,
                         visibility: true,
                         wireframe: false,
                         maps: {
                             // assume we will use meshStandardMaterial (PBR)
+                            // TODO these fields are correct, use enum type and generate keyof
                             map: {
                                 visibility: true
                             },
@@ -165,12 +168,9 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                 ...state,
                 wireframe: !state.wireframe
             };
-        
 
         // case SOLO_TEXTURE:
         // case UNSOLO_TEXTURE:
-
-
         // case RESET_DISPLAY:
 
         default:
