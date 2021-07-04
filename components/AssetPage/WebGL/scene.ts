@@ -6,8 +6,11 @@ let scene: THREE.Scene;
 let gltfFiles: any;
 const material = new THREE.MeshStandardMaterial();
 const diffuseMaterial = new THREE.MeshBasicMaterial();
+diffuseMaterial.toneMapped = false;
 const normalMaterial = new THREE.MeshBasicMaterial();
+normalMaterial.toneMapped = false;
 const roughMaterial = new THREE.MeshBasicMaterial();
+roughMaterial.toneMapped = false;
 
 let meshes: THREE.Mesh[];
 let mapsMaterials: THREE.MeshBasicMaterial[];
