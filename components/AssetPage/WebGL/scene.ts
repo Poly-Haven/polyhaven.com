@@ -1,6 +1,12 @@
-// Information:
+// Issues:
 // - doesn't work with ARM maps yet
 // - russian_food_cans_01
+// - some issues when switching between 3D scene and preview images
+// - GLTFLoader fetches textures that don't exist
+// - no UI elements atm
+// - doesn't react to window resizes
+// - no loading indication
+// - switching between images and 3D scene reinitializes everything in the 3D scene
 
 import * as THREE from 'three';
 import { OrbitControls, EXRLoader } from 'three-stdlib';
@@ -41,7 +47,6 @@ function setupScene(id: string) {
     1000
   );
 
-  // TODO: reuse webgl context
   if (!renderer) {
     renderer = new THREE.WebGLRenderer({ antialias: true });
   }
