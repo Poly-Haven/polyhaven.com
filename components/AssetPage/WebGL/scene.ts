@@ -23,6 +23,7 @@ function setupScene(id: string) {
   // this is just for development purposes, so we don't create a new canvas every time the page hot-reloads
   if (inner_container) inner_container.innerHTML = '';
 
+  // clear arrays every time the scene is setup, so we don't have any objects from previous scenes in them
   meshes = [];
   mapsMaterials = [];
   wireframes = [];
@@ -37,20 +38,14 @@ function setupScene(id: string) {
 
   // TODO: reuse webgl context
   const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+  // TODO: resizing when window size changes
   renderer.setSize(container.clientWidth, inner_container.clientHeight);
   renderer.toneMapping = THREE.ReinhardToneMapping;
   renderer.physicallyCorrectLights = true;
   renderer.toneMappingExposure = 2;
 
   inner_container.appendChild(renderer.domElement);
-
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshNormalMaterial();
-  const cube = new THREE.Mesh(geometry, material);
-  // scene.add(cube);
-
-  // const light = new THREE.HemisphereLight(0xffffff, 0x555555, 1);
-  // scene.add(light);
 
   camera.position.z = 0.1;
 
@@ -75,28 +70,6 @@ function loadModel() {
   const texLoader = new THREE.TextureLoader();
 
   console.log(gltfFiles);
-
-  // TODO: fix map urls in GLTFLoader so we don't see error warnings
-  function getMap(id: string) {
-    const keys = Object.keys(gltfFiles.gltf.include);
-    let key = keys.find((e) => e.includes(`_${id}_`));
-
-    return gltfFiles.gltf.include[key];
-  }
-
-  function setMapIfExists(
-    id: string,
-    map: string,
-    previewMaterial: THREE.MeshBasicMaterial
-  ) {
-    if (getMap(id)) {
-      const _map = texLoader.load(getMap(id).url);
-      _map.flipY = false;
-      material[map] = _map;
-      previewMaterial.map = _map;
-      mapsMaterials.push(previewMaterial);
-    }
-  }
 
   setMapIfExists('diff', 'map', diffuseMaterial);
   setMapIfExists('nor', 'normalMap', normalMaterial);
@@ -132,6 +105,30 @@ function loadModel() {
       console.error(error);
     }
   );
+
+  // ===============
+  // LOCAL FUNCTIONS
+
+  function getMap(id: string) {
+    const keys = Object.keys(gltfFiles.gltf.include);
+    let key = keys.find((e) => e.includes(`_${id}_`));
+
+    return gltfFiles.gltf.include[key];
+  }
+
+  function setMapIfExists(
+    id: string,
+    map: string,
+    previewMaterial: THREE.MeshBasicMaterial
+  ) {
+    if (getMap(id)) {
+      const _map = texLoader.load(getMap(id).url);
+      _map.flipY = false;
+      material[map] = _map;
+      previewMaterial.map = _map;
+      mapsMaterials.push(previewMaterial);
+    }
+  }
 }
 
 function loadEnvironment(renderer) {
@@ -167,12 +164,14 @@ function handleKeydown(e: KeyboardEvent) {
   }
 
   switch (e.key) {
+    // show PBR material
     case '1':
       meshes.forEach((mesh) => {
         mesh.material = material;
       });
       break;
 
+    // cycle through maps
     case '2':
       if (meshes[0].material == material) {
         mapsMaterialsIndex = 0;
@@ -185,6 +184,7 @@ function handleKeydown(e: KeyboardEvent) {
       mapsMaterialsIndex %= mapsMaterials.length;
       break;
 
+    // toggle  wireframe
     case '5':
       wireframes.forEach((w) => {
         w.visible = !w.visible;
