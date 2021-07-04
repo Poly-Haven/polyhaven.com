@@ -7,7 +7,6 @@ import styles from './GLTFViewer.module.scss'
 import init from './scene'
 
 
-
 const GLTFViewer = ({ show, assetID }) => {
 
   if (!show) return null
@@ -31,8 +30,6 @@ const GLTFViewer = ({ show, assetID }) => {
   const id = "3d-viewer";
 
   init(id, gltfFiles);
-
-
 
   return (
     // TODO: maybe replace the id with some sort of binding??

@@ -1,12 +1,15 @@
 // Issues:
-// - doesn't work with ARM maps yet
-// - russian_food_cans_01
+// - only works with diffuse, roughness and normal atm
+// - doesn't work on textures yet
+// - camera position doesn't take the model's size into account
 // - some issues when switching between 3D scene and preview images
 // - GLTFLoader fetches textures that don't exist
 // - no UI elements atm
 // - doesn't react to window resizes
 // - no loading indication
 // - switching between images and 3D scene reinitializes everything in the 3D scene
+// - looks weird on 'modular_industrial_pipes_01', 'korean_fire_extinguisher_01' (and a bunch more probably)
+// - russian_food_cans_01 doesn't work at all
 
 import * as THREE from 'three';
 import { OrbitControls, EXRLoader } from 'three-stdlib';
