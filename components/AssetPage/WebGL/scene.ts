@@ -1,3 +1,4 @@
+import { SiMaterialdesign } from 'react-icons/si';
 import * as THREE from 'three';
 import { OrbitControls, EXRLoader } from 'three-stdlib';
 import { GLTFLoader } from './loaders/GLTFLoader';
@@ -5,6 +6,11 @@ import { GLTFLoader } from './loaders/GLTFLoader';
 let scene: THREE.Scene;
 let gltfFiles: any;
 const material = new THREE.MeshStandardMaterial();
+const diffuseMaterial = new THREE.MeshBasicMaterial();
+const normalMaterial = new THREE.MeshBasicMaterial();
+
+const meshes: THREE.Mesh[] = [];
+const mapsMaterials: THREE.MeshBasicMaterial[] = [];
 
 function setupScene(id: string) {
   const inner_container = document.getElementById(id);
@@ -53,6 +59,8 @@ function setupScene(id: string) {
   };
 
   animate();
+
+  document.addEventListener('keydown', handleKeydown);
 }
 
 function loadModel() {
@@ -73,11 +81,19 @@ function loadModel() {
     return gltfFiles.gltf.include[key];
   }
 
-  material.map = texLoader.load(getMap('diff').url);
-  material.map.flipY = false;
+  const diffuseMap = texLoader.load(getMap('diff').url);
+  diffuseMap.flipY = false;
+  material.map = diffuseMap;
+  diffuseMaterial.map = diffuseMap;
 
-  material.normalMap = texLoader.load(getMap('nor').url);
-  material.normalMap.flipY = false;
+  mapsMaterials.push(diffuseMaterial);
+
+  const normalMap = texLoader.load(getMap('nor').url);
+  normalMap.flipY = false;
+  material.normalMap = normalMap;
+  normalMaterial.map = normalMap;
+
+  mapsMaterials.push(normalMaterial);
 
   material.roughness = 0.1;
 
@@ -91,6 +107,7 @@ function loadModel() {
         if (child.type == 'Mesh') {
           const mesh = child as THREE.Mesh;
           mesh.material = material;
+          meshes.push(mesh);
         }
       });
     },
@@ -128,4 +145,32 @@ export default function init(id: string, _gltfFiles: any) {
 
   // TODO: is there a react way of doing this?
   setTimeout(setupScene, 0, id);
+}
+
+let mapsMaterialsIndex = 0;
+
+function handleKeydown(e: KeyboardEvent) {
+  if (e.isComposing) {
+    return;
+  }
+
+  switch (e.key) {
+    case '1':
+      meshes.forEach((mesh) => {
+        mesh.material = material;
+      });
+      break;
+
+    case '2':
+      if (meshes[0].material == material) {
+        mapsMaterialsIndex = 0;
+      }
+      meshes.forEach((mesh) => {
+        mesh.material = mapsMaterials[mapsMaterialsIndex];
+      });
+
+      mapsMaterialsIndex++;
+      mapsMaterialsIndex %= mapsMaterials.length;
+      break;
+  }
 }
