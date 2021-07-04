@@ -1,9 +1,14 @@
+// Information:
+// - doesn't work with ARM maps yet
+// - russian_food_cans_01
+
 import * as THREE from 'three';
 import { OrbitControls, EXRLoader } from 'three-stdlib';
 import { GLTFLoader } from './loaders/GLTFLoader';
 
 let scene: THREE.Scene;
 let gltfFiles: any;
+let renderer: THREE.WebGLRenderer;
 const material = new THREE.MeshStandardMaterial();
 const diffuseMaterial = new THREE.MeshBasicMaterial();
 diffuseMaterial.toneMapped = false;
@@ -37,7 +42,9 @@ function setupScene(id: string) {
   );
 
   // TODO: reuse webgl context
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  if (!renderer) {
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+  }
 
   // TODO: resizing when window size changes
   renderer.setSize(container.clientWidth, inner_container.clientHeight);
