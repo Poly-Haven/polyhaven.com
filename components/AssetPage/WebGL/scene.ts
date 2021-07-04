@@ -96,32 +96,8 @@ function loadModel() {
   }
 
   setMapIfExists('diff', 'map', diffuseMaterial);
-
-  // const diffuseMap = texLoader.load(getMap('diff').url);
-  // diffuseMap.flipY = false;
-  // material.map = diffuseMap;
-  // diffuseMaterial.map = diffuseMap;
-  // mapsMaterials.push(diffuseMaterial);
-
-  if (getMap('rough')) {
-    const roughMap = texLoader.load(getMap('rough').url);
-    roughMap.flipY = false;
-    material.roughnessMap = roughMap;
-    roughMaterial.map = roughMap;
-    mapsMaterials.push(roughMaterial);
-  } else {
-    // TODO: ARM
-
-    material.roughness = 0.1;
-    console.log('roughness does not exist');
-  }
-
-  const normalMap = texLoader.load(getMap('nor').url);
-  normalMap.flipY = false;
-  material.normalMap = normalMap;
-  normalMaterial.map = normalMap;
-
-  mapsMaterials.push(normalMaterial);
+  setMapIfExists('nor', 'normalMap', normalMaterial);
+  setMapIfExists('rough', 'roughnessMap', roughMaterial);
 
   gltfLoader.load(
     gltfFiles.gltf.url,
