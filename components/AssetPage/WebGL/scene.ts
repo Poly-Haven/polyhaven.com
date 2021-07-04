@@ -9,9 +9,9 @@ const diffuseMaterial = new THREE.MeshBasicMaterial();
 const normalMaterial = new THREE.MeshBasicMaterial();
 const roughMaterial = new THREE.MeshBasicMaterial();
 
-const meshes: THREE.Mesh[] = [];
-const mapsMaterials: THREE.MeshBasicMaterial[] = [];
-const wireframes: THREE.LineSegments[] = [];
+let meshes: THREE.Mesh[];
+let mapsMaterials: THREE.MeshBasicMaterial[];
+let wireframes: THREE.LineSegments[];
 
 function setupScene(id: string) {
   const inner_container = document.getElementById(id);
@@ -19,6 +19,10 @@ function setupScene(id: string) {
 
   // this is just for development purposes, so we don't create a new canvas every time the page hot-reloads
   if (inner_container) inner_container.innerHTML = '';
+
+  meshes = [];
+  mapsMaterials = [];
+  wireframes = [];
 
   scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
