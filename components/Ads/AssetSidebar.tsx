@@ -14,9 +14,7 @@ const Ad = () => {
       style={{ display: "inline-block", width: "336px", height: "280px" }}
       data-ad-client="ca-pub-2284751191864068"
       data-ad-slot="9249051205"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({ });
-    </script>
+    <script dangerouslySetInnerHTML={{ __html: `(adsbygoogle = window.adsbygoogle || []).push({ });` }} />
   </>)
 }
 
