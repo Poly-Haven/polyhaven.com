@@ -43,12 +43,22 @@
   .info {
     position: relative;
     flex-grow: 1;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
     @include dark_scrollbar();
+
+    .infoItems {
+      @include flex(column);
+      flex-grow: 1;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 1rem;
+      padding-top: 0;
+      @include dark_scrollbar();
+    }
 
     h1 {
       font-size: 1.5rem;

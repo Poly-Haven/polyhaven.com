@@ -84,66 +84,69 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
           <Download assetID={assetID} data={data} setPreview={setPreviewImage} />
 
-          <InfoItem label={`${multiAuthor ? "Authors" : "Author"}`} flex>
-            <div className={styles.authors}>
-              {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
-            </div>
-            {data.donated ? <div className={styles.heart} title="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
-          </InfoItem>
+          <div className={styles.infoItems}>
 
-          {data.info ? <div>
-            <div className={styles.infoText} lang="en">
-              <Markdown>{data.info.replace(/\\n/g, '\n')}</Markdown>
-            </div>
-          </div> : null}
+            <InfoItem label={`${multiAuthor ? "Authors" : "Author"}`} flex>
+              <div className={styles.authors}>
+                {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
+              </div>
+              {data.donated ? <div className={styles.heart} title="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
+            </InfoItem>
 
-          <InfoItem label="License">
-            <Link href="/license">CC0</Link> (public domain)
-          </InfoItem>
-          <InfoItem label="Published">
-            {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
-          </InfoItem>
-          <InfoItem label="Dynamic Range" condition={Boolean(data.evs_cap)}>
-            {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
-          </InfoItem>
-          <InfoItem label="Scale" condition={Boolean(data.scale)}>
-            {data.scale}
-          </InfoItem>
-          <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
-            {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
-          </InfoItem>
-          <InfoItem label="Location" condition={Boolean(data.coords)}>
-            {data.coords ? data.coords.join(', ') : null}
-          </InfoItem>
-          <InfoItem label="Whitebalance" condition={Boolean(data.whitebalance)}>
-            {data.whitebalance}K
-          </InfoItem>
-          <InfoItem label="Downloads" condition={Boolean(data.download_count)}>
-            {data.download_count}
-          </InfoItem>
+            {data.info ? <div>
+              <div className={styles.infoText} lang="en">
+                <Markdown>{data.info.replace(/\\n/g, '\n')}</Markdown>
+              </div>
+            </div> : null}
 
-          <div className={styles.spacer} />
-          <Sponsor assetID={assetID} sponsors={data.sponsors} />
-          <div className={styles.spacer} />
+            <InfoItem label="License">
+              <Link href="/license">CC0</Link> (public domain)
+            </InfoItem>
+            <InfoItem label="Published">
+              {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
+            </InfoItem>
+            <InfoItem label="Dynamic Range" condition={Boolean(data.evs_cap)}>
+              {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
+            </InfoItem>
+            <InfoItem label="Scale" condition={Boolean(data.scale)}>
+              {data.scale}
+            </InfoItem>
+            <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
+              {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
+            </InfoItem>
+            <InfoItem label="Location" condition={Boolean(data.coords)}>
+              {data.coords ? data.coords.join(', ') : null}
+            </InfoItem>
+            <InfoItem label="Whitebalance" condition={Boolean(data.whitebalance)}>
+              {data.whitebalance}K
+            </InfoItem>
+            <InfoItem label="Downloads" condition={Boolean(data.download_count)}>
+              {data.download_count}
+            </InfoItem>
 
-          <InfoItem label="Categories">
-            <div className={styles.tagsList}>
-              {data.categories.map(i =>
-                <Link href={`/${Object.keys(asset_types)[data.type]}/${i}`} key={i}><a>
-                  <div className={styles.tag}>{i}</div>
-                </a></Link>
-              )}
-            </div>
-          </InfoItem>
-          <InfoItem label="Tags">
-            <div className={styles.tagsList}>
-              {data.tags.map(i =>
-                <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>
-                  <div className={styles.tag}>{i}</div>
-                </a></Link>
-              )}
-            </div>
-          </InfoItem>
+            <div className={styles.spacer} />
+            <Sponsor assetID={assetID} sponsors={data.sponsors} />
+            <div className={styles.spacer} />
+
+            <InfoItem label="Categories">
+              <div className={styles.tagsList}>
+                {data.categories.map(i =>
+                  <Link href={`/${Object.keys(asset_types)[data.type]}/${i}`} key={i}><a>
+                    <div className={styles.tag}>{i}</div>
+                  </a></Link>
+                )}
+              </div>
+            </InfoItem>
+            <InfoItem label="Tags">
+              <div className={styles.tagsList}>
+                {data.tags.map(i =>
+                  <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>
+                    <div className={styles.tag}>{i}</div>
+                  </a></Link>
+                )}
+              </div>
+            </InfoItem>
+          </div>
         </div>
 
         <div className={styles.sidebarAd}><AdAssetSidebar /></div>
