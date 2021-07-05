@@ -3,15 +3,14 @@ import apiSWR from 'utils/apiSWR'
 import Loader from 'components/UI/Loader/Loader'
 
 import styles from './GLTFViewer.module.scss'
-import { Suspense } from "react";
 
 import * as THREE from 'three'
-import React, { FC, useReducer, useState } from 'react'
+import React, { FC, useReducer, useState, useEffect, Suspense } from 'react'
 
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useLoader } from '@react-three/fiber'
 import { Environment, OrbitControls, useGLTF } from '@react-three/drei'
-import { useEffect } from 'react';
-import { GLTF } from 'three-stdlib';
+import { GLTF, GLTFLoader } from 'three-stdlib';
+// import GLTFLoader from 'three-stdlib/loaders/GLTFLoader.cjs';
 
 import {
   reducer as GLTF_Visibility_reducer,
@@ -23,7 +22,10 @@ import {
   unsoloMesh,
   toggleWireframe,
 } from './GLTF_Visibility_reducer';
+import GLTFObject from './GLTFObject'
+import ErrorBoundary from 'utils/ErrorBoundary'
 
+console.log(GLTFLoader)
 type GLTFResult = GLTF & {
   nodes: {
     [s: string]: THREE.Mesh; // | Object3D;
@@ -58,13 +60,87 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  // const gltfFiles = files['gltf']['4k']
-  // const url = gltfFiles.gltf.url;
+  console.log(files)
+  const gltfFiles = files['gltf']['4k']
+  const url = gltfFiles.gltf.url;
 
-  const url = "/tmpdata/Camera_01_4k.gltf/Camera_01_4k.gltf";
+  // const url = "/tmpdata/Camera_01_4k.gltf/Camera_01_4k.gltf";
+
+  const [mappedGLTF, setMappedGLTF] = useState();
+    
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(gltfFiles.gltf.include)
+
+        setMappedGLTF(
+          {
+            ...data,
+            images: {
+              ...data.images.map((key, idx) => {
+                  return {
+                    ...data.images[idx],
+                    uri: gltfFiles.gltf.include[key.uri].url
+                  }
+              })
+            }
+          }
+        )
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log("output", mappedGLTF)
+
+    if (!mappedGLTF) return;
+    const _GLTFLoader = new GLTFLoader();
+
+    _GLTFLoader.parse(JSON.stringify(mappedGLTF), "", console.log)
+  }, [mappedGLTF]);
+
+
+    // useEffect(() => {
+
+
+    //   glload.load(url, console.log)
+    //   // .then(console.log)
+    // }, [])
+
+
+
+  // let gltf: GLTFResult;
+  // try {
+  //   gltf = useGLTF(url) as GLTFResult;
+  // } catch(err) {
+  //   console.log(err)
+  // }
+
+
+  // const onLoadGLTF = result => {
+  //   console.log(result)
+  //   gltf = result;
+  // }
   
-  let gltf: GLTFResult;
+  // const noCORS_GLTFLoader = new GLTFLoader();
+  // noCORS_GLTFLoader.crossOrigin = "no-cors";
 
+
+
+//   const gltf = useLoader(GLTFLoader, url, loader => {
+//     loader.setCrossOrigin('no-cors')
+//   });
+
+
+  
+//   console.log(GLTFLoader)
+//   console.log(new GLTFLoader())
+// // console.log(LoadingManager)
+// // console.log(new LoadingManager())
+
+
+//   console.log("gltf", gltf)
+  /*
   try {
     gltf = useGLTF(url) as GLTFResult;
   } catch(err) {
@@ -80,15 +156,16 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
       setLoaded(true)
     })
   }
+  */
 
-  useEffect(() => {
-    // console.log("gltf", gltf)
-    if (!gltf) return;
+  // useEffect(() => {
+  //   console.log("gltf", gltf)
+  //   if (!gltf) return;
 
-    Object.values(gltf.nodes).filter(node => node.type === "Mesh").map(node => dispatch(addMesh(node)));
+  //   // Object.values(gltf.nodes).filter(node => node.type === "Mesh").map(node => dispatch(addMesh(node)));
 
-  }, [loaded]);
-  const TMP_SCALE = 10;
+  // }, [loaded]);
+  // const TMP_SCALE = 10;
 
   return (
     <div className={styles.wrapper}>
@@ -102,28 +179,33 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
             <Environment preset="apartment" background={true /* true to show HDR background */} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
 
+            <ErrorBoundary>
+              <GLTFObject url={url} />
+            </ErrorBoundary>
 
-            {gltf && state.meshes &&
-              state.meshes.map(node => {
-                console.log(node)
-                return node.visibility &&
-                  <mesh scale={TMP_SCALE} geometry={node.mesh.geometry}>
-                    {
-                      state.wireframe || node.wireframe ?
-                      <meshBasicMaterial wireframe={true} color='purple' /> :
-                      <meshPhysicalMaterial wireframe={state.wireframe} {...node.mesh.material} />
-                    }
-                  </mesh>
+{/* 
+            {
+              gltf && state.meshes &&
+                state.meshes.map(node => {
+                  console.log(node)
+                  return node.visibility &&
+                    <mesh scale={TMP_SCALE} geometry={node.mesh.geometry}>
+                      {
+                        state.wireframe || node.wireframe ?
+                        <meshBasicMaterial wireframe={true} color='purple' /> :
+                        <meshPhysicalMaterial wireframe={state.wireframe} {...node.mesh.material} />
+                      }
+                    </mesh>
 
-                  // to just load the full scene in on
-                  // <primitive scale={TMP_SCALE} object={gltf.scene} />
-              })
-          }
+                    // to just load the full scene in on
+                    // <primitive scale={TMP_SCALE} object={gltf.scene} />
+                })
+            } */}
           </Suspense>
         </Canvas>
       </div>
 
-      <div style={{width: "320px", height: "100%", background: "white", position: "absolute", right: "0" }}>
+      {/* <div style={{width: "320px", height: "100%", background: "white", position: "absolute", right: "0" }}>
         <div><b>Controls</b></div>
         <button onClick={() => { dispatch(toggleWireframe()) }}>
           {state.wireframe ? "hide" : "show"} wireframe
@@ -152,9 +234,8 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
               })
             )
           }
-
         </ul>
-      </div>
+      </div> */}
 
     </div>
   )

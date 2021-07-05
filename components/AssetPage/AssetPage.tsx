@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useEffect } from "react";
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
@@ -20,6 +20,7 @@ import Sponsor from './Sponsor'
 import GLTFViewer from './WebGL/GLTFViewer'
 
 import styles from './AssetPage.module.scss'
+import ErrorBoundary from 'utils/ErrorBoundary';
 
 const AssetPage = ({ assetID, data, scrollPosition }) => {
   const [pageLoading, setPageLoading] = useState(false)
@@ -72,7 +73,9 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
               onLoad={imageLoaded}
               src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
             />
-            <GLTFViewer show={showWebGL} assetID={assetID} />
+            <ErrorBoundary>
+              <GLTFViewer show={showWebGL} assetID={assetID} />
+            </ErrorBoundary>
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
               <Spinner />
             </div>
