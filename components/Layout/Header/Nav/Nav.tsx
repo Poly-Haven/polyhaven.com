@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0';
 
-import { MdMenu, MdHelp, MdDescription } from 'react-icons/md'
+import { MdMenu, MdHelp, MdDescription, MdAccountCircle } from 'react-icons/md'
 
 import NavItem from './NavItem'
 
 import styles from './Nav.module.scss'
 
 const Nav = () => {
+  const { user, isLoading } = useUser();
   const [navHide, setToggle] = useState(true);
 
   const toggle = () => {
@@ -27,6 +29,11 @@ const Nav = () => {
           <NavItem text={<><MdHelp />FAQ</>} link="/faq" />
           <NavItem text={<><MdDescription />License</>} link="/license" />
         </NavItem>
+        {!isLoading && user &&
+          <NavItem text={<MdAccountCircle />} link="/account">
+            <NavItem text="Logout" link="/api/auth/logout" />
+          </NavItem>
+        }
       </div>
       <div className={styles.menuToggle} onClick={toggle}><MdMenu /></div>
     </>

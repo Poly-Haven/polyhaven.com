@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.4.2",
     "dotenv": "^10.0.0",
     "epoch-timeago": "^1.1.9",
     "filesize": "^6.3.0",
