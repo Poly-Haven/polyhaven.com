@@ -27,7 +27,7 @@ const Page = () => {
       url="/account"
     >
       <h1>Account</h1>
-      <p>TODO</p>
+      <p><pre>{JSON.stringify(user, null, 2)}</pre></p>
     </TextPage>
   )
 }
