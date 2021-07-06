@@ -10,7 +10,7 @@ import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
 import Spinner from 'components/Spinner/Spinner';
-import AdTop from 'components/Ads/GridTop'
+import DisplayAd from 'components/Ads/DisplayAd';
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
 
@@ -167,7 +167,7 @@ const Grid = (props) => {
           </div>
         </div>
         <div className={styles.adGridTop}>
-          <AdTop />
+          <DisplayAd id="9488083725" x={468} y={60} />
         </div>
       </div>
 

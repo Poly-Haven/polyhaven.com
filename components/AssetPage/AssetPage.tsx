@@ -8,7 +8,7 @@ import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 
 import Page from 'components/Layout/Page/Page'
-import AdAssetSidebar from 'components/Ads/AssetSidebar'
+import DisplayAd from 'components/Ads/DisplayAd';
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import Spinner from 'components/Spinner/Spinner'
 import Heart from 'components/Heart/Heart'
@@ -149,7 +149,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           </div>
         </div>
 
-        <div className={styles.sidebarAd}><AdAssetSidebar /></div>
+        <div className={styles.sidebarAd}><DisplayAd id="9249051205" x={336} y={280} /></div>
       </div>
     </div>
   )
