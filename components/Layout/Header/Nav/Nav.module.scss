@@ -66,7 +66,9 @@
   top: 100%;
   min-width: 100%;
   background: $c-background-dark;
+  box-shadow: 0 0 0.3em rgba(black, 0.5);
   @include transition();
+  transition-delay: 0.25s;
 
   .navItem {
     padding: 0.3rem 0.8rem;
@@ -74,7 +76,9 @@
     border-left: none;
     height: 0;
     overflow: clip;
-    @include transition();
+    transition: opacity 0.15s ease 0.25s;
+    transition: visibility 0.15s ease 0.25s;
+    transition: height 0.15s ease 0.25s;
 
     &:last-of-type {
       border-bottom: none;
