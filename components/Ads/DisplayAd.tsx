@@ -7,9 +7,9 @@ const DisplayAd = ({ id, x, y }) => {
   const isProduction = process.env.NODE_ENV === "production";
 
   useEffect(() => {
-    if (isProduction) {
+    if (isProduction && localStorage.getItem(`hideAds`) !== "yes") {
       try {
-        // @ts-ignore - adsbygoogle not detected as a prop of window, since it's declared in _document.tsx
+        // @ts-ignore - adsbygoogle not detected as a prop of window
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (err) {
         console.error(err);
@@ -17,7 +17,10 @@ const DisplayAd = ({ id, x, y }) => {
     }
   }, []);
 
-  // TODO hide for patrons
+  if (localStorage.getItem(`hideAds`) === "yes") {
+    return null
+  }
+
   if (!isProduction) {
     return (
       <img src={`https://via.placeholder.com/${x}x${y}`} className={styles.placeholder} />
