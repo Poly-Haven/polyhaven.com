@@ -34,6 +34,9 @@ const Route = async (req, res) => {
       }
     }
   }
+  if (returnData['status'] === 'active_patron') {
+    rewards['No Ads'] = true
+  }
   returnData['rewards'] = Object.keys(rewards)
 
   res.status(200).json(returnData);
