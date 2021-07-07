@@ -10,6 +10,9 @@ import React, { FC, useReducer, useState, useEffect, Suspense } from 'react'
 import { Canvas, useLoader } from '@react-three/fiber'
 import { Environment, OrbitControls, useGLTF } from '@react-three/drei'
 import { GLTF, GLTFLoader } from 'three-stdlib';
+
+
+// import { GLTF } from 'three-stdlib';
 // import GLTFLoader from 'three-stdlib/loaders/GLTFLoader.cjs';
 
 import {
@@ -25,15 +28,15 @@ import {
 import GLTFObject from './GLTFObject'
 import ErrorBoundary from 'utils/ErrorBoundary'
 
-console.log(GLTFLoader)
-type GLTFResult = GLTF & {
-  nodes: {
-    [s: string]: THREE.Mesh; // | Object3D;
-  },
-  materials: {
-    [s: string]: THREE.MeshStandardMaterial;
-  }
-}
+// console.log(GLTFLoader)
+// type GLTFResult = GLTF & {
+//   nodes: {
+//     [s: string]: THREE.Mesh; // | Object3D;
+//   },
+//   materials: {
+//     [s: string]: THREE.MeshStandardMaterial;
+//   }
+// }
 
 interface Props {
   readonly show: boolean;
@@ -43,8 +46,8 @@ interface Props {
 const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   if (!show) return null
 
-  const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState);
-  const [loaded, setLoaded] = useState(false);
+  // const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState);
+  // const [loaded, setLoaded] = useState(false);
   
   const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
   if (error) {
@@ -67,24 +70,29 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   // const url = "/tmpdata/Camera_01_4k.gltf/Camera_01_4k.gltf";
 
   const [mappedGLTF, setMappedGLTF] = useState();
+  const [processedGLTF, setProcessedGLTF] = useState<GLTF>();
     
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
       .then(data => {
         console.log(gltfFiles.gltf.include)
-
+        console.log(data)
         setMappedGLTF(
           {
             ...data,
-            images: {
-              ...data.images.map((key, idx) => {
+            images: data.images.map((key, idx) => {
                   return {
                     ...data.images[idx],
                     uri: gltfFiles.gltf.include[key.uri].url
                   }
-              })
-            }
+            }),
+            buffers: data.buffers.map(key => {
+              return {
+                byteLength: gltfFiles.gltf.include[key.uri].size,
+                uri: gltfFiles.gltf.include[key.uri].url,
+              }
+            })
           }
         )
     });
@@ -96,7 +104,9 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     if (!mappedGLTF) return;
     const _GLTFLoader = new GLTFLoader();
 
-    _GLTFLoader.parse(JSON.stringify(mappedGLTF), "", console.log)
+    // should not hard code baseUrl here, get from API
+    // can also use deeper nesting but most importantly it is just needed to make glTF URLs relative
+    _GLTFLoader.parse(JSON.stringify(mappedGLTF), "https://dl.polyhaven.com/", data => setProcessedGLTF(data))
   }, [mappedGLTF]);
 
 
@@ -165,7 +175,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   //   // Object.values(gltf.nodes).filter(node => node.type === "Mesh").map(node => dispatch(addMesh(node)));
 
   // }, [loaded]);
-  // const TMP_SCALE = 10;
+  const TMP_SCALE = 10;
 
   return (
     <div className={styles.wrapper}>
@@ -176,12 +186,16 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <perspectiveCamera fov={27} near={0.1} far={1000} position={[5, 2, 5]} />
-            <Environment preset="apartment" background={true /* true to show HDR background */} />
+            <Environment preset="warehouse" background={false /* true to show HDR background */} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
 
-            <ErrorBoundary>
+            {
+              processedGLTF && <primitive scale={TMP_SCALE} object={processedGLTF.scene} />
+            }
+
+            {/* <ErrorBoundary>
               <GLTFObject url={url} />
-            </ErrorBoundary>
+            </ErrorBoundary> */}
 
 {/* 
             {
