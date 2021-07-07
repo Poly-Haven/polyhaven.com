@@ -1,0 +1,76 @@
+{
+  "2011186": {
+    "comment": "$1 deprecated",
+    "name": "Thanks!",
+    "rewards": []
+  },
+  "2011183": {
+    "comment": "$3 deprecated",
+    "name": "Offline Access",
+    "rewards": [
+      "Early Access",
+      "Offline Access"
+    ]
+  },
+  "6545091": {
+    "comment": "$3",
+    "name": "Early Access",
+    "rewards": [
+      "Early Access"
+    ]
+  },
+  "2011185": {
+    "comment": "$5",
+    "name": "[deprecated] Early Access",
+    "rewards": [
+      "Early Access",
+      "Offline Access"
+    ]
+  },
+  "6545111": {
+    "comment": "$5",
+    "name": "Offline Access",
+    "rewards": [
+      "Early Access",
+      "Offline Access"
+    ]
+  },
+  "2011184": {
+    "comment": "$10",
+    "name": "Sponsor",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor"
+    ]
+  },
+  "2011182": {
+    "comment": "$20",
+    "name": "[deprecated] Semi-Exclusive HDRIs",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor"
+    ]
+  },
+  "3779966": {
+    "comment": "$50",
+    "name": "[deprecated] Commercial Sponsor",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor",
+      "Stakeholder"
+    ]
+  },
+  "6545118": {
+    "comment": "$50",
+    "name": "Stakeholder",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor",
+      "Stakeholder"
+    ]
+  }
+}
