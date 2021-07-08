@@ -17,7 +17,7 @@ const DisplayAd = ({ id, x, y }) => {
     }
   }, []);
 
-  if (localStorage.getItem(`hideAds`) === "yes") {
+  if (process.browser && localStorage.getItem(`hideAds`) === "yes") {
     return null
   }
 
