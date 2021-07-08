@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
+import { getPatronInfo } from 'utils/patronInfo';
 
 import Page from 'components/Layout/Page/Page'
 import DisplayAd from 'components/Ads/DisplayAd';
@@ -21,13 +22,16 @@ import Sponsor from './Sponsor'
 import styles from './AssetPage.module.scss'
 
 const AssetPage = ({ assetID, data, scrollPosition }) => {
+  const { user, isLoading: userIsLoading } = useUser();
+  const [uuid, setUuid] = useState(null);
+  const [patron, setPatron] = useState({});
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
 
-  useEffect(() => {
+  useEffect(() => {  // Page changes
     document.getElementById('header-title').innerHTML = data.name
     let path = document.getElementById('header-frompath').innerHTML
     if (!path) {
@@ -37,6 +41,19 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
     document.getElementById('header-frompath').innerHTML = ""
     document.getElementById('page').scrollTop = 0
   }, [assetID]);
+
+  useEffect(() => {  // Handle user loading
+    if (uuid) {
+      getPatronInfo(uuid)
+        .then(resdata => {
+          setPatron(resdata)
+        })
+    } else {
+      if (user) {
+        setUuid(user.sub.split('|').pop())
+      }
+    }
+  }, [user, uuid]);
 
   const clickSimilar = () => {
     setPageLoading(true)
@@ -82,7 +99,12 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
         <div className={styles.info}>
 
-          <Download assetID={assetID} data={data} setPreview={setPreviewImage} />
+          <Download
+            assetID={assetID}
+            data={data}
+            setPreview={setPreviewImage}
+            patron={patron}
+          />
 
           <div className={styles.infoItems}>
 
