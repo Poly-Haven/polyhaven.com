@@ -1,11 +1,12 @@
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import crypto from 'crypto'
 require('dotenv').config()
 
 import patreon_tiers from 'constants/patreon_tiers.json'
 
 const Route = async (req, res) => {
   let data = req.body;
-  data.key = process.env.PATRON_INFO_KEY
+  data.key = crypto.createHmac('md5', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
 
   const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
 
