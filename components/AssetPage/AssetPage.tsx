@@ -36,7 +36,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
     document.getElementById('header-path').innerHTML = path
     document.getElementById('header-frompath').innerHTML = ""
     document.getElementById('page').scrollTop = 0
-  });
+  }, [assetID]);
 
   const clickSimilar = () => {
     setPageLoading(true)
