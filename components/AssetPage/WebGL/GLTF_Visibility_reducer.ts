@@ -52,8 +52,6 @@ export const resetDisplay = (uuid?: string) => {
     };
 };
 
-
-
 type AddMeshAction = ReturnType<typeof addMesh>;
 type SoloMeshAction = ReturnType<typeof soloMesh>;
 type ToggleMeshAction = ReturnType<typeof toggleMesh>;
@@ -70,7 +68,7 @@ type Action = AddMeshAction
     ;
 
 interface MeshState {
-    readonly mesh: any; // THREE.Mesh
+    readonly mesh: any;
     readonly visibility: boolean;
     readonly wireframe: boolean;
     readonly maps: {
@@ -81,25 +79,26 @@ interface MeshState {
 }
 
 export interface State {
-    readonly meshes: MeshState[];
+    readonly meshes: { [s: string]: MeshState };
     readonly solo: string; // read before individual state
     readonly wireframe: boolean;
 }
 
 export const DefaultState = {
-    meshes: [],
+    meshes: {},
     solo: "",
     wireframe: false,
 };
 
 export const reducer = (state: State = DefaultState, action: Action): State => {
+    console.log(state)
     switch (action.type) {
         case ADD_MESH:
             return {
                 ...state,
-                meshes: [
+                meshes: {
                     ...state.meshes,
-                    {
+                    [action.payload.mesh.uuid]: {
                         mesh: action.payload.mesh,
                         visibility: true,
                         wireframe: false,
@@ -120,7 +119,7 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                             }
                         }
                     }
-                ]
+                }
             };
         case SOLO_MESH:
             return {
@@ -137,30 +136,52 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
         case TOGGLE_MESH:
             return {
                 ...state,
-                meshes: [
-                    ...state.meshes.map(mesh => {
-                        return {
-                            ...mesh,
-                            visibility: action.payload.uuid === mesh.mesh.uuid ?
-                                !mesh.visibility : mesh.visibility
+                meshes: {
+                    ...Object.values(state.meshes).reduce<{[s: string]: MeshState}>((acc, curr) => {
+                        
+                        acc[curr.mesh.uuid] = {
+                            ...curr,
+                            visibility: action.payload.uuid === curr.mesh.uuid ?
+                                !curr.visibility : curr.visibility
                         }
-                    })
-                ]
+                        return acc;
+                    }, {} as {[s: string]: MeshState})
+                }
+                // meshes: {
+                //     ...Object.values(state.meshes).map(mesh => {
+                //         return {
+                //             ...mesh,
+                //             visibility: action.payload.uuid === mesh.mesh.uuid ?
+                //                 !mesh.visibility : mesh.visibility
+                //         }
+                //     })
+                // }
             };
 
         case TOGGLE_WIREFRAME:
             if (action.payload.uuid) {
                 return {
                     ...state,
-                    meshes: [
-                        ...state.meshes.map(mesh => {
-                            return {
-                                ...mesh,
-                                wireframe: action.payload.uuid === mesh.mesh.uuid ?
-                                    !mesh.wireframe : mesh.wireframe
+                    meshes: {
+                        ...Object.values(state.meshes).reduce<{[s: string]: MeshState}>((acc, curr) => {
+                            
+                            acc[curr.mesh.uuid] = {
+                                ...curr,
+                                wireframe: action.payload.uuid === curr.mesh.uuid ?
+                                    !curr.wireframe : curr.wireframe
                             }
-                        })
-                    ]
+                            return acc;
+                        }, {} as {[s: string]: MeshState})
+                    }
+                    // meshes: {
+                    //     ...Object.values(state.meshes).map(mesh => {
+                    //         return {
+                    //             ...mesh,
+                    //             wireframe: action.payload.uuid === mesh.mesh.uuid ?
+                    //                 !mesh.wireframe : mesh.wireframe
+                    //         }
+                    //     })
+                    // }
                 };
     
             }
