@@ -35,7 +35,7 @@ const Route = async (req, res) => {
     }
   }
   if (returnData['status'] === 'active_patron') {
-    rewards['No Ads'] = true
+    rewards['Other'] = true
   }
   returnData['rewards'] = Object.keys(rewards)
 

@@ -6,7 +6,7 @@ import { getPatronInfo } from 'utils/patronInfo';
 import Button from 'components/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
 import TextPage from 'components/Layout/TextPage/TextPage'
-import NoAds from 'components/RewardInfo/NoAds';
+import Other from 'components/RewardInfo/Other';
 import EarlyAccess from 'components/RewardInfo/EarlyAccess';
 import OfflineAccess from 'components/RewardInfo/OfflineAccess';
 import Sponsor from 'components/RewardInfo/Sponsor';
@@ -14,8 +14,8 @@ import Stakeholder from 'components/RewardInfo/Stakeholder';
 
 const rewardInfo = (r, uuid, patron) => {
   switch (r) {
-    case "No Ads":
-      return <NoAds />
+    case "Other":
+      return <Other uuid={uuid} patron={patron} />
     case "Early Access":
       return <EarlyAccess />
     case "Offline Access":
@@ -93,10 +93,11 @@ const Page = () => {
     >
       <h1 title={uuid} style={{ textAlign: "center" }}>Hi {(patron['display_name'] || patron['name']).trim()}!</h1>
       <p>You're currently supporting Poly Haven with ${patron['cents'] / 100} per month, thanks!</p>
+
       {patron['rewards'].length > 0 && <>
         <p>This grants you the following reward{patron['rewards'].length > 1 && "s"}:</p>
 
-        {patron['rewards'].reverse().map((r, i) => <div key={i}>{rewardInfo(r, uuid, patron)}</div>)}
+        {patron['rewards'].map((r, i) => <div key={i}>{rewardInfo(r, uuid, patron)}</div>)}
       </>}
       {/* <p><pre>{JSON.stringify(patron, null, 2)}</pre></p> */}
     </TextPage>
