@@ -1,3 +1,5 @@
+import { MdCheck, MdClose } from "react-icons/md";
+
 import styles from './Switch.module.scss'
 
 const Switch = ({ on, onClick, labelOn, labelOff }) => {
@@ -8,6 +10,11 @@ const Switch = ({ on, onClick, labelOn, labelOff }) => {
       <div className={`${styles.label} ${on ? styles.sel : ''}`}>{labelOn}</div>
     </div>
   )
+}
+
+Switch.defaultProps = {
+  labelOn: <MdCheck />,
+  labelOff: <MdClose />,
 }
 
 export default Switch

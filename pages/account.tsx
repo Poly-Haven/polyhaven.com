@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
-import getPatronInfo from 'utils/getPatronInfo';
+import { getPatronInfo } from 'utils/patronInfo';
 
 import Button from 'components/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
@@ -12,7 +12,7 @@ import OfflineAccess from 'components/RewardInfo/OfflineAccess';
 import Sponsor from 'components/RewardInfo/Sponsor';
 import Stakeholder from 'components/RewardInfo/Stakeholder';
 
-const rewardInfo = (r) => {
+const rewardInfo = (r, uuid, patron) => {
   switch (r) {
     case "No Ads":
       return <NoAds />
@@ -21,7 +21,7 @@ const rewardInfo = (r) => {
     case "Offline Access":
       return <OfflineAccess />
     case "Sponsor":
-      return <Sponsor />
+      return <Sponsor uuid={uuid} patron={patron} />
     case "Stakeholder":
       return <Stakeholder />
     default:
@@ -91,12 +91,12 @@ const Page = () => {
       title="Account"
       url="/account"
     >
-      <h1>Hi {(patron['display_name'] || patron['name']).trim()}!</h1>
+      <h1 title={uuid} style={{ textAlign: "center" }}>Hi {(patron['display_name'] || patron['name']).trim()}!</h1>
       <p>You're currently supporting Poly Haven with ${patron['cents'] / 100} per month, thanks!</p>
       {patron['rewards'].length > 0 && <>
         <p>This grants you the following reward{patron['rewards'].length > 1 && "s"}:</p>
 
-        {patron['rewards'].reverse().map((r, i) => <div key={i}>{rewardInfo(r)}</div>)}
+        {patron['rewards'].reverse().map((r, i) => <div key={i}>{rewardInfo(r, uuid, patron)}</div>)}
       </>}
       {/* <p><pre>{JSON.stringify(patron, null, 2)}</pre></p> */}
     </TextPage>
