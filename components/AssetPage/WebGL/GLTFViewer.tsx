@@ -19,6 +19,7 @@ import {
   toggleMesh,
   unsoloMesh,
   toggleWireframe,
+  toggleEnvironment,
 } from './GLTF_Visibility_reducer';
 import ErrorBoundary from 'utils/ErrorBoundary'
 import { useGLTFFromAPI } from './useGLTFFromAPI'
@@ -61,7 +62,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   const TMP_SCALE = 10;
   
   // console.log("state.meshes", state.meshes)
-  
+
   return (
     <div className={styles.wrapper}>
       {/* because Canvas wraps in relative div with width/height 100%.. */}
@@ -71,7 +72,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <perspectiveCamera fov={27} near={0.1} far={1000} position={[5, 2, 5]} />
-            <Environment preset="warehouse" background={false /* true to show HDR background */} />
+            <Environment preset="warehouse" background={state.showEnvironment /* true to show HDR background */} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
 
             {
@@ -96,6 +97,9 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
         <div><b>Controls</b></div>
         <button onClick={() => { dispatch(toggleWireframe()) }}>
           {state.wireframe ? "hide" : "show"} wireframe
+        </button>
+        <button onClick={() => { dispatch(toggleEnvironment()) }}>
+          {state.showEnvironment ? "hide" : "show"} environment
         </button>
 
         <ul style={{ listStyle: "none" }}>

@@ -4,6 +4,7 @@ const SOLO_MESH = 'SOLO_MESH' as const;
 const TOGGLE_MESH = 'TOGGLE_MESH' as const;
 const UNSOLO_MESH = 'UNSOLO_MESH' as const;
 
+const TOGGLE_ENVIRONMENT = 'TOGGLE_ENVIRONMENT' as const;
 const TOGGLE_WIREFRAME = 'TOGGLE_WIREFRAME' as const;
 
 const SOLO_TEXTURE = 'SOLO_TEXTURE' as const;
@@ -46,6 +47,12 @@ export const toggleWireframe = (uuid?: string) => {
     };
 };
 
+export const toggleEnvironment = () => {
+    return {
+        type: TOGGLE_ENVIRONMENT
+    };
+};
+
 export const resetDisplay = (uuid?: string) => {
     return {
         type: RESET_DISPLAY,
@@ -56,6 +63,7 @@ type AddMeshAction = ReturnType<typeof addMesh>;
 type SoloMeshAction = ReturnType<typeof soloMesh>;
 type ToggleMeshAction = ReturnType<typeof toggleMesh>;
 type UnsoloMeshAction = ReturnType<typeof unsoloMesh>;
+type ToggleEnvironmentAction = ReturnType<typeof toggleEnvironment>;
 type ToggleWireframeAction = ReturnType<typeof toggleWireframe>;
 type ResetDisplayAction = ReturnType<typeof resetDisplay>;
 
@@ -64,6 +72,7 @@ type Action = AddMeshAction
     | ToggleMeshAction
     | UnsoloMeshAction
     | ToggleWireframeAction
+    | ToggleEnvironmentAction
     | ResetDisplayAction
     ;
 
@@ -82,12 +91,14 @@ export interface State {
     readonly meshes: { [s: string]: MeshState };
     readonly solo: string; // read before individual state
     readonly wireframe: boolean;
+    readonly showEnvironment: boolean;
 }
 
 export const DefaultState = {
     meshes: {},
     solo: "",
     wireframe: false,
+    showEnvironment: true,
 };
 
 export const reducer = (state: State = DefaultState, action: Action): State => {
@@ -133,6 +144,12 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                 solo: ""
             };
 
+        case TOGGLE_ENVIRONMENT:
+            return {
+                ...state,
+                showEnvironment: !state.showEnvironment
+            };
+
         case TOGGLE_MESH:
             return {
                 ...state,
@@ -147,15 +164,6 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                         return acc;
                     }, {} as {[s: string]: MeshState})
                 }
-                // meshes: {
-                //     ...Object.values(state.meshes).map(mesh => {
-                //         return {
-                //             ...mesh,
-                //             visibility: action.payload.uuid === mesh.mesh.uuid ?
-                //                 !mesh.visibility : mesh.visibility
-                //         }
-                //     })
-                // }
             };
 
         case TOGGLE_WIREFRAME:
@@ -173,15 +181,6 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
                             return acc;
                         }, {} as {[s: string]: MeshState})
                     }
-                    // meshes: {
-                    //     ...Object.values(state.meshes).map(mesh => {
-                    //         return {
-                    //             ...mesh,
-                    //             wireframe: action.payload.uuid === mesh.mesh.uuid ?
-                    //                 !mesh.wireframe : mesh.wireframe
-                    //         }
-                    //     })
-                    // }
                 };
     
             }
