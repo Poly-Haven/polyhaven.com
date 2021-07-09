@@ -81,6 +81,7 @@ const Other = ({ uuid, patron }) => {
         />
         <p><strong>{anon ? "hidden" : "visible"}</strong> in the patron list in the footer of this site.</p>
       </div>
+      <p>Changing this setting may take a few hours to update every page of the site.</p>
 
       {!anon && !patron.rewards.includes('Sponsor') &&  // Don't need to edit name if it's not shown or can be edited further above.
         <div className={styles.row}>
