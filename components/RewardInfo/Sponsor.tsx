@@ -88,12 +88,13 @@ const Sponsor = ({ uuid, patron }) => {
     <div>
       <h1>Sponsor</h1>
       <p>You get to pick an asset every month to stick your name and a link next to permanently. To do this, we work with a system of "tokens".</p>
-      <p>On the 5th of each month, after your payment is processed by Patreon, you receive one <IoTicket /> <strong>Sponsor Token</strong>.</p>
+      <p>At the start of each month after your payment is processed by Patreon, you automatically receive one <IoTicket /> <strong>Sponsor Token</strong>.</p>
       <p>There are two ways to spend this token:</p>
       <ol>
         <li>By visiting the page of the asset you want to sponsor, and clicking the "<IoTicket /> Sponsor this asset" button on the right side of the page.</li>
         <li>Or you can turn on automatic sponsorships below, which will pick a random asset for you each month.</li>
       </ol>
+      <p>Tokens do not expire, so you can come back after a few months and spend your accumulated tokens.</p>
       <p>Once a token is spent, it cannot be revoked or moved to a different asset.</p>
 
       <hr />
@@ -106,7 +107,25 @@ const Sponsor = ({ uuid, patron }) => {
         />
         {busyAuto && <Loader />}
       </div>
-      {autoSponsor && <p>On the 10th day of each month, any available tokens you have will be spent on random assets. This gives you 5 days (from the 5th to the 10th) to still manually spend your tokens.</p>}
+      {autoSponsor && <>
+        <p>On the 15th day of each month, any available tokens you have will be spent on random assets. This gives you 15 days to manually spend your tokens if you want to.</p>
+
+        <p>If you want to be notified when an asset is automatically picked for you, please enter your email address below:</p>
+
+        <div className={styles.row}><p>Email address:</p>
+          <form onSubmit={preventDefault}>
+            <input
+              type="text"
+              value={email}
+              onChange={updateEmail} />
+          </form>
+          <Disabled disabled={!isEmail(email) && email.length} tooltip="Invalid email address">
+            <div className={`${styles.iconBtn} ${email !== currentData['email'] && styles.highlight}`} onClick={doUpdateEmail}>{busyEmail ? <Loader /> : <MdCheck />}</div>
+          </Disabled>
+        </div>
+
+        <p>To unsubscribe from notifications, clear your email address above and click the tick button.</p>
+      </>}
 
       <hr />
 
@@ -131,24 +150,6 @@ const Sponsor = ({ uuid, patron }) => {
           <div className={`${styles.iconBtn} ${(name !== currentData['name'] || url !== currentData['url']) && styles.highlight}`} onClick={doUpdateInfo}>{busyInfo ? <Loader /> : <MdCheck />}</div>
         </Disabled>
       </div>
-
-      <hr />
-
-      <p>If you want to be notified when you receive a new token, or when an asset is automatically picked for you, please enter your email address below:</p>
-
-      <div className={styles.row}><p>Email address:</p>
-        <form onSubmit={preventDefault}>
-          <input
-            type="text"
-            value={email}
-            onChange={updateEmail} />
-        </form>
-        <Disabled disabled={!isEmail(email) && email.length} tooltip="Invalid email address">
-          <div className={`${styles.iconBtn} ${email !== currentData['email'] && styles.highlight}`} onClick={doUpdateEmail}>{busyEmail ? <Loader /> : <MdCheck />}</div>
-        </Disabled>
-      </div>
-
-      <p>To unsubscribe from notifications, clear your email address above and click the tick button.</p>
 
       <Tooltip />
     </div>
