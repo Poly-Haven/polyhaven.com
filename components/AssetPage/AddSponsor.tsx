@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import apiSWR from 'utils/apiSWR'
 import { sponsorAsset } from 'utils/patronInfo'
 
 import { IoTicket } from 'react-icons/io5'
