@@ -14,7 +14,7 @@ const Route = async (req, res) => {
     });
     return
   }
-  data.key = crypto.createHmac('md5', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
+  data.key = crypto.createHmac('sha256', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
 
   const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
 
