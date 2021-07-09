@@ -30,3 +30,18 @@ export async function setPatronInfo(uuid, data) {
     })
   return returnData
 }
+
+export async function sponsorAsset(uuid, assetID) {
+  let returnData = null;
+  await fetch(`/api/sponsorAsset`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ uuid, assetID }),
+  }).then(res => res.json())
+    .then(resdata => {
+      returnData = resdata
+    })
+  return returnData
+}

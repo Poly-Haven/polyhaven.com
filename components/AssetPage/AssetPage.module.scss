@@ -153,6 +153,35 @@
     margin: 0;
     font-weight: bold;
   }
+
+  .addSponsor {
+    @include flex(row, true, true);
+    gap: 0.4em;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0.2em 0.4em;
+    margin: 0.75em;
+    border-radius: 0.3em;
+    border: 1px solid rgba($c-accent, 0.5);
+    color: $c-text-light;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      background: $c-accent;
+      color: white;
+    }
+
+    svg {
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+
+    em {
+      font-weight: normal;
+      opacity: 0.7;
+    }
+  }
 }
 
 .similar {

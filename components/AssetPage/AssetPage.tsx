@@ -147,7 +147,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             </InfoItem>
 
             <div className={styles.spacer} />
-            <Sponsor assetID={assetID} sponsors={data.sponsors} />
+            <Sponsor assetID={assetID} sponsors={data.sponsors} patron={patron} />
             <div className={styles.spacer} />
 
             <InfoItem label="Categories">
