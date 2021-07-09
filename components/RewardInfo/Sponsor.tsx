@@ -3,7 +3,7 @@ import { isEmail, isURL } from 'validator';
 import { setPatronInfo } from 'utils/patronInfo';
 
 import { IoTicket } from 'react-icons/io5'
-import { MdCheck } from "react-icons/md";
+import { MdCheck, MdSave } from "react-icons/md";
 
 import Switch from "components/UI/Switch/Switch"
 import Loader from "components/UI/Loader/Loader"
@@ -16,21 +16,21 @@ const Sponsor = ({ uuid, patron }) => {
   const [currentData, setCurrentData] = useState({});
   const [autoSponsor, setAutoSponsor] = useState(false);
   const [busyAuto, setBusyAuto] = useState(false);
-  const [email, setEmail] = useState("");
+  const [notifyEmail, setEmail] = useState("");
   const [busyEmail, setBusyEmail] = useState(false);
-  const [name, setName] = useState("");
+  const [displayName, setName] = useState("");
   const [url, setUrl] = useState("");
   const [busyInfo, setBusyInfo] = useState(false);
 
   useEffect(() => {
     setAutoSponsor(patron['auto_sponsor'] || false)
-    setEmail(patron['email'] || "")
+    setEmail(patron['notify_email'] || "")
     setName((patron['display_name'] || patron['name']).trim())
     setUrl(patron['url'] || "")
     setCurrentData({
       auto_sponsor: patron['auto_sponsor'] || false,
-      email: patron['email'] || "",
-      name: (patron['display_name'] || patron['name']).trim(),
+      notify_email: patron['notify_email'] || "",
+      display_name: (patron['display_name'] || patron['name']).trim(),
       url: patron['url'] || ""
     })
   }, []);
@@ -56,10 +56,10 @@ const Sponsor = ({ uuid, patron }) => {
   }
   const doUpdateEmail = _ => {
     setBusyEmail(true)
-    setPatronInfo(uuid, { notify_email: email.trim() || null })
+    setPatronInfo(uuid, { notify_email: notifyEmail.trim() || null })
       .then(resdata => {
         setBusyEmail(false)
-        setCurrentData({ ...currentData, email: email.trim() || "" })
+        setCurrentData({ ...currentData, notify_email: notifyEmail.trim() || "" })
         if (resdata['error']) {
           console.error(resdata)
         }
@@ -74,10 +74,10 @@ const Sponsor = ({ uuid, patron }) => {
   }
   const doUpdateInfo = _ => {
     setBusyInfo(true)
-    setPatronInfo(uuid, { display_name: name.trim() || null, url: url.trim() || null })
+    setPatronInfo(uuid, { display_name: displayName.trim() || null, url: url.trim() || null })
       .then(resdata => {
         setBusyInfo(false)
-        setCurrentData({ ...currentData, name: name.trim() || "", url: url.trim() || "" })
+        setCurrentData({ ...currentData, display_name: displayName.trim() || "", url: url.trim() || "" })
         if (resdata['error']) {
           console.error(resdata)
         }
@@ -87,6 +87,29 @@ const Sponsor = ({ uuid, patron }) => {
   return (
     <div>
       <h1>Sponsor</h1>
+
+      <div className={styles.row}>
+        <p>Display name:</p>
+        <form onSubmit={preventDefault}>
+          <input
+            type="text"
+            value={displayName}
+            data-tip="Required"
+            onChange={updateName} />
+        </form>
+        <p>Link:</p>
+        <form onSubmit={preventDefault}>
+          <input
+            type="text"
+            value={url}
+            data-tip="Optional"
+            onChange={updateUrl} />
+        </form>
+        <Disabled disabled={(!isURL(url, { require_protocol: true }) && url.length) || !displayName.length} tooltip="Invalid name or url">
+          <div className={`${styles.iconBtn} ${(displayName !== currentData['display_name'] || url !== currentData['url']) && styles.highlight}`} onClick={doUpdateInfo}>{busyInfo ? <Loader /> : (displayName !== currentData['display_name'] || url !== currentData['url']) ? <MdSave /> : <MdCheck />}</div>
+        </Disabled>
+      </div>
+
       <p>You get to pick an asset every month to stick your name and a link next to permanently. To do this, we work with a system of "tokens".</p>
       <p>At the start of each month after your payment is processed by Patreon, you automatically receive one <IoTicket /> <strong>Sponsor Token</strong>.</p>
       <p>There are two ways to spend this token:</p>
@@ -96,8 +119,6 @@ const Sponsor = ({ uuid, patron }) => {
       </ol>
       <p>Tokens do not expire, so you can come back after a few months and spend your accumulated tokens.</p>
       <p>Once a token is spent, it cannot be revoked or moved to a different asset.</p>
-
-      <hr />
 
       <div style={{ display: "flex", alignItems: 'center', gap: "0.5em" }}>
         <p>Auto-sponsor a random asset each month:</p>
@@ -116,40 +137,16 @@ const Sponsor = ({ uuid, patron }) => {
           <form onSubmit={preventDefault}>
             <input
               type="text"
-              value={email}
+              value={notifyEmail}
               onChange={updateEmail} />
           </form>
-          <Disabled disabled={!isEmail(email) && email.length} tooltip="Invalid email address">
-            <div className={`${styles.iconBtn} ${email !== currentData['email'] && styles.highlight}`} onClick={doUpdateEmail}>{busyEmail ? <Loader /> : <MdCheck />}</div>
+          <Disabled disabled={!isEmail(notifyEmail) && notifyEmail.length} tooltip="Invalid email address">
+            <div className={`${styles.iconBtn} ${notifyEmail !== currentData['notify_email'] && styles.highlight}`} onClick={doUpdateEmail}>{busyEmail ? <Loader /> : (notifyEmail !== currentData['notify_email']) ? <MdSave /> : <MdCheck />}</div>
           </Disabled>
         </div>
 
-        <p>To unsubscribe from notifications, clear your email address above and click the tick button.</p>
+        <p>To unsubscribe from notifications, clear your email address above and click the save button.</p>
       </>}
-
-      <hr />
-
-      <p>When you sponsor an asset, the following info will be shown:</p>
-
-      <div className={styles.row}>
-        <p>Display name:</p>
-        <form onSubmit={preventDefault}>
-          <input
-            type="text"
-            value={name}
-            onChange={updateName} />
-        </form>
-        <p>Link:</p>
-        <form onSubmit={preventDefault}>
-          <input
-            type="text"
-            value={url}
-            onChange={updateUrl} />
-        </form>
-        <Disabled disabled={(!isURL(url, { require_protocol: true }) && url.length) || !name.length} tooltip="Invalid name or url">
-          <div className={`${styles.iconBtn} ${(name !== currentData['name'] || url !== currentData['url']) && styles.highlight}`} onClick={doUpdateInfo}>{busyInfo ? <Loader /> : <MdCheck />}</div>
-        </Disabled>
-      </div>
 
       <Tooltip />
     </div>
