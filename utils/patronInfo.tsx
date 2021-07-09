@@ -31,6 +31,21 @@ export async function setPatronInfo(uuid, data) {
   return returnData
 }
 
+export async function sendNextcloudInvite(uuid, email) {
+  let returnData = null;
+  await fetch(`/api/nextcloudInvite`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ uuid, email }),
+  }).then(res => res.json())
+    .then(resdata => {
+      returnData = resdata
+    })
+  return returnData
+}
+
 export async function sponsorAsset(uuid, assetID) {
   let returnData = null;
   await fetch(`/api/sponsorAsset`, {

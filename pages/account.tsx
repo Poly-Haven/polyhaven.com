@@ -19,7 +19,7 @@ const rewardInfo = (r, uuid, patron) => {
     case "Early Access":
       return <EarlyAccess />
     case "Offline Access":
-      return <OfflineAccess />
+      return <OfflineAccess uuid={uuid} patron={patron} />
     case "Sponsor":
       return <Sponsor uuid={uuid} patron={patron} />
     case "Stakeholder":
