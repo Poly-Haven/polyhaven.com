@@ -1,4 +1,4 @@
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 import crypto from 'crypto'
 require('dotenv').config()
 
@@ -6,6 +6,14 @@ const Route = async (req, res) => {
   const assetID = req.body.assetID
 
   let data = req.body;
+  const { user } = getSession(req, res);
+  if (data.uuid !== user.sub.split('|').pop()) {
+    res.status(403).json({
+      error: "403",
+      message: "UIDs do not match."
+    });
+    return
+  }
   data.key = crypto.createHmac('md5', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
 
   const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
