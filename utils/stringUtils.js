@@ -16,3 +16,7 @@ export function stringValue(str) {
 export function urlBaseName(str) {
   return str.split('/').pop()
 }
+
+export function removeExtension(str) {
+  return str.split('.').slice(0, -1).join('.')
+}
