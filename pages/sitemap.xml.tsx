@@ -8,20 +8,17 @@ const Sitemap = () => { };
 export const getServerSideProps = async ({ res }) => {
   const baseUrl = "https://polyhaven.com"
 
-  const staticPages = fs
-    .readdirSync("pages")
-    .filter((staticPage) => {
-      return ![
-        "sitemap.xml.tsx",
-        "a",
-        "api",
-        "index.tsx",
-        "account.tsx",
-        "404.tsx",
-      ].includes(staticPage) && !staticPage.startsWith('_') && !staticPage.startsWith('[');
-    })
-    .map((staticPagePath) => {
-      return `${baseUrl}/${removeExtension(staticPagePath)}`;
+  const staticPages = [
+    "",  // Home
+    "about-contact",
+    "contribute",
+    "faq",
+    "finance-reports",
+    "license",
+    "privacy"
+  ]
+    .map((page) => {
+      return `${baseUrl}/${page}`;
     });
 
 
@@ -76,7 +73,7 @@ export const getServerSideProps = async ({ res }) => {
   // Compile sitemap
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-      ${["https://polyhaven.com/", ...staticPages]
+      ${staticPages
       .map((url) => {
         return `
             <url>
