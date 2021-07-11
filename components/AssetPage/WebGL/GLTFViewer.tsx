@@ -82,10 +82,10 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     }
   }
 
-  if (!processedGLTFFromAPI) return null;
-
   const center = useMemo(() => calcSceneCenter(calcSceneBB(state.meshes)), [state.meshes]);
   const camDistance = useMemo(() => Math.ceil(state.boundingSphereRadius * 2.5), [state.boundingSphereRadius]);
+
+  if (!processedGLTFFromAPI) return null;
 
   // console.log(center, camDistance)
 
