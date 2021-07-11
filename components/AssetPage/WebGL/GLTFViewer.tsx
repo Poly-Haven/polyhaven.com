@@ -4,7 +4,7 @@ import Loader from 'components/UI/Loader/Loader'
 
 import styles from './GLTFViewer.module.scss'
 
-import React, { FC, useReducer, useState, useEffect, Suspense } from 'react'
+import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
 
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
@@ -83,11 +83,11 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   }
 
   if (!processedGLTFFromAPI) return null;
-  console.log(calcSceneBB(state.meshes))
-  const center = calcSceneCenter(calcSceneBB(state.meshes));
-  const camDistance = Math.ceil(state.boundingSphereRadius * 2.5);
-  console.log(center, camDistance)
-  // [camDistance, camDistance, camDistance]
+
+  const center = useMemo(() => calcSceneCenter(calcSceneBB(state.meshes)), [state.meshes]);
+  const camDistance = useMemo(() => Math.ceil(state.boundingSphereRadius * 2.5), [state.boundingSphereRadius]);
+
+  // console.log(center, camDistance)
 
   return (
     <div className={styles.wrapper}>
