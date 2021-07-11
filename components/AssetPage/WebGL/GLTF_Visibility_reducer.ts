@@ -12,7 +12,7 @@ const UNSOLO_TEXTURE = 'UNSOLO_TEXTURE' as const;
 
 const RESET_DISPLAY = 'RESET_DISPLAY' as const;
 
-export function addMesh(mesh) {
+export function addMesh(mesh: THREE.Mesh) {
     return {
         type: ADD_MESH,
         payload: { mesh }
@@ -76,8 +76,8 @@ type Action = AddMeshAction
     | ResetDisplayAction
     ;
 
-interface MeshState {
-    readonly mesh: any;
+export interface MeshState {
+    readonly mesh: THREE.Mesh;
     readonly visibility: boolean;
     readonly wireframe: boolean;
     readonly maps: {
@@ -92,6 +92,7 @@ export interface State {
     readonly solo: string; // read before individual state
     readonly wireframe: boolean;
     readonly showEnvironment: boolean;
+    readonly boundingSphereRadius: number;
 }
 
 export const DefaultState = {
@@ -99,6 +100,7 @@ export const DefaultState = {
     solo: "",
     wireframe: false,
     showEnvironment: true,
+    boundingSphereRadius: 0
 };
 
 export const reducer = (state: State = DefaultState, action: Action): State => {
@@ -107,6 +109,8 @@ export const reducer = (state: State = DefaultState, action: Action): State => {
         case ADD_MESH:
             return {
                 ...state,
+                boundingSphereRadius: action.payload.mesh.geometry.boundingSphere.radius > state.boundingSphereRadius ?
+                    action.payload.mesh.geometry.boundingSphere.radius : state.boundingSphereRadius,
                 meshes: {
                     ...state.meshes,
                     [action.payload.mesh.uuid]: {
