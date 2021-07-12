@@ -12,16 +12,10 @@ import { Environment, OrbitControls } from '@react-three/drei'
 import {
   reducer as GLTF_Visibility_reducer,
   DefaultState as GLTF_Visibility_reducer_defaultState,
-
   addMesh,
-  // soloMesh,
-  // toggleMesh,
-  // unsoloMesh,
-  // toggleWireframe,
-  // toggleEnvironment,
   MeshState,
 } from './GLTF_Visibility_reducer';
-// import ErrorBoundary from 'utils/ErrorBoundary'
+
 import { useGLTFFromAPI } from './useGLTFFromAPI'
 import { Vector3 } from 'three'
 
@@ -31,8 +25,7 @@ interface Props {
 }
 
 const GLTFViewer: FC<Props> = ({ show, assetID }) => {
-  if (!show) return null
-      
+  if (!show) return null;
 
   const [soloMap, setSoloMap] = useState<"NORMAL" | "METALNESS" | "ROUGHNESS" | "DIFFUSE" | "">("");
   const [wireframe, setWireframe] = useState(false);
@@ -56,11 +49,8 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  console.log(files)
   const gltfFiles = files.gltf['4k'].gltf;
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles);
-
-  // console.log(processedGLTFFromAPI)
   
   // as this functionality is not really necessary, it is overkill to useReducer to handle it
   // if we need finer grained interaction per part it is useful
@@ -72,7 +62,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   }, [processedGLTFFromAPI])
 
   // split group into children and call process group on any groups
-  // (can there be circular references?)
   const processGroup = (entity) => {
     if (entity.type === "Mesh") {
       dispatch(addMesh(entity));
@@ -87,8 +76,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
 
   if (!processedGLTFFromAPI) return null;
 
-  // console.log(center, camDistance)
-
   return (
     <div className={styles.wrapper}>
       {/* because Canvas wraps in relative div with width/height 100%.. */}
@@ -98,26 +85,22 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <Environment preset="warehouse" background={showEnvironment} /> 
-            <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} 
-            target={center} // when switching wireframe, orbit recenters.. 
-            />
+            <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
             {
               processedGLTFFromAPI && state.meshes &&
                 Object.values(state.meshes).map(node => {
-                  // console.log(node)
-                  // return node.visibility && // for multi object files, this is actually useful
                   return <React.Fragment key={node.mesh.uuid}>
 
                     <mesh geometry={node.mesh.geometry}>
                       {/* types are strange here, TS complains but these items exist.. investigate */}
                       {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
-                        <meshStandardMaterial>
+                        <meshBasicMaterial>
                           { node.mesh.material.map && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material.map} /> }
                           { node.mesh.material.normalMap && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material.normalMap} /> }
                           { node.mesh.material.metalnessMap && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material.metalnessMap} /> }
-                          {/* { node.mesh.material.roughnessMap && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material.roughnessMap} /> } */}
-                        </meshStandardMaterial>)
+                          { node.mesh.material.roughnessMap && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material.roughnessMap} /> }
+                        </meshBasicMaterial>)
                       }
                     </mesh>
 
@@ -139,44 +122,9 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
         <button onClick={() => { setSoloMap("DIFFUSE") }}>diffuse</button>
         <button onClick={() => { setSoloMap("NORMAL") }}>normal</button>
         <button onClick={() => { setSoloMap("METALNESS") }}>metalness</button>
-
-        {/*
-          // metal and roughness use same maps
-          <button onClick={() => { setSoloMap("ROUGHNESS") }}>roughness</button>
-        */}
+        <button onClick={() => { setSoloMap("ROUGHNESS") }}>roughness</button>
 
         <button onClick={() => { setSoloMap("") }}>unsolo</button>
-
-        {/* <br />
-        // some models have multiple parts that all want the origin (collections not multi part models)
-        // there is no way to solo them if we remove this. Desired functionality doesn't include this
-        // however for certain models like rocks and pipes, all meshes just sit on top of eachother broken
-        // there is no way to identify which is which as far as I know
-        <ul style={{ listStyle: "none" }}>
-          {
-            processedGLTFFromAPI && (
-              Object.values(state.meshes).map(node => {
-                console.log(node)
-                return (
-                  <li style={{ padding: "12px", }} key={`list-${node.mesh.uuid}`}>
-                    {node.mesh.name}
-
-                    <div>
-                      <button onClick={() => { dispatch(toggleMesh(node.mesh.uuid)) } } >
-                        {node.visibility ? "hide" : "show"} part
-                      </button>
-
-                      <button onClick={() => { dispatch(toggleWireframe(node.mesh.uuid)) } } >
-                        {node.wireframe ? "shaded" : "wireframe"}
-                      </button>
-                    </div>
-                  </li>
-                )
-              })
-            )
-          }
-        </ul> */}
-       
       </div>
 
     </div>

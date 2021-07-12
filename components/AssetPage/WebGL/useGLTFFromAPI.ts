@@ -1,6 +1,4 @@
-
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect } from 'react';
 import { GLTF, GLTFLoader } from 'three-stdlib';
 
 interface APIDataItem {
@@ -13,8 +11,6 @@ interface GLTFFromAPI extends APIDataItem {
     readonly include: { [s: string]: APIDataItem; }
 }
 
-// convert polyhaven API data into valid GLTF
-
 export const useGLTFFromAPI = (APIModelObject: GLTFFromAPI): GLTF => { 
     const [mappedGLTF, setMappedGLTF] = useState();
     const [processedGLTF, setProcessedGLTF] = useState<GLTF>();
@@ -23,8 +19,6 @@ export const useGLTFFromAPI = (APIModelObject: GLTFFromAPI): GLTF => {
       fetch(APIModelObject.url)
         .then(res => res.json())
         .then(data => {
-        //   console.log(APIModelObject.include)
-        //   console.log(data)
           setMappedGLTF(
             {
               ...data,
@@ -46,8 +40,6 @@ export const useGLTFFromAPI = (APIModelObject: GLTFFromAPI): GLTF => {
     }, []);
   
     useEffect(() => {
-    //   console.log("output", mappedGLTF)
-  
       if (!mappedGLTF) return;
       const _GLTFLoader = new GLTFLoader();
   
