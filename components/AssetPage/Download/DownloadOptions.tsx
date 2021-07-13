@@ -53,7 +53,14 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
           !['blend', 'gltf'].includes(m) ?
             m !== 'nor_dx' || norMode === 'dx' ?
               m !== 'nor_gl' || norMode === 'gl' ?
-                <DownloadMap key={i} name={m} res={res} data={files[m][res]} trackDownload={trackDownload} />
+                <DownloadMap
+                  key={i}
+                  name={m}
+                  res={res}
+                  data={files[m][res]}
+                  trackDownload={trackDownload}
+                  setPreview={setPreview}
+                />
                 : null
               : null
             : null

@@ -56,6 +56,22 @@
       padding-right: 0.5em;
     }
   }
+
+  .viewBtn {
+    @include center;
+    border: 1px solid rgba($c-accent, 0.5);
+    padding: 0.3em;
+    margin-right: 0.1em;
+    cursor: pointer;
+    border-radius: 50%;
+    @include transition;
+
+    &:hover {
+      color: white;
+      background: $c-accent;
+      border-color: $c-accent;
+    }
+  }
 }
 
 .wideOptionRow {
