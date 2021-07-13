@@ -30,8 +30,7 @@
   height: 2rem;
   width: 2rem;
   font-size: 1.5em;
-  display: grid;
-  place-items: center;
+  @include center;
   background: $c-background-light;
   color: $c-text-light;
   cursor: pointer;

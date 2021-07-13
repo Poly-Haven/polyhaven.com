@@ -9,8 +9,7 @@
 }
 
 .image {
-  display: grid;
-  place-items: center;
+  @include center;
   position: relative;
   line-height: 0;
   padding: 0.3em 0.5em;
@@ -63,8 +62,7 @@
       padding-right: 0.3em;
 
       a {
-        display: grid;
-        place-items: center;
+        @include center;
         box-shadow: none;
         border: 1px solid $c-background-light;
         color: $c-text-light;
