@@ -15,7 +15,8 @@ export const getServerSideProps = async ({ res }) => {
     "faq",
     "finance-reports",
     "license",
-    "privacy"
+    "privacy",
+    "tools/ev-diff"
   ]
     .map((page) => {
       return `${baseUrl}/${page}`;
