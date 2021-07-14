@@ -14,13 +14,13 @@ import Disabled from 'components/UI/Disabled/Disabled';
 
 import styles from './Gallery.module.scss'
 
-const Gallery = ({ data, scrollPosition }) => {
+const Gallery = ({ data, assetPage, scrollPosition }) => {
   const [clicked, setClicked] = useState({})
   const [lightboxData, setLightboxData] = useState(null)
   const widthRef = useRef(null)
   const width = useDivWidth(widthRef)
 
-  const imgWidth = 462
+  const imgWidth = 460
 
   const numCols = width => {
     if (width <= 590) {
@@ -71,9 +71,9 @@ const Gallery = ({ data, scrollPosition }) => {
             scrollPosition={scrollPosition}
           />
         </div>)}
-        <Disabled tooltip="Coming soon!">
+        {!assetPage && <Disabled tooltip="Coming soon!">
           <div className={styles.add}><strong>+</strong><p>Submit your render</p></div>
-        </Disabled>
+        </Disabled>}
       </Masonry>
       {lightboxData &&
         <div className={styles.lightboxWrapper} onClick={closeLightbox}>
@@ -95,6 +95,10 @@ const Gallery = ({ data, scrollPosition }) => {
       }
     </div>
   )
+}
+
+Gallery.defaultProps = {
+  assetPage: false
 }
 
 export default trackWindowScroll(Gallery)

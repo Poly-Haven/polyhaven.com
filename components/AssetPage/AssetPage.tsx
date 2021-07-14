@@ -16,6 +16,7 @@ import Heart from 'components/Heart/Heart'
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import Similar from './Similar/Similar'
+import UserRenders from './UserRenders';
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
 
@@ -96,6 +97,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           <h2>Similar Assets:</h2>
           <Similar slug={assetID} scrollPosition={scrollPosition} onClick={clickSimilar} />
         </div>
+        <UserRenders assetID={assetID} />
       </Page>
 
       <div className={styles.sidebar}>
