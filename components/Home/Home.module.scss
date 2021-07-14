@@ -263,6 +263,29 @@
   }
 }
 
+.gallery {
+  @include flex(row);
+  max-height: 80vh;
+  width: 100%;
+  overflow-y: hidden;
+  pointer-events: none;
+}
+
+.moreGallery {
+  position: absolute;
+  background: linear-gradient(180deg, transparent 0%, $c-background-dark 100%);
+  bottom: 0;
+  height: 20rem;
+  left: 0;
+  right: 0;
+  padding: 1em;
+  @include flex(column, true);
+
+  .spacer {
+    flex-grow: 1;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .hideMobileStaff {
     display: none;
