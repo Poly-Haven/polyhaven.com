@@ -83,7 +83,7 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
               <img src={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}`} />
             </div>
             <p>
-              {lightboxData.artwork_name && <em><span id="artwork-name"></span></em>}
+              {lightboxData.artwork_name && <em>{lightboxData.artwork_name}</em>}
               by
               {lightboxData.author_link && isURL(lightboxData.author_link, { require_protocol: true }) ? <a target="_blank" rel="noopener" href={lightboxData.author_link}>{lightboxData.author}</a> : <span>{lightboxData.author}</span>}
               using
