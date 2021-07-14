@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0';
 
-import { MdMenu, MdHelp, MdDescription, MdAccountCircle } from 'react-icons/md'
+import { MdMenu, MdAccountCircle } from 'react-icons/md'
 
 import NavItem from './NavItem'
 

@@ -51,10 +51,10 @@ const footer = () => {
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
+              <Link href="/gallery"><a>Gallery</a></Link>
               <Link href="/license"><a>License</a></Link>
               <Link href="/privacy"><a>Privacy</a></Link>
               <Link href="/finance-reports"><a>Finance Reports</a></Link>
-              <Link href="/map"><a>Map</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
