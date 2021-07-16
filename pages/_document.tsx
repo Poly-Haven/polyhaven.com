@@ -16,8 +16,8 @@ export default class CustomDocument extends Document {
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="Poly Haven" />
-          <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-          <meta content="utf-8" http-equiv="encoding" />
+          <meta content="text/html;charset=utf-8" httpEquiv="Content-Type" />
+          <meta content="utf-8" httpEquiv="encoding" />
           <meta name="theme-color" content="rgb(190, 111, 255)" />
 
           {/* Download service worker */}
