@@ -1,0 +1,59 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  li {
+    line-height: 1.5em;
+  }
+
+  pre {
+    display: inline;
+    border: 1px solid rgba($c-accent, 0.4);
+    background: rgba($c-accent, 0.15);
+    margin: 0;
+    padding: 0.1em 0.2em 0;
+    @include rounded;
+    white-space: pre-wrap;
+    vertical-align: middle;
+  }
+
+  form {
+    border: 1px solid rgba($c-accent, 0.5);
+    margin: 1em 0;
+    text-align: center;
+    background-color: $c-background-darkish;
+
+    .formItem {
+      @include flex(row, true, true);
+      flex-wrap: wrap;
+      padding: 0.75em 1em;
+      border-bottom: 1px solid rgba($c-accent, 0.2);
+    }
+
+    input[type="text"] {
+      font-size: 0.85rem;
+      background: $c-background-lightish;
+      color: $c-text-light;
+      border: none;
+      text-align: center;
+    }
+
+    h2 {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+
+    input {
+      padding: 0.5em;
+      margin: 0 0.75em;
+    }
+    input::placeholder {
+      opacity: 0.5;
+      font-style: italic;
+    }
+  }
+}

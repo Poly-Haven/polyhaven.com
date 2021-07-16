@@ -4,6 +4,8 @@
 
 .downloadBtnWrapper {
   @include flex(row);
+  padding: 1rem;
+  padding-bottom: 0;
 }
 .downloadBtn {
   position: relative;

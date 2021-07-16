@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import apiSWR from 'utils/apiSWR'
 
 import Slider from './Slider/Slider'
 import Heart from 'components/Heart/Heart'
@@ -8,10 +9,14 @@ import GoalProgress from 'components/ProgressBar/GoalProgress'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/Avatar/Staff'
+import Gallery from 'components/Gallery/Gallery';
+import Loader from 'components/UI/Loader/Loader';
 
 import styles from './Home.module.scss'
 
 const Home = () => {
+  const { data: galleryData, error } = apiSWR(`/gallery?limit=20`, { revalidateOnFocus: false });
+
   return (
     <div className={styles.home}>
 
@@ -162,14 +167,16 @@ const Home = () => {
         </div>
       </div>
 
-      {/* TODO User renders */}
-      {/* <div className={styles.sectionWrapper}>
-        <div className={styles.section}>
-          <div className={styles.subSection}>
-            <h2>User Renders</h2>
-          </div>
+      <div className={styles.sectionWrapper} style={{ position: 'relative' }}>
+        <h1 style={{ paddingTop: '1rem' }}>Community Renders:</h1>
+        <div className={styles.gallery}>
+          {galleryData ? <Gallery data={galleryData} assetPage={true} /> : <Loader />}
         </div>
-      </div> */}
+        <div className={styles.moreGallery}>
+          <div className={styles.spacer} />
+          <div><Button text="More" href="/gallery" /></div>
+        </div>
+      </div>
 
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>

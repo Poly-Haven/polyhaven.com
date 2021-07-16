@@ -81,6 +81,11 @@
   }
 }
 
+@mixin center {
+  display: grid;
+  place-items: center;
+}
+
 @mixin absolute_cover() {
   position: absolute;
   left: 0;

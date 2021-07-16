@@ -66,6 +66,7 @@
   top: 100%;
   min-width: 100%;
   background: $c-background-dark;
+  box-shadow: 0 0 0.3em rgba(black, 0.5);
   @include transition();
 
   .navItem {

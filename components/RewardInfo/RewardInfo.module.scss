@@ -1,0 +1,46 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.row {
+  @include flex(row, true);
+  gap: 0.5em;
+
+  p {
+    flex-shrink: 0;
+  }
+
+  form {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  input {
+    flex-grow: 1;
+    font-size: 1em;
+    border: 1px solid $c-background-light;
+    padding: 0.4em;
+    background-color: $c-background-lightish;
+    color: $c-text-light;
+    @include rounded();
+  }
+}
+
+.iconBtn {
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.5em;
+  @include center;
+  background: $c-background-light;
+  color: $c-text-light;
+  cursor: pointer;
+  @include rounded();
+
+  &:hover {
+    background: $c-accent-light;
+    color: white;
+  }
+}
+.highlight {
+  background: $c-accent;
+}

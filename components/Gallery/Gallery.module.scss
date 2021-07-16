@@ -1,0 +1,121 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.3rem;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
+
+.render {
+  flex: 0 1 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $c-text-light;
+  @include transition();
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+.masonry {
+  @include flex(row, false, true);
+  margin-left: -0.5rem; /* gutter size offset */
+  width: 100%;
+}
+.masonryColumn {
+  padding-left: 0.5rem; /* gutter size */
+  background-clip: padding-box;
+}
+.thumbnail {
+  position: relative;
+  margin-bottom: 0.5rem;
+  min-height: 140px;
+  @include center;
+  @include transition;
+
+  img {
+    max-width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+.add {
+  @extend .thumbnail;
+  @include center;
+  font-weight: bold;
+  padding: 5em;
+  border: 1px solid rgba($c-text-light, 0.1);
+  background: $c-background-lightish;
+
+  strong {
+    font-size: 10em;
+    line-height: 0.5em;
+  }
+  p {
+    margin: 0;
+    margin-top: 2em;
+  }
+}
+
+.lightboxWrapper {
+  @include absolute_cover;
+  @include center;
+  z-index: 20;
+  background: rgba($c-background-darker, 0.9);
+
+  .lightbox {
+    @include center;
+  }
+
+  .imageWrapper {
+    @include center;
+    position: relative;
+    min-height: 4em;
+
+    img {
+      max-width: 100%;
+      max-height: 88vh;
+      z-index: 22;
+    }
+
+    .spinner {
+      z-index: 21;
+      position: absolute;
+    }
+  }
+
+  p {
+    @include flex(row);
+    font-size: 1.1em;
+    gap: 0.5ch;
+  }
+
+  svg {
+    // Close button
+    font-size: 2em;
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+    color: white;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+}

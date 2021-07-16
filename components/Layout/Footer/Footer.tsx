@@ -1,3 +1,4 @@
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
 import Button from 'components/Button/Button'
@@ -9,6 +10,8 @@ import PatronList from './PatronList'
 import styles from './Footer.module.scss';
 
 const footer = () => {
+  const { user, isLoading } = useUser();
+
   return (
     <div id={styles.footer}>
       <h2>Thanks to our <a href="https://www.patreon.com/polyhaven/overview">Patrons</a> for making Poly Haven possible <Heart color="#F96854" /></h2>
@@ -36,17 +39,22 @@ const footer = () => {
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
               <Link href="/"><a>Home</a></Link>
-              <Link href="/all"><a>Assets</a></Link>
               <Link href="/faq"><a>FAQ</a></Link>
               <Link href="/about-contact"><a>About / Contact</a></Link>
+              {isLoading ? "..." :
+                user ?
+                  <Link href="/api/auth/logout"><a>Logout</a></Link>
+                  :
+                  <Link href="/api/auth/login"><a>Login</a></Link>
+              }
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
+              <Link href="/gallery"><a>Gallery</a></Link>
               <Link href="/license"><a>License</a></Link>
               <Link href="/privacy"><a>Privacy</a></Link>
               <Link href="/finance-reports"><a>Finance Reports</a></Link>
-              <Link href="/map"><a>Map</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>

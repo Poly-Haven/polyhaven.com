@@ -20,7 +20,7 @@ import styles from './Download.module.scss'
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data, setPreview }) => {
+const Download = ({ assetID, data, setPreview, patron }) => {
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [prefRes, setRes] = useState('4k')
@@ -36,9 +36,15 @@ const Download = ({ assetID, data, setPreview }) => {
 
   const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
   if (error) {
-    return <div><div className={styles.downloadBtn}><span className={styles.error}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></span></div></div>
+    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}><span className={styles.error}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></span></div></div>
   } else if (!files) {
-    return <div><div className={styles.downloadBtn}><Loader /></div></div>
+    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}><Loader /></div></div>
+  }
+
+  if (data.date_published * 1000 > Date.now()) {
+    if (!patron.rewards || !patron.rewards.includes('Early Access')) {
+      return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}>Coming Soon!</div></div>
+    }
   }
 
   // Find a key that we can use to fetch available resolutions and formats.
@@ -51,7 +57,7 @@ const Download = ({ assetID, data, setPreview }) => {
     }
   }
   if (baseKey === 'UNKNOWN') {
-    return <div><div className={styles.downloadBtn}>baseKey unknown!</div></div>
+    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}>baseKey unknown!</div></div>
   }
 
   const toggleDlOptions = () => {

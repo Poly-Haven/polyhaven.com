@@ -31,6 +31,7 @@
 
     img {
       max-width: 100%;
+      max-height: 100%;
     }
   }
 }
@@ -47,12 +48,22 @@
   .info {
     position: relative;
     flex-grow: 1;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
     @include dark_scrollbar();
+
+    .infoItems {
+      @include flex(column);
+      flex-grow: 1;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 1rem;
+      padding-top: 0;
+      @include dark_scrollbar();
+    }
 
     h1 {
       font-size: 1.5rem;
@@ -147,6 +158,35 @@
     margin: 0;
     font-weight: bold;
   }
+
+  .addSponsor {
+    @include flex(row, true, true);
+    gap: 0.4em;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0.2em 0.4em;
+    margin: 0.75em;
+    border-radius: 0.3em;
+    border: 1px solid rgba($c-accent, 0.5);
+    color: $c-text-light;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      background: $c-accent;
+      color: white;
+    }
+
+    svg {
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+
+    em {
+      font-weight: normal;
+      opacity: 0.7;
+    }
+  }
 }
 
 .similar {
@@ -155,6 +195,12 @@
 
   h2 {
     flex-shrink: 0;
+  }
+}
+
+.userRenders {
+  h1 {
+    text-align: center;
   }
 }
 
@@ -179,6 +225,7 @@
   opacity: 1;
   z-index: 20;
   @include transition;
+  transition-delay: 0.2s;
 }
 .hidden {
   visibility: hidden;

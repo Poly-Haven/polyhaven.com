@@ -41,8 +41,7 @@
 .thumb {
   position: relative;
   min-height: 140px;
-  display: grid;
-  place-items: center;
+  @include center;
 
   img {
     display: block;
