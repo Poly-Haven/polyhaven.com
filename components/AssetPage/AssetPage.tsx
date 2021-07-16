@@ -3,6 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
+import { timeago } from 'utils/dateUtils';
 
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
@@ -130,7 +131,9 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
               <Link href="/license">CC0</Link> (public domain)
             </InfoItem>
             <InfoItem label="Published">
-              {new Date(data.date_published * 1000).toLocaleDateString("en-ZA")}
+              <span title={new Date(data.date_published * 1000).toLocaleString("en-ZA")}>
+                {timeago(data.date_published * 1000)}
+              </span>
             </InfoItem>
             <InfoItem label="Dynamic Range" condition={Boolean(data.evs_cap)}>
               {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
