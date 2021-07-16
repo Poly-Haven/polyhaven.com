@@ -4,7 +4,7 @@ import { Vector3, CineonToneMapping } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 
-import { MdPublic, MdLayers, MdLanguage } from 'react-icons/md'
+import { MdPublic, MdLayers, MdLanguage, MdNotInterested } from 'react-icons/md'
 
 import Loader from 'components/UI/Loader/Loader'
 import IconButton from 'components/UI/Button/IconButton'
@@ -31,6 +31,19 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   const [wireframe, setWireframe] = useState(false);
 
   const [showEnvironment, setShowEnvironment] = useState(true);
+  const [envPreset, setEnvPreset] = useState<"warehouse" | "sunset" | "dawn" | "night" | "forest" | "apartment" | "studio" | "city" | "park" | "lobby">("warehouse");
+
+  const presetEnvs = {
+    warehouse: "empty_warehouse_01",
+    sunset: "venice_sunset",
+    dawn: "kiara_1_dawn",
+    night: "dikhololo_night",
+    forest: "forest_slope",
+    studio: "studio_small_03",
+    city: "potsdamer_platz",
+    park: "rooitou_park",
+    lobby: "st_fagans_interior"
+  }
 
   const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState);
 
@@ -84,7 +97,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
           onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
         >
           <Suspense fallback={null}>
-            <Environment preset="warehouse" background={showEnvironment} />
+            <Environment preset={envPreset} background={showEnvironment} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
             {
@@ -113,13 +126,30 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
       </div>
 
       <div className={styles.buttons}>
-        <IconButton icon={<MdPublic />} active={showEnvironment} onClick={() => { setShowEnvironment(env => !env) }} />
+        <IconButton icon={<MdPublic />}>
+          {Object.keys(presetEnvs).map((p, k) => {
+            console.log(p)
+            return <IconButton
+              key={k}
+              icon={<img src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`} />}
+              active={showEnvironment && envPreset === p}
+              onClick={() => {
+                // @ts-ignore - string not detected as part of preset list, but we know they are.
+                setEnvPreset(p)
+                setShowEnvironment(true)
+              }}
+            />
+          })}
+          <IconButton icon={<MdNotInterested />} active={!showEnvironment} onClick={() => {
+            setShowEnvironment(false)
+          }} />
+        </IconButton>
         <IconButton icon={<MdLanguage />} active={wireframe} onClick={() => { setWireframe(wf => !wf) }} />
         <IconButton icon={<MdLayers />}>
-          <IconButton icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />} active={soloMap === ""} onClick={() => { setSoloMap("") }} />
           <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />} active={soloMap === "DIFFUSE"} onClick={() => { setSoloMap("DIFFUSE") }} />
           <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />} active={soloMap === "NORMAL"} onClick={() => { setSoloMap("NORMAL") }} />
           <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />} active={soloMap === "METALNESS"} onClick={() => { setSoloMap("METALNESS") }} />
+          <IconButton icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />} active={soloMap === ""} onClick={() => { setSoloMap("") }} />
         </IconButton>
       </div>
 
