@@ -7,3 +7,11 @@
   @include flex(column, true, true);
   background-color: $c-background;
 }
+
+.buttons {
+  @include flex(row);
+  gap: 0.5em;
+  position: absolute;
+  right: 0.8em;
+  bottom: 0.5em;
+}

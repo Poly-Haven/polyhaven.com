@@ -4,7 +4,10 @@ import { Vector3 } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 
+import { MdPublic, MdLayers, MdLanguage } from 'react-icons/md'
+
 import Loader from 'components/UI/Loader/Loader'
+import IconButton from 'components/UI/Button/IconButton'
 import { useGLTFFromAPI } from './useGLTFFromAPI'
 import {
   reducer as GLTF_Visibility_reducer,
@@ -27,7 +30,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   const [soloMap, setSoloMap] = useState<"NORMAL" | "METALNESS" | "ROUGHNESS" | "DIFFUSE" | "">("");
   const [wireframe, setWireframe] = useState(false);
 
-  // TODO change which environment map to use
   const [showEnvironment, setShowEnvironment] = useState(true);
 
   const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState);
@@ -107,19 +109,15 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
         </Canvas>
       </div>
 
-      <div
-        // tmp positioning, use actual UI components for these
-        style={{ position: "absolute", bottom: "8px", right: "8px" }}
-      >
-        <button onClick={() => { setWireframe(wf => !wf) }}>{wireframe ? "hide" : "show"} wireframe</button>
-        <button onClick={() => { setShowEnvironment(env => !env) }}>{showEnvironment ? "hide" : "show"} environment</button>
-
-        <button onClick={() => { setSoloMap("DIFFUSE") }}>diffuse</button>
-        <button onClick={() => { setSoloMap("NORMAL") }}>normal</button>
-        <button onClick={() => { setSoloMap("METALNESS") }}>metalness</button>
-        <button onClick={() => { setSoloMap("ROUGHNESS") }}>roughness</button>
-
-        <button onClick={() => { setSoloMap("") }}>unsolo</button>
+      <div className={styles.buttons}>
+        <IconButton icon={<MdPublic />} active={showEnvironment} onClick={() => { setShowEnvironment(env => !env) }} />
+        <IconButton icon={<MdLanguage />} active={wireframe} onClick={() => { setWireframe(wf => !wf) }} />
+        <IconButton icon={<MdLayers />}>
+          <IconButton icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />} active={soloMap === ""} onClick={() => { setSoloMap("") }} />
+          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />} active={soloMap === "DIFFUSE"} onClick={() => { setSoloMap("DIFFUSE") }} />
+          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />} active={soloMap === "NORMAL"} onClick={() => { setSoloMap("NORMAL") }} />
+          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />} active={soloMap === "METALNESS"} onClick={() => { setSoloMap("METALNESS") }} />
+        </IconButton>
       </div>
 
     </div>

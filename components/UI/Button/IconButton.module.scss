@@ -1,0 +1,78 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include flex(column-reverse);
+  gap: 0.5em;
+
+  &:hover {
+    .menu {
+      visibility: visible;
+      opacity: 1;
+
+      .button {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.button {
+  @include flex(row, true);
+  min-width: 2em;
+  height: 3em;
+  padding: 0 0.5em;
+  text-decoration: none;
+  color: $c-text-light;
+  background: $c-background-dark;
+  border: 1px solid rgba($c-text-light, 0.1);
+  border-radius: 2em;
+  cursor: pointer;
+  overflow: hidden;
+  @include drop-shadow();
+
+  &:hover {
+    color: white;
+    background: $c-accent;
+    width: auto;
+
+    .label {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.active {
+  background: $c-accent;
+  color: white;
+
+  &:hover {
+    background: $c-accent-light;
+  }
+}
+
+.icon {
+  display: flex;
+  flex: 1;
+  flex-shrink: 0;
+  font-size: 2em;
+}
+
+.label {
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.menu {
+  @include flex(column);
+  gap: 0.25em;
+  visibility: hidden;
+  opacity: 0;
+  @include transition;
+
+  .button {
+    transform: scale(0);
+  }
+}

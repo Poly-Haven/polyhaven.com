@@ -2,6 +2,8 @@ import apiSWR from 'utils/apiSWR'
 
 import { Md3DRotation } from 'react-icons/md'
 
+import IconButton from 'components/UI/Button/IconButton'
+
 import styles from './Carousel.module.scss'
 
 const Carousel = ({ slug, assetType, setter, showWebGL }) => {
@@ -60,7 +62,7 @@ const Carousel = ({ slug, assetType, setter, showWebGL }) => {
 
   return (
     <div className={styles.imageRow}>
-      {assetType !== 0 ? <div className={styles.iconBtn} onClick={showWebGL}><Md3DRotation /></div> : null}
+      {assetType !== 0 ? <div className={styles.iconBtn}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div> : null}
       {sortedKeys.map((i, k) =>
         <div key={k} data-src={images[i]} onClick={clickImage} className={styles.image}>
           <img src={images[i] + "?height=110"} />
