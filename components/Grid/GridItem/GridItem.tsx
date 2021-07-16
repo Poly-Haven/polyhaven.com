@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import timeago from 'epoch-timeago';
+import { timeago } from 'utils/dateUtils';
 
 import { daysOld } from 'utils/dateUtils'
 
