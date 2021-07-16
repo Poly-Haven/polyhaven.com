@@ -82,8 +82,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
         <Canvas camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}>
           <Suspense fallback={null}>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
             <Environment preset="warehouse" background={showEnvironment} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
