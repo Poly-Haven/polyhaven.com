@@ -91,13 +91,13 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
                 return <React.Fragment key={node.mesh.uuid}>
 
                   <mesh geometry={node.mesh.geometry}>
-                    {/* types are strange here, TS complains but these items exist.. investigate */}
+                    {/*  @ts-ignore - types are strange here, TS complains but these items exist.. investigate */}
                     {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
                       <meshBasicMaterial>
-                        {node.mesh.material.map && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material.map} />}
-                        {node.mesh.material.normalMap && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material.normalMap} />}
-                        {node.mesh.material.metalnessMap && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material.metalnessMap} />}
-                        {node.mesh.material.roughnessMap && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material.roughnessMap} />}
+                        {node.mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material['map']} />}
+                        {node.mesh.material['normalMap'] && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material['normalMap']} />}
+                        {node.mesh.material['metalnessMap'] && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material['metalnessMap']} />}
+                        {node.mesh.material['roughnessMap'] && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material['roughnessMap']} />}
                       </meshBasicMaterial>)
                     }
                   </mesh>
