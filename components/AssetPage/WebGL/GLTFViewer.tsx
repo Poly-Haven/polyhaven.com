@@ -51,7 +51,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
 
   const gltfFiles = files.gltf['4k'].gltf;
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles);
-  
+
   // as this functionality is not really necessary, it is overkill to useReducer to handle it
   // if we need finer grained interaction per part it is useful
   // it does require a bit of effort to remove though
@@ -80,41 +80,41 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     <div className={styles.wrapper}>
       {/* because Canvas wraps in relative div with width/height 100%.. */}
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
-        <Canvas camera={{fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}>
+        <Canvas camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}>
           <Suspense fallback={null}>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <Environment preset="warehouse" background={showEnvironment} /> 
+            <Environment preset="warehouse" background={showEnvironment} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
             {
               processedGLTFFromAPI && state.meshes &&
-                Object.values(state.meshes).map(node => {
-                  return <React.Fragment key={node.mesh.uuid}>
+              Object.values(state.meshes).map(node => {
+                return <React.Fragment key={node.mesh.uuid}>
 
-                    <mesh geometry={node.mesh.geometry}>
-                      {/* types are strange here, TS complains but these items exist.. investigate */}
-                      {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
-                        <meshBasicMaterial>
-                          { node.mesh.material.map && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material.map} /> }
-                          { node.mesh.material.normalMap && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material.normalMap} /> }
-                          { node.mesh.material.metalnessMap && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material.metalnessMap} /> }
-                          { node.mesh.material.roughnessMap && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material.roughnessMap} /> }
-                        </meshBasicMaterial>)
-                      }
-                    </mesh>
+                  <mesh geometry={node.mesh.geometry}>
+                    {/* types are strange here, TS complains but these items exist.. investigate */}
+                    {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
+                      <meshBasicMaterial>
+                        {node.mesh.material.map && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material.map} />}
+                        {node.mesh.material.normalMap && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material.normalMap} />}
+                        {node.mesh.material.metalnessMap && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material.metalnessMap} />}
+                        {node.mesh.material.roughnessMap && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material.roughnessMap} />}
+                      </meshBasicMaterial>)
+                    }
+                  </mesh>
 
-                    <mesh geometry={node.mesh.geometry}><meshStandardMaterial wireframe={true} visible={wireframe} color='purple' /></mesh>
-                  </React.Fragment>
-                })
+                  <mesh geometry={node.mesh.geometry}><meshStandardMaterial wireframe={true} visible={wireframe} color='purple' /></mesh>
+                </React.Fragment>
+              })
             }
           </Suspense>
         </Canvas>
       </div>
 
       <div
-        // tmp positioning, use actual UI components for these 
-        style={{position: "absolute", bottom: "8px", right: "8px" }}
+        // tmp positioning, use actual UI components for these
+        style={{ position: "absolute", bottom: "8px", right: "8px" }}
       >
         <button onClick={() => { setWireframe(wf => !wf) }}>{wireframe ? "hide" : "show"} wireframe</button>
         <button onClick={() => { setShowEnvironment(env => !env) }}>{showEnvironment ? "hide" : "show"} environment</button>
@@ -131,7 +131,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   )
 }
 
-type BoundingBox = {min: Vector3, max: Vector3};
+type BoundingBox = { min: Vector3, max: Vector3 };
 
 const calcSceneBB = (meshes): BoundingBox => {
   return Object.values(meshes).reduce<BoundingBox>((acc, curr: MeshState, idx) => {

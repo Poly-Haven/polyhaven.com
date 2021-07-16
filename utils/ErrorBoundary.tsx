@@ -29,7 +29,7 @@ class ErrorBoundary extends React.Component<{}, State> {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 
