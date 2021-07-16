@@ -1,14 +1,11 @@
-import apiSWR from 'utils/apiSWR'
-
-import Loader from 'components/UI/Loader/Loader'
-
-import styles from './GLTFViewer.module.scss'
-
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
-
+import apiSWR from 'utils/apiSWR'
+import { Vector3 } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 
+import Loader from 'components/UI/Loader/Loader'
+import { useGLTFFromAPI } from './useGLTFFromAPI'
 import {
   reducer as GLTF_Visibility_reducer,
   DefaultState as GLTF_Visibility_reducer_defaultState,
@@ -16,8 +13,8 @@ import {
   MeshState,
 } from './GLTF_Visibility_reducer';
 
-import { useGLTFFromAPI } from './useGLTFFromAPI'
-import { Vector3 } from 'three'
+
+import styles from './GLTFViewer.module.scss'
 
 interface Props {
   readonly show: boolean;
