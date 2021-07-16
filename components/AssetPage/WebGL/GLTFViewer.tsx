@@ -1,6 +1,6 @@
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
 import apiSWR from 'utils/apiSWR'
-import { Vector3 } from 'three'
+import { Vector3, CineonToneMapping } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 
@@ -79,7 +79,10 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     <div className={styles.wrapper}>
       {/* because Canvas wraps in relative div with width/height 100%.. */}
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
-        <Canvas camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}>
+        <Canvas
+          camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
+          onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
+        >
           <Suspense fallback={null}>
             <Environment preset="warehouse" background={showEnvironment} />
             <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
