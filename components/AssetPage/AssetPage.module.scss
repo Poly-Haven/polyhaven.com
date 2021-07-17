@@ -7,6 +7,18 @@
   flex-direction: row;
 }
 
+.mobileHeader {
+  text-align: center;
+  display: none;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .mobileHeader {
+    display: block;
+  }
+}
+
 .previewWrapper {
   @include flex(column, true, true);
   background: $c-background;
@@ -22,7 +34,7 @@
     flex-grow: 1;
     @include flex(row, true, true);
     padding: 0 0.25rem;
-    height: 780px;
+    max-height: 780px;
     position: relative;
 
     &GLTF {
@@ -41,9 +53,15 @@
   display: flex;
   flex-direction: column;
   width: 336px;
+  max-width: calc(100% - 4em);
   background: $c-background-dark;
   overflow-y: auto;
   height: calc(100vh - #{$v-header-height});
+
+  @media screen and (max-width: 672px) {
+    position: absolute;
+    right: 0;
+  }
 
   .info {
     position: relative;
@@ -129,6 +147,27 @@
   }
 }
 
+.sidebarToggle {
+  display: none;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+
+  @media screen and (max-width: 672px) {
+    display: grid;
+  }
+}
+.sidebarToggleClose {
+  right: initial;
+  left: 0.5em;
+}
+
+.hiddenMobile {
+  @media screen and (max-width: 672px) {
+    display: none;
+  }
+}
+
 .sponsor {
   @include flex(column, true, true);
 
@@ -192,6 +231,10 @@
 .similar {
   @include flex(row, true);
   padding: 1em;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
 
   h2 {
     flex-shrink: 0;

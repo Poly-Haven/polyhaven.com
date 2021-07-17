@@ -10,11 +10,14 @@ import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 import { getPatronInfo } from 'utils/patronInfo';
 
+import { MdFileDownload, MdLastPage } from "react-icons/md";
+
 import Page from 'components/Layout/Page/Page'
 import DisplayAd from 'components/Ads/DisplayAd';
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import Spinner from 'components/Spinner/Spinner'
 import Heart from 'components/Heart/Heart'
+import IconButton from "components/UI/Button/IconButton";
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import Similar from './Similar/Similar'
@@ -38,9 +41,14 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [showWebGL, setShowWebGL] = useState(false)
+  const [hideSidebar, setHideSidebar] = useState(true);
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
+
+  const toggleSidebar = () => {
+    setHideSidebar(!hideSidebar)
+  }
 
   useEffect(() => {  // Page changes
     document.getElementById('header-title').innerHTML = data.name
@@ -99,6 +107,13 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
         <Spinner />
       </div>
       <Page immersiveScroll={true}>
+        <div className={styles.mobileHeader}>
+          <h1>{data.name}</h1>
+          <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
+            <IconButton icon={hideSidebar ? <MdFileDownload /> : <MdLastPage />} onClick={toggleSidebar} />
+          </div>
+        </div>
+
         <div className={styles.previewWrapper}>
           <div className={`${styles.activePreview}${showWebGL ? " " + styles.activePreviewGLTF : ""}`}>
             <img
@@ -128,7 +143,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
         <UserRenders assetID={assetID} />
       </Page>
 
-      <div className={styles.sidebar}>
+      <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : null}`}>
 
         <div className={styles.info}>
 

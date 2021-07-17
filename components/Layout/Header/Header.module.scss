@@ -92,6 +92,12 @@
     }
   }
 
+  @media screen and (max-width: 1200px) {
+    .assetHeader {
+      display: none;
+    }
+  }
+
   @media screen and (max-width: 770px) {
     .progressBar {
       display: none;

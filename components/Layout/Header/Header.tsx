@@ -16,7 +16,7 @@ const header = () => {
         Poly Haven
       </a></Link>
       <div className={styles.spacer} />
-      <div><h2 id='header-path' /> <h1 id='header-title' /></div>
+      <div className={styles.assetHeader}><h2 id='header-path' /> <h1 id='header-title' /></div>
       <div style={{ display: 'none' }} id='header-frompath' />
       <div className={styles.spacer} />
       <a href="https://www.patreon.com/polyhaven/overview" className={styles.progressBar}>
