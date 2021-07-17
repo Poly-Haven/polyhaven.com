@@ -4,6 +4,10 @@
 .intro {
   @include flex(row, true, true);
 
+  @media screen and (max-width: 590px) {
+    flex-direction: column;
+  }
+
   .logo {
     flex-shrink: 0;
     height: 12rem;
@@ -16,6 +20,7 @@
 
 .staff {
   @include flex(row, true, true);
+  flex-wrap: wrap;
   text-align: center;
   padding: 3rem 0 1rem;
 }
