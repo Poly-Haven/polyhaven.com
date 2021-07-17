@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from '@auth0/nextjs-auth0';
+import dynamic from 'next/dynamic'
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
@@ -24,6 +25,11 @@ import GLTFViewer from './WebGL/GLTFViewer'
 
 import styles from './AssetPage.module.scss'
 import ErrorBoundary from 'utils/ErrorBoundary';
+
+const PanoViewer = dynamic(
+  () => import('./WebGL/PanoViewer'),
+  { ssr: false }
+)
 
 const AssetPage = ({ assetID, data, scrollPosition }) => {
   const { user, isLoading: userIsLoading } = useUser();
@@ -95,9 +101,13 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
               onLoad={imageLoaded}
               src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
             />
-            <ErrorBoundary>
-              <GLTFViewer show={showWebGL} assetID={assetID} />
-            </ErrorBoundary>
+            {data.type === 0 ?
+              (showWebGL ? <PanoViewer assetID={assetID} /> : null)
+              :
+              <ErrorBoundary>
+                <GLTFViewer show={showWebGL} assetID={assetID} />
+              </ErrorBoundary>
+            }
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
               <Spinner />
             </div>

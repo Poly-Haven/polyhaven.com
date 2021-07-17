@@ -62,7 +62,7 @@ const Carousel = ({ slug, assetType, setter, showWebGL }) => {
 
   return (
     <div className={styles.imageRow}>
-      {assetType !== 0 ? <div className={styles.iconBtn}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div> : null}
+      <div className={styles.iconBtn}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
       {sortedKeys.map((i, k) =>
         <div key={k} data-src={images[i]} onClick={clickImage} className={styles.image}>
           <img src={images[i] + "?height=110"} />

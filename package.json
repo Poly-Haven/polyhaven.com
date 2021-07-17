@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.4.2",
     "@babel/runtime": "^7.7.2",
+    "@egjs/view360": "^3.5.0",
     "@react-three/drei": "^7.0.6",
     "@react-three/fiber": "^7.0.2",
     "@types/three": "^0.129.2",
@@ -27,6 +28,7 @@
     "react": "17.0.1",
     "react-cookie-consent": "^6.2.3",
     "react-dom": "17.0.1",
+    "react-full-screen": "^1.0.2",
     "react-icons": "^4.2.0",
     "react-lazy-load-image-component": "^1.5.1",
     "react-masonry-css": "^1.0.16",

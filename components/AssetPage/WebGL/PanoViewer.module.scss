@@ -1,0 +1,17 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include absolute_cover;
+  @include center;
+  background-color: $c-background;
+}
+
+.buttons {
+  @include flex(row);
+  gap: 0.5em;
+  position: absolute;
+  right: 0.8em;
+  bottom: 0.5em;
+}
