@@ -86,7 +86,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
   const setPreviewImage = (src) => {
     setImageLoading(true)
-    if (src.startsWith("https://cdn.polyhaven.com")) {
+    if (src.startsWith("https://cdn.polyhaven.com/")) {
       src += "?height=780"
     }
     document.getElementById('activePreview').setAttribute('src', src);
