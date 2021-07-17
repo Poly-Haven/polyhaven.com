@@ -51,6 +51,11 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
     document.getElementById('header-path').innerHTML = path
     document.getElementById('header-frompath').innerHTML = ""
     document.getElementById('page').scrollTop = 0
+
+    return (() => {
+      document.getElementById('header-path').innerHTML = ""
+      document.getElementById('header-title').innerHTML = ""
+    })
   }, [assetID]);
 
   useEffect(() => {  // Handle user loading

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Link from 'next/link';
 
 import GoalProgress from 'components/ProgressBar/GoalProgress'
@@ -7,11 +6,6 @@ import Nav from './Nav/Nav'
 import styles from './Header.module.scss';
 
 const header = () => {
-
-  useEffect(() => {
-    document.getElementById('header-path').innerHTML = ""
-    document.getElementById('header-title').innerHTML = ""
-  });
 
   return (
     <div className={styles.header}>
