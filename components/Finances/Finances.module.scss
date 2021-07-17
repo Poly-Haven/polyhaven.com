@@ -9,6 +9,11 @@
 
 .header {
   @include flex(row, true);
+
+  @media screen and (max-width: 590px) {
+    flex-direction: column;
+  }
+
   h1 {
     flex-grow: 1;
   }
@@ -21,6 +26,10 @@
 .row {
   @include flex(row);
   width: 100%;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 
   .half {
     @include flex(column);
