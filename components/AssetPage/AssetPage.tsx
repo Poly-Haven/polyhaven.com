@@ -143,7 +143,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
         <UserRenders assetID={assetID} />
       </Page>
 
-      <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : null}`}>
+      <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : ''}`}>
 
         <div className={styles.info}>
 

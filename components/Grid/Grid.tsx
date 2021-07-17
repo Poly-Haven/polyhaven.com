@@ -165,9 +165,9 @@ const Grid = (props) => {
             </div>
             {<p className={styles.numResults}>{sortedKeys.length} results</p>}
           </div>
-        </div>
-        <div className={styles.adGridTop}>
-          <DisplayAd id="9488083725" x={468} y={60} />
+          <div className={styles.adGridTop}>
+            <DisplayAd id="9488083725" x={468} y={60} />
+          </div>
         </div>
       </div>
 

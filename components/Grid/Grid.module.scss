@@ -6,15 +6,21 @@
   position: fixed;
   z-index: 10;
   width: calc(100% - #{$v-sidebar-width} - 1rem - 17px);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flex(row, true);
   padding: 0.5rem;
   background: rgba($c-background, 0.8);
+
+  @media screen and (max-width: 1200px) {
+    position: relative;
+    background: $c-background-lightish;
+    width: calc(100% - 1rem);
+  }
 
   .gridHeader {
     flex-grow: 1;
     @include flex(row, true, false);
+    flex-wrap: wrap;
+    row-gap: 0.5em;
     padding: 0 1rem;
 
     h1 {
@@ -38,9 +44,10 @@
   }
 
   .options {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flex(row, true);
+    flex-wrap: wrap;
+    column-gap: 0.5em;
+    row-gap: 0.3em;
 
     .menuSelection {
       display: block;
@@ -53,7 +60,6 @@
       width: calc(198px - 0.6rem);
       padding: 0 0.3rem;
       border: 1px solid rgba($c-text-light, 0.2);
-      margin-left: 1rem;
       background-color: $c-background;
 
       .searchIcon {
@@ -117,7 +123,7 @@
 }
 
 .adGridTop {
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 520px) {
     display: none;
   }
 }

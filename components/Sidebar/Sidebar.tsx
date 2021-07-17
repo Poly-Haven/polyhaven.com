@@ -1,19 +1,22 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { assetTypeName } from 'utils/assetTypeName'
-import { MdApps } from 'react-icons/md'
+import { MdApps, MdFilterList, MdFirstPage } from 'react-icons/md'
 
+import IconButton from "components/UI/Button/IconButton";
 import CategoryList from './CategoryList';
 
 import styles from './Sidebar.module.scss';
 
 const Sidebar = (props) => {
-  const hoverType = event => {
-    console.log(event.target.id)
-    document.getElementById("typeHeader")
+  const [hideSidebar, setHideSidebar] = useState(true);
+
+  const toggleSidebar = () => {
+    setHideSidebar(!hideSidebar)
   }
 
-  return (
-    <div id={styles.sidebar}>
+  return (<>
+    <div id={styles.sidebar} className={hideSidebar ? styles.hiddenMobile : null}>
       <div className={styles.sidebarInner}>
         <div className={styles.typeSelector}>
           <Link href="/all"><a className={
@@ -52,6 +55,10 @@ const Sidebar = (props) => {
           level={-1} />
       </div>
     </div>
+    <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
+      <IconButton icon={hideSidebar ? <MdFilterList /> : <MdFirstPage />} onClick={toggleSidebar} />
+    </div>
+  </>
   );
 }
 
