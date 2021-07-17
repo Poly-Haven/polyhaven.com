@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0';
 
-import { MdMenu, MdAccountCircle } from 'react-icons/md'
+import { MdMenu, MdExpandLess, MdAccountCircle } from 'react-icons/md'
 
 import NavItem from './NavItem'
 
@@ -17,7 +17,7 @@ const Nav = () => {
 
   return (
     <>
-      <div className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`}>
+      <div className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`} onClick={() => { setToggle(true) }}>
         <NavItem text="Assets" link="/all">
           <NavItem text="HDRIs" link="/hdris" />
           <NavItem text="Textures" link="/textures" />
@@ -32,7 +32,7 @@ const Nav = () => {
           </NavItem>
         }
       </div>
-      <div className={styles.menuToggle} onClick={toggle}><MdMenu /></div>
+      <div className={styles.menuToggle} onClick={toggle}>{navHide ? <MdMenu /> : <MdExpandLess />}</div>
     </>
   )
 }
