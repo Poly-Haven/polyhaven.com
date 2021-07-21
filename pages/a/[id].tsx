@@ -43,9 +43,10 @@ const Page = ({ assetID, data }) => {
 
 export async function getStaticProps(context) {
   const id = context.params.id
+  const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
 
   let error = null
-  const data = await fetch(`https://api.polyhaven.com/info/${id}`)
+  const data = await fetch(`${baseUrl}/info/${id}`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => error = e)
@@ -69,7 +70,8 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const data = await fetch(`https://api.polyhaven.com/assets`)
+  const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
+  const data = await fetch(`${baseUrl}/assets`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => console.log(e));
