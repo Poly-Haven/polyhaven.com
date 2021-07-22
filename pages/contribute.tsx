@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { MdDescription } from 'react-icons/md';
+
 import Button from 'components/Button/Button';
 import TextPage from 'components/Layout/TextPage/TextPage'
 
@@ -71,6 +73,10 @@ const Contribute = () => {
         <li>Tripod & shadow removed from bottom.</li>
         <li>If you want to include backplates, there are more requirements for these, <Link href="/about-contact">please get in touch</Link> :)</li>
       </ul>
+
+      <p>If you'd like to make our lives easier and get your asset published more quickly, please check out our technical standards document:</p>
+
+      <Button href="https://docs.google.com/document/d/17vLGfCbouvwcp1mcbsMe892DB0QkGLoR3gSjLtsVTGM/edit?usp=sharing" text="View Technical Standards" icon={<MdDescription />} />
 
       <h2>Is there payment for this?</h2>
 
