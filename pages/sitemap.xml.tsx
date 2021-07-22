@@ -7,6 +7,7 @@ const Sitemap = () => { };
 
 export const getServerSideProps = async ({ res }) => {
   const baseUrl = "https://polyhaven.com"
+  const apiUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
 
   const staticPages = [
     "",  // Home
@@ -25,7 +26,7 @@ export const getServerSideProps = async ({ res }) => {
 
   let dynamicPages = {}
   // Assets
-  await fetch(`https://api.polyhaven.com/assets`)
+  await fetch(`${apiUrl}/assets`)
     .then(response => response.json())
     .then(resdata => {
       for (const [slug, info] of Object.entries(resdata)) {
@@ -43,7 +44,7 @@ export const getServerSideProps = async ({ res }) => {
 
   // Categories
   let types = []
-  await fetch(`https://api.polyhaven.com/categories/all`)
+  await fetch(`${apiUrl}/categories/all`)
     .then(response => response.json())
     .then(resdata => {
       for (const type of Object.keys(resdata)) {
@@ -57,7 +58,7 @@ export const getServerSideProps = async ({ res }) => {
       }
     })
   for (const type of types) {
-    await fetch(`https://api.polyhaven.com/categories/${type}`)
+    await fetch(`${apiUrl}/categories/${type}`)
       .then(response => response.json())
       .then(resdata => {
         for (const cat of Object.keys(resdata)) {
