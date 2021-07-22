@@ -35,7 +35,7 @@ module.exports = {
       },
       {
         source: '/blog',
-        destination: 'https://blog.hdrihaven.com',
+        destination: 'https://blog.polyhaven.com',
         permanent: true,
       },
     ]

@@ -34,10 +34,10 @@ const FaqPage = () => {
       <FaqItem question="How do you measure the dynamic range (EVs) of an HDRI?">
         <p>The number of EVs (or 'stops') is based purely on the number of brackets captured. For example, 12 EVs means 5 photos were taken with 3 EVs between them (shutter speeds: 1/4000, 1/500, 1/60 1/8, 1"), and since there are 4 gaps of 3 EVs between them, the dynamic range is said to be 12 EVs (4x3=12).</p>
         <p>Unfortunately there is no standardized way for measuring the dynamic range of an HDRI. Different people use different methods, so there's no reliable way that you as a user can tell whether website-A that claims 50 EVs of dynamic range is actually better than website-B that has 20 EVs.</p>
-        <p>The main thing to look out for is whether an HDRI is <a href="http://blog.hdrihaven.com/what-is-clipping/">unclipped</a> or not. They usually don't mention anything if it is indeed clipped, so watch out. Being unclipped means the <strong>full range of brightness in the scene</strong> was captured, including the super crazy bright sunshine. If an HDRI is clipped (aka "clamped"), it will produce unrealistic lighting which is usually flat and lacking contrast.</p>
+        <p>The main thing to look out for is whether an HDRI is <a href="http://blog.polyhaven.com/what-is-clipping/">unclipped</a> or not. They usually don't mention anything if it is indeed clipped, so watch out. Being unclipped means the <strong>full range of brightness in the scene</strong> was captured, including the super crazy bright sunshine. If an HDRI is clipped (aka "clamped"), it will produce unrealistic lighting which is usually flat and lacking contrast.</p>
       </FaqItem>
       <FaqItem question="What equipment/software do you use for HDRIs?">
-        <p>This changes every now and then, and there are now multiple photographers shooting HDRIs for this site, so take a look at my article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/">creating your own HDRIs</a> to answer your actual question ;)</p>
+        <p>This changes every now and then, and there are now multiple photographers shooting HDRIs for this site, so take a look at my article on <a href="https://blog.polyhaven.com/how-to-create-high-quality-hdri/">creating your own HDRIs</a> to answer your actual question ;)</p>
       </FaqItem>
       <FaqItem question="Can I upload my own models/textures/hdris?">
         <p>Maybe!</p>

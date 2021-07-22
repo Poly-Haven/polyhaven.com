@@ -59,7 +59,7 @@ const footer = () => {
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="https://blog.hdrihaven.com"><a>Blog</a></Link>
+              <Link href="https://blog.polyhaven.com"><a>Blog</a></Link>
               <Link href="/contribute"><a>Contribute</a></Link>
               <Link href="https://github.com/Poly-Haven/Public-API"><a>API</a></Link>
               <Link href="https://github.com/Poly-Haven/polyhaven.com"><a>Source</a></Link>

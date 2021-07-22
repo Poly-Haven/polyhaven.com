@@ -53,7 +53,7 @@ const AboutPage = () => {
       <p>Since the majority of our funding comes from donations, it's important to us that anyone can see what we're up to, what we're planning, and the reasoning behind all of our decisions.</p>
       <p>Sharing our assets is our priority, but we also want to share our knowledge, so that others might learn how to create assets like ours and perhaps share them as well.</p>
       <ul>
-        <li>We write regular Dev Logs on <a href="https://blog.hdrihaven.com/">our blog</a> to share what we've been working on recently.</li>
+        <li>We write regular Dev Logs on <a href="https://blog.polyhaven.com/">our blog</a> to share what we've been working on recently.</li>
         <li>Our <a href="https://www.patreon.com/polyhaven/posts?public=true">posts on Patreon</a> are also a good place to find smaller updates and polls when we need help making decisions.</li>
         <li><a href="https://discord.gg/Dms7Mrs">Discord</a> is where we hang out every day, feel free to say hi!</li>
         <li>Our social media is primarily automated for posting our latest assets, but we're occasionally active there too (links in the <a href="#social">footer</a>).</li>

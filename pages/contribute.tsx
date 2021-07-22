@@ -64,8 +64,8 @@ const Contribute = () => {
 
       <ul>
         <li>Photo-based, no virtual scenes.</li>
-        <li>Created with a <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/">fully linear workflow</a>. No tonemapping, color/contrast adjustments, sharpening, or tone curve.</li>
-        <li><a href="https://blog.hdrihaven.com/what-is-clipping/">Unclipped</a> (complete dynamic range).</li>
+        <li>Created with a <a href="https://blog.polyhaven.com/how-to-create-high-quality-hdri/">fully linear workflow</a>. No tonemapping, color/contrast adjustments, sharpening, or tone curve.</li>
+        <li><a href="https://blog.polyhaven.com/what-is-clipping/">Unclipped</a> (complete dynamic range).</li>
         <li>Minimum 16k resolution.</li>
         <li>Separate macbeth color chart shot parallel to the ground, with the same exposure bracket as the rest of the pano, and merged to HDR file in the same way. Raw files (plus HDR) required.</li>
         <li>No avoidable or significant lens flares, stitching seams, or motion/depth blur.</li>
