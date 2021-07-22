@@ -183,9 +183,10 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             <InfoItem label="Scale" condition={Boolean(data.scale)}>
               {data.scale}
             </InfoItem>
-            <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
+            {/* Hiding this for now as the info is always in the wrong timezone. */}
+            {/* <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
               {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
-            </InfoItem>
+            </InfoItem> */}
             <InfoItem label="Location" condition={Boolean(data.coords)}>
               {data.coords ? data.coords.join(', ') : null}
             </InfoItem>
