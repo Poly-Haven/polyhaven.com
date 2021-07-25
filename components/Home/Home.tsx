@@ -15,7 +15,7 @@ import Loader from 'components/UI/Loader/Loader';
 import styles from './Home.module.scss'
 
 const Home = () => {
-  const { data: galleryData, error } = apiSWR(`/gallery?limit=20`, { revalidateOnFocus: false });
+  const { data: galleryData, error } = apiSWR(`/gallery?limit=22`, { revalidateOnFocus: false });
 
   return (
     <div className={styles.home}>
