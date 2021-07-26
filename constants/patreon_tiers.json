@@ -72,5 +72,41 @@
       "Sponsor",
       "Stakeholder"
     ]
+  },
+  "7495083": {
+    "comment": "$100",
+    "name": "Corporate: Silver",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor",
+      "Stakeholder",
+      "Corporate Silver"
+    ]
+  },
+  "7495117": {
+    "comment": "$300",
+    "name": "Corporate: Gold",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor",
+      "Stakeholder",
+      "Corporate Silver",
+      "Corporate Gold"
+    ]
+  },
+  "7495139": {
+    "comment": "$1000",
+    "name": "Corporate: Diamond",
+    "rewards": [
+      "Early Access",
+      "Offline Access",
+      "Sponsor",
+      "Stakeholder",
+      "Corporate Silver",
+      "Corporate Gold",
+      "Corporate Diamond"
+    ]
   }
 }
