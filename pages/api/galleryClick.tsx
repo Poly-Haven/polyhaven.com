@@ -5,7 +5,7 @@ const Route = async (req, res) => {
   data.key = process.env.DL_KEY
 
   let returnData = { message: "Failed to track." }
-  const baseUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
   await fetch(`${baseUrl}/gallery_click`, {
     method: 'POST',
     headers: {

@@ -19,19 +19,13 @@ To build the application yourself, you'll need to:
 4. Then `npm run dev` will start a local server at http://localhost:3002/ - or use `next dev -p 3002` to specify a different port.
 
 
-## Required API
+## API
 
-This application works in tandem with [our API](https://github.com/Poly-Haven/Public-API), which by default is expected to be running at `localhost:3000`.
+This application works in tandem with [our API](https://github.com/Poly-Haven/Public-API).
 
-However, unless you set up your own Firestore database that mimicks ours, you likely don't want to run a local API and should just use the live one instead.
+By default it uses the public https://api.polyhaven.com base URL, but if you need to override this you can set an environment variable `NEXT_PUBLIC_API_URL="http://localhost:3000"`.
 
-To do this, set the environment variable `POLYHAVEN_API='LIVE'`.
-
-Alternatively, if you struggle to use environment variables, you can also edit the file `utils/apiSWR.tsx` and change the `baseUrl` definition to:
-
-```js
-const baseUrl = "https://api.polyhaven.com"
-```
+However, unless you set up your own Firestore database that mimicks ours, you likely don't want to run a local API and should just use the default live one instead.
 
 
 ## Get Help

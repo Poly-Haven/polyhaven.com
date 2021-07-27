@@ -7,7 +7,7 @@ const Sitemap = () => { };
 
 export const getServerSideProps = async ({ res }) => {
   const baseUrl = "https://polyhaven.com"
-  const apiUrl = (process.env.NODE_ENV == "production" || process.env.POLYHAVEN_API == "live") ? "https://api.polyhaven.com" : "http://localhost:3000"
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
 
   const staticPages = [
     "",  // Home
