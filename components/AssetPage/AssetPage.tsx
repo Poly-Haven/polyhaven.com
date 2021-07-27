@@ -137,7 +137,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           </div>
         </div>
         <div className={styles.similar}>
-          <h2>Similar Assets:</h2>
+          <h2>Similar Assets</h2>
           <Similar slug={assetID} scrollPosition={scrollPosition} onClick={clickSimilar} />
         </div>
         <UserRenders assetID={assetID} />

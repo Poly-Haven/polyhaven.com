@@ -235,15 +235,12 @@
 }
 
 .similar {
-  @include flex(row, true);
+  @include flex(column, true);
   padding: 1em;
-
-  @media screen and (max-width: 1200px) {
-    flex-direction: column;
-  }
 
   h2 {
     flex-shrink: 0;
+    margin-bottom: 0;
   }
 }
 
