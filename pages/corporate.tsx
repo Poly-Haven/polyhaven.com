@@ -3,7 +3,8 @@ import fs from 'fs'
 import path from 'path'
 import Markdown from 'markdown-to-jsx';
 
-import { MdCloudDownload, MdCropFree, MdLink, MdChat } from 'react-icons/md';
+import { IoTicket } from 'react-icons/io5'
+import { MdCloudDownload, MdCropFree, MdLink, MdChat, MdInfo } from 'react-icons/md';
 
 import { timeago } from 'utils/dateUtils';
 
@@ -14,6 +15,29 @@ import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 const Corporate = (props) => {
   const weeksPerMonth = 365.25 / 7 / 12;
+
+  const commonRewards = [
+    {
+      icon: <MdLink />,
+      color: '#ffa726',
+      text: <>Your logo can link to your website or product page.</>
+    },
+    {
+      icon: <IoTicket />,
+      color: '#be6fff',
+      text: <>Monthly asset sponsorships. <MdInfo data-tip="Every month you may choose an asset to sponsor permanently.<br />Your logo &amp; link will be shown on the asset page near the download buttons.<br />You can also choose to have the asset selected randomly for you each month." /></>
+    },
+    {
+      icon: <MdChat />,
+      color: '#9ccc65',
+      text: <>Access our private internal communication channels and help us discuss what to work on.</>
+    },
+    {
+      icon: <MdCloudDownload />,
+      color: '#b3e5fc',
+      text: <>Nextcloud library access for your team.</>
+    },
+  ]
 
   return (
     <TextPage
@@ -78,21 +102,7 @@ const Corporate = (props) => {
               color: '#ef5350',
               text: <><strong>Small white silhouette logo</strong> on the <Link href="/about">About Page</Link>.</>
             },
-            {
-              icon: <MdLink />,
-              color: '#ffa726',
-              text: <>Your logo can link to your website or product page.</>
-            },
-            {
-              icon: <MdChat />,
-              color: '#9ccc65',
-              text: <>Access our private internal communication channels and help us discuss what to work on.</>
-            },
-            {
-              icon: <MdCloudDownload />,
-              color: '#b3e5fc',
-              text: <>Nextcloud library access for your whole team.</>
-            },
+            ...commonRewards
           ]}
         />
         <TierBlock
@@ -113,21 +123,7 @@ const Corporate = (props) => {
               color: '#ef5350',
               text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about">About Page</Link>.</>
             },
-            {
-              icon: <MdLink />,
-              color: '#ffa726',
-              text: <>Your logo can link to your website or product page.</>
-            },
-            {
-              icon: <MdChat />,
-              color: '#9ccc65',
-              text: <>Access our private internal communication channels and help us discuss what to work on.</>
-            },
-            {
-              icon: <MdCloudDownload />,
-              color: '#b3e5fc',
-              text: <>Nextcloud library access for your whole team.</>
-            },
+            ...commonRewards
           ]}
         />
         <TierBlock
@@ -153,21 +149,7 @@ const Corporate = (props) => {
               color: '#ef5350',
               text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about">About Page</Link>.</>
             },
-            {
-              icon: <MdLink />,
-              color: '#ffa726',
-              text: <>Your logo can link to your website or product page.</>
-            },
-            {
-              icon: <MdChat />,
-              color: '#9ccc65',
-              text: <>Access our private internal communication channels and help us discuss what to work on.</>
-            },
-            {
-              icon: <MdCloudDownload />,
-              color: '#b3e5fc',
-              text: <>Nextcloud library access for your whole team.</>
-            },
+            ...commonRewards
           ]}
         />
       </div>
