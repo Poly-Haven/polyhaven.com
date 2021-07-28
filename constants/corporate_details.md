@@ -40,7 +40,7 @@ Tax-wise, you will not be dealing with us directly, but with Patreon (the paymen
 
 Because of this, we cannot provide you with an invoice ourselves, however **Patreon will email you a receipt** each month which should suffice for your records.
 
-Generally speaking, a tax invoice is not required unless sales tax/VAT was paid, which should not be applicable here.
+Depending on your location, sales tax (VAT) may be added. If this is the case, Patreon should send you an actual tax invoice.
 
 
 ## Benefits
