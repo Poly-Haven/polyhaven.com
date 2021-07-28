@@ -24,7 +24,7 @@ We use [Patreon](https://www.patreon.com/polyhaven) to manage monthly membership
 
 Payments are made automatically at the start of each month. If you sign up in the middle of the month, your first payment will only be made at the start of the following month.
 
-After you sign up, we will contact you to ask for your logo and some other information we'll need, however we will not display your logo on the site until after your first payment succeeds.
+After you sign up, we will contact you to ask for your logo and some other information we'll need, however we will not display your logo on the site until **after your first payment succeeds**.
 
 Generally we prefer payments to be made monthly so that our income is consistent, but if you would prefer to make a bulk payment for a set number of months up front, please [get in touch](/about-contact).
 
@@ -33,6 +33,14 @@ Poly Haven is a registered private company based in South Africa. We are not (ye
 You may cancel your membership at any time from your Patreon account page. We will continue to show your logo until a month after your last payment.
 
 Funds are being accepted as donations, therefore no refunds will be provided unless payments were made in error.
+
+### Invoices
+
+Tax-wise, you will not be dealing with us directly, but with Patreon (the payment processor).
+
+Because of this, we cannot provide you with an invoice ourselves, however **Patreon will email you a receipt** each month which should suffice for your records.
+
+Generally speaking, a tax invoice is not required unless sales tax/VAT was paid, which should not be applicable here.
 
 
 ## Benefits
