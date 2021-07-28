@@ -1,0 +1,89 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  @include flex(column);
+  flex: 1 0;
+  border: 1px solid rgba($c-text-light, 0.2);
+
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    margin: 0 !important;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba($c-text-light, 0.2);
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1em;
+
+    strong {
+      font-size: 1.4em;
+    }
+
+    span {
+      font-style: italic;
+      color: $c-text-light;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  }
+
+  p {
+    text-align: justify;
+    padding: 0 1em;
+  }
+}
+
+.features {
+  flex-grow: 1;
+  @include flex(column);
+  justify-content: space-between;
+}
+
+.feat {
+  flex-grow: 1;
+  @include flex(row, true);
+  gap: 0.5em;
+  padding: 0.5em;
+  background: $c-background-lightish;
+
+  &:nth-last-child(odd) {
+    background: $c-background-darkish;
+  }
+
+  .featText {
+    font-size: 0.9em;
+
+    a {
+      @include transition();
+
+      &:hover {
+        color: $c-accent-light;
+        box-shadow: 0 3px 0 $c-accent;
+      }
+    }
+  }
+
+  .featIcon {
+    line-height: 0;
+  }
+}
+
+.image {
+  @include center;
+  margin-top: 1em;
+
+  svg {
+    height: 100px;
+    width: 100%;
+  }
+  img {
+    height: 100px;
+    max-width: 100%;
+  }
+}

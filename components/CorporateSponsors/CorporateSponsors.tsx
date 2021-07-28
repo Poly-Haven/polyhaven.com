@@ -1,11 +1,14 @@
+import Link from 'next/link';
 import CorporateSponsorLogo from './CorporateSponsorLogo'
 import Spinner from 'components/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'
 
+import { MdInfoOutline } from 'react-icons/md'
+
 import styles from './CorporateSponsors.module.scss'
 
-const CorporateSponsors = ({ header, footer }) => {
+const CorporateSponsors = ({ header, footer, hideInfoBtn }) => {
   const { data, error } = apiSWR("/corporate", { revalidateOnFocus: false });
   if (error) return <div className={styles.wrapper}>Error fetching corporate sponsors</div>
   if (!data) return <div className={styles.wrapper}><Spinner /></div>
@@ -22,7 +25,7 @@ const CorporateSponsors = ({ header, footer }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h2>{header}</h2>
+      <h2>{header}{!hideInfoBtn && <Link href="/corporate"><a><MdInfoOutline /></a></Link>}</h2>
       <div className={styles.groupDiamond}>
         {diamondSponsors.map(id => {
           return (
@@ -50,7 +53,8 @@ const CorporateSponsors = ({ header, footer }) => {
 
 CorporateSponsors.defaultProps = {
   header: "Also supported by:",
-  footer: false
+  footer: false,
+  hideInfoBtn: false
 }
 
 export default CorporateSponsors

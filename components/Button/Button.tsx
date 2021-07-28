@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import styles from './Button.module.scss'
 
-const Button = ({ text, href, color, icon }) => {
+const Button = ({ text, href, color, icon, style }) => {
   return (
-    <Link href={href}><a className={`${styles.button} ${styles[color]}`}>
+    <Link href={href}><a className={`${styles.button} ${styles[color]}`} style={style}>
       <div className={styles.inner}>
         {icon && <div className={styles.icon}>{icon}</div>}
         {text}
@@ -15,7 +15,8 @@ const Button = ({ text, href, color, icon }) => {
 
 Button.defaultProps = {
   color: 'accent',
-  icon: null
+  icon: null,
+  style: null
 }
 
 export default Button

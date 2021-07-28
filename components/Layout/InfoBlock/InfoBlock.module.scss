@@ -1,0 +1,32 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.info {
+  @include flex(column);
+  flex: 1 0;
+  padding: 1em;
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    text-align: justify;
+    padding: 0 1em;
+  }
+}
+
+.image {
+  @include center;
+  margin-top: 1em;
+
+  svg {
+    height: 100px;
+    width: 100%;
+  }
+  img {
+    height: 100px;
+    max-width: 100%;
+  }
+}
