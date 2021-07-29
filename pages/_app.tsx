@@ -29,6 +29,21 @@ function MyApp({ Component, pageProps }) {
         localStorage.setItem(`uuid`, uuid())
       }
     }
+
+    if (process.env.NODE_ENV === 'production') {
+      console.log(`%cHello!
+` + `%c
+Poly Haven is an open source project. This site's git repo is here: ` + `%chttps://github.com/Poly-Haven/polyhaven.com` + `%c
+
+We have a public API intended to help you integrate our assets into your software/plugin: ` + `%chttps://github.com/Poly-Haven/Public-API` + `%c, you don't need to try and scrape this site for data :)`,
+        'color: rgb(190, 111, 255); font-size: 3em; font-weight: bold',
+        '',
+        'color: rgb(65, 187, 217); text-decoration:underline',
+        '',
+        'color: rgb(65, 187, 217); text-decoration:underline',
+        ''
+      )
+    }
   }, []);
 
   return (
