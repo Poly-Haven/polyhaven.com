@@ -18,7 +18,7 @@ const Library = ({ assetType, categories, author, search, sort }) => {
   return (
     <div id={styles.library}>
       <Sidebar assetType={assetType} categories={categories} />
-      <Page>
+      <Page library>
         <Grid
           assetType={assetType}
           categories={categories}

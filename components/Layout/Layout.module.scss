@@ -1,4 +1,6 @@
 @import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
 
 #layout {
   display: flex;
@@ -9,4 +11,5 @@
 .page {
   flex-grow: 1;
   display: flex;
+  margin-top: $v-header-height;
 }

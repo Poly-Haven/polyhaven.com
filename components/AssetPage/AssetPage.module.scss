@@ -49,10 +49,12 @@
 }
 
 .sidebar {
+  position: fixed;
+  right: 0;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  width: 336px;
+  width: $v-asset-sidebar-width;
   max-width: calc(100% - 4em);
   background: $c-background-dark;
   overflow-y: auto;

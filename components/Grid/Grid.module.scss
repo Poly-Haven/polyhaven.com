@@ -5,7 +5,7 @@
 .optionsBar {
   position: fixed;
   z-index: 10;
-  width: calc(100% - #{$v-sidebar-width} - 1rem - 17px);
+  width: calc(100% - #{$v-sidebar-width} - 1rem);
   @include flex(row, true);
   padding: 0.5rem;
   background: rgba($c-background, 0.8);

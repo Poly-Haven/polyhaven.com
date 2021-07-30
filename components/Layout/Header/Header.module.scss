@@ -3,7 +3,7 @@
 @import "constants/mixins";
 
 .header {
-  position: relative;
+  position: fixed;
   background: $c-background-dark;
   font-size: 1.2rem;
   display: flex;

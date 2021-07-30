@@ -106,7 +106,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
       <div className={`${styles.loading} ${!pageLoading ? styles.hidden : null}`}>
         <Spinner />
       </div>
-      <Page immersiveScroll={true}>
+      <Page immersiveScroll assetPage>
         <div className={styles.mobileHeader}>
           <h1>{data.name}</h1>
           <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
