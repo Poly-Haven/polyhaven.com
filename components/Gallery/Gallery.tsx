@@ -5,7 +5,7 @@ import { isURL } from 'validator';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import useDivWidth from 'hooks/useDivWidth';
+import useDivSize from 'hooks/useDivSize';
 
 import { MdClose } from 'react-icons/md';
 
@@ -18,7 +18,7 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
   const [clicked, setClicked] = useState({})
   const [lightboxData, setLightboxData] = useState(null)
   const widthRef = useRef(null)
-  const width = useDivWidth(widthRef)
+  const { width } = useDivSize(widthRef)
 
   const imgWidth = 460
 
@@ -69,6 +69,7 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
             src={`https://cdn.polyhaven.com/gallery/${d.file_name}?width=${imgWidth}`}
             alt={d.name}
             scrollPosition={scrollPosition}
+            threshold={500}
           />
         </div>)}
         {!assetPage && <Disabled tooltip="Coming soon!">
