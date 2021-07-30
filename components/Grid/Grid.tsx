@@ -72,15 +72,16 @@ const Grid = (props) => {
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
 
+  let sortedKeys = []
   let url = `/assets?t=${props.assetType}`
   if (props.categories.length) {
     url += "&c=" + props.categories.join(',')
   }
   const { data, error } = apiSWR(url, { revalidateOnFocus: false });
-  if (error) return <div>Error</div>
-  if (!data) return <div><Spinner /></div>
 
-  let sortedKeys = sortBy[props.sort](data);
+  if (!error && data) {
+    sortedKeys = sortBy[props.sort](data);
+  }
 
   if (props.search) {
     const fuse = new Fuse(Object.values(data), {
@@ -190,10 +191,15 @@ const Grid = (props) => {
           })}
         </div>
         :
-        <div className={styles.noResults}>
-          <h2>No results :(</h2>
-          {props.search ? <p>Try using a different keyword</p> : null}
-        </div>
+        (data ?
+          <div className={styles.noResults}>
+            <h2>No results :(</h2>
+            {props.search ? <p>Try using a different keyword</p> : null}
+          </div>
+          :
+          <div className={styles.loading}>
+            <Spinner />
+          </div>)
       }
     </>
   );

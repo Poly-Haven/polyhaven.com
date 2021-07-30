@@ -119,6 +119,11 @@
   justify-content: center;
 }
 
+.loading {
+  min-height: 85vh;
+  @include center;
+}
+
 .adGridTop {
   @media screen and (max-width: 520px) {
     display: none;
