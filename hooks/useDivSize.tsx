@@ -7,8 +7,8 @@ export default function useDivSize(ref) {
   useEffect(() => {
 
     function handleResize() {
-      setWidth(ref.current.offsetWidth)
-      setHeight(ref.current.offsetHeight)
+      if (ref.current.offsetWidth !== width) setWidth(ref.current.offsetWidth)
+      if (ref.current.offsetHeight !== height) setHeight(ref.current.offsetHeight)
     }
 
     handleResize() // First call

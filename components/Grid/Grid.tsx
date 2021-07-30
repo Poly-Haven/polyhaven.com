@@ -1,8 +1,10 @@
 import Fuse from 'fuse.js';
+import { useRef } from 'react';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
 import { MdWhatshot, MdEvent, MdStar, MdSortByAlpha } from 'react-icons/md'
 
+import useDivSize from 'hooks/useDivSize';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { assetTypeName } from 'utils/assetTypeName'
@@ -17,6 +19,9 @@ import Disabled from 'components/UI/Disabled/Disabled'
 import styles from './Grid.module.scss';
 
 const Grid = (props) => {
+  const optionsRef = useRef(null)
+  const { height } = useDivSize(optionsRef)
+
   const sortBy = {
     hot: (d: Object) => {
       return Object.keys(d).sort(function (a, b) {
@@ -132,7 +137,7 @@ const Grid = (props) => {
 
   return (
     <>
-      <div className={styles.optionsBar}>
+      <div className={styles.optionsBar} ref={optionsRef}>
         <div className={styles.gridHeader}>
           <h1 className={styles['s' + fSize]}>{title}</h1>
           <div className={styles.options}>
@@ -170,6 +175,8 @@ const Grid = (props) => {
           </div>
         </div>
       </div>
+
+      <div style={{ marginTop: height }} />
 
       {sortedKeys.length ?
         <div className={styles.grid}>
