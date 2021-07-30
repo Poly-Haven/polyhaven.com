@@ -22,6 +22,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
         src={img_src}
         alt={asset.name}
         scrollPosition={scrollPosition}
+        threshold={500}
         placeholder={<div className={styles.skelly}></div>}
       /></div>
       <div className={styles.text}>
