@@ -59,11 +59,7 @@
   background: $c-background-dark;
   overflow-y: auto;
   height: calc(100vh - #{$v-header-height});
-
-  @media screen and (max-width: 672px) {
-    position: absolute;
-    right: 0;
-  }
+  box-shadow: 0 0 3px 0 $c-background-darkest;
 
   .info {
     position: relative;
@@ -151,17 +147,17 @@
 
 .sidebarToggle {
   display: none;
-  position: absolute;
-  top: 0.5em;
+  position: fixed;
+  top: calc(0.5em + #{$v-header-height});
   right: 0.5em;
+  z-index: 11;
 
   @media screen and (max-width: 672px) {
     display: grid;
   }
 }
 .sidebarToggleClose {
-  right: initial;
-  left: 0.5em;
+  right: min(calc(100% - 0.5em - 3em), calc(#{$v-asset-sidebar-width} + 0.5em));
 }
 
 .hiddenMobile {

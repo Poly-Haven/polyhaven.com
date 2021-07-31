@@ -177,7 +177,7 @@ const Grid = (props) => {
         </div>
       </div>
 
-      <div style={{ marginTop: height }} />
+      <div className={styles.optionsSpacer} style={{ marginTop: height }} />
 
       {sortedKeys.length ?
         <div className={styles.grid}>

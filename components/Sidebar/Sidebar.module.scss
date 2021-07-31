@@ -12,12 +12,7 @@
   overflow: auto;
   overflow-x: hidden;
   @include dark_scrollbar;
-
-  @media screen and (max-width: 810px) {
-    position: absolute;
-    left: 0;
-    z-index: 11;
-  }
+  z-index: 11;
 }
 .sidebarInner {
   padding-bottom: 3em;

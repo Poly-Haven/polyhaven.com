@@ -12,6 +12,7 @@
 
   @media screen and (max-width: 810px) {
     width: calc(100% - 1rem);
+    position: relative;
   }
 
   .gridHeader {
@@ -98,6 +99,12 @@
     padding: 0.5rem;
     text-align: center;
     min-width: 11ch;
+  }
+}
+
+.optionsSpacer {
+  @media screen and (max-width: 810px) {
+    display: none;
   }
 }
 
