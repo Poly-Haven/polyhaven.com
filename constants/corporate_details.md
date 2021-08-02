@@ -20,27 +20,27 @@ Although we are veterans within the industry, we do not pretend to know all the 
 
 ## Payments / Managing your Membership
 
-We use [Patreon](https://www.patreon.com/polyhaven) to manage monthly memberships, the same platform we use for individual donors as well.
+We use [Gumroad](https://polyhaven.gumroad.com/l/ph-corporate) to manage monthly memberships.
 
-Payments are made automatically at the start of each month. If you sign up in the middle of the month, your first payment will only be made at the start of the following month.
-
-After you sign up, we will contact you to ask for your logo and some other information we'll need, however we will not display your logo on the site until **after your first payment succeeds**.
+After you sign up, we will contact you to ask for your logo and explain how to access the rest of your benefits.
 
 Generally we prefer payments to be made monthly so that our income is consistent, but if you would prefer to make a bulk payment for a set number of months up front, please [get in touch](/about-contact).
 
 Poly Haven is a registered private company based in South Africa. We are not (yet) a Non-Profit Organization, simply due to bureaucratic hurdles in our country, however we treat our finances and operations much like an NPO would and are happy to provide any further proof or documentation that you require.
 
-You may cancel your membership at any time from your Patreon account page. We will continue to show your logo until a month after your last payment.
+You may cancel your membership at any time from your Gumroad account page, or by emailing us. We will continue to show your logo until a month after your last payment.
 
 Funds are being accepted as donations, therefore no refunds will be provided unless payments were made in error.
 
-### Invoices
+### Invoices & VAT / Sales Tax
 
-Tax-wise, you will not be dealing with us directly, but with Patreon (the payment processor).
+Tax-wise, you will not be dealing with us directly, but with Gumroad (the payment processor).
 
-Because of this, we cannot provide you with an invoice ourselves, however **Patreon will email you a receipt** each month which should suffice for your records.
+Gumroad will email you a receipt for each payment, from which an invoice can be generated.
 
-Depending on your location, sales tax (VAT) may be added. If this is the case, Patreon should send you an actual tax invoice.
+Depending on your location, VAT may have been added to the price. If you are a VAT registered company, you can enter your VAT ID when generating an invoice, and Gumroad will refund you the VAT within a few days.
+
+More information about generating an invoice and receiving a VAT refund can be found [on Gumroad](https://customers.gumroad.com/article/200-i-need-a-vat-refund).
 
 
 ## Benefits

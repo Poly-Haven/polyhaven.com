@@ -90,7 +90,7 @@ const Corporate = (props) => {
           title="Silver"
           image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.svg" />}
           price="100"
-          link="https://www.patreon.com/join/polyhaven/checkout?rid=7495083"
+          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Silver"
           features={[
             {
               icon: <MdCropFree />,
@@ -111,7 +111,7 @@ const Corporate = (props) => {
           price="300"
           numExisting={props.numGold}
           limit={8}
-          link="https://www.patreon.com/join/polyhaven/checkout?rid=7495117"
+          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Gold"
           features={[
             {
               icon: <MdCropFree />,
@@ -132,7 +132,7 @@ const Corporate = (props) => {
           price="1,000"
           numExisting={props.numDiamond}
           limit={4}
-          link="https://www.patreon.com/join/polyhaven/checkout?rid=7495139"
+          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
           features={[
             {
               icon: <MdCropFree />,

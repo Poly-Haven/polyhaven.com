@@ -10,7 +10,7 @@ const TierBlock = ({ title, image, price, link, numExisting, limit, features }) 
       {image && <div className={styles.image}>{image}</div>}
       <h2>{title}</h2>
       <h3>
-        <strong>${price}</strong>/month <sup data-tip="In some countries, sales tax (VAT) may need to be added.<br />Click the 'Sign Up' button below to see if this applies to you.">+VAT</sup>{limit && <span>
+        <strong>${price}</strong>/month {limit && <span>
           <br />
           Limited: {Math.max(0, limit - numExisting)} of {limit} remaining
         </span>}
