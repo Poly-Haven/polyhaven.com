@@ -74,6 +74,7 @@
 .lightboxWrapper {
   @include absolute_cover;
   @include center;
+  position: fixed;
   z-index: 20;
   background: rgba($c-background-darker, 0.9);
 
