@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import TextPage from 'components/Layout/TextPage/TextPage'
+import Button from 'components/Button/Button';
 
 const Page = () => {
   return (
@@ -19,7 +20,9 @@ const Page = () => {
       <h2>Donations under $20</h2>
       <p>Please join us temporarily on <a href="https://www.patreon.com/polyhaven/overview">Patreon</a>, wait until the end of the month when your payment is made, and then cancel your account.</p>
       <h2>Larger donations</h2>
-      <p>To make a one-time donation, please use <a href="https://paypal.me/polyhaven">PayPal</a>.</p>
+      <p>To make a one-time donation, please use either PayPal or Ko-fi:</p>
+      <Button text="Donate on PayPal" href="https://paypal.me/polyhaven" />
+      <Button text="Donate on Ko-fi" href="https://ko-fi.com/polyhaven" />
     </TextPage>
   )
 }
