@@ -83,7 +83,7 @@ const Grid = (props) => {
     sortedKeys = sortBy[props.sort](data);
   }
 
-  if (props.search) {
+  if (props.search && data) {
     const fuse = new Fuse(Object.values(data), {
       keys: ['categories', 'tags', 'name'],
       includeScore: true,
