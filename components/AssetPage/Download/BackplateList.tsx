@@ -22,6 +22,11 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
       <Masonry breakpointCols={2} className={styles.masonry} columnClassName={styles.masonryColumn}>
         {Object.keys(files).sort().map((n, i) => {
           const bp = files[n]
+          if (Object.keys(bp).length !== Object.keys(types).length) {
+            // Don't show backplates that are missing some type versions.
+            // This rarely happens for very old assets where the spare raw files were included.
+            return
+          }
           return <div key={i} className={styles.thumbnail}>
             <img
               src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=144`}
