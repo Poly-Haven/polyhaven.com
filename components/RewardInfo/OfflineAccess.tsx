@@ -45,7 +45,7 @@ const OfflineAccess = ({ uuid, patron }) => {
     <div>
       <h1>Offline Access</h1>
 
-      {!patron.invite_sent &&
+      {!patron.invite_sent ?
         <div className={styles.row}>
           <p>Enter your email address to send yourself an invite to our cloud folder:</p>
           <form onSubmit={preventDefault}>
@@ -64,6 +64,8 @@ const OfflineAccess = ({ uuid, patron }) => {
           {error && <p>{error}</p>}
           {success && <p>Check your email :)</p>}
         </div>
+        :
+        <p><em>Invite successfully sent. If you have any trouble or need to change your account email, <Link href="/about-contact">please contact us</Link>.</em></p>
       }
 
       <p>See <Link href="https://www.patreon.com/posts/accessing-14640286">this post</Link> for further instructions on how to set up Nextcloud and start syncing assets to your computer.</p>
