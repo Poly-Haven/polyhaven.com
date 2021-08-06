@@ -123,3 +123,9 @@
   line-height: 1em;
   text-align: center;
 }
+.badgeSample {
+  @extend .badge;
+  position: relative;
+  right: 0;
+  top: 0;
+}
