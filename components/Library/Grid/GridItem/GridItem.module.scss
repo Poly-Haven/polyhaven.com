@@ -22,13 +22,24 @@
       filter: none;
     }
 
-    .new {
+    .badge {
+      filter: brightness(0.9);
       width: 2.6rem;
       height: 2.6rem;
-      font-size: 1em;
+      font-size: 0.95em;
       color: white;
       @include text-shadow-fine;
       @include transition;
+
+      svg {
+        width: 0;
+        opacity: 0;
+      }
+    }
+    .soon {
+      width: 3rem;
+      height: 3rem;
+      font-size: 0.8em;
     }
   }
 }
@@ -79,7 +90,7 @@
   }
 }
 
-.new {
+.badge {
   @include flex(row, true, true);
   $v-margin: 1.5rem;
   $v-size: 1.5rem;
@@ -94,4 +105,21 @@
   font-size: 0.5em;
   @include drop-shadow;
   @include transition;
+
+  svg {
+    width: 1rem;
+    opacity: 1;
+    @include transition;
+  }
+}
+.new {
+  background: $c-green;
+  color: rgba($c-green, 0);
+}
+.soon {
+  background: $c-blue;
+  color: rgba($c-blue, 0);
+  font-size: 0;
+  line-height: 1em;
+  text-align: center;
 }

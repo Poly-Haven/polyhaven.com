@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
 
 import { daysOld } from 'utils/dateUtils'
+import IconPatreon from 'components/UI/Icons/Patreon'
 
 import styles from './GridItem.module.scss';
 
@@ -13,6 +14,19 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
     size = [285, 285]
   } else if (asset.type === 2) {
     size = [450, 300]
+  }
+
+  let badge;
+  if (daysOld(asset.date_published) < 0) {
+    badge = {
+      text: <><IconPatreon />Early<br />Access</>,
+      style: styles.soon
+    }
+  } else if (daysOld(asset.date_published) < 7) {
+    badge = {
+      text: "New!",
+      style: styles.new
+    }
   }
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
@@ -29,7 +43,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
         <h3>{asset.name}</h3>
         <p>{timeago(asset.date_published * 1000)}</p>
       </div>
-      {daysOld(asset.date_published) < 7 ? <div className={styles.new}>New!</div> : null}
+      {badge ? <div className={`${styles.badge} ${badge.style}`}>{badge.text}</div> : null}
     </a></Link>
   );
 }

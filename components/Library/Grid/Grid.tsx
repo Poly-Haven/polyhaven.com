@@ -1,5 +1,8 @@
 import Fuse from 'fuse.js';
-import { useRef } from 'react';
+import useSWR from 'swr';
+import fetcher from 'utils/fetcher';
+import { useEffect, useRef, useState } from 'react';
+import { useUser } from '@auth0/nextjs-auth0';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
 import { MdWhatshot, MdEvent, MdStar, MdSortByAlpha } from 'react-icons/md'
@@ -8,6 +11,7 @@ import useDivSize from 'hooks/useDivSize';
 import { weightedDownloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { assetTypeName } from 'utils/assetTypeName'
+import { getPatronInfo } from 'utils/patronInfo';
 import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
@@ -21,11 +25,27 @@ import styles from './Grid.module.scss';
 const Grid = (props) => {
   const optionsRef = useRef(null)
   const { height } = useDivSize(optionsRef)
+  const { user, isLoading: userIsLoading } = useUser();
+  const [uuid, setUuid] = useState(null);
+  const [patron, setPatron] = useState({});
+
+  useEffect(() => {  // Handle user loading
+    if (uuid) {
+      getPatronInfo(uuid)
+        .then(resdata => {
+          setPatron(resdata)
+        })
+    } else {
+      if (user) {
+        setUuid(user.sub.split('|').pop())
+      }
+    }
+  }, [user, uuid]);
 
   const sortBy = {
     hot: (d: Object) => {
       return Object.keys(d).sort(function (a, b) {
-        return (weightedDownloadsPerDay(d[b].download_count, d[b].date_published) - weightedDownloadsPerDay(d[a].download_count, d[a].date_published));
+        return (weightedDownloadsPerDay(d[b].download_count, d[b].date_published, d[b].name) - weightedDownloadsPerDay(d[a].download_count, d[a].date_published, d[a].name));
       })
     },
     latest: (d: Object) => {
@@ -73,14 +93,27 @@ const Grid = (props) => {
   }
 
   let sortedKeys = []
-  let url = `/assets?t=${props.assetType}`
+  let data = {}
+  let urlParams = `?t=${props.assetType}`
   if (props.categories.length) {
-    url += "&c=" + props.categories.join(',')
+    urlParams += "&c=" + props.categories.join(',')
   }
-  const { data, error } = apiSWR(url, { revalidateOnFocus: false });
+  const { data: publicData, error: publicError } = apiSWR(`/assets${urlParams}`, { revalidateOnFocus: false });
+  if (publicData && !publicError) {
+    data = { ...data, ...publicData }
+  }
 
-  if (!error && data) {
+  const { data: privateData, error: privateError } = useSWR(uuid ? `/api/earlyAccess${urlParams}&uuid=${uuid}` : "/api/null", fetcher, { revalidateOnFocus: false });
+  if (uuid && privateData && !privateError) {
+    if (patron['rewards'] && patron['rewards'].includes('Early Access')) {
+      data = { ...data, ...privateData }
+    }
+  }
+
+  if (data) {
     sortedKeys = sortBy[props.sort](data);
+  } else {
+    console.error({ publicError, privateError })
   }
 
   if (props.search && data) {
@@ -191,7 +224,7 @@ const Grid = (props) => {
           })}
         </div>
         :
-        (data ?
+        (publicData && privateData ?
           <div className={styles.noResults}>
             <h2>No results :(</h2>
             {props.search ? <p>Try using a different keyword</p> : null}

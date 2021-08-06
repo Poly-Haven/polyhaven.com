@@ -16,6 +16,15 @@ export function timeago(epoch) {
   return epochTimeago(epoch)
 }
 
-export function weightedDownloadsPerDay(download_count, epoch) {
-  return download_count / Math.pow(Math.abs(Date.now() - epoch * 1000) + 1, 1.7)
+export function weightedDownloadsPerDay(download_count, epoch, name) {
+  const oneDay = (24 * 60 * 60 * 1000)
+  const now = Date.now()
+  epoch = epoch * 1000
+  if (now - oneDay < epoch) {
+    // Force assets from today to rank very high
+    download_count = download_count || 0 // asset.download_count may be undefined
+    download_count += 10000000
+    console.log(name, download_count)
+  }
+  return download_count / Math.pow(Math.abs(now - epoch) + 1, 1.7)
 }
