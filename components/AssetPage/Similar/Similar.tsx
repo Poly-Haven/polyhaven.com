@@ -1,6 +1,6 @@
 import apiSWR from 'utils/apiSWR'
 
-import GridItem from 'components/Grid/GridItem/GridItem'
+import GridItem from 'components/Library/Grid/GridItem/GridItem'
 import Loader from 'components/UI/Loader/Loader'
 
 import styles from './Similar.module.scss'

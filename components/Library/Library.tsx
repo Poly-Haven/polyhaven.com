@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import Sidebar from 'components/Sidebar/Sidebar';
-import Grid from 'components/Grid/Grid';
+import Grid from 'components/Library/Grid/Grid';
 import Page from 'components/Layout/Page/Page'
 
 import styles from './Library.module.scss';

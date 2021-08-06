@@ -1,6 +1,6 @@
 import Head from 'components/Head/Head'
 
-import Library from 'containers/Library/Library'
+import Library from 'components/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json';
 import { assetTypeName } from 'utils/assetTypeName'
