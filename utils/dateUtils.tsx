@@ -24,7 +24,6 @@ export function weightedDownloadsPerDay(download_count, epoch, name) {
     // Force assets from today to rank very high
     download_count = download_count || 0 // asset.download_count may be undefined
     download_count += 10000000
-    console.log(name, download_count)
   }
   return download_count / Math.pow(Math.abs(now - epoch) + 1, 1.7)
 }
