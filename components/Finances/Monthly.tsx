@@ -38,9 +38,11 @@ const Monthly = ({ data, currency, startingBalance }) => {
   const [monthState, setMonth] = useState(null);
   if (!data) return <Spinner />
 
+  let mutableData = JSON.parse(JSON.stringify(data))
+
   const targetEmergencyFund = 200000
   let balance = startingBalance
-  for (const [m, d] of Object.entries(data)) {
+  for (const [m, d] of Object.entries(mutableData)) {
     const expense: number[] = Object.values(d['expense'])
     for (const v of expense) {
       balance -= v;
@@ -52,7 +54,26 @@ const Monthly = ({ data, currency, startingBalance }) => {
   }
   const savings = balance - targetEmergencyFund
 
-  const months = Object.keys(data)
+  const latestMonth = Object.keys(mutableData).slice(-1).pop()
+
+  let thisYear = {}
+  thisYear['rates'] = Object.values(mutableData).slice(-1).pop()['rates']
+  thisYear['expense'] = {}
+  thisYear['income'] = {}
+  for (const m of Object.keys(mutableData).slice(-12)) {
+    for (const mode of ['income', 'expense']) {
+      for (const [k, v] of Object.entries(mutableData[m][mode])) {
+        thisYear[mode][k] = thisYear[mode][k] || 0
+        // @ts-ignore  v type is unknown
+        const adjustedValue = v / (mutableData[m].rates[currency] / mutableData[latestMonth].rates[currency])
+        thisYear[mode][k] += adjustedValue
+      }
+    }
+  }
+
+  mutableData['This Year'] = thisYear
+
+  const months = Object.keys(mutableData)
 
   const month = monthState || months.slice(-1).pop()
 
@@ -63,12 +84,12 @@ const Monthly = ({ data, currency, startingBalance }) => {
     setMonth(months[months.indexOf(month) + 1])
   }
 
-  const totalIncome: any = Object.values(data[month].income).reduce((a: number, b: number) => a + b, 0);
-  const totalExpense: any = Object.values(data[month].expense).reduce((a: number, b: number) => a + b, 0);
+  const totalIncome: any = Object.values(mutableData[month].income).reduce((a: number, b: number) => a + b, 0);
+  const totalExpense: any = Object.values(mutableData[month].expense).reduce((a: number, b: number) => a + b, 0);
   const barMax = Math.max(totalIncome, totalExpense);
 
-  const rates = data[month].rates
-  const latestRates = data[Object.keys(data).pop()].rates
+  const rates = mutableData[month].rates
+  const latestRates = mutableData[Object.keys(mutableData).pop()].rates
 
   return (
     <div className={styles.barSection}>
@@ -81,11 +102,11 @@ const Monthly = ({ data, currency, startingBalance }) => {
           <MdChevronRight />
         </div>
       </div>
-      <Bar label="Income" data={sortObjByValue(data[month].income)} total={totalIncome} max={barMax} currency={currency} rates={rates} />
-      <Bar label="Expenses" data={sortObjByValue(data[month].expense)} total={totalExpense} max={barMax} currency={currency} rates={rates} />
+      <Bar label="Income" data={sortObjByValue(mutableData[month].income)} total={totalIncome} max={barMax} currency={currency} rates={rates} />
+      <Bar label="Expenses" data={sortObjByValue(mutableData[month].expense)} total={totalExpense} max={barMax} currency={currency} rates={rates} />
       <ul>
         {currency !== 'ZAR' ? <li>
-          Exchange Rate in {month}: {getCurrency(1 * rates[currency], currency, rates)} = {getCurrency(1 * rates[currency], 'ZAR', rates)}
+          Exchange Rate in {month === 'This Year' ? latestMonth : month}: {getCurrency(1 * rates[currency], currency, rates)} = {getCurrency(1 * rates[currency], 'ZAR', rates)}
         </li> : null}
         <li>
           Current Balance: {getCurrency(balance, currency, latestRates)}
