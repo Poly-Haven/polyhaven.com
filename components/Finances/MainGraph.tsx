@@ -1,13 +1,19 @@
-import { getCurrency, catColor } from 'utils/finances';
+import { useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-
+import { getCurrency, catColor } from 'utils/finances';
 import { sortObjByValue } from 'utils/arrayUtils'
+import { titleCase } from 'utils/stringUtils';
 
+import { MdSwapHoriz } from 'react-icons/md';
+
+import Dropdown from 'components/UI/Dropdown/Dropdown';
 import Spinner from 'components/Spinner/Spinner'
 
 import styles from './Finances.module.scss'
 
-const Monthly = ({ data, currency }) => {
+const MainGraph = ({ data, currency }) => {
+  const [mode, setMode] = useState('income')
+
   if (!data) return <Spinner />
 
   let areas = {}
@@ -15,9 +21,9 @@ const Monthly = ({ data, currency }) => {
   let graphData = []
   for (const [month, v] of Object.entries(data)) {
     let values = {}
-    for (const k of Object.keys(v['income'])) {
+    for (const k of Object.keys(v[mode])) {
       v['rates']['ZAR'] = 1
-      values[k] = v['income'][k] / v['rates'][currency]
+      values[k] = v[mode][k] / v['rates'][currency]
     }
     graphData.push({
       name: month,
@@ -40,10 +46,20 @@ const Monthly = ({ data, currency }) => {
     }
   }
 
-  // 'basis' | 'basisClosed' | 'basisOpen' | 'linear' | 'linearClosed' | 'natural' | 'monotoneX' | 'monotoneY' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter'
+  const modes = {
+    income: { label: "Income", icon: <MdSwapHoriz /> },
+    expense: { label: "Expenses", icon: <MdSwapHoriz /> },
+  }
   return (
     <div className={styles.graphSection}>
-      <h2>Income over time:</h2>
+      <div className={styles.graphHeader}>
+        <Dropdown
+          value={mode}
+          options={modes}
+          onChange={setMode}
+        />
+        <h2>{titleCase(modes[mode].label)} over time:</h2>
+      </div>
       <div className={styles.mainGraph}>
         <ResponsiveContainer>
           <AreaChart
@@ -74,4 +90,4 @@ const Monthly = ({ data, currency }) => {
   )
 }
 
-export default Monthly
+export default MainGraph

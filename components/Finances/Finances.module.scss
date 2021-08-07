@@ -50,6 +50,14 @@
   }
 }
 
+.graphHeader {
+  @include flex(row, true, true);
+
+  h2 {
+    flex-grow: 1;
+  }
+}
+
 .mainGraph {
   width: 100%;
   height: 50vh;
