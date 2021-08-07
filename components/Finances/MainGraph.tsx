@@ -4,35 +4,66 @@ import { getCurrency, catColor } from 'utils/finances';
 import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils';
 
-import { MdSwapHoriz } from 'react-icons/md';
+import { FiArrowDownLeft, FiArrowUpRight, FiArrowRight } from 'react-icons/fi'
 
 import Dropdown from 'components/UI/Dropdown/Dropdown';
 import Spinner from 'components/Spinner/Spinner'
 
 import styles from './Finances.module.scss'
 
-const MainGraph = ({ data, currency }) => {
-  const [mode, setMode] = useState('income')
+const MainGraph = ({ data, currency, startingBalance }) => {
+  const [mode, setMode] = useState('balance')
 
   if (!data) return <Spinner />
 
   let areas = {}
   let colors = {}
   let graphData = []
-  for (const [month, v] of Object.entries(data)) {
-    let values = {}
-    for (const k of Object.keys(v[mode])) {
-      v['rates']['ZAR'] = 1
-      values[k] = v[mode][k] / v['rates'][currency]
+  if (['income', 'expense'].includes(mode)) {
+    for (const [month, v] of Object.entries(data)) {
+      let values = {}
+      for (const k of Object.keys(v[mode])) {
+        v['rates']['ZAR'] = 1
+        values[k] = v[mode][k] / v['rates'][currency]
+      }
+      graphData.push({
+        name: month,
+        ...values
+      })
+      for (const cat of Object.keys(values)) {
+        areas[cat] = areas[cat] || 0
+        areas[cat] = areas[cat] + values[cat]
+        colors[cat] = catColor(cat)
+      }
     }
+  } else if (mode === 'balance') {
+    let balance = startingBalance / Object.values(data)[0]['rates'][currency]
     graphData.push({
-      name: month,
-      ...values
+      name: '2020-10',
+      ...{ 'Balance': balance }
     })
-    for (const cat of Object.keys(values)) {
-      areas[cat] = areas[cat] || 0
-      areas[cat] = areas[cat] + values[cat]
-      colors[cat] = catColor(cat)
+    for (const [month, v] of Object.entries(data)) {
+      let values = {}
+      for (const k of Object.keys(v['income'])) {
+        v['rates']['ZAR'] = 1
+        const value = v['income'][k] / v['rates'][currency]
+        balance += value
+      }
+      for (const k of Object.keys(v['expense'])) {
+        v['rates']['ZAR'] = 1
+        const value = v['expense'][k] / v['rates'][currency]
+        balance -= value
+      }
+      values['Balance'] = balance
+      graphData.push({
+        name: month,
+        ...values
+      })
+      for (const cat of Object.keys(values)) {
+        areas[cat] = areas[cat] || 0
+        areas[cat] = areas[cat] + values[cat]
+        colors[cat] = catColor(cat)
+      }
     }
   }
   areas = sortObjByValue(areas)
@@ -47,8 +78,9 @@ const MainGraph = ({ data, currency }) => {
   }
 
   const modes = {
-    income: { label: "Income", icon: <MdSwapHoriz /> },
-    expense: { label: "Expenses", icon: <MdSwapHoriz /> },
+    income: { label: "Income", icon: <FiArrowDownLeft /> },
+    expense: { label: "Expenses", icon: <FiArrowUpRight /> },
+    balance: { label: "Balance", icon: <FiArrowRight /> },
   }
   return (
     <div className={styles.graphSection}>
@@ -82,7 +114,7 @@ const MainGraph = ({ data, currency }) => {
               }}
               formatter={(value, name) => getCurrency(value, currency, {})}
             />
-            {Object.keys(areas).map((a, i) => <Area key={i} type="linear" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={500} />)}
+            {Object.keys(areas).map((a, i) => <Area key={i} type={mode === 'balance' ? "monotone" : "linear"} dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={500} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>

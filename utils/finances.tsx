@@ -21,6 +21,7 @@ export function getCurrency(v, c, rates) {
 
 export function catColor(t) {
   const colors = {
+    "Balance": `#be6fff`,
     "Patreon": `#f44336`,
     "Ad Revenue": `#8BC34A`,
     "Corporate Sponsors": `#03A9F4`,

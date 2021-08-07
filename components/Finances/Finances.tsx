@@ -18,6 +18,8 @@ const Finances = () => {
     finances = data
   }
 
+  const startingBalance = 166501.66;  // Starting balance at 2020/11/01, transfered from the other Havens.
+
   return (
     <div className={styles.page}>
       <div className={styles.textBlock}>
@@ -41,11 +43,11 @@ const Finances = () => {
       </div>
       <div className={styles.row}>
         <div className={styles.half}>
-          <MainGraph data={finances} currency={currency} />
+          <MainGraph data={finances} currency={currency} startingBalance={startingBalance} />
         </div>
         <div className={styles.divider} />
         <div className={styles.half}>
-          <Monthly data={finances} currency={currency} />
+          <Monthly data={finances} currency={currency} startingBalance={startingBalance} />
         </div>
       </div>
       <div className={styles.textBlock}>

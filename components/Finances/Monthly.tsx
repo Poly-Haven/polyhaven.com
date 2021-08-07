@@ -34,12 +34,12 @@ const Bar = ({ label, data, total, max, currency, rates }) => {
   )
 }
 
-const Monthly = ({ data, currency }) => {
+const Monthly = ({ data, currency, startingBalance }) => {
   const [monthState, setMonth] = useState(null);
   if (!data) return <Spinner />
 
   const targetEmergencyFund = 200000
-  let balance = 166501.66;  // Starting balance at 2020/11/01, transfered from the other Havens.
+  let balance = startingBalance
   for (const [m, d] of Object.entries(data)) {
     const expense: number[] = Object.values(d['expense'])
     for (const v of expense) {
