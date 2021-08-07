@@ -40,7 +40,6 @@ const Monthly = ({ data, currency, startingBalance }) => {
 
   let mutableData = JSON.parse(JSON.stringify(data))
 
-  const targetEmergencyFund = 200000
   let balance = startingBalance
   for (const [m, d] of Object.entries(mutableData)) {
     const expense: number[] = Object.values(d['expense'])
@@ -52,6 +51,35 @@ const Monthly = ({ data, currency, startingBalance }) => {
       balance += v;
     }
   }
+
+  let operatingCostsList = []
+  const operatingCostTypes = [
+    "Founder Salaries",
+    "Staff Salaries",
+    "Staff Overhead (Taxes)",
+    "Contractors",
+    "Taxes",
+    "Web Hosting",
+    "Software Licenses",
+    "Accounting Fees",
+    "Internet",
+    "Insurance",
+    "Bank Charges",
+    "Subscription Fees",
+  ]
+  for (const m of Object.keys(mutableData).slice(-12)) {
+    const d = mutableData[m]
+    let opCosts = 0
+    for (const k of Object.keys(d['expense'])) {
+      if (operatingCostTypes.includes(k)) {
+        opCosts += d['expense'][k]
+      }
+    }
+    operatingCostsList.push(opCosts)
+  }
+
+  const averageOperatingCosts = operatingCostsList.reduce(function (p, c, i) { return p + (c - p) / (i + 1) }, 0)
+  const targetEmergencyFund = averageOperatingCosts * 2
   const savings = balance - targetEmergencyFund
 
   const latestMonth = Object.keys(mutableData).slice(-1).pop()
