@@ -33,6 +33,22 @@ const Route = async (req, res) => {
       returnData = resdata
     })
 
+  let patronIsValid = false
+  if (returnData['status'] === 'active_patron') {
+    patronIsValid = true
+  } else if (returnData['last_charge_status'] === "Paid") {
+    const now = Date.now()
+    const lastCharge = Date.parse(returnData['last_charge_date'])
+    const daysAgo = (now - lastCharge) / 1000 / 60 / 60 / 24
+    if (daysAgo <= 31) {
+      patronIsValid = true
+    }
+  }
+
+  if (!patronIsValid) {
+    returnData['tiers'] = []
+  }
+
   let rewards = {}
   if (returnData['tiers']) {
     for (const tier of returnData['tiers']) {
@@ -43,7 +59,7 @@ const Route = async (req, res) => {
       }
     }
   }
-  if (returnData['status'] === 'active_patron') {
+  if (patronIsValid) {
     rewards['Other'] = true
   }
   returnData['rewards'] = Object.keys(rewards)
