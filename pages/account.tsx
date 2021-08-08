@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
@@ -33,6 +34,8 @@ const Page = () => {
   const { user, isLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
+  const router = useRouter()
+  const returnTo = router.query.returnTo
 
   useEffect(() => {
     if (uuid) {
@@ -56,7 +59,7 @@ const Page = () => {
     >
       <h1>Account</h1>
       <p>You must be logged in to see this page.</p>
-      <Button text="Login" href="/api/auth/login" />
+      <Button text="Login" href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
     </TextPage>
   )
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0';
 
 import { MdMenu, MdExpandLess, MdAccountCircle } from 'react-icons/md'
@@ -9,6 +10,7 @@ import NavItem from './NavItem'
 import styles from './Nav.module.scss'
 
 const Nav = () => {
+  const router = useRouter()
   const { user, isLoading } = useUser();
   const [navHide, setToggle] = useState(true);
 
@@ -27,13 +29,14 @@ const Nav = () => {
         <NavItem text="News" link="https://www.patreon.com/polyhaven/posts?public=true" />
         <NavItem text="Support Us" link="https://www.patreon.com/polyhaven/overview" />
         <NavItem text="About/Contact" link="/about-contact" />
-        <NavItem text={user ? <MdAccountCircle /> : <IoMdLogIn />} link="/account">
-          {user ?
+
+        {user ?
+          <NavItem text={<MdAccountCircle />} link="/account">
             <NavItem text="Logout" link="/api/auth/logout" />
-            :
-            <NavItem text="Login" link="/api/auth/login" />
-          }
-        </NavItem>
+          </NavItem>
+          :
+          <NavItem text={<IoMdLogIn />} link={`/account?returnTo=${router.asPath}`} />
+        }
       </div>
       <div className={styles.menuToggle} onClick={toggle}>{navHide ? <MdMenu /> : <MdExpandLess />}</div>
     </>

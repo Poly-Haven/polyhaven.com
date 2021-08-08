@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
@@ -10,6 +11,7 @@ import PatronList from './PatronList'
 import styles from './Footer.module.scss';
 
 const footer = () => {
+  const router = useRouter()
   const { user, isLoading } = useUser();
 
   return (
@@ -45,7 +47,7 @@ const footer = () => {
                 user ?
                   <Link href="/api/auth/logout"><a>Logout</a></Link>
                   :
-                  <Link href="/api/auth/login"><a>Login</a></Link>
+                  <Link href={`/api/auth/login?returnTo=${router.asPath}`}><a>Login</a></Link>
               }
             </div>
           </div>
