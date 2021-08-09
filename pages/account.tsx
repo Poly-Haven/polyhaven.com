@@ -54,12 +54,18 @@ const Page = () => {
 
   if (!user) return (
     <TextPage
-      title="Account"
+      title="Log In"
       url="/account"
     >
-      <h1>Account</h1>
-      <p>You must be logged in to see this page.</p>
-      <Button text="Login" href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
+      <h1>Log In</h1>
+      <p>If you're a <Link href="https://www.patreon.com/polyhaven/overview">patron</Link> of Poly Haven, logging in here will give you access to your rewards directly on this site.</p>
+      <p>Depending on your support tier, your rewards may include:</p>
+      <ul>
+        <li>Early access to assets, before they are released publicly.</li>
+        <li>Access to our cloud service, to sync all of our assets to your hard drive.</li>
+        <li>Sponsor an asset permanently every month, showing your name and link next to the download buttons.</li>
+      </ul>
+      <Button text="Log In" href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
     </TextPage>
   )
 
