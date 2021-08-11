@@ -8,7 +8,7 @@ import { MdInfoOutline } from 'react-icons/md'
 
 import styles from './CorporateSponsors.module.scss'
 
-const CorporateSponsors = ({ header, footer, hideInfoBtn }) => {
+const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
   const { data, error } = apiSWR("/corporate", { revalidateOnFocus: false });
   if (error) return <div className={styles.wrapper}>Error fetching corporate sponsors</div>
   if (!data) return <div className={styles.wrapper}><Spinner /></div>
@@ -19,7 +19,7 @@ const CorporateSponsors = ({ header, footer, hideInfoBtn }) => {
   const goldSponsors = sortedKeys.filter(s => data[s].rank === 2);
 
   let silverSponsors = [];
-  if (footer) {
+  if (!home) {
     silverSponsors = sortedKeys.filter(s => data[s].rank === 1);
   }
 
@@ -53,7 +53,7 @@ const CorporateSponsors = ({ header, footer, hideInfoBtn }) => {
 
 CorporateSponsors.defaultProps = {
   header: "Also supported by:",
-  footer: false,
+  home: false,
   hideInfoBtn: false
 }
 

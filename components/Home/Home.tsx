@@ -116,7 +116,7 @@ const Home = () => {
           <LatestPatrons />
           <div className={styles.fade} />
         </div>
-        <CorporateSponsors />
+        <CorporateSponsors home />
       </div>
 
       <div className={`${styles.sectionWrapper} ${styles.sectionBrowse}`}>
