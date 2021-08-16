@@ -144,12 +144,14 @@ const Download = ({ assetID, data, setPreview, patron }) => {
     const name = urlBaseName(fileInfo.url)
     dlFiles.push({
       url: fileInfo.url,
+      size: fileInfo.size,
       path: name
     })
     if (fileInfo.include) {
       for (const path of Object.keys(fileInfo.include)) {
         dlFiles.push({
           url: fileInfo.include[path].url,
+          size: fileInfo.include[path].size,
           path: path
         })
       }

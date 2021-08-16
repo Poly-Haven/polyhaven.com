@@ -95,23 +95,6 @@ self.addEventListener('message', (event) => {
     (async function () {
       try {
         const { url, files } = data.data;
-        // determine size of files
-        const filesParallel = 3;
-        for (let i = 0; i < files.length; i += filesParallel) {
-          const filesTodo = files.slice(i, i + filesParallel);
-          await Promise.all(filesTodo.map(file => async function () {
-            console.log('fetching metadata of ' + file.url + '...');
-            const response = await fetch(file.url, { method: 'HEAD' });
-            if (!response.ok) {
-              throw new Error(`could not get meta data of ${file.url}`);
-            }
-            if (!response.headers.has('content-length')) {
-              throw new Error(`could not determine size of ${file.url}`);
-            }
-            file.size = parseInt(response.headers.get('content-length'));
-          }()));
-        }
-        // add to downloads
         downloads[url] = files;
         ports.forEach(port => port.postMessage({ result: true }));
       }
