@@ -7,7 +7,7 @@ const Tooltip = ({ id, place }) => {
     <ReactTooltip
       id={id}
       place={place}
-      delayShow={400}
+      delayShow={250}
       multiline
       border
       borderColor="rgba(190, 111, 255, 0.5)"
