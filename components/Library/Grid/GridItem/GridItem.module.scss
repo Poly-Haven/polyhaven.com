@@ -41,6 +41,10 @@
       height: 3rem;
       font-size: 0.8em;
     }
+
+    .indicators {
+      opacity: 1;
+    }
   }
 }
 
@@ -128,4 +132,21 @@
   position: relative;
   right: 0;
   top: 0;
+}
+
+.indicators {
+  @include flex(row, true, true);
+  gap: 0.25rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1.25rem;
+  color: white;
+  opacity: 0.5;
+  @include transition;
+
+  .indicator {
+    font-size: 1.5em;
+    line-height: 0;
+  }
 }

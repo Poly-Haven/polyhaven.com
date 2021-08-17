@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
 
+import { MdCollections } from 'react-icons/md';
+
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
 
@@ -29,6 +31,14 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
     }
   }
 
+  let indicators = []
+  if (asset.backplates) {
+    indicators.push({
+      text: "✔ Backplates: Includes a set of high-res background images.",
+      icon: <MdCollections />,
+    })
+  }
+
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem} onClick={onClick}>
@@ -44,6 +54,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
         <p>{timeago(asset.date_published * 1000)}</p>
       </div>
       {badge ? <div className={`${styles.badge} ${badge.style}`}>{badge.text}</div> : null}
+      <div className={styles.indicators}>{indicators.map(i => <div key={i.text} data-tip={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
     </a></Link>
   );
 }
