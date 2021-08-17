@@ -61,6 +61,7 @@ const Page = () => {
       <p>If you're a <Link href="https://www.patreon.com/polyhaven/overview">patron</Link> of Poly Haven, logging in here will give you access to your rewards directly on this site.</p>
       <p>Depending on your support tier, your rewards may include:</p>
       <ul>
+        <li>Remove ads.</li>
         <li>Early access to assets, before they are released publicly.</li>
         <li>Access to our cloud service, to sync all of our assets to your hard drive.</li>
         <li>Sponsor an asset permanently every month, showing your name and link next to the download buttons.</li>

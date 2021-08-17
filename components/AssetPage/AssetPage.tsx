@@ -222,7 +222,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           </div>
         </div>
 
-        <div className={styles.sidebarAd}><DisplayAd id="9249051205" x={336} y={280} /></div>
+        <div className={styles.sidebarAd}><DisplayAd id="9249051205" x={336} y={280} showRemoveBtn /></div>
       </div>
     </div>
   )
