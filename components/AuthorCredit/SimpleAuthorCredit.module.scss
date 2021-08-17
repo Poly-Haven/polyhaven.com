@@ -1,0 +1,15 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.author {
+  @include flex(row, true);
+  gap: 0.3rem;
+  text-shadow: 1.5px 1.5px 2px rgba(black, 0.5);
+
+  p {
+    margin: 0;
+    color: $c-text-light;
+    opacity: 0.75;
+  }
+}
