@@ -44,7 +44,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem} onClick={onClick}>
       <div className={styles.author}>
-        {Object.keys(asset.authors).sort().map(a => <SimpleAuthorCredit id={a} key={a} />)}
+        {Object.keys(asset.authors).sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
       </div>
       <div className={styles.thumb}><LazyLoadImage
         src={img_src}
