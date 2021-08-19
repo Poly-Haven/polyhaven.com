@@ -33,3 +33,4 @@ yarn-error.log*
 .DS_Store
 *.pem
 pages/db_json*.json
+.vscode
