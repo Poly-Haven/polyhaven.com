@@ -47,7 +47,7 @@
     }
 
     .author > * {
-      translate: 0 2em;
+      top: 2em;
       opacity: 1;
     }
   }
@@ -169,5 +169,7 @@
   & > * {
     @include transition;
     opacity: 0;
+    position: relative;
+    top: 0;
   }
 }
