@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { assetTypeName } from 'utils/assetTypeName'
-import { MdApps, MdFilterList, MdFirstPage } from 'react-icons/md'
+import { MdApps, MdFilterList, MdFirstPage, MdUnarchive } from 'react-icons/md'
 
+import Button from 'components/Button/Button';
 import IconButton from "components/UI/Button/IconButton";
 import CategoryList from './CategoryList';
 
@@ -53,6 +54,12 @@ const Sidebar = (props) => {
           assetType={props.assetType}
           categories={props.categories}
           level={-1} />
+      </div>
+      <div className={styles.spacer} />
+      <hr />
+      <div className={styles.footer}>
+        <Button text="Contribute" icon={<MdUnarchive />} href="/contribute" color="hollowFaded" style={{ padding: '0.5em', margin: 0 }} />
+        <p><Link href="/faq">FAQ</Link> · <Link href="/license">License</Link></p>
       </div>
     </div>
     <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>

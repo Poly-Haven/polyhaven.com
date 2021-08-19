@@ -61,3 +61,15 @@
     box-shadow: inset 0px 0px 0px 1px $c-accent-light;
   }
 }
+
+.hollowFaded {
+  color: $c-text-light;
+  background: none;
+  box-shadow: inset 0px 0px 0px 1px rgba($c-text-light, 0.3);
+
+  &:hover {
+    color: white;
+    background: $c-accent-light;
+    box-shadow: inset 0px 0px 0px 1px $c-accent-light;
+  }
+}

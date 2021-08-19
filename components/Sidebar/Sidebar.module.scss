@@ -3,6 +3,7 @@
 @import "constants/variables";
 
 #sidebar {
+  @include flex(column);
   position: fixed;
   flex-shrink: 0;
   height: calc(100vh - #{$v-header-height});
@@ -13,9 +14,43 @@
   overflow-x: hidden;
   @include dark_scrollbar;
   z-index: 11;
+
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid $c-background-lightish;
+    margin: 0;
+  }
 }
 .sidebarInner {
   padding-bottom: 3em;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.footer {
+  @include flex(column);
+  font-size: 0.9em;
+  gap: 0.5rem;
+  padding: 0.5rem;
+
+  p {
+    text-transform: none;
+    margin: 0;
+    text-align: center;
+
+    a {
+      color: $c-text-light;
+      box-shadow: 0 1px 0 rgba($c-text-light, 0.5);
+
+      &:hover {
+        color: $c-accent-light;
+        box-shadow: 0 3px 0 $c-accent;
+      }
+    }
+  }
 }
 
 .sidebarToggle {
@@ -32,7 +67,7 @@
 
 .hiddenMobile {
   @media screen and (max-width: 810px) {
-    display: none;
+    display: none !important;
   }
 }
 
