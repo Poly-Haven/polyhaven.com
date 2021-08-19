@@ -28,4 +28,9 @@
   strong {
     color: white;
   }
+
+  hr {
+    border: none;
+    border-top: 1px solid $c-background-light;
+  }
 }

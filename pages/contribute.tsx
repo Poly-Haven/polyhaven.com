@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { MdDescription } from 'react-icons/md';
+import { MdDescription, MdUnarchive } from 'react-icons/md';
 
 import Button from 'components/Button/Button';
 import TextPage from 'components/Layout/TextPage/TextPage'
@@ -13,10 +13,10 @@ const Contribute = () => {
       url="/contribute"
     >
       <h1>Donate Your 3D Asset to Poly Haven</h1>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1em' }}>
-        <p>Have a top-notch 3D model/texture/hdri you'd like to publish on Poly Haven?</p>
-        <Button text="Submit it here" href="https://forms.gle/jvaKUR6KPcVfhLiU6" />
-      </div>
+      <p>Have a top-notch 3D model/texture/hdri you'd like to publish on Poly Haven? We'd be happy to check it out :)</p>
+      <p>We do have a very high standard of quality and some strict legal requirements - please read the following before submitting your asset:</p>
+
+      <hr />
 
       <h2>Important</h2>
 
@@ -32,6 +32,8 @@ const Contribute = () => {
       <p>Similarly, if your asset is a digital copy of another design that you didn't make (e.g. real-world firearms, furniture, etc.), or based on someone else's concept art, we cannot publish it.</p>
 
       <p>Once your asset is approved, you'll be signing a legal agreement to confirm all of this and providing proof of authorship.</p>
+
+      <hr />
 
       <h2>Requirements</h2>
 
@@ -78,6 +80,8 @@ const Contribute = () => {
 
       <Button href="https://docs.google.com/document/d/17vLGfCbouvwcp1mcbsMe892DB0QkGLoR3gSjLtsVTGM/edit?usp=sharing" text="View Technical Standards" icon={<MdDescription />} />
 
+      <hr />
+
       <h2>Is there payment for this?</h2>
 
       <p>No, sorry. We have a very limitted budget which we need to use to support our staff to work on our own assets. However, when we hire artists to create new content, donors like you are the first people we look at.</p>
@@ -86,7 +90,12 @@ const Contribute = () => {
 
       <p>If we publish your asset, you obviously receive full credit, and we can optionally include a link to your PayPal/Patreon/Ko-fi account in case someone wants to donate to you directly.</p>
 
-      <Button text="Donate your asset" href="https://forms.gle/jvaKUR6KPcVfhLiU6" />
+      <hr />
+
+      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '1em' }}>
+        <h2 style={{ margin: 0 }}>Ready to donate?</h2>
+        <Button text="Submit your asset!" icon={<MdUnarchive />} href="https://forms.gle/jvaKUR6KPcVfhLiU6" />
+      </div>
 
     </TextPage>
   )
