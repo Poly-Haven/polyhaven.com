@@ -36,26 +36,26 @@ const footer = () => {
           </a></Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="/"><a>Home</a></Link>
-              <Link href="/faq"><a>FAQ</a></Link>
-              <Link href="/about-contact"><a>About / Contact</a></Link>
-              <Link href="/gallery"><a>Gallery</a></Link>
+              <Link prefetch={false} href="/"><a>Home</a></Link>
+              <Link prefetch={false} href="/faq"><a>FAQ</a></Link>
+              <Link prefetch={false} href="/about-contact"><a>About / Contact</a></Link>
+              <Link prefetch={false} href="/gallery"><a>Gallery</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="/license"><a>License</a></Link>
-              <Link href="/privacy"><a>Privacy</a></Link>
-              <Link href="/finance-reports"><a>Finance Reports</a></Link>
-              <Link href="/stats"><a>Stats</a></Link>
+              <Link prefetch={false} href="/license"><a>License</a></Link>
+              <Link prefetch={false} href="/privacy"><a>Privacy</a></Link>
+              <Link prefetch={false} href="/finance-reports"><a>Finance Reports</a></Link>
+              <Link prefetch={false} href="/stats"><a>Stats</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="https://blog.polyhaven.com"><a>Blog</a></Link>
-              <Link href="/contribute"><a>Contribute</a></Link>
-              <Link href="https://github.com/Poly-Haven/Public-API"><a>API</a></Link>
-              <Link href="https://github.com/Poly-Haven/polyhaven.com"><a>Source</a></Link>
+              <Link prefetch={false} href="https://blog.polyhaven.com"><a>Blog</a></Link>
+              <Link prefetch={false} href="/contribute"><a>Contribute</a></Link>
+              <Link prefetch={false} href="https://github.com/Poly-Haven/Public-API"><a>API</a></Link>
+              <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com"><a>Source</a></Link>
             </div>
           </div>
           <SocialIcons />
