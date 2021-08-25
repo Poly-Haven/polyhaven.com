@@ -18,6 +18,7 @@ import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
 import Spinner from 'components/Spinner/Spinner'
 import Heart from 'components/Heart/Heart'
 import IconButton from "components/UI/Button/IconButton";
+import AssetDlGraph from "components/Stats/AssetDlGraph";
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import Similar from './Similar/Similar'
@@ -45,6 +46,10 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
+
+  const msPerDay = 24 * 60 * 60 * 1000
+  const monthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
+  const isOlderThanFourDays = (Date.now() - data.date_published * 1000) > (4 * msPerDay)
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -193,8 +198,9 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
             <InfoItem label="Whitebalance" condition={Boolean(data.whitebalance)}>
               {data.whitebalance}K
             </InfoItem>
-            <InfoItem label="Downloads" condition={Boolean(data.download_count)}>
+            <InfoItem label="Downloads" condition={Boolean(data.download_count)} flex>
               {data.download_count}
+              {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
             </InfoItem>
 
             <div className={styles.spacer} />

@@ -117,6 +117,7 @@
     }
     .flex {
       @include flex(row, true, false);
+      gap: 0.25em;
     }
 
     .tagsList {
