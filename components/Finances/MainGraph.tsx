@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getCurrency, catColor } from 'utils/finances';
 import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils';
@@ -106,6 +106,7 @@ const MainGraph = ({ data, currency, startingBalance }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
+            <Brush dataKey="name" height={30} stroke="#be6fff" fill="#2d2d2d" />
             <Tooltip
               contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)' }}
               itemStyle={{
