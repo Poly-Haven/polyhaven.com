@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router'
-import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
 import Button from 'components/Button/Button'
@@ -11,8 +9,6 @@ import PatronList from './PatronList'
 import styles from './Footer.module.scss';
 
 const footer = () => {
-  const router = useRouter()
-  const { user, isLoading } = useUser();
 
   return (
     <div id={styles.footer}>
@@ -43,20 +39,15 @@ const footer = () => {
               <Link href="/"><a>Home</a></Link>
               <Link href="/faq"><a>FAQ</a></Link>
               <Link href="/about-contact"><a>About / Contact</a></Link>
-              {isLoading ? "..." :
-                user ?
-                  <Link href="/api/auth/logout"><a>Logout</a></Link>
-                  :
-                  <Link href={`/api/auth/login?returnTo=${router.asPath}`}><a>Login</a></Link>
-              }
+              <Link href="/gallery"><a>Gallery</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link href="/gallery"><a>Gallery</a></Link>
               <Link href="/license"><a>License</a></Link>
               <Link href="/privacy"><a>Privacy</a></Link>
               <Link href="/finance-reports"><a>Finance Reports</a></Link>
+              <Link href="/stats"><a>Stats</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>

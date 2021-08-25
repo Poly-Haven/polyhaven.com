@@ -103,10 +103,10 @@ const MainGraph = ({ data, currency, startingBalance }) => {
               bottom: 0,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Brush dataKey="name" height={30} stroke="#be6fff" fill="#2d2d2d" />
+            <Brush dataKey="name" height={30} stroke="#666666" fill="#2d2d2d" />
             <Tooltip
               contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)' }}
               itemStyle={{
