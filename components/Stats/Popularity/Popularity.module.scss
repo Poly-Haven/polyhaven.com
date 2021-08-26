@@ -1,0 +1,73 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  table {
+    text-align: center;
+    margin: 1.5em 1em;
+    border: 1px solid rgba(black, 0.3);
+    width: calc(100% - 2em);
+    border-collapse: separate;
+    border-spacing: 0;
+
+    td,
+    th {
+      padding: 0.2em;
+      border-right: 1px solid rgba(black, 0.1);
+
+      &:last-child {
+        border-right: none;
+      }
+
+      img {
+        margin: -0.2em;
+      }
+    }
+
+    th {
+      padding: 0.5em;
+      border-bottom: 1px solid rgba(black, 0.2);
+    }
+  }
+}
+
+.footnotes {
+  font-size: 0.8em;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.bumperWrapper {
+  @include flex(row, true, true);
+
+  h2 {
+    margin: 0.5rem;
+    text-align: center;
+  }
+
+  .bumper {
+    font-size: 2em;
+    line-height: 0;
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.dlGraph {
+  width: 150px;
+  height: 40px;
+}
+
+.author {
+  @include flex(row, true, true);
+  gap: 0.5em;
+  padding: 0.25em;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+}
