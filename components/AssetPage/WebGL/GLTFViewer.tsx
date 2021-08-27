@@ -128,7 +128,6 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
       <div className={styles.buttons}>
         <IconButton icon={<MdPublic />}>
           {Object.keys(presetEnvs).map((p, k) => {
-            console.log(p)
             return <IconButton
               key={k}
               icon={<img src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`} />}
