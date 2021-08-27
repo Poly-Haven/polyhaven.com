@@ -1,6 +1,6 @@
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
 import apiSWR from 'utils/apiSWR'
-import { Vector3, CineonToneMapping } from 'three'
+import { Vector3, Quaternion, Box3, CineonToneMapping } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 
@@ -101,8 +101,12 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
               processedGLTFFromAPI && state.meshes &&
               Object.values(state.meshes).map(node => {
                 return <React.Fragment key={node.mesh.uuid}>
-
-                  <mesh geometry={node.mesh.geometry}>
+                  <mesh
+                    geometry={node.mesh.geometry}
+                    position={node.mesh.getWorldPosition(new Vector3)}
+                    scale={node.mesh.getWorldScale(new Vector3)}
+                    quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
+                  >
                     {/*  @ts-ignore - Types are strange here, TS complains but these items exist.. investigate */}
                     {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
                       <meshBasicMaterial>
@@ -114,7 +118,14 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
                     }
                   </mesh>
 
-                  <mesh geometry={node.mesh.geometry}><meshStandardMaterial wireframe={true} visible={wireframe} color='purple' /></mesh>
+                  <mesh
+                    geometry={node.mesh.geometry}
+                    position={node.mesh.getWorldPosition(new Vector3)}
+                    scale={node.mesh.getWorldScale(new Vector3)}
+                    quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
+                  >
+                    <meshStandardMaterial wireframe={true} visible={wireframe} color='black' />
+                  </mesh>
                 </React.Fragment>
               })
             }
@@ -157,16 +168,19 @@ type BoundingBox = { min: Vector3, max: Vector3 };
 
 const calcSceneBB = (meshes): BoundingBox => {
   return Object.values(meshes).reduce<BoundingBox>((acc, curr: MeshState, idx) => {
+    curr.mesh.updateMatrixWorld();
+    const box = new Box3();
+    const wBounds = box.copy(curr.mesh.geometry.boundingBox).applyMatrix4(curr.mesh.matrixWorld);
     if (idx === 0) {
-      acc.min = curr.mesh.geometry.boundingBox.min;
-      acc.max = curr.mesh.geometry.boundingBox.max;
+      acc.min = wBounds.min;
+      acc.max = wBounds.max;
     } else {
-      acc.max.x = Math.max(acc.max.x, curr.mesh.geometry.boundingBox.max.x);
-      acc.max.y = Math.max(acc.max.y, curr.mesh.geometry.boundingBox.max.y);
-      acc.max.z = Math.max(acc.max.z, curr.mesh.geometry.boundingBox.max.z);
-      acc.min.x = Math.min(acc.min.x, curr.mesh.geometry.boundingBox.min.x);
-      acc.min.y = Math.min(acc.min.y, curr.mesh.geometry.boundingBox.min.y);
-      acc.min.z = Math.min(acc.min.z, curr.mesh.geometry.boundingBox.min.z);
+      acc.max.x = Math.max(acc.max.x, wBounds.max.x);
+      acc.max.y = Math.max(acc.max.y, wBounds.max.y);
+      acc.max.z = Math.max(acc.max.z, wBounds.max.z);
+      acc.min.x = Math.min(acc.min.x, wBounds.min.x);
+      acc.min.y = Math.min(acc.min.y, wBounds.min.y);
+      acc.min.z = Math.min(acc.min.z, wBounds.min.z);
     }
 
     return acc;

@@ -26,7 +26,6 @@ export const DefaultState = {
 };
 
 export const reducer = (state: State = DefaultState, action: Action): State => {
-  console.log(state)
   switch (action.type) {
     case ADD_MESH:
       return {
