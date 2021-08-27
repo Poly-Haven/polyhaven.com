@@ -40,6 +40,7 @@ const footer = () => {
               <Link prefetch={false} href="/faq"><a>FAQ</a></Link>
               <Link prefetch={false} href="/about-contact"><a>About / Contact</a></Link>
               <Link prefetch={false} href="/gallery"><a>Gallery</a></Link>
+              <Link prefetch={false} href="/map"><a>HDRI World Map</a></Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>

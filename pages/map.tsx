@@ -1,16 +1,47 @@
-import TextPage from 'components/Layout/TextPage/TextPage'
+import Head from 'components/Head/Head'
+import Page from 'components/Layout/Page/Page'
 
-const MapPage = () => {
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../components/Map/Map'), {
+  ssr: false
+});
+
+const MapPage = ({ data }) => {
   return (
-    <TextPage
-      title="Map"
-      description="Map of all asset capture locations."
-      url="/map"
-    >
-      <h1>Coming Soon!</h1>
-      <p>We haven't yet ported the map to polyhaven.com, but you can still find the old one here: <a href="https://hdrihaven.com/p/map.php">https://hdrihaven.com/p/map.php</a></p>
-    </TextPage>
+    <Page>
+      <Head
+        title="Map"
+        description="World map of locations where we've captured HDRIs."
+        url="/map"
+      />
+      <Map hdris={data} />
+    </Page>
   )
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.ok);
+  }
+  return response;
+}
+
+export const getStaticProps = async (ctx) => {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const data = await fetch(`${baseUrl}/assets?t=hdris`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => console.log(e));
+
+  for (const [slug, info] of Object.entries(data)) {
+    if (!info['coords']) {
+      delete data[slug]
+    }
+  }
+
+  return {
+    props: { data }
+  }
 }
 
 export default MapPage

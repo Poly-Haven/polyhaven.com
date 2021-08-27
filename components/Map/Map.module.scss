@@ -1,0 +1,8 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.mapContainer {
+  height: calc(100vh - #{$v-header-height});
+  width: 100%;
+}
