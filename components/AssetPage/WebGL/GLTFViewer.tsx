@@ -3,8 +3,9 @@ import apiSWR from 'utils/apiSWR'
 import { Vector3, Quaternion, Box3, CineonToneMapping } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { MdPublic, MdLayers, MdLanguage, MdNotInterested } from 'react-icons/md'
+import { MdPublic, MdLayers, MdLanguage, MdNotInterested, MdFullscreen } from 'react-icons/md'
 
 import Loader from 'components/UI/Loader/Loader'
 import IconButton from 'components/UI/Button/IconButton'
@@ -26,6 +27,8 @@ interface Props {
 
 const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   if (!show) return null;
+
+  const handle = useFullScreenHandle();
 
   const [soloMap, setSoloMap] = useState<"NORMAL" | "METALNESS" | "ROUGHNESS" | "DIFFUSE" | "">("");
   const [wireframe, setWireframe] = useState(false);
@@ -83,84 +86,90 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   const center = useMemo(() => calcSceneCenter(calcSceneBB(state.meshes)), [state.meshes]);
   const camDistance = useMemo(() => Math.ceil(state.boundingSphereRadius * 2.5), [state.boundingSphereRadius]);
 
+  const toggleFullscreen = () => {
+    handle.active ? handle.exit() : handle.enter()
+  }
+
   if (!processedGLTFFromAPI) return null;
 
   return (
-    <div className={styles.wrapper}>
-      {/* Because Canvas wraps in relative div with width/height 100% */}
-      <div style={{ position: "absolute", width: "100%", height: "100%" }}>
-        <Canvas
-          camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
-          onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
-        >
-          <Suspense fallback={null}>
-            <Environment preset={envPreset} background={showEnvironment} />
-            <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
+    <FullScreen handle={handle}>
+      <div className={styles.wrapper}>
+        {/* Because Canvas wraps in relative div with width/height 100% */}
+        <div style={{ position: "absolute", width: "100%", height: "100%" }}>
+          <Canvas
+            camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
+            onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
+          >
+            <Suspense fallback={null}>
+              <Environment preset={envPreset} background={showEnvironment} />
+              <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
-            {
-              processedGLTFFromAPI && state.meshes &&
-              Object.values(state.meshes).map(node => {
-                return <React.Fragment key={node.mesh.uuid}>
-                  <mesh
-                    geometry={node.mesh.geometry}
-                    position={node.mesh.getWorldPosition(new Vector3)}
-                    scale={node.mesh.getWorldScale(new Vector3)}
-                    quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
-                  >
-                    {/*  @ts-ignore - Types are strange here, TS complains but these items exist.. investigate */}
-                    {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
-                      <meshBasicMaterial>
-                        {node.mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material['map']} />}
-                        {node.mesh.material['normalMap'] && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material['normalMap']} />}
-                        {node.mesh.material['metalnessMap'] && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material['metalnessMap']} />}
-                        {node.mesh.material['roughnessMap'] && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material['roughnessMap']} />}
-                      </meshBasicMaterial>)
-                    }
-                  </mesh>
+              {
+                processedGLTFFromAPI && state.meshes &&
+                Object.values(state.meshes).map(node => {
+                  return <React.Fragment key={node.mesh.uuid}>
+                    <mesh
+                      geometry={node.mesh.geometry}
+                      position={node.mesh.getWorldPosition(new Vector3)}
+                      scale={node.mesh.getWorldScale(new Vector3)}
+                      quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
+                    >
+                      {/*  @ts-ignore - Types are strange here, TS complains but these items exist.. investigate */}
+                      {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
+                        <meshBasicMaterial>
+                          {node.mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material['map']} />}
+                          {node.mesh.material['normalMap'] && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material['normalMap']} />}
+                          {node.mesh.material['metalnessMap'] && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material['metalnessMap']} />}
+                          {node.mesh.material['roughnessMap'] && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material['roughnessMap']} />}
+                        </meshBasicMaterial>)
+                      }
+                    </mesh>
 
-                  <mesh
-                    geometry={node.mesh.geometry}
-                    position={node.mesh.getWorldPosition(new Vector3)}
-                    scale={node.mesh.getWorldScale(new Vector3)}
-                    quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
-                  >
-                    <meshStandardMaterial wireframe={true} visible={wireframe} color='black' />
-                  </mesh>
-                </React.Fragment>
-              })
-            }
-          </Suspense>
-        </Canvas>
+                    <mesh
+                      geometry={node.mesh.geometry}
+                      position={node.mesh.getWorldPosition(new Vector3)}
+                      scale={node.mesh.getWorldScale(new Vector3)}
+                      quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
+                    >
+                      <meshStandardMaterial wireframe={true} visible={wireframe} color='black' />
+                    </mesh>
+                  </React.Fragment>
+                })
+              }
+            </Suspense>
+          </Canvas>
+        </div>
+
+        <div className={styles.buttons}>
+          <IconButton icon={<MdPublic />}>
+            {Object.keys(presetEnvs).map((p, k) => {
+              return <IconButton
+                key={k}
+                icon={<img src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`} />}
+                active={showEnvironment && envPreset === p}
+                onClick={() => {
+                  // @ts-ignore - String not detected as part of preset list, but we know they are.
+                  setEnvPreset(p)
+                  setShowEnvironment(true)
+                }}
+              />
+            })}
+            <IconButton icon={<MdNotInterested />} active={!showEnvironment} onClick={() => {
+              setShowEnvironment(false)
+            }} />
+          </IconButton>
+          <IconButton icon={<MdLanguage />} active={wireframe} onClick={() => { setWireframe(wf => !wf) }} />
+          <IconButton icon={<MdLayers />}>
+            <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />} active={soloMap === "DIFFUSE"} onClick={() => { setSoloMap("DIFFUSE") }} />
+            <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />} active={soloMap === "NORMAL"} onClick={() => { setSoloMap("NORMAL") }} />
+            <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />} active={soloMap === "METALNESS"} onClick={() => { setSoloMap("METALNESS") }} />
+            <IconButton icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />} active={soloMap === ""} onClick={() => { setSoloMap("") }} />
+          </IconButton>
+          <IconButton icon={<MdFullscreen />} onClick={toggleFullscreen} />
+        </div>
       </div>
-
-      <div className={styles.buttons}>
-        <IconButton icon={<MdPublic />}>
-          {Object.keys(presetEnvs).map((p, k) => {
-            return <IconButton
-              key={k}
-              icon={<img src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`} />}
-              active={showEnvironment && envPreset === p}
-              onClick={() => {
-                // @ts-ignore - String not detected as part of preset list, but we know they are.
-                setEnvPreset(p)
-                setShowEnvironment(true)
-              }}
-            />
-          })}
-          <IconButton icon={<MdNotInterested />} active={!showEnvironment} onClick={() => {
-            setShowEnvironment(false)
-          }} />
-        </IconButton>
-        <IconButton icon={<MdLanguage />} active={wireframe} onClick={() => { setWireframe(wf => !wf) }} />
-        <IconButton icon={<MdLayers />}>
-          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />} active={soloMap === "DIFFUSE"} onClick={() => { setSoloMap("DIFFUSE") }} />
-          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />} active={soloMap === "NORMAL"} onClick={() => { setSoloMap("NORMAL") }} />
-          <IconButton icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />} active={soloMap === "METALNESS"} onClick={() => { setSoloMap("METALNESS") }} />
-          <IconButton icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />} active={soloMap === ""} onClick={() => { setSoloMap("") }} />
-        </IconButton>
-      </div>
-
-    </div>
+    </FullScreen>
   )
 }
 
