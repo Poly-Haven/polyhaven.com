@@ -61,16 +61,16 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
   const gltfFiles = files.gltf['4k'] ? files.gltf['4k'].gltf : files.gltf['2k'].gltf;
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles);
 
-  // as this functionality is not really necessary, it is overkill to useReducer to handle it
-  // if we need finer grained interaction per part it is useful
-  // it does require a bit of effort to remove though
-  // not ideal but keep for now
+  // As this functionality is not really necessary, it is overkill to useReducer to handle it.
+  // If we need finer grained interaction per part it is useful.
+  // It does require a bit of effort to remove though.
+  // Not ideal but keep for now.
   useEffect(() => {
     if (!processedGLTFFromAPI) return;
     processedGLTFFromAPI.scene.children.map(processGroup);
   }, [processedGLTFFromAPI])
 
-  // split group into children and call process group on any groups
+  // Split group into children and call process group on any groups
   const processGroup = (entity) => {
     if (entity.type === "Mesh") {
       dispatch(addMesh(entity));
@@ -87,7 +87,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
 
   return (
     <div className={styles.wrapper}>
-      {/* because Canvas wraps in relative div with width/height 100%.. */}
+      {/* Because Canvas wraps in relative div with width/height 100% */}
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
         <Canvas
           camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
@@ -103,7 +103,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
                 return <React.Fragment key={node.mesh.uuid}>
 
                   <mesh geometry={node.mesh.geometry}>
-                    {/*  @ts-ignore - types are strange here, TS complains but these items exist.. investigate */}
+                    {/*  @ts-ignore - Types are strange here, TS complains but these items exist.. investigate */}
                     {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
                       <meshBasicMaterial>
                         {node.mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material['map']} />}
@@ -130,7 +130,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
               icon={<img src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`} />}
               active={showEnvironment && envPreset === p}
               onClick={() => {
-                // @ts-ignore - string not detected as part of preset list, but we know they are.
+                // @ts-ignore - String not detected as part of preset list, but we know they are.
                 setEnvPreset(p)
                 setShowEnvironment(true)
               }}
