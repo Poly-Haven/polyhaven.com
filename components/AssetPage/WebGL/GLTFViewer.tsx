@@ -54,14 +54,11 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
     return <div className={styles.wrapper}><Loader /></div>
   }
 
-  try {
-    files['gltf']['4k']
-  } catch (e) {
-    console.error(e)
+  if (!files.gltf) {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  const gltfFiles = files.gltf['4k'].gltf;
+  const gltfFiles = files.gltf['4k'] ? files.gltf['4k'].gltf : files.gltf['2k'].gltf;
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles);
 
   // as this functionality is not really necessary, it is overkill to useReducer to handle it
