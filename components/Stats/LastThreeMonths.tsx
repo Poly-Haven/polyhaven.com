@@ -72,7 +72,6 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
             <XAxis dataKey="day" />
             <YAxis />
             <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
-            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
 
             <Tooltip
               label="day"
@@ -91,7 +90,10 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
               }}
               itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
+
             {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={0} />)}
+
+            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>
