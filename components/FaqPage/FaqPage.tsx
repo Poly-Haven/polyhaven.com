@@ -22,14 +22,22 @@ const FaqPage = () => {
           Often we offer discounts if you allow us to publish your assets on Poly Haven too.
         </p>
       </FaqItem>
+      <FaqItem question="How is this funded?">
+        <p>In short, donations from people like you, corporate sponsors, and advertising.</p>
+        <p>We publish the details of how we work financially in our <Link href="/finance-reports">public finance reports</Link>.</p>
+      </FaqItem>
       <FaqItem question="What is an HDRI anyway?">
         <p>Generally speaking, an HDRI (High Dynamic Range Image) is simply an image that contains more than 8 bits of data per pixel per channel. Image formats like JPG and PNG are typically 8-bit and are sometimes referred to as 'LDR' (Low Dynamic Range) images, whereas image formats like <a href="https://en.wikipedia.org/wiki/OpenEXR">EXR</a> and <a href="https://en.wikipedia.org/wiki/RGBE_image_format">HDR</a> store more data and are therefore HDRIs.</p>
         <p>However in the CG world (and on this site) we have come to use the term 'HDRI' to describe a 32-bit 360x180 degree <a href="https://en.wikipedia.org/wiki/Equirectangular_projection">equirectangular</a> image that is used for lighting CG scenes.</p>
         <p>HDRIs are often used as the only light source in order to create a very realistically lit scene, or to match the lighting from video footage (using an HDRI shot on the same set as the video was taken). But of course they are also used to compliment standard lighting techniques and to add detail to reflections.</p>
       </FaqItem>
-      <FaqItem question="How do I use these HDRIs?">
-        <p>It's super easy, and no different from using any other HDRI. If you're using Blender, here's a <a href="https://youtu.be/KB768Ew8EVc">15 second video</a> to show you how it's done.</p>
-        <p>All my HDRIs are unclipped, meaning you'll get realistic results automatically and do not need to adjust the gamma or plug the image into the strength/intensity input.</p>
+      <FaqItem question="How do I use your HDRIs?">
+        <p>It's super easy, and no different from using any other HDRI. Here are some short videos to show you exactly how:</p>
+        <ol>
+          <li><a href="https://www.youtube.com/watch?v=Pi4Ft7M8UOU">Blender + Cycles</a></li>
+          <li><a href="https://www.youtube.com/watch?v=riBa2YWfajc">3ds Max + Corona</a></li>
+        </ol>
+        <p>All our HDRIs are unclipped, meaning you'll get realistic results automatically and do not need to adjust the gamma or plug the image into the strength/intensity input.</p>
       </FaqItem>
       <FaqItem question="How do you measure the dynamic range (EVs) of an HDRI?">
         <p>The number of EVs (or 'stops') is based purely on the number of brackets captured. For example, 12 EVs means 5 photos were taken with 3 EVs between them (shutter speeds: 1/4000, 1/500, 1/60 1/8, 1"), and since there are 4 gaps of 3 EVs between them, the dynamic range is said to be 12 EVs (4x3=12).</p>
@@ -46,10 +54,6 @@ const FaqPage = () => {
       </FaqItem>
       <FaqItem question="Do you use Photogrammetry/Photoscanning?">
         <p>Absolutely, but remember this is just one of the many tools available. Our goal is to create quality assets, and we'll use whatever methods are best for each case.</p>
-      </FaqItem>
-      <FaqItem question="How is this funded?">
-        <p>In short, donations from people like you, corporate sponsors, and advertising.</p>
-        <p>We publish the details of how we work financially in our <Link href="/finance-reports">public finance reports</Link>.</p>
       </FaqItem>
       <FaqItem question="Where did the gun models go?">
         <p>When we launched 3D Model Haven in 2020, we commissioned a few gun models from various authors to publish there. These have now been removed, as we assume their creators based their work off of real-world gun designs, which is likely the intellectual property of the manufacturers.</p>
