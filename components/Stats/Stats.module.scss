@@ -4,7 +4,7 @@
 
 .page {
   @include flex(column, true, true);
-  margin: 1em;
+  margin: 2em;
 }
 
 .header {
@@ -26,6 +26,7 @@
 
 .row {
   @include flex(row);
+  gap: 2rem;
   width: 100%;
 
   @media screen and (max-width: 1000px) {
@@ -36,7 +37,6 @@
     @include flex(column);
     flex: 1 0 0;
     width: 100%;
-    margin: 1em;
 
     h2 {
       margin: 1rem;
@@ -57,11 +57,20 @@
   h2 {
     flex-grow: 1;
   }
+
+  p {
+    margin: 0.5rem;
+  }
 }
 
 .bigGraph {
   width: 100%;
   height: 50vh;
+}
+
+.smallGraph {
+  width: 100%;
+  height: 25vh;
 }
 
 .graphNote {

@@ -1,3 +1,4 @@
+import Tooltip from 'components/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
 
@@ -25,9 +26,17 @@ const Stats = ({ datasets }) => {
           <LastThreeMonths data={datasets.threeMonths} />
         </div>
         <div className={styles.half}>
-          <RelativeType data={datasets.relativeType} />
+          <div className={styles.row}>
+            <div className={styles.half}>
+              <RelativeType data={datasets.relativeType} />
+            </div>
+            <div className={styles.half} style={{ height: '50vh' }}>
+              <div className={styles.centered}>More coming soon :)</div>
+            </div>
+          </div>
         </div>
       </div>
+      <Tooltip />
     </div>
   )
 }

@@ -29,6 +29,7 @@ export async function getStaticProps(context) {
 
   const msPerDay = 24 * 60 * 60 * 1000
   const today = new Date().toISOString().split('T')[0]
+  const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - (91 * msPerDay)).toISOString().split('T')[0]
 
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
@@ -45,7 +46,7 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
-  const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${threeMonthsAgo}&date_to=${today}`)
+  const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${aMonthAgo}&date_to=${today}`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => error = e)
