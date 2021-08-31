@@ -1,6 +1,7 @@
 import Tooltip from 'components/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
+import AssetsPerMonth from './AssetsPerMonth'
 
 import styles from './Stats.module.scss'
 
@@ -29,6 +30,7 @@ const Stats = ({ datasets }) => {
           <div className={styles.row}>
             <div className={styles.half}>
               <RelativeType data={datasets.relativeType} />
+              <AssetsPerMonth data={datasets.monthlyAssets} />
             </div>
             <div className={styles.half} style={{ height: '50vh' }}>
               <div className={styles.centered}>More coming soon :)</div>

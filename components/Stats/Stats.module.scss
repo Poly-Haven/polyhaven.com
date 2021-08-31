@@ -67,10 +67,9 @@
   width: 100%;
   height: 50vh;
 }
-
 .smallGraph {
   width: 100%;
-  height: 25vh;
+  height: 23vh;
 }
 
 .graphNote {
@@ -80,6 +79,7 @@
 }
 .notesList {
   list-style: none;
+  font-size: 0.85em;
   margin-top: 0.5em;
   padding-left: 1em;
   counter-reset: count;

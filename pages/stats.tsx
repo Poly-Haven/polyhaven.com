@@ -1,5 +1,7 @@
 import Head from 'components/Head/Head'
 
+import asset_types from 'constants/asset_types.json'
+
 import Page from 'components/Layout/Page/Page'
 import Stats from 'components/Stats/Stats'
 
@@ -51,6 +53,27 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  const assets = await fetch(`${baseUrl}/assets`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let months = {}
+  for (const info of Object.values(assets)) {
+    const month = new Date(info['date_published'] * 1000).toISOString().substring(0, 7)
+    const type = Object.keys(asset_types)[info['type']]
+    months[month] = months[month] || {
+      hdris: 0,
+      textures: 0,
+      models: 0,
+    }
+    months[month][type]++;
+  }
+  const sortedKeys = Object.keys(months).sort()
+  let monthlyAssets = {}
+  for (const k of sortedKeys) {
+    monthlyAssets[k] = months[k]
+  }
+
   if (error) {
     return {
       props: {},
@@ -63,6 +86,7 @@ export async function getStaticProps(context) {
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
+        monthlyAssets,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day
