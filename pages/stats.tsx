@@ -34,6 +34,7 @@ export async function getStaticProps(context) {
   const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - (91 * msPerDay)).toISOString().split('T')[0]
 
+  // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
   const threeMonthsHDRI = await fetch(`${threeMonthsAgoBaseUrl}&slug=T0`)
     .then(handleErrors)
@@ -48,11 +49,13 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Relative type graph
   const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${aMonthAgo}&date_to=${today}`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Assets per month graph
   const assets = await fetch(`${baseUrl}/assets`)
     .then(handleErrors)
     .then(response => response.json())
@@ -74,6 +77,42 @@ export async function getStaticProps(context) {
     monthlyAssets[k] = months[k]
   }
 
+  // Resolution graphs
+  const resolutionsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let resolutions = {
+    hdris: { total: 0 },
+    textures: { total: 0 },
+    models: { total: 0 },
+  }
+  const ignoredRes = ['12k'] // Ignore some uncommon resolutions
+  for (const stat of resolutionsData) {
+    const type = Object.keys(resolutions)[parseInt(stat.slug.substring(1, 2))]
+    let resStr = stat.slug.substring(4)
+    if (ignoredRes.includes(resStr)) continue
+    if (!resStr.endsWith('k')) continue
+    const resNumStr = resStr.substr(0, resStr.length - 1)
+    if (isNaN(resNumStr)) continue
+    const res = parseInt(resNumStr)
+    if (res >= 16) {
+      resStr = "16k+"
+    }
+    resolutions[type][resStr] = resolutions[type][resStr] || 0
+    resolutions[type][resStr] += stat.downloads;
+    resolutions[type].total += stat.downloads;
+  }
+  for (const [type, reses] of Object.entries(resolutions)) {
+    const sortedKeys = Object.keys(reses).sort((a, b) => parseInt(a) - parseInt(b))
+    let tmp = {}
+    for (const r of sortedKeys) {
+      if (r === 'total') continue
+      tmp[r] = reses[r] / reses.total * 100
+    }
+    resolutions[type] = tmp
+  }
+
   if (error) {
     return {
       props: {},
@@ -87,6 +126,7 @@ export async function getStaticProps(context) {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
         monthlyAssets,
+        resolutions
       }
     },
     revalidate: 24 * 60 * 60 // 1 day

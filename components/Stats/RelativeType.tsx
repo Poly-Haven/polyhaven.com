@@ -35,7 +35,7 @@ const RelativeType = ({ data }: { data: DataSet }) => {
       <div className={styles.graphHeader}>
         <p>Relative demand <MdHelp data-tip="Demand is calculated as the number of downloads per asset of that type available. I.e. If there are 10000 downloads for HDRIs in a day, and 500 HDRIs available on that day, the demand is 10000/500 = 20.<br />If there are 2000 model downloads and 100 models available, the demand would also be 20. This provides a more useful indication of what people come to Poly Haven for.<br />This graph is also relative, normalizing the demand of all asset types to 100%. Essentially it compares what asset types are most desired, taking into account the number of that type available, and ignoring ubiquitous daily fluctuations." /> per type:</p>
       </div>
-      <div className={styles.smallGraph}>
+      <div className={styles.medGraph}>
         <ResponsiveContainer>
           <AreaChart data={graphData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
@@ -61,7 +61,7 @@ const RelativeType = ({ data }: { data: DataSet }) => {
               itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={0} />)}
+            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} strokeWidth={0.5} fill={colors[a]} animationDuration={0} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>

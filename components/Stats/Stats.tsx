@@ -2,6 +2,7 @@ import Tooltip from 'components/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
+import ResolutionComparison from './ResolutionComparison'
 
 import styles from './Stats.module.scss'
 
@@ -32,8 +33,19 @@ const Stats = ({ datasets }) => {
               <RelativeType data={datasets.relativeType} />
               <AssetsPerMonth data={datasets.monthlyAssets} />
             </div>
-            <div className={styles.half} style={{ height: '50vh' }}>
-              <div className={styles.centered}>More coming soon :)</div>
+            <div className={styles.half}>
+              <div className={styles.graphHeader}>
+                <p>Downloads by resolution chosen:</p>
+              </div>
+              {Object.keys(datasets.resolutions).map((k, i) =>
+                <ResolutionComparison key={i} data={datasets.resolutions[k]} type={k} />
+              )}
+              <p style={{ marginBottom: 0 }}>Notes:</p>
+              <ul className={styles.unNumberedNotesList}>
+                <li>4k is the default resolution for all assets.</li>
+                <li>For most textures, 8k is the highest resolution.</li>
+                <li>For many models, 4k is the highest resolution.</li>
+              </ul>
             </div>
           </div>
         </div>
