@@ -1,4 +1,5 @@
 import LastThreeMonths from './LastThreeMonths'
+import RelativeType from './RelativeType'
 
 import styles from './Stats.module.scss'
 
@@ -23,8 +24,8 @@ const Stats = ({ datasets }) => {
         <div className={styles.half}>
           <LastThreeMonths data={datasets.threeMonths} />
         </div>
-        <div className={styles.half} style={{ height: '50vh' }}>
-          <div className={styles.centered}>More coming soon :)</div>
+        <div className={styles.half}>
+          <RelativeType data={datasets.relativeType} />
         </div>
       </div>
     </div>

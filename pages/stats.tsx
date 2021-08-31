@@ -45,6 +45,11 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${threeMonthsAgo}&date_to=${today}`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   if (error) {
     return {
       props: {},
@@ -56,6 +61,7 @@ export async function getStaticProps(context) {
     props: {
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
+        relativeType,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day
