@@ -57,7 +57,7 @@ const Contribute = () => {
       <ul>
         <li>Created using photoscanning/photogrammetry.</li>
         <li>Full set of standard PBR maps - diffuse/albedo, roughness, metalness (if applicable), displacement, normal - not just a single image.</li>
-        <li>Seamless/tileable.</li>
+        <li>Seamless/tileable on at least one axis.</li>
         <li>Minimum 8k resolution.</li>
         <li>As 16-bit PNGs.</li>
       </ul>
