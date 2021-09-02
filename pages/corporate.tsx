@@ -2,11 +2,12 @@ import Link from 'next/link';
 import fs from 'fs'
 import path from 'path'
 import Markdown from 'markdown-to-jsx';
+import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
 
 import { IoTicket } from 'react-icons/io5'
 import { MdCloudDownload, MdCropFree, MdLink, MdChat, MdInfo } from 'react-icons/md';
 
-import { timeago } from 'utils/dateUtils';
+import { timeago, fixTzOffset, isoDay } from 'utils/dateUtils';
 
 import InfoBlock from 'components/Layout/InfoBlock/InfoBlock';
 import TierBlock from 'components/Layout/TierBlock/TierBlock';
@@ -14,7 +15,6 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 const Corporate = (props) => {
-  const weeksPerMonth = 365.25 / 7 / 12;
 
   const commonRewards = [
     {
@@ -71,13 +71,13 @@ const Corporate = (props) => {
         <InfoBlock title="Audience Stats">
           <p>Recent approximate stats for polyhaven.com, based on data from Cloudflare analytics.</p>
           <ul>
-            <li>Pageviews: <strong>{(1.25 * weeksPerMonth).toFixed(1)}M</strong> per month.</li>
-            <li>Asset Downloads: <strong>1.2 million</strong> per month.</li>
-            <li>Download Traffic: <strong>{(14.6 * 4.35).toFixed(1)}TB</strong> per month.</li>
+            <li>Pageviews: <strong>{(props.traffic.pageviews / 1000000).toFixed(1)} million</strong> per month.</li>
+            <li>Asset Downloads: <strong>{(props.monthlyDownloads / 1000000).toFixed(1)} million</strong> per month.</li>
+            <li>Download Traffic: <strong>{(props.traffic.terabytes).toFixed(1)}TB</strong> per month.</li>
             <li>Facebook / Twitter followers: <strong>8.4K / 5.1K</strong>.</li>
             {props.numPatrons && <li>Patreon Supporters: <strong>{props.numPatrons}</strong>.</li>}
           </ul>
-          <p style={{ opacity: 0.5, textAlign: 'right' }}><em>Last updated: {timeago(1627392689909)}</em></p>
+          <p style={{ opacity: 0.5, textAlign: 'right' }}><em>Last updated: {timeago(props.updated)}</em></p>
         </InfoBlock>
       </div>
 
@@ -173,17 +173,37 @@ export async function getStaticProps(context) {
   let error = null
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
 
+  // Patron count
   const patrons = await fetch(`${baseUrl}/patrons`)
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Slots available
   const corporate = await fetch(`${baseUrl}/corporate`)
     .then(response => response.json())
     .catch(e => error = e)
-
   const diamondSponsors = Object.keys(corporate).filter(s => corporate[s].rank === 3);
   const goldSponsors = Object.keys(corporate).filter(s => corporate[s].rank === 2);
 
+  // Asset downloads
+  const now = new Date()
+  const monthAgo = subMonths(now, 1)
+  const dateFrom = isoDay(fixTzOffset(startOfMonth(monthAgo)))
+  const dateTo = isoDay(fixTzOffset(endOfMonth(monthAgo)))
+  const dailyDownloads = await fetch(`${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let monthlyDownloads = 0;
+  for (const day of dailyDownloads) {
+    monthlyDownloads += day.downloads
+  }
+
+  // Traffic
+  const traffic = await fetch(`${baseUrl}/stats/cfmonth`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
+  // Text
   const fp = path.join(process.cwd(), 'constants/corporate_details.md')
   const details = fs.readFileSync(fp, 'utf8')
 
@@ -196,10 +216,13 @@ export async function getStaticProps(context) {
 
   return {
     props: {
+      updated: now.valueOf(),
       numPatrons: patrons.length,
       numDiamond: diamondSponsors.length,
       numGold: goldSponsors.length,
-      details: details
+      details,
+      monthlyDownloads,
+      traffic
     },
     revalidate: 60 * 30 // 30 minutes
   }
