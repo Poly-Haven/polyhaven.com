@@ -15,6 +15,7 @@ import TierBlock from 'components/Layout/TierBlock/TierBlock';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import StatBlock from 'components/Stats/StatBlock/StatBlock';
+import Tooltip from 'components/Tooltip/Tooltip';
 
 const Corporate = (props) => {
 
@@ -88,7 +89,12 @@ const Corporate = (props) => {
             <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
             <StatBlock head={props.numPatrons} text="Patrons" />
           </div>
-          <p style={{ opacity: 0.5, textAlign: 'right' }}><em>Last updated: {timeago(props.updated)}</em></p>
+          <p
+            style={{ opacity: 0.5, textAlign: 'right' }}
+            data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString("en-ZA")}`}
+          >
+            <em>Last updated: {timeago(props.updated)}</em>
+          </p>
         </InfoBlock>
       </div>
 
@@ -174,6 +180,7 @@ const Corporate = (props) => {
       <div lang="en">
         <Markdown>{props.details.replace(/\\n/g, '\n')}</Markdown>
       </div>
+      <Tooltip />
 
     </TextPage>
   )
