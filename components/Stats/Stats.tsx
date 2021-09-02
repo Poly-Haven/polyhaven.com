@@ -9,11 +9,10 @@ import styles from './Stats.module.scss'
 /* Ideas:
   Downloads per month over all time (wait until like 2022)
   Patrons over time
-  Comparison of resolutions
   Comparison of formats
-  Assets published per month
   Downloads per $ donated
-  Downloads per day relative to number of assets of that type available at the time
+  Downloads by category
+  Bandwith usage
 */
 
 const Stats = ({ datasets }) => {
