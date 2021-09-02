@@ -2,6 +2,7 @@ import Link from 'next/link';
 import fs from 'fs'
 import path from 'path'
 import Markdown from 'markdown-to-jsx';
+import CSS from 'csstype'
 import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
 
 import { IoTicket } from 'react-icons/io5'
@@ -13,6 +14,7 @@ import InfoBlock from 'components/Layout/InfoBlock/InfoBlock';
 import TierBlock from 'components/Layout/TierBlock/TierBlock';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
+import StatBlock from 'components/Stats/StatBlock/StatBlock';
 
 const Corporate = (props) => {
 
@@ -39,6 +41,13 @@ const Corporate = (props) => {
     },
   ]
 
+  const styleRow: CSS.Properties = {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '2em',
+    flexWrap: "wrap",
+  }
+
   return (
     <TextPage
       title="Corporate Sponsorships"
@@ -50,7 +59,7 @@ const Corporate = (props) => {
       <p>Does your organization want to support our vision and associate themselves with our project in the public eye?</p>
       <p>Show your logo prominently in various locations on our site, gain access to our private communication channels to help us discuss what to work on, and have your whole team join our cloud library for easier integration with your workflow.</p>
 
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '2em' }}>
+      <div style={styleRow}>
         <InfoBlock title="Display Your Logo" image={<MdCropFree />} imageStyle={{ color: '#ef5350' }}>
           <p>Show your logo prominently in various locations on our site. Your logo links to your website.</p>
         </InfoBlock>
@@ -62,21 +71,23 @@ const Corporate = (props) => {
         </InfoBlock>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '2em' }}>
+      <div style={styleRow}>
         <InfoBlock title="About Poly Haven">
           <p>Our goal is to provide high quality assets to 3D creators, released as public domain for absolute freedom and usability in both commercial and private applications.</p>
           <p>There are no costs, restrictions, or registrations required to download or use our assets.</p>
           <p>We have been operating independently for over 3 years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA studios, scientific research, and has been included by default in several 3D applications.</p>
         </InfoBlock>
         <InfoBlock title="Audience Stats">
-          <p>Recent approximate stats for polyhaven.com, based on data from Cloudflare analytics.</p>
-          <ul>
-            <li>Pageviews: <strong>{(props.traffic.pageviews / 1000000).toFixed(1)} million</strong> per month.</li>
-            <li>Asset Downloads: <strong>{(props.monthlyDownloads / 1000000).toFixed(1)} million</strong> per month.</li>
-            <li>Download Traffic: <strong>{(props.traffic.terabytes).toFixed(1)}TB</strong> per month.</li>
-            <li>Facebook / Twitter followers: <strong>8.4K / 5.1K</strong>.</li>
-            {props.numPatrons && <li>Patreon Supporters: <strong>{props.numPatrons}</strong>.</li>}
-          </ul>
+          <p>Monthly stats for polyhaven.com, based on data from Cloudflare analytics and our own internal tracking.</p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: "repeat(2, 1fr)",
+          }}>
+            <StatBlock head={`${(props.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
+            <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
+            <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
+            <StatBlock head={props.numPatrons} text="Patrons" />
+          </div>
           <p style={{ opacity: 0.5, textAlign: 'right' }}><em>Last updated: {timeago(props.updated)}</em></p>
         </InfoBlock>
       </div>
@@ -85,7 +96,7 @@ const Corporate = (props) => {
 
       </table>
 
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '2em' }}>
+      <div style={styleRow}>
         <TierBlock
           title="Silver"
           image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.svg" />}

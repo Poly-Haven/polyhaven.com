@@ -1,0 +1,23 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include center;
+
+  .inner {
+    @include flex(column, true, true);
+    padding: 1rem 0.5rem;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 2em;
+    line-height: 1;
+    color: $c-text-bright;
+  }
+
+  p {
+    margin: 0;
+  }
+}
