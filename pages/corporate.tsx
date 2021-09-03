@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import Markdown from 'markdown-to-jsx';
 import CSS from 'csstype'
-import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
+import { subMonths, startOfMonth, endOfMonth, differenceInYears } from 'date-fns'
 
 import { IoTicket } from 'react-icons/io5'
 import { MdCloudDownload, MdCropFree, MdLink, MdChat, MdInfo } from 'react-icons/md';
@@ -76,7 +76,7 @@ const Corporate = (props) => {
         <InfoBlock title="About Poly Haven">
           <p>Our goal is to provide high quality assets to 3D creators, released as public domain for absolute freedom and usability in both commercial and private applications.</p>
           <p>There are no costs, restrictions, or registrations required to download or use our assets.</p>
-          <p>We have been operating independently for over 3 years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA studios, scientific research, and has been included by default in several 3D applications.</p>
+          <p>We have been operating independently for over {differenceInYears(new Date(), new Date("2017-10-03"))} years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA studios, scientific research, and has been included by default in several 3D applications.</p>
         </InfoBlock>
         <InfoBlock title="Audience Stats">
           <p>Monthly stats for polyhaven.com, based on data from Cloudflare analytics and our own internal tracking.</p>
