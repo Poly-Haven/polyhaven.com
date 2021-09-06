@@ -30,6 +30,7 @@ export function catColor(t) {
     "Store Sales": `#795548`,
     "Refunds": `#607D8B`,
     "Commissions": `#607D8B`,
+    "Tax Refund": `#607D8B`,
     "Founder Salaries": `#9C27B0`,
     "Staff Salaries": `#AB47BC`,
     "Staff Overhead (Taxes)": `#CE93D8`,
