@@ -6,10 +6,12 @@
   padding: 1rem;
   width: calc(100% - 2rem);
   text-align: center;
+  @include flex(column, true, true);
+  gap: 1.2em;
 
   h2 {
     margin-top: 0;
-    margin-bottom: 0.85em !important;
+    margin-bottom: 0 !important;
 
     a {
       color: $c-text-light !important;
@@ -24,33 +26,38 @@
 }
 
 .group {
+  @include flex(row, true, true);
+  gap: 1.2em 2em;
+  flex-wrap: wrap;
+
   a {
-    font-size: 0; // For some reason there's padding under the images?
-  }
-  img {
-    margin: 0 1rem 1rem;
-    display: inline-block;
+    line-height: 0; // For some reason there's padding under the images?
   }
 }
 
 .groupDiamond {
   @extend .group;
-  img {
-    max-width: min(340px, calc(100% - 2rem));
+  gap: 1.2em 3em;
+
+  img,
+  a {
+    max-width: min(340px, 100%);
     max-height: 128px;
   }
 }
 .groupGold {
   @extend .group;
-  img {
-    max-width: min(192px, calc(100% - 2rem));
+  img,
+  a {
+    max-width: min(192px, 100%);
     max-height: 66px;
   }
 }
 .groupSilver {
   @extend .group;
-  img {
-    max-width: min(150px, calc(100% - 2rem));
+  img,
+  a {
+    max-width: min(150px, 100%);
     max-height: 50px;
   }
 }
