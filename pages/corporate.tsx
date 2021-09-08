@@ -146,9 +146,9 @@ const Corporate = (props) => {
         <TierBlock
           title="Diamond"
           image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_diamond.svg" />}
-          price="1,000"
+          price="900"
           numExisting={props.numDiamond}
-          limit={4}
+          limit={3}
           link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
           features={[
             {
