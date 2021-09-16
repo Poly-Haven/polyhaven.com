@@ -148,7 +148,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} data={renders} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} active={activeImageSrc} />
+            <Carousel slug={assetID} data={renders} files={files} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} active={activeImageSrc} />
           </div>
         </div>
         <div className={styles.similar}>

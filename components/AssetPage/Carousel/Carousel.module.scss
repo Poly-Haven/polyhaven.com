@@ -34,6 +34,22 @@
   }
 }
 
+.texMaps {
+  @include flex(column, true, true);
+  flex-wrap: wrap;
+  height: calc(110px + 0.5em);
+  margin: 0 0.1em;
+
+  .image {
+    height: 50px;
+    margin: 1px;
+
+    img {
+      height: 50px;
+    }
+  }
+}
+
 .activeImage {
   background-color: rgba($c-accent, 0.05);
   box-shadow: inset 0 0 2px 1px $c-accent;

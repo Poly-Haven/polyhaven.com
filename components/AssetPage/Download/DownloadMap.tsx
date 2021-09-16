@@ -8,7 +8,7 @@ import { titleCase } from 'utils/stringUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadMap = ({ name, res, data, trackDownload, setPreview }) => {
+const DownloadMap = ({ name, res, data, trackDownload }) => {
 
   let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
@@ -27,21 +27,8 @@ const DownloadMap = ({ name, res, data, trackDownload, setPreview }) => {
     displayName = "Rough/Metal/AO"
   }
 
-  const preview = (e) => {
-    let url = data.jpg.url
-    url = url.replace(`jpg/${res}/`, 'jpg/1k/')
-    url = url.replace(`_${res}.jpg`, '_1k.jpg')
-    setPreview(url)
-  }
-
   return (
     <div className={styles.optionRow}>
-      <div
-        className={styles.viewBtn}
-        onClick={preview}
-      >
-        <MdVisibility />
-      </div>
       <p>{displayName}</p>
       {Object.keys(data).sort().map((f, i) =>
         <a

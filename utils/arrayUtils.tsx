@@ -30,3 +30,12 @@ export function sortRes(arr: string[]) {
 export function sortCaseInsensitive(arr: string[]) {
   return arr.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 }
+
+export function sliceIntoChunks(arr, chunkSize) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    const chunk = arr.slice(i, i + chunkSize);
+    res.push(chunk);
+  }
+  return res;
+}

@@ -1,10 +1,12 @@
 import { Md3DRotation } from 'react-icons/md'
 
+import { sortCaseInsensitive, sliceIntoChunks } from 'utils/arrayUtils'
+
 import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
+const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) => {
   let images = {
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -31,8 +33,8 @@ const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
     "ANYTHING ELSE": 5,
     "orth_": 6
   }
-  let sortedKeys = Object.keys(images).sort((a, b) => a.localeCompare(b))  // Alphabetically
-  sortedKeys = sortedKeys.sort((a, b) => {  // Then in order of preference
+  let renders = Object.keys(images).sort((a, b) => a.localeCompare(b))  // Alphabetically
+  renders = renders.sort((a, b) => {  // Then in order of preference
     const startsWithPrefs = ["cam_", "orth_"]
     let prefA = sortPreference[a]
     let prefB = sortPreference[b]
@@ -53,6 +55,21 @@ const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
     return result
   })
 
+  let maps = {}
+  for (const m of sortCaseInsensitive(Object.keys(files))) {
+    if (m.endsWith('nor_dx')) continue
+    let img = null
+    try {
+      img = files[m]['1k']['jpg']['url']
+    } catch {
+      // Not all files are expected to have a JPG version (e.g. blend/gltf)
+      img = null
+    }
+    if (img) {
+      maps[m] = img
+    }
+  }
+
   const clickImage = (e) => {
     setter(e.currentTarget.dataset.src)
   }
@@ -60,8 +77,14 @@ const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
   return (
     <div className={styles.imageRow}>
       <div className={`${styles.iconBtn} ${active === 'webGL' ? styles.activeImage : ''}`}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
-      {sortedKeys.map((i, k) =>
-        <div key={k} data-src={images[i]} onClick={clickImage} className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}>
+      {renders.map((i, k) =>
+        <div
+          key={k}
+          data-src={images[i]}
+          title={i}
+          onClick={clickImage}
+          className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}
+        >
           <img src={images[i] + "?height=110"} />
           {Object.keys(image_info).includes(i) ? <div className={styles.credit}>
             <p>{image_info[i].title} by {image_info[i].url ? <a href={image_info[i].url} rel="noopener">{image_info[i].author}</a> : image_info[i].author}</p>
@@ -72,6 +95,20 @@ const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
           </div> : null}
         </div>
       )}
+      {assetType !== 0 && slug !== 'decorative_book_set_01' ?
+        sliceIntoChunks(Object.keys(maps), 2).map((chunk, k1) => <div className={styles.texMaps}>{
+          chunk.map((m, k2) => <div
+            key={k2}
+            data-src={maps[m]}
+            title={m}
+            onClick={clickImage}
+            className={`${styles.image} ${active === maps[m] ? styles.activeImage : ''}`}
+          >
+            <img src={maps[m].replace("https://dl.polyhaven.org/", "https://dl.polyhaven.org/cdn-cgi/image/width=50,height=50,fit=crop,format=auto,sharpen=1/")} />
+          </div>)
+        }</div>
+        )
+        : null}
     </div>
   )
 }

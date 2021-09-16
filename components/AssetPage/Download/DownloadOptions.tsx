@@ -59,7 +59,6 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
                   res={res}
                   data={files[m][res]}
                   trackDownload={trackDownload}
-                  setPreview={setPreview}
                 />
                 : null
               : null
