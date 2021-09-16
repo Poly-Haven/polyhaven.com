@@ -1,12 +1,10 @@
-import apiSWR from 'utils/apiSWR'
-
 import { Md3DRotation } from 'react-icons/md'
 
 import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, assetType, setter, showWebGL }) => {
+const Carousel = ({ slug, data, assetType, setter, showWebGL }) => {
   let images = {
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -16,8 +14,7 @@ const Carousel = ({ slug, assetType, setter, showWebGL }) => {
   }
 
   let image_info = {}
-  const { data, error } = apiSWR(`/renders/${slug}`, { revalidateOnFocus: false });
-  if (!error && data) {
+  if (data) {
     for (const i of Object.keys(data)) {
       images[i] = `https://cdn.polyhaven.com/asset_img/renders/${slug}/${i}`
       if (typeof data[i] === 'object') {

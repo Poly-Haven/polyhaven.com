@@ -35,7 +35,7 @@ const PanoViewer = dynamic(
   { ssr: false }
 )
 
-const AssetPage = ({ assetID, data, files, scrollPosition }) => {
+const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
@@ -138,7 +138,7 @@ const AssetPage = ({ assetID, data, files, scrollPosition }) => {
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} />
+            <Carousel slug={assetID} data={renders} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} />
           </div>
         </div>
         <div className={styles.similar}>
