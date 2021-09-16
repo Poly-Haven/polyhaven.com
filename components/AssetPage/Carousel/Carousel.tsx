@@ -4,7 +4,7 @@ import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, data, assetType, setter, showWebGL }) => {
+const Carousel = ({ slug, data, assetType, setter, showWebGL, active }) => {
   let images = {
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -59,9 +59,9 @@ const Carousel = ({ slug, data, assetType, setter, showWebGL }) => {
 
   return (
     <div className={styles.imageRow}>
-      <div className={styles.iconBtn}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
+      <div className={`${styles.iconBtn} ${active === 'webGL' ? styles.activeImage : ''}`}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
       {sortedKeys.map((i, k) =>
-        <div key={k} data-src={images[i]} onClick={clickImage} className={styles.image}>
+        <div key={k} data-src={images[i]} onClick={clickImage} className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}>
           <img src={images[i] + "?height=110"} />
           {Object.keys(image_info).includes(i) ? <div className={styles.credit}>
             <p>{image_info[i].title} by {image_info[i].url ? <a href={image_info[i].url} rel="noopener">{image_info[i].author}</a> : image_info[i].author}</p>

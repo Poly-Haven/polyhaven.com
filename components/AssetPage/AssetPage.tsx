@@ -41,6 +41,8 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const [patron, setPatron] = useState({});
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
+  const [activeImage, setActiveImage] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`)
+  const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
   const [hideSidebar, setHideSidebar] = useState(true);
 
@@ -64,6 +66,12 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
     document.getElementById('header-path').innerHTML = path
     document.getElementById('header-frompath').innerHTML = ""
     document.getElementById('page').scrollTop = 0
+
+    setPageLoading(false)
+    const defaultImg = `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`
+    if (activeImageSrc !== defaultImg) {
+      setPreviewImage(defaultImg)
+    }
 
     return (() => {
       document.getElementById('header-path').innerHTML = ""
@@ -91,10 +99,11 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
 
   const setPreviewImage = (src) => {
     setImageLoading(true)
+    setActiveImageSrc(src)
     if (src.startsWith("https://cdn.polyhaven.com/")) {
       src += "?height=780"
     }
-    document.getElementById('activePreview').setAttribute('src', src);
+    setActiveImage(src)
   }
   const imageLoaded = (e) => {
     setImageLoading(false)
@@ -104,6 +113,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
 
   const clickShowWebGL = _ => {
     setShowWebGL(true)
+    setActiveImageSrc('webGL')
   }
 
   return (
@@ -124,7 +134,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             <img
               id="activePreview"
               onLoad={imageLoaded}
-              src={`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`}
+              src={activeImage}
             />
             {data.type === 0 ?
               (showWebGL ? <PanoViewer assetID={assetID} /> : null)
@@ -138,7 +148,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} data={renders} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} />
+            <Carousel slug={assetID} data={renders} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} active={activeImageSrc} />
           </div>
         </div>
         <div className={styles.similar}>
