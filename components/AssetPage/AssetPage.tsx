@@ -35,7 +35,7 @@ const PanoViewer = dynamic(
   { ssr: false }
 )
 
-const AssetPage = ({ assetID, data, scrollPosition }) => {
+const AssetPage = ({ assetID, data, files, scrollPosition }) => {
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
@@ -130,7 +130,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
               (showWebGL ? <PanoViewer assetID={assetID} /> : null)
               :
               <ErrorBoundary>
-                <GLTFViewer show={showWebGL} assetID={assetID} />
+                <GLTFViewer show={showWebGL} assetID={assetID} files={files} />
               </ErrorBoundary>
             }
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
@@ -155,6 +155,7 @@ const AssetPage = ({ assetID, data, scrollPosition }) => {
           <Download
             assetID={assetID}
             data={data}
+            files={files}
             setPreview={setPreviewImage}
             patron={patron}
           />

@@ -13,14 +13,13 @@ import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
-import apiSWR from 'utils/apiSWR'
 
 import styles from './Download.module.scss'
 
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data, setPreview, patron }) => {
+const Download = ({ assetID, data, files, setPreview, patron }) => {
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [prefRes, setRes] = useState('4k')
@@ -34,11 +33,8 @@ const Download = ({ assetID, data, setPreview, patron }) => {
     setFmt(localStorage.getItem(`assetPref_${data.type}_format`) || 'exr')
   }, [prefRes, prefFmt]);
 
-  const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
-  if (error) {
+  if (!files) {
     return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}><span className={styles.error}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></span></div></div>
-  } else if (!files) {
-    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}><Loader /></div></div>
   }
 
   if (data.date_published * 1000 > Date.now()) {

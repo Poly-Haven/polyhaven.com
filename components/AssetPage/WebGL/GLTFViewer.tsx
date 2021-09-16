@@ -1,5 +1,4 @@
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
-import apiSWR from 'utils/apiSWR'
 import { Vector3, Quaternion, Box3, CineonToneMapping } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
@@ -7,7 +6,6 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { MdPublic, MdLayers, MdLanguage, MdNotInterested, MdFullscreen } from 'react-icons/md'
 
-import Loader from 'components/UI/Loader/Loader'
 import IconButton from 'components/UI/Button/IconButton'
 import { useGLTFFromAPI } from './useGLTFFromAPI'
 import {
@@ -23,9 +21,10 @@ import styles from './GLTFViewer.module.scss'
 interface Props {
   readonly show: boolean;
   readonly assetID: string;
+  readonly files: { gltf };
 }
 
-const GLTFViewer: FC<Props> = ({ show, assetID }) => {
+const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
   if (!show) return null;
 
   const handle = useFullScreenHandle();
@@ -50,11 +49,8 @@ const GLTFViewer: FC<Props> = ({ show, assetID }) => {
 
   const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState);
 
-  const { data: files, error } = apiSWR(`/files/${assetID}`, { revalidateOnFocus: false });
-  if (error) {
+  if (!files) {
     return <div className={styles.wrapper}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></div>
-  } else if (!files) {
-    return <div className={styles.wrapper}><Loader /></div>
   }
 
   if (!files.gltf) {

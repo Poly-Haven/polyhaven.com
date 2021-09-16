@@ -12,7 +12,7 @@ function handleErrors(response) {
   return response;
 }
 
-const Page = ({ assetID, data }) => {
+const Page = ({ assetID, data, files }) => {
   const pageUrl = `/a/${assetID}`
   if (!data) {
     return (
@@ -35,7 +35,7 @@ const Page = ({ assetID, data }) => {
         image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630`}
       />
       <div>
-        <AssetPage assetID={assetID} data={data} />
+        <AssetPage assetID={assetID} data={data} files={files} />
       </div>
     </div>
   )
@@ -46,7 +46,13 @@ export async function getStaticProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
 
   let error = null
-  const data = await fetch(`${baseUrl}/info/${id}`)
+
+  const info = await fetch(`${baseUrl}/info/${id}`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+
+  const files = await fetch(`${baseUrl}/files/${id}`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => error = e)
@@ -63,7 +69,8 @@ export async function getStaticProps(context) {
   return {
     props: {
       assetID: id,
-      data: data
+      data: info,
+      files: files,
     },
     revalidate: 60 * 30 // 30 minutes
   }
