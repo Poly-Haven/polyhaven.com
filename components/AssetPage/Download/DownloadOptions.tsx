@@ -14,7 +14,7 @@ import { sortCaseInsensitive } from 'utils/arrayUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview }) => {
+const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, setZipList, type, setPreview }) => {
   const [norMode, setNorMode] = useState('gl')
 
   useEffect(() => {
@@ -50,13 +50,14 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
     <div className={styles.wrapper}>
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
         {type === 0 ? null : sortCaseInsensitive(Object.keys(files)).map((m, i) =>
-          !['blend', 'gltf'].includes(m) ?
-            m !== 'nor_dx' || norMode === 'dx' ?
-              m !== 'nor_gl' || norMode === 'gl' ?
+          !['blend', 'gltf'].includes(m) || fmt === 'zip' ?
+            m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ?
+              m !== 'nor_gl' || norMode === 'gl' || fmt === 'zip' ?
                 <DownloadMap
                   key={i}
                   name={m}
                   res={res}
+                  fmt={fmt}
                   data={files[m][res]}
                   trackDownload={trackDownload}
                 />
@@ -64,7 +65,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
               : null
             : null
         )}
-        {type === 0 ? null :
+        {type === 0 || fmt === 'zip' ? null :
           <div className={styles.optionRow}>
             <p style={{ textAlign: 'right' }}>Normal Map Standard:</p>
             <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / Godot / 3ds Max.">
@@ -112,6 +113,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, type, setPreview
           ><IconPatreon color="#f96753" />Offline Access <GoLinkExternal style={{ marginLeft: "0.5em" }} /></a>
         </div>
         {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
+        <pre>{JSON.stringify(zipList, null, 2)}</pre>
       </div>
       <Tooltip />
     </div>

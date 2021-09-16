@@ -1,18 +1,22 @@
 import filesize from 'filesize'
 
-import { MdVisibility } from 'react-icons/md'
+import { MdFileDownload } from 'react-icons/md'
 
 import Tooltip from 'components/Tooltip/Tooltip'
+import MapSelector from './MapSelector'
 
 import { titleCase } from 'utils/stringUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadMap = ({ name, res, data, trackDownload }) => {
-
+const DownloadMap = ({ name, res, fmt, data, trackDownload }) => {
   let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
-    displayName = "Normal"
+    if (fmt !== 'zip') {
+      displayName = "Normal"
+    } else {
+      displayName = `Normal (${name.substring(name.length - 2).toUpperCase()})`
+    }
   }
   if (name === 'AO') {
     displayName = "AO"
@@ -27,27 +31,44 @@ const DownloadMap = ({ name, res, data, trackDownload }) => {
     displayName = "Rough/Metal/AO"
   }
 
-  return (
-    <div className={styles.optionRow}>
-      <p>{displayName}</p>
-      {Object.keys(data).sort().map((f, i) =>
-        <a
-          key={i}
-          href={data[f].url}
-          className={styles.format}
-          target="_blank"
-          rel="noopener"
-          data-res={res}
-          data-format={`${name}:${f}`}
-          onClick={trackDownload}
-          data-tip={`${res} ${f}: ${filesize(data[f].size)}`}
-        >
-          {f}
-        </a>
-      )}
-      <Tooltip />
-    </div>
-  )
+  if (fmt !== 'zip') {
+    return (
+      <div className={styles.optionRow}>
+        <p>{displayName}</p>
+        {Object.keys(data).sort().map((f, i) =>
+          <a
+            key={i}
+            href={data[f].url}
+            className={styles.format}
+            target="_blank"
+            rel="noopener"
+            data-res={res}
+            data-format={`${name}:${f}`}
+            onClick={trackDownload}
+            data-tip={`${res} ${f}: ${filesize(data[f].size)}`}
+          >
+            <MdFileDownload />{f}
+          </a>
+        )}
+        <Tooltip />
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.optionRow}>
+        <p>{displayName}</p>
+        {Object.keys(data).sort().map((f, i) =>
+          <MapSelector
+            key={i}
+            res={res}
+            fmt={f}
+            filesize={filesize(data[f].size)}
+          />
+        )}
+        <Tooltip />
+      </div>
+    )
+  }
 }
 
 export default DownloadMap

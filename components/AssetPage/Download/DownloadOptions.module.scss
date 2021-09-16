@@ -30,7 +30,7 @@
 
   .format {
     @include flex(row, true, true);
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: bold;
     padding: 0.3em 0.5em;
     min-width: 1.8em;
@@ -39,6 +39,7 @@
     border-right: none;
     color: $c-text-light;
     text-transform: uppercase;
+    cursor: pointer;
     @include transition;
 
     &:last-of-type {
@@ -52,8 +53,10 @@
     }
 
     svg {
+      flex-shrink: 0;
       height: 1.3em;
-      padding-right: 0.5em;
+      margin-left: -0.2em;
+      padding-right: 0.2em;
     }
   }
 
@@ -78,6 +81,13 @@
   .format {
     text-transform: none;
     width: 100%;
+    font-size: 0.9em;
+
+    svg {
+      padding-right: 0.5em;
+      height: 1.3em;
+      margin-left: 0;
+    }
   }
 }
 

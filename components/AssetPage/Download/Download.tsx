@@ -3,6 +3,7 @@ import filesize from 'filesize'
 import { v4 as uuid } from 'uuid';
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
+import { GoFileZip } from "react-icons/go";
 
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import DownloadOptions from './DownloadOptions'
@@ -22,6 +23,7 @@ declare const startDownload
 const Download = ({ assetID, data, files, setPreview, patron }) => {
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
+  const [zipList, setZipList] = useState([])
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
   const [tempUUID, setTempUUID] = useState(uuid())  // Used if storage consent not given.
@@ -91,6 +93,11 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       tooltip: "glTF 2.0, supported by most 3D software.<br/>Includes all required texture maps.",
       icon: <IconGltf />
     },
+    zip: {
+      label: "ZIP",
+      tooltip: "Choose exactly which files to download.",
+      icon: <GoFileZip />
+    },
   };
   if (!Object.keys(files).includes('gltf')) {
     delete fmtOptions.gltf
@@ -99,15 +106,20 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   const setFmtValue = v => {
     setFmt(v)
     localStorage.setItem(`assetPref_${data.type}_format`, v)
+    if (v === 'zip') {
+      setDlOptions(true)
+    }
   }
   const dlFmt = Object.keys(fmtOptions).includes(prefFmt) ? prefFmt : (isHDRI ? 'hdr' : 'blend')
 
   let fsize = 0
-  const fileInfo = files[isHDRI ? 'hdri' : dlFmt][dlRes][dlFmt]
-  fsize = fileInfo.size
-  if (fileInfo.include) {
-    for (const i of Object.values(fileInfo.include)) {
-      fsize += i['size']
+  if (dlFmt != 'zip') {
+    const fileInfo = files[isHDRI ? 'hdri' : dlFmt][dlRes][dlFmt]
+    fsize = fileInfo.size
+    if (fileInfo.include) {
+      for (const i of Object.values(fileInfo.include)) {
+        fsize += i['size']
+      }
     }
   }
 
@@ -205,6 +217,9 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         tempUUID={tempUUID}
         files={files}
         res={dlRes}
+        fmt={dlFmt}
+        zipList={zipList}
+        setZipList={setZipList}
         type={data.type}
         setPreview={setPreview}
       />
