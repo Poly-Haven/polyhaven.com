@@ -73,7 +73,7 @@
 }
 .smallGraph {
   width: 100%;
-  height: 18vh;
+  height: 17vh;
 }
 
 .graphNote {
@@ -99,6 +99,10 @@
       color: rgb(255, 70, 70);
     }
   }
+}
+.noteLabel {
+  white-space: pre-wrap;
+  line-height: 1.2em;
 }
 .unNumberedNotesList {
   @extend .notesList;

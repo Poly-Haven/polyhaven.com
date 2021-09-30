@@ -52,12 +52,12 @@ const AssetsPerMonth = ({ data }: { data: DataSet }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="day" ticks={ticks} />
             <YAxis width={25} orientation="right" />
-            <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
-
-            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
+            <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" startIndex={graphData.length - 12} />
 
             <Tooltip
               label="day"
+              labelFormatter={day => Object.keys(notes).includes(day) ? day + `\n${notes[day]}` : day}
+              labelClassName={styles.noteLabel}
               contentStyle={{
                 backgroundColor: 'rgba(30,30,30,0.3)',
                 padding: '0.5em',
@@ -76,13 +76,11 @@ const AssetsPerMonth = ({ data }: { data: DataSet }) => {
             />
 
             {areas.map(a => <Bar key={a} dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={0} />)}
+
+            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" />)}
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <p style={{ marginBottom: 0 }}>Notes:</p>
-      <ol className={styles.notesList}>
-        {Object.keys(notes).map((d, i) => <li key={i}><strong>{d}</strong>: <span>{notes[d]}</span></li>)}
-      </ol>
     </div>
   )
 }
