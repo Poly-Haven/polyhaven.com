@@ -27,6 +27,7 @@ export function catColor(t) {
     "Corporate Sponsors": `#03A9F4`,
     "Donation from Founder": `#FFEB3B`,
     "Once-off Donations": `#673AB7`,
+    "Epic Grant": `#673AB7`,
     "Store Sales": `#795548`,
     "Refunds": `#607D8B`,
     "Commissions": `#607D8B`,
