@@ -96,7 +96,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) =
         </div>
       )}
       {assetType !== 0 && slug !== 'decorative_book_set_01' ?
-        sliceIntoChunks(Object.keys(maps), 2).map((chunk, k1) => <div className={styles.texMaps}>{
+        sliceIntoChunks(Object.keys(maps), 2).map((chunk, k1) => <div key={k1} className={styles.texMaps}>{
           chunk.map((m, k2) => <div
             key={k2}
             data-src={maps[m]}
