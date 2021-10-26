@@ -144,7 +144,7 @@ const Popularity = ({ data }) => {
 
       <p>The purpose of rewarding more popular HDRIs is to encourage HDRI contributions that are more useful or more wanted by users.</p>
 
-      <p>The total budget allocation for HDRIs this month is: <strong>{money(budget)}</strong> (25% of Patreon + Advertising income).</p>
+      <p>The total budget allocation for HDRIs this month is: <strong>{money(budget)}</strong> (25% of Patreon + Advertising <Link href="/finance-reports">income</Link>).</p>
 
       <p>After subtracting the up-front payments** for these HDRIs, the remainder to share for bonus earnings is: <strong>{share ? money(share) : "TBD"}</strong></p>
 

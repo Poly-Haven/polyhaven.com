@@ -22,7 +22,7 @@ function handleErrors(response) {
   return response;
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
   let error = null
 
@@ -33,8 +33,7 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
-      revalidate: 60 * 60 // 60 minutes
+      props: {}
     }
   }
 
@@ -42,7 +41,6 @@ export async function getStaticProps(context) {
     props: {
       finances: finances
 
-    },
-    revalidate: 24 * 60 * 60 // 1 day
+    }
   }
 }
