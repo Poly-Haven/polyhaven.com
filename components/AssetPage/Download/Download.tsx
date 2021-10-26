@@ -141,7 +141,8 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     }
   } else {
     for (const f of zipList.files) {
-      fsize += f.size
+      const fileInfo = files[f.map][dlRes][f.fmt]
+      fsize += fileInfo.size
     }
   }
 
@@ -191,10 +192,11 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     } else {
       for (const f of zipList.files) {
         const basePath = ['blend', 'gltf'].includes(f.fmt) ? "" : "textures/"
+        const fileInfo = files[f.map][dlRes][f.fmt]
         dlFiles.push({
-          url: f.url,
-          size: f.size,
-          path: basePath + urlBaseName(f.url)
+          url: fileInfo.url,
+          size: fileInfo.size,
+          path: basePath + urlBaseName(fileInfo.url)
         })
       }
     }

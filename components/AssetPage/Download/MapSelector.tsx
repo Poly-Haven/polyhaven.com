@@ -30,13 +30,13 @@ const MapSelector = ({ name, res, fmt, type, data, filesize, selectMap }) => {
     const storedValue = JSON.parse(localStorage.getItem(storageKey))
     const v = storedValue !== null ? storedValue : enabledByDefault.includes(storageKey)
     setChecked(v)
-    selectMap({ ...data, fmt }, v)
+    selectMap({ map: name, fmt, md5: data.md5 }, v)
   }, []);
 
   const toggle = _ => {
     const v = !checked
     setChecked(v)
-    selectMap({ ...data, fmt }, v)
+    selectMap({ map: name, fmt, md5: data.md5 }, v)
     localStorage.setItem(storageKey, JSON.stringify(v))
   }
 
