@@ -31,10 +31,16 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   const isHDRI = data.type === 0
 
   function reducer(state, action) {
+    const data = action.key
     if (action.add) {
-      return { files: [...state.files, action.key] };
+      for (const f of state.files) {
+        if (data.md5 === f.md5) {
+          return { files: state.files }
+        }
+      }
+      return { files: [...state.files, data] };
     } else {
-      return { files: state.files.filter(k => k !== action.key) };
+      return { files: state.files.filter(k => k.md5 !== data.md5) };
     }
   }
 
@@ -125,13 +131,17 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   const dlFmt = Object.keys(fmtOptions).includes(prefFmt) ? prefFmt : (isHDRI ? 'hdr' : 'blend')
 
   let fsize = 0
-  if (dlFmt != 'zip') {
+  if (dlFmt !== 'zip') {
     const fileInfo = files[isHDRI ? 'hdri' : dlFmt][dlRes][dlFmt]
     fsize = fileInfo.size
     if (fileInfo.include) {
       for (const i of Object.values(fileInfo.include)) {
         fsize += i['size']
       }
+    }
+  } else {
+    for (const f of zipList.files) {
+      fsize += f.size
     }
   }
 
@@ -159,20 +169,32 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       return
     }
     setBusyDownloading(true)
+    let name = `${assetID}_${dlRes}`
     let dlFiles = []
-    const fileInfo = files[dlFmt][dlRes][dlFmt]
-    const name = urlBaseName(fileInfo.url)
-    dlFiles.push({
-      url: fileInfo.url,
-      size: fileInfo.size,
-      path: name
-    })
-    if (fileInfo.include) {
-      for (const path of Object.keys(fileInfo.include)) {
+    if (dlFmt !== 'zip') {
+      const fileInfo = files[dlFmt][dlRes][dlFmt]
+      name = urlBaseName(fileInfo.url)
+      dlFiles.push({
+        url: fileInfo.url,
+        size: fileInfo.size,
+        path: name
+      })
+      if (fileInfo.include) {
+        for (const path of Object.keys(fileInfo.include)) {
+          dlFiles.push({
+            url: fileInfo.include[path].url,
+            size: fileInfo.include[path].size,
+            path: path
+          })
+        }
+      }
+    } else {
+      for (const f of zipList.files) {
+        const basePath = ['blend', 'gltf'].includes(f.fmt) ? "" : "textures/"
         dlFiles.push({
-          url: fileInfo.include[path].url,
-          size: fileInfo.include[path].size,
-          path: path
+          url: f.url,
+          size: f.size,
+          path: basePath + urlBaseName(f.url)
         })
       }
     }

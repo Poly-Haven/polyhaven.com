@@ -64,7 +64,7 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) =
             res={res}
             fmt={f}
             type={type}
-            url={data[f].url}
+            data={data[f]}
             filesize={filesize(data[f].size)}
             selectMap={selectMap}
           />
