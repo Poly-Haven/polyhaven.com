@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import filesize from 'filesize'
 import { v4 as uuid } from 'uuid';
 
@@ -23,12 +23,24 @@ declare const startDownload
 const Download = ({ assetID, data, files, setPreview, patron }) => {
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
-  const [zipList, setZipList] = useState([])
+  const [zipList, dispatch] = useReducer(reducer, { files: [] });
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
   const [tempUUID, setTempUUID] = useState(uuid())  // Used if storage consent not given.
 
   const isHDRI = data.type === 0
+
+  function reducer(state, action) {
+    if (action.add) {
+      return { files: [...state.files, action.key] };
+    } else {
+      return { files: state.files.filter(k => k !== action.key) };
+    }
+  }
+
+  const selectMap = (key, add) => {
+    dispatch({ key, add })
+  }
 
   useEffect(() => {
     setRes(localStorage.getItem(`assetPref_${data.type}_resolution`) || '4k')
@@ -218,8 +230,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         files={files}
         res={dlRes}
         fmt={dlFmt}
-        zipList={zipList}
-        setZipList={setZipList}
+        selectMap={selectMap}
         type={data.type}
         setPreview={setPreview}
       />

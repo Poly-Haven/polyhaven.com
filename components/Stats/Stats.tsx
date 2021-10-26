@@ -13,6 +13,7 @@ import styles from './Stats.module.scss'
   Downloads per $ donated
   Downloads by category
   Bandwith usage
+  Patreon earnings per assets available
 */
 
 const Stats = ({ datasets }) => {

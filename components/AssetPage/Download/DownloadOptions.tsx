@@ -14,7 +14,7 @@ import { sortCaseInsensitive } from 'utils/arrayUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, setZipList, type, setPreview }) => {
+const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview }) => {
   const [norMode, setNorMode] = useState('gl')
 
   useEffect(() => {
@@ -62,6 +62,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, se
                   type={type}
                   data={files[m][res]}
                   trackDownload={trackDownload}
+                  selectMap={selectMap}
                 />
                 : null
               : null
@@ -115,7 +116,6 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, se
           ><IconPatreon color="#f96753" />Offline Access <GoLinkExternal style={{ marginLeft: "0.5em" }} /></a>
         </div>
         {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
-        <pre>{JSON.stringify(zipList, null, 2)}</pre>
       </div>
       <Tooltip />
     </div>

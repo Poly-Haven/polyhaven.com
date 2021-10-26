@@ -9,7 +9,7 @@ import { titleCase } from 'utils/stringUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadMap = ({ name, res, fmt, type, data, trackDownload }) => {
+const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) => {
   let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
     if (fmt !== 'zip') {
@@ -64,7 +64,9 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload }) => {
             res={res}
             fmt={f}
             type={type}
+            url={data[f].url}
             filesize={filesize(data[f].size)}
+            selectMap={selectMap}
           />
         )}
         <Tooltip />

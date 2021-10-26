@@ -4,7 +4,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 
 import styles from './DownloadOptions.module.scss'
 
-const MapSelector = ({ name, res, fmt, type, filesize }) => {
+const MapSelector = ({ name, res, fmt, type, url, filesize, selectMap }) => {
   const [checked, setChecked] = useState(false)
   const storageKey = `assetPref_sel_${type}_${name}_${fmt}`
 
@@ -28,12 +28,15 @@ const MapSelector = ({ name, res, fmt, type, filesize }) => {
 
   useEffect(() => {
     const storedValue = JSON.parse(localStorage.getItem(storageKey))
-    setChecked(storedValue !== null ? storedValue : enabledByDefault.includes(storageKey))
+    const v = storedValue !== null ? storedValue : enabledByDefault.includes(storageKey)
+    setChecked(v)
+    selectMap(url, v)
   }, []);
 
   const toggle = _ => {
     const v = !checked
     setChecked(v)
+    selectMap(url, v)
     localStorage.setItem(storageKey, JSON.stringify(v))
   }
 
