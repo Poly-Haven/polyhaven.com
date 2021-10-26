@@ -49,6 +49,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, se
   return (
     <div className={styles.wrapper}>
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
+        {fmt === 'zip' ? <div className={styles.optionsHeader}>Choose ZIP contents:</div> : null}
         {type === 0 ? null : sortCaseInsensitive(Object.keys(files)).map((m, i) =>
           !['blend', 'gltf'].includes(m) || fmt === 'zip' ?
             m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ?

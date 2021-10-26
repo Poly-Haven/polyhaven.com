@@ -13,7 +13,7 @@ const MapSelector = ({ res, fmt, filesize }) => {
 
   return (
     <span
-      className={styles.format}
+      className={`${styles.format} ${checked ? styles.checked : ''}`}
       onClick={toggle}
       data-key={fmt}
       data-tip={`${res} ${fmt}: ${filesize}`}
