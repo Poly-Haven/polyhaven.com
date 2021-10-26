@@ -28,10 +28,10 @@ export function weightedDownloadsPerDay(download_count, epoch, name) {
   return download_count / Math.pow(Math.abs(now - epoch) + 1, 1.7)
 }
 
-export function fixTzOffset(date: Date) {
+export const fixTzOffset = (date: Date) => {
   return new Date(date.valueOf() - date.getTimezoneOffset() * 60 * 1000)
 }
 
-export function isoDay(date: Date) {
+export const isoDay = (date: Date) => {
   return date.toISOString().substring(0, 10) // YYYY-MM-DD
 }
