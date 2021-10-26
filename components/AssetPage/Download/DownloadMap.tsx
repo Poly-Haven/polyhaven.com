@@ -9,7 +9,7 @@ import { titleCase } from 'utils/stringUtils'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadMap = ({ name, res, fmt, data, trackDownload }) => {
+const DownloadMap = ({ name, res, fmt, type, data, trackDownload }) => {
   let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
     if (fmt !== 'zip') {
@@ -60,8 +60,10 @@ const DownloadMap = ({ name, res, fmt, data, trackDownload }) => {
         {Object.keys(data).sort().map((f, i) =>
           <MapSelector
             key={i}
+            name={name}
             res={res}
             fmt={f}
+            type={type}
             filesize={filesize(data[f].size)}
           />
         )}

@@ -59,6 +59,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, zipList, se
                   name={m}
                   res={res}
                   fmt={fmt}
+                  type={type}
                   data={files[m][res]}
                   trackDownload={trackDownload}
                 />

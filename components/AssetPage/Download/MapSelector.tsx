@@ -1,14 +1,40 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 
 import styles from './DownloadOptions.module.scss'
 
-const MapSelector = ({ res, fmt, filesize }) => {
+const MapSelector = ({ name, res, fmt, type, filesize }) => {
   const [checked, setChecked] = useState(false)
+  const storageKey = `assetPref_sel_${type}_${name}_${fmt}`
+
+  const enabledByDefault = [
+    'blend_blend',
+    'gltf_gltf',
+    'arm_jpg',
+    'Diffuse_jpg',
+    'Displacement_png',
+    'Rough_exr',
+    'Metal_exr',
+    'nor_gl_exr',
+    'nor_dx_exr',
+    'AO_jpg',
+    'Bump_exr',
+    'Alpha_png',
+    'Emission_png',
+    'Mask_png',
+  ]
+  enabledByDefault.forEach((name, index) => enabledByDefault[index] = `assetPref_sel_${type}_${name}`);
+
+  useEffect(() => {
+    const storedValue = JSON.parse(localStorage.getItem(storageKey))
+    setChecked(storedValue !== null ? storedValue : enabledByDefault.includes(storageKey))
+  }, []);
 
   const toggle = _ => {
-    setChecked(!checked)
+    const v = !checked
+    setChecked(v)
+    localStorage.setItem(storageKey, JSON.stringify(v))
   }
 
   return (
