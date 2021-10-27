@@ -1,6 +1,6 @@
 import { Md3DRotation } from 'react-icons/md'
 
-import { sortCaseInsensitive, sliceIntoChunks } from 'utils/arrayUtils'
+import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
 
 import IconButton from 'components/UI/Button/IconButton'
 
@@ -33,27 +33,8 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) =
     "ANYTHING ELSE": 5,
     "orth_": 6
   }
-  let renders = Object.keys(images).sort((a, b) => a.localeCompare(b))  // Alphabetically
-  renders = renders.sort((a, b) => {  // Then in order of preference
-    const startsWithPrefs = ["cam_", "orth_"]
-    let prefA = sortPreference[a]
-    let prefB = sortPreference[b]
-    for (const swp of startsWithPrefs) {
-      if (!prefA && a.startsWith(swp)) {
-        prefA = sortPreference[swp]
-      }
-      if (!prefB && b.startsWith(swp)) {
-        prefB = sortPreference[swp]
-      }
-    }
-    prefA = prefA || sortPreference["ANYTHING ELSE"]
-    prefB = prefB || sortPreference["ANYTHING ELSE"]
-    let result = 0;
-    if (prefA !== prefB) {
-      result = prefA < prefB ? -1 : 1
-    }
-    return result
-  })
+  let renders = sortCaseInsensitive(Object.keys(images))
+  renders = sortByPreference(renders, sortPreference, ["cam_", "orth_"])
 
   let maps = {}
   for (const m of sortCaseInsensitive(Object.keys(files))) {

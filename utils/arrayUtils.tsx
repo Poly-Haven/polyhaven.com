@@ -31,6 +31,28 @@ export function sortCaseInsensitive(arr: string[]) {
   return arr.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 }
 
+export function sortByPreference(arr: string[], preference, prefixes = []) {
+  return arr.sort((a, b) => {
+    let prefA = preference[a]
+    let prefB = preference[b]
+    for (const swp of prefixes) {
+      if (!prefA && a.startsWith(swp)) {
+        prefA = preference[swp]
+      }
+      if (!prefB && b.startsWith(swp)) {
+        prefB = preference[swp]
+      }
+    }
+    prefA = prefA || preference["ANYTHING ELSE"]
+    prefB = prefB || preference["ANYTHING ELSE"]
+    let result = 0;
+    if (prefA !== prefB) {
+      result = prefA < prefB ? -1 : 1
+    }
+    return result
+  })
+}
+
 export function sliceIntoChunks(arr, chunkSize) {
   const res = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
