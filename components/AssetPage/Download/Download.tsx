@@ -143,6 +143,9 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     for (const f of zipList.files) {
       const fileInfo = files[f.map][dlRes][f.fmt]
       fsize += fileInfo.size
+      if (f.map === 'gltf') {
+        fsize += files[f.map][dlRes][f.fmt].include[`${assetID}.bin`].size
+      }
     }
   }
 
@@ -198,6 +201,14 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
           size: fileInfo.size,
           path: basePath + urlBaseName(fileInfo.url)
         })
+        if (f.map === 'gltf') {
+          const binInfo = fileInfo.include[`${assetID}.bin`]
+          dlFiles.push({
+            url: binInfo.url,
+            size: binInfo.size,
+            path: basePath + urlBaseName(binInfo.url)
+          })
+        }
       }
     }
     startDownload(name, dlFiles)
