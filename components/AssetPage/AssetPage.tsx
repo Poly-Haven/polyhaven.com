@@ -26,6 +26,7 @@ import UserRenders from './UserRenders';
 import InfoItem from './InfoItem'
 import Sponsor from './Sponsor'
 import GLTFViewer from './WebGL/GLTFViewer'
+import TilePreview from './WebGL/TilePreview'
 
 import styles from './AssetPage.module.scss'
 import ErrorBoundary from 'utils/ErrorBoundary';
@@ -44,6 +45,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const [activeImage, setActiveImage] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`)
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
+  const [showTilePreview, setShowTilePreview] = useState(false)
   const [hideSidebar, setHideSidebar] = useState(true);
 
   const authors = Object.keys(data.authors).sort()
@@ -114,6 +116,11 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const clickShowWebGL = _ => {
     setShowWebGL(true)
     setActiveImageSrc('webGL')
+  }
+
+  const clickShowTilePreview = _ => {
+    setShowTilePreview(true)
+    setActiveImageSrc('tile')
   }
 
   return (
