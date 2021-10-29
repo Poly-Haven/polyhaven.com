@@ -8,10 +8,38 @@
   background-color: $c-background;
 }
 
+.image {
+  @include absolute_cover;
+  @include center;
+  background-position: 50% 50%;
+}
+
+.noTile {
+  background-repeat: no-repeat;
+}
+
+.grid {
+  @extend .image;
+  opacity: 0.3;
+}
+
+.loading {
+  @include absolute_cover;
+  @include center;
+  @include text-shadow;
+}
+
 .buttons {
   @include flex(row);
   gap: 0.5em;
   position: absolute;
   right: 0.8em;
   bottom: 0.5em;
+
+  p {
+    font-size: 1rem;
+    margin: auto;
+    font-weight: bold;
+    text-align: right;
+  }
 }

@@ -45,7 +45,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const [activeImage, setActiveImage] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`)
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
-  const [showTilePreview, setShowTilePreview] = useState(false)
+  const [showTilePreview, setShowTilePreview] = useState("")
   const [hideSidebar, setHideSidebar] = useState(true);
 
   const authors = Object.keys(data.authors).sort()
@@ -97,30 +97,37 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const clickSimilar = () => {
     setPageLoading(true)
     setShowWebGL(false)
+    setShowTilePreview('')
   }
 
   const setPreviewImage = (src) => {
-    setImageLoading(true)
+    if (!activeImage.startsWith(src)) {
+      setImageLoading(true)
+    }
     setActiveImageSrc(src)
     if (src.startsWith("https://cdn.polyhaven.com/")) {
       src += "?height=780"
     }
     setActiveImage(src)
+    setShowTilePreview('')
   }
   const imageLoaded = (e) => {
     setImageLoading(false)
     setPageLoading(false)
     setShowWebGL(false)
+    setShowTilePreview('')
   }
 
   const clickShowWebGL = _ => {
     setShowWebGL(true)
+    setShowTilePreview('')
     setActiveImageSrc('webGL')
   }
 
-  const clickShowTilePreview = _ => {
-    setShowTilePreview(true)
-    setActiveImageSrc('tile')
+  const clickShowTilePreview = src => {
+    setShowTilePreview(src)
+    setShowWebGL(false)
+    setActiveImageSrc(src)
   }
 
   return (
@@ -150,12 +157,19 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
                 <GLTFViewer show={showWebGL} assetID={assetID} files={files} />
               </ErrorBoundary>
             }
+            {data.type !== 0 && showTilePreview ?
+              <TilePreview
+                image={showTilePreview}
+                resolutions={Object.keys(files['blend'])}
+                type={data.type}
+              />
+              : null}
             <div className={`${styles.loading} ${!imageLoading ? styles.hidden : null}`}>
               <Spinner />
             </div>
           </div>
           <div className={styles.carousel}>
-            <Carousel slug={assetID} data={renders} files={files} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} active={activeImageSrc} />
+            <Carousel slug={assetID} data={renders} files={files} assetType={data.type} setter={setPreviewImage} showWebGL={clickShowWebGL} showTilePreview={clickShowTilePreview} active={activeImageSrc} />
           </div>
         </div>
         <div className={styles.similar}>

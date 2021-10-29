@@ -6,7 +6,7 @@ import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) => {
+const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePreview, active }) => {
   let images = {
     "Preview": `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -55,6 +55,10 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) =
     setter(e.currentTarget.dataset.src)
   }
 
+  const clickMap = (e) => {
+    showTilePreview(e.currentTarget.dataset.src)
+  }
+
   return (
     <div className={styles.imageRow}>
       <div className={`${styles.iconBtn} ${active === 'webGL' ? styles.activeImage : ''}`}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
@@ -82,7 +86,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, active }) =
             key={k2}
             data-src={maps[m]}
             title={m}
-            onClick={clickImage}
+            onClick={clickMap}
             className={`${styles.image} ${active === maps[m] ? styles.activeImage : ''}`}
           >
             <img src={maps[m].replace("https://dl.polyhaven.org/", "https://dl.polyhaven.org/cdn-cgi/image/width=50,height=50,fit=crop,format=auto,sharpen=1/")} />
