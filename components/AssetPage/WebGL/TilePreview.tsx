@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import useDivSize from 'hooks/useDivSize';
 
@@ -12,10 +12,17 @@ import styles from './TilePreview.module.scss'
 const TilePreview = ({ image, resolutions, type }) => {
   const [zoom, setZoom] = useState(1)
   const [grid, setGrid] = useState(false)
+  const [drag, setDrag] = useState(false)
+  const [offsetStart, setOffsetStart] = useState([0, 0])
+  const [offset, setOffset] = useState([0, 0])
+
   const wrapperRef = useRef(null)
   const { width, height } = useDivSize(wrapperRef)
-
   const startRes = Math.min(width, height)
+
+  useEffect(() => {
+    setOffset([startRes / -2, startRes / -2])
+  }, [startRes])
 
   const zoomFactor = 1.259921 // This value means we double resolution every 3 steps.
 
@@ -24,11 +31,24 @@ const TilePreview = ({ image, resolutions, type }) => {
   let displayedResolution = resList.reduce((prev, curr) => Math.abs(curr - scale) < Math.abs(prev - scale) ? curr : prev);
   const prevResolution = resList[Math.max(0, resList.indexOf(displayedResolution) - 1)]
   const bgSize = startRes * zoom
+  const bgPosition = `${(width / 2) + offset[0] * zoom}px ${(height / 2) + offset[1] * zoom}px`
+
+  const startDrag = e => {
+    setOffsetStart([e.pageX - offset[0] * zoom, e.pageY - offset[1] * zoom])
+    setDrag(true)
+  }
+  const endDrag = e => {
+    setDrag(false)
+  }
+  const mouseMove = e => {
+    if (drag) {
+      setOffset([(e.pageX - offsetStart[0]) / zoom, (e.pageY - offsetStart[1]) / zoom])
+    }
+  }
 
   const imageAtRes = (image, res) => {
     image = image.replace(/\/jpg\/1k\//g, `/jpg/${res}k/`)
     image = image.replace(/_1k\.jpg/g, `_${res}k.jpg`)
-    console.log(image)
     return image
   }
 
@@ -36,10 +56,14 @@ const TilePreview = ({ image, resolutions, type }) => {
     <div className={styles.wrapper} ref={wrapperRef}>
 
       {/* Base of lower resolution image, seen when next resolution is loading */}
-      <div className={`${styles.image} ${type !== 1 ? styles.noTile : ''}`} style={{
-        backgroundImage: `url(${imageAtRes(image, prevResolution)})`,
-        backgroundSize: bgSize,
-      }} />
+      <div
+        className={`${styles.image} ${type !== 1 ? styles.noTile : ''}`}
+        style={{
+          backgroundImage: `url(${imageAtRes(image, prevResolution)})`,
+          backgroundSize: bgSize,
+          backgroundPosition: bgPosition,
+        }}
+      />
 
       <div className={styles.loading}>
         <div>
@@ -49,26 +73,36 @@ const TilePreview = ({ image, resolutions, type }) => {
       </div>
 
       {/* Actual image at optimal resolution */}
-      <div className={`${styles.image} ${type !== 1 ? styles.noTile : ''}`} style={{
-        backgroundImage: `url(${imageAtRes(image, displayedResolution)})`,
-        backgroundSize: bgSize,
-      }} />
+      <div
+        className={`${styles.image} ${type !== 1 ? styles.noTile : ''}`}
+        style={{
+          backgroundImage: `url(${imageAtRes(image, displayedResolution)})`,
+          backgroundSize: bgSize,
+          backgroundPosition: bgPosition,
+        }}
+        onMouseDown={startDrag}
+        onMouseUp={endDrag}
+        onMouseLeave={endDrag}
+        onMouseMove={mouseMove}
+      />
 
       {/* Tiling grid */}
       {grid ?
         <div className={styles.grid} style={{
           backgroundImage: `url(/images/tile_preview_grid.png)`,
           backgroundSize: bgSize,
+          backgroundPosition: bgPosition,
         }} />
         : null}
 
       <div className={styles.buttons}>
         {/* <p>resList:<br />{resList.join('/')}</p>
         <p>Res:<br />{displayedResolution}</p>
-        <p>Prev Res:<br />{prevResolution}</p>
+        <p>Prev Res:<br />{prevResolution}</p> */}
         <p>Zoom:<br />{zoom.toFixed(2)}</p>
         <p>Scale:<br />{(startRes / 1024 * zoom).toFixed(2)}</p>
-        <p>Size:<br />{bgSize.toFixed(2)}</p> */}
+        {/* <p>Size:<br />{bgSize.toFixed(2)}</p> */}
+        <p>{offset.map(v => v.toFixed(2)).join(', ')}</p>
         {grid && zoom > 1.5 ? <p>You may need to zoom out to<br />see the tiling preview grid</p> : null}
         {type === 1 ?
           <IconButton icon={<MdGridOn />} onClick={_ => setGrid(!grid)} active={grid} />

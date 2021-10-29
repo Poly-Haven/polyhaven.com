@@ -11,7 +11,6 @@
 .image {
   @include absolute_cover;
   @include center;
-  background-position: 50% 50%;
 }
 
 .noTile {
@@ -21,6 +20,7 @@
 .grid {
   @extend .image;
   opacity: 0.3;
+  pointer-events: none;
 }
 
 .loading {
