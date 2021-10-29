@@ -10,9 +10,10 @@ import IconButton from "components/UI/Button/IconButton";
 import styles from './TilePreview.module.scss'
 
 const TilePreview = ({ image, resolutions, type }) => {
-  const [zoom, setZoom] = useState(1)
+  const [zoom, setZoomState] = useState(1)
   const [grid, setGrid] = useState(false)
   const [drag, setDrag] = useState(false)
+  const [dragZoom, setDragZoom] = useState(false)
   const [offsetStart, setOffsetStart] = useState([0, 0])
   const [offset, setOffset] = useState([0, 0])
 
@@ -33,17 +34,37 @@ const TilePreview = ({ image, resolutions, type }) => {
   const bgSize = startRes * zoom
   const bgPosition = `${(width / 2) + offset[0] * zoom}px ${(height / 2) + offset[1] * zoom}px`
 
+  const setZoom = z => {
+    setZoomState(Math.min(200, Math.max(0.1, z)))
+  }
+
   const startDrag = e => {
-    setOffsetStart([e.pageX - offset[0] * zoom, e.pageY - offset[1] * zoom])
-    setDrag(true)
+    if (e.button === 0) { // Left click
+      setOffsetStart([e.pageX - offset[0] * zoom, e.pageY - offset[1] * zoom])
+      setDrag(true)
+    }
+    if (e.button === 2) { // Right click
+      setOffsetStart([e.pageX, e.pageY])
+      setDragZoom(true)
+    }
   }
   const endDrag = e => {
     setDrag(false)
+    setDragZoom(false)
   }
   const mouseMove = e => {
     if (drag) {
       setOffset([(e.pageX - offsetStart[0]) / zoom, (e.pageY - offsetStart[1]) / zoom])
     }
+    if (dragZoom) {
+      setOffsetStart([e.pageX, e.pageY])
+      const mult = (e.pageX - offsetStart[0]) * zoom
+      setZoom(zoom + mult / 200)
+    }
+  }
+
+  const disableContextMenu = e => {
+    e.preventDefault();
   }
 
   const imageAtRes = (image, res) => {
@@ -84,6 +105,7 @@ const TilePreview = ({ image, resolutions, type }) => {
         onMouseUp={endDrag}
         onMouseLeave={endDrag}
         onMouseMove={mouseMove}
+        onContextMenu={disableContextMenu}
       />
 
       {/* Tiling grid */}
@@ -96,13 +118,13 @@ const TilePreview = ({ image, resolutions, type }) => {
         : null}
 
       <div className={styles.buttons}>
-        {/* <p>resList:<br />{resList.join('/')}</p>
-        <p>Res:<br />{displayedResolution}</p>
-        <p>Prev Res:<br />{prevResolution}</p> */}
-        <p>Zoom:<br />{zoom.toFixed(2)}</p>
-        <p>Scale:<br />{(startRes / 1024 * zoom).toFixed(2)}</p>
+        {/* <p>resList:<br />{resList.join('/')}</p> */}
+        {/* <p>Res:<br />{displayedResolution}</p> */}
+        {/* <p>Prev Res:<br />{prevResolution}</p> */}
+        {/* <p>Zoom:<br />{zoom.toFixed(2)}</p> */}
+        {/* <p>Scale:<br />{(startRes / 1024 * zoom).toFixed(2)}</p> */}
         {/* <p>Size:<br />{bgSize.toFixed(2)}</p> */}
-        <p>{offset.map(v => v.toFixed(2)).join(', ')}</p>
+        {/* <p>{offset.map(v => v.toFixed(2)).join(', ')}</p> */}
         {grid && zoom > 1.5 ? <p>You may need to zoom out to<br />see the tiling preview grid</p> : null}
         {type === 1 ?
           <IconButton icon={<MdGridOn />} onClick={_ => setGrid(!grid)} active={grid} />
