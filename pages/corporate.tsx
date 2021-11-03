@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import fs from 'fs'
-import path from 'path'
 import Markdown from 'markdown-to-jsx';
 import CSS from 'csstype'
 import { subMonths, startOfMonth, endOfMonth, differenceInYears } from 'date-fns'
@@ -222,8 +220,9 @@ export async function getStaticProps(context) {
     .catch(e => error = e)
 
   // Text
-  const fp = path.join(process.cwd(), 'constants/corporate_details.md')
-  const details = fs.readFileSync(fp, 'utf8')
+  const details = await fetch(`${baseUrl}/text/corporate_details`)
+    .then(response => response.json())
+    .catch(e => error = e)
 
   if (error) {
     return {
@@ -238,7 +237,7 @@ export async function getStaticProps(context) {
       numPatrons: patrons.length,
       numDiamond: diamondSponsors.length,
       numGold: goldSponsors.length,
-      details,
+      details: details.content,
       monthlyDownloads,
       traffic
     },
