@@ -52,6 +52,7 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
     "2021-06-15": "Launch of polyhaven.com.",
     "2021-07-13": "texturehaven.com and 3dmodelhaven.com redirected to polyhaven.com.",
     "2021-07-19": `hdrihaven.com redirected to polyhaven.com. Any HDRI downloads before this date were tracked from the old site, using the new site's API. The spike in "unique" downloads (users) is due to the new site using consent-driven UUIDs instead of raw IP addresses.`,
+    "2021-10-28": `API downtime causing inconsistent download tracking for the next week.`,
   }
   // Remove notes not in displayed date range
   for (const d of Object.keys(notes)) {
