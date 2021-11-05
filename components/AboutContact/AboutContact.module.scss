@@ -22,5 +22,9 @@
   @include flex(row, true, true);
   flex-wrap: wrap;
   text-align: center;
-  padding: 3rem 0 1rem;
+  padding: 3rem 3rem 1rem;
+
+  @media screen and (max-width: 970px) {
+    padding: 3rem 0 1rem;
+  }
 }

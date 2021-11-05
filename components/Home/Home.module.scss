@@ -250,9 +250,9 @@
   .dummy {
     visibility: hidden;
     display: inline-block;
-    width: 150px;
+    width: 75px;
     height: 150px;
-    margin: 0.2rem;
+    margin: 0.1rem;
     border-radius: 50%;
     @include transition;
   }

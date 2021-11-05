@@ -26,6 +26,8 @@ const AboutPage = () => {
         <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="full" />
         <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="full" />
         <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="full" />
+        <Staff id="Dimitrios Savva" name="Dimitrios Savva" role="Textures, HDRIs" country="ZA" mode="full" />
+        <Staff id="Jurita Burger" name="Jurita Burger" role="Graphic Design" country="ZA" mode="full" />
       </div>
 
       <CorporateSponsors header="Corporate Sponsors:" />

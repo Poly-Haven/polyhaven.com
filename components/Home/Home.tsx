@@ -155,12 +155,15 @@ const Home = () => {
                 <Staff id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" country="ZA" mode="compact" />
                 <Staff id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" country="NL" mode="compact" />
                 <Staff id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" country="ZA" mode="compact" />
+                <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="compact" />
                 <div className={styles.dummy} />
               </div>
               <div className={styles.avatarRow}>
-                <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="compact" />
+                <div className={styles.dummy} />
                 <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="compact" />
                 <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="compact" />
+                <Staff id="Dimitrios Savva" name="Dimitrios Savva" role="Textures, HDRIs" country="ZA" mode="compact" />
+                <Staff id="Jurita Burger" name="Jurita Burger" role="Graphic Design" country="ZA" mode="compact" />
               </div>
             </div>
           </div>
