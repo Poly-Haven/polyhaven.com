@@ -48,7 +48,9 @@ export function catColor(t) {
     "Insurance": `#9E9E9E`,
     "Bank Charges": `#BDBDBD`,
     "Subscription Fees": `#f44336`,
-    "Service Fees": `#78909C`
+    "Service Fees": `#78909C`,
+    "Catering & Events": `#8BC34A`,
+    "BlenderKit": `#6434ff`,
   }
   return colors[t] || `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`
 }
