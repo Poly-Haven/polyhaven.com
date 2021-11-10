@@ -241,7 +241,7 @@ export async function getStaticProps(context) {
       monthlyDownloads,
       traffic
     },
-    revalidate: 60 * 30 // 30 minutes
+    revalidate: 1800
   }
 }
 
