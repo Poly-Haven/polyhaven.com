@@ -1,0 +1,57 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include flex(column, true, true);
+  background: $c-background-lightish;
+  border: 1px solid $c-background-light;
+}
+
+.topText,
+.bottomText {
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+  text-align: center;
+}
+
+.topText {
+  @include flex(row, true, true);
+
+  img {
+    height: 1.5em;
+    padding-right: 0.3em;
+  }
+
+  .pause {
+    color: $c-text-light;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    opacity: 0.5;
+    @include transition;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.bottomText {
+  background: $c-accent;
+  color: $c-text-bright;
+  @include transition;
+
+  &:hover {
+    background: $c-accent-light;
+  }
+}
+
+.img {
+  @include center;
+}
+
+.spacer {
+  flex-grow: 1;
+}
