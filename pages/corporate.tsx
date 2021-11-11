@@ -82,9 +82,9 @@ const Corporate = (props) => {
             display: 'grid',
             gridTemplateColumns: "repeat(2, 1fr)",
           }}>
-            {props.traffic && <StatBlock head={`${(props.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />}
+            <StatBlock head={`${(props.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
             <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
-            {props.traffic && <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />}
+            <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
             <StatBlock head={props.numPatrons} text="Patrons" />
           </div>
           <p
@@ -238,8 +238,8 @@ export async function getStaticProps(context) {
       numDiamond: diamondSponsors.length,
       numGold: goldSponsors.length,
       details: details.content,
-      monthlyDownloads: monthlyDownloads,
-      traffic: traffic,
+      monthlyDownloads,
+      traffic
     },
     revalidate: 1800
   }
