@@ -32,7 +32,7 @@ export async function getStaticProps(context) {
   const msPerDay = 24 * 60 * 60 * 1000
   const today = new Date().toISOString().split('T')[0]
   const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
-  const threeMonthsAgo = new Date(Date.now() - (91 * msPerDay)).toISOString().split('T')[0]
+  const threeMonthsAgo = new Date(Date.now() - ((91 + 6) * msPerDay)).toISOString().split('T')[0]
 
   // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`

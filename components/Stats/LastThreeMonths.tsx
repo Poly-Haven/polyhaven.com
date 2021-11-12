@@ -21,6 +21,7 @@ interface DayStats {
     hdris: number,
     textures: number,
     models: number,
+    total: number,
   }
 }
 
@@ -37,11 +38,23 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
   let days: Partial<DayStats> = {}
   for (const [type, stats] of Object.entries(data)) {
     for (const day of stats) {
-      days[day.day] = days[day.day] || { hdris: 0, textures: 0, models: 0 }
-      days[day.day][type] = day.unique
+      const v = day.unique
+      days[day.day] = days[day.day] || { hdris: 0, textures: 0, models: 0, total: 0 }
+      days[day.day][type] = v
+      days[day.day].total += v
     }
   }
+  let rollingAverage = Array(7).fill(0) // 7 day rolling average
+  const average = (array) => Math.round(array.reduce((a, b) => a + b) / array.length);
+  for (const stats of Object.values(days)) {
+    rollingAverage.shift()
+    rollingAverage.push(stats.total)
+    stats['7d average total'] = average(JSON.parse(JSON.stringify(rollingAverage)))
+  }
+  let i = 0;
   for (const [day, stats] of Object.entries(days)) {
+    i++;
+    if (i < 7) continue // Remove first week since the rolling average isn't complete yet.
     graphData.push({
       day: day,
       ...stats
@@ -92,7 +105,8 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
               itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={0} />)}
+            <Area type="monotone" dataKey="7d average total" stroke="rgb(190, 111, 255)" strokeWidth={1.5} fill="transparent" animationDuration={0} />
+            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} fillOpacity={0.75} animationDuration={0} />)}
 
             {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
           </AreaChart>

@@ -61,7 +61,7 @@ const RelativeType = ({ data }: { data: DataSet }) => {
               itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} strokeWidth={0.5} fill={colors[a]} animationDuration={0} />)}
+            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} strokeWidth={0.5} fill={colors[a]} fillOpacity={0.75} animationDuration={0} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>
