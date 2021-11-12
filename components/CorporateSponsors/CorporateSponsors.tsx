@@ -26,27 +26,27 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
   return (
     <div className={styles.wrapper}>
       <h2>{header}{!hideInfoBtn && <Link href="/corporate"><a><MdInfoOutline /></a></Link>}</h2>
-      <div className={styles.groupDiamond}>
+      {diamondSponsors.length ? <div className={styles.groupDiamond}>
         {diamondSponsors.map(id => {
           return (
             <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
-      </div>
-      <div className={styles.groupGold}>
+      </div> : null}
+      {goldSponsors.length ? <div className={styles.groupGold}>
         {goldSponsors.map(id => {
           return (
             <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
-      </div>
-      <div className={styles.groupSilver}>
+      </div> : null}
+      {silverSponsors.length ? <div className={styles.groupSilver}>
         {silverSponsors.map(id => {
           return (
             <CorporateSponsorLogo key={id} id={id} data={data[id]} />
           )
         })}
-      </div>
+      </div> : null}
     </div>
   )
 }
