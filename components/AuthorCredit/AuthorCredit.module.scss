@@ -15,6 +15,15 @@
     @include flex(column, true, true);
     line-height: 1em;
 
+    a strong {
+      color: $c-text-light;
+      @include transition;
+
+      &:hover {
+        color: $c-accent;
+      }
+    }
+
     .credit {
       font-size: 0.8em;
       font-style: italic;

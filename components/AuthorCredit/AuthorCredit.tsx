@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
 import Heart from 'components/Heart/Heart'
@@ -29,13 +31,19 @@ const AuthorCredit = ({ id, size, credit }) => {
     donate = paypalEmailToLink(donate.slice('paypal:'.length), "Poly Haven: " + name)
   }
 
+  const assetLink = `/all?a=${id}`
+
   return (
     <div className={styles.author}>
-      <div className={styles.avatar}>
-        <Avatar id={id} size={50} />
-      </div>
+      <Link href={assetLink} prefetch={false}>
+        <a className={styles.avatar}>
+          <Avatar id={id} size={50} />
+        </a>
+      </Link>
       <div className={styles.name}>
-        <strong>{id}</strong>
+        <Link href={assetLink} prefetch={false}>
+          <a><strong>{id}</strong></a>
+        </Link>
         {credit ? <span className={styles.credit}>{credit}</span> : ""}
         <div className={styles.links}>
           {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
