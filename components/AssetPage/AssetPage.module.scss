@@ -125,6 +125,37 @@
       gap: 0.25em;
     }
 
+    .infoBlocks {
+      @include flex(row, true, true);
+      flex-wrap: wrap;
+    }
+    .infoBlock {
+      @include flex(column, true, true);
+      margin: 0.5rem;
+      margin-top: 0;
+
+      strong {
+        font-size: 1.1em;
+        opacity: 0.9;
+        line-height: 1;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.8em;
+      }
+    }
+    a.infoBlock {
+      color: $c-text-light;
+      box-shadow: 0 1px 0 rgba($c-text-light, 0.3);
+      @include transition();
+
+      &:hover {
+        color: $c-accent;
+        box-shadow: 0 3px 0 $c-accent;
+      }
+    }
+
     .tagsList {
       display: inline;
 

@@ -10,7 +10,7 @@ import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 import { getPatronInfo } from 'utils/patronInfo';
 
-import { MdFileDownload, MdLastPage } from "react-icons/md";
+import { MdFileDownload, MdLastPage, MdLocationOn } from "react-icons/md";
 
 import AssetDlGraph from "components/Stats/AssetDlGraph";
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
@@ -21,6 +21,7 @@ import GLTFViewer from './WebGL/GLTFViewer'
 import Heart from 'components/Heart/Heart'
 import IconButton from "components/UI/Button/IconButton";
 import InfoItem from './InfoItem'
+import InfoBlock from "./InfoBlock";
 import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
 import Spinner from 'components/Spinner/Spinner'
@@ -55,6 +56,10 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const monthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
   const isOlderThanFourDays = (Date.now() - data.date_published * 1000) > (4 * msPerDay)
+  const age = timeago(data.date_published * 1000)
+  const ageParts = age.split(' ')
+  const ageValue = age === 'Today' ? 'New' : ageParts.shift()
+  const ageLabel = age === 'Today' ? 'Today' : ageParts.join(' ')
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -207,30 +212,14 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               </div>
             </div> : null}
 
-            <InfoItem label="License">
-              <Link href="/license">CC0</Link> (public domain)
-            </InfoItem>
-            <InfoItem label="Published">
-              <span data-tip={new Date(data.date_published * 1000).toLocaleString("en-ZA")}>
-                {timeago(data.date_published * 1000)}
-              </span>
-            </InfoItem>
-            <InfoItem label="Dynamic Range" condition={Boolean(data.evs_cap)}>
-              {data.evs_cap} <Link href="/faq#stops">EVs</Link>, unclipped
-            </InfoItem>
-            <InfoItem label="Scale" condition={Boolean(data.scale)}>
-              {data.scale}
-            </InfoItem>
-            {/* Hiding this for now as the info is always in the wrong timezone. */}
-            {/* <InfoItem label="Captured" condition={Boolean(data.date_taken)}>
-              {new Date(data.date_taken * 1000).toLocaleString("en-ZA")}
-            </InfoItem> */}
-            <InfoItem label="Location" condition={Boolean(data.coords)}>
-              {data.coords ? data.coords.join(', ') : null}
-            </InfoItem>
-            <InfoItem label="Whitebalance" condition={Boolean(data.whitebalance)}>
-              {data.whitebalance}K
-            </InfoItem>
+            <div className={styles.infoBlocks}>
+              <InfoBlock value="CC0" label="License" link="/license" tip="Use for any purpose, including commercial.<br/>Click for more info." />
+              <InfoBlock value={ageValue} label={ageLabel} tip={new Date(data.date_published * 1000).toLocaleString("en-ZA")} />
+              <InfoBlock value={data.evs_cap} label="EVs" condition={Boolean(data.evs_cap)} tip={`${data.evs_cap} EVs of dynamic range captured. Unclipped.`} />
+              <InfoBlock value={`${data.whitebalance}K`} label="WB" condition={Boolean(data.whitebalance)} tip="Whitebalance" />
+              <InfoBlock value={<MdLocationOn />} label="GPS" condition={Boolean(data.coords)} link={data.coords ? `https://www.google.com/maps/place/${data.coords.join('+')}` : null} />
+            </div>
+
             <InfoItem label="Downloads" condition={Boolean(data.download_count)} flex>
               <span data-tip={`${Math.round(data.download_count / daysOld)} per day`}>{data.download_count}</span>
               {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
