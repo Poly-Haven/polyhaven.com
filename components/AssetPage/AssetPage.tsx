@@ -53,6 +53,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
 
   const msPerDay = 24 * 60 * 60 * 1000
   const monthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
+  const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
   const isOlderThanFourDays = (Date.now() - data.date_published * 1000) > (4 * msPerDay)
 
   const toggleSidebar = () => {
@@ -231,7 +232,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               {data.whitebalance}K
             </InfoItem>
             <InfoItem label="Downloads" condition={Boolean(data.download_count)} flex>
-              {data.download_count}
+              <span title={`${Math.round(data.download_count / daysOld)} per day`}>{data.download_count}</span>
               {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
             </InfoItem>
 

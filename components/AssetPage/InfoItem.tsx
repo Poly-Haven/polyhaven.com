@@ -1,4 +1,3 @@
-
 import styles from './AssetPage.module.scss'
 
 const InfoItem = ({ label, condition, flex, children }) => {
