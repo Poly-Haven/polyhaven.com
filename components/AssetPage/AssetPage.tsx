@@ -12,21 +12,21 @@ import { getPatronInfo } from 'utils/patronInfo';
 
 import { MdFileDownload, MdLastPage } from "react-icons/md";
 
-import Page from 'components/Layout/Page/Page'
-import DisplayAd from 'components/Ads/DisplayAd';
+import AssetDlGraph from "components/Stats/AssetDlGraph";
 import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
-import Spinner from 'components/Spinner/Spinner'
+import Carousel from './Carousel/Carousel'
+import DisplayAd from 'components/Ads/DisplayAd';
+import Download from './Download/Download'
+import GLTFViewer from './WebGL/GLTFViewer'
 import Heart from 'components/Heart/Heart'
 import IconButton from "components/UI/Button/IconButton";
-import AssetDlGraph from "components/Stats/AssetDlGraph";
-import Carousel from './Carousel/Carousel'
-import Download from './Download/Download'
-import Similar from './Similar/Similar'
-import UserRenders from './UserRenders';
 import InfoItem from './InfoItem'
+import Page from 'components/Layout/Page/Page'
+import Similar from './Similar/Similar'
+import Spinner from 'components/Spinner/Spinner'
 import Sponsor from './Sponsor'
-import GLTFViewer from './WebGL/GLTFViewer'
 import TilePreview from './WebGL/TilePreview'
+import UserRenders from './UserRenders';
 
 import styles from './AssetPage.module.scss'
 import ErrorBoundary from 'utils/ErrorBoundary';
