@@ -156,12 +156,23 @@
       }
     }
 
+    .tagsListWrapper {
+      flex-grow: 1;
+      overflow: hidden;
+    }
     .tagsList {
       display: inline;
+      overflow: hidden;
+      white-space: nowrap;
 
       a {
         box-shadow: none;
       }
+    }
+    .wrap {
+      display: inline;
+      overflow: auto;
+      white-space: initial;
     }
 
     .tag {
@@ -172,12 +183,20 @@
       border: 1px solid rgba($c-accent, 0.5);
       font-size: 0.75em;
       color: $c-text-light;
+      white-space: nowrap;
       @include transition();
 
       &:hover {
         background: $c-accent;
         color: white;
       }
+    }
+    .expand {
+      @extend .tag;
+      margin-left: -1em;
+      background-color: $c-background-dark;
+      box-shadow: 0 0 20px 13px $c-background-dark;
+      cursor: pointer;
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useUser } from '@auth0/nextjs-auth0';
 import dynamic from 'next/dynamic'
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
 
+import useDivSize from 'hooks/useDivSize';
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 import { getPatronInfo } from 'utils/patronInfo';
@@ -26,6 +27,7 @@ import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
 import Spinner from 'components/Spinner/Spinner'
 import Sponsor from './Sponsor'
+import TagsList from "./TagsList";
 import TilePreview from './WebGL/TilePreview'
 import UserRenders from './UserRenders';
 
@@ -48,6 +50,8 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const [showWebGL, setShowWebGL] = useState(false)
   const [showTilePreview, setShowTilePreview] = useState("")
   const [hideSidebar, setHideSidebar] = useState(true);
+  const widthRef = useRef(null)
+  const { width: sidebarWidth } = useDivSize(widthRef)
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1;
@@ -229,24 +233,10 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             <Sponsor assetID={assetID} sponsors={data.sponsors} patron={patron} />
             <div className={styles.spacer} />
 
-            <InfoItem label="Categories">
-              <div className={styles.tagsList}>
-                {data.categories.map(i =>
-                  <Link href={`/${Object.keys(asset_types)[data.type]}/${i}`} key={i}><a>
-                    <div className={styles.tag}>{i}</div>
-                  </a></Link>
-                )}
-              </div>
-            </InfoItem>
-            <InfoItem label="Tags">
-              <div className={styles.tagsList}>
-                {data.tags.map(i =>
-                  <Link href={`/${Object.keys(asset_types)[data.type]}?s=${i}`} key={i}><a>
-                    <div className={styles.tag}>{i}</div>
-                  </a></Link>
-                )}
-              </div>
-            </InfoItem>
+            <div ref={widthRef}>
+              <TagsList label="Categories" list={data.categories} linkPrefix={`/${Object.keys(asset_types)[data.type]}/`} width={sidebarWidth} />
+              <TagsList label="Tags" list={data.tags} linkPrefix={`/${Object.keys(asset_types)[data.type]}?s=`} width={sidebarWidth} />
+            </div>
           </div>
         </div>
 
