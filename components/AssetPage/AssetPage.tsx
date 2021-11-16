@@ -198,7 +198,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               <div className={styles.authors}>
                 {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
               </div>
-              {data.donated ? <div className={styles.heart} title="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
+              {data.donated ? <div className={styles.heart} data-tip="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
             </InfoItem>
 
             {data.info ? <div>
@@ -211,7 +211,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               <Link href="/license">CC0</Link> (public domain)
             </InfoItem>
             <InfoItem label="Published">
-              <span title={new Date(data.date_published * 1000).toLocaleString("en-ZA")}>
+              <span data-tip={new Date(data.date_published * 1000).toLocaleString("en-ZA")}>
                 {timeago(data.date_published * 1000)}
               </span>
             </InfoItem>
@@ -232,7 +232,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               {data.whitebalance}K
             </InfoItem>
             <InfoItem label="Downloads" condition={Boolean(data.download_count)} flex>
-              <span title={`${Math.round(data.download_count / daysOld)} per day`}>{data.download_count}</span>
+              <span data-tip={`${Math.round(data.download_count / daysOld)} per day`}>{data.download_count}</span>
               {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
             </InfoItem>
 
