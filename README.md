@@ -33,3 +33,9 @@ However, unless you set up your own Firestore database that mimicks ours, you li
 Need help building the site? The best way to get in touch is on Discord: https://discord.gg/Dms7Mrs
 
 Otherwise you're welcome to create an issue, [email us](https://polyhaven.com/about-contact), whatever :)
+
+----
+
+![Powered by vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)
+
+[Vercel](https://vercel.com/?utm_source=polyhaven&utm_campaign=oss) sponsors the hosting of polyhaven.com's front-end.
