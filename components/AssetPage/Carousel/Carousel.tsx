@@ -1,6 +1,7 @@
 import { Md3DRotation } from 'react-icons/md'
 
 import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
+import { urlBaseName } from 'utils/stringUtils'
 
 import IconButton from 'components/UI/Button/IconButton'
 
@@ -89,7 +90,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
             onClick={clickMap}
             className={`${styles.image} ${active === maps[m] ? styles.activeImage : ''}`}
           >
-            <img src={maps[m].replace("https://dl.polyhaven.org/", "https://dl.polyhaven.org/cdn-cgi/image/width=50,height=50,fit=crop,format=auto,sharpen=1/")} />
+            <img src={`https://cdn.polyhaven.com/asset_img/map_previews/${slug}/${urlBaseName(maps[m])}?height=50&width=50`} />
           </div>)
         }</div>
         )
