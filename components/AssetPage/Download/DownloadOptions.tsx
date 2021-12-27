@@ -11,6 +11,7 @@ import IconPatreon from 'components/UI/Icons/Patreon'
 import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortCaseInsensitive, sortByPreference } from 'utils/arrayUtils'
+import threeDFormats from 'constants/3D_formats.json'
 
 import styles from './DownloadOptions.module.scss'
 
@@ -52,6 +53,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
       {
         "blend": 1,
         "gltf": 2,
+        "fbx": 3,
         "ANYTHING ELSE": 10,
       }
     )
@@ -63,7 +65,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
         {fmt === 'zip' ? <div className={styles.optionsHeader}>Choose ZIP contents:</div> : null}
         {type === 0 ? null : sortFiles(files).map((m, i) =>
-          !['blend', 'gltf'].includes(m) || fmt === 'zip' ?
+          !threeDFormats.includes(m) || fmt === 'zip' ?
             m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ?
               m !== 'nor_gl' || norMode === 'gl' || fmt === 'zip' ?
                 <DownloadMap

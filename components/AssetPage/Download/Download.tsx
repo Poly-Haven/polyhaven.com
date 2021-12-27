@@ -10,10 +10,12 @@ import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
 import IconBlender from 'components/UI/Icons/Blender'
 import IconGltf from 'components/UI/Icons/glTF'
+import IconFile from 'components/UI/Icons/File'
 import Tooltip from 'components/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
+import threeDFormats from 'constants/3D_formats.json'
 
 import styles from './Download.module.scss'
 
@@ -108,8 +110,13 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     },
     gltf: {
       label: "glTF",
-      tooltip: "glTF 2.0, supported by most 3D software.<br/>Includes all required texture maps.",
+      tooltip: "glTF 2.0, supported by some 3D software.<br/>Includes all required texture maps.",
       icon: <IconGltf />
+    },
+    fbx: {
+      label: "FBX",
+      tooltip: "Autodesk FBX, supported by most 3D software to some extent, but materials may need to be manually set up.",
+      icon: <IconFile text="F" />
     },
     zip: {
       label: "ZIP",
@@ -117,8 +124,11 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       icon: <GoFileZip />
     },
   };
-  if (!Object.keys(files).includes('gltf')) {
-    delete fmtOptions.gltf
+  const optionalFormats = ['gltf', 'fbx']
+  for (const f of optionalFormats) {
+    if (!Object.keys(files).includes(f)) {
+      delete fmtOptions[f]
+    }
   }
 
   const setFmtValue = v => {
@@ -194,7 +204,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       }
     } else {
       for (const f of zipList.files) {
-        const basePath = ['blend', 'gltf'].includes(f.fmt) ? "" : "textures/"
+        const basePath = threeDFormats.includes(f.fmt) ? "" : "textures/"
         const fileInfo = files[f.map][dlRes][f.fmt]
         dlFiles.push({
           url: fileInfo.url,
