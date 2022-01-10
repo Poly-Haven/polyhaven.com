@@ -1,4 +1,7 @@
 import Head from 'components/Head/Head'
+import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
+
+import { fixTzOffset, isoDay } from 'utils/dateUtils';
 
 import asset_types from 'constants/asset_types.json'
 
@@ -113,6 +116,24 @@ export async function getStaticProps(context) {
     resolutions[type] = tmp
   }
 
+  // Asset downloads
+  const now = new Date()
+  const monthAgo = subMonths(now, 1)
+  const dateFrom = isoDay(fixTzOffset(startOfMonth(monthAgo)))
+  const dateTo = isoDay(fixTzOffset(endOfMonth(monthAgo)))
+  const dailyDownloads = await fetch(`${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let monthlyDownloads = 0;
+  for (const day of dailyDownloads) {
+    monthlyDownloads += day.downloads
+  }
+
+  // Traffic
+  const traffic = await fetch(`${baseUrl}/stats/cfmonth`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   if (error) {
     return {
       props: {},
@@ -126,7 +147,9 @@ export async function getStaticProps(context) {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
         monthlyAssets,
-        resolutions
+        resolutions,
+        monthlyDownloads,
+        traffic,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day
