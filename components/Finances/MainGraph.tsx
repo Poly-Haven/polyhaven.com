@@ -5,14 +5,17 @@ import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils';
 
 import { FiArrowDownLeft, FiArrowUpRight, FiArrowRight } from 'react-icons/fi'
+import { MdStackedLineChart, MdShowChart } from 'react-icons/md'
 
 import Dropdown from 'components/UI/Dropdown/Dropdown';
 import Spinner from 'components/Spinner/Spinner'
+import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Finances.module.scss'
 
 const MainGraph = ({ data, currency, startingBalance }) => {
   const [mode, setMode] = useState('balance')
+  const [stack, setStack] = useState(true)
 
   if (!data) return <Spinner />
 
@@ -91,6 +94,14 @@ const MainGraph = ({ data, currency, startingBalance }) => {
           onChange={setMode}
         />
         <h2>{titleCase(modes[mode].label)} over time:</h2>
+        {mode !== 'balance' ?
+          <Switch
+            on={stack}
+            onClick={_ => { setStack(!stack) }}
+            labelOff={<MdShowChart />}
+            labelOn={<MdStackedLineChart />}
+          />
+          : null}
       </div>
       <div className={styles.mainGraph}>
         <ResponsiveContainer>
@@ -115,7 +126,7 @@ const MainGraph = ({ data, currency, startingBalance }) => {
               }}
               formatter={(value, name) => getCurrency(value, currency, {})}
             />
-            {Object.keys(areas).map((a, i) => <Area key={i} type={mode === 'balance' ? "monotone" : "linear"} dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} animationDuration={500} />)}
+            {Object.keys(areas).map((a, i) => <Area key={i} type={mode === 'balance' || !stack ? "monotone" : "linear"} dataKey={a} stackId={stack ? '1' : i} stroke={colors[a]} fill={colors[a]} animationDuration={500} fillOpacity={mode === 'balance' || stack ? 0.6 : 0} strokeWidth={mode === 'balance' || stack ? 0 : 3} />)}
           </AreaChart>
         </ResponsiveContainer>
       </div>
