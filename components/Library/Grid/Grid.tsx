@@ -173,7 +173,12 @@ const Grid = (props) => {
     <>
       <div className={styles.optionsBar} ref={optionsRef}>
         <div className={styles.gridHeader}>
-          <h1 className={styles['s' + fSize]}>{title}</h1>
+          <div className={styles.gridTitle}>
+            <h1 className={styles['s' + fSize]}>{title}</h1>
+            {props.author ?
+              <MdClose onClick={_ => props.setAuthor(undefined)} data-tip="Clear author" />
+              : null}
+          </div>
           <div className={styles.options}>
             <div className={styles.menuSelection}>
               <Disabled

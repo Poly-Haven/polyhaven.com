@@ -22,8 +22,32 @@
     row-gap: 0.5em;
     padding: 0 1rem;
 
-    h1 {
+    .gridTitle {
       flex-grow: 1;
+      @include flex(row, true, false);
+
+      svg {
+        border: 1px solid rgba($c-text-light, 0.3);
+        padding: 0.25rem;
+        border-radius: 50%;
+        line-height: 0;
+        flex-shrink: 0;
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+          background: rgba($c-text-light, 0.1);
+          transform: rotate(-90deg);
+          @include transition;
+        }
+
+        @media screen and (max-width: 810px) {
+          margin-right: 2.5em;
+          padding: 0.5rem;
+        }
+      }
+    }
+    h1 {
       padding: 0.4rem;
       margin: 0;
 
