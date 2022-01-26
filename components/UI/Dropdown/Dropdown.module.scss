@@ -133,9 +133,12 @@
       color: white;
     }
 
+    & * {
+      pointer-events: none;
+    }
+
     img,
     svg {
-      pointer-events: none;
       flex-shrink: 0;
       font-size: 1.4em;
       padding-right: 0.2em;

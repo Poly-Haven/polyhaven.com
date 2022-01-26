@@ -1,4 +1,6 @@
 import { useState, useEffect, useReducer } from "react";
+import { useRouter } from 'next/router'
+import Link from "next/link";
 import filesize from 'filesize'
 import { v4 as uuid } from 'uuid';
 
@@ -23,6 +25,7 @@ import styles from './Download.module.scss'
 declare const startDownload
 
 const Download = ({ assetID, data, files, setPreview, patron }) => {
+  const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [zipList, dispatch] = useReducer(reducer, { files: [] });
@@ -61,7 +64,13 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
 
   if (data.date_published * 1000 > Date.now()) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
-      return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}>Coming Soon!</div></div>
+      return <div className={styles.downloadBtnWrapper}>
+        <div className={styles.downloadBtn}>
+          <Link href={`/account?returnTo=${router.asPath}`} >
+            <a className={styles.error}>Coming Soon!<br /><em>$3+ Patrons log in to download early</em></a>
+          </Link>
+        </div>
+      </div>
     }
   }
 

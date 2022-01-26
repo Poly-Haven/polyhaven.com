@@ -3,6 +3,8 @@ import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
+import InfoBlock from 'components/Layout/InfoBlock/InfoBlock'
+import StatBlock from './StatBlock/StatBlock'
 
 import styles from './Stats.module.scss'
 
@@ -50,6 +52,14 @@ const Stats = ({ datasets }) => {
           </div>
         </div>
       </div>
+
+      <div className={styles.row} style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <p>Monthly Traffic:</p>
+        <StatBlock head={`${(datasets.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
+        <StatBlock head={`${Math.round(datasets.traffic.terabytes)}TB`} text="Bandwidth" />
+        <StatBlock head={`${(datasets.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
+      </div>
+
       <Tooltip />
     </div>
   )

@@ -5,7 +5,6 @@ const Icon = ({ color, text }) => {
       <div style={{
         position: 'absolute',
         top: '50%',
-        // left: '0.8em',
         width: '1.4rem',
         textAlign: 'center',
         fontSize: '0.65em',

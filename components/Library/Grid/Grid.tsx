@@ -15,7 +15,6 @@ import { getPatronInfo } from 'utils/patronInfo';
 import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
-import NewsCard from './GridItem/NewsCard';
 import Spinner from 'components/Spinner/Spinner';
 import DisplayAd from 'components/Ads/DisplayAd';
 import Dropdown from 'components/UI/Dropdown/Dropdown'
@@ -174,7 +173,12 @@ const Grid = (props) => {
     <>
       <div className={styles.optionsBar} ref={optionsRef}>
         <div className={styles.gridHeader}>
-          <h1 className={styles['s' + fSize]}>{title}</h1>
+          <div className={styles.gridTitle}>
+            <h1 className={styles['s' + fSize]}>{title}</h1>
+            {props.author ?
+              <MdClose onClick={_ => props.setAuthor(undefined)} data-tip="Clear author" />
+              : null}
+          </div>
           <div className={styles.options}>
             <div className={styles.menuSelection}>
               <Disabled
@@ -215,14 +219,6 @@ const Grid = (props) => {
 
       {sortedKeys.length ?
         <div className={styles.grid}>
-          <NewsCard
-            key="smugglers_cove_indiegogo"
-            topText="What we're working on:"
-            img="https://cdn.polyhaven.com/site_images/preteaser_ss2.webp"
-            pausedImg="https://cdn.polyhaven.com/site_images/preteaser_ss2_paused.jpg"
-            bottomText="Support us on Indiegogo"
-            link="https://www.indiegogo.com/projects/the-smuggler-s-cove-a-17th-century-asset-pack"
-          />
           {sortedKeys.map(asset => {
             return (<GridItem
               key={asset}
