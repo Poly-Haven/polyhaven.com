@@ -61,16 +61,17 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
     })
   }
 
-  let notes = {
+  const all_notes = {
     "2021-06-15": "Launch of polyhaven.com.",
     "2021-07-13": "texturehaven.com and 3dmodelhaven.com redirected to polyhaven.com.",
     "2021-07-19": `hdrihaven.com redirected to polyhaven.com. Any HDRI downloads before this date were tracked from the old site, using the new site's API.`,
     "2021-10-28": `API downtime causing inconsistent download tracking for the next week.`,
   }
   // Remove notes not in displayed date range
-  for (const d of Object.keys(notes)) {
-    if (!Object.keys(days).includes(d)) {
-      delete (notes[d])
+  const notes = {}
+  for (const [d, n] of Object.entries(all_notes)) {
+    if (Object.keys(days).includes(d)) {
+      notes[d] = n
     }
   }
 
