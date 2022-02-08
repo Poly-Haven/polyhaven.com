@@ -219,6 +219,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             <div className={styles.infoBlocks}>
               <InfoBlock value="CC0" label="License" link="/license" tip="Use for any purpose, including commercial.<br/>Click for more info." />
               <InfoBlock value={ageValue} label={ageLabel} tip={new Date(data.date_published * 1000).toLocaleString("en-ZA")} />
+              <InfoBlock value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`} label="wide" condition={Boolean(data.dimensions)} tip={`${Math.round(data.dimensions[0])} millimeters wide.`} />
               <InfoBlock value={data.evs_cap} label="EVs" condition={Boolean(data.evs_cap)} tip={`${data.evs_cap} EVs of dynamic range captured. Unclipped.`} />
               <InfoBlock value={`${data.whitebalance}K`} label="WB" condition={Boolean(data.whitebalance)} tip="Whitebalance" />
               <InfoBlock value={<MdLocationOn />} label="GPS" condition={Boolean(data.coords)} link={data.coords ? `https://www.google.com/maps/place/${data.coords.join('+')}` : null} />
