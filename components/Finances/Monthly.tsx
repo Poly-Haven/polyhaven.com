@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdChevronLeft, MdChevronRight, MdHelp } from 'react-icons/md'
+import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 
 import { sortObjByValue } from 'utils/arrayUtils'
 import { getCurrency, catColor } from 'utils/finances';
@@ -10,26 +10,28 @@ import Tooltip from 'components/Tooltip/Tooltip';
 import styles from './Finances.module.scss'
 
 const Bar = ({ label, data, total, max, currency, rates }) => {
+  const [expand, setExpand] = useState(false);
   if (total === 0) return null
   return (
     <div className={styles.barWrapper}>
       <p>{label}: {getCurrency(total, currency, rates)}</p>
       <div className={styles.barContainer}>
-        <div className={styles.bar}>
+        <div className={expand ? styles.barList : styles.bar}>
           {Object.keys(data).map((c, i) => {
             const percent = data[c] / max * 100;
             const percentStr = percent > 10 ? Math.round(percent) : percent.toFixed(1)
             return <div key={i} className={styles.sumCat} style={{
               width: `${percent}%`,
               background: catColor(c)
-            }} data-tip={`${c}:<br/>${getCurrency(data[c], currency, rates)} (${percentStr}%)`}>
-              <p>{c}</p>
+            }}>
+              {expand ? <p>{c}<br />{getCurrency(data[c], currency, rates)} ({percentStr}%)</p> : <p>{c}</p>}
             </div>
           }
           )}
           <div className={styles.space} />
         </div>
       </div>
+      <MdExpand className={styles.barListExpand} onClick={_ => setExpand(!expand)} />
     </div>
   )
 }

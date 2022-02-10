@@ -24,6 +24,7 @@ export function catColor(t) {
     "Balance": `#be6fff`,
     "Patreon": `#f44336`,
     "Ad Revenue": `#8BC34A`,
+    "Licensing": `#03A9F4`,
     "Corporate Sponsors": `#03A9F4`,
     "Donation from Founder": `#FFEB3B`,
     "Once-off Donations": `#673AB7`,
