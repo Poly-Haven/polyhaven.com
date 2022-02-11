@@ -1,4 +1,9 @@
+import { useState } from 'react';
 import { AreaChart, Area, ReferenceLine, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
+
+import { MdStackedLineChart, MdShowChart } from 'react-icons/md'
+
+import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Stats.module.scss'
 
@@ -26,6 +31,7 @@ interface DayStats {
 }
 
 const LastThreeMonths = ({ data }: { data: DataSet }) => {
+  const [stack, setStack] = useState(true)
 
   const colors = {
     hdris: 'rgb(65, 187, 217)',
@@ -79,6 +85,12 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
         <p>Unique downloads per day for the last 3 months:</p>
+        <Switch
+          on={stack}
+          onClick={_ => { setStack(!stack) }}
+          labelOff={<MdShowChart />}
+          labelOn={<MdStackedLineChart />}
+        />
       </div>
       <div className={styles.bigGraph}>
         <ResponsiveContainer>
@@ -106,8 +118,8 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
               itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            <Area type="monotone" dataKey="7d average total" stroke="rgb(190, 111, 255)" strokeWidth={1.5} fill="transparent" animationDuration={0} />
-            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId="1" stroke={colors[a]} fill={colors[a]} fillOpacity={0.75} animationDuration={0} />)}
+            <Area type="monotone" dataKey="7d average total" stroke="rgb(190, 111, 255)" strokeWidth={1.5} fill="transparent" animationDuration={500} />
+            {areas.map((a, i) => <Area key={a} type="monotone" dataKey={a} stackId={stack ? '1' : i} stroke={colors[a]} fill={colors[a]} fillOpacity={stack ? 0.75 : 0} animationDuration={500} strokeWidth={stack ? 0.5 : 3} />)}
 
             {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
           </AreaChart>
