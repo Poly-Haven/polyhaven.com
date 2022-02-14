@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import filesize from 'filesize'
 
 import { GoLinkExternal } from 'react-icons/go'
+import { MdImage } from 'react-icons/md'
 
 import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
@@ -107,6 +108,16 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             >8K Tonemapped JPG • {filesize(files['tonemapped'].size)}</a>
           </div>
         </> : null}
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip="Thumbnail image useful for using in your asset manager.">
+          <a
+            href={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?format=png`}
+            className={styles.format}
+            target="_blank"
+            rel="noopener"
+            data-res="thumb"
+            onClick={trackDownload}
+          ><MdImage />Thumbnail / Preview</a>
+        </div>
         {type === 0 && files['colorchart'] ? <>
           <div className={`${styles.optionRow} ${styles.wideOptionRow}`}>
             <a
