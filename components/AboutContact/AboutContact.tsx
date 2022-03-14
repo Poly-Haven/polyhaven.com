@@ -24,6 +24,7 @@ const AboutPage = () => {
         <Staff id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" country="NL" mode="full" />
         <Staff id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" country="ZA" mode="full" />
         <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="full" />
+        <Staff id="Dario Barresi" name="Dario Barresi" role="Textures" country="ZA" mode="full" />
         <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="full" />
         <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="full" />
         <Staff id="Dimitrios Savva" name="Dimitrios Savva" role="Textures, HDRIs" country="ZA" mode="full" />
