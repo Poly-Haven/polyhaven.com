@@ -1,0 +1,49 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.row {
+  @include flex(row, true, true);
+  gap: 1em;
+}
+
+.form {
+  border: 1px solid rgba($c-accent, 0.5);
+}
+
+.formItem {
+  position: relative;
+  padding: 1em;
+  border-bottom: 1px solid rgba($c-accent, 0.2);
+
+  .label {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+
+  input {
+    flex-grow: 1;
+    font-size: 1em;
+    border: 1px solid $c-background-light;
+    padding: 0.4em;
+    @include rounded();
+  }
+
+  input[type="text"] {
+    background-color: $c-background-lightish;
+    color: $c-text-light;
+  }
+
+  input:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.submit {
+  @include center();
+  padding: 1em;
+}
