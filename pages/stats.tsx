@@ -93,6 +93,7 @@ export async function getStaticProps(context) {
   const ignoredRes = ['12k'] // Ignore some uncommon resolutions
   for (const stat of resolutionsData) {
     const type = Object.keys(resolutions)[parseInt(stat.slug.substring(1, 2))]
+    if (!type) continue;
     let resStr = stat.slug.substring(4)
     if (ignoredRes.includes(resStr)) continue
     if (!resStr.endsWith('k')) continue
