@@ -27,7 +27,11 @@ const Sponsor = ({ assetID, sponsors, patron }) => {
       {sponsorData.length ?
         sponsorData.map((s, i) => <p key={i}>{
           s.url ?
-            <a href={s.url} rel="nofollow">{s.name}</a>
+            <a href={s.url} rel="nofollow noopener">{
+              s.logo ?
+                <img src={`https://cdn.polyhaven.com/corporate_sponsors/${s.logo}`} alt={s.name} title={s.name} className={styles.corpSponsor} />
+                : s.name
+            }</a>
             : s.name
         }</p>)
         : null}
