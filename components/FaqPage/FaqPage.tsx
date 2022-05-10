@@ -47,6 +47,12 @@ const FaqPage = () => {
       <FaqItem question="What equipment/software do you use for HDRIs?">
         <p>This changes every now and then, and there are now multiple photographers shooting HDRIs for this site, so take a look at my article on <a href="https://blog.polyhaven.com/how-to-create-high-quality-hdri/">creating your own HDRIs</a> to answer your actual question ;)</p>
       </FaqItem>
+      <FaqItem question="Why do your diffuse maps lack any form of shading?">
+        <p>These diffuse textures are actually albedo maps, designed for use in physically-based rendering engines. We use the term "diffuse" instead because it's a little more widely understood than "albedo", and a little more specific than "color".</p>
+        <p>For PBR rendering to look correct, albedo maps shouldn't contain any shading. Instead, shading is applied by the rendering engine itself, with the help of physical geometry displacement and path traced shading, or a separate ambient occlusion map. Without real micro-displacement geometry, the separate ambient occlusion map can be used to simulate the effect that the real geometry would have on the shading in an average environment, typically only applied to indirect lighting.</p>
+        <p>This is why we remove as much shading from our diffuse maps as possible, though we can't always remove everything, and in some cases it's desirable to leave in microscopic shading which would not be reproduced by shading real geometry displacement anyway.</p>
+        <p>By contrast, diffuse maps used in older or non-photorealistic rendering engines are intended to contain shading. If you are working with such a rendering engine, or if you wish to reduce the distribution file size of your project, you can merge the albedo and AO maps together to create a traditional diffuse map. This can be done by multiplying the AO map over the albedo map in an image editor.</p>
+      </FaqItem>
       <FaqItem question="Can I upload my own models/textures/hdris?">
         <p>Maybe!</p>
         <p>We're not trying to be the next BlendSwap or Turbosquid, but we do accept donated assets that meet our strict quality standards.</p>
