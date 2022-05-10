@@ -72,6 +72,7 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
     "2021-07-13": "texturehaven.com and 3dmodelhaven.com redirected to polyhaven.com.",
     "2021-07-19": `hdrihaven.com redirected to polyhaven.com. Any HDRI downloads before this date were tracked from the old site, using the new site's API.`,
     "2021-10-28": `API downtime causing inconsistent download tracking for the next week.`,
+    "2022-05-08": `API downtime causing incomplete download tracking.`,
   }
   // Remove notes not in displayed date range
   const notes = {}
@@ -125,10 +126,12 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <p style={{ marginBottom: 0 }}>Notes:</p>
-      <ol className={styles.notesList}>
-        {Object.keys(notes).map((d, i) => <li key={i}><strong>{d}</strong>: <span>{notes[d]}</span></li>)}
-      </ol>
+      {Object.keys(notes).length > 0 ? <>
+        <p style={{ marginBottom: 0 }}>Notes:</p>
+        <ol className={styles.notesList}>
+          {Object.keys(notes).map((d, i) => <li key={i}><strong>{d}</strong>: <span>{notes[d]}</span></li>)}
+        </ol>
+      </> : null}
     </div>
   )
 }
