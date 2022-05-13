@@ -7,7 +7,7 @@ const Route = async (req, res) => {
   data.key = process.env.DL_KEY
 
   let returnData = { message: "Failed to track." }
-  await fetch(`https://api.polyhaven.com/dl_track`, {
+  await fetch(`https://lbtest.polyhaven.com/dl_track`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
