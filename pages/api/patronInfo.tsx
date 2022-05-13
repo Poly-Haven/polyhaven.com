@@ -16,7 +16,7 @@ const Route = async (req, res) => {
   }
   data.key = crypto.createHmac('sha256', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://lbtest.polyhaven.com"
 
   let returnData = {
     error: "500",

@@ -23,7 +23,7 @@ To build the application yourself, you'll need to:
 
 This application works in tandem with [our API](https://github.com/Poly-Haven/Public-API).
 
-By default it uses the public https://api.polyhaven.com base URL, but if you need to override this you can set an environment variable `NEXT_PUBLIC_API_URL="http://localhost:3000"`.
+By default it uses the public https://lbtest.polyhaven.com base URL, but if you need to override this you can set an environment variable `NEXT_PUBLIC_API_URL="http://localhost:3000"`.
 
 However, unless you set up your own Firestore database that mimicks ours, you likely don't want to run a local API and should just use the default live one instead.
 
