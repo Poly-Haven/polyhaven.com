@@ -12,7 +12,7 @@ const Route = async (req, res) => {
   }
   const eakey = crypto.createHmac('sha256', process.env.EA_KEY).update(uuid).digest('hex')
 
-  let baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://lbtest.polyhaven.com"
+  let baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
   baseUrl += '/assets?' + parse(req.url).query
 
   let returnData = {}

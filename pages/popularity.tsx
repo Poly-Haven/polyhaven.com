@@ -23,7 +23,7 @@ function handleErrors(response) {
 }
 
 export async function getServerSideProps(context) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://lbtest.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
   let error = null
 
   const finances = await fetch(`${baseUrl}/finances`)
