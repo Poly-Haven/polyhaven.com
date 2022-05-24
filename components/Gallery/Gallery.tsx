@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Masonry from 'react-masonry-css'
 import { isURL } from 'validator';
@@ -6,6 +7,7 @@ import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import useDivSize from 'hooks/useDivSize';
+import useQuery from 'hooks/useQuery';
 
 import { MdClose } from 'react-icons/md';
 
@@ -19,6 +21,22 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
   const [lightboxData, setLightboxData] = useState(null)
   const widthRef = useRef(null)
   const { width } = useDivSize(widthRef)
+  const query = useQuery();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (query && query.render) {
+      if (Object.keys(clicked).length === 0) { // We only want to do this the first time the page loads
+        for (const r of data) {
+          if (r.id === query.render) {
+            setLightboxData(r)
+            break;
+          }
+        }
+      }
+    }
+  }, [query])
+
 
   const imgWidth = 460
 
@@ -49,11 +67,25 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
     let c = clicked
     c[data.id] = true
     setClicked(c)
+
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, render: data.id }
+    },
+      undefined, { shallow: true }
+    )
   }
 
   const closeLightbox = e => {
     if (e.target.tagName.toLowerCase() !== 'a') { // Ignore clicks on links
       setLightboxData(null)
+
+      router.push({
+        pathname: router.pathname,
+        query: assetPage ? { id: router.query.id } : {}
+      },
+        undefined, { shallow: true }
+      )
     }
   }
 
