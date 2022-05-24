@@ -43,6 +43,21 @@
   }
 }
 
+.select {
+  flex-grow: 1;
+  margin: 0.5rem;
+}
+.assetSelectionWrapper {
+  flex-grow: 1;
+  @include flex(column);
+}
+.assetsWrapper {
+  flex-grow: 1;
+  @include flex(row);
+  margin: 0 0.5rem;
+  gap: 1rem;
+}
+
 .submit {
   @include center();
   padding: 1em;

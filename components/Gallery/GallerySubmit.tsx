@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import useStoredState from 'hooks/useStoredState';
 import { isURL, isEmail } from 'validator';
+import Select from 'react-select';
 
 import GalleryFormItem from './GalleryFormItem';
-import Button from 'components/Button/Button'
 import Disabled from 'components/UI/Disabled/Disabled';
 
 import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/Button/Button.module.scss'
+import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets }) => {
   const [artName, setArtName] = useState("")
@@ -62,6 +63,19 @@ const GallerySubmit = ({ assets }) => {
     //   })
   }
 
+  let assetOptions = [];
+  for (const [assetID, assetData] of Object.entries(assets)) {
+    assetOptions.push({
+      value: assetID,
+      label: assetID,
+    })
+  }
+
+  const updateAssetsUsed = newValue => {
+    setAssetsUsed(newValue)
+  }
+
+  let numAssets = 0;
   return (
     <div className={styles.wrapper}>
       <h1>Submit Your Render</h1>
@@ -132,6 +146,28 @@ const GallerySubmit = ({ assets }) => {
               onChange={e => setLink(e.target.value)}
               placeholder="Your website/portfolio, or a link to more renders of this project."
             />
+          </GalleryFormItem>
+          <GalleryFormItem
+            label="Assets used"
+          >
+            <div className={styles.assetSelectionWrapper}>
+              <Select
+                styles={selectStyle}
+                className={styles.select}
+                isMulti
+                onChange={updateAssetsUsed}
+                options={assetOptions}
+                value={assetsUsed}
+              />
+              {assetsUsed ?
+                <div className={styles.assetsWrapper} >
+                  {assetsUsed.map(a =>
+                    <Link href={`/a/${a.value}`} key={a.value}><a>
+                      <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a.value}.png?height=100&width=200`} />
+                    </a></Link>
+                  )}
+                </div> : null}
+            </div>
           </GalleryFormItem>
         </form>
         <div className={styles.submit}>
