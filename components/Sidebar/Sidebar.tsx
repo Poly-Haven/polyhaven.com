@@ -32,21 +32,21 @@ const Sidebar = (props) => {
             ${styles.typeHDRI}
             ${props.assetType === 'hdris' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_H.svg" />
+            <img src="/icons/a_hdris.png" />
           </a></Link>
           <Link href="/textures"><a className={
             `${styles.type}
             ${styles.typeTex}
             ${props.assetType === 'textures' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_T.svg" />
+            <img src="/icons/a_textures.png" />
           </a></Link>
           <Link href="/models"><a className={
             `${styles.type}
             ${styles.typeMod}
             ${props.assetType === 'models' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_M.svg" />
+            <img src="/icons/a_models.png" />
           </a></Link>
           <h2 id="typeHeader">{assetTypeName(props.assetType)}</h2>
         </div>

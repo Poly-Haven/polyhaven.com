@@ -89,12 +89,17 @@
 
     img,
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: calc(2.5rem - 4px);
+      height: calc(2.5rem - 4px);
+      padding: 2px;
       background: $c-background;
-      padding: 0.5rem;
       border-radius: 50%;
       box-shadow: inset 0px 0px 0px 1px rgba(white, 0.05);
+    }
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0.5rem;
     }
 
     &:hover {
