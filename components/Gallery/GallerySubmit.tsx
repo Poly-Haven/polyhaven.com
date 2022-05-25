@@ -77,8 +77,8 @@ const GallerySubmit = ({ assets }) => {
         alert("Image must be a JPG")
         return
       }
-      if (i.size > 2 * 1024 * 1024) {
-        alert("Your image is too big, must be under 2MB")
+      if (i.size > 1 * 1024 * 1024) {
+        alert("Your image is too big, must be under 1MB")
         return
       }
 
@@ -174,7 +174,8 @@ const GallerySubmit = ({ assets }) => {
           {localImage ? <div className={styles.imagePreview}><img src={localImage} /></div> : null}
           <div className={styles.buttonWrapper}>
             <label htmlFor="upload-image" className={`${btnStyles.button} ${btnStyles[image ? 'hollow' : 'accent']} ${styles.imageSelect}`}>
-              {image ? "Change file..." : "Select file..."}
+              {image ? "Change File..." : "Select File..."}
+              <br /><span className={styles.sub}>JPG under 1MB</span>
             </label>
           </div>
           <input type="file" ref={imageRef} name="myImage" id="upload-image" className={styles.hideFileInput} onChange={uploadToClient} />
