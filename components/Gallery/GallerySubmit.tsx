@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Link from 'next/link';
 import useStoredState from 'hooks/useStoredState';
 import { isURL, isEmail } from 'validator';
@@ -13,6 +13,9 @@ import btnStyles from 'components/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets }) => {
+  const [image, setImage] = useState(null)
+  const imageRef = useRef(null)
+  const [localImage, setLocalImage] = useState(null);
   const [artName, setArtName] = useState("")
   const [author, setAuthor] = useStoredState("gallery_author", "")
   const [email, setEmail] = useStoredState("gallery_email", "")
@@ -23,6 +26,7 @@ const GallerySubmit = ({ assets }) => {
 
   // VALIDATE FIELDS ------------------------------------------------------------------------------
   const conditions = {
+    "Selected image": image !== null,
     "Your name": author.trim().length > 0,
     "Email": isEmail(email.trim()),
     "Link": link.trim().length == 0 || isURL(link.trim(), { require_protocol: true }),
@@ -64,6 +68,26 @@ const GallerySubmit = ({ assets }) => {
     //   })
   }
 
+  // Image Selection
+  const uploadToClient = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const i = event.target.files[0];
+
+      if (i.type !== 'image/jpeg') {
+        alert("Image must be a JPG")
+        return
+      }
+      if (i.size > 2 * 1024 * 1024) {
+        alert("Your image is too big, must be under 2MB")
+        return
+      }
+
+      setImage(i);
+      setLocalImage(URL.createObjectURL(i));
+    }
+  };
+
+  // Assets Used
   let assetOptions = [];
   for (const [assetID, assetData] of Object.entries(assets)) {
     assetOptions.push({
@@ -80,6 +104,7 @@ const GallerySubmit = ({ assets }) => {
     setAssetsUsed(newValue)
   }
 
+  // Software used
   let softwareOptions = [
     // 3D DCCs
     { value: "blender", label: "Blender" },
@@ -115,7 +140,6 @@ const GallerySubmit = ({ assets }) => {
     setSoftware(newValue)
   }
 
-  let numAssets = 0;
   return (
     <div className={styles.wrapper}>
       <h1>Submit Your Render</h1>
@@ -147,6 +171,10 @@ const GallerySubmit = ({ assets }) => {
 
       <div className={styles.form}>
         <form onSubmit={e => { e.preventDefault() }}>
+          {localImage ? <div className={styles.imagePreview}><img src={localImage} /></div> : null}
+          <label htmlFor="upload-image" className={`${btnStyles.button} ${btnStyles[image ? 'hollow' : 'accent']} ${styles.imageSelect}`}>{image ? "Change file..." : "Select file..."}</label>
+          <input type="file" ref={imageRef} name="myImage" id="upload-image" className={styles.hideFileInput} onChange={uploadToClient} />
+
           <GalleryFormItem
             label="Artwork name"
             optional={true}
@@ -238,7 +266,7 @@ const GallerySubmit = ({ assets }) => {
               onClick={submit}
             >
               <div className={btnStyles.inner}>
-                Submit
+                🚀 Submit
               </div>
             </div>
           </Disabled>

@@ -43,6 +43,25 @@
   }
 }
 
+.imagePreview {
+  @include flex(row, true, true);
+  margin: 1rem 1rem 0;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.imageSelect {
+  @include center();
+  margin: 1rem 1rem 0;
+}
+.hideFileInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 .select {
   flex-grow: 1;
   margin: 0.5rem;
