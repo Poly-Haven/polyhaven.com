@@ -54,6 +54,7 @@
 .assetsWrapper {
   flex-grow: 1;
   @include flex(row);
+  flex-wrap: wrap;
   margin: 0 0.5rem;
   gap: 1rem;
 }

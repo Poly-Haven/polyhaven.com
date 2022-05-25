@@ -72,6 +72,11 @@ const GallerySubmit = ({ assets }) => {
     })
   }
   const updateAssetsUsed = newValue => {
+    const assetLimit = 10
+    if (newValue.length > assetLimit) {
+      alert(`You can't select more than ${assetLimit} assets, please choose only the most prominent ones visible in your render.`)
+      return
+    }
     setAssetsUsed(newValue)
   }
 
