@@ -127,9 +127,10 @@ const GallerySubmit = ({ assets }) => {
 
       <h2>Note:</h2>
       <p>We get <strong>a lot</strong> of submissions, so unfortunately we can only accept the highest quality artwork to prevent the gallery from becoming cluttered.</p>
+      <p>We're not trying to be another ArtStation, this gallery is dedicated to showing off what you can do with Poly Haven's assets.</p>
       <p>If you would like to ask for feedback on your render before submitting it, we have a very helpful community on <a href="https://discord.gg/Dms7Mrs">Discord</a>.</p>
       <p>We'll notify you by email if your render is accepted or rejected. This may take a day or two as we tend to review submissions in bulk.</p>
-      <p>Common reasons for rejection:</p>
+      <p>Here are some common reasons for rejection:</p>
       <ul>
         <li>Low-effort renders (e.g. simple lighting tests).</li>
         <li>Low quality artwork.</li>
