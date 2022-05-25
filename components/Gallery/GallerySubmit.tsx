@@ -3,6 +3,7 @@ import Link from 'next/link';
 import useStoredState from 'hooks/useStoredState';
 import { isURL, isEmail } from 'validator';
 import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 
 import GalleryFormItem from './GalleryFormItem';
 import Disabled from 'components/UI/Disabled/Disabled';
@@ -70,9 +71,43 @@ const GallerySubmit = ({ assets }) => {
       label: assetID,
     })
   }
-
   const updateAssetsUsed = newValue => {
     setAssetsUsed(newValue)
+  }
+
+  let softwareOptions = [
+    // 3D DCCs
+    { value: "blender", label: "Blender" },
+    { value: "3ds max", label: "3DS Max" },
+    { value: "maya", label: "Maya" },
+    { value: "cinema 4d", label: "Cinema 4D" },
+    { value: "houdini", label: "Houdini" },
+    { value: "daz", label: "Daz 3D" },
+    { value: "lightwave", label: "LightWave" },
+    { value: "vred", label: "VRED" },
+    { value: "modo", label: "Modo" },
+    { value: "zbrush", label: "ZBrush" },
+    // Game engines
+    { value: "unreal", label: "Unreal Engine" },
+    { value: "unity", label: "Unity" },
+    { value: "Godot", label: "Godot" },
+    // CAD
+    { value: "sketchup", label: "SketchUp" },
+    { value: "fusion360", label: "Fusion 360" },
+    { value: "rhino", label: "Rhino" },
+    { value: "solidworks", label: "SolidWorks" },
+    // Render engines
+    { value: "cycles", label: "Cycles" },
+    { value: "eevee", label: "Eevee" },
+    { value: "corona", label: "Corona" },
+    { value: "vray", label: "V-Ray" },
+    { value: "keyshot", label: "KeyShot" },
+    { value: "arnold", label: "Arnold Renderer" },
+    { value: "redshift", label: "Redshift" },
+    { value: "octane", label: "Octane" },
+  ];
+  const updateSoftware = newValue => {
+    setSoftware(newValue)
   }
 
   let numAssets = 0;
@@ -158,6 +193,7 @@ const GallerySubmit = ({ assets }) => {
                 onChange={updateAssetsUsed}
                 options={assetOptions}
                 value={assetsUsed}
+                placeholder="Which HDRIs, textures or 3D models from Poly Haven did you use?"
               />
               {assetsUsed ?
                 <div className={styles.assetsWrapper} >
@@ -168,6 +204,20 @@ const GallerySubmit = ({ assets }) => {
                   )}
                 </div> : null}
             </div>
+          </GalleryFormItem>
+          <GalleryFormItem
+            label="Software used"
+            optional={true}
+          >
+            <CreatableSelect
+              styles={selectStyle}
+              className={styles.select}
+              isMulti
+              onChange={updateSoftware}
+              options={softwareOptions}
+              value={software}
+              placeholder="Which 3D software did you use to create your artwork?"
+            />
           </GalleryFormItem>
         </form>
         <div className={styles.submit}>
