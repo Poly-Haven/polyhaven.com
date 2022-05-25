@@ -172,7 +172,11 @@ const GallerySubmit = ({ assets }) => {
       <div className={styles.form}>
         <form onSubmit={e => { e.preventDefault() }}>
           {localImage ? <div className={styles.imagePreview}><img src={localImage} /></div> : null}
-          <label htmlFor="upload-image" className={`${btnStyles.button} ${btnStyles[image ? 'hollow' : 'accent']} ${styles.imageSelect}`}>{image ? "Change file..." : "Select file..."}</label>
+          <div className={styles.buttonWrapper}>
+            <label htmlFor="upload-image" className={`${btnStyles.button} ${btnStyles[image ? 'hollow' : 'accent']} ${styles.imageSelect}`}>
+              {image ? "Change file..." : "Select file..."}
+            </label>
+          </div>
           <input type="file" ref={imageRef} name="myImage" id="upload-image" className={styles.hideFileInput} onChange={uploadToClient} />
 
           <GalleryFormItem
