@@ -84,7 +84,6 @@
     text-align: center;
     text-decoration: none;
     color: $c-text-light;
-    filter: saturate(0);
     @include transition();
 
     img,
@@ -129,6 +128,9 @@
       background: $c-background-lighter;
       box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.9);
     }
+  }
+  .desaturate {
+    filter: saturate(0);
   }
 
   .typeAll:hover ~ h2:after {

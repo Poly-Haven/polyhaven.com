@@ -30,6 +30,7 @@ const Sidebar = (props) => {
           <Link href="/hdris"><a className={
             `${styles.type}
             ${styles.typeHDRI}
+            ${props.assetType !== 'all' && props.assetType !== 'hdris' ? styles.desaturate : ''}
             ${props.assetType === 'hdris' ? styles.activeType : ''}`
           }>
             <img src="/icons/a_hdris.png" />
@@ -37,6 +38,7 @@ const Sidebar = (props) => {
           <Link href="/textures"><a className={
             `${styles.type}
             ${styles.typeTex}
+            ${props.assetType !== 'all' && props.assetType !== 'textures' ? styles.desaturate : ''}
             ${props.assetType === 'textures' ? styles.activeType : ''}`
           }>
             <img src="/icons/a_textures.png" />
@@ -44,6 +46,7 @@ const Sidebar = (props) => {
           <Link href="/models"><a className={
             `${styles.type}
             ${styles.typeMod}
+            ${props.assetType !== 'all' && props.assetType !== 'models' ? styles.desaturate : ''}
             ${props.assetType === 'models' ? styles.activeType : ''}`
           }>
             <img src="/icons/a_models.png" />
