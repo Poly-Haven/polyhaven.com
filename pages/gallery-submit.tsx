@@ -27,9 +27,15 @@ export async function getStaticProps(context) {
     }
   }
 
+  const sortedKeys = Object.keys(assets).sort((a, b) => assets[a].name.localeCompare(assets[b].name))
+  const sortedAssets = {}
+  for (const k of sortedKeys) {
+    sortedAssets[k] = assets[k]
+  }
+
   return {
     props: {
-      assets: assets
+      assets: sortedAssets
     },
     revalidate: 60 * 30 // 30 minutes
   }
