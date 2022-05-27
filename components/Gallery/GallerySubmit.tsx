@@ -87,23 +87,6 @@ const GallerySubmit = ({ assets }) => {
     }
   };
 
-  // Assets Used
-  let assetOptions = [];
-  for (const [assetID, assetData] of Object.entries(assets)) {
-    assetOptions.push({
-      value: assetID,
-      label: assetID,
-    })
-  }
-  const updateAssetsUsed = newValue => {
-    const assetLimit = 10
-    if (newValue.length > assetLimit) {
-      alert(`You can't select more than ${assetLimit} assets, please choose only the most prominent ones visible in your render.`)
-      return
-    }
-    setAssetsUsed(newValue)
-  }
-
   // Software used
   let softwareOptions = [
     // 3D DCCs
@@ -138,6 +121,23 @@ const GallerySubmit = ({ assets }) => {
   ];
   const updateSoftware = newValue => {
     setSoftware(newValue)
+  }
+
+  // Assets Used
+  let assetOptions = [];
+  for (const [assetID, assetData] of Object.entries(assets)) {
+    assetOptions.push({
+      value: assetID,
+      label: assetID,
+    })
+  }
+  const updateAssetsUsed = newValue => {
+    const assetLimit = 10
+    if (newValue.length > assetLimit) {
+      alert(`You can't select more than ${assetLimit} assets, please choose only the most prominent ones visible in your render.`)
+      return
+    }
+    setAssetsUsed(newValue)
   }
 
   return (
@@ -222,6 +222,20 @@ const GallerySubmit = ({ assets }) => {
             />
           </GalleryFormItem>
           <GalleryFormItem
+            label="Software used"
+            optional={true}
+          >
+            <CreatableSelect
+              styles={selectStyle}
+              className={styles.select}
+              isMulti
+              onChange={updateSoftware}
+              options={softwareOptions}
+              value={software}
+              placeholder="Which 3D software did you use to create your artwork?"
+            />
+          </GalleryFormItem>
+          <GalleryFormItem
             label="Assets used"
           >
             <div className={styles.assetSelectionWrapper}>
@@ -243,20 +257,6 @@ const GallerySubmit = ({ assets }) => {
                   )}
                 </div> : null}
             </div>
-          </GalleryFormItem>
-          <GalleryFormItem
-            label="Software used"
-            optional={true}
-          >
-            <CreatableSelect
-              styles={selectStyle}
-              className={styles.select}
-              isMulti
-              onChange={updateSoftware}
-              options={softwareOptions}
-              value={software}
-              placeholder="Which 3D software did you use to create your artwork?"
-            />
           </GalleryFormItem>
         </form>
         <div className={styles.submit}>
