@@ -10,9 +10,6 @@
   width: 210px;
   background: $c-background-dark;
   text-transform: capitalize;
-  overflow: auto;
-  overflow-x: hidden;
-  @include dark_scrollbar;
   z-index: 11;
 
   hr {
@@ -24,14 +21,21 @@
 }
 .sidebarInner {
   padding-bottom: 3em;
+  overflow: auto;
+  overflow-x: hidden;
+  @include dark_scrollbar;
 }
 
 .spacer {
   flex-grow: 1;
 }
 
+.footerWrapper {
+  @include flex(column, true, true);
+  padding-top: 0.25rem;
+}
 .footer {
-  @include flex(column);
+  @include flex(row);
   font-size: 0.9em;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -40,6 +44,7 @@
     text-transform: none;
     margin: 0;
     text-align: center;
+    line-height: 1.2;
 
     a {
       color: $c-text-light;

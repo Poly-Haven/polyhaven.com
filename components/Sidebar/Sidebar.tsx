@@ -4,6 +4,7 @@ import { assetTypeName } from 'utils/assetTypeName'
 import { MdApps, MdFilterList, MdFirstPage, MdUnarchive } from 'react-icons/md'
 
 import Button from 'components/Button/Button';
+import DisplayAd from 'components/Ads/DisplayAd';
 import IconButton from "components/UI/Button/IconButton";
 import CategoryList from './CategoryList';
 
@@ -60,9 +61,12 @@ const Sidebar = (props) => {
       </div>
       <div className={styles.spacer} />
       <hr />
-      <div className={styles.footer}>
-        <Button text="Contribute" icon={<MdUnarchive />} href="/contribute" color="hollowFaded" style={{ padding: '0.5em', margin: 0 }} />
-        <p><Link href="/faq">FAQ</Link> · <Link href="/license">License</Link></p>
+      <div className={styles.footerWrapper}>
+        <DisplayAd id="9211333899" x={200} y={200} showRemoveBtn />
+        <div className={styles.footer}>
+          <Button text="Contribute" icon={<MdUnarchive />} href="/contribute" color="hollowFaded" style={{ padding: '0.5em', margin: 0 }} />
+          <p><Link href="/faq">FAQ</Link> <Link href="/license">License</Link></p>
+        </div>
       </div>
     </div>
     <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
