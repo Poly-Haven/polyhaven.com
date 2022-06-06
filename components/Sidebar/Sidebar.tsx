@@ -4,6 +4,7 @@ import { assetTypeName } from 'utils/assetTypeName'
 import { MdApps, MdFilterList, MdFirstPage, MdUnarchive } from 'react-icons/md'
 
 import Button from 'components/Button/Button';
+import DisplayAd from 'components/Ads/DisplayAd';
 import IconButton from "components/UI/Button/IconButton";
 import CategoryList from './CategoryList';
 
@@ -30,23 +31,26 @@ const Sidebar = (props) => {
           <Link href="/hdris"><a className={
             `${styles.type}
             ${styles.typeHDRI}
+            ${props.assetType !== 'all' && props.assetType !== 'hdris' ? styles.desaturate : ''}
             ${props.assetType === 'hdris' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_H.svg" />
+            <img src="/icons/a_hdris.png" />
           </a></Link>
           <Link href="/textures"><a className={
             `${styles.type}
             ${styles.typeTex}
+            ${props.assetType !== 'all' && props.assetType !== 'textures' ? styles.desaturate : ''}
             ${props.assetType === 'textures' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_T.svg" />
+            <img src="/icons/a_textures.png" />
           </a></Link>
           <Link href="/models"><a className={
             `${styles.type}
             ${styles.typeMod}
+            ${props.assetType !== 'all' && props.assetType !== 'models' ? styles.desaturate : ''}
             ${props.assetType === 'models' ? styles.activeType : ''}`
           }>
-            <img src="/icons/type_M.svg" />
+            <img src="/icons/a_models.png" />
           </a></Link>
           <h2 id="typeHeader">{assetTypeName(props.assetType)}</h2>
         </div>
@@ -57,9 +61,12 @@ const Sidebar = (props) => {
       </div>
       <div className={styles.spacer} />
       <hr />
-      <div className={styles.footer}>
-        <Button text="Contribute" icon={<MdUnarchive />} href="/contribute" color="hollowFaded" style={{ padding: '0.5em', margin: 0 }} />
-        <p><Link href="/faq">FAQ</Link> · <Link href="/license">License</Link></p>
+      <div className={styles.footerWrapper}>
+        <DisplayAd id="9211333899" x={200} y={200} showRemoveBtn />
+        <div className={styles.footer}>
+          <Button text="Contribute" icon={<MdUnarchive />} href="/contribute" color="hollowFaded" style={{ padding: '0.5em', margin: 0 }} />
+          <p><Link href="/faq">FAQ</Link> <Link href="/license">License</Link></p>
+        </div>
       </div>
     </div>
     <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>

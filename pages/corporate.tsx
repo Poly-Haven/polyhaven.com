@@ -103,7 +103,7 @@ const Corporate = (props) => {
       <div style={styleRow}>
         <TierBlock
           title="Silver"
-          image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.svg" />}
+          image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.png" />}
           price="100"
           link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Silver"
           features={[

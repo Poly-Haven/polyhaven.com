@@ -63,7 +63,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
 
   return (
     <div className={styles.imageRow}>
-      <DisplayAd id="3495807518" x={300} y={100} />
+      <DisplayAd id="3495807518" x={728} y={90} />
       <div className={`${styles.iconBtn} ${active === 'webGL' ? styles.activeImage : ''}`}><IconButton icon={<Md3DRotation />} onClick={showWebGL} /></div>
       {renders.map((i, k) =>
         <div
