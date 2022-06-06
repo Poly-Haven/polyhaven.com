@@ -12,7 +12,7 @@ import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
-const GallerySubmit = ({ assets }) => {
+const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [image, setImage] = useState(null)
   const imageRef = useRef(null)
   const [localImage, setLocalImage] = useState(null);
@@ -49,23 +49,20 @@ const GallerySubmit = ({ assets }) => {
     setBusyState(true);
 
     const allFields = { artName, author, email, link, assetsUsed, software }
-    console.log("submit")
 
-    // await fetch(`/api/submitAsset`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(allFields),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setBusyState(false);
-    //     setResponseState(data)
-    //     // if (data.status === 200) {
-    //     //   router.push(`/review/${slug}`)
-    //     // }
-    //   })
+    const body = new FormData();
+    body.append("file", image);
+    body.append("fields", JSON.stringify(allFields));
+    await fetch(`${galleryApiUrl}/api/public/gallerySubmit`, {
+      method: 'POST',
+      body,
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log("Submitted to Gallery", data)
+        setBusyState(false);
+        setResponseState(data)
+      })
   }
 
   // Image Selection

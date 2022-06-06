@@ -8,7 +8,7 @@ export default function GalleryPage(props) {
       description="Have you created some awesome artwork using one of our assets? Show it off on this site!"
       url="/gallery-submit"
     >
-      <GallerySubmit assets={props.assets} />
+      <GallerySubmit assets={props.assets} galleryApiUrl={props.galleryApiUrl} />
     </TextPage>
   )
 }
@@ -35,7 +35,8 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      assets: sortedAssets
+      assets: sortedAssets,
+      galleryApiUrl: process.env.NEXT_ADMIN_API_URL || "https://admin.polyhaven.com",
     },
     revalidate: 60 * 30 // 30 minutes
   }
