@@ -104,9 +104,9 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
             threshold={500}
           />
         </div>)}
-        {!assetPage && <Disabled tooltip="Coming soon!">
+        {!assetPage && <Link href="/gallery-submit" prefetch={false}><a>
           <div className={styles.add}><strong>+</strong><p>Submit your render</p></div>
-        </Disabled>}
+        </a></Link>}
       </Masonry>
       {lightboxData &&
         <div className={styles.lightboxWrapper} onClick={closeLightbox}>
