@@ -1,0 +1,36 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include absolute_cover;
+  position: fixed;
+  @include center;
+  z-index: 1000;
+  background-color: rgba($c-background-dark, 0.8);
+}
+
+.popup {
+  @include drop-shadow;
+  background-color: $c-background;
+  border: 1px solid rgba($c-accent, 0.5);
+  padding: 1.5rem 2rem;
+}
+
+.buttonWrapper {
+  @include flex(row, true, true);
+  justify-content: right;
+}
+.button {
+  display: inline-block;
+  color: white;
+  padding: 0.75em 1em;
+  cursor: pointer;
+  @include transition();
+  @include drop-shadow();
+  background: $c-accent;
+
+  &:hover {
+    background: $c-accent-light;
+  }
+}

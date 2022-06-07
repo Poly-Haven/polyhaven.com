@@ -104,9 +104,9 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
             threshold={500}
           />
         </div>)}
-        {!assetPage && <Disabled tooltip="Coming soon!">
+        {!assetPage && <Link href="/gallery-submit" prefetch={false}><a>
           <div className={styles.add}><strong>+</strong><p>Submit your render</p></div>
-        </Disabled>}
+        </a></Link>}
       </Masonry>
       {lightboxData &&
         <div className={styles.lightboxWrapper} onClick={closeLightbox}>
@@ -120,7 +120,9 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
               by
               {lightboxData.author_link && isURL(lightboxData.author_link, { require_protocol: true }) ? <a target="_blank" rel="noopener" href={lightboxData.author_link}>{lightboxData.author}</a> : <span>{lightboxData.author}</span>}
               using
-              <Link href={`/a/${lightboxData.asset_used}`}><a>{lightboxData.asset_used}</a></Link>
+              {lightboxData.assets_used.slice(0, 3).map((a, key) =>
+                <Link key={key} href={`/a/${a}`}><a>{a}</a></Link>)}
+              {lightboxData.assets_used.length > 3 ? <span title={lightboxData.assets_used.join(', ')}>...</span> : null}
             </p>
           </div>
           <MdClose />
