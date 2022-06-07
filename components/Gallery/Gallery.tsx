@@ -120,7 +120,12 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
               by
               {lightboxData.author_link && isURL(lightboxData.author_link, { require_protocol: true }) ? <a target="_blank" rel="noopener" href={lightboxData.author_link}>{lightboxData.author}</a> : <span>{lightboxData.author}</span>}
               using
-              <Link href={`/a/${lightboxData.asset_used}`}><a>{lightboxData.asset_used}</a></Link>
+              {lightboxData.assets_used ?
+                lightboxData.assets_used.slice(0, 3).map((a, key) =>
+                  <Link key={key} href={`/a/${a}`}><a>{a}</a></Link>)
+                :
+                <Link href={`/a/${lightboxData.asset_used}`}><a>{lightboxData.asset_used}</a></Link>
+              }
             </p>
           </div>
           <MdClose />
