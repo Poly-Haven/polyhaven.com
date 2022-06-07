@@ -26,9 +26,14 @@ const Nav = () => {
           <NavItem text="Textures" link="/textures" />
           <NavItem text="Models" link="/models" />
         </NavItem>
-        <NavItem text="News" link="https://www.patreon.com/polyhaven/posts?public=true" />
+        <NavItem text="Gallery" link="/gallery" />
         <NavItem text="Support Us" link="https://www.patreon.com/polyhaven/overview" />
-        <NavItem text="About/Contact" link="/about-contact" />
+        <NavItem text="About/Contact" link="/about-contact">
+          <NavItem text="License" link="/license" />
+          <NavItem text="News" link="https://www.patreon.com/polyhaven/posts?public=true" />
+          <NavItem text="Blog" link="https://blog.polyhaven.com" />
+          <NavItem text="FAQ" link="/faq" />
+        </NavItem>
 
         {user ?
           <NavItem text={<MdAccountCircle />} link="/account">
