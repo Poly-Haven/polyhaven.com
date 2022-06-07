@@ -7,12 +7,15 @@ import CreatableSelect from 'react-select/creatable';
 
 import GalleryFormItem from './GalleryFormItem';
 import Disabled from 'components/UI/Disabled/Disabled';
+import Popup from 'components/UI/Popup/Popup';
 
 import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets, galleryApiUrl }) => {
+  const [successPopup, showSuccessPopup] = useState(false)
+
   const [image, setImage] = useState(null)
   const imageRef = useRef(null)
   const [localImage, setLocalImage] = useState(null);
@@ -22,6 +25,14 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [link, setLink] = useStoredState("gallery_link", "")
   const [assetsUsed, setAssetsUsed] = useState([])
   const [software, setSoftware] = useState([])
+
+  const resetState = () => {
+    setImage(null)
+    setLocalImage(null)
+    setArtName("")
+    setAssetsUsed([])
+    setSoftware([])
+  }
 
 
   // VALIDATE FIELDS ------------------------------------------------------------------------------
@@ -48,7 +59,15 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const submit = async () => {
     setBusyState(true);
 
-    const allFields = { artName, author, email, link, assetsUsed, software }
+    const allFields = {
+      artwork_name: artName.trim(),
+      author: author.trim(),
+      email: email.trim(),
+      author_link: link.trim(),
+      assets_used: assetsUsed.map(v => v.value),
+      software: software.map(v => v.value),
+      uuid: localStorage.getItem(`uuid`) || "UNKNOWN",
+    }
 
     const body = new FormData();
     body.append("file", image);
@@ -62,6 +81,12 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
         console.log("Submitted to Gallery", data)
         setBusyState(false);
         setResponseState(data)
+
+        if (data.message === "Submitted") {
+          resetState()
+          data.message = ""
+          showSuccessPopup(true)
+        }
       })
   }
 
@@ -268,12 +293,16 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               onClick={submit}
             >
               <div className={btnStyles.inner}>
-                🚀 Submit
+                {busy ? "Uploading, please wait..." : "🚀 Submit"}
               </div>
             </div>
           </Disabled>
         </div>
       </div>
+      <Popup show={successPopup} hide={_ => showSuccessPopup(false)}>
+        <p>✅ <strong>Thanks for your submission!</strong></p>
+        <p>We'll review your render within a few days and email you the results.</p>
+      </Popup>
     </div>
   )
 }
