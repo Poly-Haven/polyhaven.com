@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Link from 'next/link';
 import useStoredState from 'hooks/useStoredState';
 import { isURL, isEmail } from 'validator';
@@ -9,12 +9,15 @@ import GalleryFormItem from './GalleryFormItem';
 import Disabled from 'components/UI/Disabled/Disabled';
 import Popup from 'components/UI/Popup/Popup';
 
+import useQuery from 'hooks/useQuery';
+
 import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [successPopup, showSuccessPopup] = useState(false)
+  const query = useQuery();
 
   const [image, setImage] = useState(null)
   const imageRef = useRef(null)
@@ -25,6 +28,14 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [link, setLink] = useStoredState("gallery_link", "")
   const [assetsUsed, setAssetsUsed] = useState([])
   const [software, setSoftware] = useState([])
+
+  useEffect(() => {
+    if (query && query.asset) {
+      if (typeof query.asset === 'string' && Object.keys(assets).includes(query.asset)) {
+        setAssetsUsed([{ value: query.asset, label: query.asset }])
+      }
+    }
+  }, [query])
 
   const resetState = () => {
     setImage(null)

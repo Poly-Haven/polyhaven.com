@@ -31,7 +31,7 @@ const UserRenders = ({ assetID }) => {
       {data.length ?
         <Gallery data={data} assetPage={true} />
         :
-        <p>None yet, <Link href={`/gallery-submit?a=${assetID}`} prefetch={false}><a>add yours</a></Link>.</p>}
+        <p>None yet, <Link href={`/gallery-submit?asset=${assetID}`} prefetch={false}><a>add yours</a></Link>.</p>}
     </div>
   )
 }
