@@ -26,7 +26,7 @@ export default function GalleryPage(props) {
         justifyContent: 'center',
         gap: '1em',
       }}>
-        <p><em>Artwork submitted by dozens of users, created using our assets.</em></p>
+        <p><em>Artwork submitted by dozens of users, created using our <Link href="/all"><a>assets</a></Link>.</em></p>
         <Link href={`/gallery-submit`} prefetch={false}><a><IconButton icon={<MdAdd />} label="Add yours" /></a></Link>
       </div>
       <Gallery data={props.data} />
