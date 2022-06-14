@@ -1,7 +1,11 @@
 import Head from 'components/Head/Head'
+import Link from 'next/link';
 
+import IconButton from 'components/UI/Button/IconButton';
 import Page from 'components/Layout/Page/Page'
 import Gallery from 'components/Gallery/Gallery'
+
+import { MdAdd } from "react-icons/md";
 
 export default function GalleryPage(props) {
   return (
@@ -16,10 +20,15 @@ export default function GalleryPage(props) {
         marginTop: '1.5em',
         marginBottom: 0
       }}>Render Gallery</h1>
-      <p style={{
-        textAlign: 'center',
-        fontStyle: 'italic'
-      }}>Artwork submitted by dozens of users, created using our assets.</p>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: '1em',
+      }}>
+        <p><em>Artwork submitted by dozens of users, created using our <Link href="/all"><a>assets</a></Link>.</em></p>
+        <Link href={`/gallery-submit`} prefetch={false}><a><IconButton icon={<MdAdd />} label="Add yours" /></a></Link>
+      </div>
       <Gallery data={props.data} />
     </Page>
   )
