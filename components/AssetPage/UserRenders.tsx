@@ -12,7 +12,7 @@ import styles from './AssetPage.module.scss'
 const UserRenders = ({ assetID }) => {
   const titleRowJsx = <div className={styles.userRendersTitle}>
     <h1>User Renders:</h1>
-    <Link href={`/gallery-submit?a=${assetID}`} prefetch={false}><a><IconButton icon={<MdAdd />} label="Add yours" /></a></Link>
+    <Link href={`/gallery-submit?asset=${assetID}`} prefetch={false}><a><IconButton icon={<MdAdd />} label="Add yours" /></a></Link>
   </div>
 
   const { data, error } = apiSWR(`/gallery?assetID=${assetID}`, { revalidateOnFocus: false });
