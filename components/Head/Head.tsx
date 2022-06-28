@@ -31,6 +31,9 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
       <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="Poly Haven" />
       {image ? <meta property="og:image" content={image} /> : null}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:site" content="@polyhaven" />
+      {image ? <meta property="twitter:image" content={image} /> : null}
       {children}
     </Head>
   )
