@@ -67,6 +67,11 @@ const FaqPage = () => {
         <p>This is why we remove as much shading from our diffuse maps as possible, though we can't always remove everything, and in some cases it's desirable to leave in microscopic shading which would not be reproduced by shading real geometry displacement anyway.</p>
         <p>By contrast, diffuse maps used in older or non-photorealistic rendering engines are intended to contain shading. If you are working with such a rendering engine, or if you wish to reduce the distribution file size of your project, you can merge the albedo and AO maps together to create a traditional diffuse map. This can be done by multiplying the AO map over the albedo map in an image editor.</p>
       </FaqItem>
+      <FaqItem question="Model and texture downloads are not working for me!" activeQ={clicked} qID="service-worker">
+        <p>If you're using a <strong>download manager</strong> extension and are getting <em>404</em> errors on downloads, disable the extension for polyhaven.com.</p>
+        <p>If you use Firefox and have <em>"Delete cookies and site data when Firefox is closed"</em> turned on, then you cannot download our assets.<br />Solution: Disable this setting or use a different browser. <a href="https://dev.webonomic.nl/fixing-firefox-failed-to-register-update-a-serviceworker-for-scope">More info here</a>.</p>
+        <p>Why is this happening? When you download a model/texture on our site, your browser creates a "service worker" that pulls in all the separate required files like textures and meshes to create a zip file for you on the fly. This setting in Firefox prevents the service worker from being created, meaning downloads do not work.</p>
+      </FaqItem>
       <FaqItem question="Can I upload my own models/textures/hdris?" activeQ={clicked} qID="upload">
         <p>Maybe!</p>
         <p>We're not trying to be the next BlendSwap or Turbosquid, but we do accept donated assets that meet our strict quality standards.</p>
