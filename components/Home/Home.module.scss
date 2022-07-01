@@ -54,14 +54,17 @@
 }
 .assetTypeBanner {
   @extend .section;
-  flex-wrap: wrap;
   padding: 0;
   max-width: 100%;
+
+  @media screen and (max-width: 1220px) {
+    flex-wrap: wrap;
+  }
 
   img {
     width: 300px;
 
-    @media screen and (max-width: 505px) {
+    @media screen and (max-width: 1560px) {
       width: 150px;
     }
   }
