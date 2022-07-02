@@ -28,6 +28,13 @@ export function weightedDownloadsPerDay(download_count, epoch, name) {
   return download_count / Math.pow(Math.abs(now - epoch) + 1, 1.7)
 }
 
+export function downloadsPerDay(download_count, epoch) {
+  const now = Date.now()
+  epoch = epoch * 1000
+  download_count = download_count || 0 // asset.download_count may be undefined
+  return download_count / (now - epoch)
+}
+
 export const fixTzOffset = (date: Date) => {
   return new Date(date.valueOf() - date.getTimezoneOffset() * 60 * 1000)
 }

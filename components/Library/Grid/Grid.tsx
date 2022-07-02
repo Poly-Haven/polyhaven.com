@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
-import { MdWhatshot, MdEvent, MdStar, MdSortByAlpha } from 'react-icons/md'
+import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha } from 'react-icons/md'
 
 import useDivSize from 'hooks/useDivSize';
-import { weightedDownloadsPerDay } from 'utils/dateUtils'
+import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { assetTypeName } from 'utils/assetTypeName'
 import { getPatronInfo } from 'utils/patronInfo';
@@ -54,6 +54,11 @@ const Grid = (props) => {
       })
     },
     top: (d: Object) => {
+      return Object.keys(d).sort(function (a, b) {
+        return (downloadsPerDay(d[b].download_count, d[b].date_published) - downloadsPerDay(d[a].download_count, d[a].date_published));
+      })
+    },
+    downloads: (d: Object) => {
       return Object.keys(d).sort(function (a, b) {
         return (d[b].download_count - d[a].download_count);
       })
@@ -152,15 +157,20 @@ const Grid = (props) => {
       tooltip: "Downloads per day, with newer assets weighted slightly higher.",
       icon: <MdWhatshot />
     },
+    top: {
+      label: "Top",
+      tooltip: "Downloads per day.",
+      icon: <MdStar />
+    },
+    downloads: {
+      label: "Downloads",
+      tooltip: "Total download count of all time.",
+      icon: <MdDownload />
+    },
     latest: {
       label: "Latest",
       tooltip: "Most recently published.",
       icon: <MdEvent />
-    },
-    top: {
-      label: "Top",
-      tooltip: "Total download count of all time.",
-      icon: <MdStar />
     },
     name: {
       label: "Name",
