@@ -3,7 +3,7 @@ import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
-import InfoBlock from 'components/Layout/InfoBlock/InfoBlock'
+import TrafficGraph from './TrafficGraph'
 import StatBlock from './StatBlock/StatBlock'
 
 import styles from './Stats.module.scss'
@@ -50,6 +50,12 @@ const Stats = ({ datasets }) => {
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className={styles.row}>
+        <div className={styles.half}>
+          <TrafficGraph data={datasets.cfdaily} />
         </div>
       </div>
 

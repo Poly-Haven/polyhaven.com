@@ -36,6 +36,7 @@ export async function getStaticProps(context) {
   const today = new Date().toISOString().split('T')[0]
   const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - ((91 + 6) * msPerDay)).toISOString().split('T')[0]
+  const oneYearAgo = new Date(Date.now() - (365 * msPerDay)).toISOString().split('T')[0]
 
   // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
@@ -135,6 +136,11 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Cloudflare Daily
+  const cfdaily = await fetch(`${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   if (error) {
     return {
       props: {},
@@ -151,6 +157,7 @@ export async function getStaticProps(context) {
         resolutions,
         monthlyDownloads,
         traffic,
+        cfdaily,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day
