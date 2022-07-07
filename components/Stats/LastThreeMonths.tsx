@@ -85,7 +85,7 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
   return (
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
-        <p>Unique downloads per day for the last 3 months:</p>
+        <p>Unique downloads in the last 3 months:</p>
         <Switch
           on={stack}
           onClick={_ => { setStack(!stack) }}

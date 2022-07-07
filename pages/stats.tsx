@@ -118,6 +118,40 @@ export async function getStaticProps(context) {
     resolutions[type] = tmp
   }
 
+  // Format graphs
+  const formatsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let formats = {
+    hdris: { total: 0 },
+    textures: { total: 0 },
+    models: { total: 0 },
+  }
+  for (const stat of formatsData) {
+    const type = Object.keys(formats)[parseInt(stat.slug.substring(1, 2))]
+    if (!type) continue;
+    let fmtStr = stat.slug.substring(4)
+    if (fmtStr.includes(':')) {
+      fmtStr = fmtStr.split(':').pop()
+    }
+    if (type === 'hdris' && ['jpg_plain', 'jpg_pretty', 'raw'].includes(fmtStr)) {
+      fmtStr = 'backplate'
+    }
+    formats[type][fmtStr] = formats[type][fmtStr] || 0
+    formats[type][fmtStr] += stat.downloads;
+    formats[type].total += stat.downloads;
+  }
+  for (const [type, fmts] of Object.entries(formats)) {
+    const sortedKeys = Object.keys(fmts).sort((a, b) => parseInt(a) - parseInt(b))
+    let tmp = {}
+    for (const r of sortedKeys) {
+      if (r === 'total') continue
+      tmp[r] = fmts[r] / fmts.total * 100
+    }
+    formats[type] = tmp
+  }
+
   // Asset downloads
   const now = new Date()
   const monthAgo = subMonths(now, 1)
@@ -155,6 +189,7 @@ export async function getStaticProps(context) {
         relativeType,
         monthlyAssets,
         resolutions,
+        formats,
         monthlyDownloads,
         traffic,
         cfdaily,

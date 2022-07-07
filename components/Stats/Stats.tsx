@@ -3,6 +3,7 @@ import LastThreeMonths from './LastThreeMonths'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
+import FormatComparison from './FormatComparison'
 import TrafficGraph from './TrafficGraph'
 import StatBlock from './StatBlock/StatBlock'
 
@@ -11,10 +12,8 @@ import styles from './Stats.module.scss'
 /* Ideas:
   Downloads per month over all time (wait until like 2022)
   Patrons over time
-  Comparison of formats
   Downloads per $ donated
   Downloads by category
-  Bandwith usage
   Patreon earnings per assets available
 */
 
@@ -27,13 +26,31 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.row}>
         <div className={styles.half}>
-          <LastThreeMonths data={datasets.threeMonths} />
+          <div className={styles.row}>
+            <div className={styles.half}>
+              <LastThreeMonths data={datasets.threeMonths} />
+            </div>
+            <div className={styles.half}>
+              <RelativeType data={datasets.relativeType} />
+              <AssetsPerMonth data={datasets.monthlyAssets} />
+            </div>
+          </div>
         </div>
         <div className={styles.half}>
           <div className={styles.row}>
             <div className={styles.half}>
-              <RelativeType data={datasets.relativeType} />
-              <AssetsPerMonth data={datasets.monthlyAssets} />
+              <div className={styles.graphHeader}>
+                <p>Downloads by format chosen:</p>
+              </div>
+              {Object.keys(datasets.formats).map((k, i) =>
+                <ResolutionComparison key={i} data={datasets.formats[k]} type={k} />
+              )}
+              <p style={{ marginBottom: 0 }}>Notes:</p>
+              <ul className={styles.unNumberedNotesList}>
+                <li>EXR is the default format for HDRIs.</li>
+                <li>Blend is the default format for textures and models.</li>
+                <li>EXR/JPG/PNG are individual texture maps, not entire assets.</li>
+              </ul>
             </div>
             <div className={styles.half}>
               <div className={styles.graphHeader}>
