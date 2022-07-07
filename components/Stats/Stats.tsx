@@ -50,6 +50,7 @@ const Stats = ({ datasets }) => {
                 <li>EXR is the default format for HDRIs.</li>
                 <li>Blend is the default format for textures and models.</li>
                 <li>EXR/JPG/PNG are individual texture maps, not entire assets.</li>
+                <li>ZIP may include a variety of contents.</li>
               </ul>
             </div>
             <div className={styles.half}>
