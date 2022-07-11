@@ -152,6 +152,11 @@ export async function getStaticProps(context) {
     formats[type] = tmp
   }
 
+  // Relative category
+  const relativecategory = await fetch(`${baseUrl}/stats/relativecategory`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   // Asset downloads
   const now = new Date()
   const monthAgo = subMonths(now, 1)
@@ -187,6 +192,7 @@ export async function getStaticProps(context) {
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
+        relativecategory,
         monthlyAssets,
         resolutions,
         formats,

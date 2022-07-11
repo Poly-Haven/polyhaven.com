@@ -1,9 +1,9 @@
 import Tooltip from 'components/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
+import RelativeCat from './RelativeCat'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
-import FormatComparison from './FormatComparison'
 import TrafficGraph from './TrafficGraph'
 import StatBlock from './StatBlock/StatBlock'
 
@@ -13,7 +13,6 @@ import styles from './Stats.module.scss'
   Downloads per month over all time (wait until like 2022)
   Patrons over time
   Downloads per $ donated
-  Downloads by category
   Patreon earnings per assets available
 */
 
@@ -26,15 +25,7 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.row}>
         <div className={styles.half}>
-          <div className={styles.row}>
-            <div className={styles.half}>
-              <LastThreeMonths data={datasets.threeMonths} />
-            </div>
-            <div className={styles.half}>
-              <RelativeType data={datasets.relativeType} />
-              <AssetsPerMonth data={datasets.monthlyAssets} />
-            </div>
-          </div>
+          <LastThreeMonths data={datasets.threeMonths} />
         </div>
         <div className={styles.half}>
           <div className={styles.row}>
@@ -71,11 +62,35 @@ const Stats = ({ datasets }) => {
         </div>
       </div>
 
+      <div className={styles.spacer} />
+
+      <div className={styles.row}>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="hdris" name="HDRI" />
+        </div>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="textures" name="Texture" />
+        </div>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="models" name="Model" />
+        </div>
+        <div className={styles.half}>
+          <RelativeType data={datasets.relativeType} />
+        </div>
+        <div className={styles.half}>
+          <AssetsPerMonth data={datasets.monthlyAssets} />
+        </div>
+      </div>
+
+      <div className={styles.spacer} />
+
       <div className={styles.row}>
         <div className={styles.half}>
           <TrafficGraph data={datasets.cfdaily} />
         </div>
       </div>
+
+      <div className={styles.spacer} />
 
       <div className={styles.row} style={{ alignItems: 'center', justifyContent: 'center' }}>
         <p>Monthly Traffic:</p>
