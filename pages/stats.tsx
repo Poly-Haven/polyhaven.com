@@ -36,6 +36,7 @@ export async function getStaticProps(context) {
   const today = new Date().toISOString().split('T')[0]
   const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - ((91 + 6) * msPerDay)).toISOString().split('T')[0]
+  const oneYearAgo = new Date(Date.now() - (365 * msPerDay)).toISOString().split('T')[0]
 
   // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
@@ -117,6 +118,45 @@ export async function getStaticProps(context) {
     resolutions[type] = tmp
   }
 
+  // Format graphs
+  const formatsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`)
+    .then(handleErrors)
+    .then(response => response.json())
+    .catch(e => error = e)
+  let formats = {
+    hdris: { total: 0 },
+    textures: { total: 0 },
+    models: { total: 0 },
+  }
+  for (const stat of formatsData) {
+    const type = Object.keys(formats)[parseInt(stat.slug.substring(1, 2))]
+    if (!type) continue;
+    let fmtStr = stat.slug.substring(4)
+    if (fmtStr.includes(':')) {
+      fmtStr = fmtStr.split(':').pop()
+    }
+    if (type === 'hdris' && ['jpg_plain', 'jpg_pretty', 'raw'].includes(fmtStr)) {
+      fmtStr = 'backplate'
+    }
+    formats[type][fmtStr] = formats[type][fmtStr] || 0
+    formats[type][fmtStr] += stat.downloads;
+    formats[type].total += stat.downloads;
+  }
+  for (const [type, fmts] of Object.entries(formats)) {
+    const sortedKeys = Object.keys(fmts).sort((a, b) => parseInt(a) - parseInt(b))
+    let tmp = {}
+    for (const r of sortedKeys) {
+      if (r === 'total') continue
+      tmp[r] = fmts[r] / fmts.total * 100
+    }
+    formats[type] = tmp
+  }
+
+  // Relative category
+  const relativecategory = await fetch(`${baseUrl}/stats/relativecategory`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   // Asset downloads
   const now = new Date()
   const monthAgo = subMonths(now, 1)
@@ -135,6 +175,11 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Cloudflare Daily
+  const cfdaily = await fetch(`${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
   if (error) {
     return {
       props: {},
@@ -147,10 +192,13 @@ export async function getStaticProps(context) {
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
+        relativecategory,
         monthlyAssets,
         resolutions,
+        formats,
         monthlyDownloads,
         traffic,
+        cfdaily,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day

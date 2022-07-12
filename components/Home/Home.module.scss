@@ -54,14 +54,17 @@
 }
 .assetTypeBanner {
   @extend .section;
-  flex-wrap: wrap;
   padding: 0;
   max-width: 100%;
+
+  @media screen and (max-width: 1220px) {
+    flex-wrap: wrap;
+  }
 
   img {
     width: 300px;
 
-    @media screen and (max-width: 505px) {
+    @media screen and (max-width: 1560px) {
       width: 150px;
     }
   }
@@ -180,35 +183,35 @@
   flex-wrap: wrap;
   position: relative;
   min-height: 45vh;
-  background: url(https://file.coffee/u/1lomq88D-YSFsK.jpg) no-repeat center center !important;
+  background: url(https://cdn.polyhaven.com/site_images/home/sectionBrowse.jpg?width=1920) no-repeat center center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
   pointer-events: none;
 
   .hoverBrowseAll {
     @include absolute_cover;
-    background: url(https://file.coffee/u/jZMmLAZ20Onsod.jpg) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseAll.jpg?width=1920) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseHDRIs {
     @include absolute_cover;
-    background: url(https://file.coffee/u/oo7fkTmt2qydSa.jpg) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseHDRIs.jpg?width=1920) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseTextures {
     @include absolute_cover;
-    background: url(https://file.coffee/u/tXtKAjPsLUHWI6.jpg) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseTextures.jpg?width=1920) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseModels {
     @include absolute_cover;
-    background: url(https://file.coffee/u/713wQ2ObhOtAF-.jpg) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseModels.jpg?width=1920) no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);

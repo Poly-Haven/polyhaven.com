@@ -24,6 +24,11 @@
   height: 100%;
 }
 
+.spacer {
+  width: 1.5em;
+  height: 1.5em;
+}
+
 .row {
   @include flex(row);
   gap: 2rem;
@@ -110,5 +115,11 @@
   li::before {
     content: "•";
     color: $c-text-light;
+  }
+}
+
+.opaque {
+  &:hover {
+    opacity: 1;
   }
 }

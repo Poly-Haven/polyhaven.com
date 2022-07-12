@@ -2,5 +2,30 @@
 
 .faq {
   border-top: 1px solid $c-background-light;
-  margin-top: 2rem;
+  padding: 1em;
+
+  h2 {
+    margin-top: 0.5rem;
+
+    svg {
+      opacity: 0.35;
+      cursor: pointer;
+      font-size: 0.7em;
+
+      &:hover {
+        color: $c-accent;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.anchor {
+  position: relative;
+  top: -5em;
+}
+
+.highlight {
+  background-color: rgba($c-yellow, 0.2);
+  box-shadow: -0.5em 0 0 0 $c-yellow;
 }

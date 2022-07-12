@@ -1,9 +1,10 @@
 import Tooltip from 'components/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
+import RelativeCat from './RelativeCat'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
-import InfoBlock from 'components/Layout/InfoBlock/InfoBlock'
+import TrafficGraph from './TrafficGraph'
 import StatBlock from './StatBlock/StatBlock'
 
 import styles from './Stats.module.scss'
@@ -11,10 +12,7 @@ import styles from './Stats.module.scss'
 /* Ideas:
   Downloads per month over all time (wait until like 2022)
   Patrons over time
-  Comparison of formats
   Downloads per $ donated
-  Downloads by category
-  Bandwith usage
   Patreon earnings per assets available
 */
 
@@ -32,8 +30,19 @@ const Stats = ({ datasets }) => {
         <div className={styles.half}>
           <div className={styles.row}>
             <div className={styles.half}>
-              <RelativeType data={datasets.relativeType} />
-              <AssetsPerMonth data={datasets.monthlyAssets} />
+              <div className={styles.graphHeader}>
+                <p>Downloads by format chosen:</p>
+              </div>
+              {Object.keys(datasets.formats).map((k, i) =>
+                <ResolutionComparison key={i} data={datasets.formats[k]} type={k} />
+              )}
+              <p style={{ marginBottom: 0 }}>Notes:</p>
+              <ul className={styles.unNumberedNotesList}>
+                <li>EXR is the default format for HDRIs.</li>
+                <li>Blend is the default format for textures and models.</li>
+                <li>EXR/JPG/PNG are individual texture maps, not entire assets.</li>
+                <li>ZIP may include a variety of contents.</li>
+              </ul>
             </div>
             <div className={styles.half}>
               <div className={styles.graphHeader}>
@@ -52,6 +61,36 @@ const Stats = ({ datasets }) => {
           </div>
         </div>
       </div>
+
+      <div className={styles.spacer} />
+
+      <div className={styles.row}>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="hdris" name="HDRI" />
+        </div>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="textures" name="Texture" />
+        </div>
+        <div className={styles.half}>
+          <RelativeCat data={datasets.relativecategory} type="models" name="Model" />
+        </div>
+        <div className={styles.half}>
+          <RelativeType data={datasets.relativeType} />
+        </div>
+        <div className={styles.half}>
+          <AssetsPerMonth data={datasets.monthlyAssets} />
+        </div>
+      </div>
+
+      <div className={styles.spacer} />
+
+      <div className={styles.row}>
+        <div className={styles.half}>
+          <TrafficGraph data={datasets.cfdaily} />
+        </div>
+      </div>
+
+      <div className={styles.spacer} />
 
       <div className={styles.row} style={{ alignItems: 'center', justifyContent: 'center' }}>
         <p>Monthly Traffic:</p>
