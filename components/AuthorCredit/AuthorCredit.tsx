@@ -7,6 +7,7 @@ import Heart from 'components/Heart/Heart'
 import Avatar from 'components/Avatar/Avatar'
 
 import apiSWR from 'utils/apiSWR'
+import { titleCase } from 'utils/stringUtils';
 
 import styles from './AuthorCredit.module.scss'
 
@@ -44,7 +45,7 @@ const AuthorCredit = ({ id, size, credit }) => {
         <Link href={assetLink} prefetch={false}>
           <a><strong>{id}</strong></a>
         </Link>
-        {credit ? <span className={styles.credit}>{credit}</span> : ""}
+        {credit ? <span className={styles.credit}>{titleCase(credit)}</span> : ""}
         <div className={styles.links}>
           {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
           {email ? <a href={`mailto:${email}`} target="_blank" rel="noopener"><MdMail /></a> : ""}
