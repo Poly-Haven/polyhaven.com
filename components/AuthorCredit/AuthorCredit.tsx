@@ -39,6 +39,9 @@ const AuthorCredit = ({ id, size, credit }) => {
       <Link href={assetLink} prefetch={false}>
         <a className={styles.avatar}>
           <Avatar id={id} size={50} />
+          {data && data.regular_donor ?
+            <div className={styles.regularDonor} data-tip="Regular asset donor"><Heart color="#F96854" /></div>
+            : null}
         </a>
       </Link>
       <div className={styles.name}>
