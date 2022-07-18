@@ -82,7 +82,7 @@ const Corporate = (props) => {
             display: 'grid',
             gridTemplateColumns: "repeat(2, 1fr)",
           }}>
-            <StatBlock head={`${(props.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
+            <StatBlock head={`${(props.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
             <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
             <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
             <StatBlock head={props.numPatrons} text="Patrons" />
