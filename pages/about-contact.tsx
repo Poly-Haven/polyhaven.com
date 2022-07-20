@@ -1,13 +1,16 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 import AboutContact from 'components/AboutContact/AboutContact'
 
 const AboutPage = () => {
+  const { t } = useTranslation(['common', 'about']);
+
   return (
     <TextPage
-      title="About / Contact"
-      description="What Poly Haven is, what we do, and why we're doing it."
+      title={t('about:title')}
+      description={t('about:description')}
       url="/about-contact"
     >
       <AboutContact />
