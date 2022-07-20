@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link';
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 import { v4 as uuid } from 'uuid';
+import { appWithTranslation } from 'next-i18next';
 
 import Layout from 'components/Layout/Layout'
 
@@ -78,4 +79,4 @@ We have a public API intended to help you integrate our assets into your softwar
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)
