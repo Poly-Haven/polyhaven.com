@@ -1,20 +1,28 @@
 import Link from 'next/link';
+import { useTranslation, Trans } from 'next-i18next';
 
+import { LinkText } from 'components/LinkText/LinkText';
 import Staff from 'components/Avatar/Staff'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 import styles from './AboutContact.module.scss'
 
 const AboutPage = () => {
+  const { t } = useTranslation(['common', 'about']);
+
   return (
     <div>
       <div className={styles.intro}>
         <img src='/Logo 256.png' className={styles.logo} />
         <div className={styles.text}>
-          <h1>Hi there!</h1>
-          <p>Poly Haven is a curated public asset library for visual effects artists and game designers, providing useful high quality 3D assets in an easily obtainable manner.</p>
-          <p>There are no paywalls, accounts or email forms required, just download an asset and use it without worry.</p>
-          <p>All assets here are <Link href="/license"><a>CC0</a></Link>, which means they're practically free of copyright and you may use them for absolutely any purpose.</p>
+          <h1>{t('about:greeting.h1')}</h1>
+          <p>{t('about:greeting.l1')}</p>
+          <p>{t('about:greeting.l2')}</p>
+          <p><Trans
+            i18nKey="about:greeting.l3"
+            t={t}
+            components={{ lnk: <LinkText href="/license" /> }}
+          /></p>
           <p></p>
         </div>
       </div>

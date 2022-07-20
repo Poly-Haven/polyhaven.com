@@ -1,3 +1,5 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import TextPage from 'components/Layout/TextPage/TextPage'
 import AboutContact from 'components/AboutContact/AboutContact'
 
@@ -11,6 +13,14 @@ const AboutPage = () => {
       <AboutContact />
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'about'])),
+    },
+  };
 }
 
 export default AboutPage
