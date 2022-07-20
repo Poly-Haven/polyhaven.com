@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation, Trans } from 'next-i18next';
 import { getPatronInfo } from 'utils/patronInfo';
 
 import Button from 'components/Button/Button'
@@ -12,6 +14,7 @@ import EarlyAccess from 'components/RewardInfo/EarlyAccess';
 import OfflineAccess from 'components/RewardInfo/OfflineAccess';
 import Sponsor from 'components/RewardInfo/Sponsor';
 import Stakeholder from 'components/RewardInfo/Stakeholder';
+import LinkText from 'components/LinkText/LinkText';
 
 const rewardInfo = (r, uuid, patron) => {
   switch (r) {
@@ -36,6 +39,7 @@ const Page = () => {
   const [patron, setPatron] = useState({});
   const router = useRouter()
   const returnTo = router.query.returnTo
+  const { t } = useTranslation(['common', 'account']);
 
   useEffect(() => {
     if (uuid) {
@@ -54,31 +58,39 @@ const Page = () => {
 
   if (!user) return (
     <TextPage
-      title="Log In"
+      title={t('account:title')}
       url="/account"
     >
-      <h1>Log In</h1>
-      <p>If you're a <Link href="https://www.patreon.com/polyhaven/overview">patron</Link> of Poly Haven, logging in here will give you access to your rewards directly on this site.</p>
-      <p>Depending on your support tier, your rewards may include:</p>
+      <h1>{t('account:title')}</h1>
+      <p><Trans
+        i18nKey="account:login.p1"
+        t={t}
+        components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+      /></p>
+      <p>{t('account:login.p2')}</p>
       <ul>
-        <li>Permanent removal of ads.</li>
-        <li>Early access to assets, before they are released publicly.</li>
-        <li>Access to our cloud service, to sync all of our assets to your hard drive.</li>
-        <li>Sponsor an asset permanently every month, showing your name and link next to the download buttons.</li>
+        <li>{t('account:login.li1')}</li>
+        <li>{t('account:login.li2')}</li>
+        <li>{t('account:login.li3')}</li>
+        <li>{t('account:login.li4')}</li>
       </ul>
-      <Button text="Log In" href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
+      <Button text={t('account:title')} href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
     </TextPage>
   )
 
   if (!Object.keys(patron).length) {
-    return <TextPage title="Account" url="/account"><Loader /></TextPage>
+    return <TextPage title={t('account:account')} url="/account"><Loader /></TextPage>
   }
 
   if (patron['error']) {
     return (
-      <TextPage title="Account" url="/account">
-        <h1>Account</h1>
-        <p>You don't seem to be a patron of Poly Haven :( if this is incorrect, please <Link href="/about-contact">get in touch</Link> so we can investigate the problem on this page. We'll need the following information:</p>
+      <TextPage title={t('account:account')} url="/account">
+        <h1>{t('account:account')}</h1>
+        <p><Trans
+          i18nKey="account:not-patron"
+          t={t}
+          components={{ lnk: <LinkText href="/about-contact" /> }}
+        /></p>
         <p><pre>{JSON.stringify(patron, null, 2)}</pre></p>
       </TextPage>
     )
@@ -87,21 +99,21 @@ const Page = () => {
   if (patron['status'] !== "active_patron") {
     return (
       <TextPage
-        title="Account"
+        title={t('account:account')}
         url="/account"
       >
-        <h1>Hi {patron['display_name'] || patron['name']}!</h1>
-        <p>It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)</p>
+        <h1>{t('account:hi')} {patron['display_name'] || patron['name']}!</h1>
+        <p>{t('account:not-patron-anymore')}</p>
       </TextPage>
     )
   }
 
   return (
     <TextPage
-      title="Account"
+      title={t('account:account')}
       url="/account"
     >
-      <h1 title={uuid} style={{ textAlign: "center" }}>Hi {(patron['display_name'] || patron['name']).trim()}!</h1>
+      <h1 title={uuid} style={{ textAlign: "center" }}>{t('account:hi')} {(patron['display_name'] || patron['name']).trim()}!</h1>
       <p>You're currently supporting Poly Haven with ${patron['cents'] / 100} per month, thanks!</p>
 
       {patron['rewards'].length > 0 && <>
@@ -109,9 +121,16 @@ const Page = () => {
 
         {patron['rewards'].map((r, i) => <div key={i}>{rewardInfo(r, uuid, patron)}</div>)}
       </>}
-      {/* <p><pre>{JSON.stringify(patron, null, 2)}</pre></p> */}
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'account'])),
+    },
+  };
 }
 
 export default Page

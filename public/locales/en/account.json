@@ -1,0 +1,15 @@
+{
+  "title": "Log In",
+  "account": "Account",
+  "login": {
+    "p1": "If you're a <lnk>patron</lnk> of Poly Haven, logging in here will give you access to your rewards directly on this site.",
+    "p2": "Depending on your support tier, your rewards may include:",
+    "li1": "Permanent removal of ads.",
+    "li2": "Early access to assets, before they are released publicly.",
+    "li3": "Access to our cloud service, to sync all of our assets to your hard drive.",
+    "li4": "Sponsor an asset permanently every month, showing your name and link next to the download buttons."
+  },
+  "not-patron": "You don't seem to be a patron of Poly Haven :( if this is incorrect, please <lnk>get in touch</lnk> so we can investigate the problem on this page. We'll need the following information:",
+  "hi": "Hi",
+  "not-patron-anymore": "It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)"
+}
