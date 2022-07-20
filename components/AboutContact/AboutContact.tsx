@@ -1,6 +1,6 @@
 import { useTranslation, Trans } from 'next-i18next';
 
-import { LinkText } from 'components/LinkText/LinkText';
+import LinkText from 'components/LinkText/LinkText';
 import Staff from 'components/Avatar/Staff'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
