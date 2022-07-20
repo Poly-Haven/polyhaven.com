@@ -27,15 +27,15 @@ const AboutPage = () => {
       </div>
 
       <div className={styles.staff}>
-        <Staff id="Greg Zaal" name="Greg Zaal" role="Director, HDRIs" country="ZA" mode="full" />
-        <Staff id="Rob Tuytel" name="Rob Tuytel" role="Co-founder, Textures" country="NL" mode="full" />
-        <Staff id="Rico Cilliers" name="Rico Cilliers" role="Models, Textures" country="ZA" mode="full" />
-        <Staff id="James Ray Cock" name="James Ray Cock" role="Models" country="ZA" mode="full" />
-        <Staff id="Dario Barresi" name="Dario Barresi" role="Textures" country="ZA" mode="full" />
-        <Staff id="Andreas Mischok" name="Andreas Mischok" role="HDRIs" country="DE" mode="full" />
-        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role="HDRIs" country="UL" mode="full" />
-        <Staff id="Dimitrios Savva" name="Dimitrios Savva" role="Textures, HDRIs" country="ZA" mode="full" />
-        <Staff id="Jurita Burger" name="Jurita Burger" role="Graphic Design" country="ZA" mode="full" />
+        <Staff id="Greg Zaal" name="Greg Zaal" role={`${t('common:Director')}, HDRIs`} country="ZA" mode="full" />
+        <Staff id="Rob Tuytel" name="Rob Tuytel" role={`${t('common:Co-founder')}, ${t('common:Textures')}`} country="NL" mode="full" />
+        <Staff id="Rico Cilliers" name="Rico Cilliers" role={`${t('common:Models')}, ${t('common:Textures')}`} country="ZA" mode="full" />
+        <Staff id="James Ray Cock" name="James Ray Cock" role={`${t('common:Models')}`} country="ZA" mode="full" />
+        <Staff id="Dario Barresi" name="Dario Barresi" role={`${t('common:Textures')}`} country="ZA" mode="full" />
+        <Staff id="Andreas Mischok" name="Andreas Mischok" role={`${t('common:HDRIs')}`} country="DE" mode="full" />
+        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UL" mode="full" />
+        <Staff id="Dimitrios Savva" name="Dimitrios Savva" role={`${t('common:Textures')}, ${t('common:HDRIs')}`} country="ZA" mode="full" />
+        <Staff id="Jurita Burger" name="Jurita Burger" role={`${t('common:Graphic-Design')}`} country="ZA" mode="full" />
       </div>
 
       <CorporateSponsors header={`${t('common:corporate-sponsors')}:`} />
