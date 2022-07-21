@@ -1,7 +1,9 @@
+const locales = require('./utils/locales')
+
 module.exports = {
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'de', 'zh'],
+    locales: Object.keys(locales),
   },
   reloadOnPrerender: process.env.NODE_ENV === 'development'
 };
