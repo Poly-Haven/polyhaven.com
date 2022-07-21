@@ -1,1 +1,52 @@
-{"Co-founder":"Mitbegründer","corporate-sponsors":"Unternehmenssponsoren","Director":"Direktor","display-name":"Anzeigename","email-address":"E-Mail-Addresse","Graphic-Design":"Grafikdesign","HDRIs":"HDRIs","hidden":"Versteckt","invalid-email":"Ungültige E-Mail-Adresse","invalid-name-url":"Ungültiger Name oder URL","Models":"Modelle","optional":"Optional","please-wait":"Warten Sie mal...","required":"Erforderlich","Textures":"Texturen","visible":"Sichtbar"}
+{
+  "Assets": "Vermögenswerte",
+  "Co-founder": "Mitbegründer",
+  "Director": "Direktor",
+  "Graphic-Design": "Grafikdesign",
+  "HDRIs": "HDRIs",
+  "Models": "Modelle",
+  "Textures": "Texturen",
+  "corporate-sponsor_one": "Unternehmenssponsor",
+  "corporate-sponsor_other": "Unternehmenssponsoren",
+  "corporate-sponsors": "Unternehmenssponsoren",
+  "display-name": "Anzeigename",
+  "email-address": "E-Mail-Addresse",
+  "footer": {
+    "thanks": "Dank unserer<lnk> Gönner</lnk> für die Ermöglichung von Poly Haven"
+  },
+  "goal": {
+    "complete": "Vollständig!",
+    "current": "Aktuelles Ziel:",
+    "reached": "Wir haben unser letztes Ziel erreicht! Hier sollte bald etwas neues erscheinen :)",
+    "to-go": "$ {{dollars}} zu gehen"
+  },
+  "hidden": "Versteckt",
+  "invalid-email": "Ungültige E-Mail-Adresse",
+  "invalid-name-url": "Ungültiger Name oder URL",
+  "loading": "Wird geladen...",
+  "nav": {
+    "about-contact": "Über/Kontakt",
+    "api": "API",
+    "blog": "Bloggen",
+    "contribute": "Beitragen",
+    "faq": "FAQ",
+    "finances": "Finanzberichte",
+    "gallery": "Galerie",
+    "home": "Heim",
+    "license": "Lizenz",
+    "logout": "Ausloggen",
+    "map": "HDRI-Weltkarte",
+    "news": "Nachrichten",
+    "privacy": "Privatsphäre",
+    "source": "Quelle",
+    "stats": "Statistiken",
+    "support-us": "Unterstütze uns"
+  },
+  "optional": "Optional",
+  "patron_one": "Patron",
+  "patron_other": "Gönner",
+  "please-wait": "Warten Sie mal...",
+  "required": "Erforderlich",
+  "tagline": "Die öffentliche 3D-Asset-Bibliothek",
+  "visible": "Sichtbar"
+}

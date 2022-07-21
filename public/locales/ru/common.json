@@ -1,1 +1,52 @@
-{"Co-founder":"Соучредитель","corporate-sponsors":"Корпоративные спонсоры","Director":"Директор","display-name":"Показать имя","email-address":"Адрес электронной почты","Graphic-Design":"Графический дизайн","HDRIs":"HDRI","hidden":"Скрытый","invalid-email":"Неверный адрес электронной почты","invalid-name-url":"Недопустимое имя или URL","Models":"Модели","optional":"По желанию","please-wait":"Пожалуйста подождите...","required":"Необходимый","Textures":"Текстуры","visible":"Видимый"}
+{
+  "Assets": "Ресурсы",
+  "Co-founder": "Соучредитель",
+  "Director": "Директор",
+  "Graphic-Design": "Графический дизайн",
+  "HDRIs": "HDRI",
+  "Models": "Модели",
+  "Textures": "Текстуры",
+  "corporate-sponsor_one": "Корпоративный спонсор",
+  "corporate-sponsor_other": "Корпоративные спонсоры",
+  "corporate-sponsors": "Корпоративные спонсоры",
+  "display-name": "Показать имя",
+  "email-address": "Адрес электронной почты",
+  "footer": {
+    "thanks": "Благодаря нашему<lnk> Покровители</lnk> для того, чтобы сделать Poly Haven возможным"
+  },
+  "goal": {
+    "complete": "Полный!",
+    "current": "Текущая цель:",
+    "reached": "Мы достигли нашей последней цели! Скоро здесь должно появиться что-то новенькое :)",
+    "to-go": "$ {{dollars}} , чтобы пойти"
+  },
+  "hidden": "Скрытый",
+  "invalid-email": "Неверный адрес электронной почты",
+  "invalid-name-url": "Недопустимое имя или URL",
+  "loading": "Загрузка...",
+  "nav": {
+    "about-contact": "О нас/Контакты",
+    "api": "API",
+    "blog": "Блог",
+    "contribute": "Делать вклад",
+    "faq": "Часто задаваемые вопросы",
+    "finances": "Финансовые отчеты",
+    "gallery": "Галерея",
+    "home": "Дом",
+    "license": "Лицензия",
+    "logout": "Выйти",
+    "map": "HDRI карта мира",
+    "news": "Новости",
+    "privacy": "Конфиденциальность",
+    "source": "Источник",
+    "stats": "Статистика",
+    "support-us": "Поддерживать нас"
+  },
+  "optional": "По желанию",
+  "patron_one": "Покровитель",
+  "patron_other": "Покровители",
+  "please-wait": "Пожалуйста подождите...",
+  "required": "Необходимый",
+  "tagline": "Публичная библиотека 3D-активов",
+  "visible": "Видимый"
+}

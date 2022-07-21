@@ -1,1 +1,12 @@
-{"d1p":"Veuillez nous rejoindre temporairement sur<lnk> Patréon</lnk> , attendez la fin du mois lorsque votre paiement est effectué, puis annulez votre compte.","d1t":"Dons inférieurs à 20 $","d2b1":"Faire un don sur PayPal","d2b2":"Faire un don sur Ko-fi","d2p":"Pour faire un don unique, veuillez utiliser PayPal ou Ko-fi :","d2t":"Dons plus importants","description":"Comment faire un don unique à Poly Haven.","p1":"Afin d'être un projet ouvert durable, nous aimons un<lnk1> budget prévisible</lnk1> . Avoir un revenu très variable rend difficile pour nous de planifier à l'avance et d'embaucher du personnel à long terme. Nous préférerions de loin que vous donniez un<lnk2> petit montant mensuel</lnk2> à long terme qu'un montant forfaitaire unique.","p2":"Cela dit, nous acceptons bien sûr les dons de toute nature :)","title":"Faire un don unique"}
+{
+  "d1p": "Veuillez nous rejoindre temporairement sur<lnk> Patréon</lnk> , attendez la fin du mois lorsque votre paiement est effectué, puis annulez votre compte.",
+  "d1t": "Dons inférieurs à 20 $",
+  "d2b1": "Faire un don sur PayPal",
+  "d2b2": "Faire un don sur Ko-fi",
+  "d2p": "Pour faire un don unique, veuillez utiliser PayPal ou Ko-fi :",
+  "d2t": "Dons plus importants",
+  "description": "Comment faire un don unique à Poly Haven.",
+  "p1": "Afin d'être un projet ouvert durable, nous aimons un<lnk1> budget prévisible</lnk1> . Avoir un revenu très variable rend difficile pour nous de planifier à l'avance et d'embaucher du personnel à long terme. Nous préférerions de loin que vous donniez un<lnk2> petit montant mensuel</lnk2> à long terme qu'un montant forfaitaire unique.",
+  "p2": "Cela dit, nous acceptons bien sûr les dons de toute nature :)",
+  "title": "Faire un don unique"
+}

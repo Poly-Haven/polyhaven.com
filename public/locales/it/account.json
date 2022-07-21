@@ -1,1 +1,65 @@
-{"account":"Account","hi":"Ciao","login":{"li1":"Rimozione permanente degli annunci.","li2":"Accesso anticipato alle risorse, prima che vengano rese pubbliche.","li3":"Accedi al nostro servizio cloud, per sincronizzare tutte le nostre risorse sul tuo disco rigido.","li4":"Sponsorizza una risorsa in modo permanente ogni mese, mostrando il tuo nome e il link accanto ai pulsanti di download.","p1":"Se sei un<lnk> patrono</lnk> di Poly Haven, l'accesso qui ti darà accesso ai tuoi premi direttamente su questo sito.","p2":"A seconda del tuo livello di supporto, i tuoi premi possono includere:"},"not-patron":"Non sembri essere un mecenate di Poly Haven :( se questo non è corretto, per favore<lnk> mettiti in contatto</lnk> così possiamo esaminare il problema in questa pagina. Avremo bisogno delle seguenti informazioni:","not-patron-anymore":"Sembra che tu non sia più un mecenate di Poly Haven. Va bene e apprezziamo il tuo supporto passato :)","reward_one":"Questo ti garantisce la seguente ricompensa:","reward_other":"Questo ti garantisce i seguenti premi:","rewards":{"credit":{"invalid":"Nome non valido","p1":"Il tuo nome è attualmente","p2":"{{hidden}} nell'elenco degli utenti nel footer di questo sito.","p3":"La modifica di questa impostazione potrebbe richiedere alcune ore per aggiornare ogni pagina del sito.","p4":"Nome da visualizzare:","title":"Credito a piè di pagina"},"early-access":{"p1":"Ora che hai effettuato l'accesso, il<lnk> Libreria di asset</lnk> includerà le risorse che abbiamo programmato di pubblicare in futuro.","p2":"Sono contrassegnati da un cerchio blu e dal logo Patreon in alto a destra, in questo modo:","p3":"Puoi già scaricarli, prima di tutti gli altri :)","title":"Accesso anticipato"},"no-ads":{"p1":"Utilizziamo Google AdSense su polyhaven.com. Per nascondere questi annunci, abilita semplicemente questo interruttore:","p2":"Gli annunci sono ora:","title":"Nessuna pubblicità"},"offline-access":{"p1":"Inserisci il tuo indirizzo email per inviarti un invito alla nostra cartella cloud:","p2":"Controlla la tua email :)","p3":"Invito inviato con successo. In caso di problemi o necessità di modificare l'e-mail dell'account,<lnk> Ci contatti per favore</lnk> .","p4":"Vedere<lnk> questo post</lnk> per ulteriori istruzioni su come configurare Nextcloud e iniziare a sincronizzare le risorse sul tuo computer.","title":"Accesso offline"},"sponsor":{"p1":"Puoi scegliere una risorsa ogni mese a cui inserire il tuo nome e un link accanto in modo permanente. Per fare questo, lavoriamo con un sistema di \"token\".","p2":"All'inizio di ogni mese dopo che il tuo pagamento è stato elaborato da Patreon, ne ricevi automaticamente uno<ticket /> <b>Gettone sponsor</b> .","p3":"Ci sono due modi per spendere questo token:","p3li1":"Visitando la pagina dell'asset che si desidera sponsorizzare e facendo clic sul pulsante \"<ticket /> Sponsorizza questa risorsa\" sul lato destro della pagina.","p3li2":"Oppure puoi attivare le sponsorizzazioni automatiche di seguito, che sceglieranno una risorsa casuale per te ogni mese.","p4":"I token non scadono, quindi puoi tornare dopo qualche mese e spendere i tuoi token accumulati.","p5":"Una volta che un token è stato speso, non può essere revocato o spostato su un'altra risorsa.","p6":"Sponsorizza automaticamente una risorsa casuale ogni mese:","p7":"Il 15° giorno di ogni mese, tutti i token disponibili in tuo possesso verranno spesi per asset casuali. Questo ti dà 15 giorni per spendere manualmente i tuoi token, se lo desideri.","p8":"Se vuoi essere avvisato quando una risorsa viene prelevata automaticamente per te, inserisci il tuo indirizzo email di seguito:","p9":"Per annullare l'iscrizione alle notifiche, cancella il tuo indirizzo email sopra e fai clic sul pulsante Salva.","title":"Sponsor"},"stakeholder":{"p1":"In qualità di stakeholder di Poly Haven, ottieni un accesso più approfondito ai nostri canali di comunicazione interna per aiutarci a discutere su cosa lavorare e seguire il nostro viaggio.","p2":"Se non ti abbiamo già contattato, per favore<lnk> mettiti in contatto</lnk> così possiamo darti accesso a questi canali e presentarti al team.","title":"Stakeholder"}},"support-amount":"Attualmente stai supportando Poly Haven con $ {{amount}} al mese, grazie!","title":"Accesso"}
+{
+  "account": "Account",
+  "hi": "Ciao",
+  "login": {
+    "li1": "Rimozione permanente degli annunci.",
+    "li2": "Accesso anticipato alle risorse, prima che vengano rese pubbliche.",
+    "li3": "Accedi al nostro servizio cloud, per sincronizzare tutte le nostre risorse sul tuo disco rigido.",
+    "li4": "Sponsorizza una risorsa in modo permanente ogni mese, mostrando il tuo nome e il link accanto ai pulsanti di download.",
+    "p1": "Se sei un<lnk> patrono</lnk> di Poly Haven, l'accesso qui ti darà accesso ai tuoi premi direttamente su questo sito.",
+    "p2": "A seconda del tuo livello di supporto, i tuoi premi possono includere:"
+  },
+  "not-patron": "Non sembri essere un mecenate di Poly Haven :( se questo non è corretto, per favore<lnk> mettiti in contatto</lnk> così possiamo esaminare il problema in questa pagina. Avremo bisogno delle seguenti informazioni:",
+  "not-patron-anymore": "Sembra che tu non sia più un mecenate di Poly Haven. Va bene e apprezziamo il tuo supporto passato :)",
+  "reward_one": "Questo ti garantisce la seguente ricompensa:",
+  "reward_other": "Questo ti garantisce i seguenti premi:",
+  "rewards": {
+    "credit": {
+      "invalid": "Nome non valido",
+      "p1": "Il tuo nome è attualmente",
+      "p2": "{{hidden}} nell'elenco degli utenti nel footer di questo sito.",
+      "p3": "La modifica di questa impostazione potrebbe richiedere alcune ore per aggiornare ogni pagina del sito.",
+      "p4": "Nome da visualizzare:",
+      "title": "Credito a piè di pagina"
+    },
+    "early-access": {
+      "p1": "Ora che hai effettuato l'accesso, il<lnk> Libreria di asset</lnk> includerà le risorse che abbiamo programmato di pubblicare in futuro.",
+      "p2": "Sono contrassegnati da un cerchio blu e dal logo Patreon in alto a destra, in questo modo:",
+      "p3": "Puoi già scaricarli, prima di tutti gli altri :)",
+      "title": "Accesso anticipato"
+    },
+    "no-ads": {
+      "p1": "Utilizziamo Google AdSense su polyhaven.com. Per nascondere questi annunci, abilita semplicemente questo interruttore:",
+      "p2": "Gli annunci sono ora:",
+      "title": "Nessuna pubblicità"
+    },
+    "offline-access": {
+      "p1": "Inserisci il tuo indirizzo email per inviarti un invito alla nostra cartella cloud:",
+      "p2": "Controlla la tua email :)",
+      "p3": "Invito inviato con successo. In caso di problemi o necessità di modificare l'e-mail dell'account,<lnk> Ci contatti per favore</lnk> .",
+      "p4": "Vedere<lnk> questo post</lnk> per ulteriori istruzioni su come configurare Nextcloud e iniziare a sincronizzare le risorse sul tuo computer.",
+      "title": "Accesso offline"
+    },
+    "sponsor": {
+      "p1": "Puoi scegliere una risorsa ogni mese a cui inserire il tuo nome e un link accanto in modo permanente. Per fare questo, lavoriamo con un sistema di \"token\".",
+      "p2": "All'inizio di ogni mese dopo che il tuo pagamento è stato elaborato da Patreon, ne ricevi automaticamente uno<ticket /> <b>Gettone sponsor</b> .",
+      "p3": "Ci sono due modi per spendere questo token:",
+      "p3li1": "Visitando la pagina dell'asset che si desidera sponsorizzare e facendo clic sul pulsante \"<ticket /> Sponsorizza questa risorsa\" sul lato destro della pagina.",
+      "p3li2": "Oppure puoi attivare le sponsorizzazioni automatiche di seguito, che sceglieranno una risorsa casuale per te ogni mese.",
+      "p4": "I token non scadono, quindi puoi tornare dopo qualche mese e spendere i tuoi token accumulati.",
+      "p5": "Una volta che un token è stato speso, non può essere revocato o spostato su un'altra risorsa.",
+      "p6": "Sponsorizza automaticamente una risorsa casuale ogni mese:",
+      "p7": "Il 15° giorno di ogni mese, tutti i token disponibili in tuo possesso verranno spesi per asset casuali. Questo ti dà 15 giorni per spendere manualmente i tuoi token, se lo desideri.",
+      "p8": "Se vuoi essere avvisato quando una risorsa viene prelevata automaticamente per te, inserisci il tuo indirizzo email di seguito:",
+      "p9": "Per annullare l'iscrizione alle notifiche, cancella il tuo indirizzo email sopra e fai clic sul pulsante Salva.",
+      "title": "Sponsor"
+    },
+    "stakeholder": {
+      "p1": "In qualità di stakeholder di Poly Haven, ottieni un accesso più approfondito ai nostri canali di comunicazione interna per aiutarci a discutere su cosa lavorare e seguire il nostro viaggio.",
+      "p2": "Se non ti abbiamo già contattato, per favore<lnk> mettiti in contatto</lnk> così possiamo darti accesso a questi canali e presentarti al team.",
+      "title": "Stakeholder"
+    }
+  },
+  "support-amount": "Attualmente stai supportando Poly Haven con $ {{amount}} al mese, grazie!",
+  "title": "Accesso"
+}

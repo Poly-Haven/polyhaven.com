@@ -1,1 +1,52 @@
-{"Co-founder":"co-fundador","corporate-sponsors":"Patrocinadores corporativos","Director":"Director","display-name":"Nombre para mostrar","email-address":"Dirección de correo electrónico","Graphic-Design":"Diseño gráfico","HDRIs":"HDRI","hidden":"Oculto","invalid-email":"Dirección de correo electrónico no válida","invalid-name-url":"Nombre o URL no válido","Models":"Modelos","optional":"Opcional","please-wait":"Espere por favor...","required":"Requerido","Textures":"texturas","visible":"Visible"}
+{
+  "Assets": "Activos",
+  "Co-founder": "co-fundador",
+  "Director": "Director",
+  "Graphic-Design": "Diseño gráfico",
+  "HDRIs": "HDRI",
+  "Models": "Modelos",
+  "Textures": "texturas",
+  "corporate-sponsor_one": "Patrocinador Corporativo",
+  "corporate-sponsor_other": "Patrocinadores corporativos",
+  "corporate-sponsors": "Patrocinadores corporativos",
+  "display-name": "Nombre para mostrar",
+  "email-address": "Dirección de correo electrónico",
+  "footer": {
+    "thanks": "gracias a nuestro<lnk> Mecenas</lnk> por hacer posible Poly Haven"
+  },
+  "goal": {
+    "complete": "¡Completo!",
+    "current": "Objetivo actual:",
+    "reached": "¡Llegamos a nuestro último objetivo! Algo nuevo debería aparecer aquí pronto :)",
+    "to-go": "$ {{dollars}} para llevar"
+  },
+  "hidden": "Oculto",
+  "invalid-email": "Dirección de correo electrónico no válida",
+  "invalid-name-url": "Nombre o URL no válido",
+  "loading": "Cargando...",
+  "nav": {
+    "about-contact": "Acerca de/Contacto",
+    "api": "API",
+    "blog": "Blog",
+    "contribute": "Contribuir",
+    "faq": "Preguntas más frecuentes",
+    "finances": "Informes financieros",
+    "gallery": "Galería",
+    "home": "Hogar",
+    "license": "Licencia",
+    "logout": "Cerrar sesión",
+    "map": "Mapa mundial HDRI",
+    "news": "Noticias",
+    "privacy": "Privacidad",
+    "source": "Fuente",
+    "stats": "Estadísticas",
+    "support-us": "Apoyanos"
+  },
+  "optional": "Opcional",
+  "patron_one": "Patrón",
+  "patron_other": "Mecenas",
+  "please-wait": "Espere por favor...",
+  "required": "Requerido",
+  "tagline": "La biblioteca pública de activos 3D",
+  "visible": "Visible"
+}

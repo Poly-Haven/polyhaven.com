@@ -1,1 +1,52 @@
-{"Co-founder":"Medestigter","corporate-sponsors":"Korporatiewe borge","Director":"Direkteur","display-name":"Vertoon naam","email-address":"E-pos adres","Graphic-Design":"Grafiese ontwerp","HDRIs":"HDRI's","hidden":"Versteek","invalid-email":"Ongeldige e-posadres","invalid-name-url":"Ongeldige naam of URL","Models":"Modelle","optional":"Opsioneel","please-wait":"Wag asseblief...","required":"Vereis","Textures":"Teksture","visible":"Sigbaar"}
+{
+  "Assets": "Bates",
+  "Co-founder": "Medestigter",
+  "Director": "Direkteur",
+  "Graphic-Design": "Grafiese ontwerp",
+  "HDRIs": "HDRI's",
+  "Models": "Modelle",
+  "Textures": "Teksture",
+  "corporate-sponsor_one": "Korporatiewe Borg",
+  "corporate-sponsor_other": "Korporatiewe borge",
+  "corporate-sponsors": "Korporatiewe borge",
+  "display-name": "Vertoon naam",
+  "email-address": "E-pos adres",
+  "footer": {
+    "thanks": "Danksy ons<lnk> Beskermhere</lnk> om Poly Haven moontlik te maak"
+  },
+  "goal": {
+    "complete": "Voltooi!",
+    "current": "Huidige doelwit:",
+    "reached": "Ons het ons laaste doelwit bereik! Iets nuuts behoort binnekort hier te verskyn :)",
+    "to-go": "$ {{dollars}} om te gaan"
+  },
+  "hidden": "Versteek",
+  "invalid-email": "Ongeldige e-posadres",
+  "invalid-name-url": "Ongeldige naam of URL",
+  "loading": "Laai tans...",
+  "nav": {
+    "about-contact": "Oor/Kontak",
+    "api": "API",
+    "blog": "Blog",
+    "contribute": "Dra by",
+    "faq": "Gereelde vrae",
+    "finances": "Finansiële verslae",
+    "gallery": "Galery",
+    "home": "Tuis",
+    "license": "Lisensie",
+    "logout": "Teken uit",
+    "map": "HDRI Wêreldkaart",
+    "news": "Nuus",
+    "privacy": "Privaatheid",
+    "source": "Bron",
+    "stats": "Statistieke",
+    "support-us": "Ondersteun ons"
+  },
+  "optional": "Opsioneel",
+  "patron_one": "Beskermheer",
+  "patron_other": "Beskermhere",
+  "please-wait": "Wag asseblief...",
+  "required": "Vereis",
+  "tagline": "Die Openbare 3D Batebiblioteek",
+  "visible": "Sigbaar"
+}

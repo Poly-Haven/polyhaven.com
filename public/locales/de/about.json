@@ -1,1 +1,51 @@
-{"contact":{"h1":"Kontakt","p1":"Hast du eine Frage? Bitte lesen Sie die<lnk> FAQ</lnk> Erste :)","p2":"Am einfachsten erreichen Sie uns per E-Mail (<lnk1> info@polyhaven.com</lnk1> ) oder an<lnk2> Zwietracht</lnk2> ."},"greeting":{"h1":"Hi!","p1":"Poly Haven ist eine kuratierte öffentliche Asset-Bibliothek für Visual-Effects-Künstler und Spieledesigner, die nützliche, qualitativ hochwertige 3D-Assets auf leicht zugängliche Weise bereitstellt.","p2":"Es sind keine Paywalls, Konten oder E-Mail-Formulare erforderlich. Laden Sie einfach ein Asset herunter und verwenden Sie es ohne Sorgen.","p3":"Alle Vermögenswerte hier sind<lnk> CC0</lnk> , was bedeutet, dass sie praktisch frei von Urheberrechten sind und Sie sie für absolut jeden Zweck verwenden können."},"help":{"h1":"Wie kannst du helfen","s1":"Unterstütze uns auf Patreon","s1p1":"Wenn Sie über ein verfügbares Einkommen verfügen und uns helfen möchten, mehr kostenlose HDRIs, Texturen und 3D-Modelle zu veröffentlichen, können Sie uns mit einer kleinen monatlichen Spende unterstützen<lnk> Patreon</lnk> :)","s1p2":"Im Gegenzug können wir Ihnen ein kleines Dankeschön geben, wie den Zugriff auf einen Cloud-Ordner, den Sie mit Ihrer Festplatte synchronisieren können, damit Sie unsere neuesten Assets immer zur Hand haben, oder Ihren Namen auf unserer Website verewigen.","s1p3":"Wir verwenden Ihre Spenden direkt, um unsere Ausgaben zu decken und neues Vermögen zu finanzieren, wie von unserem bestätigt<lnk> Finanzberichte</lnk> .","s2":"Spenden Sie Ihr Vermögen","s2p1":"Haben Sie ein erstklassiges 3D-Modell, Textur oder HDRI, das Sie mit der Community teilen möchten? Wir veröffentlichen es gerne für dich :)","s2p2":"Wir müssen einen strengen Qualitätsstandard einhalten, und alles, was wir veröffentlichen, muss es sein<lnk1> CC0</lnk1> , aber wenn Ihr Asset akzeptiert wird, wird die gesamte 3D-Community davon profitieren.<lnk2> Lesen Sie mehr und reichen Sie Ihr Asset hier ein</lnk2> .","s3":"Verbreiten Sie das Wort","s3p1":"Es ist in Ordnung, wenn Sie es sich nicht leisten können oder nicht für uns spenden möchten :) Sie können uns trotzdem dabei helfen, zu wachsen, indem Sie dafür sorgen, dass Ihre Freunde und Kollegen von uns wissen, je mehr Menschen wir helfen können, desto besser!","s3p2":"Es ist überhaupt nicht erforderlich, aber wenn Sie unsere Assets in Ihrer Arbeit verwenden, können Sie erwähnen, woher Sie sie haben, und das wird dazu beitragen, mehr Menschen zu zeigen, dass es uns gibt"},"how":{"h1":"Wie machen wir das?","li1":"Künstler, die bei Poly Haven angestellt sind und sich auf das große Ganze konzentrieren.","li2":"Wir stellen unabhängige Auftragnehmer ein, die mit bestimmten Projekten beauftragt werden.","li3":"Benutzer, die ihre Arbeit freiwillig an die Plattform spenden.","p1":"Wir sind ein kleines Remote-Studio mit Sitz in Südafrika, das mit Entwicklern auf der ganzen Welt zusammenarbeitet, die unsere Vision teilen.","p2":"In Bezug auf die Finanzierung werden wir hauptsächlich durch Spenden von Menschen wie Ihnen unterstützt<lnk> Patreon</lnk> , Werbeeinnahmen und Unternehmenssponsoren, die glauben, dass sie langfristig von der Unterstützung unserer Arbeit profitieren können.","p3":"Für die Vermögensbildung gibt es drei Quellen:"},"transparency":{"h1":"Transparenz","li1":"Wir schreiben regelmäßige Dev Logs auf<lnk> unser Blog</lnk> um zu teilen, woran wir in letzter Zeit gearbeitet haben.","li2":"Unser<lnk> Beiträge auf Patreon</lnk> sind auch ein guter Ort, um kleinere Updates und Umfragen zu finden, wenn wir Hilfe bei der Entscheidungsfindung benötigen.","li3":"<lnk>Zwietracht</lnk> ist, wo wir jeden Tag abhängen, zögern Sie nicht, Hallo zu sagen!","li4":"Unsere sozialen Medien sind in erster Linie automatisiert, um unsere neuesten Assets zu posten, aber gelegentlich sind wir auch dort aktiv (Links in der<lnk> Fusszeile</lnk> ).","li5":"Unser<lnk> Finanzberichte</lnk> genau beschreiben, wie wir unsere Gelder ausgeben oder sparen.","p1":"Da der Großteil unserer Finanzierung aus Spenden stammt, ist es uns wichtig, dass jeder sehen kann, was wir vorhaben, was wir planen und welche Gründe hinter all unseren Entscheidungen stehen.","p2":"Das Teilen unserer Vermögenswerte ist unsere Priorität, aber wir möchten auch unser Wissen teilen, damit andere lernen, wie man Vermögenswerte wie unsere erstellt, und sie vielleicht auch teilen können."},"why":{"h1":"Warum machen wir das?","p1":"Weil wir können!","p2":"Und weil wir glauben, dass wir der größeren 3D-Community helfen können, zu wachsen, indem wir unsere Assets kostenlos zur Verfügung stellen, anstatt sie zu verkaufen.","p3":"Wir möchten die Eintrittsbarriere für neue Künstler senken, finanzielle Barrieren beseitigen und es erfahrenen Künstlern erleichtern, sich auf ihre Kreativität zu konzentrieren, anstatt das Rad für jede benötigte Requisite neu zu erfinden."}}
+{
+  "contact": {
+    "h1": "Kontakt",
+    "p1": "Hast du eine Frage? Bitte lesen Sie die<lnk> FAQ</lnk> Erste :)",
+    "p2": "Am einfachsten erreichen Sie uns per E-Mail (<lnk1> info@polyhaven.com</lnk1> ) oder an<lnk2> Zwietracht</lnk2> ."
+  },
+  "greeting": {
+    "h1": "Hi!",
+    "p1": "Poly Haven ist eine kuratierte öffentliche Asset-Bibliothek für Visual-Effects-Künstler und Spieledesigner, die nützliche, qualitativ hochwertige 3D-Assets auf leicht zugängliche Weise bereitstellt.",
+    "p2": "Es sind keine Paywalls, Konten oder E-Mail-Formulare erforderlich. Laden Sie einfach ein Asset herunter und verwenden Sie es ohne Sorgen.",
+    "p3": "Alle Vermögenswerte hier sind<lnk> CC0</lnk> , was bedeutet, dass sie praktisch frei von Urheberrechten sind und Sie sie für absolut jeden Zweck verwenden können."
+  },
+  "help": {
+    "h1": "Wie kannst du helfen",
+    "s1": "Unterstütze uns auf Patreon",
+    "s1p1": "Wenn Sie über ein verfügbares Einkommen verfügen und uns helfen möchten, mehr kostenlose HDRIs, Texturen und 3D-Modelle zu veröffentlichen, können Sie uns mit einer kleinen monatlichen Spende unterstützen<lnk> Patreon</lnk> :)",
+    "s1p2": "Im Gegenzug können wir Ihnen ein kleines Dankeschön geben, wie den Zugriff auf einen Cloud-Ordner, den Sie mit Ihrer Festplatte synchronisieren können, damit Sie unsere neuesten Assets immer zur Hand haben, oder Ihren Namen auf unserer Website verewigen.",
+    "s1p3": "Wir verwenden Ihre Spenden direkt, um unsere Ausgaben zu decken und neues Vermögen zu finanzieren, wie von unserem bestätigt<lnk> Finanzberichte</lnk> .",
+    "s2": "Spenden Sie Ihr Vermögen",
+    "s2p1": "Haben Sie ein erstklassiges 3D-Modell, Textur oder HDRI, das Sie mit der Community teilen möchten? Wir veröffentlichen es gerne für dich :)",
+    "s2p2": "Wir müssen einen strengen Qualitätsstandard einhalten, und alles, was wir veröffentlichen, muss es sein<lnk1> CC0</lnk1> , aber wenn Ihr Asset akzeptiert wird, wird die gesamte 3D-Community davon profitieren.<lnk2> Lesen Sie mehr und reichen Sie Ihr Asset hier ein</lnk2> .",
+    "s3": "Verbreiten Sie das Wort",
+    "s3p1": "Es ist in Ordnung, wenn Sie es sich nicht leisten können oder nicht für uns spenden möchten :) Sie können uns trotzdem dabei helfen, zu wachsen, indem Sie dafür sorgen, dass Ihre Freunde und Kollegen von uns wissen, je mehr Menschen wir helfen können, desto besser!",
+    "s3p2": "Es ist überhaupt nicht erforderlich, aber wenn Sie unsere Assets in Ihrer Arbeit verwenden, können Sie erwähnen, woher Sie sie haben, und das wird dazu beitragen, mehr Menschen zu zeigen, dass es uns gibt"
+  },
+  "how": {
+    "h1": "Wie machen wir das?",
+    "li1": "Künstler, die bei Poly Haven angestellt sind und sich auf das große Ganze konzentrieren.",
+    "li2": "Wir stellen unabhängige Auftragnehmer ein, die mit bestimmten Projekten beauftragt werden.",
+    "li3": "Benutzer, die ihre Arbeit freiwillig an die Plattform spenden.",
+    "p1": "Wir sind ein kleines Remote-Studio mit Sitz in Südafrika, das mit Entwicklern auf der ganzen Welt zusammenarbeitet, die unsere Vision teilen.",
+    "p2": "In Bezug auf die Finanzierung werden wir hauptsächlich durch Spenden von Menschen wie Ihnen unterstützt<lnk> Patreon</lnk> , Werbeeinnahmen und Unternehmenssponsoren, die glauben, dass sie langfristig von der Unterstützung unserer Arbeit profitieren können.",
+    "p3": "Für die Vermögensbildung gibt es drei Quellen:"
+  },
+  "transparency": {
+    "h1": "Transparenz",
+    "li1": "Wir schreiben regelmäßige Dev Logs auf<lnk> unser Blog</lnk> um zu teilen, woran wir in letzter Zeit gearbeitet haben.",
+    "li2": "Unser<lnk> Beiträge auf Patreon</lnk> sind auch ein guter Ort, um kleinere Updates und Umfragen zu finden, wenn wir Hilfe bei der Entscheidungsfindung benötigen.",
+    "li3": "<lnk>Zwietracht</lnk> ist, wo wir jeden Tag abhängen, zögern Sie nicht, Hallo zu sagen!",
+    "li4": "Unsere sozialen Medien sind in erster Linie automatisiert, um unsere neuesten Assets zu posten, aber gelegentlich sind wir auch dort aktiv (Links in der<lnk> Fusszeile</lnk> ).",
+    "li5": "Unser<lnk> Finanzberichte</lnk> genau beschreiben, wie wir unsere Gelder ausgeben oder sparen.",
+    "p1": "Da der Großteil unserer Finanzierung aus Spenden stammt, ist es uns wichtig, dass jeder sehen kann, was wir vorhaben, was wir planen und welche Gründe hinter all unseren Entscheidungen stehen.",
+    "p2": "Das Teilen unserer Vermögenswerte ist unsere Priorität, aber wir möchten auch unser Wissen teilen, damit andere lernen, wie man Vermögenswerte wie unsere erstellt, und sie vielleicht auch teilen können."
+  },
+  "why": {
+    "h1": "Warum machen wir das?",
+    "p1": "Weil wir können!",
+    "p2": "Und weil wir glauben, dass wir der größeren 3D-Community helfen können, zu wachsen, indem wir unsere Assets kostenlos zur Verfügung stellen, anstatt sie zu verkaufen.",
+    "p3": "Wir möchten die Eintrittsbarriere für neue Künstler senken, finanzielle Barrieren beseitigen und es erfahrenen Künstlern erleichtern, sich auf ihre Kreativität zu konzentrieren, anstatt das Rad für jede benötigte Requisite neu zu erfinden."
+  }
+}

@@ -1,1 +1,52 @@
-{"Co-founder":"공동 설립자","corporate-sponsors":"기업 후원","Director":"감독","display-name":"이름 표시하기","email-address":"이메일 주소","Graphic-Design":"그래픽 디자인","HDRIs":"HDRI","hidden":"숨겨진","invalid-email":"잘못된 이메일 주소","invalid-name-url":"잘못된 이름 또는 URL","Models":"모델","optional":"선택 과목","please-wait":"기다리세요...","required":"필수의","Textures":"텍스처","visible":"보이는"}
+{
+  "Assets": "자산",
+  "Co-founder": "공동 설립자",
+  "Director": "감독",
+  "Graphic-Design": "그래픽 디자인",
+  "HDRIs": "HDRI",
+  "Models": "모델",
+  "Textures": "텍스처",
+  "corporate-sponsor_one": "기업 후원",
+  "corporate-sponsor_other": "기업 후원",
+  "corporate-sponsors": "기업 후원",
+  "display-name": "이름 표시하기",
+  "email-address": "이메일 주소",
+  "footer": {
+    "thanks": "우리 덕분에<lnk> 후원자</lnk> Poly Haven을 가능하게 하기 위해"
+  },
+  "goal": {
+    "complete": "완벽한!",
+    "current": "현재 목표:",
+    "reached": "우리는 우리의 마지막 목표에 도달했습니다! 여기에 새로운 것이 곧 나타날 것입니다 :)",
+    "to-go": "$ {{dollars}} 갈"
+  },
+  "hidden": "숨겨진",
+  "invalid-email": "잘못된 이메일 주소",
+  "invalid-name-url": "잘못된 이름 또는 URL",
+  "loading": "로드 중...",
+  "nav": {
+    "about-contact": "정보/연락처",
+    "api": "API",
+    "blog": "블로그",
+    "contribute": "기여하다",
+    "faq": "자주하는 질문",
+    "finances": "재무 보고서",
+    "gallery": "갤러리",
+    "home": "집",
+    "license": "특허",
+    "logout": "로그 아웃",
+    "map": "HDRI 세계 지도",
+    "news": "소식",
+    "privacy": "은둔",
+    "source": "원천",
+    "stats": "통계",
+    "support-us": "당신의 도움이 필요합니다"
+  },
+  "optional": "선택 과목",
+  "patron_one": "후원자",
+  "patron_other": "후원자",
+  "please-wait": "기다리세요...",
+  "required": "필수의",
+  "tagline": "공개 3D 자산 라이브러리",
+  "visible": "보이는"
+}

@@ -1,1 +1,51 @@
-{"contact":{"h1":"Kontak","p1":"Het jy 'n vraag? Lees asseblief die<lnk> Gereelde vrae</lnk> eers :)","p2":"Die maklikste manier om ons in die hande te kry is deur e-pos (<lnk1> info@polyhaven.com</lnk1> ) of aan<lnk2> Onenigheid</lnk2> ."},"greeting":{"h1":"Haai daar!","p1":"Poly Haven is 'n saamgestelde openbare batebiblioteek vir visuele effekte-kunstenaars en speletjie-ontwerpers, wat nuttige 3D-bates van hoë gehalte op 'n maklik verkrygbare wyse verskaf.","p2":"Daar is geen betaalmure, rekeninge of e-posvorms nodig nie, laai net 'n bate af en gebruik dit sonder kommer.","p3":"Alle bates hier is<lnk> CC0</lnk> , wat beteken hulle is feitlik vry van kopiereg en jy mag dit vir absoluut enige doel gebruik."},"help":{"h1":"Hoe jy kan help","s1":"Ondersteun ons op Patreon","s1p1":"As jy 'n bietjie besteebare inkomste het en jy wil ons help om meer gratis HDRI's, teksture en 3D-modelle te publiseer, kan jy ons ondersteun met 'n klein maandelikse skenking op<lnk> Patreon</lnk> :)","s1p2":"In ruil daarvoor kan ons vir jou 'n klein bewys van dank gee, soos toegang tot 'n wolklêergids wat jy met jou hardeskyf kan sinkroniseer sodat jy altyd ons nuutste bates binne handbereik het, of jou naam op ons webwerf verewig.","s1p3":"Ons gebruik jou skenkings direk om ons uitgawes te dek en nuwe bates te finansier, soos geverifieer deur ons<lnk> finansiële verslae</lnk> .","s2":"Skenk jou bates","s2p1":"Het jy 'n top-notch 3D-model, tekstuur of HDRI wat jy met die gemeenskap wil deel? Ons publiseer dit graag vir jou :)","s2p2":"Ons het 'n streng standaard van kwaliteit om te handhaaf, en alles wat ons publiseer moet wees<lnk1> CC0</lnk1> , maar as jou bate aanvaar word, sal die hele 3D-gemeenskap daarby baat.<lnk2> Lees meer en dien jou bate hier in</lnk2> .","s3":"Versprei die woord","s3p1":"Dit is reg as jy dit nie kan bekostig nie, of nie aan ons wil skenk nie :) Jy kan ons steeds help groei deur seker te maak jou vriende en medewerkers weet van ons, hoe meer mense ons kan help hoe beter!","s3p2":"Dit is glad nie nodig nie, maar as jy ons bates in jou werk gebruik, kan jy noem waar jy dit vandaan gekry het en dit sal help om meer mense te wys dat ons bestaan"},"how":{"h1":"Hoe doen ons dit?","li1":"Kunstenaars in diens van Poly Haven, wat op die groot prentjie fokus.","li2":"Onafhanklike kontrakteurs wat ons huur, wat met spesifieke projekte getaak is.","li3":"Gebruikers wat hul werk vryelik aan die platform skenk.","p1":"Ons is 'n klein afgeleë ateljee wat in Suid-Afrika gebaseer is en saam met skeppers regoor die wêreld werk wat ons visie deel.","p2":"Wat befondsing betref, word ons hoofsaaklik ondersteun deur skenkings van mense soos jy<lnk> Patreon</lnk> , advertensie-inkomste en korporatiewe borge wat glo dat hulle kan baat by die ondersteuning van ons werk op die lang termyn.","p3":"Vir die skepping van bates is daar drie bronne:"},"transparency":{"h1":"Deursigtigheid","li1":"Ons skryf gereelde Dev-logs aan<lnk> ons blog</lnk> om te deel waaraan ons onlangs gewerk het.","li2":"Ons<lnk> plasings op Patreon</lnk> is ook 'n goeie plek om kleiner opdaterings en meningspeilings te vind wanneer ons hulp nodig het om besluite te neem.","li3":"<lnk>Onenigheid</lnk> is waar ons elke dag kuier, sê gerus hallo!","li4":"Ons sosiale media is hoofsaaklik geoutomatiseer om ons nuutste bates te plaas, maar ons is ook soms aktief daar (skakels in die<lnk> voetskrif</lnk> ).","li5":"Ons<lnk> finansiële verslae</lnk> detail presies hoe ons ons fondse bestee of spaar.","p1":"Aangesien die meerderheid van ons befondsing van skenkings kom, is dit vir ons belangrik dat enigiemand kan sien waarmee ons besig is, wat ons beplan en die redenasie agter al ons besluite.","p2":"Om ons bates te deel is ons prioriteit, maar ons wil ook ons kennis deel, sodat ander kan leer hoe om bates soos ons s'n te skep en dit dalk ook te deel."},"why":{"h1":"Hoekom doen ons dit?","p1":"Want ons kan!","p2":"En omdat ons glo dat ons die groter 3D-gemeenskap kan help groei deur ons bates gratis te verskaf eerder as om dit te verkoop.","p3":"Ons wil die versperring van toetrede vir nuwe kunstenaars verlaag, finansiële hindernisse verwyder en dit makliker maak vir ervare kunstenaars om op kreatiwiteit te fokus eerder as om die wiel vir elke stut wat hulle nodig het weer uit te vind."}}
+{
+  "contact": {
+    "h1": "Kontak",
+    "p1": "Het jy 'n vraag? Lees asseblief die<lnk> Gereelde vrae</lnk> eers :)",
+    "p2": "Die maklikste manier om ons in die hande te kry is deur e-pos (<lnk1> info@polyhaven.com</lnk1> ) of aan<lnk2> Onenigheid</lnk2> ."
+  },
+  "greeting": {
+    "h1": "Haai daar!",
+    "p1": "Poly Haven is 'n saamgestelde openbare batebiblioteek vir visuele effekte-kunstenaars en speletjie-ontwerpers, wat nuttige 3D-bates van hoë gehalte op 'n maklik verkrygbare wyse verskaf.",
+    "p2": "Daar is geen betaalmure, rekeninge of e-posvorms nodig nie, laai net 'n bate af en gebruik dit sonder kommer.",
+    "p3": "Alle bates hier is<lnk> CC0</lnk> , wat beteken hulle is feitlik vry van kopiereg en jy mag dit vir absoluut enige doel gebruik."
+  },
+  "help": {
+    "h1": "Hoe jy kan help",
+    "s1": "Ondersteun ons op Patreon",
+    "s1p1": "As jy 'n bietjie besteebare inkomste het en jy wil ons help om meer gratis HDRI's, teksture en 3D-modelle te publiseer, kan jy ons ondersteun met 'n klein maandelikse skenking op<lnk> Patreon</lnk> :)",
+    "s1p2": "In ruil daarvoor kan ons vir jou 'n klein bewys van dank gee, soos toegang tot 'n wolklêergids wat jy met jou hardeskyf kan sinkroniseer sodat jy altyd ons nuutste bates binne handbereik het, of jou naam op ons webwerf verewig.",
+    "s1p3": "Ons gebruik jou skenkings direk om ons uitgawes te dek en nuwe bates te finansier, soos geverifieer deur ons<lnk> finansiële verslae</lnk> .",
+    "s2": "Skenk jou bates",
+    "s2p1": "Het jy 'n top-notch 3D-model, tekstuur of HDRI wat jy met die gemeenskap wil deel? Ons publiseer dit graag vir jou :)",
+    "s2p2": "Ons het 'n streng standaard van kwaliteit om te handhaaf, en alles wat ons publiseer moet wees<lnk1> CC0</lnk1> , maar as jou bate aanvaar word, sal die hele 3D-gemeenskap daarby baat.<lnk2> Lees meer en dien jou bate hier in</lnk2> .",
+    "s3": "Versprei die woord",
+    "s3p1": "Dit is reg as jy dit nie kan bekostig nie, of nie aan ons wil skenk nie :) Jy kan ons steeds help groei deur seker te maak jou vriende en medewerkers weet van ons, hoe meer mense ons kan help hoe beter!",
+    "s3p2": "Dit is glad nie nodig nie, maar as jy ons bates in jou werk gebruik, kan jy noem waar jy dit vandaan gekry het en dit sal help om meer mense te wys dat ons bestaan"
+  },
+  "how": {
+    "h1": "Hoe doen ons dit?",
+    "li1": "Kunstenaars in diens van Poly Haven, wat op die groot prentjie fokus.",
+    "li2": "Onafhanklike kontrakteurs wat ons huur, wat met spesifieke projekte getaak is.",
+    "li3": "Gebruikers wat hul werk vryelik aan die platform skenk.",
+    "p1": "Ons is 'n klein afgeleë ateljee wat in Suid-Afrika gebaseer is en saam met skeppers regoor die wêreld werk wat ons visie deel.",
+    "p2": "Wat befondsing betref, word ons hoofsaaklik ondersteun deur skenkings van mense soos jy<lnk> Patreon</lnk> , advertensie-inkomste en korporatiewe borge wat glo dat hulle kan baat by die ondersteuning van ons werk op die lang termyn.",
+    "p3": "Vir die skepping van bates is daar drie bronne:"
+  },
+  "transparency": {
+    "h1": "Deursigtigheid",
+    "li1": "Ons skryf gereelde Dev-logs aan<lnk> ons blog</lnk> om te deel waaraan ons onlangs gewerk het.",
+    "li2": "Ons<lnk> plasings op Patreon</lnk> is ook 'n goeie plek om kleiner opdaterings en meningspeilings te vind wanneer ons hulp nodig het om besluite te neem.",
+    "li3": "<lnk>Onenigheid</lnk> is waar ons elke dag kuier, sê gerus hallo!",
+    "li4": "Ons sosiale media is hoofsaaklik geoutomatiseer om ons nuutste bates te plaas, maar ons is ook soms aktief daar (skakels in die<lnk> voetskrif</lnk> ).",
+    "li5": "Ons<lnk> finansiële verslae</lnk> detail presies hoe ons ons fondse bestee of spaar.",
+    "p1": "Aangesien die meerderheid van ons befondsing van skenkings kom, is dit vir ons belangrik dat enigiemand kan sien waarmee ons besig is, wat ons beplan en die redenasie agter al ons besluite.",
+    "p2": "Om ons bates te deel is ons prioriteit, maar ons wil ook ons kennis deel, sodat ander kan leer hoe om bates soos ons s'n te skep en dit dalk ook te deel."
+  },
+  "why": {
+    "h1": "Hoekom doen ons dit?",
+    "p1": "Want ons kan!",
+    "p2": "En omdat ons glo dat ons die groter 3D-gemeenskap kan help groei deur ons bates gratis te verskaf eerder as om dit te verkoop.",
+    "p3": "Ons wil die versperring van toetrede vir nuwe kunstenaars verlaag, finansiële hindernisse verwyder en dit makliker maak vir ervare kunstenaars om op kreatiwiteit te fokus eerder as om die wiel vir elke stut wat hulle nodig het weer uit te vind."
+  }
+}
