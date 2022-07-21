@@ -33,7 +33,7 @@ const AboutPage = () => {
         <Staff id="James Ray Cock" name="James Ray Cock" role={`${t('common:Models')}`} country="ZA" mode="full" />
         <Staff id="Dario Barresi" name="Dario Barresi" role={`${t('common:Textures')}`} country="ZA" mode="full" />
         <Staff id="Andreas Mischok" name="Andreas Mischok" role={`${t('common:HDRIs')}`} country="DE" mode="full" />
-        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UL" mode="full" />
+        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UA" mode="full" />
         <Staff id="Dimitrios Savva" name="Dimitrios Savva" role={`${t('common:Textures')}, ${t('common:HDRIs')}`} country="ZA" mode="full" />
         <Staff id="Jurita Burger" name="Jurita Burger" role={`${t('common:Graphic-Design')}`} country="ZA" mode="full" />
       </div>
