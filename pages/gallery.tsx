@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'components/Head/Head'
 import Link from 'next/link';
 
@@ -43,13 +44,14 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
+      props: { ...(await serverSideTranslations(context.locale, ['common'])) },
       revalidate: 60 * 5 // 5 minutes
     }
   }
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       data: data
     },
     revalidate: 60 * 30 // 30 minutes

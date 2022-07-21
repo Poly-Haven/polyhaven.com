@@ -1,5 +1,6 @@
-import Head from 'components/Head/Head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import Head from 'components/Head/Head'
 import Library from 'components/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json';
@@ -39,6 +40,9 @@ export async function getServerSideProps(context) {
   if (typesAvailable[assetType] === undefined) {
     return {
       notFound: true,
+      props: {
+        ...(await serverSideTranslations(context.locale, ['common']))
+      }
     }
   }
 
@@ -54,6 +58,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       assetType: assetType,
       categories: params,
       author: author ? author : "",

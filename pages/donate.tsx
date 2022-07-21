@@ -1,4 +1,6 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
+
 import TextPage from 'components/Layout/TextPage/TextPage'
 import Button from 'components/Button/Button';
 
@@ -25,6 +27,14 @@ const Page = () => {
       <Button text="Donate on Ko-fi" href="https://ko-fi.com/polyhaven" />
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
 
 export default Page

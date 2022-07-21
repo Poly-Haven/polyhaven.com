@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
 
@@ -40,7 +41,10 @@ export const getStaticProps = async (ctx) => {
   }
 
   return {
-    props: { data },
+    props: {
+      ...(await serverSideTranslations(ctx.locale, ['common'])),
+      data
+    },
     revalidate: 60 * 30 // 30 minutes
   }
 }

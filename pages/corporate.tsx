@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import CSS from 'csstype'
@@ -226,13 +227,14 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
+      props: { ...(await serverSideTranslations(context.locale, ['common'])) },
       revalidate: 60 * 5 // 5 minutes
     }
   }
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       updated: now.valueOf(),
       numPatrons: patrons.length,
       numDiamond: diamondSponsors.length,

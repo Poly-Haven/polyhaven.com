@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
@@ -30,6 +31,14 @@ const LicensePage = () => {
       <p>If you benefit from our work financially, e.g. by including our assets in a product you sell, or simply make frequent use of them in your own work, please consider <Link href="https://www.patreon.com/polyhaven/overview">supporting us on Patreon</Link> with a small monthly donation in order to help us continue to produce more assets and maintain this platform.</p>
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
 
 export default LicensePage
