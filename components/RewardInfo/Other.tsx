@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useTranslation, Trans } from 'next-i18next';
 import { setPatronInfo } from 'utils/patronInfo';
 
 import { MdCheck, MdVisibility, MdVisibilityOff } from "react-icons/md";
@@ -13,6 +14,7 @@ const Other = ({ uuid, patron }) => {
   const [hideAds, setHideAds] = useState(false);
   const [anon, setAnon] = useState(false);
   const [name, setName] = useState("");
+  const { t } = useTranslation(['common', 'account']);
 
   useEffect(() => {
     setHideAds(localStorage.getItem(`hideAds`) === "yes")
@@ -58,8 +60,8 @@ const Other = ({ uuid, patron }) => {
 
   return (
     <div>
-      <h1>No Ads</h1>
-      <p>We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:</p>
+      <h1>{t('account:rewards.no-ads.title')}</h1>
+      <p>{t('account:rewards.no-ads.p1')}</p>
       <div style={{ display: "flex", alignItems: 'center', gap: "0.5em" }}>
         <Switch
           on={hideAds}
@@ -67,7 +69,7 @@ const Other = ({ uuid, patron }) => {
           labelOff={<MdVisibility />}
           labelOn={<MdVisibilityOff />}
         />
-        <p>Ads are now: <strong>{hideAds ? 'Hidden' : 'Visible'}</strong>.</p>
+        <p>{t('account:rewards.no-ads.p2')} <strong>{hideAds ? t('account:rewards.no-ads.hidden') : t('account:rewards.no-ads.visible')}</strong>.</p>
       </div>
 
       <h1>Footer Credit</h1>

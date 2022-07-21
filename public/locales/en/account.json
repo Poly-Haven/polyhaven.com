@@ -11,5 +11,17 @@
   },
   "not-patron": "You don't seem to be a patron of Poly Haven :( if this is incorrect, please <lnk>get in touch</lnk> so we can investigate the problem on this page. We'll need the following information:",
   "hi": "Hi",
-  "not-patron-anymore": "It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)"
+  "not-patron-anymore": "It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)",
+  "support-amount": "You're currently supporting Poly Haven with ${{amount}} per month, thanks!",
+  "reward_one": "This grants you the following reward:",
+  "reward_other": "This grants you the following rewards:",
+  "rewards": {
+    "no-ads": {
+      "title": "No Ads",
+      "p1": "We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:",
+      "p2": "Ads are now:",
+      "hidden": "Hidden",
+      "visible": "Visible"
+    }
+  }
 }

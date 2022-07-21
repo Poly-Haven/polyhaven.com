@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
-import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation, Trans } from 'next-i18next';
 import { getPatronInfo } from 'utils/patronInfo';
@@ -114,10 +113,14 @@ const Page = () => {
       url="/account"
     >
       <h1 title={uuid} style={{ textAlign: "center" }}>{t('account:hi')} {(patron['display_name'] || patron['name']).trim()}!</h1>
-      <p>You're currently supporting Poly Haven with ${patron['cents'] / 100} per month, thanks!</p>
+      <p><Trans
+        i18nKey="account:support-amount"
+        t={t}
+        values={{ amount: patron['cents'] / 100 }}
+      /></p>
 
       {patron['rewards'].length > 0 && <>
-        <p>This grants you the following reward{patron['rewards'].length > 1 && "s"}:</p>
+        <p>{t('account:reward', { count: patron['rewards'].length })}</p>
 
         {patron['rewards'].map((r, i) => <div key={i}>{rewardInfo(r, uuid, patron)}</div>)}
       </>}
