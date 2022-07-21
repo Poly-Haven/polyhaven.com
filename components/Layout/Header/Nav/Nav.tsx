@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0';
@@ -12,6 +13,7 @@ import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag';
 import styles from './Nav.module.scss'
 
 const Nav = () => {
+  const { t } = useTranslation(['common']);
   const router = useRouter()
   const { user, isLoading } = useUser();
   const [navHide, setToggle] = useState(true);
@@ -23,23 +25,23 @@ const Nav = () => {
   return (
     <>
       <div className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`} onClick={() => { setToggle(true) }}>
-        <NavItem text="Assets" link="/all">
-          <NavItem text="HDRIs" link="/hdris" />
-          <NavItem text="Textures" link="/textures" />
-          <NavItem text="Models" link="/models" />
+        <NavItem text={t('common:Assets')} link="/all">
+          <NavItem text={t('common:HDRIs')} link="/hdris" />
+          <NavItem text={t('common:Textures')} link="/textures" />
+          <NavItem text={t('common:Models')} link="/models" />
         </NavItem>
-        <NavItem text="Gallery" link="/gallery" />
-        <NavItem text="Support Us" link="https://www.patreon.com/polyhaven/overview" />
-        <NavItem text="About/Contact" link="/about-contact">
-          <NavItem text="License" link="/license" />
-          <NavItem text="News" link="https://www.patreon.com/polyhaven/posts?public=true" />
-          <NavItem text="Blog" link="https://blog.polyhaven.com" />
-          <NavItem text="FAQ" link="/faq" />
+        <NavItem text={t('common:nav.gallery')} link="/gallery" />
+        <NavItem text={t('common:nav.support-us')} link="https://www.patreon.com/polyhaven/overview" />
+        <NavItem text={t('common:nav.about-contact')} link="/about-contact">
+          <NavItem text={t('common:nav.license')} link="/license" />
+          <NavItem text={t('common:nav.news')} link="https://www.patreon.com/polyhaven/posts?public=true" />
+          <NavItem text={t('common:nav.blog')} link="https://blog.polyhaven.com" />
+          <NavItem text={t('common:nav.faq')} link="/faq" />
         </NavItem>
 
         {user ?
           <NavItem text={<MdAccountCircle />} link="/account">
-            <NavItem text="Logout" link="/api/auth/logout" />
+            <NavItem text={t('common:nav.logout')} link="/api/auth/logout" />
           </NavItem>
           :
           <NavItem text={<IoMdLogIn />} link={`/account?returnTo=${router.asPath}`} />

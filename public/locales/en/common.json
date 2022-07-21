@@ -1,6 +1,7 @@
 {
   "Director": "Director",
   "Co-founder": "Co-founder",
+  "Assets": "Assets",
   "Models": "Models",
   "Textures": "Textures",
   "HDRIs": "HDRIs",
@@ -24,5 +25,15 @@
     "current": "Current goal:",
     "complete": "Complete!",
     "reached": "We reached our last goal! Something new should appear here soon :)"
+  },
+  "nav": {
+    "gallery": "Gallery",
+    "support-us": "Support Us",
+    "about-contact": "About/Contact",
+    "license": "License",
+    "news": "News",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "logout": "Logout"
   }
 }
