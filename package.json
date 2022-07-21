@@ -7,7 +7,7 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start",
-    "translate": "i18nexus pull"
+    "translate": "i18nexus pull && jsonsort public/locales -s && git checkout public/locales/en"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.4.2",
