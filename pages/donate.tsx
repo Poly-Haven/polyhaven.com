@@ -6,7 +6,7 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 import Button from 'components/Button/Button';
 
 const Page = () => {
-  const { t } = useTranslation(['donate']);
+  const { t } = useTranslation(['common', 'donate']);
 
   return (
     <TextPage
@@ -41,7 +41,7 @@ const Page = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['donate'])),
+      ...(await serverSideTranslations(locale, ['common', 'donate'])),
     },
   };
 }
