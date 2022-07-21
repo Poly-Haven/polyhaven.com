@@ -6,9 +6,13 @@ const NavItem = ({ text, link, locale, children }) => {
   return (
     <div className={styles.navItemWrapper}>
       {link ?
-        <Link href={link} locale={locale}><a className={styles.navItem}>
-          {text}
-        </a></Link>
+        (locale ?
+          <Link href={link} locale={locale} prefetch={false}><a className={styles.navItem}>
+            {text}
+          </a></Link> :
+          <Link href={link}><a className={styles.navItem}>
+            {text}
+          </a></Link>)
         : <span className={styles.navItem}>{text}</span>}
       {children ?
         <div className={styles.subNav}>{children}</div>
