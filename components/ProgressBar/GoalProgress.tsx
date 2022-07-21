@@ -1,18 +1,21 @@
+import { useTranslation, Trans } from 'next-i18next';
+
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import Tooltip from 'components/Tooltip/Tooltip'
 
 import apiSWR from 'utils/apiSWR'
 
 const GoalProgress = ({ mode }) => {
+  const { t } = useTranslation(['common']);
   let { data, error } = apiSWR(`/funding`, { revalidateOnFocus: false });
   if (error) return <ProgressBar labelValue={"ERROR"} mode={mode} />
   if (!data) {
-    return (<ProgressBar labelValue={"Loading..."} mode={mode} />)
+    return (<ProgressBar labelValue={t('common:loading')} mode={mode} />)
   }
 
   const goal = data.goal
-  const tooltipCorp = `${data.numCorps} corporate sponsors: $${data.corpFunds}`
-  const tooltipPatron = `${data.numPatrons} patrons: $${data.patronFunds}`
+  const tooltipCorp = `${data.numCorps} ${t('common:corporate-sponsor', { count: 3 })}: $${data.corpFunds}`
+  const tooltipPatron = `${data.numPatrons} ${t('common:patron', { count: 3 })}: $${data.patronFunds}`
 
   if (!goal) {
     // goal is null if the last goal was reached
@@ -21,10 +24,10 @@ const GoalProgress = ({ mode }) => {
         <ProgressBar
           progress1={100}
           progress2={data.corpFunds / data.totalFunds * 100}
-          label="Complete!"
+          label={t('common:goal.complete')}
           labelValue=""
           mode={mode}
-          tooltipLabel="We reached our last goal!<br/>Something new should appear here soon :)"
+          tooltipLabel={t('common:goal.reached')}
           tooltip1={tooltipPatron}
           tooltip2={tooltipCorp}
         />
@@ -34,7 +37,11 @@ const GoalProgress = ({ mode }) => {
   }
   const progress1 = data.totalFunds / goal.target * 100
   const progress2 = data.corpFunds / goal.target * 100
-  const label = mode === 'big' ? "Current goal:" : `$${Math.max(0, goal.target - data.totalFunds)} to go`
+  const label = mode === 'big' ? t('common:goal.current') : <Trans
+    i18nKey="common:goal.to-go"
+    t={t}
+    values={{ dollars: Math.max(0, goal.target - data.totalFunds) }}
+  />
   const description = `Goal Progress: $${data.totalFunds} of $${goal.target} per month<br/>${goal.description}`
 
   return (

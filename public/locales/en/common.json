@@ -5,7 +5,10 @@
   "Textures": "Textures",
   "HDRIs": "HDRIs",
   "Graphic-Design": "Graphic Design",
-  "corporate-sponsors": "Corporate Sponsors",
+  "corporate-sponsor_one": "Corporate Sponsor",
+  "corporate-sponsor_other": "Corporate Sponsors",
+  "patron_one": "Patron",
+  "patron_other": "Patrons",
   "hidden": "Hidden",
   "visible": "Visible",
   "please-wait": "Please wait...",
@@ -14,5 +17,12 @@
   "invalid-name-url": "Invalid name or url",
   "display-name": "Display name",
   "required": "Required",
-  "optional": "Optional"
+  "optional": "Optional",
+  "loading": "Loading...",
+  "goal": {
+    "to-go": "${{dollars}} to go",
+    "current": "Current goal:",
+    "complete": "Complete!",
+    "reached": "We reached our last goal! Something new should appear here soon :)"
+  }
 }
