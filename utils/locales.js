@@ -3,6 +3,10 @@
 // https://country-code.cl/
 
 module.exports = {
+  af: {
+    name: "Afrikaans",
+    flag: "ZA"
+  },
   zh: {
     name: "中文",
     flag: "CN"
