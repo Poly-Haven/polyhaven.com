@@ -12,13 +12,8 @@ const Page = () => {
       url="/donate"
     >
       <h1>Make a once-off donation</h1>
-      <p>
-        Before making a one-time donation, please understand the two reasons why we prefer using <a href="https://www.patreon.com/polyhaven/overview">Patreon</a> instead:
-      </p>
-      <ol>
-        <li>Tax regulations in our country require a small amount of paperwork and manual processing to receive individual donations. If the donation is small, it may cost us more in accounting fees to process your donation than we actually receive.</li>
-        <li>In order to be a sustainable open project, we need a <Link href="/finance-reports">predictable budget</Link>. Having a wildly varying income makes it difficult for us to plan ahead and hire staff long term. We would mych prefer you to donate a small monthly amount over a long term than a single lump sum, even if the lump sum would be higher in the end.</li>
-      </ol>
+      <p>In order to be a sustainable open project, we like a <Link href="/finance-reports">predictable budget</Link>. Having a wildly varying income makes it difficult for us to plan ahead and hire staff long term. We would much prefer you to donate a small monthly amount over a long term than a single lump sum.</p>
+      <p>That said, we do of course accept donations of any kind :)</p>
       <h2>Donations under $20</h2>
       <p>Please join us temporarily on <a href="https://www.patreon.com/polyhaven/overview">Patreon</a>, wait until the end of the month when your payment is made, and then cancel your account.</p>
       <h2>Larger donations</h2>
