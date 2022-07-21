@@ -1,0 +1,12 @@
+{
+  "title": "Make a once-off donation",
+  "description": "How to make a once-off donation to Poly Haven.",
+  "p1": "In order to be a sustainable open project, we like a <lnk1>predictable budget</lnk1>. Having a wildly varying income makes it difficult for us to plan ahead and hire staff long term. We would much prefer you to donate a <lnk2>small monthly amount</lnk2> over a long term than a single lump sum.",
+  "p2": "That said, we do of course accept donations of any kind :)",
+  "d1t": "Donations under $20",
+  "d1p": "Please join us temporarily on <lnk>Patreon</lnk>, wait until the end of the month when your payment is made, and then cancel your account.",
+  "d2t": "Larger donations",
+  "d2p": "To make a one-time donation, please use either PayPal or Ko-fi:",
+  "d2b1": "Donate on PayPal",
+  "d2b2": "Donate on Ko-fi"
+}
