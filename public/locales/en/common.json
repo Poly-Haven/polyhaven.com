@@ -5,5 +5,14 @@
   "Textures": "Textures",
   "HDRIs": "HDRIs",
   "Graphic-Design": "Graphic Design",
-  "corporate-sponsors": "Corporate Sponsors"
+  "corporate-sponsors": "Corporate Sponsors",
+  "hidden": "Hidden",
+  "visible": "Visible",
+  "please-wait": "Please wait...",
+  "email-address": "Email address",
+  "invalid-email": "Invalid email address",
+  "invalid-name-url": "Invalid name or url",
+  "display-name": "Display name",
+  "required": "Required",
+  "optional": "Optional"
 }

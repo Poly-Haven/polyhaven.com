@@ -1,11 +1,19 @@
-import Link from 'next/link';
+import { useTranslation, Trans } from 'next-i18next';
+
+import LinkText from 'components/LinkText/LinkText';
 
 const Stakeholder = () => {
+  const { t } = useTranslation(['common', 'account']);
+
   return (
     <div>
-      <h1>Stakeholder</h1>
-      <p>As a stakeholder of Poly Haven, you get deeper access to our internal communication channels to help us discuss what to work on and follow along our journey.</p>
-      <p>If we haven't already contacted you, please <Link href="about-contact">get in touch</Link> so we can give you access to these channels and introduce you to the team.</p>
+      <h1>{t('account:rewards.stakeholder.title')}</h1>
+      <p>{t('account:rewards.stakeholder.p1')}</p>
+      <p><Trans
+        i18nKey="account:rewards.stakeholder.p2"
+        t={t}
+        components={{ lnk: <LinkText href="/about-contact" /> }}
+      /></p>
     </div>
   )
 }

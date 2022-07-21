@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { isEmail, isURL } from 'validator';
 import { setPatronInfo } from 'utils/patronInfo';
+import { useTranslation, Trans } from 'next-i18next';
 
 import { IoTicket } from 'react-icons/io5'
 import { MdCheck, MdSave } from "react-icons/md";
@@ -21,6 +22,7 @@ const Sponsor = ({ uuid, patron }) => {
   const [displayName, setName] = useState("");
   const [url, setUrl] = useState("");
   const [busyInfo, setBusyInfo] = useState(false);
+  const { t } = useTranslation(['common', 'account']);
 
   useEffect(() => {
     setAutoSponsor(patron['auto_sponsor'] || false)
@@ -86,15 +88,15 @@ const Sponsor = ({ uuid, patron }) => {
 
   return (
     <div>
-      <h1>Sponsor</h1>
+      <h1>{t('account:rewards.sponsor.title')}</h1>
 
       <div className={styles.row}>
-        <p>Display name:</p>
+        <p>{t('common:display-name')}:</p>
         <form onSubmit={preventDefault}>
           <input
             type="text"
             value={displayName}
-            data-tip="Required"
+            data-tip={t('common:required')}
             onChange={updateName} />
         </form>
         <p>Link:</p>
@@ -102,26 +104,37 @@ const Sponsor = ({ uuid, patron }) => {
           <input
             type="text"
             value={url}
-            data-tip="Optional"
+            data-tip={t('common:optional')}
             onChange={updateUrl} />
         </form>
-        <Disabled disabled={(!isURL(url, { require_protocol: true }) && url.length) || !displayName.length} tooltip="Invalid name or url">
+        <Disabled disabled={(!isURL(url, { require_protocol: true }) && url.length) || !displayName.length} tooltip={t('common:invalid-name-url')}>
           <div className={`${styles.iconBtn} ${(displayName !== currentData['display_name'] || url !== currentData['url']) && styles.highlight}`} onClick={doUpdateInfo}>{busyInfo ? <Loader /> : (displayName !== currentData['display_name'] || url !== currentData['url']) ? <MdSave /> : <MdCheck />}</div>
         </Disabled>
       </div>
 
-      <p>You get to pick an asset every month to stick your name and a link next to permanently. To do this, we work with a system of "tokens".</p>
-      <p>At the start of each month after your payment is processed by Patreon, you automatically receive one <IoTicket /> <strong>Sponsor Token</strong>.</p>
-      <p>There are two ways to spend this token:</p>
+      <p>{t('account:rewards.sponsor.p1')}</p>
+      <p><Trans
+        i18nKey="account:rewards.sponsor.p2"
+        t={t}
+        components={{
+          ticket: <IoTicket />,
+          b: <strong />
+        }}
+      /></p>
+      <p>{t('account:rewards.sponsor.p3')}</p>
       <ol>
-        <li>By visiting the page of the asset you want to sponsor, and clicking the "<IoTicket /> Sponsor this asset" button on the right side of the page.</li>
-        <li>Or you can turn on automatic sponsorships below, which will pick a random asset for you each month.</li>
+        <li><Trans
+          i18nKey="account:rewards.sponsor.p3li1"
+          t={t}
+          components={{ ticket: <IoTicket /> }}
+        /></li>
+        <li>{t('account:rewards.sponsor.p3li2')}</li>
       </ol>
-      <p>Tokens do not expire, so you can come back after a few months and spend your accumulated tokens.</p>
-      <p>Once a token is spent, it cannot be revoked or moved to a different asset.</p>
+      <p>{t('account:rewards.sponsor.p4')}</p>
+      <p>{t('account:rewards.sponsor.p5')}</p>
 
       <div style={{ display: "flex", alignItems: 'center', gap: "0.5em" }}>
-        <p>Auto-sponsor a random asset each month:</p>
+        <p>{t('account:rewards.sponsor.p6')}</p>
         <Switch
           on={autoSponsor}
           onClick={toggleAutoSponsor}
@@ -129,23 +142,23 @@ const Sponsor = ({ uuid, patron }) => {
         {busyAuto && <Loader />}
       </div>
       {autoSponsor && <>
-        <p>On the 15th day of each month, any available tokens you have will be spent on random assets. This gives you 15 days to manually spend your tokens if you want to.</p>
+        <p>{t('account:rewards.sponsor.p7')}</p>
 
-        <p>If you want to be notified when an asset is automatically picked for you, please enter your email address below:</p>
+        <p>{t('account:rewards.sponsor.p8')}</p>
 
-        <div className={styles.row}><p>Email address:</p>
+        <div className={styles.row}><p>{t('common:email-address')}:</p>
           <form onSubmit={preventDefault}>
             <input
               type="text"
               value={notifyEmail}
               onChange={updateEmail} />
           </form>
-          <Disabled disabled={!isEmail(notifyEmail) && notifyEmail.length} tooltip="Invalid email address">
+          <Disabled disabled={!isEmail(notifyEmail) && notifyEmail.length} tooltip={t('common:invalid-email')}>
             <div className={`${styles.iconBtn} ${notifyEmail !== currentData['notify_email'] && styles.highlight}`} onClick={doUpdateEmail}>{busyEmail ? <Loader /> : (notifyEmail !== currentData['notify_email']) ? <MdSave /> : <MdCheck />}</div>
           </Disabled>
         </div>
 
-        <p>To unsubscribe from notifications, clear your email address above and click the save button.</p>
+        <p>{t('account:rewards.sponsor.p9')}</p>
       </>}
 
       <Tooltip />

@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import { sendNextcloudInvite } from 'utils/patronInfo';
 import { isEmail } from 'validator';
+import { useTranslation, Trans } from 'next-i18next';
 
 import { MdSend, MdCheck } from "react-icons/md";
 
+import LinkText from 'components/LinkText/LinkText';
 import Loader from "components/UI/Loader/Loader"
 import Disabled from "components/UI/Disabled/Disabled";
 import Tooltip from "components/Tooltip/Tooltip";
@@ -16,6 +17,7 @@ const OfflineAccess = ({ uuid, patron }) => {
   const [busy, setBusy] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const { t } = useTranslation(['common', 'account']);
 
   const preventDefault = event => {
     event.preventDefault();
@@ -43,11 +45,11 @@ const OfflineAccess = ({ uuid, patron }) => {
 
   return (
     <div>
-      <h1>Offline Access</h1>
+      <h1>{t('account:rewards.offline-access.title')}</h1>
 
       {!patron.invite_sent ?
         <div className={styles.row}>
-          <p>Enter your email address to send yourself an invite to our cloud folder:</p>
+          <p>{t('account:rewards.offline-access.p1')}</p>
           <form onSubmit={preventDefault}>
             <input
               type="text"
@@ -55,20 +57,28 @@ const OfflineAccess = ({ uuid, patron }) => {
               onChange={updateEmail} />
           </form>
           {!success &&
-            <Disabled disabled={busy} tooltip="Please wait...">
-              <Disabled disabled={!isEmail(email)} tooltip="Invalid email address">
+            <Disabled disabled={busy} tooltip={t('common:please-wait')}>
+              <Disabled disabled={!isEmail(email)} tooltip={t('common:invalid-email')}>
                 <div className={`${styles.iconBtn} ${!success && styles.highlight}`} onClick={doUpdateEmail}>{busy ? <Loader /> : (success ? <MdCheck /> : <MdSend />)}</div>
               </Disabled>
             </Disabled>
           }
           {error && <p>{error}</p>}
-          {success && <p>Check your email :)</p>}
+          {success && <p>{t('account:rewards.offline-access.p2')}</p>}
         </div>
         :
-        <p><em>Invite successfully sent. If you have any trouble or need to change your account email, <Link href="/about-contact">please contact us</Link>.</em></p>
+        <p><em><Trans
+          i18nKey="account:rewards.offline-access.p3"
+          t={t}
+          components={{ lnk: <LinkText href="/about-contact" /> }}
+        /></em></p>
       }
 
-      <p>See <Link href="https://www.patreon.com/posts/accessing-14640286">this post</Link> for further instructions on how to set up Nextcloud and start syncing assets to your computer.</p>
+      <p><Trans
+        i18nKey="account:rewards.offline-access.p4"
+        t={t}
+        components={{ lnk: <a href="https://www.patreon.com/posts/accessing-14640286" /> }}
+      /></p>
       <Tooltip />
     </div>
   )
