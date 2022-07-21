@@ -1,4 +1,5 @@
 {
+  "tagline": "The Public 3D Asset Library",
   "Director": "Director",
   "Co-founder": "Co-founder",
   "Assets": "Assets",
@@ -27,13 +28,24 @@
     "reached": "We reached our last goal! Something new should appear here soon :)"
   },
   "nav": {
+    "home": "Home",
     "gallery": "Gallery",
     "support-us": "Support Us",
     "about-contact": "About/Contact",
     "license": "License",
+    "privacy": "Privacy",
     "news": "News",
     "blog": "Blog",
     "faq": "FAQ",
+    "map": "HDRI World Map",
+    "finances": "Finance Reports",
+    "stats": "Stats",
+    "contribute": "Contribute",
+    "api": "API",
+    "source": "Source",
     "logout": "Logout"
+  },
+  "footer": {
+    "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible"
   }
 }
