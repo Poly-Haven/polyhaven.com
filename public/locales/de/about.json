@@ -4,6 +4,7 @@
     "p1": "Hast du eine Frage? Bitte lesen Sie die<lnk> FAQ</lnk> Erste :)",
     "p2": "Am einfachsten erreichen Sie uns per E-Mail (<lnk1> info@polyhaven.com</lnk1> ) oder an<lnk2> Zwietracht</lnk2> ."
   },
+  "description": "Was Poly Haven ist, was wir tun und warum wir es tun.",
   "greeting": {
     "h1": "Hi!",
     "p1": "Poly Haven ist eine kuratierte öffentliche Asset-Bibliothek für Visual-Effects-Künstler und Spieledesigner, die nützliche, qualitativ hochwertige 3D-Assets auf leicht zugängliche Weise bereitstellt.",
@@ -32,6 +33,7 @@
     "p2": "In Bezug auf die Finanzierung werden wir hauptsächlich durch Spenden von Menschen wie Ihnen unterstützt<lnk> Patreon</lnk> , Werbeeinnahmen und Unternehmenssponsoren, die glauben, dass sie langfristig von der Unterstützung unserer Arbeit profitieren können.",
     "p3": "Für die Vermögensbildung gibt es drei Quellen:"
   },
+  "title": "Über / Kontakt",
   "transparency": {
     "h1": "Transparenz",
     "li1": "Wir schreiben regelmäßige Dev Logs auf<lnk> unser Blog</lnk> um zu teilen, woran wir in letzter Zeit gearbeitet haben.",

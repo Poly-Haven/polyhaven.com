@@ -4,6 +4,7 @@
     "p1": "Hai una domanda? Si prega di leggere il<lnk> FAQ</lnk> primo :)",
     "p2": "Il modo più semplice per contattarci è tramite e-mail (<lnk1> info@polyhaven.com</lnk1> ) o su<lnk2> Discordia</lnk2> ."
   },
+  "description": "Cos'è Poly Haven, cosa facciamo e perché lo stiamo facendo.",
   "greeting": {
     "h1": "Ciao!",
     "p1": "Poly Haven è una libreria di risorse pubbliche curata per artisti di effetti visivi e designer di giochi, che fornisce utili risorse 3D di alta qualità in un modo facilmente ottenibile.",
@@ -32,6 +33,7 @@
     "p2": "Per quanto riguarda i finanziamenti, siamo supportati principalmente da donazioni di persone come te<lnk> Patreon</lnk> , introiti pubblicitari e sponsor aziendali che ritengono di poter trarre vantaggio dal supporto del nostro lavoro a lungo termine.",
     "p3": "Per la creazione di asset, ci sono tre fonti:"
   },
+  "title": "Informazioni/Contatto",
   "transparency": {
     "h1": "Trasparenza",
     "li1": "Scriviamo regolari log di sviluppo<lnk> il nostro blog</lnk> per condividere ciò su cui abbiamo lavorato di recente.",

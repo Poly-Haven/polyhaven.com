@@ -4,6 +4,7 @@
     "p1": "Het jy 'n vraag? Lees asseblief die<lnk> Gereelde vrae</lnk> eers :)",
     "p2": "Die maklikste manier om ons in die hande te kry is deur e-pos (<lnk1> info@polyhaven.com</lnk1> ) of aan<lnk2> Onenigheid</lnk2> ."
   },
+  "description": "Wat Poly Haven is, wat ons doen en hoekom ons dit doen.",
   "greeting": {
     "h1": "Haai daar!",
     "p1": "Poly Haven is 'n saamgestelde openbare batebiblioteek vir visuele effekte-kunstenaars en speletjie-ontwerpers, wat nuttige 3D-bates van hoë gehalte op 'n maklik verkrygbare wyse verskaf.",
@@ -32,6 +33,7 @@
     "p2": "Wat befondsing betref, word ons hoofsaaklik ondersteun deur skenkings van mense soos jy<lnk> Patreon</lnk> , advertensie-inkomste en korporatiewe borge wat glo dat hulle kan baat by die ondersteuning van ons werk op die lang termyn.",
     "p3": "Vir die skepping van bates is daar drie bronne:"
   },
+  "title": "Oor / Kontak",
   "transparency": {
     "h1": "Deursigtigheid",
     "li1": "Ons skryf gereelde Dev-logs aan<lnk> ons blog</lnk> om te deel waaraan ons onlangs gewerk het.",
