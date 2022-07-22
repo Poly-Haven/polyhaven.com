@@ -80,7 +80,7 @@ const Home = () => {
                 i18nKey="s1p1"
                 t={t}
                 components={{
-                  lnk: <LinkText href="/all" />,
+                  lnk: <LinkText href="/license" />,
                   strong: <strong />
                 }}
               /></p>
