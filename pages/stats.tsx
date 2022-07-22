@@ -190,8 +190,8 @@ export async function getStaticProps(context) {
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       datasets: {
-        ...(await serverSideTranslations(context.locale, ['common'])),
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
         relativecategory,
