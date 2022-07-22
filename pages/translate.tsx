@@ -1,21 +1,17 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import locales from 'utils/locales'
-import fs from 'fs';
-import path from 'path';
-import serverPath from 'utils/serverPath';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag';
 
-const Page = ({ translation_data }) => {
+const Page = () => {
   return (
     <TextPage
       title="Help Translate Poly Haven"
       url="/translate"
     >
       <h1>Help Translate Poly Haven</h1>
-      <pre>{JSON.stringify(translation_data, null, 2)}</pre>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
@@ -79,21 +75,9 @@ const Page = ({ translation_data }) => {
 }
 
 export async function getStaticProps({ locale }) {
-  const directoryPath = path.join(serverPath("public"), 'locales', 'en');
-  const translation_data = {}
-  fs.readdir(directoryPath, function (err, files) {
-    if (err) {
-      return console.error('Unable to scan directory: ' + err);
-    }
-    files.forEach(function (file) {
-      translation_data[file] = JSON.parse(fs.readFileSync(path.join(directoryPath, file), { encoding: 'utf-8' }))
-    });
-  });
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
-      translation_data
     },
   };
 }
