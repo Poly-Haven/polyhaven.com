@@ -27,7 +27,7 @@ const AboutPage = () => {
       </div>
 
       <div className={styles.staff}>
-        <Staff id="Greg Zaal" name="Greg Zaal" role={`${t('common:Director')}, HDRIs`} country="ZA" mode="full" />
+        <Staff id="Greg Zaal" name="Greg Zaal" role={`${t('common:Director')}, ${t('common:HDRIs')}`} country="ZA" mode="full" />
         <Staff id="Rob Tuytel" name="Rob Tuytel" role={`${t('common:Co-founder')}, ${t('common:Textures')}`} country="NL" mode="full" />
         <Staff id="Rico Cilliers" name="Rico Cilliers" role={`${t('common:Models')}, ${t('common:Textures')}`} country="ZA" mode="full" />
         <Staff id="James Ray Cock" name="James Ray Cock" role={`${t('common:Models')}`} country="ZA" mode="full" />
