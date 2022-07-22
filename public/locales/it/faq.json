@@ -13,7 +13,7 @@
   "q04p1": "In breve, donazioni da persone come te, sponsor aziendali e pubblicità.",
   "q04p2": "Pubblichiamo i dettagli di come lavoriamo finanziariamente nella ns<lnk> rapporti di finanza pubblica</lnk> .",
   "q05": "Che cos'è un HDRI comunque?",
-  "q05p1": "In generale, un HDRI (High Dynamic Range Image) è semplicemente un'immagine che contiene più di 8 bit di dati per pixel per canale. I formati immagine come JPG e PNG sono in genere a 8 bit e sono talvolta indicati come immagini \"LDR\" (Low Dynamic Range), mentre formati immagine come<lnk1> EXR</lnk1> e<lnk2> HDR</lnk2> memorizzano più dati e sono quindi HDRI.",
+  "q05p1": "In generale, un HDRI (High Dynamic Range Image) è semplicemente un'immagine che contiene più di 8 bit di dati per pixel per canale. I formati immagine come JPG e PNG sono in genere a 8 bit e sono talvolta indicati come immagini \"LDR\" (Low Dynamic Range), mentre i formati immagine come<lnk1> EXR</lnk1> e<lnk2> HDR</lnk2> memorizzano più dati e sono quindi HDRI.",
   "q05p2": "Tuttavia nel mondo CG (e su questo sito) siamo arrivati a usare il termine 'HDRI' per descrivere un grado 360x180 a 32 bit<lnk> equirettangolare</lnk> immagine utilizzata per l'illuminazione di scene CG.",
   "q05p3": "Gli HDRI vengono spesso utilizzati come unica fonte di luce per creare una scena illuminata in modo molto realistico o per abbinare l'illuminazione delle riprese video (utilizzando un HDRI girato sullo stesso set in cui è stato girato il video). Ma ovviamente sono anche usati per completare le tecniche di illuminazione standard e per aggiungere dettagli ai riflessi.",
   "q06": "Come uso i tuoi HDRI?",
