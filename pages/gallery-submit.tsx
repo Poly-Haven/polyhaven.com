@@ -1,12 +1,15 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import GallerySubmit from 'components/Gallery/GallerySubmit'
 
 export default function GalleryPage(props) {
+  const { t } = useTranslation(['common', 'gallery']);
+
   return (
     <TextPage
-      title="Submit Your Render"
-      description="Have you created some awesome artwork using one of our assets? Show it off on this site!"
+      title={t('gallery:submit.title')}
+      description={t('gallery:submit.description')}
       url="/gallery-submit"
     >
       <GallerySubmit assets={props.assets} galleryApiUrl={props.galleryApiUrl} />
@@ -23,7 +26,7 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: { ...(await serverSideTranslations(context.locale, ['common'])) },
+      props: { ...(await serverSideTranslations(context.locale, ['common', 'gallery'])) },
       revalidate: 60 * 5 // 5 minutes
     }
   }
@@ -36,7 +39,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common'])),
+      ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
       assets: sortedAssets,
       galleryApiUrl: process.env.NEXT_ADMIN_API_URL || "https://admin.polyhaven.com",
     },

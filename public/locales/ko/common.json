@@ -24,6 +24,7 @@
   "invalid-email": "잘못된 이메일 주소",
   "invalid-name-url": "잘못된 이름 또는 URL",
   "loading": "로드 중...",
+  "missing-invalid": "누락되었거나 유효하지 않음",
   "nav": {
     "about-contact": "정보/연락처",
     "api": "API",

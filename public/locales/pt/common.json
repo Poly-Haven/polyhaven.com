@@ -24,6 +24,7 @@
   "invalid-email": "Endereço de email invalido",
   "invalid-name-url": "Nome ou URL inválido",
   "loading": "Carregando...",
+  "missing-invalid": "Ausente ou inválido",
   "nav": {
     "about-contact": "Sobre/Contato",
     "api": "API",

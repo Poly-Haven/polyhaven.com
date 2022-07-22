@@ -24,6 +24,7 @@
   "invalid-email": "Неверный адрес электронной почты",
   "invalid-name-url": "Недопустимое имя или URL",
   "loading": "Загрузка...",
+  "missing-invalid": "Отсутствует или недействителен",
   "nav": {
     "about-contact": "О нас/Контакты",
     "api": "API",

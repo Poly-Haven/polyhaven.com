@@ -24,6 +24,7 @@
   "invalid-email": "無効な電子メールアドレス",
   "invalid-name-url": "名前またはURLが無効です",
   "loading": "読み込んでいます...",
+  "missing-invalid": "欠落または無効",
   "nav": {
     "about-contact": "について/連絡先",
     "api": "API",

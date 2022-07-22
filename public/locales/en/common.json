@@ -14,6 +14,7 @@
   "hidden": "Hidden",
   "visible": "Visible",
   "please-wait": "Please wait...",
+  "missing-invalid": "Missing or invalid",
   "email-address": "Email address",
   "invalid-email": "Invalid email address",
   "invalid-name-url": "Invalid name or url",

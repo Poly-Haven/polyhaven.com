@@ -1,5 +1,7 @@
+import { useTranslation, Trans } from 'next-i18next';
 import React, { useRef, useState, useEffect } from 'react'
 import Link from 'next/link';
+import LinkText from 'components/LinkText/LinkText';
 import useStoredState from 'hooks/useStoredState';
 import { isURL, isEmail } from 'validator';
 import Select from 'react-select';
@@ -16,6 +18,9 @@ import btnStyles from 'components/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets, galleryApiUrl }) => {
+  const { t: t_c } = useTranslation('common');
+  const { t } = useTranslation('gallery');
+
   const [successPopup, showSuccessPopup] = useState(false)
   const query = useQuery();
 
@@ -107,11 +112,11 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
       const i = event.target.files[0];
 
       if (i.type !== 'image/jpeg') {
-        alert("Image must be a JPG")
+        alert(t('submit.err-jpg'))
         return
       }
       if (i.size > 1 * 1024 * 1024) {
-        alert("Your image is too big, must be under 1MB")
+        alert(t('submit.err-size'))
         return
       }
 
@@ -167,7 +172,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const updateAssetsUsed = newValue => {
     const assetLimit = 10
     if (newValue.length > assetLimit) {
-      alert(`You can't select more than ${assetLimit} assets, please choose only the most prominent ones visible in your render.`)
+      alert(t('submit.err-asset-limit', { limit: assetLimit }))
       return
     }
     setAssetsUsed(newValue)
@@ -175,31 +180,58 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1>Submit Your Render</h1>
-      <p>Have you created some <Link href="/gallery">awesome artwork</Link> using one of our assets? Show it off on this site!</p>
-      <p>After you submit your render it'll be sent to us for approval. If we like it, it'll show in the gallery for a few weeks, and also on the pages of the assets you used to create it.</p>
-      <p>If we like your render <em>a lot</em>, we'll feature it permanently and share it on our social media.</p>
+      <h1>{t('submit.title')}</h1>
+      <p><Trans
+        i18nKey='submit.s1p1'
+        t={t}
+        components={{ lnk: <LinkText href="/gallery" /> }} /></p>
+      <p>{t('submit.s1p2')}</p>
+      <p><Trans
+        i18nKey="submit.s1p3"
+        t={t}
+        components={{ em: <em /> }}
+      /></p>
 
-      <h2>Rules:</h2>
+      <h2>{t('submit.s2')}</h2>
       <ol>
-        <li>The artwork <strong>must be your own creation</strong>, and you must be allowed to display it publically.</li>
-        <li>You must have used at least one of <strong>Poly Haven's HDRIs/textures/models</strong> in the creation of your artwork.</li>
-        <li>Nudity or other NSFW content cannot be accepted.</li>
+        <li><Trans
+          i18nKey="submit.s2p1"
+          t={t}
+          components={{ strong: <strong /> }}
+        /></li>
+        <li><Trans
+          i18nKey="submit.s2p2"
+          t={t}
+          components={{ strong: <strong /> }}
+        /></li>
+        <li>{t('submit.s2p3')}</li>
       </ol>
 
-      <h2>Note:</h2>
-      <p>We get <strong>a lot</strong> of submissions, so unfortunately we can only accept the highest quality artwork to prevent the gallery from becoming cluttered.</p>
-      <p>We're not trying to be another ArtStation, this gallery is dedicated to showing off what you can do with Poly Haven's assets.</p>
-      <p>If you would like to ask for feedback on your render before submitting it, we have a very helpful community on <a href="https://discord.gg/Dms7Mrs">Discord</a>.</p>
-      <p>We'll notify you by email if your render is accepted or rejected. This may take a day or two as we tend to review submissions in bulk.</p>
-      <p>Here are some common reasons for rejection:</p>
+      <h2>{t('submit.s3')}</h2>
+      <p><Trans
+        i18nKey="submit.s3p1"
+        t={t}
+        components={{ strong: <strong /> }}
+      /></p>
+      <p>{t('submit.s3p2')}</p>
+      <p><Trans
+        i18nKey="submit.s3p3"
+        t={t}
+        components={{ lnk: <a href="https://discord.gg/Dms7Mrs" /> }}
+      /></p>
+      <p>{t('submit.s3p4')}</p>
+      <p>{t('submit.s3p5')}</p>
       <ul>
-        <li>Low-effort renders (e.g. simple lighting tests).</li>
-        <li>Low quality artwork.</li>
-        <li>No Poly Haven assets used.</li>
-        <li>Very similar render from another artist already present (e.g. "car on backplate" type renders with the same backplate).</li>
-        <li>Too many submissions - typically we accept at most 3 different images per artist per month.</li>
-        <li>Multiple renders of the same project (different camera angles or lighting setups) - <strong>only submit your best render for each project</strong>, and then link to your ArtStation page where people can find more.</li>
+        <li>{t('submit.s3p5l1')}</li>
+        <li>{t('submit.s3p5l2')}</li>
+        <li>{t('submit.s3p5l3')}</li>
+        <li>{t('submit.s3p5l4')}</li>
+        <li>{t('submit.s3p5l5')}</li>
+        <li><Trans
+          i18nKey="submit.s3p5l6"
+          t={t}
+          components={{ strong: <strong /> }}
+        /></li>
       </ul>
 
       <div className={styles.form}>
@@ -207,14 +239,14 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
           {localImage ? <div className={styles.imagePreview}><img src={localImage} /></div> : null}
           <div className={styles.buttonWrapper}>
             <label htmlFor="upload-image" className={`${btnStyles.button} ${btnStyles[image ? 'hollow' : 'accent']} ${styles.imageSelect}`}>
-              {image ? "Change File..." : "Select File..."}
-              <br /><span className={styles.sub}>JPG under 1MB</span>
+              {image ? t('submit.form.file-change') : t('submit.form.select-change')}
+              <br /><span className={styles.sub}>{t('submit.form.file-size')}</span>
             </label>
           </div>
           <input type="file" ref={imageRef} name="myImage" id="upload-image" className={styles.hideFileInput} onChange={uploadToClient} />
 
           <GalleryFormItem
-            label="Artwork name"
+            label={t('submit.form.art-name')}
             optional={true}
           >
             <input
@@ -224,38 +256,38 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
             />
           </GalleryFormItem>
           <GalleryFormItem
-            label="Your name"
+            label={t('submit.form.your-name')}
           >
             <input
               type="text"
               value={author}
               onChange={e => setAuthor(e.target.value)}
-              placeholder="As you want to be credited."
+              placeholder={t('submit.form.your-name-d')}
             />
           </GalleryFormItem>
           <GalleryFormItem
-            label="Your email"
+            label={t('submit.form.your-email')}
           >
             <input
               type="text"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="Used only to notify you when your artwork is published. Stored securely and not shared with anyone."
+              placeholder={t('submit.form.your-email-d')}
             />
           </GalleryFormItem>
           <GalleryFormItem
-            label="Link"
+            label={t('submit.form.link')}
             optional={true}
           >
             <input
               type="text"
               value={link}
               onChange={e => setLink(e.target.value)}
-              placeholder="Your website/portfolio, or a link to more renders of this project."
+              placeholder={t('submit.form.link-d')}
             />
           </GalleryFormItem>
           <GalleryFormItem
-            label="Software used"
+            label={t('submit.form.software')}
             optional={true}
           >
             <CreatableSelect
@@ -265,11 +297,11 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               onChange={updateSoftware}
               options={softwareOptions}
               value={software}
-              placeholder="Which 3D software did you use to create your artwork?"
+              placeholder={t('submit.form.software-d')}
             />
           </GalleryFormItem>
           <GalleryFormItem
-            label="Assets used"
+            label={t('submit.form.assets')}
           >
             <div className={styles.assetSelectionWrapper}>
               <Select
@@ -279,7 +311,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
                 onChange={updateAssetsUsed}
                 options={assetOptions}
                 value={assetsUsed}
-                placeholder="Which HDRIs, textures or 3D models from Poly Haven did you use?"
+                placeholder={t('submit.form.assets-d')}
               />
               {assetsUsed ?
                 <div className={styles.assetsWrapper} >
@@ -296,7 +328,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
           <div className="spacer" />
           <div>{Object.keys(response).length ? response['message'] : null}</div>
           <Disabled
-            tooltip={busy ? "Please wait..." : `Missing or invalid: ${invalidFields.join(', ')}`}
+            tooltip={busy ? t_c('please-wait') : `${t_c('missing-invalid')}: ${invalidFields.join(', ')}`}
             disabled={!valid || busy}
           >
             <div
@@ -304,15 +336,15 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               onClick={submit}
             >
               <div className={btnStyles.inner}>
-                {busy ? "Uploading, please wait..." : "🚀 Submit"}
+                {busy ? t('submit.form.uploading') : `🚀 ${t('submit.form.submit')}`}
               </div>
             </div>
           </Disabled>
         </div>
       </div>
       <Popup show={successPopup} hide={_ => showSuccessPopup(false)}>
-        <p>✅ <strong>Thanks for your submission!</strong></p>
-        <p>We'll review your render within a few days and email you the results.</p>
+        <p>✅ <strong>{t('submit.form.thanks')}</strong></p>
+        <p>{t('submit.form.thanks-d')}</p>
       </Popup>
     </div>
   )

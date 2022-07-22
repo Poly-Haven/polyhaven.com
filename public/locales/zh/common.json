@@ -24,6 +24,7 @@
   "invalid-email": "无效的邮件地址",
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
+  "missing-invalid": "缺失或无效",
   "nav": {
     "about-contact": "关于/联系",
     "api": "API",
