@@ -2,7 +2,7 @@ export function daysOld(epoch) {
   return (Date.now() - epoch * 1000) / 1000 / 60 / 60 / 24;
 }
 
-export function timeago(epoch, t, returnList = false) {
+export function timeago(epoch, returnList = false) {
 
   const segments = {
     year: 3.154e10,
@@ -19,7 +19,7 @@ export function timeago(epoch, t, returnList = false) {
   const unit = Object.keys(segments)[Object.values(segments).findIndex(time => timeDifference >= time)]
   const num = Math.floor(timeDifference / segments[unit])
 
-  const returnStr = unit === 'today' ? t('today') : t(`${tense}.${unit}`, { count: num })
+  const returnStr = unit === 'today' ? "Today" : `${num} ${unit}${num !== 1 ? 's' : ''} ${tense === 'past' ? 'ago' : 'from now'}`
   return returnList ? [num, returnStr] : returnStr
 }
 

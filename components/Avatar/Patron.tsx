@@ -15,7 +15,7 @@ const Avatar = ({ name, image, size, timestamp }) => {
       />
       <p>
         <strong>{name}</strong><br />
-        <span>{timeago(timestamp, t)}</span>
+        <span>{timeago(timestamp)}</span>
       </p>
     </div>
   )

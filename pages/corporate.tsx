@@ -94,7 +94,7 @@ const Corporate = (props) => {
             style={{ opacity: 0.5, textAlign: 'right' }}
             data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString("en-ZA")}`}
           >
-            <em>Last updated: {timeago(props.updated, tt)}</em>
+            <em>Last updated: {timeago(props.updated)}</em>
           </p>
         </InfoBlock>
       </div>
