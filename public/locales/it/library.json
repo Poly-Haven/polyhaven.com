@@ -1,10 +1,12 @@
 {
   "Clear author": "Chiaro autore",
+  "backplates": "Include una serie di immagini di sfondo ad alta risoluzione.",
   "by-author": "per {{author}}",
+  "early-access": "Accesso anticipato",
+  "new": "Nuovo!",
   "no-results": "Nessun risultato",
   "no-results-keyword": "Prova a utilizzare una parola chiave diversa",
   "results": "risultati",
-  "search": "Ricerca...",
   "sort": {
     "downloads": "Download",
     "downloads-d": "Conteggio download totale di tutti i tempi.",

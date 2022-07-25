@@ -1,10 +1,12 @@
 {
   "Clear author": "작성자 지우기",
+  "backplates": "고해상도 배경 이미지 세트를 포함합니다.",
   "by-author": "{{author}}",
+  "early-access": "앞서 해보기",
+  "new": "새로운!",
   "no-results": "결과 없음",
   "no-results-keyword": "다른 키워드를 사용해 보세요",
   "results": "결과",
-  "search": "검색...",
   "sort": {
     "downloads": "다운로드",
     "downloads-d": "모든 시간의 총 다운로드 수입니다.",

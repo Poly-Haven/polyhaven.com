@@ -25,6 +25,7 @@ import styles from './Grid.module.scss';
 
 const Grid = (props) => {
   const { t: tc } = useTranslation('common');
+  const { t: tcat } = useTranslation('categories');
   const { t } = useTranslation('library');
   const optionsRef = useRef(null)
   const { height } = useDivSize(optionsRef)
@@ -145,7 +146,7 @@ const Grid = (props) => {
 
   let title = tc(asset_type_name);
   if (props.categories.length) {
-    title = tc(asset_type_name) + ": " + titleCase(props.categories.join(' > '))
+    title = tc(asset_type_name) + ": " + titleCase(props.categories.map(c => tcat(c)).join(' > '))
   }
   if (props.author) {
     title += ` (${t("by-author", { author: props.author })})`;
@@ -210,7 +211,7 @@ const Grid = (props) => {
               <form onSubmit={submitSearch}>
                 <input
                   type="text"
-                  placeholder={t('search')}
+                  placeholder="Search..."
                   value={props.search}
                   onChange={setSearch} />
               </form>

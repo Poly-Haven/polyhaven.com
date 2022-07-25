@@ -13,7 +13,6 @@ import styles from './Sidebar.module.scss';
 
 const Sidebar = (props) => {
   const { t: t_c } = useTranslation('common');
-  const { t } = useTranslation('library');
   const [typeHeader, setTypeHeader] = useState(t_c(assetTypeName(props.assetType)))
   const [hideSidebar, setHideSidebar] = useState(true);
 

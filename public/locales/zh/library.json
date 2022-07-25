@@ -1,10 +1,12 @@
 {
   "Clear author": "清除作者",
+  "backplates": "包括一组高分辨率背景图像。",
   "by-author": "{{author}}",
+  "early-access": "抢先体验",
+  "new": "新的！",
   "no-results": "没有结果",
   "no-results-keyword": "尝试使用不同的关键字",
   "results": "结果",
-  "search": "搜索...",
   "sort": {
     "downloads": "下载",
     "downloads-d": "总下载次数。",

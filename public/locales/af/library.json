@@ -1,10 +1,12 @@
 {
   "Clear author": "Duidelike skrywer",
+  "backplates": "Sluit 'n stel hoë-resolusie agtergrond beelde in.",
   "by-author": "deur {{author}}",
+  "early-access": "Vroeë toegang",
+  "new": "Nuut!",
   "no-results": "Geen resultate",
   "no-results-keyword": "Probeer 'n ander sleutelwoord gebruik",
   "results": "resultate",
-  "search": "Soek...",
   "sort": {
     "downloads": "Aflaaie",
     "downloads-d": "Totale aflaaitelling van alle tye.",

@@ -1,7 +1,6 @@
 {
   "results": "results",
   "sort-by": "Sort by",
-  "search": "Search...",
   "Clear author": "Clear author",
   "no-results": "No results",
   "no-results-keyword": "Try using a different keyword",
@@ -18,5 +17,8 @@
     "name-d": "Sorted alphabetically.",
     "relevance": "Sorting by search relevance."
   },
-  "by-author": "by {{author}}"
+  "by-author": "by {{author}}",
+  "new": "New!",
+  "backplates": "Includes a set of high-res background images.",
+  "early-access": "Early Access"
 }

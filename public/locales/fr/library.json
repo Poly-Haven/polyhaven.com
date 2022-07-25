@@ -1,10 +1,12 @@
 {
   "Clear author": "Effacer l'auteur",
+  "backplates": "Comprend un ensemble d'images d'arrière-plan haute résolution.",
   "by-author": "par {{author}}",
+  "early-access": "Accès anticipé",
+  "new": "Nouveau!",
   "no-results": "Aucun résultat",
   "no-results-keyword": "Essayez d'utiliser un mot clé différent",
   "results": "résultats",
-  "search": "Chercher...",
   "sort": {
     "downloads": "Téléchargements",
     "downloads-d": "Nombre total de téléchargements de tous les temps.",

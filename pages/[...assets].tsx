@@ -44,7 +44,7 @@ export async function getServerSideProps(context) {
     return {
       notFound: true,
       props: {
-        ...(await serverSideTranslations(context.locale, ['common', 'library']))
+        ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories']))
       }
     }
   }
@@ -61,7 +61,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common', 'library'])),
+      ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories'])),
       assetType: assetType,
       categories: params,
       author: author ? author : "",

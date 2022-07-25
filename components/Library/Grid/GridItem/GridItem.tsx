@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
@@ -11,6 +12,7 @@ import SimpleAuthorCredit from 'components/AuthorCredit/SimpleAuthorCredit';
 import styles from './GridItem.module.scss';
 
 const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
+  const { t } = useTranslation('library');
 
   let size = [371, 278];
   if (asset.type === 1) {
@@ -22,12 +24,12 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
   let badge;
   if (daysOld(asset.date_published) < 0) {
     badge = {
-      text: <><IconPatreon />Early<br />Access</>,
+      text: <><IconPatreon />{t('early-access')}</>,
       style: styles.soon
     }
   } else if (daysOld(asset.date_published) < 7) {
     badge = {
-      text: "New!",
+      text: t('new'),
       style: styles.new
     }
   }
@@ -35,7 +37,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
   let indicators = []
   if (asset.backplates) {
     indicators.push({
-      text: "✔ Backplates: Includes a set of high-res background images.",
+      text: `✔ Backplates: ${t('backplates')}`,
       icon: <MdCollections />,
     })
   }
