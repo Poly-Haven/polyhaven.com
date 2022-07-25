@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} giorno da ora",
+    "day_other": "{{count}} giorni da adesso",
+    "hour_one": "{{count}} ora da adesso",
+    "hour_other": "{{count}} ore da adesso",
+    "month_one": "{{count}} mese da adesso",
+    "month_other": "{{count}} mesi da adesso",
+    "week_one": "{{count}} la settimana da adesso",
+    "week_other": "{{count}} settimane da adesso",
+    "year_one": "{{count}} anno da adesso",
+    "year_other": "{{count}} anni da adesso"
+  },
+  "new": "Nuovo",
+  "past": {
+    "day_one": "{{count}} giorno fa",
+    "day_other": "{{count}} giorni fa",
+    "hour_one": "{{count}} un'ora fa",
+    "hour_other": "{{count}} ore fa",
+    "month_one": "{{count}} mese fa",
+    "month_other": "{{count}} mesi fa",
+    "week_one": "{{count}} settimana fa",
+    "week_other": "{{count}} settimane fa",
+    "year_one": "{{count}} anno fa",
+    "year_other": "{{count}} anni fa"
+  },
+  "today": "In data odierna"
+}

@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} день с этого момента",
+    "day_other": "{{count}} дни с этого момента",
+    "hour_one": "{{count}} час с этого момента",
+    "hour_other": "{{count}} часы с этого момента",
+    "month_one": "{{count}} месяц с этого момента",
+    "month_other": "{{count}} месяцы с этого момента",
+    "week_one": "{{count}} неделю",
+    "week_other": "{{count}} недели с этого момента",
+    "year_one": "{{count}} год с этого момента",
+    "year_other": "{{count}} годы с этого момента"
+  },
+  "new": "Новый",
+  "past": {
+    "day_one": "{{count}} день назад",
+    "day_other": "{{count}} дней назад",
+    "hour_one": "{{count}} час назад",
+    "hour_other": "{{count}} часы назад",
+    "month_one": "{{count}} месяц назад",
+    "month_other": "{{count}} месяцы назад",
+    "week_one": "{{count}} неделю назад",
+    "week_other": "{{count}} недели назад",
+    "year_one": "{{count}} год назад",
+    "year_other": "{{count}} годы назад"
+  },
+  "today": "Сегодня"
+}

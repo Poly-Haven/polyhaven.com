@@ -41,6 +41,7 @@ const PanoViewer = dynamic(
 
 const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const { t: tc } = useTranslation('common');
+  const { t: tt } = useTranslation('time');
   const { t } = useTranslation('asset');
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
@@ -62,10 +63,9 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const monthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
   const isOlderThanFourDays = (Date.now() - data.date_published * 1000) > (4 * msPerDay)
-  const age = timeago(data.date_published * 1000)
-  const ageParts = age.split(' ')
-  const ageValue = age === 'Today' ? 'New' : ageParts.shift()
-  const ageLabel = age === 'Today' ? 'Today' : ageParts.join(' ')
+  let [ageValue, ageLabel] = timeago(data.date_published * 1000, tt, true)
+  ageValue = ageValue === 0 ? tt('new') : ageValue
+  ageLabel = ageLabel.replace(ageValue, '').trim()
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)

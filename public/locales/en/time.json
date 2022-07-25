@@ -1,0 +1,28 @@
+{
+  "past": {
+    "year_one": "{{count}} year ago",
+    "year_other": "{{count}} years ago",
+    "month_one": "{{count}} month ago",
+    "month_other": "{{count}} months ago",
+    "week_one": "{{count}} week ago",
+    "week_other": "{{count}} weeks ago",
+    "day_one": "{{count}} day ago",
+    "day_other": "{{count}} days ago",
+    "hour_one": "{{count}} hour ago",
+    "hour_other": "{{count}} hours ago"
+  },
+  "future": {
+    "year_one": "{{count}} year from now",
+    "year_other": "{{count}} years from now",
+    "month_one": "{{count}} month from now",
+    "month_other": "{{count}} months from now",
+    "week_one": "{{count}} week from now",
+    "week_other": "{{count}} weeks from now",
+    "day_one": "{{count}} day from now",
+    "day_other": "{{count}} days from now",
+    "hour_one": "{{count}} hour from now",
+    "hour_other": "{{count}} hours from now"
+  },
+  "today": "Today",
+  "new": "New"
+}

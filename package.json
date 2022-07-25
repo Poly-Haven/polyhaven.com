@@ -19,7 +19,6 @@
     "@types/three": "^0.129.2",
     "date-fns": "^2.23.0",
     "dotenv": "^10.0.0",
-    "epoch-timeago": "^1.1.9",
     "fast-xml-parser": "^3.19.0",
     "filesize": "^6.3.0",
     "firebase": "^8.3.0",
