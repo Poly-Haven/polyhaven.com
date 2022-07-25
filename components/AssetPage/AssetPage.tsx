@@ -63,6 +63,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   const monthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
   const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
   const isOlderThanFourDays = (Date.now() - data.date_published * 1000) > (4 * msPerDay)
+  // @ts-ignore Type can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.
   let [ageValue, ageLabel] = timeago(data.date_published * 1000, true)
   ageValue = ageValue === 0 ? tt('new') : ageValue
   ageLabel = ageLabel.replace(ageValue, '').trim()
