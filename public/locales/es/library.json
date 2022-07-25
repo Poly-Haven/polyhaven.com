@@ -1,0 +1,22 @@
+{
+  "Clear author": "Borrar autor",
+  "by-author": "por {{author}}",
+  "no-results": "No hay resultados",
+  "no-results-keyword": "Intenta usar una palabra clave diferente",
+  "results": "resultados",
+  "search": "Búsqueda...",
+  "sort": {
+    "downloads": "Descargas",
+    "downloads-d": "Recuento total de descargas de todos los tiempos.",
+    "hot": "Caliente",
+    "hot-d": "Descargas por día, con activos más nuevos ponderados ligeramente más alto.",
+    "latest": "Más reciente",
+    "latest-d": "Publicado más recientemente.",
+    "name": "Nombre",
+    "name-d": "Ordenado alfabéticamente.",
+    "relevance": "Clasificación por relevancia de búsqueda.",
+    "top": "Parte superior",
+    "top-d": "Descargas por día."
+  },
+  "sort-by": "Ordenar por"
+}

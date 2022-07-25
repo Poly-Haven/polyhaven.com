@@ -1,0 +1,22 @@
+{
+  "Clear author": "Chiaro autore",
+  "by-author": "per {{author}}",
+  "no-results": "Nessun risultato",
+  "no-results-keyword": "Prova a utilizzare una parola chiave diversa",
+  "results": "risultati",
+  "search": "Ricerca...",
+  "sort": {
+    "downloads": "Download",
+    "downloads-d": "Conteggio download totale di tutti i tempi.",
+    "hot": "Piccante",
+    "hot-d": "Download giornalieri, con asset più recenti con un peso leggermente superiore.",
+    "latest": "Ultimo",
+    "latest-d": "Pubblicato più di recente.",
+    "name": "Nome",
+    "name-d": "Ordinato in ordine alfabetico.",
+    "relevance": "Ordinamento per pertinenza della ricerca.",
+    "top": "Superiore",
+    "top-d": "Download al giorno."
+  },
+  "sort-by": "Ordina per"
+}

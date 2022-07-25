@@ -1,0 +1,22 @@
+{
+  "Clear author": "清除作者",
+  "by-author": "{{author}}",
+  "no-results": "没有结果",
+  "no-results-keyword": "尝试使用不同的关键字",
+  "results": "结果",
+  "search": "搜索...",
+  "sort": {
+    "downloads": "下载",
+    "downloads-d": "总下载次数。",
+    "hot": "热的",
+    "hot-d": "每日下载量，较新资产的权重略高。",
+    "latest": "最新的",
+    "latest-d": "最近出版的。",
+    "name": "姓名",
+    "name-d": "按字母顺序排序。",
+    "relevance": "按搜索相关性排序。",
+    "top": "最佳",
+    "top-d": "每天下载。"
+  },
+  "sort-by": "排序方式"
+}

@@ -1,4 +1,6 @@
 {
+  "All Assets": "所有资产",
+  "All Things": "所有{{things}}",
   "Assets": "资产",
   "Co-founder": "联合创始人",
   "Director": "导向器",
@@ -48,6 +50,7 @@
   "patron_one": "赞助人",
   "patron_other": "顾客",
   "please-wait": "请稍等...",
+  "remove-ads": "移除广告",
   "required": "必需的",
   "tagline": "公共 3D 资源库",
   "visible": "可见的"

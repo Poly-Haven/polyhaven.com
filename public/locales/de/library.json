@@ -1,0 +1,22 @@
+{
+  "Clear author": "Klarer Autor",
+  "by-author": "nach {{author}}",
+  "no-results": "Keine Ergebnisse",
+  "no-results-keyword": "Versuchen Sie es mit einem anderen Schlüsselwort",
+  "results": "Ergebnisse",
+  "search": "Suche...",
+  "sort": {
+    "downloads": "Downloads",
+    "downloads-d": "Gesamtzahl der Downloads aller Zeiten.",
+    "hot": "Heiß",
+    "hot-d": "Downloads pro Tag, wobei neuere Assets etwas höher gewichtet werden.",
+    "latest": "Neueste",
+    "latest-d": "Zuletzt erschienen.",
+    "name": "Name",
+    "name-d": "Alphabetisch sortiert.",
+    "relevance": "Sortierung nach Suchrelevanz.",
+    "top": "oben",
+    "top-d": "Downloads pro Tag."
+  },
+  "sort-by": "Sortieren nach"
+}

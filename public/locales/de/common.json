@@ -1,4 +1,6 @@
 {
+  "All Assets": "Alle Vermögenswerte",
+  "All Things": "Alle {{things}}",
   "Assets": "Vermögenswerte",
   "Co-founder": "Mitbegründer",
   "Director": "Direktor",
@@ -48,6 +50,7 @@
   "patron_one": "Patron",
   "patron_other": "Gönner",
   "please-wait": "Warten Sie mal...",
+  "remove-ads": "Anzeigen entfernen",
   "required": "Erforderlich",
   "tagline": "Die öffentliche 3D-Asset-Bibliothek",
   "visible": "Sichtbar"

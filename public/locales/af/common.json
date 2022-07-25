@@ -1,4 +1,6 @@
 {
+  "All Assets": "Alle bates",
+  "All Things": "Alle {{things}}",
   "Assets": "Bates",
   "Co-founder": "Medestigter",
   "Director": "Direkteur",
@@ -48,6 +50,7 @@
   "patron_one": "Beskermheer",
   "patron_other": "Beskermhere",
   "please-wait": "Wag asseblief...",
+  "remove-ads": "Verwyder advertensies",
   "required": "Vereis",
   "tagline": "Die Openbare 3D Batebiblioteek",
   "visible": "Sigbaar"

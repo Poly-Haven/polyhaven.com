@@ -1,4 +1,6 @@
 {
+  "All Assets": "Todos los activos",
+  "All Things": "todas {{things}}",
   "Assets": "Activos",
   "Co-founder": "co-fundador",
   "Director": "Director",
@@ -48,6 +50,7 @@
   "patron_one": "Patrón",
   "patron_other": "Mecenas",
   "please-wait": "Espere por favor...",
+  "remove-ads": "Quitar anuncios",
   "required": "Requerido",
   "tagline": "La biblioteca pública de activos 3D",
   "visible": "Visible"

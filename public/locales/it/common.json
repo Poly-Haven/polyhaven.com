@@ -1,4 +1,6 @@
 {
+  "All Assets": "Tutti i beni",
+  "All Things": "Tutte {{things}}",
   "Assets": "Risorse",
   "Co-founder": "Cofondatore",
   "Director": "Direttore",
@@ -48,6 +50,7 @@
   "patron_one": "Patrono",
   "patron_other": "Patroni",
   "please-wait": "Attendere prego...",
+  "remove-ads": "Rimuovere gli annunci",
   "required": "Necessario",
   "tagline": "La biblioteca pubblica di risorse 3D",
   "visible": "Visibile"

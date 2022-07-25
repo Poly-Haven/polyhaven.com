@@ -1,4 +1,6 @@
 {
+  "All Assets": "Все активы",
+  "All Things": "Все {{things}}",
   "Assets": "Ресурсы",
   "Co-founder": "Соучредитель",
   "Director": "Директор",
@@ -48,6 +50,7 @@
   "patron_one": "Покровитель",
   "patron_other": "Покровители",
   "please-wait": "Пожалуйста подождите...",
+  "remove-ads": "Убрать рекламу",
   "required": "Необходимый",
   "tagline": "Публичная библиотека 3D-активов",
   "visible": "Видимый"

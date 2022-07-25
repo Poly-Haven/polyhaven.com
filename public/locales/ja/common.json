@@ -1,4 +1,6 @@
 {
+  "All Assets": "すべての資産",
+  "All Things": "すべての{{things}}",
   "Assets": "資産",
   "Co-founder": "共同 - 創設者",
   "Director": "監督",
@@ -48,6 +50,7 @@
   "patron_one": "パトロン",
   "patron_other": "常連客",
   "please-wait": "お待ちください...",
+  "remove-ads": "広告を削除",
   "required": "必須",
   "tagline": "パブリック3Dアセットライブラリ",
   "visible": "見える"

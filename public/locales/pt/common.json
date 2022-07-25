@@ -1,4 +1,6 @@
 {
+  "All Assets": "Todos os ativos",
+  "All Things": "Todas {{things}}",
   "Assets": "Ativos",
   "Co-founder": "Cofundador",
   "Director": "Diretor",
@@ -48,6 +50,7 @@
   "patron_one": "Patrono",
   "patron_other": "Clientes",
   "please-wait": "Por favor, espere...",
+  "remove-ads": "Remover propagandas",
   "required": "Requeridos",
   "tagline": "A biblioteca pública de ativos 3D",
   "visible": "Visível"
