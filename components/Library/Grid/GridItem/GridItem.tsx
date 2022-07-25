@@ -60,7 +60,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
       /></div>
       <div className={styles.text}>
         <h3>{asset.name}</h3>
-        <p>{timeago(asset.date_published * 1000)}</p>
+        <p>{timeago(asset.date_published * 1000, tt)}</p>
       </div>
       {badge ? <div className={`${styles.badge} ${badge.style}`}>{badge.text}</div> : null}
       <div className={styles.indicators}>{indicators.map(i => <div key={i.text} data-tip={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
