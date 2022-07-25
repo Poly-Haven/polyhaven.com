@@ -1,7 +1,7 @@
+import { useTranslation } from 'next-i18next';
 import React, { useState, useEffect, useRef } from "react";
 import { useUser } from '@auth0/nextjs-auth0';
 import dynamic from 'next/dynamic'
-import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
@@ -40,6 +40,8 @@ const PanoViewer = dynamic(
 )
 
 const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
+  const { t: tc } = useTranslation('common');
+  const { t } = useTranslation('asset');
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
@@ -73,7 +75,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
     document.getElementById('header-title').innerHTML = data.name
     let path = document.getElementById('header-frompath').innerHTML
     if (!path) {
-      path = `<a href="/${Object.keys(asset_types)[data.type]}">${asset_type_names[data.type]}s</a> /`
+      path = `<a href="/${Object.keys(asset_types)[data.type]}">${tc(asset_type_names[data.type] + 's')}</a> /`
     }
     document.getElementById('header-path').innerHTML = path
     document.getElementById('header-frompath').innerHTML = ""
@@ -183,7 +185,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
           </div>
         </div>
         <div className={styles.similar}>
-          <h2>Similar Assets</h2>
+          <h2>{t('similar-assets')}</h2>
           <Similar slug={assetID} scrollPosition={scrollPosition} onClick={clickSimilar} />
         </div>
         <UserRenders assetID={assetID} />
@@ -203,11 +205,11 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
 
           <div className={styles.infoItems}>
 
-            <InfoItem label={`${multiAuthor ? "Authors" : "Author"}`} flex>
+            <InfoItem label={t('author', { count: authors.length })} flex>
               <div className={styles.authors}>
                 {authors.map(a => <AuthorCredit id={a} key={a} credit={multiAuthor ? data.authors[a] : ""} />)}
               </div>
-              {data.donated ? <div className={styles.heart} data-tip="This asset was donated to Poly Haven freely by the author :)"><Heart /></div> : null}
+              {data.donated ? <div className={styles.heart} data-tip={t('author-donated')}><Heart /></div> : null}
             </InfoItem>
 
             {data.info ? <div>
@@ -217,16 +219,16 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             </div> : null}
 
             <div className={styles.infoBlocks}>
-              <InfoBlock value="CC0" label="License" link="/license" tip="Use for any purpose, including commercial.<br/>Click for more info." />
+              <InfoBlock value="CC0" label={tc('nav.license')} link="/license" tip="Use for any purpose, including commercial.<br/>Click for more info." />
               <InfoBlock value={ageValue} label={ageLabel} tip={new Date(data.date_published * 1000).toLocaleString("en-ZA")} />
-              {data.dimensions ? <InfoBlock value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`} label="wide" condition={Boolean(data.dimensions)} tip={`${Math.round(data.dimensions[0])} millimeters wide.`} /> : null}
+              {data.dimensions ? <InfoBlock value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`} label={t('wide')} condition={Boolean(data.dimensions)} tip={`${Math.round(data.dimensions[0])} millimeters wide.`} /> : null}
               <InfoBlock value={data.evs_cap} label="EVs" condition={Boolean(data.evs_cap)} tip={`${data.evs_cap} EVs of dynamic range captured. Unclipped.`} />
               <InfoBlock value={`${data.whitebalance}K`} label="WB" condition={Boolean(data.whitebalance)} tip="Whitebalance" />
               <InfoBlock value={<MdLocationOn />} label="GPS" condition={Boolean(data.coords)} link={data.coords ? `https://www.google.com/maps/place/${data.coords.join('+')}` : null} />
             </div>
 
-            <InfoItem label="Downloads" condition={Boolean(data.download_count)} flex>
-              <span data-tip={`${Math.round(data.download_count / daysOld)} per day`}>{data.download_count}</span>
+            <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
+              <span data-tip={`${Math.round(data.download_count / daysOld)} {t('downloads-pd')}`}>{data.download_count}</span>
               {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
             </InfoItem>
 
@@ -235,8 +237,8 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             <div className={styles.spacer} />
 
             <div ref={widthRef}>
-              <TagsList label="Categories" list={data.categories} linkPrefix={`/${Object.keys(asset_types)[data.type]}/`} width={sidebarWidth} />
-              <TagsList label="Tags" list={data.tags} linkPrefix={`/${Object.keys(asset_types)[data.type]}?s=`} width={sidebarWidth} />
+              <TagsList label={t('categories')} list={data.categories} linkPrefix={`/${Object.keys(asset_types)[data.type]}/`} width={sidebarWidth} />
+              <TagsList label={t('tags')} list={data.tags} linkPrefix={`/${Object.keys(asset_types)[data.type]}?s=`} width={sidebarWidth} />
             </div>
           </div>
         </div>

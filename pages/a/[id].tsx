@@ -66,7 +66,7 @@ export async function getStaticProps(context) {
   if (error) {
     return {
       props: {
-        ...(await serverSideTranslations(context.locale, ['common'])),
+        ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories'])),
         assetID: id
       },
       revalidate: 60 * 5 // 5 minutes
@@ -75,7 +75,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common'])),
+      ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories'])),
       assetID: id,
       data: info,
       files: files,

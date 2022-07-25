@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useState, useEffect } from 'react'
 import filesize from 'filesize'
 
@@ -17,6 +18,7 @@ import threeDFormats from 'constants/3D_formats.json'
 import styles from './DownloadOptions.module.scss'
 
 const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview }) => {
+  const { t } = useTranslation('asset');
   const [norMode, setNorMode] = useState('gl')
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
   return (
     <div className={styles.wrapper}>
       <div id='download_options' className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
-        {fmt === 'zip' ? <div className={styles.optionsHeader}>Choose ZIP contents:</div> : null}
+        {fmt === 'zip' ? <div className={styles.optionsHeader}>{t('zip-choose')}</div> : null}
         {type === 0 ? null : sortFiles(files).map((m, i) =>
           !threeDFormats.includes(m) || fmt === 'zip' ?
             m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ?
@@ -85,7 +87,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         )}
         {type === 0 || fmt === 'zip' ? null :
           <div className={styles.optionRow}>
-            <p style={{ textAlign: 'right' }}>Normal Map Standard:</p>
+            <p style={{ textAlign: 'right' }}>{t('nor-standard')}</p>
             <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / Godot / 3ds Max.">
               <Switch
                 on={norMode === 'gl'}
@@ -97,7 +99,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
           </div>
         }
         {type === 0 && files['tonemapped'] ? <>
-          <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip="A low dynamic range preview of the HDRI. Sometimes useful as a preview, or for non-CG related uses, but do not use for lighting.">
+          <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.tm')}>
             <a
               href={files['tonemapped'].url}
               className={styles.format}
@@ -108,7 +110,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             >8K Tonemapped JPG • {filesize(files['tonemapped'].size)}</a>
           </div>
         </> : null}
-        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip="Thumbnail image useful for using in your asset manager.">
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.thumb-d')}>
           <a
             href={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?format=png`}
             className={styles.format}
@@ -116,7 +118,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             rel="noopener"
             data-res="thumb"
             onClick={trackDownload}
-          ><MdImage />Thumbnail / Preview</a>
+          ><MdImage />{t('formats.thumb')}</a>
         </div>
         {type === 0 && files['colorchart'] ? <>
           <div className={`${styles.optionRow} ${styles.wideOptionRow}`}>
@@ -132,13 +134,13 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         </> : null}
         <div
           className={`${styles.optionRow} ${styles.wideOptionRow}`}
-          data-tip="Support us with $5 per month and receive access to our cloud system, allowing you to sync our entire library to your hard drive."
+          data-tip={t('cloud-sync-d')}
         >
           <a
             href="https://www.patreon.com/polyhaven/overview"
             className={styles.format}
             target="_blank"
-          ><IconPatreon color="#f96753" />Offline Access <GoLinkExternal style={{ marginLeft: "0.5em" }} /></a>
+          ><IconPatreon color="#f96753" />{t('cloud-sync')} <GoLinkExternal style={{ marginLeft: "0.5em" }} /></a>
         </div>
         {type === 0 && files['backplates'] ? <BackplateList assetID={assetID} files={files['backplates']} trackDownload={trackDownload} setPreview={setPreview} /> : null}
       </div>

@@ -1,5 +1,5 @@
+import { useTranslation } from 'next-i18next'
 import { MdHelp } from 'react-icons/md'
-import { IoTicket } from 'react-icons/io5'
 import apiSWR from 'utils/apiSWR'
 
 import Tooltip from 'components/Tooltip/Tooltip'
@@ -8,8 +8,9 @@ import AddSponsor from './AddSponsor'
 import styles from './AssetPage.module.scss'
 
 const Sponsor = ({ assetID, sponsors, patron }) => {
+  const { t } = useTranslation('asset');
   let sponsorData = []
-  sponsors = sponsors || [{ name: "No one yet :(" }];
+  sponsors = sponsors || [{ name: t('sponsored-by-none') }];
   for (const s of sponsors) {
     if (typeof s === 'object') {
       sponsorData.push(s)
@@ -23,7 +24,7 @@ const Sponsor = ({ assetID, sponsors, patron }) => {
 
   return (
     <div className={styles.sponsor}>
-      <h4>Sponsored by: <a href="https://www.patreon.com/polyhaven/overview" data-tip="Support Poly Haven on Patreon to add your name here."><MdHelp /></a></h4>
+      <h4>{t('sponsored-by')} <a href="https://www.patreon.com/polyhaven/overview" data-tip={t('sponsored-by-d')}><MdHelp /></a></h4>
       {sponsorData.length ?
         sponsorData.map((s, i) => <p key={i}>{
           s.url ?
