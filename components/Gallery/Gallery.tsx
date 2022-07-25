@@ -106,7 +106,7 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
           />
         </div>)}
         {!assetPage && <Link href="/gallery-submit" prefetch={false}><a>
-          <div className={styles.add}><strong>+</strong><p>Submit your render</p></div>
+          <div className={styles.add}><strong>+</strong><p>{t('submit.title')}</p></div>
         </a></Link>}
       </Masonry>
       {lightboxData &&
