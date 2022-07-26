@@ -49,11 +49,13 @@ const TrafficGraph = ({ data }) => {
       const smoothFac = 7
       let values = Array(smoothFac).fill(value)
       for (var j = 1; j <= adjacentDays; j++) {
-        if (i - j < 0) continue
-        if (i + j >= graphData.length) continue
         for (var k = 0; k < smoothFac - j; k++) {
-          values.push(graphData[i - j][key])
-          values.push(graphData[i + j][key])
+          if (i - j >= 0) {
+            values.push(graphData[i - j][key])
+          }
+          if (i + j < graphData.length) {
+            values.push(graphData[i + j][key])
+          }
         }
       }
       day[`s:${key}`] = average(values)
