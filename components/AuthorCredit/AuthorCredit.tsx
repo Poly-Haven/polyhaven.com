@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
 import { MdLink } from 'react-icons/md'
@@ -7,10 +8,12 @@ import Heart from 'components/Heart/Heart'
 import Avatar from 'components/Avatar/Avatar'
 
 import apiSWR from 'utils/apiSWR'
+import { titleCase } from 'utils/stringUtils';
 
 import styles from './AuthorCredit.module.scss'
 
 const AuthorCredit = ({ id, size, credit }) => {
+  const { t } = useTranslation('asset');
   let name = id
   let link = "/"
   let email = ""
@@ -38,13 +41,16 @@ const AuthorCredit = ({ id, size, credit }) => {
       <Link href={assetLink} prefetch={false}>
         <a className={styles.avatar}>
           <Avatar id={id} size={50} />
+          {data && data.regular_donor ?
+            <div className={styles.regularDonor} data-tip="Regular asset donor"><Heart color="#F96854" /></div>
+            : null}
         </a>
       </Link>
       <div className={styles.name}>
         <Link href={assetLink} prefetch={false}>
           <a><strong>{id}</strong></a>
         </Link>
-        {credit ? <span className={styles.credit}>{credit}</span> : ""}
+        {credit ? <span className={styles.credit}>{titleCase(t(`credits.${credit.trim().toLowerCase()}`))}</span> : ""}
         <div className={styles.links}>
           {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
           {email ? <a href={`mailto:${email}`} target="_blank" rel="noopener"><MdMail /></a> : ""}

@@ -1,0 +1,24 @@
+{
+  "Clear author": "Limpar autor",
+  "backplates": "Inclui um conjunto de imagens de fundo de alta resolução.",
+  "by-author": "por {{author}}",
+  "early-access": "Acesso antecipado",
+  "new": "Novo!",
+  "no-results": "Sem resultados",
+  "no-results-keyword": "Tente usar uma palavra-chave diferente",
+  "results": "resultados",
+  "sort": {
+    "downloads": "Transferências",
+    "downloads-d": "Contagem total de downloads de todos os tempos.",
+    "hot": "Quente",
+    "hot-d": "Downloads por dia, com ativos mais novos com peso um pouco maior.",
+    "latest": "Mais recentes",
+    "latest-d": "Publicado mais recentemente.",
+    "name": "Nome",
+    "name-d": "Ordenado alfabeticamente.",
+    "relevance": "Classificando por relevância de pesquisa.",
+    "top": "Topo",
+    "top-d": "Downloads por dia."
+  },
+  "sort-by": "Ordenar por"
+}

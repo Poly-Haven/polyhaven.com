@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'components/Head/Head'
 import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
 
@@ -182,13 +183,14 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
+      props: { ...(await serverSideTranslations(context.locale, ['common'])) },
       revalidate: 60 * 60 // 60 minutes
     }
   }
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,

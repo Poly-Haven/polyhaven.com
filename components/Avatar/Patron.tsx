@@ -1,8 +1,10 @@
-import timeago from 'epoch-timeago';
+import { useTranslation } from 'next-i18next';
+import { timeago } from 'utils/dateUtils';
 
 import styles from './Avatar.module.scss'
 
 const Avatar = ({ name, image, size, timestamp }) => {
+  const { t } = useTranslation('time');
   return (
     <div className={styles.patron}>
       <img
@@ -13,7 +15,7 @@ const Avatar = ({ name, image, size, timestamp }) => {
       />
       <p>
         <strong>{name}</strong><br />
-        <span>{timeago(timestamp)}</span>
+        <span>{timeago(timestamp, t)}</span>
       </p>
     </div>
   )

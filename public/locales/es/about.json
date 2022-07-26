@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Contacto",
+    "p1": "¿Tienes una pregunta? Por favor, lea el<lnk> Preguntas más frecuentes</lnk> primero :)",
+    "p2": "La forma más fácil de ponerse en contacto con nosotros es a través del correo electrónico (<lnk1> info@polyhaven.com</lnk1> ) o en<lnk2> Discordia</lnk2> ."
+  },
+  "description": "Qué es Poly Haven, qué hacemos y por qué lo hacemos.",
+  "greeting": {
+    "h1": "¡Hola!",
+    "p1": "Poly Haven es una biblioteca de activos públicos seleccionada para artistas de efectos visuales y diseñadores de juegos, que proporciona activos 3D útiles de alta calidad de una manera fácil de obtener.",
+    "p2": "No se requieren muros de pago, cuentas o formularios de correo electrónico, simplemente descargue un activo y utilícelo sin preocupaciones.",
+    "p3": "Todos los activos aquí son<lnk> CC0</lnk> , lo que significa que están prácticamente libres de derechos de autor y puedes usarlos absolutamente para cualquier propósito."
+  },
+  "help": {
+    "h1": "Cómo puedes ayudar",
+    "s1": "Apóyanos en Patreon",
+    "s1p1": "Si tiene algún ingreso disponible y desea ayudarnos a publicar más HDRI, texturas y modelos 3D gratuitos, puede apoyarnos con una pequeña donación mensual en<lnk> Patreón</lnk> :)",
+    "s1p2": "A cambio, podemos darle una pequeña muestra de agradecimiento, como acceso a una carpeta en la nube que puede sincronizar con su disco duro para que siempre tenga nuestros activos más recientes al alcance de su mano, o inmortalizar su nombre en nuestro sitio.",
+    "s1p3": "Usamos sus donaciones directamente para cubrir nuestros gastos y financiar nuevos activos, según lo verificado por nuestro<lnk> informes financieros</lnk> .",
+    "s2": "Dona tus bienes",
+    "s2p1": "¿Tiene un modelo 3D, textura o HDRI de primer nivel que le gustaría compartir con la comunidad? Nos encantaría publicarlo para ti :)",
+    "s2p2": "Tenemos un estricto estándar de calidad que mantener, y todo lo que publicamos debe ser<lnk1> CC0</lnk1> , pero si se acepta su activo, toda la comunidad 3D se beneficiará de él.<lnk2> Lea más y envíe su activo aquí</lnk2> .",
+    "s3": "Difundir la palabra",
+    "s3p1": "Está bien si no puede pagarlo o no quiere donarnos :) Aún puede ayudarnos a crecer asegurándose de que sus amigos y compañeros de trabajo sepan sobre nosotros, ¡cuantas más personas podamos ayudar, mejor!",
+    "s3p2": "No es obligatorio en absoluto, pero si usa nuestros activos en su trabajo, puede mencionar de dónde los obtuvo y eso ayudará a mostrar a más personas que existimos."
+  },
+  "how": {
+    "h1": "¿Cómo estamos haciendo esto?",
+    "li1": "Artistas empleados por Poly Haven, centrándose en el panorama general.",
+    "li2": "Contratistas independientes que contratamos, encargados de proyectos específicos.",
+    "li3": "Usuarios que donan libremente su trabajo a la plataforma.",
+    "p1": "Somos un pequeño estudio remoto con sede en Sudáfrica que trabaja con creadores de todo el mundo que comparten nuestra visión.",
+    "p2": "En cuanto a la financiación, nos sustentan principalmente las donaciones de personas como usted en<lnk> Patreón</lnk> , ingresos por publicidad y patrocinadores corporativos que creen que pueden beneficiarse del apoyo a nuestro trabajo a largo plazo.",
+    "p3": "Para la creación de activos existen tres fuentes:"
+  },
+  "title": "Acerca de / Contacto",
+  "transparency": {
+    "h1": "Transparencia",
+    "li1": "Escribimos registros de desarrollo regulares en<lnk> nuestro blog</lnk> para compartir lo que hemos estado trabajando recientemente.",
+    "li2": "Nuestro<lnk> publicaciones en Patreon</lnk> también son un buen lugar para encontrar encuestas y actualizaciones más pequeñas cuando necesitamos ayuda para tomar decisiones.",
+    "li3": "<lnk>Discordia</lnk> es donde pasamos el rato todos los días, ¡no dudes en saludarnos!",
+    "li4": "Nuestras redes sociales están automatizadas principalmente para publicar nuestros últimos activos, pero ocasionalmente también estamos activos allí (enlaces en el<lnk> pie de página</lnk> ).",
+    "li5": "Nuestro<lnk> informes financieros</lnk> detallar exactamente cómo gastamos o ahorramos nuestros fondos.",
+    "p1": "Dado que la mayoría de nuestros fondos provienen de donaciones, es importante para nosotros que cualquiera pueda ver lo que estamos haciendo, lo que estamos planeando y el razonamiento detrás de todas nuestras decisiones.",
+    "p2": "Compartir nuestros activos es nuestra prioridad, pero también queremos compartir nuestro conocimiento, para que otros puedan aprender a crear activos como los nuestros y tal vez compartirlos también."
+  },
+  "why": {
+    "h1": "¿Por qué estamos haciendo esto?",
+    "p1": "¡Porque podemos!",
+    "p2": "Y porque creemos que podemos ayudar a que crezca la gran comunidad 3D proporcionando nuestros activos de forma gratuita en lugar de venderlos.",
+    "p3": "Queremos reducir la barrera de entrada para los nuevos artistas, eliminar las barreras financieras y facilitar que los artistas experimentados se centren en la creatividad en lugar de reinventar la rueda para cada accesorio que necesitan."
+  }
+}

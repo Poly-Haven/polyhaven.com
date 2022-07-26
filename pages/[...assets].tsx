@@ -1,5 +1,7 @@
-import Head from 'components/Head/Head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
+import Head from 'components/Head/Head'
 import Library from 'components/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json';
@@ -7,7 +9,9 @@ import { assetTypeName } from 'utils/assetTypeName'
 import { titleCase } from 'utils/stringUtils'
 
 const LibraryPage = (props) => {
-  let title = assetTypeName(props.assetType)
+  const { t } = useTranslation('common');
+
+  let title = t(assetTypeName(props.assetType))
   if (props.categories.length) {
     title += ": " + titleCase(props.categories.join(' > '))
   }
@@ -39,6 +43,9 @@ export async function getServerSideProps(context) {
   if (typesAvailable[assetType] === undefined) {
     return {
       notFound: true,
+      props: {
+        ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time']))
+      }
     }
   }
 
@@ -54,6 +61,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: assetType,
       categories: params,
       author: author ? author : "",

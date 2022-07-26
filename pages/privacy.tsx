@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
@@ -33,6 +34,14 @@ const PrivacyPage = () => {
       <p>Other than what's mentioned above, Poly Haven does not store any user data or cookies.</p>
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
 
 export default PrivacyPage

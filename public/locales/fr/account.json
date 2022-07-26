@@ -1,0 +1,65 @@
+{
+  "account": "Compte",
+  "hi": "Salut",
+  "login": {
+    "li1": "Suppression définitive des publicités.",
+    "li2": "Accès anticipé aux actifs, avant qu'ils ne soient rendus publics.",
+    "li3": "Accès à notre service cloud, pour synchroniser tous nos actifs sur votre disque dur.",
+    "li4": "Parrainez un actif de manière permanente chaque mois, en affichant votre nom et votre lien à côté des boutons de téléchargement.",
+    "p1": "Si vous êtes un<lnk> mécène</lnk> de Poly Haven, en vous connectant ici, vous aurez accès à vos récompenses directement sur ce site.",
+    "p2": "En fonction de votre niveau d'assistance, vos récompenses peuvent inclure :"
+  },
+  "not-patron": "Vous ne semblez pas être un mécène de Poly Haven :( si c'est incorrect, merci<lnk> entrer en contact</lnk> afin que nous puissions enquêter sur le problème sur cette page. Nous aurons besoin des informations suivantes :",
+  "not-patron-anymore": "Il semble que vous n'êtes plus un mécène de Poly Haven. C'est OK, et nous apprécions votre soutien passé :)",
+  "reward_one": "Cela vous accorde la récompense suivante :",
+  "reward_other": "Cela vous accorde les récompenses suivantes :",
+  "rewards": {
+    "credit": {
+      "invalid": "Nom incorrect",
+      "p1": "Votre nom est actuellement",
+      "p2": "{{hidden}} dans la liste des clients dans le pied de page de ce site.",
+      "p3": "La modification de ce paramètre peut prendre quelques heures pour mettre à jour chaque page du site.",
+      "p4": "Afficher un nom:",
+      "title": "Crédit de pied de page"
+    },
+    "early-access": {
+      "p1": "Maintenant que vous êtes connecté, le<lnk> Bibliothèque d'actifs</lnk> inclura les actifs que nous avons prévu de publier à l'avenir.",
+      "p2": "Ils sont marqués par un cercle bleu et le logo Patreon en haut à droite, comme ceci :",
+      "p3": "Vous pouvez déjà les télécharger, avant tout le monde :)",
+      "title": "Accès anticipé"
+    },
+    "no-ads": {
+      "p1": "Nous utilisons Google AdSense sur polyhaven.com. Pour masquer ces publicités, activez simplement ce commutateur :",
+      "p2": "Les annonces sont désormais :",
+      "title": "Pas de pubs"
+    },
+    "offline-access": {
+      "p1": "Entrez votre adresse e-mail pour vous envoyer une invitation à notre dossier cloud :",
+      "p2": "Vérifiez votre messagerie :)",
+      "p3": "Invitation envoyée avec succès. Si vous rencontrez des difficultés ou avez besoin de modifier l'adresse e-mail de votre compte,<lnk> Contactez nous s'il vous plait</lnk> .",
+      "p4": "Voir<lnk> ce post</lnk> pour plus d'instructions sur la façon de configurer Nextcloud et de commencer à synchroniser les actifs sur votre ordinateur.",
+      "title": "Accès hors ligne"
+    },
+    "sponsor": {
+      "p1": "Vous pouvez choisir un actif chaque mois pour coller votre nom et un lien à côté de façon permanente. Pour ce faire, nous travaillons avec un système de \"tokens\".",
+      "p2": "Au début de chaque mois après le traitement de votre paiement par Patreon, vous recevez automatiquement un<ticket /> <b>Jeton de parrainage</b> .",
+      "p3": "Il y a deux façons de dépenser ce jeton :",
+      "p3li1": "En vous rendant sur la page de l'asset que vous souhaitez parrainer, et en cliquant sur le \"<ticket /> Parrainer cet actif » sur le côté droit de la page.",
+      "p3li2": "Ou vous pouvez activer les parrainages automatiques ci-dessous, qui sélectionneront un actif au hasard pour vous chaque mois.",
+      "p4": "Les jetons n'expirent pas, vous pouvez donc revenir après quelques mois et dépenser vos jetons accumulés.",
+      "p5": "Une fois qu'un jeton est dépensé, il ne peut pas être révoqué ou déplacé vers un autre actif.",
+      "p6": "Parrainez automatiquement un actif au hasard chaque mois :",
+      "p7": "Le 15 de chaque mois, tous les jetons disponibles dont vous disposez seront dépensés en actifs aléatoires. Cela vous donne 15 jours pour dépenser manuellement vos jetons si vous le souhaitez.",
+      "p8": "Si vous souhaitez être averti lorsqu'un élément est automatiquement sélectionné pour vous, veuillez saisir votre adresse e-mail ci-dessous :",
+      "p9": "Pour vous désabonner des notifications, effacez votre adresse e-mail ci-dessus et cliquez sur le bouton Enregistrer.",
+      "title": "Parrainer"
+    },
+    "stakeholder": {
+      "p1": "En tant que partie prenante de Poly Haven, vous bénéficiez d'un accès plus approfondi à nos canaux de communication internes pour nous aider à discuter de ce sur quoi travailler et à suivre tout au long de notre parcours.",
+      "p2": "Si nous ne vous avons pas encore contacté, veuillez<lnk> entrer en contact</lnk> afin que nous puissions vous donner accès à ces canaux et vous présenter l'équipe.",
+      "title": "Partie prenante"
+    }
+  },
+  "support-amount": "Vous soutenez actuellement Poly Haven avec un {{amount}} en $ par mois, merci !",
+  "title": "Connexion"
+}

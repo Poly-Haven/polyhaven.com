@@ -1,0 +1,24 @@
+{
+  "Clear author": "Effacer l'auteur",
+  "backplates": "Comprend un ensemble d'images d'arrière-plan haute résolution.",
+  "by-author": "par {{author}}",
+  "early-access": "Accès anticipé",
+  "new": "Nouveau!",
+  "no-results": "Aucun résultat",
+  "no-results-keyword": "Essayez d'utiliser un mot clé différent",
+  "results": "résultats",
+  "sort": {
+    "downloads": "Téléchargements",
+    "downloads-d": "Nombre total de téléchargements de tous les temps.",
+    "hot": "Chaud",
+    "hot-d": "Téléchargements par jour, avec des actifs plus récents pondérés légèrement plus élevés.",
+    "latest": "Dernier",
+    "latest-d": "Plus récemment publié.",
+    "name": "Nom",
+    "name-d": "Trié par ordre alphabétique.",
+    "relevance": "Tri par pertinence de recherche.",
+    "top": "Haut",
+    "top-d": "Téléchargements par jour."
+  },
+  "sort-by": "Trier par"
+}

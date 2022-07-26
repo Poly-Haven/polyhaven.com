@@ -1,6 +1,8 @@
 const nextBuildId = require('next-build-id')
+const { i18n } = require('./next-i18next.config');
 
 module.exports = {
+  i18n,
   images: {
     domains: ['cdn.polyhaven.com'],
   },
@@ -12,6 +14,9 @@ module.exports = {
       })
     );
     return config;
+  },
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname
   },
   async redirects() {
     return [

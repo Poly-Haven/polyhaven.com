@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "今から日を{{count}}",
+    "day_other": "今から{{count}}日",
+    "hour_one": "今から時間を{{count}}",
+    "hour_other": "今から時間を{{count}}",
+    "month_one": "今から月を{{count}}",
+    "month_other": "今から{{count}}ヶ月",
+    "week_one": "今から1週間を{{count}}",
+    "week_other": "今から{{count}}週間",
+    "year_one": "今から年を{{count}}",
+    "year_other": "今から{{count}}年後"
+  },
+  "new": "新しい",
+  "past": {
+    "day_one": "1日前に{{count}}",
+    "day_other": "{{count}}日前",
+    "hour_one": "1時間前に{{count}}",
+    "hour_other": "{{count}}時間前",
+    "month_one": "月前に{{count}}",
+    "month_other": "{{count}}ヶ月前",
+    "week_one": "一週間前に{{count}}",
+    "week_other": "{{count}}週間前",
+    "year_one": "1年前に{{count}}",
+    "year_other": "{{count}}年前"
+  },
+  "today": "今日"
+}

@@ -96,7 +96,7 @@ const Stats = ({ datasets }) => {
         <p>Monthly Traffic:</p>
         <StatBlock head={`${(datasets.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
         <StatBlock head={`${Math.round(datasets.traffic.terabytes)}TB`} text="Bandwidth" />
-        <StatBlock head={`${(datasets.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
+        <StatBlock head={`${(datasets.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
       </div>
 
       <Tooltip />

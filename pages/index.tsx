@@ -1,5 +1,6 @@
-import Head from 'components/Head/Head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
 import Home from 'components/Home/Home'
 
@@ -15,4 +16,12 @@ export default function HomePage() {
       <Home />
     </Page>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'home', 'time'])),
+    },
+  };
 }

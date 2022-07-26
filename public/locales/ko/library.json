@@ -1,0 +1,24 @@
+{
+  "Clear author": "작성자 지우기",
+  "backplates": "고해상도 배경 이미지 세트를 포함합니다.",
+  "by-author": "{{author}}",
+  "early-access": "앞서 해보기",
+  "new": "새로운!",
+  "no-results": "결과 없음",
+  "no-results-keyword": "다른 키워드를 사용해 보세요",
+  "results": "결과",
+  "sort": {
+    "downloads": "다운로드",
+    "downloads-d": "모든 시간의 총 다운로드 수입니다.",
+    "hot": "더운",
+    "hot-d": "새로운 자산의 가중치가 약간 높은 일일 다운로드.",
+    "latest": "최신",
+    "latest-d": "가장 최근에 게시되었습니다.",
+    "name": "이름",
+    "name-d": "알파벳순으로 정렬됩니다.",
+    "relevance": "검색 관련성을 기준으로 정렬합니다.",
+    "top": "맨 위",
+    "top-d": "일일 다운로드 수."
+  },
+  "sort-by": "정렬 기준"
+}

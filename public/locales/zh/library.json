@@ -1,0 +1,24 @@
+{
+  "Clear author": "清除作者",
+  "backplates": "包括一组高分辨率背景图像。",
+  "by-author": "{{author}}",
+  "early-access": "抢先体验",
+  "new": "新的！",
+  "no-results": "没有结果",
+  "no-results-keyword": "尝试搜索不同的关键字",
+  "results": "结果",
+  "sort": {
+    "downloads": "下载",
+    "downloads-d": "总下载次数。",
+    "hot": "热门",
+    "hot-d": "每日下载量，较新资产的权重略高。",
+    "latest": "最新",
+    "latest-d": "最近发布的。",
+    "name": "名称",
+    "name-d": "按字母顺序排序。",
+    "relevance": "按搜索相关性排序。",
+    "top": "最佳",
+    "top-d": "每日下载量。"
+  },
+  "sort-by": "排序方式"
+}

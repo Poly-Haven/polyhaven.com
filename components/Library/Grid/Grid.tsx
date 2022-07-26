@@ -1,3 +1,4 @@
+import { useTranslation, Trans } from 'next-i18next';
 import Fuse from 'fuse.js';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
@@ -23,6 +24,9 @@ import Disabled from 'components/UI/Disabled/Disabled'
 import styles from './Grid.module.scss';
 
 const Grid = (props) => {
+  const { t: tc } = useTranslation('common');
+  const { t: tcat } = useTranslation('categories');
+  const { t } = useTranslation('library');
   const optionsRef = useRef(null)
   const { height } = useDivSize(optionsRef)
   const { user, isLoading: userIsLoading } = useUser();
@@ -88,11 +92,11 @@ const Grid = (props) => {
     let link = ''
     if (props.assetType !== 'all') {
       link += `/${props.assetType}`
-      path += `<a href=${encodeURI(link)}>${asset_type_name}</a> /`
+      path += `<a href=${encodeURI(link)}>${tc(asset_type_name)}</a> /`
     }
     for (const c of props.categories) {
       link += `/${c}`
-      path += ` <a href=${encodeURI(link)}>${c}</a> /`
+      path += ` <a href=${encodeURI(link)}>${tcat(c)}</a> /`
     }
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
@@ -140,41 +144,39 @@ const Grid = (props) => {
     sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
   }
 
-  let title = assetTypeName(props.assetType);
+  let title = tc(asset_type_name);
   if (props.categories.length) {
-    title = asset_type_name + ": " + titleCase(props.categories.join(' > '))
-  } else if (props.assetType !== "all") {
-    title = "All " + title;
+    title = tc(asset_type_name) + ": " + titleCase(props.categories.map(c => tcat(c)).join(' > '))
   }
   if (props.author) {
-    title += ` (by ${props.author})`;
+    title += ` (${t("by-author", { author: props.author })})`;
   }
   const fSize = Math.floor(title.length / 17.5);  // Rough detection of line length used to reduce font size.
 
   const sortOptions = {
     hot: {
-      label: "Hot",
-      tooltip: "Downloads per day, with newer assets weighted slightly higher.",
+      label: t('sort.hot'),
+      tooltip: t('sort.hot-d'),
       icon: <MdWhatshot />
     },
     top: {
-      label: "Top",
-      tooltip: "Downloads per day.",
+      label: t('sort.top'),
+      tooltip: t('sort.top-d'),
       icon: <MdStar />
     },
     downloads: {
-      label: "Downloads",
-      tooltip: "Total download count of all time.",
+      label: t('sort.downloads'),
+      tooltip: t('sort.downloads-d'),
       icon: <MdDownload />
     },
     latest: {
-      label: "Latest",
-      tooltip: "Most recently published.",
+      label: t('sort.latest'),
+      tooltip: t('sort.latest-d'),
       icon: <MdEvent />
     },
     name: {
-      label: "Name",
-      tooltip: "Sorted alphabetically.",
+      label: t('sort.name'),
+      tooltip: t('sort.name-d'),
       icon: <MdSortByAlpha />
     }
   }
@@ -186,20 +188,20 @@ const Grid = (props) => {
           <div className={styles.gridTitle}>
             <h1 className={styles['s' + fSize]}>{title}</h1>
             {props.author ?
-              <MdClose onClick={_ => props.setAuthor(undefined)} data-tip="Clear author" />
+              <MdClose onClick={_ => props.setAuthor(undefined)} data-tip={t('Clear author')} />
               : null}
           </div>
           <div className={styles.options}>
             <div className={styles.menuSelection}>
               <Disabled
                 disabled={Boolean(props.search)}
-                tooltip="Sorting by search relevance."
+                tooltip={t('sort.relevance')}
                 tooltipSide={"bottom"}
               >
                 <Dropdown
                   value={props.sort}
                   options={sortOptions}
-                  label="Sort by"
+                  label={t('sort-by')}
                   onChange={setSort}
                 />
               </Disabled>
@@ -217,7 +219,7 @@ const Grid = (props) => {
                 <MdClose className={styles.resetSearchIcon} onClick={resetSearch} />
                 : null}
             </div>
-            {<p className={styles.numResults}>{sortedKeys.length} results</p>}
+            {<p className={styles.numResults}>{sortedKeys.length} {t('results')}</p>}
           </div>
           <div className={styles.adGridTop}>
             <DisplayAd id="9488083725" x={468} y={60} />
@@ -241,8 +243,8 @@ const Grid = (props) => {
         :
         (publicData && privateData ?
           <div className={styles.noResults}>
-            <h2>No results :(</h2>
-            {props.search ? <p>Try using a different keyword</p> : null}
+            <h2>{t('no-results')} :(</h2>
+            {props.search ? <p>{t('no-results-keyword')}</p> : null}
           </div>
           :
           <div className={styles.loading}>

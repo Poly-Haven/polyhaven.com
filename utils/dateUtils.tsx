@@ -1,19 +1,26 @@
-import epochTimeago from 'epoch-timeago';
-
 export function daysOld(epoch) {
   return (Date.now() - epoch * 1000) / 1000 / 60 / 60 / 24;
 }
 
-export function timeago(epoch) {
-  const now = Date.now()
-  const twelveHours = (12 * 60 * 60 * 1000)
-  if (now - twelveHours < epoch && epoch < now + twelveHours) {
-    return "Today"
+export function timeago(epoch, t, returnList = false) {
+
+  const segments = {
+    year: 3.154e10,
+    month: 2.628e9,
+    week: 6.048e8,
+    day: 8.64e7,
+    hour: 3.6e6,
+    today: -Infinity,
   }
-  if (now < epoch) {
-    return epochTimeago(now - (epoch - now)).replace(" ago", " from now")
-  }
-  return epochTimeago(epoch)
+
+  let timeDifference = Date.now() - epoch;
+  const tense = timeDifference > 0 ? 'past' : 'future'
+  timeDifference = Math.abs(timeDifference)
+  const unit = Object.keys(segments)[Object.values(segments).findIndex(time => timeDifference >= time)]
+  const num = Math.floor(timeDifference / segments[unit])
+
+  const returnStr = unit === 'today' ? t('today') : t(`${tense}.${unit}`, { count: num })
+  return returnList ? [num, returnStr] : returnStr
 }
 
 export function weightedDownloadsPerDay(download_count, epoch, name) {

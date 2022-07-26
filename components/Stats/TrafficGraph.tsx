@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { LineChart, Line, ReferenceLine, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
 
 import Dropdown from 'components/UI/Dropdown/Dropdown';
+import { MdWarning } from 'react-icons/md';
 
 import styles from './Stats.module.scss'
 
@@ -49,11 +50,13 @@ const TrafficGraph = ({ data }) => {
       const smoothFac = 7
       let values = Array(smoothFac).fill(value)
       for (var j = 1; j <= adjacentDays; j++) {
-        if (i - j < 0) continue
-        if (i + j >= graphData.length) continue
         for (var k = 0; k < smoothFac - j; k++) {
-          values.push(graphData[i - j][key])
-          values.push(graphData[i + j][key])
+          if (i - j >= 0) {
+            values.push(graphData[i - j][key])
+          }
+          if (i + j < graphData.length) {
+            values.push(graphData[i + j][key])
+          }
         }
       }
       day[`s:${key}`] = average(values)
@@ -107,8 +110,8 @@ const TrafficGraph = ({ data }) => {
       formatter: value => `${Math.round(value / 1024 / 1024)} MB`,
     },
     pageViews: {
-      label: "Page Views",
-      tooltip: "Raw page views. As our site is a SPA, defining what is a page view is difficult. Spikes are present each time a new version of the site is deployed.",
+      label: <>CF "Page Views" <MdWarning /></>,
+      tooltip: "Our site is a single-page-application, so Cloudflare is very inconsistent about what it counts as a \"page view\". Take this graph with a billion grains of salt and rather don't try to make any sense of it.",
       scale: "linear",
       color: "rgb(161, 208, 77)",
       formatter: value => value,

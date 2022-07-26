@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useState, useEffect, useReducer } from "react";
 import { useRouter } from 'next/router'
 import Link from "next/link";
@@ -25,6 +26,7 @@ import styles from './Download.module.scss'
 declare const startDownload
 
 const Download = ({ assetID, data, files, setPreview, patron }) => {
+  const { t } = useTranslation('asset');
   const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
@@ -105,31 +107,31 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   const fmtOptions = isHDRI ? {
     hdr: {
       label: "HDR",
-      tooltip: "Radiance RGBE (.hdr)<br/>Usually smaller and more widely supported than EXR, but may very rarely have less accurate colors."
+      tooltip: `Radiance RGBE (.hdr)<br/>${t('formats.hdr')}`
     },
     exr: {
       label: "EXR",
-      tooltip: "Open EXR (.exr)<br/>True 32-bit per channel, losslessly compressed."
+      tooltip: `Open EXR (.exr)<br/>${t('formats.exr')}`
     },
   } : {
     blend: {
       label: "Blend",
-      tooltip: "Blender 2.8+<br/>Includes all required texture maps.",
+      tooltip: `Blender 2.8+<br/>${t('formats.incl-tex')}`,
       icon: <IconBlender />
     },
     gltf: {
       label: "glTF",
-      tooltip: "glTF 2.0, supported by some 3D software.<br/>Includes all required texture maps.",
+      tooltip: `glTF 2.0, ${t('formats.some-software')}<br/>${t('formats.incl-tex')}`,
       icon: <IconGltf />
     },
     fbx: {
       label: "FBX",
-      tooltip: "Autodesk FBX, supported by most 3D software to some extent, but materials may need to be manually set up.",
+      tooltip: `Autodesk FBX, ${t('formats.most-software')}`,
       icon: <IconFile text="F" />
     },
     zip: {
       label: "ZIP",
-      tooltip: "Choose exactly which files to download.",
+      tooltip: t('formats.zip'),
       icon: <GoFileZip />
     },
   };
@@ -268,7 +270,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         >
           <MdFileDownload />
           <div>
-            <h3>Download</h3>
+            <h3>{t('download')}</h3>
             <p>{filesize(fsize)}</p>
           </div>
           <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}><Loader /></div>

@@ -1,3 +1,5 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import TextPage from 'components/Layout/TextPage/TextPage'
 import EvDiff from 'components/EvDiff/EvDiff';
 
@@ -11,6 +13,14 @@ const Page = () => {
       <EvDiff />
     </TextPage>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
 
 export default Page

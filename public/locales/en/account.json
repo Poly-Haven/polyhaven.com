@@ -1,0 +1,65 @@
+{
+  "title": "Log In",
+  "account": "Account",
+  "login": {
+    "p1": "If you're a <lnk>patron</lnk> of Poly Haven, logging in here will give you access to your rewards directly on this site.",
+    "p2": "Depending on your support tier, your rewards may include:",
+    "li1": "Permanent removal of ads.",
+    "li2": "Early access to assets, before they are released publicly.",
+    "li3": "Access to our cloud service, to sync all of our assets to your hard drive.",
+    "li4": "Sponsor an asset permanently every month, showing your name and link next to the download buttons."
+  },
+  "not-patron": "You don't seem to be a patron of Poly Haven :( if this is incorrect, please <lnk>get in touch</lnk> so we can investigate the problem on this page. We'll need the following information:",
+  "hi": "Hi",
+  "not-patron-anymore": "It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)",
+  "support-amount": "You're currently supporting Poly Haven with ${{amount}} per month, thanks!",
+  "reward_one": "This grants you the following reward:",
+  "reward_other": "This grants you the following rewards:",
+  "rewards": {
+    "no-ads": {
+      "title": "No Ads",
+      "p1": "We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:",
+      "p2": "Ads are now:"
+    },
+    "credit": {
+      "title": "Footer Credit",
+      "p1": "Your name is currently",
+      "p2": "{{hidden}} in the patron list in the footer of this site.",
+      "p3": "Changing this setting may take a few hours to update every page of the site.",
+      "p4": "Display name:",
+      "invalid": "Invalid name"
+    },
+    "early-access": {
+      "title": "Early Access",
+      "p1": "Now that you're logged in, the <lnk>Asset Library</lnk> will include assets that we've scheduled to publish in the future.",
+      "p2": "They are marked by a blue circle and the Patreon logo in the top right, like this:",
+      "p3": "You can already download them, ahead of everyone else :)"
+    },
+    "offline-access": {
+      "title": "Offline Access",
+      "p1": "Enter your email address to send yourself an invite to our cloud folder:",
+      "p2": "Check your email :)",
+      "p3": "Invite successfully sent. If you have any trouble or need to change your account email, <lnk>please contact us</lnk>.",
+      "p4": "See <lnk>this post</lnk> for further instructions on how to set up Nextcloud and start syncing assets to your computer."
+    },
+    "sponsor": {
+      "title": "Sponsor",
+      "p1": "You get to pick an asset every month to stick your name and a link next to permanently. To do this, we work with a system of \"tokens\".",
+      "p2": "At the start of each month after your payment is processed by Patreon, you automatically receive one <ticket /> <b>Sponsor Token</b>.",
+      "p3": "There are two ways to spend this token:",
+      "p3li1": "By visiting the page of the asset you want to sponsor, and clicking the \"<ticket /> Sponsor this asset\" button on the right side of the page.",
+      "p3li2": "Or you can turn on automatic sponsorships below, which will pick a random asset for you each month.",
+      "p4": "Tokens do not expire, so you can come back after a few months and spend your accumulated tokens.",
+      "p5": "Once a token is spent, it cannot be revoked or moved to a different asset.",
+      "p6": "Auto-sponsor a random asset each month:",
+      "p7": "On the 15th day of each month, any available tokens you have will be spent on random assets. This gives you 15 days to manually spend your tokens if you want to.",
+      "p8": "If you want to be notified when an asset is automatically picked for you, please enter your email address below:",
+      "p9": "To unsubscribe from notifications, clear your email address above and click the save button."
+    },
+    "stakeholder": {
+      "title": "Stakeholder",
+      "p1": "As a stakeholder of Poly Haven, you get deeper access to our internal communication channels to help us discuss what to work on and follow along our journey.",
+      "p2": "If we haven't already contacted you, please <lnk>get in touch</lnk> so we can give you access to these channels and introduce you to the team."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "从现在开始{{count}}天",
+    "day_other": "从现在开始{{count}}天数",
+    "hour_one": "从现在开始{{count}}",
+    "hour_other": "从现在{{count}}",
+    "month_one": "从现在开始{{count}}月",
+    "month_other": "从现在开始{{count}}月",
+    "week_one": "从现在开始{{count}}周",
+    "week_other": "从现在开始{{count}}周",
+    "year_one": "从现在{{count}}一年",
+    "year_other": "从现在开始{{count}}年"
+  },
+  "new": "新的",
+  "past": {
+    "day_one": "{{count}}天前",
+    "day_other": "{{count}}天前",
+    "hour_one": "{{count}}前",
+    "hour_other": "{{count}}前",
+    "month_one": "{{count}}",
+    "month_other": "{{count}}",
+    "week_one": "{{count}}周前",
+    "week_other": "{{count}}周前",
+    "year_one": "{{count}}年前",
+    "year_other": "{{count}}年前"
+  },
+  "today": "今天"
+}

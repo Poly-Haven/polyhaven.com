@@ -1,0 +1,65 @@
+{
+  "account": "Rekening",
+  "hi": "Hi",
+  "login": {
+    "li1": "Permanente verwydering van advertensies.",
+    "li2": "Vroeë toegang tot bates, voordat dit in die openbaar vrygestel word.",
+    "li3": "Toegang tot ons wolkdiens, om al ons bates met jou hardeskyf te sinkroniseer.",
+    "li4": "Borg 'n bate permanent elke maand, met jou naam en skakel langs die aflaai-knoppies.",
+    "p1": "As jy 'n<lnk> beskermheer</lnk> van Poly Haven, as u hier aanmeld, sal u direk op hierdie webwerf toegang tot u belonings gee.",
+    "p2": "Afhangende van jou ondersteuningsvlak, kan jou belonings die volgende insluit:"
+  },
+  "not-patron": "Dit lyk nie of jy 'n beskermheer van Poly Haven is nie :( as dit verkeerd is, asseblief<lnk> Kontak my</lnk> sodat ons die probleem op hierdie bladsy kan ondersoek. Ons sal die volgende inligting benodig:",
+  "not-patron-anymore": "Dit lyk of jy nie meer 'n beskermheer van Poly Haven is nie. Dit is reg, en ons waardeer jou vorige ondersteuning :)",
+  "reward_one": "Dit gee jou die volgende beloning:",
+  "reward_other": "Dit gee jou die volgende belonings:",
+  "rewards": {
+    "credit": {
+      "invalid": "Ongeldige naam",
+      "p1": "Jou naam is tans",
+      "p2": "{{hidden}} in die beskermheerlys in die voetskrif van hierdie webwerf.",
+      "p3": "Die verandering van hierdie instelling kan 'n paar uur neem om elke bladsy van die werf op te dateer.",
+      "p4": "Vertoon naam:",
+      "title": "Voetskrif krediet"
+    },
+    "early-access": {
+      "p1": "Noudat jy aangemeld is, is die<lnk> Batebiblioteek</lnk> sal bates insluit wat ons in die toekoms geskeduleer het om te publiseer.",
+      "p2": "Hulle word gemerk deur 'n blou sirkel en die Patreon-logo regs bo, soos volg:",
+      "p3": "Jy kan hulle reeds aflaai, voor almal anders :)",
+      "title": "Vroeë toegang"
+    },
+    "no-ads": {
+      "p1": "Ons gebruik Google AdSense op polyhaven.com. Om hierdie advertensies te versteek, aktiveer eenvoudig hierdie skakelaar:",
+      "p2": "Advertensies is nou:",
+      "title": "Geen advertensies"
+    },
+    "offline-access": {
+      "p1": "Voer jou e-posadres in om vir jouself 'n uitnodiging na ons wolklêergids te stuur:",
+      "p2": "Kyk na jou eposse :)",
+      "p3": "Uitnodiging suksesvol gestuur. As jy enige probleme ondervind of jou rekening-e-posadres moet verander,<lnk> kontak ons asseblief</lnk> .",
+      "p4": "Sien<lnk> hierdie pos</lnk> vir verdere instruksies oor hoe om Nextcloud op te stel en bates met jou rekenaar te begin sinkroniseer.",
+      "title": "Vanlyn toegang"
+    },
+    "sponsor": {
+      "p1": "Jy kan elke maand 'n bate kies om jou naam en 'n skakel permanent langsaan te plak. Om dit te doen, werk ons met 'n stelsel van \"tokens\".",
+      "p2": "Aan die begin van elke maand nadat jou betaling deur Patreon verwerk is, ontvang jy outomaties een<ticket /> <b>Borg Token</b> .",
+      "p3": "Daar is twee maniere om hierdie teken te spandeer:",
+      "p3li1": "Deur die bladsy van die bate te besoek wat jy wil borg, en klik op die \"<ticket /> Borg hierdie bate\"-knoppie aan die regterkant van die bladsy.",
+      "p3li2": "Of jy kan outomatiese borgskappe hieronder aanskakel, wat elke maand vir jou 'n ewekansige bate sal kies.",
+      "p4": "Tokens verval nie, so jy kan na 'n paar maande terugkom en jou opgehoopte tokens spandeer.",
+      "p5": "Sodra 'n teken bestee is, kan dit nie herroep of na 'n ander bate geskuif word nie.",
+      "p6": "Outo-borg 'n ewekansige bate elke maand:",
+      "p7": "Op die 15de dag van elke maand sal enige beskikbare tokens wat jy het, op ewekansige bates spandeer word. Dit gee jou 15 dae om jou tokens handmatig te spandeer as jy wil.",
+      "p8": "As jy in kennis gestel wil word wanneer 'n bate outomaties vir jou gekies word, voer asseblief jou e-posadres hieronder in:",
+      "p9": "Om van kennisgewings uit te teken, maak jou e-posadres hierbo skoon en klik die stoor-knoppie.",
+      "title": "Borg"
+    },
+    "stakeholder": {
+      "p1": "As 'n belanghebbende van Poly Haven kry jy dieper toegang tot ons interne kommunikasiekanale om ons te help bespreek waaraan ons moet werk en op ons reis volg.",
+      "p2": "As ons jou nog nie gekontak het nie, asseblief<lnk> Kontak my</lnk> sodat ons jou toegang tot hierdie kanale kan gee en jou aan die span kan voorstel.",
+      "title": "Belanghebbende"
+    }
+  },
+  "support-amount": "Jy ondersteun tans Poly Haven met $ {{amount}} per maand, dankie!",
+  "title": "Teken aan"
+}

@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} Tag ab jetzt",
+    "day_other": "{{count}} Tage von jetzt an",
+    "hour_one": "{{count}} ab jetzt die Stunde",
+    "hour_other": "{{count}} ab jetzt die Stunden",
+    "month_one": "Monat ab jetzt {{count}}",
+    "month_other": "{{count}} Monate von jetzt an",
+    "week_one": "Woche ab jetzt {{count}}",
+    "week_other": "{{count}} Wochen ab jetzt",
+    "year_one": "{{count}} Jahr ab jetzt",
+    "year_other": "{{count}} Jahre ab jetzt"
+  },
+  "new": "Neu",
+  "past": {
+    "day_one": "vor einem Tag {{count}}",
+    "day_other": "vor Tagen {{count}}",
+    "hour_one": "vor einer Stunde {{count}}",
+    "hour_other": "vor Stunden {{count}}",
+    "month_one": "vor einem Monat {{count}}",
+    "month_other": "vor Monaten {{count}}",
+    "week_one": "vor einer Woche {{count}}",
+    "week_other": "vor Wochen {{count}}",
+    "year_one": "vor einem Jahr {{count}}",
+    "year_other": "vor Jahren {{count}}"
+  },
+  "today": "Heute"
+}

@@ -1,0 +1,24 @@
+{
+  "Clear author": "Duidelike skrywer",
+  "backplates": "Sluit 'n stel hoë-resolusie agtergrond beelde in.",
+  "by-author": "deur {{author}}",
+  "early-access": "Vroeë toegang",
+  "new": "Nuut!",
+  "no-results": "Geen resultate",
+  "no-results-keyword": "Probeer 'n ander sleutelwoord gebruik",
+  "results": "resultate",
+  "sort": {
+    "downloads": "Aflaaie",
+    "downloads-d": "Totale aflaaitelling van alle tye.",
+    "hot": "Warm",
+    "hot-d": "Aflaaie per dag, met nuwer bates wat effens hoër geweeg is.",
+    "latest": "Nuutste",
+    "latest-d": "Mees onlangs gepubliseer.",
+    "name": "Naam",
+    "name-d": "Gesorteer alfabeties.",
+    "relevance": "Sorteer volgens soekrelevansie.",
+    "top": "Top",
+    "top-d": "Aflaaie per dag."
+  },
+  "sort-by": "Sorteer Volgens"
+}

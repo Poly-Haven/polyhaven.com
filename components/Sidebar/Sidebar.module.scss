@@ -35,7 +35,7 @@
   padding-top: 0.25rem;
 }
 .footer {
-  @include flex(row);
+  @include flex(row, true);
   font-size: 0.9em;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -112,16 +112,6 @@
         background: $c-background-lighter;
         box-shadow: inset 0px 0px 0px 2px rgba($c-accent, 0.5);
       }
-
-      & ~ h2 {
-        visibility: hidden;
-        font-size: 0;
-
-        &:after {
-          visibility: visible;
-          font-size: 1.2rem;
-        }
-      }
     }
   }
 
@@ -136,19 +126,6 @@
   }
   .desaturate {
     filter: saturate(0);
-  }
-
-  .typeAll:hover ~ h2:after {
-    content: "All Assets";
-  }
-  .typeHDRI:hover ~ h2:after {
-    content: "HDRIs";
-  }
-  .typeTex:hover ~ h2:after {
-    content: "Textures";
-  }
-  .typeMod:hover ~ h2:after {
-    content: "Models";
   }
 
   h2 {

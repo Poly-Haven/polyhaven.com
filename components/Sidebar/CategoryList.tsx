@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslation, Trans } from 'next-i18next';
 
 import tlc from 'constants/top_level_categories.json';
 import { assetTypeName } from 'utils/assetTypeName'
@@ -10,6 +11,9 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import styles from './Sidebar.module.scss';
 
 const CategoryList = (props) => {
+  const { t: tc } = useTranslation('common');
+  const { t } = useTranslation('categories');
+
   if (props.level >= 3) {
     return <></>
   }
@@ -60,7 +64,7 @@ const CategoryList = (props) => {
                 {level === 0 ?
                   <MdKeyboardArrowRight className={styles.caret} /> :
                   <MdKeyboardArrowRight className={styles.smallCaret} />}
-                {props.assetType === 'all' ? assetTypeName(cat) : cat}
+                {props.assetType === 'all' ? tc(assetTypeName(cat)) : t(cat)}
                 <div className={styles.num}>
                   {data[cat] ? data[cat] : 0}
                 </div>

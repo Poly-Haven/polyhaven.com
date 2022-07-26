@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useEffect } from 'react'
 
 import Button from 'components/Button/Button';
@@ -6,6 +7,7 @@ import Heart from 'components/Heart/Heart';
 import styles from './Ads.module.scss'
 
 const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
+  const { t } = useTranslation('common');
 
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -21,7 +23,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   }, []);
 
   const jsxRemoveAds = showRemoveBtn ? <Button
-    text={<>Remove Ads<Heart /></>}
+    text={<>{t('remove-ads')}<Heart /></>}
     href="/account"
     style={{
       margin: '4px 0',

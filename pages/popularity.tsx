@@ -1,4 +1,4 @@
-import Head from 'components/Head/Head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 import Popularity from 'components/Stats/Popularity/Popularity'
@@ -33,14 +33,14 @@ export async function getServerSideProps(context) {
 
   if (error) {
     return {
-      props: {}
+      props: { ...(await serverSideTranslations(context.locale, ['common'])) }
     }
   }
 
   return {
     props: {
-      finances: finances
-
+      ...(await serverSideTranslations(context.locale, ['common'])),
+      finances
     }
   }
 }

@@ -1,3 +1,5 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import Head from 'components/Head/Head'
 import Link from 'next/link';
 
@@ -8,26 +10,28 @@ import Gallery from 'components/Gallery/Gallery'
 import { MdAdd } from "react-icons/md";
 
 export default function GalleryPage(props) {
+  const { t } = useTranslation(['common', 'gallery']);
+
   return (
     <Page>
       <Head
-        title="Render Gallery"
-        description="Artwork submitted by dozens of users, created using our assets."
+        title={t('gallery:title')}
+        description={t('gallery:description')}
         url="/gallery"
       />
       <h1 style={{
         textAlign: 'center',
         marginTop: '1.5em',
         marginBottom: 0
-      }}>Render Gallery</h1>
+      }}>{t('gallery:title')}</h1>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '1em',
       }}>
-        <p><em>Artwork submitted by dozens of users, created using our <Link href="/all"><a>assets</a></Link>.</em></p>
-        <Link href={`/gallery-submit`} prefetch={false}><a><IconButton icon={<MdAdd />} label="Add yours" /></a></Link>
+        <p><em>{t('gallery:description')}</em></p>
+        <Link href={`/gallery-submit`} prefetch={false}><a><IconButton icon={<MdAdd />} label={t('gallery:add')} /></a></Link>
       </div>
       <Gallery data={props.data} />
     </Page>
@@ -43,13 +47,14 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
+      props: { ...(await serverSideTranslations(context.locale, ['common', 'gallery'])) },
       revalidate: 60 * 5 // 5 minutes
     }
   }
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
       data: data
     },
     revalidate: 60 * 30 // 30 minutes

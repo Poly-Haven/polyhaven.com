@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import Markdown from 'markdown-to-jsx';
 import CSS from 'csstype'
@@ -16,6 +18,7 @@ import StatBlock from 'components/Stats/StatBlock/StatBlock';
 import Tooltip from 'components/Tooltip/Tooltip';
 
 const Corporate = (props) => {
+  const { t: tt } = useTranslation('time');
 
   const commonRewards = [
     {
@@ -82,7 +85,7 @@ const Corporate = (props) => {
             display: 'grid',
             gridTemplateColumns: "repeat(2, 1fr)",
           }}>
-            <StatBlock head={`${(props.traffic.pageviews / 1000000).toFixed(1)}M`} text="Pageviews" />
+            <StatBlock head={`${(props.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
             <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
             <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
             <StatBlock head={props.numPatrons} text="Patrons" />
@@ -91,7 +94,7 @@ const Corporate = (props) => {
             style={{ opacity: 0.5, textAlign: 'right' }}
             data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString("en-ZA")}`}
           >
-            <em>Last updated: {timeago(props.updated)}</em>
+            <em>Last updated: {timeago(props.updated, tt)}</em>
           </p>
         </InfoBlock>
       </div>
@@ -226,13 +229,14 @@ export async function getStaticProps(context) {
 
   if (error) {
     return {
-      props: {},
+      props: { ...(await serverSideTranslations(context.locale, ['common', 'time'])) },
       revalidate: 60 * 5 // 5 minutes
     }
   }
 
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common', 'time'])),
       updated: now.valueOf(),
       numPatrons: patrons.length,
       numDiamond: diamondSponsors.length,

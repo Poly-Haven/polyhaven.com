@@ -1,0 +1,53 @@
+{
+  "title": "About / Contact",
+  "description": "What Poly Haven is, what we do, and why we're doing it.",
+  "greeting": {
+    "h1": "Hi there!",
+    "p1": "Poly Haven is a curated public asset library for visual effects artists and game designers, providing useful high quality 3D assets in an easily obtainable manner.",
+    "p2": "There are no paywalls, accounts or email forms required, just download an asset and use it without worry.",
+    "p3": "All assets here are <lnk>CC0</lnk>, which means they're practically free of copyright and you may use them for absolutely any purpose."
+  },
+  "contact": {
+    "h1": "Contact",
+    "p1": "Got a question? Please read the <lnk>FAQ</lnk> first :)",
+    "p2": "The easiest ways to get hold of us is through email (<lnk1>info@polyhaven.com</lnk1>) or on <lnk2>Discord</lnk2>."
+  },
+  "why": {
+    "h1": "Why are we doing this?",
+    "p1": "Because we can!",
+    "p2": "And because we believe we can help the greater 3D community grow by providing our assets for free rather than selling them.",
+    "p3": "We want to lower the barrier of entry for new artists, remove financial barriers, and make it easier for experienced artists to focus on creativity rather than re-inventing the wheel for every prop they need."
+  },
+  "how": {
+    "h1": "How are we doing this?",
+    "p1": "We're a small remote studio based in South Africa, working with creators around the world who share our vision.",
+    "p2": "Funding-wise, we're supported primarily by donations from people like you on <lnk>Patreon</lnk>, advertising revenue, and corporate sponsors who believe they can benefit from supporting our work in the long term.",
+    "p3": "For the creation of assets, there are three sources:",
+    "li1": "Artists employed by Poly Haven, focusing on the big picture.",
+    "li2": "Independent contractors we hire, tasked with specific projects.",
+    "li3": "Users who freely donate their work to the platform."
+  },
+  "transparency": {
+    "h1": "Transparency",
+    "p1": "Since the majority of our funding comes from donations, it's important to us that anyone can see what we're up to, what we're planning, and the reasoning behind all of our decisions.",
+    "p2": "Sharing our assets is our priority, but we also want to share our knowledge, so that others might learn how to create assets like ours and perhaps share them as well.",
+    "li1": "We write regular Dev Logs on <lnk>our blog</lnk> to share what we've been working on recently.",
+    "li2": "Our <lnk>posts on Patreon</lnk> are also a good place to find smaller updates and polls when we need help making decisions.",
+    "li3": "<lnk>Discord</lnk> is where we hang out every day, feel free to say hi!",
+    "li4": "Our social media is primarily automated for posting our latest assets, but we're occasionally active there too (links in the <lnk>footer</lnk>).",
+    "li5": "Our <lnk>finance reports</lnk> detail exactly how we spend or save our funds."
+  },
+  "help": {
+    "h1": "How you can help",
+    "s1": "Support us on Patreon",
+    "s1p1": "If you have some disposable income and you want to help us publish more free HDRIs, textures and 3D models, you can support us with a small monthly donation on <lnk>Patreon</lnk> :)",
+    "s1p2": "In return, we can give you some small token of thanks, like access to a cloud folder that you can sync to your hard drive so you always have our latest assets at your fingertips, or immortalize your name on our site.",
+    "s1p3": "We use your donations directly to cover our expenses and fund new assets, as verified by our <lnk>finance reports</lnk>.",
+    "s2": "Donate your assets",
+    "s2p1": "Have a top-notch 3D model, texture or HDRI you'd like to share with the community? We'd love to publish it for you :)",
+    "s2p2": "We have a strict standard of quality to maintain, and everything we publish has to be <lnk1>CC0</lnk1>, but if your asset is accepted the whole 3D community will benefit from it. <lnk2>Read more and submit your asset here</lnk2>.",
+    "s3": "Spread the word",
+    "s3p1": "It's OK if you can't afford to, or don't want to donate to us :) You can still help us grow by making sure your friends and co-workers know about us, the more people we can help the better!",
+    "s3p2": "It's not required at all, but if you use our assets in your work you can mention where you got them from and that'll help show more people that we exist"
+  }
+}
