@@ -1,0 +1,82 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  @include flex(column);
+  background: $c-background-lightish;
+  border: 1px solid $c-background-light;
+  @include drop-shadow;
+  flex: 1;
+}
+
+.inner {
+  @include flex(row, true, true);
+  padding: 0 1.5rem;
+  min-width: 150px;
+
+  img {
+    font-size: 2em;
+    padding: 1.5rem 0;
+  }
+
+  .text {
+    font-size: 1rem;
+    flex-grow: 1;
+    @include flex(column, true, true);
+
+    h3 {
+      margin: 0;
+    }
+
+    sub {
+      padding: 0.3rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+
+      a {
+        color: $c-text-light;
+        filter: saturate(0)
+      }
+
+      .credit::after{
+        content: ', '
+      }
+      .credit:last-child::after{
+        content: ''
+      }
+    }
+  }
+}
+
+.status {
+  position: relative;
+  width: 100%;
+  background: $c-background-light;
+  display: flex;
+
+  em {
+    position: relative;
+    color: rgba(white, 0.7);
+    padding: 0 0.3em;
+    flex-shrink: 0;
+    @include text-shadow;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+}
+.statusInner {
+  position: absolute;
+  left: 0;
+  width: 25%;
+  background: $c-accent;
+  height: 100%;
+  transition: width 0.5s ease;
+}

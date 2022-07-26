@@ -1,11 +1,14 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import locales from 'utils/locales'
+import apiSWR from 'utils/apiSWR';
 
 import TextPage from 'components/Layout/TextPage/TextPage'
-import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag';
+import LocaleInfo from 'components/LocaleInfo/LocaleInfo';
 
 const Page = () => {
+  const { data: progress, error } = apiSWR(`/translation_progress`, { revalidateOnFocus: true });
+
   return (
     <TextPage
       title="Help Translate Poly Haven"
@@ -18,15 +21,14 @@ const Page = () => {
       <div style={{
         display: 'flex',
         flexDirection: 'row',
-        gap: '0.5em',
+        gap: '1em',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
-        fontSize: '2em',
         padding: '0.5em',
       }}>
-        {Object.keys(locales).map(l =>
-          <LocaleFlag key={l} locale={l} flag={locales[l].flag} />
+        {Object.keys(locales).map(l => l !== 'en' ?
+          <LocaleInfo key={l} locale={l} flag={locales[l].flag} name={locales[l].name} translation_progress={progress} /> : null
         )}
       </div>
 
@@ -80,7 +82,7 @@ const Page = () => {
       <p>For example:</p>
       <q>This is a sentence with a {`<lnk>link</lnk>`}, and then a smiley :) Thanks!</q>
       <p>Which is auto-translated to:</p>
-      <q>Esta es una oración con un<span className="text-orange">{`<lnk>`}</span> enlace{`</lnk>`} y luego un emoticón<span className="text-orange">: )</span> ¡Gracias!</q>
+      <q>Esta es una oración con un<span className="text-red">{`<lnk>`}</span> enlace{`</lnk>`} y luego un emoticón<span className="text-red">: )</span> ¡Gracias!</q>
       <p>But it should be:</p>
       <q>Esta es una oración con un <span className="text-green">{`<lnk>`}</span>enlace{`</lnk>`} y luego un emoticón <span className="text-green">:)</span> ¡Gracias!</q>
       <p>Notice there is no space before the {`<lnk>`} tag, and the colon is moved one character to the left.</p>
