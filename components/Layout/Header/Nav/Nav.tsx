@@ -53,6 +53,8 @@ const Nav = () => {
           {Object.keys(locales).map(l =>
             <NavItem key={l} text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />} link={router.asPath} locale={l} />
           )}
+          <hr />
+          <NavItem text="🤝 Help Translate!" link="/translate" />
         </NavItem>
       </div>
 
