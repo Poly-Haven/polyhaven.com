@@ -228,7 +228,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             </div>
 
             <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
-              <span data-tip={`${Math.round(data.download_count / daysOld)} {t('downloads-pd')}`}>{data.download_count}</span>
+              <span data-tip={`${Math.round(data.download_count / daysOld)} ${t('downloads-pd')}`}>{data.download_count}</span>
               {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
             </InfoItem>
 
