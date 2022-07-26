@@ -20,9 +20,9 @@
   "downloads-pd": "per dag",
   "formats": {
     "exr": "Ware 32-bis per kanaal, verliesloos saamgepers.",
-    "hdr": "Gewoonlik kleiner en meer wyd ondersteun as EXR, maar kan baie selde minder akkurate kleure hê.",
+    "hdr": "Gewoonlik kleiner en meer wyd ondersteun as EXR, maar kan baie selde minder akkurate kleur hê.",
     "incl-tex": "Sluit alle vereiste tekstuurkaarte in.",
-    "most-software": "word tot 'n mate deur die meeste 3D-sagteware ondersteun, maar materiaal moet dalk met die hand opgestel word.",
+    "most-software": "word tot 'n mate deur die meeste 3D-sagteware gelees, maar materiaal moet dalk met die hand opgestel word.",
     "some-software": "ondersteun deur sommige 3D-sagteware.",
     "thumb": "Kleinkiekie / Voorskou",
     "thumb-d": "Kleinkiekieprent wat nuttig is om in jou batebestuurder te gebruik.",
@@ -31,14 +31,14 @@
   },
   "no-files": "Geen lêers nie",
   "no-files-d": "Probeer herlaai, anders rapporteer dit asseblief aan ons.",
-  "no-renders": "Nog geen,<lnk> voeg joune by</lnk> .",
+  "no-renders": "Nog geen, <lnk>voeg joune by</lnk> .",
   "nor-standard": "Normale kaartstandaard:",
   "similar-assets": "Soortgelyke bates",
   "sponsored-by": "Geborg deur:",
   "sponsored-by-d": "Ondersteun Poly Haven op Patreon om jou naam hier by te voeg.",
-  "sponsored-by-none": "Nog niemand :(",
+  "sponsored-by-none": "Nog niemand nie :(",
   "tags": "Merkers",
   "user-renders": "Gebruikerslewerings:",
   "wide": "wyd",
-  "zip-choose": "Kies zip-inhoud:"
+  "zip-choose": "Kies ZIP-inhoud:"
 }

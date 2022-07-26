@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Contact",
+    "p1": "Heb je een vraag? Lees a.u.b. de<lnk> FAQ</lnk> eerst :)",
+    "p2": "De gemakkelijkste manier om ons te bereiken is via e-mail (<lnk1> info@polyhaven.com</lnk1> ) of op<lnk2> Meningsverschil</lnk2> ."
+  },
+  "description": "Wat Poly Haven is, wat we doen en waarom we het doen.",
+  "greeting": {
+    "h1": "Hallo daar!",
+    "p1": "Poly Haven is een beheerde openbare bibliotheek voor visuele effectenartiesten en game-ontwerpers, die op een gemakkelijk verkrijgbare manier bruikbare 3D-middelen van hoge kwaliteit biedt.",
+    "p2": "Er zijn geen paywalls, accounts of e-mailformulieren vereist, download gewoon een asset en gebruik het zonder zorgen.",
+    "p3": "Alle activa hier zijn:<lnk> CC0</lnk> , wat betekent dat ze praktisch vrij zijn van copyright en dat je ze voor elk doel mag gebruiken."
+  },
+  "help": {
+    "h1": "hoe je kan helpen",
+    "s1": "Steun ons op Patreon",
+    "s1p1": "Als je wat besteedbaar inkomen hebt en je wilt ons helpen meer gratis HDRI's, texturen en 3D-modellen te publiceren, dan kun je ons steunen met een kleine maandelijkse donatie op<lnk> Patreon</lnk> :)",
+    "s1p2": "In ruil daarvoor kunnen we je een klein blijk van dank geven, zoals toegang tot een cloudmap die je kunt synchroniseren met je harde schijf zodat je altijd onze nieuwste middelen binnen handbereik hebt, of je naam vereeuwigt op onze site.",
+    "s1p3": "We gebruiken uw donaties rechtstreeks om onze kosten te dekken en nieuwe activa te financieren, zoals geverifieerd door onze<lnk> financiële rapporten</lnk> .",
+    "s2": "Doneer uw vermogen",
+    "s2p1": "Heeft u een eersteklas 3D-model, textuur of HDRI die u met de community wilt delen? We publiceren het graag voor je :)",
+    "s2p2": "We hebben een strikte kwaliteitsnorm die we moeten handhaven, en alles wat we publiceren moet zijn<lnk1> CC0</lnk1> , maar als uw asset wordt geaccepteerd, profiteert de hele 3D-gemeenschap ervan.<lnk2> Lees hier meer en dien uw asset in</lnk2> .",
+    "s3": "Vertel het verder",
+    "s3p1": "Het is oké als je het je niet kunt veroorloven of niet aan ons wilt doneren :) Je kunt ons nog steeds helpen groeien door ervoor te zorgen dat je vrienden en collega's van ons weten, hoe meer mensen we kunnen helpen, hoe beter!",
+    "s3p2": "Het is helemaal niet vereist, maar als je onze middelen in je werk gebruikt, kun je vermelden waar je ze vandaan hebt en dat zal helpen meer mensen te laten zien dat we bestaan"
+  },
+  "how": {
+    "h1": "Hoe doen we dit?",
+    "li1": "Kunstenaars in dienst van Poly Haven, gericht op het grote geheel.",
+    "li2": "Onafhankelijke aannemers die we inhuren, belast met specifieke projecten.",
+    "li3": "Gebruikers die gratis hun werk doneren aan het platform.",
+    "p1": "We zijn een kleine studio op afstand in Zuid-Afrika en werken samen met makers over de hele wereld die onze visie delen.",
+    "p2": "Wat de financiering betreft, worden we voornamelijk ondersteund door donaties van mensen zoals jij op<lnk> Patreon</lnk> , advertentie-inkomsten en bedrijfssponsors die denken dat ze kunnen profiteren van het ondersteunen van ons werk op de lange termijn.",
+    "p3": "Voor het creëren van activa zijn er drie bronnen:"
+  },
+  "title": "Over / Contact",
+  "transparency": {
+    "h1": "Transparantie",
+    "li1": "We schrijven regelmatig Dev Logs op<lnk> onze blog</lnk> om te delen waar we de afgelopen tijd aan hebben gewerkt.",
+    "li2": "Ons<lnk> berichten op Patreon</lnk> zijn ook een goede plek om kleinere updates en peilingen te vinden wanneer we hulp nodig hebben bij het nemen van beslissingen.",
+    "li3": "<lnk>Meningsverschil</lnk> is waar we elke dag rondhangen, zeg gerust hallo!",
+    "li4": "Onze sociale media zijn voornamelijk geautomatiseerd voor het plaatsen van onze nieuwste items, maar we zijn daar ook af en toe actief (links in de<lnk> voettekst</lnk> ).",
+    "li5": "Ons<lnk> financiële rapporten</lnk> precies aangeven hoe we ons geld uitgeven of sparen.",
+    "p1": "Aangezien het grootste deel van onze financiering afkomstig is van donaties, is het voor ons belangrijk dat iedereen kan zien wat we van plan zijn, wat we van plan zijn en de redenering achter al onze beslissingen.",
+    "p2": "Het delen van onze assets is onze prioriteit, maar we willen ook onze kennis delen, zodat anderen kunnen leren hoe ze assets zoals de onze kunnen creëren en misschien ook delen."
+  },
+  "why": {
+    "h1": "Waarom doen we dit?",
+    "p1": "Omdat we het kunnen!",
+    "p2": "En omdat we geloven dat we de grotere 3D-gemeenschap kunnen helpen groeien door onze activa gratis aan te bieden in plaats van ze te verkopen.",
+    "p3": "We willen de toegangsdrempel voor nieuwe artiesten verlagen, financiële drempels wegnemen en het voor ervaren artiesten gemakkelijker maken om zich op creativiteit te concentreren in plaats van het wiel opnieuw uit te vinden voor elke prop die ze nodig hebben."
+  }
+}

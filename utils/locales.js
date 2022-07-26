@@ -15,6 +15,10 @@ module.exports = {
     name: "Deutsch",
     flag: 'DE'
   },
+  nl: {
+    name: "Dutch",
+    flag: 'NL'
+  },
   es: {
     name: "Español",
     flag: 'ES'

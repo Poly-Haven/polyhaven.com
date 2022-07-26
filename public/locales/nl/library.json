@@ -1,0 +1,24 @@
+{
+  "Clear author": "Auteur wissen",
+  "backplates": "Bevat een set achtergrondafbeeldingen met hoge resolutie.",
+  "by-author": "door {{author}}",
+  "early-access": "Vroege toegang",
+  "new": "Nieuw!",
+  "no-results": "Geen resultaten",
+  "no-results-keyword": "Probeer een ander trefwoord te gebruiken",
+  "results": "resultaten",
+  "sort": {
+    "downloads": "Downloads",
+    "downloads-d": "Totaal aantal downloads aller tijden.",
+    "hot": "Heet",
+    "hot-d": "Downloads per dag, met nieuwere items die iets hoger wegen.",
+    "latest": "Laatste",
+    "latest-d": "Meest recent gepubliceerd.",
+    "name": "Naam",
+    "name-d": "Alfabetisch gesorteerd.",
+    "relevance": "Sorteren op zoekrelevantie.",
+    "top": "Bovenkant",
+    "top-d": "Downloads per dag."
+  },
+  "sort-by": "Sorteer op"
+}
