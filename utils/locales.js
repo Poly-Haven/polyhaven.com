@@ -39,9 +39,9 @@ module.exports = {
     name: "한국어",
     flag: 'KR'
   },
-  pt: {
-    name: "Português",
-    flag: 'PT'
+  "pt-BR": {
+    name: "Português (BR)",
+    flag: 'BR'
   },
   ru: {
     name: "Русский",

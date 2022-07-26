@@ -26,7 +26,7 @@
     "some-software": "suportado por alguns softwares 3D.",
     "thumb": "Miniatura / Visualização",
     "thumb-d": "Imagem em miniatura útil para usar em seu gerenciador de ativos.",
-    "tm": "Uma visualização de faixa dinâmica baixa do HDRI. Às vezes útil como uma prévia ou para usos não relacionados a CG, mas não use para iluminação.",
+    "tm": "Uma visualização de faixa dinâmica baixa do HDRI. Às vezes útil como uma prévia ou para usos não relacionados a CG, mas não para iluminação.",
     "zip": "Escolha exatamente quais arquivos baixar."
   },
   "no-files": "Nenhum arquivo",
