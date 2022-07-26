@@ -63,7 +63,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
         <p>{timeago(asset.date_published * 1000, tt)}</p>
       </div>
       {badge ? <div className={`${styles.badge} ${badge.style}`}>{badge.text}</div> : null}
-      <div className={styles.indicators}>{indicators.map(i => <div key={i.text} data-tip={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
+      <div className={styles.indicators}>{indicators.map(i => <div key={i.text} title={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
     </a></Link>
   );
 }
