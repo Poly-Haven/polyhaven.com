@@ -1,0 +1,65 @@
+{
+  "account": "Rachunek",
+  "hi": "Cześć",
+  "login": {
+    "li1": "Trwałe usuwanie ogłoszeń.",
+    "li2": "Wczesny dostęp do zasobów, zanim zostaną one udostępnione publicznie.",
+    "li3": "Dostęp do naszej usługi w chmurze, aby zsynchronizować wszystkie nasze zasoby z Twoim dyskiem twardym.",
+    "li4": "Sponsoruj zasób na stałe co miesiąc, pokazując swoje imię i nazwisko oraz link obok przycisków pobierania.",
+    "p1": "Jeśli jesteś<lnk> patron</lnk> of Poly Haven, logując się tutaj, uzyskasz dostęp do swoich nagród bezpośrednio na tej stronie.",
+    "p2": "W zależności od poziomu wsparcia, twoje nagrody mogą obejmować:"
+  },
+  "not-patron": "Nie wydajesz się być patronem Poly Haven :( jeśli to nieprawda, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli zbadać problem na tej stronie. Potrzebujemy następujących informacji:",
+  "not-patron-anymore": "Wygląda na to, że nie jesteś już patronem Poly Haven. W porządku i doceniamy Twoje wcześniejsze wsparcie :)",
+  "reward_one": "To zapewnia następującą nagrodę:",
+  "reward_other": "Zapewnia to następujące nagrody:",
+  "rewards": {
+    "credit": {
+      "invalid": "Błędna nazwa",
+      "p1": "Twoje imię to obecnie",
+      "p2": "{{hidden}} na liście patronów w stopce tej strony.",
+      "p3": "Zmiana tego ustawienia może potrwać kilka godzin, zanim każda strona witryny zostanie zaktualizowana.",
+      "p4": "Wyświetlana nazwa:",
+      "title": "Kredyt w stopce"
+    },
+    "early-access": {
+      "p1": "Teraz, gdy jesteś zalogowany,<lnk> Biblioteka zasobów</lnk> będzie zawierać zasoby, które planujemy opublikować w przyszłości.",
+      "p2": "Są one oznaczone niebieskim kółkiem i logo Patreon w prawym górnym rogu, tak:",
+      "p3": "Możesz je już pobrać, przed wszystkimi innymi :)",
+      "title": "Wczesny dostęp"
+    },
+    "no-ads": {
+      "p1": "Używamy Google AdSense na polyhaven.com. Aby ukryć te reklamy, po prostu włącz ten przełącznik:",
+      "p2": "Reklamy są teraz:",
+      "title": "Bez reklam"
+    },
+    "offline-access": {
+      "p1": "Wpisz swój adres e-mail, aby wysłać sobie zaproszenie do naszego folderu w chmurze:",
+      "p2": "Sprawdź swój email :)",
+      "p3": "Zaproszenie zostało pomyślnie wysłane. Jeśli masz jakiekolwiek problemy lub musisz zmienić adres e-mail konta,<lnk> proszę skontaktuj się z nami</lnk> .",
+      "p4": "Widzieć<lnk> ten post</lnk> aby uzyskać dalsze instrukcje, jak skonfigurować Nextcloud i rozpocząć synchronizację zasobów z komputerem.",
+      "title": "Dostęp offline"
+    },
+    "sponsor": {
+      "p1": "Co miesiąc możesz wybrać zasób, aby na stałe przykleić swoje imię i link. W tym celu pracujemy z systemem „tokenów”.",
+      "p2": "Na początku każdego miesiąca po przetworzeniu płatności przez Patreon automatycznie otrzymujesz jeden<ticket /> <b>Token sponsora</b> .",
+      "p3": "Żeton można wydać na dwa sposoby:",
+      "p3li1": "Odwiedzając stronę zasobu, który chcesz zasponsorować, i klikając „<ticket /> Sponsoruj ten zasób” po prawej stronie.",
+      "p3li2": "Możesz też włączyć automatyczne sponsorowanie poniżej, aby co miesiąc wybierać dla Ciebie losowy zasób.",
+      "p4": "Tokeny nie wygasają, więc możesz wrócić po kilku miesiącach i wydać zgromadzone tokeny.",
+      "p5": "Po wydaniu żetonu nie można go cofnąć ani przenieść do innego zasobu.",
+      "p6": "Co miesiąc automatycznie sponsoruj losowy zasób:",
+      "p7": "15 dnia każdego miesiąca wszystkie dostępne tokeny zostaną wydane na losowe aktywa. Daje to 15 dni na ręczne wydanie tokenów, jeśli chcesz.",
+      "p8": "Jeśli chcesz otrzymać powiadomienie, gdy zasób zostanie automatycznie wybrany dla Ciebie, wpisz poniżej swój adres e-mail:",
+      "p9": "Aby zrezygnować z otrzymywania powiadomień, wyczyść swój adres e-mail powyżej i kliknij przycisk Zapisz.",
+      "title": "Sponsor"
+    },
+    "stakeholder": {
+      "p1": "Jako interesariusz Poly Haven masz głębszy dostęp do naszych wewnętrznych kanałów komunikacji, aby pomóc nam omówić, nad czym pracować i podążać w trakcie naszej podróży.",
+      "p2": "Jeśli jeszcze się z Tobą nie skontaktowaliśmy, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli dać Ci dostęp do tych kanałów i przedstawić Cię zespołowi.",
+      "title": "Interesariusz"
+    }
+  },
+  "support-amount": "Obecnie wspierasz Poly Haven {{amount}} $ miesięcznie, dzięki!",
+  "title": "Zaloguj sie"
+}

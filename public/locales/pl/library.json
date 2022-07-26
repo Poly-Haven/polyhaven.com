@@ -1,0 +1,24 @@
+{
+  "Clear author": "Wyczyść autora",
+  "backplates": "Zawiera zestaw obrazów tła w wysokiej rozdzielczości.",
+  "by-author": "autorstwa: {{author}}",
+  "early-access": "Wczesny Dostęp",
+  "new": "Nowy!",
+  "no-results": "Brak wyników",
+  "no-results-keyword": "Spróbuj użyć innego słowa kluczowego",
+  "results": "wyniki",
+  "sort": {
+    "downloads": "Pliki do pobrania",
+    "downloads-d": "Całkowita liczba pobrań przez cały czas.",
+    "hot": "Gorący",
+    "hot-d": "Liczba pobrań dziennie, przy czym nowsze zasoby mają nieco wyższą wagę.",
+    "latest": "Najnowszy",
+    "latest-d": "Ostatnio opublikowane.",
+    "name": "Nazwa",
+    "name-d": "Posortowane alfabetycznie.",
+    "relevance": "Sortowanie według trafności wyszukiwania.",
+    "top": "Top",
+    "top-d": "Pobrań dzisiaj."
+  },
+  "sort-by": "Sortuj według"
+}

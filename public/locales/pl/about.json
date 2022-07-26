@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Kontakt",
+    "p1": "Masz pytanie? Proszę przeczytać<lnk> FAQ</lnk> pierwszy :)",
+    "p2": "Najłatwiej skontaktować się z nami przez e-mail (<lnk1> info@polyhaven.com</lnk1> ) lub na<lnk2> Niezgoda</lnk2> ."
+  },
+  "description": "Czym jest Poly Haven, czym się zajmujemy i dlaczego to robimy.",
+  "greeting": {
+    "h1": "Cześć!",
+    "p1": "Poly Haven to wyselekcjonowana biblioteka zasobów publicznych dla artystów efektów wizualnych i projektantów gier, zapewniająca przydatne zasoby 3D wysokiej jakości w łatwo dostępny sposób.",
+    "p2": "Nie są wymagane żadne opłaty, konta ani formularze e-mail, wystarczy pobrać zasób i używać go bez obaw.",
+    "p3": "Wszystkie aktywa tutaj są<lnk> CC0</lnk> , co oznacza, że są praktycznie wolne od praw autorskich i można ich używać w dowolnym celu."
+  },
+  "help": {
+    "h1": "jak możesz pomóc",
+    "s1": "Wesprzyj nas na Patreon",
+    "s1p1": "Jeśli masz jakiś dochód do dyspozycji i chcesz pomóc nam publikować więcej darmowych HDRI, tekstur i modeli 3D, możesz wesprzeć nas niewielką miesięczną darowizną na<lnk> Patreon</lnk> :)",
+    "s1p2": "W zamian możemy przekazać Ci drobne podziękowania, takie jak dostęp do folderu w chmurze, który możesz zsynchronizować z dyskiem twardym, aby zawsze mieć pod ręką nasze najnowsze zasoby, lub uwiecznić swoje imię i nazwisko na naszej stronie.",
+    "s1p3": "Wykorzystujemy Twoje darowizny bezpośrednio na pokrycie naszych wydatków i finansowanie nowych aktywów, co zostało zweryfikowane przez nasz<lnk> raporty finansowe</lnk> .",
+    "s2": "Przekaż swoje aktywa",
+    "s2p1": "Masz najwyższej klasy model 3D, teksturę lub HDRI, którymi chcesz się podzielić ze społecznością? Chętnie opublikujemy to dla Ciebie :)",
+    "s2p2": "Mamy ścisły standard jakości do utrzymania, a wszystko, co publikujemy, musi być<lnk1> CC0</lnk1> , ale jeśli Twój zasób zostanie zaakceptowany, skorzysta na nim cała społeczność 3D.<lnk2> Przeczytaj więcej i prześlij swój zasób tutaj</lnk2> .",
+    "s3": "Rozgłosić",
+    "s3p1": "W porządku, jeśli nie możesz sobie na to pozwolić lub nie chcesz nam przekazać darowizn :) Nadal możesz pomóc nam się rozwijać, upewniając się, że Twoi znajomi i współpracownicy wiedzą o nas, im więcej ludzi możemy pomóc, tym lepiej!",
+    "s3p2": "W ogóle nie jest to wymagane, ale jeśli korzystasz z naszych zasobów w swojej pracy, możesz wskazać, skąd je masz, a to pomoże pokazać większej liczbie osób, że istniejemy"
+  },
+  "how": {
+    "h1": "Jak to robimy?",
+    "li1": "Artyści zatrudnieni przez Poly Haven, skupiający się na całości.",
+    "li2": "Zatrudniamy niezależnych wykonawców, którzy wykonują konkretne projekty.",
+    "li3": "Użytkownicy, którzy swobodnie przekazują swoją pracę na platformę.",
+    "p1": "Jesteśmy małym zdalnym studiem z siedzibą w RPA, współpracującym z twórcami z całego świata, którzy podzielają naszą wizję.",
+    "p2": "Jeśli chodzi o finansowanie, wspieramy nas głównie z darowizn od osób takich jak ty<lnk> Patreon</lnk> , przychody z reklam oraz sponsorzy korporacyjni, którzy wierzą, że mogą odnieść korzyści ze wspierania naszej pracy w dłuższej perspektywie.",
+    "p3": "Istnieją trzy źródła tworzenia aktywów:"
+  },
+  "title": "O nas / Kontakt",
+  "transparency": {
+    "h1": "Przezroczystość",
+    "li1": "Prowadzimy regularne logi deweloperów<lnk> nasz blog</lnk> podzielić się tym, nad czym ostatnio pracowaliśmy.",
+    "li2": "Nasz<lnk> posty na Patreon</lnk> są również dobrym miejscem do wyszukiwania mniejszych aktualizacji i ankiet, gdy potrzebujemy pomocy w podejmowaniu decyzji.",
+    "li3": "<lnk>Niezgoda</lnk> to miejsce, w którym spędzamy czas każdego dnia, możesz się przywitać!",
+    "li4": "Nasze media społecznościowe są przede wszystkim zautomatyzowane do publikowania naszych najnowszych zasobów, ale od czasu do czasu również tam jesteśmy aktywni (linki w<lnk> stopka</lnk> ).",
+    "li5": "Nasz<lnk> raporty finansowe</lnk> szczegółowo opisz, w jaki sposób wydajemy lub oszczędzamy nasze fundusze.",
+    "p1": "Ponieważ większość naszych funduszy pochodzi z darowizn, ważne jest dla nas, aby każdy mógł zobaczyć, co robimy, co planujemy i uzasadnienie wszystkich naszych decyzji.",
+    "p2": "Dzielenie się naszymi zasobami jest naszym priorytetem, ale chcemy również dzielić się naszą wiedzą, aby inni mogli nauczyć się tworzyć zasoby takie jak nasze i być może również się nimi dzielić."
+  },
+  "why": {
+    "h1": "Dlaczego to robimy?",
+    "p1": "Ponieważ możemy!",
+    "p2": "A ponieważ wierzymy, że możemy pomóc większej społeczności 3D w rozwoju, udostępniając nasze zasoby za darmo, zamiast je sprzedawać.",
+    "p3": "Chcemy obniżyć barierę wejścia dla nowych artystów, usunąć bariery finansowe i ułatwić doświadczonym artystom skupienie się na kreatywności, zamiast wymyślania na nowo koła dla każdego rekwizytu, którego potrzebują."
+  }
+}

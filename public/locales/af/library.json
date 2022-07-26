@@ -1,11 +1,11 @@
 {
-  "Clear author": "Duidelike skrywer",
-  "backplates": "Sluit 'n stel hoë-resolusie agtergrond beelde in.",
+  "Clear author": "Verwyder outeur",
+  "backplates": "Sluit 'n stel hoë-resolusie agtergrond foto's in.",
   "by-author": "deur {{author}}",
   "early-access": "Vroeë toegang",
   "new": "Nuut!",
   "no-results": "Geen resultate",
-  "no-results-keyword": "Probeer 'n ander sleutelwoord gebruik",
+  "no-results-keyword": "Probeer 'n ander sleutelwoord",
   "results": "resultate",
   "sort": {
     "downloads": "Aflaaie",
@@ -13,7 +13,7 @@
     "hot": "Warm",
     "hot-d": "Aflaaie per dag, met nuwer bates wat effens hoër geweeg is.",
     "latest": "Nuutste",
-    "latest-d": "Mees onlangs gepubliseer.",
+    "latest-d": "Onlangste gepubliseer.",
     "name": "Naam",
     "name-d": "Gesorteer alfabeties.",
     "relevance": "Sorteer volgens soekrelevansie.",
