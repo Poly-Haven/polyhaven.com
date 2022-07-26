@@ -9,6 +9,7 @@ const Page = () => {
   return (
     <TextPage
       title="Help Translate Poly Haven"
+      description="More than half our users don't speak English as a first language, help us make Poly Haven friendlier for them!"
       url="/translate"
     >
       <h1>Help Translate Poly Haven</h1>
@@ -29,8 +30,26 @@ const Page = () => {
         )}
       </div>
 
-      <h2>Translation Guide:</h2>
+      <p>All text on the site is stored as a series of strings (sentences, paragraphs, buttons, headers, etc).</p>
 
+      <p>The service we use for translations (<a href="https://i18nexus.com/">i18nexus</a>) automatically translates strings by default using Google Translate, which is a good start, but requires manual review and corrections.</p>
+
+      <p>The basic workflow is thus to go through the list of strings and confirm or tweak the existing automatic translations.</p>
+
+      <p>All strings have either an attached screenshot or a desciption (in the left most column) to provide some context on where the string is located on the website.</p>
+
+      <img src="https://cdn.polyhaven.com/site_images/translations_ui.png" style={{ width: '100%' }} />
+
+      <p>If you help contribute a significant portion of string translations (100+ strings), we want to thank you by:</p>
+
+      <ul style={{ marginBottom: '3em' }}>
+        <li>Giving you access to our Nextcloud server to sync our assets to your hard drive - the same service our <a href="https://www.patreon.com/polyhaven/overview">$5+ patrons</a> have access to.</li>
+        <li>Crediting you in the language list at the top of this page.</li>
+      </ul>
+
+      <hr />
+
+      <h1>Translation Guide:</h1>
       <h3>Proper Nouns</h3>
       <p>Make sure that the names of websites, software, and people are not translated, such as "Poly Haven", "Discord", "Patreon", etc.</p>
 
