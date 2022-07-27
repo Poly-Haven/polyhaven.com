@@ -5,12 +5,12 @@
     "li1": "Trwałe usunięcie reklam.",
     "li2": "Wczesny dostęp do zasobów, zanim zostaną one udostępnione publicznie.",
     "li3": "Dostęp do naszej usługi w chmurze, która pozwala zsynchronizować wszystkie nasze zasoby z Twoim dyskiem twardym.",
-    "li4": "Sponsoruj zasób na stałe co miesiąc, pokazując swoje imię i nazwisko oraz link obok przycisków pobierania.",
-    "p1": "Jeśli jesteś<lnk> patron</lnk> of Poly Haven, logując się tutaj, uzyskasz dostęp do swoich nagród bezpośrednio na tej stronie.",
+    "li4": "Sponsoruj wybrany przez Ciebie zasób co miesiąc, pokazując swoje imię i nazwisko oraz link (do portfolio/strony) obok przycisków pobierania.",
+    "p1": "Jeśli jesteś <lnk>Patronem</lnk> Poly Haven, logując się tutaj, uzyskasz dostęp do swoich nagród bezpośrednio na naszej stronie.",
     "p2": "W zależności od poziomu Twojego wsparcia, nagrody mogą obejmować:"
   },
-  "not-patron": "Nie wydajesz się być patronem Poly Haven :( jeśli to nieprawda, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli zbadać problem na tej stronie. Potrzebujemy następujących informacji:",
-  "not-patron-anymore": "Wygląda na to, że nie jesteś już patronem Poly Haven. W porządku i doceniamy Twoje wcześniejsze wsparcie :)",
+  "not-patron": "Wygląda na to że nie jesteś patronem Poly Haven :( Jeśli to nieprawda, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli zbadać Twój problem. Potrzebujemy następujących informacji:",
+  "not-patron-anymore": "Wygląda na to, że nie jesteś już patronem Poly Haven. W porządku, nadal doceniamy Twoje wcześniejsze wsparcie :D",
   "reward_one": "To zapewnia następujące nagrody:",
   "reward_other": "Zapewnia to następujące nagrody:",
   "rewards": {
@@ -18,14 +18,14 @@
       "invalid": "Błędna nazwa",
       "p1": "Twoje imię jest obecnie",
       "p2": "{{hidden}} na liście patronów w stopce tej strony.",
-      "p3": "Zmiana tego ustawienia może potrwać kilka godzin, zanim każda strona witryny zostanie zaktualizowana.",
+      "p3": "Zmiana tego ustawienia może potrwać kilka godzin, ponieważ każda podstrona musi się automatycznie odświeżyć.",
       "p4": "Wyświetlana nazwa:",
       "title": "Wzmianka w stopce"
     },
     "early-access": {
       "p1": "Teraz, gdy jesteś zalogowany,<lnk> Biblioteka zasobów</lnk> będzie zawierać zasoby, które planujemy opublikować w przyszłości.",
       "p2": "Są one oznaczone niebieskim kółkiem i logo Patreon w prawym górnym rogu, w taki sposób :",
-      "p3": "Możesz je już pobrać, przed wszystkimi innymi :)",
+      "p3": "Możesz je już pobrać, przed wszystkimi :)",
       "title": "Wczesny dostęp"
     },
     "no-ads": {
@@ -37,17 +37,17 @@
       "p1": "Wpisz swój adres e-mail, aby uzyskać zaproszenie do naszego folderu w chmurze:",
       "p2": "Sprawdź swój email :)",
       "p3": "Zaproszenie zostało pomyślnie wysłane. Jeśli masz jakiekolwiek problemy lub musisz zmienić adres e-mail konta,<lnk> proszę skontaktuj się z nami</lnk> .",
-      "p4": "Widzieć<lnk> ten post</lnk> aby uzyskać dalsze instrukcje, jak skonfigurować Nextcloud i rozpocząć synchronizację zasobów z komputerem.",
+      "p4": "Zobacz <lnk> ten post</lnk> aby uzyskać dalsze instrukcje dotyczące konfiguracji Nextcloud, który pozwoli rozpocząć synchronizację zasobów z Twoim komputerem.",
       "title": "Dostęp offline"
     },
     "sponsor": {
-      "p1": "Co miesiąc możesz wybrać zasób, aby na stałe przykleić swoje imię i link. W tym celu pracujemy z systemem „tokenów”.",
-      "p2": "Na początku każdego miesiąca po przetworzeniu płatności przez Patreon automatycznie otrzymujesz jeden<ticket /> <b>Token sponsora</b> .",
-      "p3": "Żeton można wydać na dwa sposoby:",
+      "p1": "Co miesiąc możesz wybrać zasób, aby na stałe zostać jego sponsorem. Pozwala to zamieścić Twoje imię oraz link do strony. Wykorzystujemy do tego system \"tokenów\"",
+      "p2": "Na początku każdego miesiąca po przetworzeniu Twojej płatności przez Patreon, automatycznie otrzymujesz jeden <ticket /> <b>Token Sponsora</b> .",
+      "p3": "Żetony można wydać na dwa sposoby:",
       "p3li1": "Odwiedzając stronę zasobu, który chcesz zasponsorować, i klikając „<ticket /> Sponsoruj ten zasób” po prawej stronie.",
       "p3li2": "Możesz też włączyć automatyczne sponsorowanie poniżej, aby co miesiąc wybierać dla Ciebie losowy zasób.",
       "p4": "Tokeny nie wygasają, więc możesz wrócić po kilku miesiącach i wydać zgromadzone tokeny.",
-      "p5": "Po wydaniu żetonu nie można go cofnąć ani przenieść do innego zasobu.",
+      "p5": "Po wydaniu żetonu nie można go wycofać ani przenieść na inny zasób.",
       "p6": "Co miesiąc automatycznie sponsoruj losowy zasób:",
       "p7": "15 dnia każdego miesiąca wszystkie dostępne tokeny zostaną wydane na losowe zasoby. Daje to 15 dni na ręczne wydanie tokenów, jeśli chcesz.",
       "p8": "Jeśli chcesz otrzymać powiadomienie, gdy zasób zostanie automatycznie wybrany dla Ciebie, wpisz poniżej swój adres e-mail:",
@@ -55,9 +55,9 @@
       "title": "Sponsor"
     },
     "stakeholder": {
-      "p1": "Jako interesariusz Poly Haven masz głębszy dostęp do naszych wewnętrznych kanałów komunikacji, aby pomóc nam omówić, nad czym pracować i podążać w trakcie naszej podróży.",
-      "p2": "Jeśli jeszcze się z Tobą nie skontaktowaliśmy, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli dać Ci dostęp do tych kanałów i przedstawić Cię zespołowi.",
-      "title": "Interesariusz"
+      "p1": "Jako interesant Poly Haven zdobywasz głębszy dostęp do naszych wewnętrznych kanałów komunikacji, aby pomóc nam omówić, nad czym pracować i za czym podążać w trakcie naszej podróży.",
+      "p2": "Jeśli jeszcze się z Tobą nie skontaktowaliśmy, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli dać Ci dostęp do naszych kanałów i przedstawić Cię zespołowi.",
+      "title": "Interesant"
     }
   },
   "support-amount": "Obecnie wspierasz Poly Haven {{amount}} $ miesięcznie, dziękujemy!",

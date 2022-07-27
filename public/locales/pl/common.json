@@ -1,27 +1,27 @@
 {
   "All Assets": "Wszystkie Zasoby",
   "All Things": "Wszystkie {{things}}",
-  "Assets": "Majątek",
+  "Assets": "Zasoby",
   "Co-founder": "Współzałożyciel",
   "Director": "Założyciel ",
   "Graphic-Design": "Projekty Graficzne",
   "HDRIs": "HDRI",
   "Models": "Modele",
   "Textures": "Tekstury",
-  "also-supported-by": "Jesteśmy wspierani również przez\"",
+  "also-supported-by": "Jesteśmy wspierani również przez:",
   "corporate-sponsor_one": "Sponsor korporacyjny",
   "corporate-sponsor_other": "Sponsorzy korporacyjni",
   "corporate-sponsors": "Sponsorzy Korporacyjni",
   "display-name": "Wyświetlana nazwa",
   "email-address": "Adres e-mail",
   "footer": {
-    "thanks": "Dzięki naszym<lnk> Patroni</lnk> za umożliwienie Poly Haven"
+    "thanks": "Dziękujemy naszym <lnk>Patronom</lnk> za umożliwianie nam dalszej działalności"
   },
   "goal": {
-    "complete": "Kompletny!",
+    "complete": "Cel Osiągnięty!",
     "current": "Obecny cel:",
     "reached": "Osiągnęliśmy nasz ostatni cel! Niedługo powinno się tu pojawić coś nowego :)",
-    "to-go": "$ {{dollars}} na wynos"
+    "to-go": "Pozostało ${{dollars}}"
   },
   "hidden": "Ukryty",
   "invalid-email": "Niepoprawny adres email",
@@ -29,17 +29,17 @@
   "loading": "Ładowanie...",
   "missing-invalid": "Brakujące lub nieprawidłowe dane",
   "nav": {
-    "about-contact": "O/Kontakt",
+    "about-contact": "O Nas/Kontakt",
     "api": "API",
     "blog": "Blog",
-    "contribute": "Przyczynić się",
+    "contribute": "Jak Pomóc?",
     "faq": "FAQ",
-    "finances": "Raporty finansowe",
+    "finances": "Sprawozdanie Finansowe",
     "gallery": "Galeria",
-    "home": "Dom",
+    "home": "Strona Główna",
     "license": "Licencja",
     "logout": "Wyloguj",
-    "map": "Mapa świata HDRI",
+    "map": "Mapa lokalizacji naszych HDRI",
     "news": "Aktualności",
     "privacy": "Prywatność",
     "source": "Źródło",
@@ -48,10 +48,10 @@
   },
   "optional": "Opcjonalne",
   "patron_one": "Patronów",
-  "patron_other": "Patroni",
+  "patron_other": "Patronów",
   "please-wait": "Proszę czekać...",
   "remove-ads": "Usuń reklamy",
   "required": "Wymagane",
   "tagline": "Publiczna Biblioteka Zasobów 3D",
-  "visible": "Widoczne"
+  "visible": "Widoczny"
 }

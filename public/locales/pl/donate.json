@@ -1,12 +1,12 @@
 {
-  "d1p": "Dołącz do nas tymczasowo na<lnk> Patreon</lnk> , poczekaj do końca miesiąca, w którym dokonasz płatności, a następnie zlikwiduj konto.",
+  "d1p": "Dołącz do nas chwilowo na<lnk> Patreon</lnk> , poczekaj do końca miesiąca, w którym dokonasz płatności, a następnie anuluj płatność.",
   "d1t": "Darowizny poniżej $20",
   "d2b1": "Przekaż darowiznę przez PayPal",
   "d2b2": "Przekaż darowiznę przez Ko-fi",
   "d2p": "Aby dokonać jednorazowej darowizny, użyj PayPal lub Ko-fi:",
   "d2t": "Większe darowizny",
   "description": "Jak dokonać jednorazowej darowizny dla Poly Haven.",
-  "p1": "Aby być zrównoważonym, otwartym projektem, lubimy:<lnk1> przewidywalny budżet</lnk1> . Posiadanie bardzo zróżnicowanych dochodów utrudnia nam planowanie z wyprzedzeniem i zatrudnianie pracowników na dłuższą metę. Zdecydowanie wolelibyśmy, abyś przekazał darowiznę<lnk2> mała miesięczna kwota</lnk2> w dłuższym okresie niż pojedyncza kwota ryczałtowa.",
+  "p1": "Aby być zrównoważonym, otwartym projektem, lubimy posiadać :<lnk1> przewidywalny budżet</lnk1>. Posiadanie bardzo zróżnicowanych dochodów utrudnia nam planowanie z wyprzedzeniem i zatrudnianie pracowników na dłuższą metę. Zdecydowanie wolelibyśmy, abyś przekazał <lnk2> małą miesięczną kwotę</lnk2> w dłuższym okresie niż jednorazowo większą ilość pieniędzy.",
   "p2": "To powiedziawszy, przyjmujemy również darowizny innego rodzaju :)",
   "title": "Przekaż jednorazową darowiznę"
 }
