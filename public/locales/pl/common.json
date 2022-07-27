@@ -1,17 +1,17 @@
 {
-  "All Assets": "Wszystkie aktywa",
+  "All Assets": "Wszystkie Zasoby",
   "All Things": "Wszystkie {{things}}",
   "Assets": "Majątek",
   "Co-founder": "Współzałożyciel",
-  "Director": "Dyrektor",
-  "Graphic-Design": "Projekt graficzny",
-  "HDRIs": "HDR",
+  "Director": "Założyciel ",
+  "Graphic-Design": "Projekty Graficzne",
+  "HDRIs": "HDRI",
   "Models": "Modele",
   "Textures": "Tekstury",
-  "also-supported-by": "Wspierany również przez:",
+  "also-supported-by": "Jesteśmy wspierani również przez\"",
   "corporate-sponsor_one": "Sponsor korporacyjny",
   "corporate-sponsor_other": "Sponsorzy korporacyjni",
-  "corporate-sponsors": "Sponsorzy korporacyjni",
+  "corporate-sponsors": "Sponsorzy Korporacyjni",
   "display-name": "Wyświetlana nazwa",
   "email-address": "Adres e-mail",
   "footer": {
@@ -27,7 +27,7 @@
   "invalid-email": "Niepoprawny adres email",
   "invalid-name-url": "Nieprawidłowa nazwa lub adres URL",
   "loading": "Ładowanie...",
-  "missing-invalid": "Brakujące lub nieprawidłowe",
+  "missing-invalid": "Brakujące lub nieprawidłowe dane",
   "nav": {
     "about-contact": "O/Kontakt",
     "api": "API",
@@ -44,14 +44,14 @@
     "privacy": "Prywatność",
     "source": "Źródło",
     "stats": "Statystyki",
-    "support-us": "Wesprzyj nas"
+    "support-us": "Wesprzyj Nas"
   },
-  "optional": "Opcjonalny",
-  "patron_one": "Patron",
+  "optional": "Opcjonalne",
+  "patron_one": "Patronów",
   "patron_other": "Patroni",
   "please-wait": "Proszę czekać...",
   "remove-ads": "Usuń reklamy",
-  "required": "Wymagany",
-  "tagline": "Publiczna biblioteka zasobów 3D",
-  "visible": "Widoczny"
+  "required": "Wymagane",
+  "tagline": "Publiczna Biblioteka Zasobów 3D",
+  "visible": "Widoczne"
 }

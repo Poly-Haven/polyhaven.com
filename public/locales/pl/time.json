@@ -22,7 +22,7 @@
     "week_one": "{{count}} tydzień temu",
     "week_other": "{{count}} tygodnie temu",
     "year_one": "{{count}} rok temu",
-    "year_other": "{{count}} lata temu"
+    "year_other": "{{count}} lata tamu"
   },
   "today": "Dziś"
 }

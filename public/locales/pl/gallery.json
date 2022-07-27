@@ -1,14 +1,14 @@
 {
-  "add": "Dodaj swoje",
-  "by": "za pomocą",
-  "description": "Grafika zgłoszona przez dziesiątki użytkowników, stworzona z naszych zasobów.",
+  "add": "Dodaj własne",
+  "by": "z pomocą",
+  "description": "Grafiki zgłoszone przez dziesiątki użytkowników, stworzone z naszych zasobów.",
   "submit": {
     "description": "Czy stworzyłeś niesamowitą grafikę przy użyciu jednego z naszych zasobów? Pokaż to na tej stronie!",
     "err-asset-limit": "Nie możesz wybrać więcej niż {{limit}} zasobów, wybierz tylko te najbardziej widoczne, które są widoczne w renderowaniu.",
     "err-jpg": "Obraz musi być w formacie JPG",
     "err-size": "Twój obraz jest za duży, musi być mniejszy niż 1 MB",
     "form": {
-      "art-name": "Nazwa grafiki",
+      "art-name": "Nazwa projektu",
       "assets": "Wykorzystane zasoby",
       "assets-d": "Jakich HDRI, tekstur lub modeli 3D z Poly Haven używałeś?",
       "file-change": "Zmień plik...",
@@ -16,9 +16,9 @@
       "link": "Połączyć",
       "link-d": "Twoja strona internetowa/portfolio lub link do większej liczby renderów tego projektu.",
       "select-change": "Wybierz plik...",
-      "software": "Używane oprogramowanie",
+      "software": "Użyte oprogramowanie",
       "software-d": "Jakiego oprogramowania 3D użyłeś do stworzenia swojej grafiki?",
-      "submit": "Składać",
+      "submit": "Zatwierdź",
       "thanks": "Dziękujemy za przesłanie!",
       "thanks-d": "Sprawdzimy Twój render w ciągu kilku dni i prześlemy Ci wyniki w e-mailu.",
       "uploading": "Wgrywanie ... Proszę Czekać...",
@@ -33,12 +33,12 @@
     "s2": "Zasady:",
     "s2p1": "Grafika <strong>musi być twoją własną twórczością</strong> i musisz mieć możliwość jej publicznego wyświetlania.",
     "s2p2": "Musisz użyć co najmniej jednego z <strong>HDRI/tekstur/modeli Poly Haven</strong> podczas tworzenia grafiki.",
-    "s2p3": "Nagość lub inne treści NSFW nie mogą być akceptowane.",
+    "s2p3": "Nagość lub inne treści NSFW nie będą akceptowane.",
     "s3": "Notatka:",
     "s3p1": "Otrzymujemy <strong>wiele</strong> zgłoszeń, więc niestety możemy akceptować tylko prace najwyższej jakości, aby galeria nie była zaśmiecona.",
-    "s3p2": "Nie chcemy być kolejną stacją ArtStation, ta galeria ma na celu pokazanie, co możesz zrobić z zasobami Poly Haven.",
+    "s3p2": "Nie chcemy być kolejną ArtStation, ta galeria ma na celu pokazanie, co możesz zrobić z zasobami Poly Haven.",
     "s3p3": "Jeśli chcesz poprosić o opinię na temat renderowania przed jego przesłaniem, mamy bardzo pomocną społeczność na<lnk> Niezgoda</lnk> .",
-    "s3p4": "Powiadomimy Cię e-mailem, jeśli Twój render zostanie zaakceptowany lub odrzucony. Może to potrwać dzień lub dwa, ponieważ mamy tendencję do zbiorczego sprawdzania zgłoszeń.",
+    "s3p4": "Powiadomimy Cię e-mailem, jeśli Twoja praca zostanie zaakceptowana lub odrzucona. Może to potrwać dzień lub dwa, ponieważ mamy tendencję do zbiorczego sprawdzania zgłoszeń.",
     "s3p5": "Oto kilka typowych powodów odrzucenia:",
     "s3p5l1": "Rendery nie wymagające dużego nakładu pracy (np. proste testy oświetlenia).",
     "s3p5l2": "Grafika niskiej jakości.",
@@ -48,6 +48,6 @@
     "s3p5l6": "Wiele renderów tego samego projektu (różne kąty kamery lub ustawienia oświetlenia) — <strong>przesyłaj tylko najlepsze rendery dla każdego projektu</strong> , a następnie połącz się ze stroną ArtStation, gdzie użytkownicy mogą znaleźć więcej.",
     "title": "Prześlij swój render"
   },
-  "title": "Galeria renderowania",
-  "using": "za pomocą"
+  "title": "Galeria Prac",
+  "using": "z pomocą"
 }

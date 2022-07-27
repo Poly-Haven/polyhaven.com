@@ -11,7 +11,7 @@
     "year_one": "从现在{{count}}一年",
     "year_other": "从现在开始{{count}}年"
   },
-  "new": "新的",
+  "new": "刚刚发布",
   "past": {
     "day_one": "{{count}}天前",
     "day_other": "{{count}}天前",

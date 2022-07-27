@@ -12,12 +12,12 @@
     "p3": "Wszystkie aktywa tutaj są<lnk> CC0</lnk> , co oznacza, że są praktycznie wolne od praw autorskich i można ich używać w dowolnym celu."
   },
   "help": {
-    "h1": "jak możesz pomóc",
+    "h1": "Jak możesz pomóc",
     "s1": "Wesprzyj nas na Patreon",
     "s1p1": "Jeśli masz jakiś dochód do dyspozycji i chcesz pomóc nam publikować więcej darmowych HDRI, tekstur i modeli 3D, możesz wesprzeć nas niewielką miesięczną darowizną na<lnk> Patreon</lnk> :)",
     "s1p2": "W zamian możemy przekazać Ci drobne podziękowania, takie jak dostęp do folderu w chmurze, który możesz zsynchronizować z dyskiem twardym, aby zawsze mieć pod ręką nasze najnowsze zasoby, lub uwiecznić swoje imię i nazwisko na naszej stronie.",
     "s1p3": "Wykorzystujemy Twoje darowizny bezpośrednio na pokrycie naszych wydatków i finansowanie nowych aktywów, co zostało zweryfikowane przez nasz<lnk> raporty finansowe</lnk> .",
-    "s2": "Przekaż swoje aktywa",
+    "s2": "Przekaż swoje zasoby",
     "s2p1": "Masz najwyższej klasy model 3D, teksturę lub HDRI, którymi chcesz się podzielić ze społecznością? Chętnie opublikujemy to dla Ciebie :)",
     "s2p2": "Mamy ścisły standard jakości do utrzymania, a wszystko, co publikujemy, musi być<lnk1> CC0</lnk1> , ale jeśli Twój zasób zostanie zaakceptowany, skorzysta na nim cała społeczność 3D.<lnk2> Przeczytaj więcej i prześlij swój zasób tutaj</lnk2> .",
     "s3": "Rozgłosić",
@@ -35,7 +35,7 @@
   },
   "title": "O nas / Kontakt",
   "transparency": {
-    "h1": "Przezroczystość",
+    "h1": "Transparentność",
     "li1": "Prowadzimy regularne logi deweloperów<lnk> nasz blog</lnk> podzielić się tym, nad czym ostatnio pracowaliśmy.",
     "li2": "Nasz<lnk> posty na Patreon</lnk> są również dobrym miejscem do wyszukiwania mniejszych aktualizacji i ankiet, gdy potrzebujemy pomocy w podejmowaniu decyzji.",
     "li3": "<lnk>Niezgoda</lnk> to miejsce, w którym spędzamy czas każdego dnia, możesz się przywitać!",

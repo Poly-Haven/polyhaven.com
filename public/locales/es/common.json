@@ -7,7 +7,7 @@
   "Graphic-Design": "Diseño gráfico",
   "HDRIs": "HDRI",
   "Models": "Modelos",
-  "Textures": "texturas",
+  "Textures": "Texturas",
   "also-supported-by": "También apoyado por:",
   "corporate-sponsor_one": "Patrocinador Corporativo",
   "corporate-sponsor_other": "Patrocinadores corporativos",
@@ -15,7 +15,7 @@
   "display-name": "Nombre para mostrar",
   "email-address": "Dirección de correo electrónico",
   "footer": {
-    "thanks": "gracias a nuestro<lnk> Mecenas</lnk> por hacer posible Poly Haven"
+    "thanks": "Gracias a nuestros<lnk> Patrons</lnk> por hacer posible Poly Haven"
   },
   "goal": {
     "complete": "¡Completo!",
@@ -33,10 +33,10 @@
     "api": "API",
     "blog": "Blog",
     "contribute": "Contribuir",
-    "faq": "Preguntas más frecuentes",
+    "faq": "Preguntas frecuentes",
     "finances": "Informes financieros",
     "gallery": "Galería",
-    "home": "Hogar",
+    "home": "Inicio",
     "license": "Licencia",
     "logout": "Cerrar sesión",
     "map": "Mapa mundial HDRI",
@@ -48,10 +48,10 @@
   },
   "optional": "Opcional",
   "patron_one": "Patrón",
-  "patron_other": "Mecenas",
+  "patron_other": "Patrons",
   "please-wait": "Espere por favor...",
   "remove-ads": "Quitar anuncios",
   "required": "Requerido",
-  "tagline": "La biblioteca pública de activos 3D",
+  "tagline": "La biblioteca pública de contenido 3D",
   "visible": "Visible"
 }
