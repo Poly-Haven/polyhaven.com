@@ -49,7 +49,7 @@ const Nav = () => {
       </div>
 
       <div style={{ height: '100%', display: 'flex' }}>
-        <NavItem text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
+        <NavItem compact={true} text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
           {Object.keys(locales).map(l =>
             <NavItem key={l} text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />} link={router.asPath} locale={l} />
           )}

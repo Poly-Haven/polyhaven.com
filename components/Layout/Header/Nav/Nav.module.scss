@@ -123,6 +123,14 @@
   }
 }
 
+.compactNavItemWrapper:hover {
+  .subNav {
+    .navItem {
+      height: 1.3rem;
+    }
+  }
+}
+
 .menuToggle {
   display: none;
   place-items: center;
