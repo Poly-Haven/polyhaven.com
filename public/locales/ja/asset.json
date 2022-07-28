@@ -12,7 +12,7 @@
     "graphic design": "グラフィックデザイン",
     "modeling": "モデリング",
     "photography": "写真撮影",
-    "processing": "処理",
+    "processing": "処理中です。",
     "scanning": "走査"
   },
   "download": "ダウンロード",
@@ -36,7 +36,7 @@
   "similar-assets": "同様の資産",
   "sponsored-by": "主催：",
   "sponsored-by-d": "ここにあなたの名前を追加するには、PatreonでPolyHavenをサポートしてください。",
-  "sponsored-by-none": "まだ誰も:(",
+  "sponsored-by-none": "まだ誰もいません。:(",
   "tags": "タグ",
   "user-renders": "ユーザーレンダリング：",
   "wide": "幅",

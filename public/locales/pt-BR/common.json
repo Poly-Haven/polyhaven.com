@@ -4,15 +4,15 @@
   "Assets": "Ativos",
   "Co-founder": "Cofundador",
   "Director": "Diretor",
-  "Graphic-Design": "Design gráfico",
-  "HDRIs": "HDRI",
+  "Graphic-Design": "Design Gráfico",
+  "HDRIs": "HDRIs",
   "Models": "Modelos",
   "Textures": "Texturas",
   "also-supported-by": "Também apoiado por:",
   "corporate-sponsor_one": "Patrocinador Corporativo",
   "corporate-sponsor_other": "Patrocinadores Corporativos",
   "corporate-sponsors": "Patrocinadores Corporativos",
-  "display-name": "Nome em Exibição",
+  "display-name": "Nome de exibição",
   "email-address": "Endereço de email",
   "footer": {
     "thanks": "Graças ao nosso<lnk> Clientes</lnk> para tornar Poly Haven possível"
@@ -50,7 +50,7 @@
   "patron_one": "Patrono",
   "patron_other": "Clientes",
   "please-wait": "Por favor, espere...",
-  "remove-ads": "Remover propagandas",
+  "remove-ads": "Remover anúncios",
   "required": "Requeridos",
   "tagline": "A Biblioteca Pública de Ativos 3D",
   "visible": "Visível"

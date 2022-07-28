@@ -1,7 +1,7 @@
 {
-  "All Assets": "Усі активи",
-  "All Things": "Всі {{things}}",
-  "Assets": "Активи",
+  "All Assets": "Усі ассети",
+  "All Things": "Усі {{things}}",
+  "Assets": "Ассети",
   "Co-founder": "Співзасновник",
   "Director": "Директор",
   "Graphic-Design": "Графічний дизайн",
@@ -15,7 +15,7 @@
   "display-name": "Відображуване ім'я",
   "email-address": "Адреса електронної пошти",
   "footer": {
-    "thanks": "Завдяки нашим<lnk> Меценати</lnk> за створення Poly Haven"
+    "thanks": "Дякуємо нашим<lnk> Меценатам</lnk> за створення Poly Haven"
   },
   "goal": {
     "complete": "Готово!",
@@ -29,29 +29,29 @@
   "loading": "Завантаження...",
   "missing-invalid": "Відсутній або недійсний",
   "nav": {
-    "about-contact": "Про/Контакт",
+    "about-contact": "Про нас/Контакт",
     "api": "API",
     "blog": "Блог",
     "contribute": "Внести свій внесок",
     "faq": "FAQ",
     "finances": "Фінансові звіти",
     "gallery": "Галерея",
-    "home": "додому",
+    "home": "Додому",
     "license": "Ліцензія",
     "logout": "Вийти",
     "map": "Карта світу HDRI",
     "news": "Новини",
     "privacy": "Конфіденційність",
     "source": "Джерело",
-    "stats": "статистика",
+    "stats": "Стати",
     "support-us": "Підтримайте нас"
   },
   "optional": "Додатково",
   "patron_one": "Меценат",
   "patron_other": "Меценати",
   "please-wait": "Будь ласка, зачекайте...",
-  "remove-ads": "Видалити рекламу",
-  "required": "вимагається",
+  "remove-ads": "Убрати рекламу",
+  "required": "Вимагається",
   "tagline": "Загальнодоступна бібліотека ресурсів 3D",
   "visible": "Видно"
 }

@@ -9,7 +9,7 @@
     "p1": "Jeśli jesteś <lnk>Patronem</lnk> Poly Haven, logując się tutaj, uzyskasz dostęp do swoich nagród bezpośrednio na naszej stronie.",
     "p2": "W zależności od poziomu Twojego wsparcia, nagrody mogą obejmować:"
   },
-  "not-patron": "Wygląda na to że nie jesteś patronem Poly Haven :( Jeśli to nieprawda, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli zbadać Twój problem. Potrzebujemy następujących informacji:",
+  "not-patron": "Wygląda na to że nie jesteś patronem Poly Haven :( Jeśli to nieprawda, proszę <lnk>skontaktuj się z nami</lnk> abyśmy mogli zbadać Twój problem. Potrzebujemy następujących informacji:",
   "not-patron-anymore": "Wygląda na to, że nie jesteś już patronem Poly Haven. W porządku, nadal doceniamy Twoje wcześniejsze wsparcie :D",
   "reward_one": "To zapewnia następujące nagrody:",
   "reward_other": "Zapewnia to następujące nagrody:",
@@ -23,7 +23,7 @@
       "title": "Wzmianka w stopce"
     },
     "early-access": {
-      "p1": "Teraz, gdy jesteś zalogowany,<lnk> Biblioteka zasobów</lnk> będzie zawierać zasoby, które planujemy opublikować w przyszłości.",
+      "p1": "Teraz, gdy jesteś zalogowany, <lnk>Biblioteka zasobów</lnk> będzie zawierać zasoby, które planujemy opublikować w przyszłości.",
       "p2": "Są one oznaczone niebieskim kółkiem i logo Patreon w prawym górnym rogu, w taki sposób :",
       "p3": "Możesz je już pobrać, przed wszystkimi :)",
       "title": "Wczesny dostęp"
@@ -36,8 +36,8 @@
     "offline-access": {
       "p1": "Wpisz swój adres e-mail, aby uzyskać zaproszenie do naszego folderu w chmurze:",
       "p2": "Sprawdź swój email :)",
-      "p3": "Zaproszenie zostało pomyślnie wysłane. Jeśli masz jakiekolwiek problemy lub musisz zmienić adres e-mail konta,<lnk> proszę skontaktuj się z nami</lnk> .",
-      "p4": "Zobacz <lnk> ten post</lnk> aby uzyskać dalsze instrukcje dotyczące konfiguracji Nextcloud, który pozwoli rozpocząć synchronizację zasobów z Twoim komputerem.",
+      "p3": "Zaproszenie zostało pomyślnie wysłane. Jeśli masz jakiekolwiek problemy lub musisz zmienić adres e-mail konta, <lnk>proszę skontaktuj się z nami</lnk>.",
+      "p4": "Zobacz <lnk>ten post</lnk> aby uzyskać dalsze instrukcje dotyczące konfiguracji Nextcloud, który pozwoli rozpocząć synchronizację zasobów z Twoim komputerem.",
       "title": "Dostęp offline"
     },
     "sponsor": {
@@ -56,7 +56,7 @@
     },
     "stakeholder": {
       "p1": "Jako interesant Poly Haven zdobywasz głębszy dostęp do naszych wewnętrznych kanałów komunikacji, aby pomóc nam omówić, nad czym pracować i za czym podążać w trakcie naszej podróży.",
-      "p2": "Jeśli jeszcze się z Tobą nie skontaktowaliśmy, proszę<lnk> skontaktuj się z nami</lnk> abyśmy mogli dać Ci dostęp do naszych kanałów i przedstawić Cię zespołowi.",
+      "p2": "Jeśli jeszcze się z Tobą nie skontaktowaliśmy, proszę <lnk>skontaktuj się z nami</lnk> abyśmy mogli dać Ci dostęp do naszych kanałów i przedstawić Cię zespołowi.",
       "title": "Interesant"
     }
   },

@@ -7,7 +7,7 @@
   "no-results": "結果がありません",
   "no-results-keyword": "別のキーワードを使用してみてください",
   "results": "結果",
-  "search-en": "検索は英語でのみ機能します。申し訳ありません。",
+  "search-en": "検索は英語のみになります。申し訳ありません。",
   "sort": {
     "downloads": "ダウンロード",
     "downloads-d": "すべての時間の合計ダウンロード数。",

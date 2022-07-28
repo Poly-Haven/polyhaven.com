@@ -1,6 +1,6 @@
 {
-  "add": "Fügen Sie Ihre hinzu",
-  "by": "durch",
+  "add": "Füge deine hinzu",
+  "by": "von",
   "description": "Kunstwerke, die von Dutzenden von Benutzern eingereicht und mit unseren Assets erstellt wurden.",
   "submit": {
     "description": "Haben Sie mit einem unserer Assets tolle Kunstwerke erstellt? Zeigen Sie es auf dieser Seite!",
@@ -15,11 +15,11 @@
       "file-size": "JPG unter 1 MB",
       "link": "Verknüpfung",
       "link-d": "Ihre Website/Portfolio oder ein Link zu weiteren Renderings dieses Projekts.",
-      "select-change": "Datei aussuchen...",
+      "select-change": "Datei auswählen ...",
       "software": "Verwendete Software",
       "software-d": "Mit welcher 3D-Software haben Sie Ihr Kunstwerk erstellt?",
       "submit": "Einreichen",
-      "thanks": "Danke für deine Einsendung!",
+      "thanks": "Vielen Dank für deine Einsendung!",
       "thanks-d": "Wir werden Ihr Rendering innerhalb weniger Tage überprüfen und Ihnen die Ergebnisse per E-Mail zusenden.",
       "uploading": "Hochladen ... Bitte warten...",
       "your-email": "Deine E-Mail",
@@ -49,5 +49,5 @@
     "title": "Reichen Sie Ihr Rendering ein"
   },
   "title": "Render-Galerie",
-  "using": "verwenden"
+  "using": "unter Verwendung von"
 }
