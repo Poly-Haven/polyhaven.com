@@ -1,8 +1,9 @@
-import { useTranslation, Trans } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import Fuse from 'fuse.js';
 import useSWR from 'swr';
 import fetcher from 'utils/fetcher';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
@@ -32,6 +33,7 @@ const Grid = (props) => {
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
+  const { locale } = useRouter()
 
   useEffect(() => {  // Handle user loading
     if (uuid) {
@@ -206,7 +208,7 @@ const Grid = (props) => {
                 />
               </Disabled>
             </div>
-            <div className={styles.search}>
+            <div className={styles.search} data-tip={locale !== 'en' ? t('search-en') : null}>
               <MdSearch className={styles.searchIcon} />
               <form onSubmit={submitSearch}>
                 <input

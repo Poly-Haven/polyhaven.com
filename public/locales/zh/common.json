@@ -5,15 +5,15 @@
   "Co-founder": "联合创始人",
   "Director": "导向器",
   "Graphic-Design": "平面设计",
-  "HDRIs": "HDRIs",
+  "HDRIs": "HDRI",
   "Models": "模型",
   "Textures": "贴图",
-  "also-supported-by": "还支持：",
+  "also-supported-by": "还由他们支持：",
   "corporate-sponsor_one": "企业赞助商",
   "corporate-sponsor_other": "企业赞助商",
   "corporate-sponsors": "企业赞助商",
-  "display-name": "显示名称",
-  "email-address": "电子邮件地址",
+  "display-name": "显示名字",
+  "email-address": "电子邮箱地址",
   "footer": {
     "thanks": "感谢我们的<lnk>顾客</lnk>使 Poly Haven 成为可能"
   },
@@ -23,7 +23,7 @@
     "reached": "我们达到了最后一个目标！很快就会有新的东西出现在这里:)",
     "to-go": "$ {{dollars}}去"
   },
-  "hidden": "隐",
+  "hidden": "隐藏",
   "invalid-email": "无效的邮件地址",
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
@@ -52,6 +52,6 @@
   "please-wait": "请稍等...",
   "remove-ads": "移除广告",
   "required": "必需的",
-  "tagline": "公共 3D 资源库",
-  "visible": "可见的"
+  "tagline": "公共3D资源库",
+  "visible": "可见"
 }
