@@ -7,6 +7,11 @@ module.exports = {
     name: "Afrikaans",
     flag: "ZA"
   },
+  ar: {
+    name: "اَلْعَرَبِيَّةُ",
+    flag: "SA",
+    rtl: true
+  },
   zh: {
     name: "中文",
     flag: "CN"
