@@ -213,7 +213,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
             </InfoItem>
 
             {data.info ? <div>
-              <div className={styles.infoText} lang="en">
+              <div className={styles.infoText} lang="en" dir="ltr">
                 <Markdown>{data.info.replace(/\\n/g, '\n')}</Markdown>
               </div>
             </div> : null}

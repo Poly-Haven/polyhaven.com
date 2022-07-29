@@ -7,7 +7,7 @@ const NavItem = ({ text, link, locale, compact, children }) => {
     <div className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''}`}>
       {link ?
         (locale ?
-          <a href={`/${locale}${link}`} className={styles.navItem}>
+          <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem}>
             {text}
           </a> :
           <Link href={link}><a className={styles.navItem}>
