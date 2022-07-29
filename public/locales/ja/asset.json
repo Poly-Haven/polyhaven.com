@@ -3,7 +3,7 @@
   "author-donated": "このアセットは作者によってPolyHavenに自由に寄付されました:)",
   "author_one": "著者",
   "author_other": "著者",
-  "categories": "カテゴリ",
+  "categories": "カテゴリー",
   "cloud-sync": "オフラインアクセス",
   "cloud-sync-d": "月額5ドルでサポートし、クラウドシステムにアクセスして、ライブラリ全体をハードドライブに同期できるようにします。",
   "coming-soon": "近日公開！",
@@ -13,7 +13,7 @@
     "modeling": "モデリング",
     "photography": "写真撮影",
     "processing": "処理中です。",
-    "scanning": "走査"
+    "scanning": "スキャン中"
   },
   "download": "ダウンロード",
   "downloads": "ダウンロード",

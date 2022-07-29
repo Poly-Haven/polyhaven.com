@@ -21,7 +21,7 @@
     "complete": "完成！",
     "current": "当前目标：",
     "reached": "我们达到了最后一个目标！很快就会有新的东西出现在这里:)",
-    "to-go": "$ {{dollars}}去"
+    "to-go": "还需要{{dollars}}美元"
   },
   "hidden": "隐藏",
   "invalid-email": "无效的邮件地址",
@@ -39,7 +39,7 @@
     "home": "首页",
     "license": "许可证",
     "logout": "注销",
-    "map": "HDRI 世界地图",
+    "map": "HDRI世界地图",
     "news": "新闻",
     "privacy": "隐私性",
     "source": "源代码",

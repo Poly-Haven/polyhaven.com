@@ -1,5 +1,5 @@
 {
-  "Clear author": "明確な作者",
+  "Clear author": "作者欄を消去",
   "backplates": "高解像度の背景画像のセットが含まれています。",
   "by-author": "{{author}}による",
   "early-access": "早期アクセス",
@@ -11,7 +11,7 @@
   "sort": {
     "downloads": "ダウンロード",
     "downloads-d": "すべての時間の合計ダウンロード数。",
-    "hot": "熱い",
+    "hot": "人気",
     "hot-d": "1日あたりのダウンロード数。新しいアセットの重みはわずかに高くなっています。",
     "latest": "最新",
     "latest-d": "最近公開されました。",

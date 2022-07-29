@@ -6,12 +6,12 @@
     "description": "Você criou alguma arte incrível usando um de nossos recursos? Mostre-o neste site!",
     "err-asset-limit": "Você não pode selecionar mais do que recursos {{limit}} , escolha apenas os mais proeminentes visíveis em sua renderização.",
     "err-jpg": "A imagem deve ser um JPG",
-    "err-size": "Sua imagem é muito grande, deve ter menos de 1 MB",
+    "err-size": "Sua imagem é muito grande, ela deve ter menos de 1MB",
     "form": {
       "art-name": "Nome da arte",
       "assets": "Recursos usados",
       "assets-d": "Quais HDRIs, texturas ou modelos 3D da Poly Haven você usou?",
-      "file-change": "Alterar arquivo...",
+      "file-change": "Alterar Arquivo...",
       "file-size": "JPG abaixo de 1 MB",
       "link": "Link",
       "link-d": "Seu site/portfólio, ou um link para mais renderizações deste projeto.",
@@ -19,13 +19,13 @@
       "software": "Software usado",
       "software-d": "Qual software 3D você usou para criar sua arte?",
       "submit": "Enviar",
-      "thanks": "Obrigado por se inscrever!",
+      "thanks": "Obrigado por sua submissão!",
       "thanks-d": "Analisaremos sua renderização em alguns dias e enviaremos os resultados por e-mail.",
       "uploading": "Carregando, por favor aguarde...",
       "your-email": "Seu email",
       "your-email-d": "Usado apenas para notificá-lo quando seu trabalho artístico for publicado. Armazenado de forma segura e não compartilhado com ninguém.",
       "your-name": "Seu nome",
-      "your-name-d": "Como você quer ser creditado."
+      "your-name-d": "Como você gostaria de ser creditado."
     },
     "s1p1": "Você criou alguns<lnk> arte incrível</lnk> usando um de nossos ativos? Mostre-o neste site!",
     "s1p2": "Depois de enviar sua renderização, ela será enviada para aprovação. Se gostarmos, ele será exibido na galeria por algumas semanas e também nas páginas dos ativos que você usou para criá-lo.",
@@ -45,9 +45,9 @@
     "s3p5l3": "Nenhum ativo Poly Haven usado.",
     "s3p5l4": "Render muito semelhante de outro artista já presente (por exemplo, renderizações do tipo \"carro no backplate\" com o mesmo backplate).",
     "s3p5l5": "Muitos envios - normalmente aceitamos no máximo 3 imagens diferentes por artista por mês.",
-    "s3p5l6": "Várias renderizações do mesmo projeto (diferentes ângulos de câmera ou configurações de iluminação) - <strong>envie apenas sua melhor renderização para cada projeto</strong> e, em seguida, vincule à sua página ArtStation, onde as pessoas podem encontrar mais.",
+    "s3p5l6": "Várias renderizações do mesmo projeto (diferentes ângulos de câmera ou configurações de iluminação) - <strong>envie apenas sua melhor renderização para cada projeto</strong> e, em seguida, vincule à sua página no ArtStation, onde as pessoas podem encontrar mais.",
     "title": "Envie sua renderização"
   },
-  "title": "Galeria de renderização",
+  "title": "Galeria de Renderizações",
   "using": "usando"
 }

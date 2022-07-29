@@ -26,7 +26,7 @@
       "p1": "Agora que você está logado, o<lnk> Biblioteca de recursos</lnk> incluirá recursos que agendamos para publicar no futuro.",
       "p2": "Eles são marcados por um círculo azul e o logotipo do Patreon no canto superior direito, assim:",
       "p3": "Você já pode baixá-los, antes de todos os outros :)",
-      "title": "Acesso antecipado"
+      "title": "Acesso Antecipado"
     },
     "no-ads": {
       "p1": "Usamos o Google AdSense em polyhaven.com. Para ocultar esses anúncios, basta ativar esta opção:",
@@ -36,7 +36,7 @@
     "offline-access": {
       "p1": "Digite seu endereço de e-mail para enviar a si mesmo um convite para nossa pasta na nuvem:",
       "p2": "Verifique seu e-mail :)",
-      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta,<lnk> Por favor, entre em contato conosco</lnk> .",
+      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta, <lnk> Por favor, entre em contato conosco</lnk>.",
       "p4": "Ver<lnk> esta postagem</lnk> para obter mais instruções sobre como configurar o Nextcloud e começar a sincronizar ativos com seu computador.",
       "title": "Acesso off-line"
     },
