@@ -7,9 +7,9 @@ const NavItem = ({ text, link, locale, compact, children }) => {
     <div className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''}`}>
       {link ?
         (locale ?
-          <Link href={link} locale={locale} prefetch={false}><a className={styles.navItem}>
+          <a href={`/${locale}${link}`} className={styles.navItem}>
             {text}
-          </a></Link> :
+          </a> :
           <Link href={link}><a className={styles.navItem}>
             {text}
           </a></Link>)
