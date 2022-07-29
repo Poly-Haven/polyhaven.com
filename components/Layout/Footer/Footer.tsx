@@ -29,7 +29,9 @@ const footer = () => {
         </div>
       </div>
       <CorporateSponsors header={t('also-supported-by')} />
-      <Button text="Join the ranks, support Poly Haven on Patreon" href="https://www.patreon.com/polyhaven/overview" />
+      <div className={styles.buttonWrapper}>
+        <Button text={t('footer.join-ranks')} href="https://www.patreon.com/polyhaven/overview" />
+      </div>
       <div className={styles.linksWrapper}>
         <a id="social" />
         <div className={styles.links}>

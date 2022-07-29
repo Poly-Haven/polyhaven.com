@@ -3,10 +3,12 @@
 
 #footer {
   background: $c-background-dark;
-  text-align: center;
   padding: 1rem 0;
 
-  h2 a {
+  h2 {
+    text-align: center;
+
+    a {
     color: white;
     box-shadow: 0 1px 0 $c-text-light;
     @include transition;
@@ -15,12 +17,18 @@
       box-shadow: 0 3px 0 $c-accent;
     }
   }
+  }
+}
+
+.buttonWrapper {
+  text-align: center;
 }
 
 .patrons {
   padding: 0 2em 1em;
   font-size: 0.85em;
   line-height: 1.4em;
+  text-align: center;
 
   @media screen and (max-width: 590px) {
     padding: 0 0.3em 1em;
@@ -111,7 +119,7 @@
 
   a {
     color: $c-text-light;
-    text-align: left;
+    // text-align: left;
     padding: 0.5rem;
     @include transition(0.1s);
 
