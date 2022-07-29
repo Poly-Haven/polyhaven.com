@@ -5,7 +5,7 @@ export default class CustomDocument extends Document {
     const gaTrackingID = 'G-D4YXRFPL5Z';
 
     return (
-      <Html>
+      <Html dir={this.props.locale === 'ar' ? 'rtl' : 'ltr'} style={this.props.locale === 'ar' ? { textAlign: 'right' } : null}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
 
