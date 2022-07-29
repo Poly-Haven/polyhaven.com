@@ -6,20 +6,20 @@
     "li2": "Acesso antecipado aos ativos, antes de serem divulgados publicamente.",
     "li3": "Acesso ao nosso serviço em nuvem, para sincronizar todos os nossos ativos em seu disco rígido.",
     "li4": "Patrocine um ativo permanentemente todo mês, mostrando seu nome e link ao lado dos botões de download.",
-    "p1": "Se você é um<lnk> patrono</lnk> da Poly Haven, efetuar login aqui lhe dará acesso às suas recompensas diretamente neste site.",
+    "p1": "Se você é um <lnk>patrono</lnk> da Poly Haven, efetuar login aqui lhe dará acesso às suas recompensas diretamente neste site.",
     "p2": "Dependendo do seu nível de suporte, suas recompensas podem incluir:"
   },
-  "not-patron": "Você não parece ser um patrono de Poly Haven :( se isso estiver incorreto, por favor<lnk> entrar em contato</lnk> para que possamos investigar o problema nesta página. Vamos precisar das seguintes informações:",
-  "not-patron-anymore": "Parece que você não é mais um patrono de Poly Haven. Tudo bem, e agradecemos seu apoio anterior :)",
+  "not-patron": "Você não parece ser um patrono de Poly Haven :( se isso estiver incorreto, por favor <lnk>entrar em contato</lnk> para que possamos investigar o problema nesta página. Vamos precisar das seguintes informações:",
+  "not-patron-anymore": "Parece que você não é mais um patrono do Poly Haven. Tudo bem, e agradecemos seu apoio anterior :)",
   "reward_one": "Isso concede a você a seguinte recompensa:",
   "reward_other": "Isso concede a você as seguintes recompensas:",
   "rewards": {
     "credit": {
       "invalid": "Nome inválido",
       "p1": "Seu nome está atualmente",
-      "p2": "{{hidden}} na lista de usuários no rodapé deste site.",
+      "p2": "{{hidden}} na lista de patronos no rodapé deste site.",
       "p3": "A alteração dessa configuração pode levar algumas horas para atualizar todas as páginas do site.",
-      "p4": "Nome em Exibição:",
+      "p4": "Nome de Exibição:",
       "title": "Crédito de rodapé"
     },
     "early-access": {
@@ -56,7 +56,7 @@
     },
     "stakeholder": {
       "p1": "Como parte interessada da Poly Haven, você obtém acesso mais profundo aos nossos canais de comunicação internos para nos ajudar a discutir em que trabalhar e seguir em nossa jornada.",
-      "p2": "Se ainda não entramos em contato com você, por favor<lnk> entrar em contato</lnk> para que possamos lhe dar acesso a esses canais e apresentá-lo à equipe.",
+      "p2": "Se ainda não entramos em contato com você, por favor <lnk>entre em contato</lnk> para que possamos lhe dar acesso a esses canais e apresentá-lo à equipe.",
       "title": "Parte interessada"
     }
   },

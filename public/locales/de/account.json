@@ -4,9 +4,9 @@
   "login": {
     "li1": "Dauerhafte Entfernung der Anzeigen.",
     "li2": "Früher Zugang zu Assets, bevor sie öffentlich freigegeben werden.",
-    "li3": "Zugriff auf unseren Cloud-Service, um alle unsere Assets mit Ihrer Festplatte zu synchronisieren.",
+    "li3": "Zugang zu unserem Cloud-Service, um alle unsere Assets mit deiner Festplatte zu synchronisieren.",
     "li4": "Sponsere jeden Monat ein Asset und zeige deinen Namen und Link neben den Download-Schaltflächen.",
-    "p1": "Wenn Sie ein<lnk> Patron</lnk> von Poly Haven, wenn Sie sich hier anmelden, erhalten Sie direkt auf dieser Seite Zugriff auf Ihre Prämien.",
+    "p1": "Wenn du ein <lnk>Unterstützer</lnk> von Poly Haven bist, kannst du dich hier einloggen, um deine Belohnungen direkt auf dieser Seite zu erhalten.",
     "p2": "Je nach Unterstützungsstufe kannst du unter anderem folgende Vorteile erhalten:"
   },
   "not-patron": "Du scheinst kein Patreon von Poly Haven zu sein :( Wenn das nicht stimmt, <lnk>kontaktiere uns</lnk> bitte, damit wir das Problem auf dieser Seite untersuchen können. Wir brauchen die folgenden Informationen:",
@@ -16,7 +16,7 @@
   "rewards": {
     "credit": {
       "invalid": "Ungültiger Name",
-      "p1": "Ihr Name ist derzeit",
+      "p1": "Dein Name ist derzeit",
       "p2": "{{hidden}} in der Patreon Liste in der Fußzeile dieser Website.",
       "p3": "Das Ändern dieser Einstellung kann einige Stunden dauern, bis alle Seiten der Website aktualisiert sind.",
       "p4": "Anzeigename:",
@@ -26,10 +26,10 @@
       "p1": "Jetzt, da du angemeldet bist, enthält die <lnk>Asset-Bibliothek</lnk> die Assets, die wir für eine zukünftige Veröffentlichung vorgesehen haben.",
       "p2": "Sie sind durch einen blauen Kreis und das Patreon-Logo oben rechts gekennzeichnet, etwa so:",
       "p3": "Du kannst sie schon jetzt herunterladen, noch vor allen anderen :)",
-      "title": "Früher Zugang"
+      "title": "Vorab Zugang"
     },
     "no-ads": {
-      "p1": "Wir verwenden Google AdSense auf polyhaven.com. Um diese Werbung auszublenden, aktivieren Sie einfach diesen Schalter:",
+      "p1": "Wir verwenden Google AdSense auf polyhaven.com. Um diese Anzeigen auszublenden, aktiviere einfach diesen Schalter:",
       "p2": "Anzeigen sind jetzt:",
       "title": "Keine Werbung"
     },
@@ -37,7 +37,7 @@
       "p1": "Geben Sie Ihre E-Mail-Adresse ein, um sich eine Einladung zu unserem Cloud-Ordner zu schicken:",
       "p2": "Prüfe deine E-Mail :)",
       "p3": "Einladung erfolgreich gesendet. Wenn du Probleme hast oder deine E-Mail-Adresse ändern musst, <lnk>kontaktiere uns bitte</lnk>.",
-      "p4": "Sehen<lnk> dieser Beitrag</lnk> für weitere Anweisungen zum Einrichten von Nextcloud und zum Starten der Synchronisierung von Assets mit Ihrem Computer.",
+      "p4": "In <lnk>diesem Beitrag</lnk> findest du weitere Anweisungen, wie du Nextcloud einrichtest und mit der Synchronisierung von Assets auf deinem Computer beginnst.",
       "title": "Offline-Zugriff"
     },
     "sponsor": {

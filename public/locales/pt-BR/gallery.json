@@ -37,7 +37,7 @@
     "s3": "Observação:",
     "s3p1": "Recebemos <strong>muitos</strong> envios, então, infelizmente, só podemos aceitar obras de arte da mais alta qualidade para evitar que a galeria fique desordenada.",
     "s3p2": "Não estamos tentando ser outro ArtStation, esta galeria é dedicada a mostrar o que você pode fazer com os ativos da Poly Haven.",
-    "s3p3": "Se você gostaria de pedir feedback sobre sua renderização antes de enviá-la, temos uma comunidade muito útil em<lnk> Discórdia</lnk> .",
+    "s3p3": "Se você gostaria de pedir um feedback sobre sua renderização antes de enviá-la, temos uma comunidade muito cooperativa no <lnk>Discord</lnk>.",
     "s3p4": "Notificaremos você por e-mail se sua renderização for aceita ou rejeitada. Isso pode levar um ou dois dias, pois tendemos a analisar os envios em massa.",
     "s3p5": "Aqui estão alguns motivos comuns para a rejeição:",
     "s3p5l1": "Renderizações de baixo esforço (por exemplo, testes de iluminação simples).",
@@ -46,7 +46,7 @@
     "s3p5l4": "Render muito semelhante de outro artista já presente (por exemplo, renderizações do tipo \"carro no backplate\" com o mesmo backplate).",
     "s3p5l5": "Muitos envios - normalmente aceitamos no máximo 3 imagens diferentes por artista por mês.",
     "s3p5l6": "Várias renderizações do mesmo projeto (diferentes ângulos de câmera ou configurações de iluminação) - <strong>envie apenas sua melhor renderização para cada projeto</strong> e, em seguida, vincule à sua página no ArtStation, onde as pessoas podem encontrar mais.",
-    "title": "Envie sua renderização"
+    "title": "Envie Sua Renderização"
   },
   "title": "Galeria de Renderizações",
   "using": "usando"

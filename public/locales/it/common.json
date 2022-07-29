@@ -15,6 +15,7 @@
   "display-name": "Nome da visualizzare",
   "email-address": "Indirizzo e-mail",
   "footer": {
+    "join-ranks": "Unisciti ai ranghi, supporta Poly Haven su Patreon",
     "thanks": "Grazie al nostro<lnk> Patroni</lnk> per aver reso possibile Poly Haven"
   },
   "goal": {

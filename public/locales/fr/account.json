@@ -6,18 +6,18 @@
     "li2": "Accès anticipé aux ressources, avant qu'elles ne soient rendues publiques.",
     "li3": "Accès à notre service cloud, pour synchroniser toutes nos ressources sur votre disque dur.",
     "li4": "Parrainez une ressource de manière permanente chaque mois, en affichant votre nom et votre lien à côté des boutons de téléchargement.",
-    "p1": "Si vous êtes un <lnk>mécène</lnk> de Poly Haven, en vous connectant ici, vous aurez accès à vos récompenses directement sur ce site.",
+    "p1": "Si vous êtes un <lnk>contributeur</lnk> de Poly Haven, en vous connectant ici, vous aurez accès à vos récompenses directement sur ce site.",
     "p2": "En fonction de votre niveau de contribution, vos récompenses peuvent inclure :"
   },
-  "not-patron": "Vous ne semblez pas être un mécène de Poly Haven :( si c'est incorrect, merci <lnk>entrer en contact avec nous</lnk> afin que nous puissions enquêter sur le problème sur cette page. Nous aurons besoin des informations suivantes :",
-  "not-patron-anymore": "Il semble que vous n'êtes plus un mécène de Poly Haven. C'est OK, et nous apprécions votre soutien passé :)",
+  "not-patron": "Vous ne semblez pas être un contributeur de Poly Haven :( si c'est incorrect, merci <lnk>entrer en contact avec nous</lnk> afin que nous puissions enquêter sur le problème sur cette page. Nous aurons besoin des informations suivantes :",
+  "not-patron-anymore": "Il semble que vous n'êtes plus un contributeur de Poly Haven. C'est OK, et nous apprécions votre soutien passé :)",
   "reward_one": "Cela vous accorde la récompense suivante :",
   "reward_other": "Cela vous accorde les récompenses suivantes :",
   "rewards": {
     "credit": {
       "invalid": "Nom invalide",
       "p1": "Votre nom est actuellement",
-      "p2": "{{hidden}} dans la liste des mécènes dans le pied de page de ce site.",
+      "p2": "{{hidden}} dans la liste des contributeurs dans le pied de page de ce site.",
       "p3": "La modification de ce paramètre peut prendre quelques heures pour mettre à jour chaque page du site.",
       "p4": "Nom affiché :",
       "title": "Crédit de pied de page"

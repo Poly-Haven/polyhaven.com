@@ -15,6 +15,7 @@
   "display-name": "Weergavenaam",
   "email-address": "E-mailadres",
   "footer": {
+    "join-ranks": "Sluit je aan bij de gelederen, steun Poly Haven op Patreon",
     "thanks": "Dankzij onze<lnk> Patronen</lnk> voor het mogelijk maken van Poly Haven"
   },
   "goal": {

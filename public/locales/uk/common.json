@@ -15,6 +15,7 @@
   "display-name": "Відображуване ім'я",
   "email-address": "Адреса електронної пошти",
   "footer": {
+    "join-ranks": "Приєднуйтеся до лав, підтримайте Poly Haven на Patreon",
     "thanks": "Дякуємо нашим<lnk> Меценатам</lnk> за створення Poly Haven"
   },
   "goal": {
