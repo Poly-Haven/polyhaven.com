@@ -8,6 +8,7 @@
   border: 1px solid $c-background-light;
   @include drop-shadow;
   flex: 1;
+  max-width: 240px;
 }
 
 .inner {
