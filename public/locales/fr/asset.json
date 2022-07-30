@@ -26,7 +26,7 @@
     "some-software": "pris en charge par certains logiciels 3D.",
     "thumb": "Vignette / Aperçu",
     "thumb-d": "Image miniature utile à utiliser dans votre gestionnaire de ressources.",
-    "tm": "Un aperçu de plage dynamique faible du HDRI. Parfois utile comme aperçu ou pour des utilisations non liées à l'infographie, mais ne l'utilisez pas pour l'éclairage.",
+    "tm": "Un aperçu de faible gamme dynamique du HDRI. Parfois utile comme aperçu ou pour des utilisations non liées à l'infographie, mais ne l'utilisez pas pour l'éclairage.",
     "zip": "Choisissez exactement quels fichiers télécharger."
   },
   "no-files": "Aucun fichier",

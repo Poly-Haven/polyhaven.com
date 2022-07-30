@@ -1,28 +1,28 @@
 {
   "future": {
-    "day_one": "{{count}} اليوم من الآن",
-    "day_other": "{{count}} الأيام من الآن",
-    "hour_one": "{{count}} ساعة من الآن",
-    "hour_other": "{{count}} الساعات من الآن",
-    "month_one": "{{count}} الشهر من الآن",
-    "month_other": "{{count}} الأشهر من الآن",
-    "week_one": "{{count}} الأسبوع من الآن",
-    "week_other": "{{count}} الأسابيع من الآن",
-    "year_one": "{{count}} السنة من الآن",
-    "year_other": "{{count}} السنوات من الآن"
+    "day_one": "من الآن {{count}} ًيوم",
+    "day_other": "أيام من الآن {{count}}",
+    "hour_one": "من الآن {{count}} ساعةً",
+    "hour_other": "ساعات من الآن {{count}}",
+    "month_one": "من الآن {{count}} ًشهر",
+    "month_other": "أشهر من الآن {{count}}",
+    "week_one": "من الآن {{count}} أسبوع",
+    "week_other": "أسابيع من الآن {{count}}",
+    "year_one": "من الآن {{count}} سنةً",
+    "year_other": "سنوات من الآن {{count}}"
   },
   "new": "جديد",
   "past": {
-    "day_one": "{{count}} اليوم الماضي",
-    "day_other": "{{count}} الأيام الماضية",
-    "hour_one": "{{count}} منذ ساعة",
-    "hour_other": "{{count}} منذ ساعات",
-    "month_one": "{{count}} الشهر الماضي",
-    "month_other": "{{count}} منذ أشهر",
-    "week_one": "{{count}} الأسبوع الماضي",
-    "week_other": "{{count}} الأسابيع الماضية",
-    "year_one": "{{count}} العام الماضي",
-    "year_other": "{{count}} منذ سنوات"
+    "day_one": "{{count}} منذ يومً",
+    "day_other": "أيام {{count}} منذ",
+    "hour_one": "{{count}} ًمنذ ساعة",
+    "hour_other": "ساعات {{count}} منذ",
+    "month_one": "{{count}} منذ شهرً",
+    "month_other": "أشهر {{count}} منذ",
+    "week_one": "{{count}} ًمنذ اسبوع",
+    "week_other": "أسابيع {{count}} منذ",
+    "year_one": "{{count}} منذ سنةً",
+    "year_other": "سنوات {{count}} منذ"
   },
   "today": "اليوم"
 }

@@ -1,7 +1,7 @@
 {
-  "All Assets": "Todos os ativos",
+  "All Assets": "Todos os Assets",
   "All Things": "Todas {{things}}",
-  "Assets": "Ativos",
+  "Assets": "Assets",
   "Co-founder": "Cofundador",
   "Director": "Diretor",
   "Graphic-Design": "Design Gráfico",
@@ -16,13 +16,13 @@
   "email-address": "Endereço de email",
   "footer": {
     "join-ranks": "Junte-se às fileiras, apoie a Poly Haven no Patreon",
-    "thanks": "Obrigado aos nossos <lnk>Patronos</lnk> por tornar o Poly Haven possível"
+    "thanks": "Obrigado aos nossos <lnk>Patronos</lnk> por tornar a Poly Haven possível"
   },
   "goal": {
     "complete": "Completo!",
     "current": "Objetivo atual:",
     "reached": "Alcançamos nosso último objetivo! Algo novo deve aparecer aqui em breve :)",
-    "to-go": "$ {{dollars}} para ir"
+    "to-go": "${{dollars}} faltando"
   },
   "hidden": "Escondido",
   "invalid-email": "Endereço de email invalido",
@@ -52,7 +52,7 @@
   "patron_other": "Patronos",
   "please-wait": "Por favor, espere...",
   "remove-ads": "Remover anúncios",
-  "required": "Requeridos",
-  "tagline": "A Biblioteca Pública de Ativos 3D",
+  "required": "Obrigatório",
+  "tagline": "A Biblioteca Pública de Assets 3D",
   "visible": "Visível"
 }
