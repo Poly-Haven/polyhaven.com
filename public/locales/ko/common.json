@@ -15,6 +15,7 @@
   "display-name": "이름 표시하기",
   "email-address": "이메일 주소",
   "footer": {
+    "join-ranks": "대열에 합류하고 Patreon에서 Poly Haven을 지원하세요",
     "thanks": "우리 덕분에<lnk> 후원자</lnk> Poly Haven을 가능하게 하기 위해"
   },
   "goal": {

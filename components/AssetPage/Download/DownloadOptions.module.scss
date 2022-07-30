@@ -64,6 +64,19 @@
       margin-left: -0.2em;
       padding-right: 0.2em;
     }
+
+    &:dir(rtl) {
+      &:last-of-type {
+        border-right: none;
+      }
+      &:first-of-type {
+        border-right: 1px solid rgba($c-accent, 0.5);
+      }
+      svg {
+        margin-right: -0.2em;
+        padding-left: 0.2em;
+      }
+    }
   }
   .checked {
     color: $c-accent;
@@ -96,6 +109,12 @@
       padding-right: 0.5em;
       height: 1.3em;
       margin-left: 0;
+    }
+    &:dir(rtl) {
+      svg {
+        padding-left: 0.5em;
+        margin-right: 0;
+      }
     }
   }
 }

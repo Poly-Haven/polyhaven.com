@@ -118,7 +118,7 @@ const Corporate = (props) => {
             {
               icon: <MdCropFree />,
               color: '#ef5350',
-              text: <><strong>Small white silhouette logo</strong> on the <Link href="/about">About Page</Link>.</>
+              text: <><strong>Small white silhouette logo</strong> on the <Link href="/about-contact">About Page</Link>.</>
             },
             ...commonRewards
           ]}
@@ -139,7 +139,7 @@ const Corporate = (props) => {
             {
               icon: <MdCropFree />,
               color: '#ef5350',
-              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about">About Page</Link>.</>
+              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
             },
             ...commonRewards
           ]}
@@ -165,7 +165,7 @@ const Corporate = (props) => {
             {
               icon: <MdCropFree />,
               color: '#ef5350',
-              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about">About Page</Link>.</>
+              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
             },
             ...commonRewards
           ]}

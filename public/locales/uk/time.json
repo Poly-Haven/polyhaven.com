@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} через день",
+    "day_other": "{{count}} через декілька днів",
+    "hour_one": "{{count}} через годину",
+    "hour_other": "{{count}} через декілька годин",
+    "month_one": "{{count}} через місяць",
+    "month_other": "{{count}} через декілька місяців",
+    "week_one": "{{count}} через тиждень",
+    "week_other": "{{count}} через декілька тижднів",
+    "year_one": "{{count}} через рік",
+    "year_other": "{{count}} через декілька років"
+  },
+  "new": "Новий",
+  "past": {
+    "day_one": "{{count}} день тому",
+    "day_other": "{{count}} декілька днів тому",
+    "hour_one": "{{count}} годину тому",
+    "hour_other": "{{count}} декілька годин тому",
+    "month_one": "{{count}} місяць тому",
+    "month_other": "{{count}} декілька місяців тому",
+    "week_one": "{{count}} тиждень тому",
+    "week_other": "{{count}} дукілька тижнів тому",
+    "year_one": "{{count}} рік тому",
+    "year_other": "{{count}} декілька років тому"
+  },
+  "today": "Сьогодні"
+}

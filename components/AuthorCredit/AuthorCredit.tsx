@@ -36,6 +36,15 @@ const AuthorCredit = ({ id, size, credit }) => {
 
   const assetLink = `/all?a=${id}`
 
+  let creditStr = ""
+  if (credit) {
+    creditStr = t(`credits.${credit.trim().toLowerCase()}`)
+    if (creditStr.startsWith('credits.')) {
+      creditStr = creditStr.substring(8)
+    }
+    creditStr = titleCase(creditStr)
+  }
+
   return (
     <div className={styles.author}>
       <Link href={assetLink} prefetch={false}>
@@ -50,7 +59,7 @@ const AuthorCredit = ({ id, size, credit }) => {
         <Link href={assetLink} prefetch={false}>
           <a><strong>{id}</strong></a>
         </Link>
-        {credit ? <span className={styles.credit}>{titleCase(t(`credits.${credit.trim().toLowerCase()}`))}</span> : ""}
+        {credit ? <span className={styles.credit}>{creditStr}</span> : ""}
         <div className={styles.links}>
           {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
           {email ? <a href={`mailto:${email}`} target="_blank" rel="noopener"><MdMail /></a> : ""}

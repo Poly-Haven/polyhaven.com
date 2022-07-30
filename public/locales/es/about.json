@@ -1,13 +1,13 @@
 {
   "contact": {
     "h1": "Contacto",
-    "p1": "¿Tienes una pregunta? Por favor, lea el<lnk> Preguntas más frecuentes</lnk> primero :)",
+    "p1": "¿Tienes una pregunta? Por favor, lea la página de<lnk> preguntas frecuentes</lnk> primero :)",
     "p2": "La forma más fácil de ponerse en contacto con nosotros es a través del correo electrónico (<lnk1> info@polyhaven.com</lnk1> ) o en<lnk2> Discordia</lnk2> ."
   },
   "description": "Qué es Poly Haven, qué hacemos y por qué lo hacemos.",
   "greeting": {
     "h1": "¡Hola!",
-    "p1": "Poly Haven es una biblioteca de activos públicos seleccionada para artistas de efectos visuales y diseñadores de juegos, que proporciona activos 3D útiles de alta calidad de una manera fácil de obtener.",
+    "p1": "Poly Haven es una biblioteca de contenido público seleccionada para artistas de efectos visuales y diseñadores de videojuegos, que proporciona contenido 3D útiles de alta calidad de una manera fácil de obtener.",
     "p2": "No se requieren muros de pago, cuentas o formularios de correo electrónico, simplemente descargue un activo y utilícelo sin preocupaciones.",
     "p3": "Todos los activos aquí son<lnk> CC0</lnk> , lo que significa que están prácticamente libres de derechos de autor y puedes usarlos absolutamente para cualquier propósito."
   },

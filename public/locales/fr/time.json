@@ -1,28 +1,28 @@
 {
   "future": {
-    "day_one": "{{count}} les jours à partir de maintenant",
+    "day_one": "{{count}} jour à partir de maintenant",
     "day_other": "{{count}} jours à partir de maintenant",
     "hour_one": "{{count}} heure à partir de maintenant",
     "hour_other": "{{count}} heures à partir de maintenant",
     "month_one": "{{count}} mois à partir de maintenant",
     "month_other": "{{count}} mois à partir de maintenant",
-    "week_one": "{{count}} la semaine à partir de maintenant",
+    "week_one": "{{count}} semaine à partir de maintenant",
     "week_other": "{{count}} semaines à partir de maintenant",
-    "year_one": "{{count}} année à partir de maintenant",
-    "year_other": "{{count}} années à partir de maintenant"
+    "year_one": "{{count}} an à partir de maintenant",
+    "year_other": "{{count}} ans à partir de maintenant"
   },
   "new": "Nouveau",
   "past": {
-    "day_one": "{{count}} le jour il y a",
-    "day_other": "{{count}} jours il y a",
-    "hour_one": "{{count}} il y a une heure",
-    "hour_other": "{{count}} heures il y a",
-    "month_one": "{{count}} mois il y a",
-    "month_other": "{{count}} mois il y a",
-    "week_one": "{{count}} il y a une semaine",
-    "week_other": "{{count}} semaines il y a",
-    "year_one": "{{count}} année passée",
-    "year_other": "{{count}} les années"
+    "day_one": "Il y a {{count}} jour",
+    "day_other": "Il y a {{count}} jours",
+    "hour_one": "Il y a {{count}} heure",
+    "hour_other": "Il y a {{count}} heures",
+    "month_one": "Il y a {{count}} mois",
+    "month_other": "Il y a {{count}} mois",
+    "week_one": "Il y a {{count}} semaine",
+    "week_other": "Il y a {{count}} semaines",
+    "year_one": "Il y a {{count}} an",
+    "year_other": "Il y a {{count}} ans"
   },
   "today": "Aujourd'hui"
 }

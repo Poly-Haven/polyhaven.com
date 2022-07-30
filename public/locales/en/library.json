@@ -20,5 +20,6 @@
   "by-author": "by {{author}}",
   "new": "New!",
   "backplates": "Includes a set of high-res background images.",
-  "early-access": "Early Access"
+  "early-access": "Early Access",
+  "search-en": "Search only works in English, sorry!"
 }

@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} dag vanaf nu",
+    "day_other": "{{count}} dagen vanaf nu",
+    "hour_one": "{{count}} uur vanaf nu",
+    "hour_other": "{{count}} uren vanaf nu",
+    "month_one": "{{count}} maand vanaf nu",
+    "month_other": "{{count}} maanden vanaf nu",
+    "week_one": "{{count}} week vanaf nu",
+    "week_other": "{{count}} weken vanaf nu",
+    "year_one": "{{count}} jaar vanaf nu",
+    "year_other": "{{count}} jaren vanaf nu"
+  },
+  "new": "Nieuw",
+  "past": {
+    "day_one": "{{count}} dag geleden",
+    "day_other": "{{count}} dagen geleden",
+    "hour_one": "{{count}} uur geleden",
+    "hour_other": "{{count}} uren geleden",
+    "month_one": "{{count}} maand geleden",
+    "month_other": "{{count}} maanden geleden",
+    "week_one": "{{count}} week geleden",
+    "week_other": "{{count}} weken geleden",
+    "year_one": "{{count}} jaar geleden",
+    "year_other": "{{count}} jaren geleden"
+  },
+  "today": "Vandaag"
+}

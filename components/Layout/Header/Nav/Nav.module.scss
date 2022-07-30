@@ -56,9 +56,22 @@
   svg {
     font-size: 1.3em;
   }
+
+  .assetType{
+    @include flex(row, true);
+    gap: 0.5em;
+    margin-left: -0.3rem;
+
+    img {
+      width: 2em;
+    }
+  }
 }
 
 .subNav {
+  @include flex(column);
+  flex-wrap: wrap-reverse;
+  max-height: 85vh;
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -70,16 +83,28 @@
   @include transition();
 
   .navItem {
-    padding: 0.3rem 0.8rem;
+    padding: 0.3em 0.8em;
     border-bottom: 1px solid $c-background;
+    background: $c-background-dark;
     border-left: none;
     height: 0;
     overflow: clip;
     @include transition();
 
+    &:hover {
+      background: $c-accent;
+      color: white;
+    }
+
     &:last-of-type {
       border-bottom: none;
     }
+  }
+
+  hr {
+    width: 100%;
+    margin: 0;
+    background: $c-background-dark;
   }
 }
 
@@ -94,6 +119,14 @@
       .navItem {
         height: 2rem;
       }
+    }
+  }
+}
+
+.compactNavItemWrapper:hover {
+  .subNav {
+    .navItem {
+      height: 1.3rem;
     }
   }
 }

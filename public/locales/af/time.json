@@ -9,18 +9,18 @@
     "week_one": "{{count}} week van nou af",
     "week_other": "{{count}} weke van nou af",
     "year_one": "{{count}} jaar van nou af",
-    "year_other": "{{count}} jare van nou af"
+    "year_other": "{{count}} jaar van nou af"
   },
   "new": "Nuut",
   "past": {
     "day_one": "{{count}} dag gelede",
     "day_other": "{{count}} dae gelede",
     "hour_one": "{{count}} uur gelede",
-    "hour_other": "ure gelede {{count}}",
+    "hour_other": "{{count}} ure gelede ",
     "month_one": "{{count}} maand gelede",
-    "month_other": "maande gelede {{count}}",
+    "month_other": "{{count}} maande gelede ",
     "week_one": "week gelede {{count}}",
-    "week_other": "weke gelede {{count}}",
+    "week_other": "{{count}} weke gelede ",
     "year_one": "jaar gelede {{count}}",
     "year_other": "jaar gelede {{count}}"
   },

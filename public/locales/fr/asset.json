@@ -1,18 +1,18 @@
 {
   "add-yours": "Ajoutez le vôtre",
-  "author-donated": "Cet actif a été donné gratuitement à Poly Haven par l'auteur :)",
+  "author-donated": "Cette ressource a été donné gratuitement à Poly Haven par son auteur :)",
   "author_one": "Auteur",
   "author_other": "Auteurs",
   "categories": "Catégories",
   "cloud-sync": "Accès hors ligne",
-  "cloud-sync-d": "Soutenez-nous avec 5 $ par mois et recevez un accès à notre système cloud, vous permettant de synchroniser l'intégralité de notre bibliothèque sur votre disque dur.",
+  "cloud-sync-d": "Soutenez-nous avec 5$ par mois et recevez un accès à notre système cloud, vous permettant de synchroniser l'intégralité de notre bibliothèque sur votre disque dur.",
   "coming-soon": "À venir!",
-  "coming-soon-d": "Les contributeurs de {{tier}} se connectent pour télécharger plus tôt",
+  "coming-soon-d": "Contributeurs au rang {{tier}}, connectez-vous pour télécharger plus tôt",
   "credits": {
     "graphic design": "conception graphique",
-    "modeling": "la modélisation",
-    "photography": "la photographie",
-    "processing": "En traitement",
+    "modeling": "modélisation",
+    "photography": "photographie",
+    "processing": "traitement",
     "scanning": "balayage"
   },
   "download": "Télécharger",
@@ -26,19 +26,19 @@
     "some-software": "pris en charge par certains logiciels 3D.",
     "thumb": "Vignette / Aperçu",
     "thumb-d": "Image miniature utile à utiliser dans votre gestionnaire de ressources.",
-    "tm": "Un aperçu de plage dynamique faible du HDRI. Parfois utile comme aperçu ou pour des utilisations non liées à l'infographie, mais ne l'utilisez pas pour l'éclairage.",
-    "zip": "Choisissez exactement les fichiers à télécharger."
+    "tm": "Un aperçu de faible gamme dynamique du HDRI. Parfois utile comme aperçu ou pour des utilisations non liées à l'infographie, mais ne l'utilisez pas pour l'éclairage.",
+    "zip": "Choisissez exactement quels fichiers télécharger."
   },
   "no-files": "Aucun fichier",
   "no-files-d": "Essayez d'actualiser, sinon veuillez nous le signaler.",
-  "no-renders": "Aucun pour le moment,<lnk> ajoutez le vôtre</lnk> .",
+  "no-renders": "Aucun pour le moment,<lnk> ajoutez le vôtre</lnk>.",
   "nor-standard": "Norme de carte normale :",
-  "similar-assets": "Actifs similaires",
-  "sponsored-by": "Sponsorisé par:",
+  "similar-assets": "Ressources similaires",
+  "sponsored-by": "Sponsorisé par :",
   "sponsored-by-d": "Soutenez Poly Haven sur Patreon pour ajouter votre nom ici.",
-  "sponsored-by-none": "encore personne :(",
+  "sponsored-by-none": "Personne pour le moment :(",
   "tags": "Mots clés",
-  "user-renders": "Rendus utilisateur :",
+  "user-renders": "Rendus d'utilisateurs :",
   "wide": "large",
-  "zip-choose": "Choisissez le contenu ZIP :"
+  "zip-choose": "Choisissez le contenu du ZIP :"
 }

@@ -7,6 +7,11 @@ module.exports = {
     name: "Afrikaans",
     flag: "ZA"
   },
+  ar: {
+    name: "اَلْعَرَبِيَّةُ",
+    flag: "SA",
+    rtl: true
+  },
   zh: {
     name: "中文",
     flag: "CN"
@@ -15,6 +20,10 @@ module.exports = {
     name: "Deutsch",
     flag: 'DE'
   },
+  en: {
+    name: "English",
+    flag: "GB"
+  },
   es: {
     name: "Español",
     flag: 'ES'
@@ -22,10 +31,6 @@ module.exports = {
   fr: {
     name: "Français",
     flag: 'FR'
-  },
-  en: {
-    name: "English",
-    flag: "GB"
   },
   it: {
     name: "Italiano",
@@ -39,6 +44,10 @@ module.exports = {
     name: "한국어",
     flag: 'KR'
   },
+  pl: {
+    name: "Polish",
+    flag: 'PL'
+  },
   "pt-BR": {
     name: "Português (BR)",
     flag: 'BR'
@@ -46,5 +55,9 @@ module.exports = {
   ru: {
     name: "Русский",
     flag: 'RU'
+  },
+  uk: {
+    name: "українська",
+    flag: 'UA'
   },
 }

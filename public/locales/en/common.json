@@ -51,6 +51,7 @@
     "logout": "Logout"
   },
   "footer": {
-    "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible"
+    "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible",
+    "join-ranks": "Join the ranks, support Poly Haven on Patreon"
   }
 }

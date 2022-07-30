@@ -26,9 +26,9 @@ const Nav = () => {
     <>
       <div className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`} onClick={() => { setToggle(true) }}>
         <NavItem text={t('common:Assets')} link="/all">
-          <NavItem text={t('common:HDRIs')} link="/hdris" />
-          <NavItem text={t('common:Textures')} link="/textures" />
-          <NavItem text={t('common:Models')} link="/models" />
+          <NavItem text={<span className={styles.assetType}><img src="/icons/a_hdris.png" /> {t('common:HDRIs')}</span>} link="/hdris" />
+          <NavItem text={<span className={styles.assetType}><img src="/icons/a_textures.png" /> {t('common:Textures')}</span>} link="/textures" />
+          <NavItem text={<span className={styles.assetType}><img src="/icons/a_models.png" /> {t('common:Models')}</span>} link="/models" />
         </NavItem>
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
         <NavItem text={t('common:nav.support-us')} link="https://www.patreon.com/polyhaven/overview" />
@@ -49,7 +49,7 @@ const Nav = () => {
       </div>
 
       <div style={{ height: '100%', display: 'flex' }}>
-        <NavItem text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
+        <NavItem compact={true} text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
           {Object.keys(locales).map(l =>
             <NavItem key={l} text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />} link={router.asPath} locale={l} />
           )}

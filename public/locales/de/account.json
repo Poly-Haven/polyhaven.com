@@ -1,65 +1,65 @@
 {
   "account": "Konto",
-  "hi": "Hi",
+  "hi": "Hallo",
   "login": {
-    "li1": "Dauerhaftes Entfernen von Anzeigen.",
-    "li2": "Frühzeitiger Zugriff auf Assets, bevor sie öffentlich freigegeben werden.",
-    "li3": "Zugriff auf unseren Cloud-Service, um alle unsere Assets mit Ihrer Festplatte zu synchronisieren.",
-    "li4": "Sponsern Sie jeden Monat dauerhaft ein Asset und zeigen Sie Ihren Namen und Link neben den Download-Schaltflächen an.",
-    "p1": "Wenn Sie ein<lnk> Patron</lnk> von Poly Haven, wenn Sie sich hier anmelden, erhalten Sie direkt auf dieser Seite Zugriff auf Ihre Prämien.",
-    "p2": "Abhängig von Ihrer Supportstufe können Ihre Prämien Folgendes umfassen:"
+    "li1": "Dauerhafte Entfernung der Anzeigen.",
+    "li2": "Früher Zugang zu Assets, bevor sie öffentlich freigegeben werden.",
+    "li3": "Zugang zu unserem Cloud-Service, um alle unsere Assets mit deiner Festplatte zu synchronisieren.",
+    "li4": "Sponsere jeden Monat ein Asset und zeige deinen Namen und Link neben den Download-Schaltflächen.",
+    "p1": "Wenn du ein <lnk>Unterstützer</lnk> von Poly Haven bist, kannst du dich hier einloggen, um deine Belohnungen direkt auf dieser Seite zu erhalten.",
+    "p2": "Je nach Unterstützungsstufe kannst du unter anderem folgende Vorteile erhalten:"
   },
-  "not-patron": "Sie scheinen kein Patron von Poly Haven zu sein :( falls das nicht stimmt, bitte<lnk> in Kontakt kommen</lnk> damit wir das Problem auf dieser Seite untersuchen können. Wir benötigen die folgenden Informationen:",
-  "not-patron-anymore": "Anscheinend bist du kein Patron mehr von Poly Haven. Das ist in Ordnung, und wir schätzen Ihre bisherige Unterstützung :)",
-  "reward_one": "Dadurch erhältst du folgende Belohnung:",
-  "reward_other": "Dadurch erhältst du folgende Belohnungen:",
+  "not-patron": "Du scheinst kein Patreon von Poly Haven zu sein :( Wenn das nicht stimmt, <lnk>kontaktiere uns</lnk> bitte, damit wir das Problem auf dieser Seite untersuchen können. Wir brauchen die folgenden Informationen:",
+  "not-patron-anymore": "Es sieht so aus, als ob du nicht länger ein Patreon von Poly Haven bist. Das ist OK, und wir schätzen deine bisherige Unterstützung :)",
+  "reward_one": "Dafür erhältst du die folgende Belohnung:",
+  "reward_other": "Dadurch erhältst du die folgenden Vorteile:",
   "rewards": {
     "credit": {
       "invalid": "Ungültiger Name",
-      "p1": "Ihr Name ist derzeit",
-      "p2": "{{hidden}} in der Gönnerliste im Footer dieser Seite.",
+      "p1": "Dein Name ist derzeit",
+      "p2": "{{hidden}} in der Patreon Liste in der Fußzeile dieser Website.",
       "p3": "Das Ändern dieser Einstellung kann einige Stunden dauern, bis alle Seiten der Website aktualisiert sind.",
       "p4": "Anzeigename:",
-      "title": "Fußzeilenkredit"
+      "title": "Erwähnung in der Fußzeile"
     },
     "early-access": {
-      "p1": "Nachdem Sie sich angemeldet haben, wird die<lnk> Asset-Bibliothek</lnk> enthält Assets, die wir für die Zukunft veröffentlichen möchten.",
+      "p1": "Jetzt, da du angemeldet bist, enthält die <lnk>Asset-Bibliothek</lnk> die Assets, die wir für eine zukünftige Veröffentlichung vorgesehen haben.",
       "p2": "Sie sind durch einen blauen Kreis und das Patreon-Logo oben rechts gekennzeichnet, etwa so:",
-      "p3": "Sie können sie bereits herunterladen, vor allen anderen :)",
-      "title": "Früher Zugang"
+      "p3": "Du kannst sie schon jetzt herunterladen, noch vor allen anderen :)",
+      "title": "Vorab Zugang"
     },
     "no-ads": {
-      "p1": "Wir verwenden Google AdSense auf polyhaven.com. Um diese Werbung auszublenden, aktivieren Sie einfach diesen Schalter:",
+      "p1": "Wir verwenden Google AdSense auf polyhaven.com. Um diese Anzeigen auszublenden, aktiviere einfach diesen Schalter:",
       "p2": "Anzeigen sind jetzt:",
       "title": "Keine Werbung"
     },
     "offline-access": {
-      "p1": "Geben Sie Ihre E-Mail-Adresse ein, um sich selbst eine Einladung zu unserem Cloud-Ordner zu senden:",
-      "p2": "Überprüfen Sie Ihren Posteingang :)",
-      "p3": "Einladung erfolgreich gesendet. Wenn Sie Probleme haben oder die E-Mail-Adresse Ihres Kontos ändern müssen,<lnk> bitte kontaktieren Sie uns</lnk> .",
-      "p4": "Sehen<lnk> dieser Beitrag</lnk> für weitere Anweisungen zum Einrichten von Nextcloud und zum Starten der Synchronisierung von Assets mit Ihrem Computer.",
+      "p1": "Geben Sie Ihre E-Mail-Adresse ein, um sich eine Einladung zu unserem Cloud-Ordner zu schicken:",
+      "p2": "Prüfe deine E-Mail :)",
+      "p3": "Einladung erfolgreich gesendet. Wenn du Probleme hast oder deine E-Mail-Adresse ändern musst, <lnk>kontaktiere uns bitte</lnk>.",
+      "p4": "In <lnk>diesem Beitrag</lnk> findest du weitere Anweisungen, wie du Nextcloud einrichtest und mit der Synchronisierung von Assets auf deinem Computer beginnst.",
       "title": "Offline-Zugriff"
     },
     "sponsor": {
-      "p1": "Sie können jeden Monat ein Asset auswählen, um Ihren Namen und einen Link dauerhaft daneben zu kleben. Dazu arbeiten wir mit einem System von „Tokens“.",
-      "p2": "Zu Beginn jedes Monats, nachdem deine Zahlung von Patreon bearbeitet wurde, erhältst du automatisch eine<ticket /> <b>Sponsor-Token</b> .",
+      "p1": "Du kannst dir jeden Monat ein Asset aussuchen, auf das du deinen Namen und einen Link dauerhaft setzen kannst. Zu diesem Zweck arbeiten wir mit einem System von \"Token\".",
+      "p2": "Zu Beginn eines jeden Monats, nachdem deine Zahlung von Patreon verarbeitet wurde, erhältst du automatisch einen <ticket /> <b>Sponsor Token</b>.",
       "p3": "Es gibt zwei Möglichkeiten, diesen Token auszugeben:",
-      "p3li1": "Indem Sie die Seite des Assets besuchen, das Sie sponsern möchten, und auf \"<ticket /> Diesen Inhalt sponsern\" auf der rechten Seite der Seite.",
-      "p3li2": "Oder Sie können unten das automatische Sponsoring aktivieren, das jeden Monat ein zufälliges Asset für Sie auswählt.",
-      "p4": "Token verfallen nicht, sodass Sie nach einigen Monaten wiederkommen und Ihre angesammelten Token ausgeben können.",
-      "p5": "Sobald ein Token ausgegeben wurde, kann es nicht widerrufen oder auf einen anderen Vermögenswert verschoben werden.",
-      "p6": "Jeden Monat ein zufälliges Asset automatisch sponsern:",
-      "p7": "Am 15. Tag jedes Monats werden alle verfügbaren Token, die Sie haben, für zufällige Vermögenswerte ausgegeben. Dies gibt Ihnen 15 Tage Zeit, um Ihre Token manuell auszugeben, wenn Sie möchten.",
-      "p8": "Wenn Sie benachrichtigt werden möchten, wenn ein Asset automatisch für Sie ausgewählt wird, geben Sie bitte unten Ihre E-Mail-Adresse ein:",
-      "p9": "Um Benachrichtigungen abzubestellen, löschen Sie oben Ihre E-Mail-Adresse und klicken Sie auf die Schaltfläche Speichern.",
+      "p3li1": "Öffne die Seite des Assets, das du sponsern möchtest, und klicke auf die Schaltfläche \"<Ticket /> Dieses Asset sponsern\" rechts auf der Seite.",
+      "p3li2": "Oder du kannst unten automatische Patenschaften einschalten, die jeden Monat ein zufälliges Asset für dich auswählen.",
+      "p4": "Die Token verfallen nicht, du kannst also nach ein paar Monaten wiederkommen und deine gesammelten Token ausgeben.",
+      "p5": "Sobald ein Token ausgegeben wurde, kann er nicht mehr widerrufen oder auf einen anderes Asset übertragen werden.",
+      "p6": "Automatisches Sponsoring eines zufälligen Assets jeden Monat:",
+      "p7": "Am 15. eines jeden Monats werden alle verfügbaren Token für zufällige Assets ausgegeben. So hast du 15 Tage Zeit, deine Token manuell auszugeben, wenn du das möchtest.",
+      "p8": "Wenn du benachrichtigt werden möchtest, wenn ein Asset automatisch für dich ausgewählt wird, gib bitte unten deine E-Mail-Adresse ein:",
+      "p9": "Um die Benachrichtigungen abzubestellen, lösche deine E-Mail-Adresse oben und klicke auf die Schaltfläche \"Speichern\".",
       "title": "Sponsor"
     },
     "stakeholder": {
-      "p1": "Als Stakeholder von Poly Haven erhalten Sie tieferen Zugang zu unseren internen Kommunikationskanälen, um uns dabei zu helfen, zu besprechen, woran wir arbeiten und unsere Reise verfolgen können.",
-      "p2": "Falls wir Sie noch nicht kontaktiert haben, bitte<lnk> in Kontakt kommen</lnk> damit wir Ihnen Zugang zu diesen Kanälen gewähren und Ihnen das Team vorstellen können.",
-      "title": "Interessengruppen"
+      "p1": "Als Interessenvertreter von Poly Haven erhältst du umfassenderen Zugang zu unseren internen Kommunikationskanälen, um mit uns zu besprechen, woran wir arbeiten müssen, und unseren Kurs mitzuverfolgen.",
+      "p2": "Falls wir dich noch nicht kontaktiert haben, nimm bitte <lnk>Kontakt mit uns auf</lnk>, damit wir dir Zugang zu diesen Kanälen geben und dich dem Team vorstellen können.",
+      "title": "Interessensvertreter"
     }
   },
-  "support-amount": "Sie unterstützen derzeit Poly Haven mit einem {{amount}} in Höhe von $ pro Monat, danke!",
-  "title": "Einloggen"
+  "support-amount": "Du unterstützt Poly Haven derzeit mit ${{amount}} pro Monat, vielen Dank!",
+  "title": "Anmelden"
 }

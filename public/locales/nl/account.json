@@ -1,0 +1,65 @@
+{
+  "account": "Account",
+  "hi": "Hoi",
+  "login": {
+    "li1": "Permanente verwijdering van advertenties.",
+    "li2": "Vroegtijdige toegang tot activa, voordat ze openbaar worden vrijgegeven.",
+    "li3": "Toegang tot onze cloudservice om al onze assets te synchroniseren met uw harde schijf.",
+    "li4": "Sponsor elke maand permanent een asset, met uw naam en link naast de downloadknoppen.",
+    "p1": "Als je een<lnk> patroon</lnk> van Poly Haven, als u hier inlogt, krijgt u direct op deze site toegang tot uw beloningen.",
+    "p2": "Afhankelijk van uw ondersteuningsniveau kunnen uw beloningen het volgende omvatten:"
+  },
+  "not-patron": "U lijkt geen beschermheer van Poly Haven te zijn :( als dit onjuist is, alstublieft<lnk> neem contact op</lnk> zodat we het probleem op deze pagina kunnen onderzoeken. We hebben de volgende informatie nodig:",
+  "not-patron-anymore": "Het lijkt erop dat je niet langer een beschermheer van Poly Haven bent. Dat is OK, en we waarderen uw eerdere steun :)",
+  "reward_one": "Dit levert je de volgende beloning op:",
+  "reward_other": "Dit levert je de volgende beloningen op:",
+  "rewards": {
+    "credit": {
+      "invalid": "Ongeldige naam",
+      "p1": "Je naam is momenteel",
+      "p2": "{{hidden}} in de klantenlijst in de voettekst van deze site.",
+      "p3": "Het wijzigen van deze instelling kan enkele uren duren om elke pagina van de site bij te werken.",
+      "p4": "Weergavenaam:",
+      "title": "Voettekst tegoed"
+    },
+    "early-access": {
+      "p1": "Nu u bent ingelogd, wordt de<lnk> Activabibliotheek</lnk> zullen items bevatten die we in de toekomst zullen publiceren.",
+      "p2": "Ze zijn gemarkeerd door een blauwe cirkel en het Patreon-logo in de rechterbovenhoek, zoals dit:",
+      "p3": "Je kunt ze nu al downloaden, voor iedereen :)",
+      "title": "Vroege toegang"
+    },
+    "no-ads": {
+      "p1": "We gebruiken Google AdSense op polyhaven.com. Schakel deze schakelaar in om deze advertenties te verbergen:",
+      "p2": "Advertenties zijn nu:",
+      "title": "Geen advertenties"
+    },
+    "offline-access": {
+      "p1": "Voer uw e-mailadres in om uzelf een uitnodiging voor onze cloudmap te sturen:",
+      "p2": "Check je e-mail :)",
+      "p3": "Uitnodiging succesvol verzonden. Als u problemen ondervindt of het e-mailadres van uw account moet wijzigen,<lnk> Gelieve ons te contacteren</lnk> .",
+      "p4": "Zien<lnk> deze post</lnk> voor verdere instructies over het instellen van Nextcloud en het synchroniseren van middelen met uw computer.",
+      "title": "Offline toegang"
+    },
+    "sponsor": {
+      "p1": "Je mag elke maand een item kiezen om je naam en een link naast permanent te plakken. Hiervoor werken we met een systeem van \"tokens\".",
+      "p2": "Aan het begin van elke maand nadat uw betaling door Patreon is verwerkt, ontvangt u er automatisch een<ticket /> <b>Sponsortoken</b> .",
+      "p3": "Er zijn twee manieren om deze token te besteden:",
+      "p3li1": "Door naar de pagina van het item dat u wilt sponsoren te gaan en op de \"<ticket /> Sponsor dit item\" aan de rechterkant van de pagina.",
+      "p3li2": "Of u kunt hieronder automatische sponsoring inschakelen, die elke maand een willekeurig item voor u kiest.",
+      "p4": "Tokens verlopen niet, dus u kunt na een paar maanden terugkomen en uw verzamelde tokens uitgeven.",
+      "p5": "Als een token eenmaal is uitgegeven, kan deze niet worden ingetrokken of naar een ander activum worden verplaatst.",
+      "p6": "Elke maand automatisch een willekeurig item sponsoren:",
+      "p7": "Op de 15e van elke maand worden alle beschikbare tokens die je hebt uitgegeven aan willekeurige activa. Dit geeft je 15 dagen om je tokens handmatig uit te geven als je dat wilt.",
+      "p8": "Als u op de hoogte wilt worden gehouden wanneer een item automatisch voor u wordt gekozen, voert u hieronder uw e-mailadres in:",
+      "p9": "Om je af te melden voor meldingen, wis je je e-mailadres hierboven en klik je op de knop Opslaan.",
+      "title": "Sponsor"
+    },
+    "stakeholder": {
+      "p1": "Als belanghebbende van Poly Haven krijgt u diepere toegang tot onze interne communicatiekanalen om ons te helpen bespreken waar we aan moeten werken en onze reis te volgen.",
+      "p2": "Als we nog geen contact met u hebben opgenomen, alstublieft<lnk> neem contact op</lnk> zodat we je toegang kunnen geven tot deze kanalen en je kunnen voorstellen aan het team.",
+      "title": "Belanghebbende"
+    }
+  },
+  "support-amount": "Je steunt momenteel Poly Haven met een {{amount}} van $ per maand, bedankt!",
+  "title": "Log in"
+}

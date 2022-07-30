@@ -1,0 +1,25 @@
+{
+  "Clear author": "Usuń autorstwo ",
+  "backplates": "Zawiera zestaw teł w wysokiej rozdzielczości.",
+  "by-author": "autorstwa: {{author}}",
+  "early-access": "Wczesny Dostęp",
+  "new": "Nowy!",
+  "no-results": "Brak wyników",
+  "no-results-keyword": "Spróbuj wyszukać inną frazę",
+  "results": "wyników",
+  "search-en": "Wyszukiwanie działa jedynie w języku angielskim, przepraszamy!",
+  "sort": {
+    "downloads": "Liczba Pobrań",
+    "downloads-d": "Całkowita liczba pobrań.",
+    "hot": "Gorące",
+    "hot-d": "Liczba pobrań dziennie, przy czym nowsze zasoby są pozycjonowane nieco wyżej.",
+    "latest": "Najnowsze",
+    "latest-d": "Ostatnio opublikowane.",
+    "name": "Nazwa",
+    "name-d": "Sortowanie alfabetyczne.",
+    "relevance": "Sortowanie według trafności wyszukiwania.",
+    "top": "Top",
+    "top-d": "Pobrań dzisiaj."
+  },
+  "sort-by": "Sortuj według"
+}

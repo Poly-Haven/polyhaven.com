@@ -1,24 +1,25 @@
 {
-  "Clear author": "明確な作者",
+  "Clear author": "作者欄を消去",
   "backplates": "高解像度の背景画像のセットが含まれています。",
-  "by-author": "{{author}}による",
+  "by-author": "{{author}}制作した",
   "early-access": "早期アクセス",
   "new": "新しい！",
-  "no-results": "結果がありません",
+  "no-results": "結果なし",
   "no-results-keyword": "別のキーワードを使用してみてください",
   "results": "結果",
+  "search-en": "検索は英語のみになります。申し訳ありません。",
   "sort": {
     "downloads": "ダウンロード",
-    "downloads-d": "すべての時間の合計ダウンロード数。",
-    "hot": "熱い",
+    "downloads-d": "合計ダウンロード数",
+    "hot": "人気",
     "hot-d": "1日あたりのダウンロード数。新しいアセットの重みはわずかに高くなっています。",
     "latest": "最新",
     "latest-d": "最近公開されました。",
     "name": "名前",
-    "name-d": "アルファベット順に並べ替えました。",
-    "relevance": "検索の関連性による並べ替え。",
-    "top": "上",
-    "top-d": "1日あたりのダウンロード数。"
+    "name-d": "アルファベット順",
+    "relevance": "検索関連性での並べ替え。",
+    "top": "高評価",
+    "top-d": "1日のダウンロード数"
   },
   "sort-by": "並び替え"
 }

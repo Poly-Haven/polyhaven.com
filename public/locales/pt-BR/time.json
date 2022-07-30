@@ -1,6 +1,6 @@
 {
   "future": {
-    "day_one": "{{count}} o dia a partir de agora",
+    "day_one": "{{count}} dia a partir de agora",
     "day_other": "{{count}} dias a partir de agora",
     "hour_one": "{{count}} hora a partir de agora",
     "hour_other": "{{count}} horas a partir de agora",
@@ -13,7 +13,7 @@
   },
   "new": "Novo",
   "past": {
-    "day_one": "{{count}} dias atrás",
+    "day_one": "{{count}} dia atrás",
     "day_other": "{{count}} dias atrás",
     "hour_one": "{{count}} hora atrás",
     "hour_other": "{{count}} horas atrás",
