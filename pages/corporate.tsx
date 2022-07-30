@@ -56,133 +56,134 @@ const Corporate = (props) => {
       description="Does your organization want to support our vision and associate themselves with our project in the public eye?"
       url="/corporate"
     >
-      <h1>Corporate Sponsorships</h1>
+      <div dir="ltr" style={{ textAlign: 'left' }}>
+        <h1>Corporate Sponsorships</h1>
 
-      <p>Does your organization want to support our vision and associate themselves with our project in the public eye?</p>
-      <p>Show your logo prominently in various locations on our site, gain access to our private communication channels to help us discuss what to work on, and have your whole team join our cloud library for easier integration with your workflow.</p>
+        <p>Does your organization want to support our vision and associate themselves with our project in the public eye?</p>
+        <p>Show your logo prominently in various locations on our site, gain access to our private communication channels to help us discuss what to work on, and have your whole team join our cloud library for easier integration with your workflow.</p>
 
-      <div style={styleRow}>
-        <InfoBlock title="Display Your Logo" image={<MdCropFree />} imageStyle={{ color: '#ef5350' }}>
-          <p>Show your logo prominently in various locations on our site. Your logo links to your website.</p>
-        </InfoBlock>
-        <InfoBlock title="Talk To Us" image={<MdChat />} imageStyle={{ color: '#9ccc65' }}>
-          <p>Gain access to our private communication channels to help us decide what to work on.</p>
-        </InfoBlock>
-        <InfoBlock title="Cloud Library" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
-          <p>Have your whole studio join our cloud library for easier integration with your workflow.</p>
-        </InfoBlock>
+        <div style={styleRow}>
+          <InfoBlock title="Display Your Logo" image={<MdCropFree />} imageStyle={{ color: '#ef5350' }}>
+            <p>Show your logo prominently in various locations on our site. Your logo links to your website.</p>
+          </InfoBlock>
+          <InfoBlock title="Talk To Us" image={<MdChat />} imageStyle={{ color: '#9ccc65' }}>
+            <p>Gain access to our private communication channels to help us decide what to work on.</p>
+          </InfoBlock>
+          <InfoBlock title="Cloud Library" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
+            <p>Have your whole studio join our cloud library for easier integration with your workflow.</p>
+          </InfoBlock>
+        </div>
+
+        <div style={styleRow}>
+          <InfoBlock title="About Poly Haven">
+            <p>Our goal is to provide high quality assets to 3D creators, released as public domain for absolute freedom and usability in both commercial and private applications.</p>
+            <p>There are no costs, restrictions, or registrations required to download or use our assets.</p>
+            <p>We have been operating independently for over {differenceInYears(new Date(), new Date("2017-10-03"))} years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA studios, scientific research, and has been included by default in several 3D applications.</p>
+          </InfoBlock>
+          <InfoBlock title="Audience Stats">
+            <p>Monthly stats for polyhaven.com, based on data from Cloudflare analytics and our own internal tracking.</p>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: "repeat(2, 1fr)",
+            }}>
+              <StatBlock head={`${(props.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
+              <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
+              <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
+              <StatBlock head={props.numPatrons} text="Patrons" />
+            </div>
+            <p
+              style={{ opacity: 0.5, textAlign: 'right' }}
+              data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString("en-ZA")}`}
+            >
+              <em>Last updated: {timeago(props.updated, tt)}</em>
+            </p>
+          </InfoBlock>
+        </div>
+
+        <table>
+
+        </table>
+
+        <div style={styleRow}>
+          <TierBlock
+            title="Silver"
+            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.png" />}
+            price="100"
+            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Silver"
+            features={[
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <><strong>Small white silhouette logo</strong> in the footer of every page.</>
+              },
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <><strong>Small white silhouette logo</strong> on the <Link href="/about-contact">About Page</Link>.</>
+              },
+              ...commonRewards
+            ]}
+          />
+          <TierBlock
+            title="Gold"
+            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_gold.png" />}
+            price="300"
+            numExisting={props.numGold}
+            limit={8}
+            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Gold"
+            features={[
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <><strong>Larger white silhouette logo</strong> on the <Link href='/'>Home Page</Link>.</>
+              },
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
+              },
+              ...commonRewards
+            ]}
+          />
+          <TierBlock
+            title="Diamond"
+            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_diamond.svg" />}
+            price="900"
+            numExisting={props.numDiamond}
+            limit={3}
+            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
+            features={[
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <><strong>Full color logo</strong> on the <Link href='/'>Home Page</Link>.</>
+              },
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <>Your logo is <strong>larger</strong> and shown <strong>above</strong> lower tier sponsors.</>
+              },
+              {
+                icon: <MdCropFree />,
+                color: '#ef5350',
+                text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
+              },
+              ...commonRewards
+            ]}
+          />
+        </div>
+
+        <CorporateSponsors header="Our Current Sponsors:" hideInfoBtn />
+
+        <hr />
+
+        <h1>More Details</h1>
+
+        <div lang="en">
+          <Markdown>{props.details.replace(/\\n/g, '\n')}</Markdown>
+        </div>
+        <Tooltip />
       </div>
-
-      <div style={styleRow}>
-        <InfoBlock title="About Poly Haven">
-          <p>Our goal is to provide high quality assets to 3D creators, released as public domain for absolute freedom and usability in both commercial and private applications.</p>
-          <p>There are no costs, restrictions, or registrations required to download or use our assets.</p>
-          <p>We have been operating independently for over {differenceInYears(new Date(), new Date("2017-10-03"))} years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA studios, scientific research, and has been included by default in several 3D applications.</p>
-        </InfoBlock>
-        <InfoBlock title="Audience Stats">
-          <p>Monthly stats for polyhaven.com, based on data from Cloudflare analytics and our own internal tracking.</p>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: "repeat(2, 1fr)",
-          }}>
-            <StatBlock head={`${(props.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
-            <StatBlock head={`${(props.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
-            <StatBlock head={`${Math.round(props.traffic.terabytes)}TB`} text="Traffic" />
-            <StatBlock head={props.numPatrons} text="Patrons" />
-          </div>
-          <p
-            style={{ opacity: 0.5, textAlign: 'right' }}
-            data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString("en-ZA")}`}
-          >
-            <em>Last updated: {timeago(props.updated, tt)}</em>
-          </p>
-        </InfoBlock>
-      </div>
-
-      <table>
-
-      </table>
-
-      <div style={styleRow}>
-        <TierBlock
-          title="Silver"
-          image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.png" />}
-          price="100"
-          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Silver"
-          features={[
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <><strong>Small white silhouette logo</strong> in the footer of every page.</>
-            },
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <><strong>Small white silhouette logo</strong> on the <Link href="/about-contact">About Page</Link>.</>
-            },
-            ...commonRewards
-          ]}
-        />
-        <TierBlock
-          title="Gold"
-          image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_gold.png" />}
-          price="300"
-          numExisting={props.numGold}
-          limit={8}
-          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Gold"
-          features={[
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <><strong>Larger white silhouette logo</strong> on the <Link href='/'>Home Page</Link>.</>
-            },
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
-            },
-            ...commonRewards
-          ]}
-        />
-        <TierBlock
-          title="Diamond"
-          image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_diamond.svg" />}
-          price="900"
-          numExisting={props.numDiamond}
-          limit={3}
-          link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
-          features={[
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <><strong>Full color logo</strong> on the <Link href='/'>Home Page</Link>.</>
-            },
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <>Your logo is <strong>larger</strong> and shown <strong>above</strong> lower tier sponsors.</>
-            },
-            {
-              icon: <MdCropFree />,
-              color: '#ef5350',
-              text: <>Your logo is also shown in the Footer of every page, and on the <Link href="/about-contact">About Page</Link>.</>
-            },
-            ...commonRewards
-          ]}
-        />
-      </div>
-
-      <CorporateSponsors header="Our Current Sponsors:" hideInfoBtn />
-
-      <hr />
-
-      <h1>More Details</h1>
-
-      <div lang="en">
-        <Markdown>{props.details.replace(/\\n/g, '\n')}</Markdown>
-      </div>
-      <Tooltip />
-
     </TextPage>
   )
 }

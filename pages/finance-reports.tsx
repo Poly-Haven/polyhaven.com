@@ -12,7 +12,9 @@ export default function HomePage() {
         description="Detailed historical records of our earnings, spending, and savings."
         url="/finance-reports"
       />
-      <Finances />
+      <div dir="ltr" style={{ textAlign: 'left' }}>
+        <Finances />
+      </div>
     </Page>
   )
 }
