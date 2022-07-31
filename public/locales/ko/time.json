@@ -15,12 +15,12 @@
   "past": {
     "day_one": "하루 전 {{count}}",
     "day_other": "일 전에 {{count}}",
-    "hour_one": "1시간 전 {{count}}",
+    "hour_one": "{{count}}시간 전 ",
     "hour_other": "몇 시간 전에 {{count}}",
     "month_one": "한달 전 {{count}}",
-    "month_other": "몇 달 전에 {{count}}",
-    "week_one": "일주일 전 {{count}}",
-    "week_other": "몇 주 전에 {{count}}",
+    "month_other": "{{count}}개월 전",
+    "week_one": "{{count}}주 전 ",
+    "week_other": "{{count}}주 전",
     "year_one": "{{count}} 년 전",
     "year_other": "{{count}} 년 전"
   },
