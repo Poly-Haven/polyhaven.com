@@ -16,13 +16,13 @@
   "email-address": "Adresse e-mail",
   "footer": {
     "join-ranks": "Rejoignez les rangs, soutenez Poly Haven sur Patreon",
-    "thanks": "Merci à nos <lnk>Patrons/lnk> de rendre Poly Haven possible"
+    "thanks": "Merci à nos <lnk>Patrons</lnk> de rendre Poly Haven possible"
   },
   "goal": {
     "complete": "Complet!",
     "current": "Objectif actuel :",
     "reached": "Nous avons atteint notre dernier objectif! Quelque chose de nouveau devrait bientôt apparaître ici :)",
-    "to-go": "$ {{dollars}} à amasser"
+    "to-go": "{{dollars}}$ à amasser"
   },
   "hidden": "Caché",
   "invalid-email": "Adresse e-mail invalide",

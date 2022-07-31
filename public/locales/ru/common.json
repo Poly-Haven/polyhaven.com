@@ -1,5 +1,5 @@
 {
-  "All Assets": "Все активы",
+  "All Assets": "Все ассеты",
   "All Things": "Все {{things}}",
   "Assets": "Ресурсы",
   "Co-founder": "Соучредитель",
@@ -15,7 +15,7 @@
   "display-name": "Показать имя",
   "email-address": "Адрес электронной почты",
   "footer": {
-    "join-ranks": "Вступайте в ряды, поддержите Poly Haven на Patreon",
+    "join-ranks": "Вступайте в наши ряды, поддержите Poly Haven на Patreon",
     "thanks": "Благодаря нашему<lnk> Покровители</lnk> для того, чтобы сделать Poly Haven возможным"
   },
   "goal": {

@@ -2,7 +2,7 @@
   "All Assets": "全アセット",
   "All Things": "全ての{{things}}",
   "Assets": "アセット",
-  "Co-founder": "共同 - 創設者",
+  "Co-founder": "共同創業者",
   "Director": "監督",
   "Graphic-Design": "グラフィックデザイン",
   "HDRIs": "HDRI",
@@ -24,8 +24,8 @@
     "reached": "最後の目標を達成しました！何か新しいものがすぐにここに現れるはずです:)",
     "to-go": "残り ${{dollars}}"
   },
-  "hidden": "隠れた",
-  "invalid-email": "無効な電子メールアドレス",
+  "hidden": "非表示",
+  "invalid-email": "無効なメールアドレス",
   "invalid-name-url": "名前またはURLが無効です",
   "loading": "読み込んでいます...",
   "missing-invalid": "欠落または無効",
@@ -47,12 +47,12 @@
     "stats": "統計",
     "support-us": "私たちを応援してください"
   },
-  "optional": "オプション",
+  "optional": "任意",
   "patron_one": "パトロン",
   "patron_other": "パトロン",
   "please-wait": "お待ちください...",
   "remove-ads": "広告を非表示",
   "required": "必須",
   "tagline": "パブリック3Dアセットライブラリ",
-  "visible": "見える"
+  "visible": "表示される"
 }
