@@ -9,7 +9,7 @@
     "err-size": "이미지가 너무 큽니다. 1MB 미만이어야 합니다.",
     "form": {
       "art-name": "작품명",
-      "assets": "사용된 자산",
+      "assets": "사용된 에셋",
       "assets-d": "Poly Haven의 어떤 HDRI, 텍스처 또는 3D 모델을 사용하셨습니까?",
       "file-change": "파일 변경...",
       "file-size": "1MB 미만의 JPG",

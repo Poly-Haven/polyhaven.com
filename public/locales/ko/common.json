@@ -1,7 +1,7 @@
 {
-  "All Assets": "모든 자산",
+  "All Assets": "모든 에셋",
   "All Things": "모든 {{things}}",
-  "Assets": "자산",
+  "Assets": "에셋",
   "Co-founder": "공동 설립자",
   "Director": "감독",
   "Graphic-Design": "그래픽 디자인",
@@ -39,7 +39,7 @@
     "gallery": "갤러리",
     "home": "집",
     "license": "특허",
-    "logout": "로그 아웃",
+    "logout": "로그아웃",
     "map": "HDRI 세계 지도",
     "news": "소식",
     "privacy": "은둔",
@@ -47,12 +47,12 @@
     "stats": "통계",
     "support-us": "당신의 도움이 필요합니다"
   },
-  "optional": "선택 과목",
+  "optional": "선택",
   "patron_one": "후원자",
   "patron_other": "후원자",
   "please-wait": "기다리세요...",
   "remove-ads": "광고를 제거하다",
-  "required": "필수의",
-  "tagline": "공개 3D 자산 라이브러리",
+  "required": "필수",
+  "tagline": "공개 3D 에셋 라이브러리",
   "visible": "보이는"
 }

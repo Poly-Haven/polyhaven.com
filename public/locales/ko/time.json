@@ -1,28 +1,28 @@
 {
   "future": {
-    "day_one": "지금부터 일 {{count}}",
-    "day_other": "지금부터 일을 {{count}}",
-    "hour_one": "지금부터 시간 {{count}}",
-    "hour_other": "지금부터 시간 {{count}}",
-    "month_one": "지금부터 월을 {{count}}",
-    "month_other": "지금부터 몇 달을 {{count}}",
-    "week_one": "지금부터 주를 {{count}}",
-    "week_other": "지금부터 몇 주를 {{count}}",
-    "year_one": "지금부터 1년을 {{count}}",
-    "year_other": "지금부터 몇 년을 {{count}}"
+    "day_one": "{{count}}일 후",
+    "day_other": "{{count}}일 후",
+    "hour_one": "{{count}}시간 후",
+    "hour_other": "{{count}}시간 후",
+    "month_one": "{{count}}개월 후",
+    "month_other": "{{count}}개월 후",
+    "week_one": "{{count}}주 후",
+    "week_other": "{{count}}주 후",
+    "year_one": "{{count}}년 후",
+    "year_other": "{{count}}년 후"
   },
-  "new": "새로운",
+  "new": "신규",
   "past": {
-    "day_one": "하루 전 {{count}}",
-    "day_other": "일 전에 {{count}}",
+    "day_one": "{{count}}일 전",
+    "day_other": "{{count}}일 전",
     "hour_one": "{{count}}시간 전 ",
-    "hour_other": "몇 시간 전에 {{count}}",
-    "month_one": "한달 전 {{count}}",
+    "hour_other": "{{count}}시간 전",
+    "month_one": "{{count}}개월 전",
     "month_other": "{{count}}개월 전",
     "week_one": "{{count}}주 전 ",
     "week_other": "{{count}}주 전",
-    "year_one": "{{count}} 년 전",
-    "year_other": "{{count}} 년 전"
+    "year_one": "{{count}}년 전",
+    "year_other": "{{count}}년 전"
   },
   "today": "오늘"
 }

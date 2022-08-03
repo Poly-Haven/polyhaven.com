@@ -28,7 +28,7 @@
   "invalid-email": "Dirección de correo electrónico no válida",
   "invalid-name-url": "Nombre o URL no válido",
   "loading": "Cargando...",
-  "missing-invalid": "Falta o no es válido",
+  "missing-invalid": "Algo falta o no es válido",
   "nav": {
     "about-contact": "Acerca de/Contacto",
     "api": "API",
@@ -45,10 +45,10 @@
     "privacy": "Privacidad",
     "source": "Fuente",
     "stats": "Estadísticas",
-    "support-us": "Apoyanos"
+    "support-us": "Apóyanos"
   },
   "optional": "Opcional",
-  "patron_one": "Patrón",
+  "patron_one": "Patrocinador",
   "patron_other": "Patrons",
   "please-wait": "Espera por favor...",
   "remove-ads": "Quitar anuncios",

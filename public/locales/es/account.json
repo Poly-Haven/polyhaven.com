@@ -4,23 +4,23 @@
   "login": {
     "li1": "Eliminación permanente de anuncios.",
     "li2": "Acceso anticipado a los recursos, antes de que se publiquen.",
-    "li3": "Acceda a nuestro servicio en la nube para sincronizar todos nuestros activos en su disco duro.",
-    "li4": "Patrocine un activo de forma permanente todos los meses, mostrando su nombre y enlace junto a los botones de descarga.",
-    "p1": "si eres un<lnk> patrón</lnk> de Poly Haven, iniciar sesión aquí le dará acceso a sus recompensas directamente en este sitio.",
-    "p2": "Dependiendo de su nivel de soporte, sus recompensas pueden incluir:"
+    "li3": "Acceso a nuestro servicio en la nube para sincronizar todos nuestros recursos en tu disco duro.",
+    "li4": "Patrocina un recurso de forma permanente todos los meses, tu nombre y enlace se mostrará junto a los botones de descarga.",
+    "p1": "Si eres un <lnk>Patrocinador</lnk> de Poly Haven, iniciar sesión aquí le dará acceso a tus recompensas directamente en este sitio.",
+    "p2": "Dependiendo de tu nivel de patrocinio, tus recompensas pueden incluir:"
   },
   "not-patron": "No pareces ser un patrocinador de Poly Haven :( si esto es incorrecto, por favor <lnk>ponte en contacto</lnk> para que podamos investigar el problema en esta página. Necesitaremos la siguiente información:",
-  "not-patron-anymore": "Parece que ya no eres patrocinador de Poly Haven. Está bien, y apreciamos su apoyo anterior :)",
+  "not-patron-anymore": "Parece que ya no eres patrocinador de Poly Haven. Está bien, y apreciamos tu apoyo anteriormente :)",
   "reward_one": "Esto te otorga la siguiente recompensa:",
   "reward_other": "Esto te otorga las siguientes recompensas:",
   "rewards": {
     "credit": {
       "invalid": "Nombre inválido",
       "p1": "Tu nombre es actualmente",
-      "p2": "{{hidden}} en la lista de usuarios en el pie de página de este sitio.",
-      "p3": "Cambiar esta configuración puede tardar algunas horas en actualizar cada página del sitio.",
+      "p2": "{{hidden}} en la lista de patrocinadores en el pie de página de este sitio.",
+      "p3": "Este cambio en la configuración puede tardar algunas horas en actualizarse en cada página del sitio.",
       "p4": "Nombre para mostrar:",
-      "title": "Crédito de pie de página"
+      "title": "Crédito de Pie de Página"
     },
     "early-access": {
       "p1": "Ahora que ha iniciado sesión, la<lnk> Biblioteca de contenido</lnk> incluirá contenido que hemos programado para publicar en el futuro.",
@@ -30,34 +30,34 @@
     },
     "no-ads": {
       "p1": "Usamos Google AdSense en polyhaven.com. Para ocultar estos anuncios, simplemente habilita este interruptor:",
-      "p2": "Los anuncios son ahora:",
+      "p2": "Los anuncios son:",
       "title": "Sin Anuncios"
     },
     "offline-access": {
-      "p1": "Ingrese su dirección de correo electrónico para enviarse una invitación a nuestra carpeta en la nube:",
+      "p1": "Ingresa tu dirección de correo electrónico para que te envíes una invitación a nuestra carpeta en la nube:",
       "p2": "Consulta tu correo electrónico :)",
-      "p3": "Invitación enviada con éxito. Si tiene algún problema o necesita cambiar el correo electrónico de su cuenta,<lnk> por favor contáctenos</lnk> .",
+      "p3": "Invitación enviada con éxito. Si tiene algún problema o necesitas cambiar el correo electrónico de tu cuenta, <lnk>por favor contáctenos</lnk>.",
       "p4": "Ver <lnk>esta publicación</lnk> para obtener más instrucciones sobre cómo configurar Nextcloud y comenzar a sincronizar recursos con tu computadora.",
-      "title": "Acceso sin conexión"
+      "title": "Acceso Sin Conexión"
     },
     "sponsor": {
-      "p1": "Puede elegir un activo cada mes para colocar su nombre y un enlace al lado de forma permanente. Para ello, trabajamos con un sistema de \"tokens\".",
+      "p1": "Puedes elegir un recurso cada mes con tu nombre y enlace a un lado de forma permanente. Para ello, trabajamos con un sistema de \"tokens\".",
       "p2": "Al comienzo de cada mes después de que Patreon procese tu pago, recibirás automáticamente un<ticket /> <b>Token de Patrocinador</b> .",
       "p3": "Hay dos formas de gastar este token:",
-      "p3li1": "Visitando la página del activo que desea patrocinar y haciendo clic en \"<ticket /> Patrocine este activo\" en el lado derecho de la página.",
-      "p3li2": "O puede activar los patrocinios automáticos a continuación, que elegirán un recurso aleatorio para usted cada mes.",
+      "p3li1": "Visitando la página del recurso que deseas patrocinar y haciendo clic en el botón  \"<ticket /> Patrocina este recurso\" en el lado derecho de la página.",
+      "p3li2": "O puede activar los patrocinios automáticos abajo, los cuales elegirán un recurso aleatorio para ti cada mes.",
       "p4": "Los tokens no caducan, por lo que puedes volver después de unos meses y gastar tus tokens acumulados.",
-      "p5": "Una vez que se gasta un token, no se puede revocar ni mover a un activo diferente.",
-      "p6": "Patrocine automáticamente un activo aleatorio cada mes:",
-      "p7": "El día 15 de cada mes, cualquier token disponible que tenga se gastará en activos aleatorios. Esto le da 15 días para gastar manualmente sus tokens si lo desea.",
-      "p8": "Si desea que se le notifique cuando un activo se seleccione automáticamente para usted, ingrese su dirección de correo electrónico a continuación:",
-      "p9": "Para darse de baja de las notificaciones, borre su dirección de correo electrónico y haga clic en el botón Guardar.",
+      "p5": "Una vez que un token es gastado, no puede ser revocado o cambiado por un recurso diferente.",
+      "p6": "Patrocina automáticamente un recurso aleatorio cada mes:",
+      "p7": "En el día 15 de cada mes, cualquier token que tengas disponible se gastará en recursos aleatorios. Esto te da 15 días para gastar manualmente tus tokens si lo deseas.",
+      "p8": "Si deseas que se te notifique cuando un recurso es seleccionado automáticamente para ti, ingresa tu dirección de correo electrónico abajo:",
+      "p9": "Para darse de baja de las notificaciones, borra tu dirección de correo electrónico y haz clic en el botón Guardar.",
       "title": "Patrocinador"
     },
     "stakeholder": {
-      "p1": "Como parte interesada de Poly Haven, obtiene un acceso más profundo a nuestros canales de comunicación internos para ayudarnos a discutir en qué trabajar y seguir a lo largo de nuestro viaje.",
+      "p1": "Como participante de Poly Haven, obtienes un acceso más profundo a nuestros canales de comunicación internos para ayudarnos a discutir en qué trabajar y seguir a lo largo de nuestro viaje.",
       "p2": "Si aún no nos hemos puesto en contacto contigo, por favor <lnk>ponte en contacto</lnk> para que podamos darte acceso a estos canales y presentarle al equipo.",
-      "title": "Interesado"
+      "title": "Participante"
     }
   },
   "support-amount": "Actualmente estás apoyando a Poly Haven con ${{amount}} por mes, ¡gracias!",
