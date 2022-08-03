@@ -38,7 +38,7 @@ const AboutPage = () => {
         <Staff id="Jurita Burger" name="Jurita Burger" role={`${t('common:Graphic-Design')}`} country="ZA" mode="full" />
       </div>
 
-      <CorporateSponsors header={`${t('common:corporate-sponsor', { count: 3 })}:`} />
+      <CorporateSponsors header={`${t('common:corporate-sponsor', { count: 100 })}:`} />
 
       <h1>{t('about:contact.h1')}</h1>
       <p><Trans
