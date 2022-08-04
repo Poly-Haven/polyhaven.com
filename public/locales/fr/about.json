@@ -8,8 +8,8 @@
   "greeting": {
     "h1": "Salut!",
     "p1": "Poly Haven est une bibliothèque de ressources publiques organisée pour les artistes d'effets visuels et les concepteurs de jeux, fournissant des ressources 3D utiles de haute qualité d'une manière facilement accessible.",
-    "p2": "Il n'y a pas de paywalls, de comptes ou de formulaires de messagerie requis, il suffit de télécharger une ressource et de l'utiliser sans souci.",
-    "p3": "Toutes les ressources ici sont <lnk>CC0</lnk>, ce qui signifie qu'ils sont pratiquement exempts de droits d'auteur et que vous pouvez les utiliser dans n'importe quel but."
+    "p2": "Il n'y a pas de paywalls, de comptes ou de formulaires de e-mail requis, il suffit de télécharger une ressource et de l'utiliser sans souci.",
+    "p3": "Toutes les ressources ici sont <lnk>CC0</lnk>, ce qui signifie qu'elles sont pratiquement exemptes de droits d'auteur et que vous pouvez les utiliser dans n'importe quel but."
   },
   "help": {
     "h1": "Comment vous pouvez aider",
@@ -19,18 +19,18 @@
     "s1p3": "Nous utilisons vos dons directement pour couvrir nos dépenses et financer de nouvelles ressources, comme vérifié par nos <lnk>rapports financiers</lnk>.",
     "s2": "Faire don de vos ressources",
     "s2p1": "Vous avez un modèle 3D, une texture ou un HDRI de premier ordre que vous aimeriez partager avec la communauté? Nous serions ravis de le publier pour vous :)",
-    "s2p2": "Nous avons une standard de qualité stricte à respecter et tout ce que nous publions doit être <lnk1>CC0</lnk1>, mais si votre ressource est acceptée, toute la communauté 3D en bénéficiera. <lnk2>En savoir plus et soumettre votre ressource ici</lnk2>.",
+    "s2p2": "Nous avons un standard de qualité strict à respecter et tout ce que nous publions doit être <lnk1>CC0</lnk1>, mais si votre ressource est acceptée, toute la communauté 3D en bénéficiera. <lnk2>En savoir plus et soumettre votre ressource ici</lnk2>.",
     "s3": "Faire passer le message",
-    "s3p1": "Ce n'est pas grave si vous ne pouvez pas vous le permettre ou si vous ne voulez pas nous faire de don :) Vous pouvez toujours nous aider à grandir en vous assurant que vos amis et collègues nous connaissent. Plus nous pouvons aider, mieux c'est!",
+    "s3p1": "Ce n'est pas grave si vous n'avez pas les moyens ou l'envie de nous faire un don :) Vous pouvez toujours nous aider à grandir en vous assurant que vos amis et collègues nous connaissent. Plus nous pouvons aider, mieux c'est!",
     "s3p2": "Ce n'est pas du tout obligatoire, mais si vous utilisez nos ressources dans votre travail, vous pouvez mentionner d'où vous les avez obtenus et cela aidera à montrer à plus de gens que nous existons"
   },
   "how": {
     "h1": "Comment faisons-nous cela?",
-    "li1": "Artistes employés par Poly Haven, se concentrant sur la vue d'ensemble.",
+    "li1": "Des artistes employés par Poly Haven, se concentrant sur la vue d'ensemble.",
     "li2": "Des entrepreneurs indépendants que nous embauchons, chargés de projets spécifiques.",
-    "li3": "Les utilisateurs qui font librement don de leur travail à la plateforme.",
+    "li3": "Des utilisateurs qui font librement don de leur travail à la plateforme.",
     "p1": "Nous sommes un petit studio éloigné basé en Afrique du Sud, travaillant avec des créateurs du monde entier qui partagent notre vision.",
-    "p2": "En termes de financement, nous sommes soutenus principalement par des dons de personnes comme vous sur<lnk>Patreon</lnk>, des revenus publicitaires et des commanditaires corporatifs qui pensent pouvoir bénéficier d'un soutien à long terme dans notre travail.",
+    "p2": "En termes de financement, nous sommes soutenus principalement par des dons de personnes comme vous sur <lnk>Patreon</lnk>, des revenus publicitaires et des commanditaires corporatifs qui pensent pouvoir bénéficier d'un soutien à long terme dans notre travail.",
     "p3": "Pour la création de ressources, il y a trois sources :"
   },
   "title": "À propos / Contact",

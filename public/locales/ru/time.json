@@ -1,28 +1,28 @@
 {
   "future": {
-    "day_one": "{{count}} день с этого момента",
-    "day_other": "{{count}} дни с этого момента",
-    "hour_one": "{{count}} час с этого момента",
-    "hour_other": "{{count}} часы с этого момента",
-    "month_one": "{{count}} месяц с этого момента",
-    "month_other": "{{count}} месяцы с этого момента",
-    "week_one": "{{count}} неделю",
-    "week_other": "{{count}} недели с этого момента",
+    "day_one": "через {{count}} день",
+    "day_other": "через {{count}} дней",
+    "hour_one": "через {{count}} час",
+    "hour_other": "{{count}} часов с этого момента",
+    "month_one": "через {{count}} месяц",
+    "month_other": "через {{count}} месяцев",
+    "week_one": "через {{count}} неделю",
+    "week_other": "{{count}} недель с этого момента",
     "year_one": "{{count}} год с этого момента",
-    "year_other": "{{count}} годы с этого момента"
+    "year_other": "через {{count}} лет"
   },
-  "new": "Новый",
+  "new": "Новое",
   "past": {
     "day_one": "{{count}} день назад",
     "day_other": "{{count}} дней назад",
     "hour_one": "{{count}} час назад",
-    "hour_other": "{{count}} часы назад",
+    "hour_other": "{{count}} часов назад",
     "month_one": "{{count}} месяц назад",
-    "month_other": "{{count}} месяцы назад",
+    "month_other": "{{count}} месяцев назад",
     "week_one": "{{count}} неделю назад",
-    "week_other": "{{count}} недели назад",
+    "week_other": "{{count}} недель назад",
     "year_one": "{{count}} год назад",
-    "year_other": "{{count}} годы назад"
+    "year_other": "{{count}} лет назад"
   },
   "today": "Сегодня"
 }

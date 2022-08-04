@@ -25,7 +25,7 @@
     "to-go": "还需要{{dollars}}美元"
   },
   "hidden": "隐藏",
-  "invalid-email": "无效的邮件地址",
+  "invalid-email": "无效的邮箱地址",
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
   "missing-invalid": "丢失或无效",

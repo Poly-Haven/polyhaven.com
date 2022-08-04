@@ -1,6 +1,6 @@
 {
   "add-yours": "あなたのものを追加する",
-  "author-donated": "このアセットは作者によってPolyHavenに自由に寄付されました:)",
+  "author-donated": "この資産は、著者からPoly Havenに寄贈されたものです。:)",
   "author_one": "著者",
   "author_other": "著者",
   "categories": "カテゴリー",
@@ -25,7 +25,7 @@
     "most-software": "ほとんどの3Dソフトウェアである程度サポートされていますが、マテリアルを手動で設定する必要がある場合があります。",
     "some-software": "一部の3Dソフトウェアでサポートされています。",
     "thumb": "サムネイル/プレビュー",
-    "thumb-d": "アセットマネージャーで使用するのに便利なサムネイル画像。",
+    "thumb-d": "サムネイル画像は、アセットマネージャーで使用する際に便利です。",
     "tm": "HDRIの低ダイナミックレンジプレビュー。プレビューとして、またはCGに関連しない用途に役立つ場合がありますが、照明には使用しないでください。",
     "zip": "ダウンロードするファイルを正確に選ぶことができます。"
   },
@@ -35,7 +35,7 @@
   "nor-standard": "法線マップ標準：",
   "similar-assets": "同様のアセット",
   "sponsored-by": "主催：",
-  "sponsored-by-d": "ここにあなたの名前を追加するには、PatreonでPolyHavenをサポートしてください。",
+  "sponsored-by-d": "ここに名前を加えるには、PatreonでPoly Havenをサポートしてください。",
   "sponsored-by-none": "まだ誰もいません。:(",
   "tags": "タグ",
   "user-renders": "ユーザーレンダリング：",

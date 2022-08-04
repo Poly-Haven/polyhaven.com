@@ -1,4 +1,5 @@
 import { useTranslation, Trans } from 'next-i18next';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import Button from 'components/Button/Button'
@@ -11,9 +12,10 @@ import styles from './Footer.module.scss';
 
 const footer = () => {
   const { t } = useTranslation(['common']);
+  const router = useRouter()
 
   return (
-    <div id={styles.footer}>
+    <div id={styles.footer} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <h2><Trans
         i18nKey="common:footer.thanks"
         t={t}

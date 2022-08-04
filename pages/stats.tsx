@@ -17,7 +17,9 @@ export default function HomePage({ datasets }) {
         description="Site statistics for polyhaven.com."
         url="/stats"
       />
-      <Stats datasets={datasets} />
+      <div dir="ltr" style={{ textAlign: 'left' }}>
+        <Stats datasets={datasets} />
+      </div>
     </Page>
   )
 }

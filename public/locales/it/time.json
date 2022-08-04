@@ -6,7 +6,7 @@
     "hour_other": "{{count}} ore da adesso",
     "month_one": "{{count}} mese da adesso",
     "month_other": "{{count}} mesi da adesso",
-    "week_one": "{{count}} la settimana da adesso",
+    "week_one": "{{count}} settimana da adesso",
     "week_other": "{{count}} settimane da adesso",
     "year_one": "{{count}} anno da adesso",
     "year_other": "{{count}} anni da adesso"
@@ -24,5 +24,5 @@
     "year_one": "{{count}} anno fa",
     "year_other": "{{count}} anni fa"
   },
-  "today": "In data odierna"
+  "today": "Oggi"
 }
