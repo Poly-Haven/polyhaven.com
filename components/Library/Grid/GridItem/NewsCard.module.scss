@@ -50,6 +50,11 @@
 
 .img {
   @include center;
+  max-width: 384px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .spacer {
