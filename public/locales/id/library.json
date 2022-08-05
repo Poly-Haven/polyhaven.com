@@ -1,0 +1,25 @@
+{
+  "Clear author": "Hapus penulis",
+  "backplates": "Termasuk satu set gambar latar belakang beresolusi tinggi.",
+  "by-author": "oleh {{author}}",
+  "early-access": "Akses awal",
+  "new": "Baru!",
+  "no-results": "Tidak ada hasil",
+  "no-results-keyword": "Coba gunakan kata kunci yang berbeda",
+  "results": "hasil",
+  "search-en": "Pencarian hanya berfungsi dalam Bahasa Inggris, maaf!",
+  "sort": {
+    "downloads": "Unduhan",
+    "downloads-d": "Jumlah unduhan total sepanjang waktu.",
+    "hot": "Panas",
+    "hot-d": "Unduhan per hari, dengan aset yang lebih baru berbobot sedikit lebih tinggi.",
+    "latest": "Terbaru",
+    "latest-d": "Baru-baru ini diterbitkan.",
+    "name": "Nama",
+    "name-d": "Diurutkan berdasarkan abjad.",
+    "relevance": "Mengurutkan berdasarkan relevansi pencarian.",
+    "top": "Atas",
+    "top-d": "Unduhan per hari."
+  },
+  "sort-by": "urutkan berdasarkan"
+}
