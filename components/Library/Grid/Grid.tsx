@@ -7,12 +7,12 @@ import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
-import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha } from 'react-icons/md'
+import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle } from 'react-icons/md'
 
 import useDivSize from 'hooks/useDivSize';
 import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
-import { randomArraySelection } from 'utils/arrayUtils';
+import { randomArraySelection, shuffleArray } from 'utils/arrayUtils';
 import { assetTypeName } from 'utils/assetTypeName'
 import { getPatronInfo } from 'utils/patronInfo';
 import apiSWR from 'utils/apiSWR'
@@ -73,6 +73,9 @@ const Grid = (props) => {
     },
     name: (d: Object) => {
       return Object.keys(d).sort((a, b) => d[a].name.localeCompare(d[b].name))
+    },
+    random: (d: Object) => {
+      return shuffleArray(Object.keys(d))
     },
   }
 
@@ -185,6 +188,11 @@ const Grid = (props) => {
       label: t('sort.name'),
       tooltip: t('sort.name-d'),
       icon: <MdSortByAlpha />
+    },
+    random: {
+      label: t('sort.random'),
+      tooltip: t('sort.random-d'),
+      icon: <MdShuffle />
     }
   }
 
