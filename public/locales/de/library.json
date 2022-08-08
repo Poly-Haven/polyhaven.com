@@ -17,6 +17,8 @@
     "latest-d": "Zuletzt veröffentlicht.",
     "name": "Name",
     "name-d": "Alphabetisch sortiert.",
+    "random": "Zufällig",
+    "random-d": "Gemischte Asset-Liste.",
     "relevance": "Sortierung nach Suchrelevanz.",
     "top": "Best bewertet",
     "top-d": "Downloads pro Tag."

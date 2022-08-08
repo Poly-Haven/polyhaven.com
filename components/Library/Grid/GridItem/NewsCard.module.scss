@@ -27,8 +27,6 @@
     color: $c-text-light;
     font-size: 1.2em;
     cursor: pointer;
-    padding: 0.5rem;
-    margin: -0.5rem;
     opacity: 0.5;
     @include transition;
 
@@ -50,6 +48,11 @@
 
 .img {
   @include center;
+  max-width: 384px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .spacer {

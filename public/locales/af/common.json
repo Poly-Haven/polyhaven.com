@@ -1,5 +1,5 @@
 {
-  "All Assets": "Alle bates",
+  "All Assets": "Alle Assets",
   "All Things": "Alle {{things}}",
   "Assets": "Bates",
   "Co-founder": "Medestigter",
@@ -15,7 +15,7 @@
   "display-name": "Vertoon naam",
   "email-address": "E-pos adres",
   "footer": {
-    "join-ranks": "Sluit aan by die geledere, ondersteun Poly Haven op Patreon",
+    "join-ranks": "Sluit aan, ondersteun Poly Haven op Patreon",
     "thanks": "Danksy ons<lnk> Beskermhere</lnk> om Poly Haven moontlik te maak"
   },
   "goal": {

@@ -17,6 +17,8 @@
     "latest-d": "Publicado más recientemente.",
     "name": "Nombre",
     "name-d": "Ordenado alfabéticamente.",
+    "random": "Aleatorio",
+    "random-d": "Lista de activos barajados.",
     "relevance": "Clasificación por relevancia de búsqueda.",
     "top": "Destacados",
     "top-d": "Descargas por día."

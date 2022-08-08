@@ -2,24 +2,36 @@ import { useState, useEffect } from 'react'
 
 import Link from 'next/link';
 
-import { MdPause, MdPlayArrow } from "react-icons/md"
+import { MdPause, MdPlayArrow, MdClose } from "react-icons/md"
 
 import styles from './NewsCard.module.scss'
 
-const NewsCard = ({ key, topText, img, pausedImg, bottomText, link }) => {
+const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link }) => {
   const [pause, setPause] = useState(false)
-  const storageKey = `newsPause__${key}`
+  const keyPause = `newsPause__${newsKey}`
+  const [hide, setHide] = useState(false)
+  const keyHide = `newsHide__${newsKey}`
 
   useEffect(() => {
-    const storedValue = JSON.parse(localStorage.getItem(storageKey))
-    const v = storedValue !== null ? storedValue : false
-    setPause(v)
-  }, []);
+    const storedPause = JSON.parse(localStorage.getItem(keyPause))
+    setPause(storedPause !== null ? storedPause : false)
+    const storedHide = JSON.parse(localStorage.getItem(keyHide))
+    setHide(storedHide !== null ? storedHide : false)
+  }, [newsKey]);
 
   const togglePause = _ => {
     const v = !pause
     setPause(v)
-    localStorage.setItem(storageKey, JSON.stringify(v))
+    localStorage.setItem(keyPause, JSON.stringify(v))
+  }
+
+  const hideNews = _ => {
+    setHide(true)
+    localStorage.setItem(keyHide, JSON.stringify(true))
+  }
+
+  if (hide) {
+    return null
   }
 
   return (
@@ -29,11 +41,14 @@ const NewsCard = ({ key, topText, img, pausedImg, bottomText, link }) => {
         <img src='/Logo 256.png' />
         {topText}
         <div className={styles.spacer} />
-        {pause ?
-          <MdPlayArrow className={styles.pause} onClick={togglePause} />
-          :
-          <MdPause className={styles.pause} onClick={togglePause} />
+        {pausedImg ?
+          pause ?
+            <MdPlayArrow className={styles.pause} onClick={togglePause} />
+            :
+            <MdPause className={styles.pause} onClick={togglePause} />
+          : null
         }
+        <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />
       </div>
       <Link href={link}>
         <a className={styles.img}><img src={pause ? pausedImg : img} /></a>

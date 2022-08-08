@@ -40,6 +40,10 @@ module.exports = {
     name: "Italiano",
     flag: 'IT'
   },
+  id: {
+    name: "Indonesian",
+    flag: 'ID'
+  },
   ja: {
     name: "日本語",
     flag: 'JP'

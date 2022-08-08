@@ -33,7 +33,7 @@
     "about-contact": "정보/연락처",
     "api": "API",
     "blog": "블로그",
-    "contribute": "기여하다",
+    "contribute": "기여하기",
     "faq": "FAQ",
     "finances": "재무 보고서",
     "gallery": "갤러리",
@@ -45,7 +45,7 @@
     "privacy": "개인정보 정책",
     "source": "소스 코드",
     "stats": "통계",
-    "support-us": "당신의 도움이 필요합니다"
+    "support-us": "후원하기"
   },
   "optional": "선택",
   "patron_one": "후원자",

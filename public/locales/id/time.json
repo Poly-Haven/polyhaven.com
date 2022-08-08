@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} hari dari sekarang",
+    "day_other": "{{count}} hari dari sekarang",
+    "hour_one": "{{count}} jam dari sekarang",
+    "hour_other": "{{count}} jam dari sekarang",
+    "month_one": "{{count}} bulan dari sekarang",
+    "month_other": "{{count}} bulan dari sekarang",
+    "week_one": "{{count}} minggu dari sekarang",
+    "week_other": "{{count}} minggu dari sekarang",
+    "year_one": "{{count}} tahun dari sekarang",
+    "year_other": "{{count}} tahun dari sekarang"
+  },
+  "new": "Baru",
+  "past": {
+    "day_one": "{{count}} hari yang lalu",
+    "day_other": "{{count}} hari yang lalu",
+    "hour_one": "{{count}} jam yang lalu",
+    "hour_other": "{{count}} jam yang lalu",
+    "month_one": "{{count}} bulan lalu",
+    "month_other": "{{count}} bulan lalu",
+    "week_one": "{{count}} minggu lalu",
+    "week_other": "{{count}} minggu lalu",
+    "year_one": "{{count}} tahun lalu",
+    "year_other": "{{count}} tahun lalu"
+  },
+  "today": "Hari ini"
+}

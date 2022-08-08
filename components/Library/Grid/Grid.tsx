@@ -7,16 +7,18 @@ import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { MdSearch, MdClose } from 'react-icons/md'
-import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha } from 'react-icons/md'
+import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle } from 'react-icons/md'
 
 import useDivSize from 'hooks/useDivSize';
 import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
+import { randomArraySelection, shuffleArray } from 'utils/arrayUtils';
 import { assetTypeName } from 'utils/assetTypeName'
 import { getPatronInfo } from 'utils/patronInfo';
 import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
+import NewsCard from './GridItem/NewsCard';
 import Spinner from 'components/Spinner/Spinner';
 import DisplayAd from 'components/Ads/DisplayAd';
 import Dropdown from 'components/UI/Dropdown/Dropdown'
@@ -72,6 +74,9 @@ const Grid = (props) => {
     name: (d: Object) => {
       return Object.keys(d).sort((a, b) => d[a].name.localeCompare(d[b].name))
     },
+    random: (d: Object) => {
+      return shuffleArray(Object.keys(d))
+    },
   }
 
   const setSort = selectedOption => {
@@ -120,6 +125,9 @@ const Grid = (props) => {
       data = { ...data, ...privateData }
     }
   }
+
+  const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false });
+  const news = newsData ? randomArraySelection(newsData) : null
 
   if (data) {
     sortedKeys = sortBy[props.sort](data);
@@ -180,6 +188,11 @@ const Grid = (props) => {
       label: t('sort.name'),
       tooltip: t('sort.name-d'),
       icon: <MdSortByAlpha />
+    },
+    random: {
+      label: t('sort.random'),
+      tooltip: t('sort.random-d'),
+      icon: <MdShuffle />
     }
   }
 
@@ -233,6 +246,16 @@ const Grid = (props) => {
 
       {sortedKeys.length ?
         <div className={styles.grid}>
+          {news ?
+            <NewsCard
+              newsKey={news.key}
+              topText={news.text_top}
+              img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}${news.image.endsWith('webp') ? "" : "?width=384"}`}
+              pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}${news.image_paused.endsWith('webp') ? "" : "?width=384"}` : null}
+              bottomText={news.text_bottom}
+              link={news.link}
+            />
+            : null}
           {sortedKeys.map(asset => {
             return (<GridItem
               key={asset}
