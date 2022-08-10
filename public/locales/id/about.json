@@ -1,25 +1,25 @@
 {
   "contact": {
     "h1": "Kontak",
-    "p1": "Punya pertanyaan? Silakan baca<lnk> FAQ</lnk> terlebih dahulu :)",
-    "p2": "Cara termudah untuk menghubungi kami adalah melalui email (<lnk1> info@polyhaven.com</lnk1> ) atau pada<lnk2> Perselisihan</lnk2> ."
+    "p1": "Punya pertanyaan? Silakan baca <lnk>FAQ</lnk> terlebih dahulu :)",
+    "p2": "Cara termudah untuk menghubungi kami adalah melalui email (<lnk1>info@polyhaven.com</lnk1>) atau pada <lnk2>Discord</lnk2>."
   },
   "description": "Apa itu Poly Haven, apa yang kami lakukan, dan mengapa kami melakukannya.",
   "greeting": {
     "h1": "Hai, yang di sana!",
     "p1": "Poly Haven adalah perpustakaan aset publik yang dikuratori untuk seniman efek visual dan desainer game, menyediakan aset 3D berkualitas tinggi yang berguna dengan cara yang mudah didapat.",
     "p2": "Tidak diperlukan paywall, akun, atau formulir email, cukup unduh aset dan gunakan tanpa khawatir.",
-    "p3": "Semua aset di sini adalah<lnk> CC0</lnk> , yang berarti mereka praktis bebas dari hak cipta dan Anda dapat menggunakannya untuk tujuan apa pun."
+    "p3": "Semua aset di sini adalah <lnk>CC0</lnk>, yang berarti mereka praktis bebas dari hak cipta dan Anda dapat menggunakannya untuk tujuan apa pun."
   },
   "help": {
     "h1": "Bagaimana Anda bisa membantu?",
     "s1": "Dukung kami di Patreon",
     "s1p1": "Jika Anda memiliki pendapatan yang dapat dibelanjakan dan Anda ingin membantu kami menerbitkan lebih banyak HDRI, tekstur, dan model 3D gratis, Anda dapat mendukung kami dengan sedikit donasi bulanan di<lnk> pelindung</lnk> :)",
     "s1p2": "Sebagai imbalannya, kami dapat memberi Anda sedikit tanda terima kasih, seperti akses ke folder cloud yang dapat Anda sinkronkan ke hard drive Anda sehingga Anda selalu memiliki aset terbaru kami di ujung jari Anda, atau mengabadikan nama Anda di situs kami.",
-    "s1p3": "Kami menggunakan donasi Anda secara langsung untuk menutupi pengeluaran kami dan mendanai aset baru, sebagaimana diverifikasi oleh<lnk> laporan keuangan</lnk> kami.",
+    "s1p3": "Kami menggunakan donasi Anda secara langsung untuk menutupi pengeluaran kami dan mendanai aset baru, sebagaimana diverifikasi oleh <lnk>laporan keuangan</lnk> kami.",
     "s2": "Donasikan aset Anda",
-    "s2p1": "Punya model 3D, tekstur, atau HDRI terbaik yang ingin Anda bagikan dengan komunitas? Kami akan senang untuk mempublikasikannya untuk Anda :)",
-    "s2p2": "Kami memiliki standar kualitas yang ketat untuk dipertahankan, dan semua yang kami publikasikan harus<lnk1> CC0</lnk1> , tetapi jika aset Anda diterima, seluruh komunitas 3D akan mendapat manfaat darinya.<lnk2> Baca selengkapnya dan kirimkan aset Anda di sini</lnk2> .",
+    "s2p1": "Punya model 3D, tekstur, atau HDRI hasil terbaik yang ingin Anda bagikan dengan komunitas? Kami akan senang untuk mempublikasikannya untuk Anda :)",
+    "s2p2": "Kami memiliki standar kualitas yang ketat untuk dipertahankan, dan semua yang kami publikasikan harus <lnk1>CC0</lnk1> , tetapi jika aset Anda diterima, seluruh komunitas 3D akan mendapat manfaat darinya. <lnk2>Baca selengkapnya dan kirimkan aset Anda di sini</lnk2>.",
     "s3": "Sebarkan beritanya",
     "s3p1": "Tidak apa-apa jika Anda tidak mampu, atau tidak ingin menyumbang kepada kami :) Anda masih dapat membantu kami berkembang dengan memastikan teman dan rekan kerja Anda mengetahui tentang kami, semakin banyak orang yang dapat kami bantu semakin baik!",
     "s3p2": "Ini tidak diperlukan sama sekali, tetapi jika Anda menggunakan aset kami dalam pekerjaan Anda, Anda dapat menyebutkan dari mana Anda mendapatkannya dan itu akan membantu menunjukkan kepada lebih banyak orang bahwa kami ada"
@@ -37,10 +37,10 @@
   "transparency": {
     "h1": "Transparansi",
     "li1": "Kami menulis Log Dev reguler di<lnk> blog kami</lnk> untuk berbagi apa yang telah kami kerjakan baru-baru ini.",
-    "li2": "Kita<lnk> posting di Patreon</lnk> juga merupakan tempat yang baik untuk menemukan pembaruan dan jajak pendapat yang lebih kecil ketika kami membutuhkan bantuan untuk membuat keputusan.",
+    "li2": "<lnk>Postingan di Patreon</lnk> kami juga merupakan tempat yang baik untuk menemukan pembaruan lebih kecil dan jajak pendapat ketika kami membutuhkan bantuan untuk membuat keputusan.",
     "li3": "<lnk>Discord</lnk> adalah tempat kita nongkrong setiap hari, jangan ragu untuk menyapa!",
     "li4": "Media sosial kami terutama otomatis untuk memposting aset terbaru kami, tetapi terkadang kami juga aktif di sana (tautan di<lnk> catatan kaki</lnk> ).",
-    "li5": "<lnk> Laporan keuangan</lnk> kami merinci dengan tepat bagaimana kita membelanjakan atau menyimpan dana kami.",
+    "li5": "<lnk>Laporan keuangan</lnk> kami merinci dengan tepat bagaimana kita membelanjakan atau menyimpan dana kami.",
     "p1": "Karena sebagian besar dana kami berasal dari donasi, penting bagi kami bahwa siapa pun dapat melihat apa yang kami lakukan, apa yang kami rencanakan, dan alasan di balik semua keputusan kami.",
     "p2": "Berbagi aset adalah prioritas kami, tetapi kami juga ingin berbagi pengetahuan, sehingga orang lain dapat belajar cara membuat aset seperti milik kami dan mungkin juga membagikannya."
   },

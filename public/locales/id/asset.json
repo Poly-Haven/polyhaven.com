@@ -9,11 +9,11 @@
   "coming-soon": "Segera!",
   "coming-soon-d": "Pelindung {{tier}} masuk untuk mengunduh lebih awal",
   "credits": {
-    "graphic design": "desain grafis",
+    "graphic design": "Desain Grafis",
     "modeling": "pemodelan",
-    "photography": "fotografi",
-    "processing": "pengolahan",
-    "scanning": "pemindaian"
+    "photography": "Fotografi",
+    "processing": "Pengolahan",
+    "scanning": "Pemindaian"
   },
   "download": "Unduh",
   "downloads": "Unduhan",
@@ -31,9 +31,9 @@
   },
   "no-files": "Tidak ada file",
   "no-files-d": "Coba segarkan, jika tidak, laporkan ini kepada kami.",
-  "no-renders": "Belum ada,<lnk> tambahkan milikmu</lnk> .",
+  "no-renders": "Belum ada, <lnk>tambahkan milikmu</lnk>.",
   "nor-standard": "Standar Peta Normal:",
-  "similar-assets": "Aset serupa",
+  "similar-assets": "Aset Serupa",
   "sponsored-by": "Disponsori oleh:",
   "sponsored-by-d": "Dukung Poly Haven di Patreon untuk menambahkan nama Anda di sini.",
   "sponsored-by-none": "Belum ada :(",

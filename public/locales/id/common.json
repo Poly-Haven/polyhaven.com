@@ -7,7 +7,7 @@
   "Graphic-Design": "Desain grafis",
   "HDRIs": "HDRI",
   "Models": "Model",
-  "Textures": "tekstur",
+  "Textures": "Tekstur",
   "also-supported-by": "Juga didukung oleh:",
   "corporate-sponsor_one": "Sponsor Perusahaan",
   "corporate-sponsor_other": "Sponsor Perusahaan",
@@ -15,25 +15,25 @@
   "display-name": "Nama tampilan",
   "email-address": "Alamat email",
   "footer": {
-    "join-ranks": "Bergabunglah dengan barisan, dukung Poly Haven di Patreon",
-    "thanks": "Terima kasih kepada kami<lnk> Pelanggan</lnk> untuk membuat Poly Haven menjadi mungkin"
+    "join-ranks": "Gabung peringkat, dukung Poly Haven di Patreon",
+    "thanks": "Terima kasih kepada <lnk>Pelindung</lnk> kami untuk membuat Poly Haven menjadi mungkin"
   },
   "goal": {
-    "complete": "Menyelesaikan!",
-    "current": "Tujuan saat ini:",
-    "reached": "Kami mencapai tujuan terakhir kami! Sesuatu yang baru akan segera muncul di sini :)",
-    "to-go": "$ {{dollars}} untuk pergi"
+    "complete": "Lengkap!",
+    "current": "Sasaran saat ini:",
+    "reached": "Kami mencapai sasaran terakhir kami! Sesuatu baru akan segera muncul di sini :)",
+    "to-go": "$ {{dollars}} lagi"
   },
   "hidden": "Tersembunyi",
-  "invalid-email": "alamat email salah",
-  "invalid-name-url": "Nama atau url tidak valid",
+  "invalid-email": "Alamat email tidak sah",
+  "invalid-name-url": "Nama atau url tidak sah",
   "loading": "Memuat...",
   "missing-invalid": "Tidak ada atau tidak sah",
   "nav": {
     "about-contact": "Tentang/Kontak",
     "api": "API",
     "blog": "Blog",
-    "contribute": "Menyumbang",
+    "contribute": "Kontribusi",
     "faq": "FAQ",
     "finances": "Laporan Keuangan",
     "gallery": "Galeri",
@@ -49,7 +49,7 @@
   },
   "optional": "Opsional",
   "patron_one": "Pelindung",
-  "patron_other": "Pelanggan",
+  "patron_other": "Pelindung",
   "please-wait": "Mohon tunggu...",
   "remove-ads": "Hapus Iklan",
   "required": "Diperlukan",

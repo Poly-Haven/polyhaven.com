@@ -6,8 +6,8 @@
     "li2": "Akses awal ke aset, sebelum dirilis ke publik.",
     "li3": "Akses ke layanan cloud kami, untuk menyinkronkan semua aset kami ke hard drive Anda.",
     "li4": "Mensponsori aset secara permanen setiap bulan, menunjukkan nama dan tautan Anda di sebelah tombol unduh.",
-    "p1": "Jika Anda seorang<lnk> pelindung</lnk> dari Poly Haven, login di sini akan memberi Anda akses ke hadiah Anda langsung di situs ini.",
-    "p2": "Bergantung pada tingkat dukungan Anda, hadiah Anda mungkin termasuk:"
+    "p1": "Jika Anda seorang <lnk>pelindung</lnk> dari Poly Haven, login di sini akan memberi Anda akses ke hadiah Anda langsung di situs ini.",
+    "p2": "Berdasarkan pada tingkat dukungan Anda, hadiah Anda mungkin termasuk:"
   },
   "not-patron": "Anda sepertinya bukan pelindung Poly Haven :( jika ini salah, tolong<lnk> berhubungan</lnk> sehingga kami dapat menyelidiki masalah di halaman ini. Kami membutuhkan informasi berikut:",
   "not-patron-anymore": "Sepertinya Anda bukan lagi pelindung Poly Haven. Tidak apa-apa, dan kami menghargai dukungan Anda sebelumnya :)",
@@ -15,18 +15,18 @@
   "reward_other": "Ini memberi Anda hadiah berikut:",
   "rewards": {
     "credit": {
-      "invalid": "Salah nama",
+      "invalid": "Nama tidak sah",
       "p1": "Nama Anda saat ini",
-      "p2": "{{hidden}} di daftar pelindung di footer situs ini.",
+      "p2": "{{hidden}} di daftar pelindung di catatan kaki situs ini.",
       "p3": "Mengubah setelan ini mungkin memerlukan waktu beberapa jam untuk memperbarui setiap halaman situs.",
       "p4": "Nama tampilan:",
       "title": "Kredit Catatan Kaki"
     },
     "early-access": {
-      "p1": "Sekarang setelah Anda masuk,<lnk> Perpustakaan Aset</lnk> akan menyertakan aset yang telah kami jadwalkan untuk dipublikasikan di masa mendatang.",
+      "p1": "Sekarang setelah Anda masuk, <lnk>Perpustakaan Aset</lnk> akan menyertakan aset yang telah kami jadwalkan untuk dipublikasikan di masa mendatang.",
       "p2": "Mereka ditandai dengan lingkaran biru dan logo Patreon di kanan atas, seperti ini:",
-      "p3": "Anda sudah dapat mengunduhnya, di depan orang lain :)",
-      "title": "Akses awal"
+      "p3": "Anda sudah dapat mengunduhnya, di depan dari orang lain :)",
+      "title": "Akses Awal"
     },
     "no-ads": {
       "p1": "Kami menggunakan Google AdSense di polyhaven.com. Untuk menyembunyikan iklan ini, cukup aktifkan sakelar ini:",
@@ -34,10 +34,10 @@
       "title": "Tanpa iklan"
     },
     "offline-access": {
-      "p1": "Masukkan alamat email Anda untuk mengirim sendiri undangan ke folder cloud kami:",
+      "p1": "Masukkan alamat email Anda untuk dikirimi undangan ke folder cloud kami:",
       "p2": "Periksa email Anda :)",
-      "p3": "Undangan berhasil dikirim. Jika Anda mengalami masalah atau perlu mengubah email akun Anda,<lnk> silahkan hubungi kami</lnk> .",
-      "p4": "Melihat<lnk> postingan ini</lnk> untuk petunjuk lebih lanjut tentang cara menyiapkan Nextcloud dan mulai menyinkronkan aset ke komputer Anda.",
+      "p3": "Undangan berhasil dikirim. Jika Anda mengalami masalah atau perlu mengubah email akun Anda, <lnk>silahkan hubungi kami</lnk>.",
+      "p4": "Lihat <lnk>postingan ini</lnk> sebagai petunjuk lebih lanjut tentang cara menyiapkan Nextcloud dan mulai menyinkronkan aset ke komputer Anda.",
       "title": "Akses Offline"
     },
     "sponsor": {
@@ -56,10 +56,10 @@
     },
     "stakeholder": {
       "p1": "Sebagai pemangku kepentingan Poly Haven, Anda mendapatkan akses lebih dalam ke saluran komunikasi internal kami untuk membantu kami mendiskusikan apa yang harus dikerjakan dan diikuti sepanjang perjalanan kami.",
-      "p2": "Jika kami belum menghubungi Anda, silakan<lnk> berhubungan</lnk> sehingga kami dapat memberi Anda akses ke saluran ini dan memperkenalkan Anda kepada tim.",
+      "p2": "Jika kami belum menghubungi Anda, silakan <lnk>hubungi kami</lnk> sehingga kami dapat memberi Anda akses ke saluran ini dan memperkenalkan Anda kepada tim.",
       "title": "Pemangku Kepentingan"
     }
   },
-  "support-amount": "Saat ini Anda mendukung Poly Haven dengan {{amount}} $ per bulan, terima kasih!",
+  "support-amount": "Saat ini Anda mendukung Poly Haven dengan ${{amount}} per bulan, terima kasih!",
   "title": "Masuk"
 }
