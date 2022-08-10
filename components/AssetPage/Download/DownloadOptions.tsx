@@ -88,7 +88,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         {type === 0 || fmt === 'zip' ? null :
           <div className={styles.optionRow}>
             <p style={{ textAlign: 'right' }}>{t('nor-standard')}</p>
-            <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / Godot / 3ds Max.">
+            <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / 3ds Max.">
               <Switch
                 on={norMode === 'gl'}
                 onClick={toggleNormalStyle}
