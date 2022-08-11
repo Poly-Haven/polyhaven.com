@@ -18,7 +18,7 @@
   "s5b3": "Telusuri Tekstur",
   "s5b4": "Telusuri Model",
   "s6p1": "Poly Haven adalah perusahaan kecil yang berbasis di Afrika Selatan, bekerja dengan seniman di seluruh dunia.",
-  "s6p2": "Tujuan kami adalah menciptakan sumber konten terbuka yang didanai komunitas yang terus berkembang, untuk kebebasan penuh dan kegunaan oleh para profesional dan penggemar.",
+  "s6p2": "Sasaran kami adalah menciptakan suatu komunitas terus menerus berkembang didanai sumber daya dari konten terbuka, untuk kebebasan penuh serta kegunaan oleh profesional dan sama-sama penghobi.",
   "s6p3": "Sebelumnya kami menjalankan <c1>HDRI Haven</c1>, <c2>Texture Haven</c2> dan <c3>3D Model Haven</c3> sebagai proyek independen terpisah, tetapi pada akhirnya memutuskan bahwa kami dapat melayani komunitas lebih baik dengan menggabungkan kekuatan dan menciptakan satu platform baru: <c4>Poly Haven</c4>.",
   "s6p4": "Jika Anda menyukai apa yang kami lakukan dan ingin situs ini tetap hidup, pertimbangkan <lnk>mendukung kami di Patreon</lnk>.",
   "s6t": "Tentang Kami",
@@ -31,6 +31,6 @@
   "types-hdri-b": "Telusuri HDRI",
   "types-mod": "Model 3D sangat nyata, untuk efek visual dan video game generasi berikutnya.",
   "types-mod-b": "Telusuri Model",
-  "types-tex": "Bahan PBR mulus yang difoto dipindai, setidaknya resolusi 8k.",
+  "types-tex": "Foto dipindai mulus materi PBR, setidaknya resolusi 8k.",
   "types-tex-b": "Telusuri Tekstur"
 }

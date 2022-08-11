@@ -9,7 +9,7 @@
     "p1": "Jika Anda seorang <lnk>pelindung</lnk> dari Poly Haven, login di sini akan memberi Anda akses ke hadiah Anda langsung di situs ini.",
     "p2": "Berdasarkan pada tingkat dukungan Anda, hadiah Anda mungkin termasuk:"
   },
-  "not-patron": "Anda sepertinya bukan pelindung Poly Haven :( jika ini salah, tolong<lnk> berhubungan</lnk> sehingga kami dapat menyelidiki masalah di halaman ini. Kami membutuhkan informasi berikut:",
+  "not-patron": "Anda sepertinya bukan pelindung Poly Haven :( jika ini salah, tolong <lnk>hubung kami</lnk> sehingga kami dapat menyelidiki masalah di halaman ini. Kami membutuhkan informasi berikut:",
   "not-patron-anymore": "Sepertinya Anda bukan lagi pelindung Poly Haven. Tidak apa-apa, dan kami menghargai dukungan Anda sebelumnya :)",
   "reward_one": "Ini memberi Anda hadiah berikut:",
   "reward_other": "Ini memberi Anda hadiah berikut:",
@@ -41,21 +41,21 @@
       "title": "Akses Offline"
     },
     "sponsor": {
-      "p1": "Anda dapat memilih aset setiap bulan untuk menempelkan nama Anda dan tautan di sebelahnya secara permanen. Untuk melakukan ini, kami bekerja dengan sistem \"token\".",
-      "p2": "Pada awal setiap bulan setelah pembayaran Anda diproses oleh Patreon, Anda secara otomatis menerimanya<ticket /> <b>Token Sponsor</b> .",
+      "p1": "Anda dapat memilih suatu aset setiap bulan untuk menempelkan nama Anda dan tautan di sebelahnya secara permanen. Untuk melakukan ini, kami bekerja dengan sistem \"token\".",
+      "p2": "Pada awal setiap bulan setelah pembayaran Anda diproses oleh Patreon, Anda secara otomatis menerimanya satu <ticket /> <b>Token Sponsor</b>.",
       "p3": "Ada dua cara untuk membelanjakan token ini:",
       "p3li1": "Dengan mengunjungi halaman aset yang ingin Anda sponsori, dan mengklik tombol \"<ticket /> Sponsori aset ini\" di sisi kanan halaman.",
-      "p3li2": "Atau Anda dapat mengaktifkan sponsor otomatis di bawah, yang akan memilih aset acak untuk Anda setiap bulan.",
+      "p3li2": "Atau Anda dapat mengaktifkan sponsori otomatis di bawah, dimana akan memilih suatu aset acak untuk Anda setiap bulan.",
       "p4": "Token tidak kedaluwarsa, jadi Anda dapat kembali setelah beberapa bulan dan menghabiskan akumulasi token Anda.",
-      "p5": "Setelah token dihabiskan, itu tidak dapat dicabut atau dipindahkan ke aset lain.",
-      "p6": "Sponsor otomatis aset acak setiap bulan:",
+      "p5": "Sekali sebuah token dibelanjakan, itu tidak dapat dicabut atau dipindah ke aset berbeda.",
+      "p6": "Sponsor otomatis suatu aset acak setiap bulan:",
       "p7": "Pada hari ke-15 setiap bulan, semua token yang Anda miliki akan digunakan untuk aset acak. Ini memberi Anda 15 hari untuk membelanjakan token Anda secara manual jika Anda mau.",
       "p8": "Jika Anda ingin diberi tahu saat aset diambil secara otomatis untuk Anda, masukkan alamat email Anda di bawah ini:",
       "p9": "Untuk berhenti berlangganan notifikasi, hapus alamat email Anda di atas dan klik tombol simpan.",
       "title": "Sponsor"
     },
     "stakeholder": {
-      "p1": "Sebagai pemangku kepentingan Poly Haven, Anda mendapatkan akses lebih dalam ke saluran komunikasi internal kami untuk membantu kami mendiskusikan apa yang harus dikerjakan dan diikuti sepanjang perjalanan kami.",
+      "p1": "Sebagai pemangku kepentingan Poly Haven, Anda mendapatkan akses lebih dalam ke saluran komunikasi internal kami untuk membantu kami mendiskusikan apa yang harus dikerjakan dan ikuti perjalanan kami.",
       "p2": "Jika kami belum menghubungi Anda, silakan <lnk>hubungi kami</lnk> sehingga kami dapat memberi Anda akses ke saluran ini dan memperkenalkan Anda kepada tim.",
       "title": "Pemangku Kepentingan"
     }

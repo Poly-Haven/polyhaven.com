@@ -14,9 +14,9 @@
   "new": "Baru",
   "past": {
     "day_one": "{{count}} hari lalu",
-    "day_other": "{{count}} hari yang lalu",
-    "hour_one": "{{count}} jam yang lalu",
-    "hour_other": "{{count}} jam yang lalu",
+    "day_other": "{{count}} hari lalu",
+    "hour_one": "{{count}} jam lalu",
+    "hour_other": "{{count}} jam lalu",
     "month_one": "{{count}} bulan lalu",
     "month_other": "{{count}} bulan lalu",
     "week_one": "{{count}} minggu lalu",

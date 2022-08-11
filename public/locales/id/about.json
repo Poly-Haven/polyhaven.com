@@ -8,13 +8,13 @@
   "greeting": {
     "h1": "Hai, yang di sana!",
     "p1": "Poly Haven adalah perpustakaan aset publik yang dikuratori untuk seniman efek visual dan desainer game, menyediakan aset 3D berkualitas tinggi yang berguna dengan cara yang mudah didapat.",
-    "p2": "Tidak diperlukan paywall, akun, atau formulir email, cukup unduh aset dan gunakan tanpa khawatir.",
+    "p2": "Tidak diperlukan dinding pembayaran, akun, atau formulir email, cukup unduh aset dan gunakan tanpa khawatir.",
     "p3": "Semua aset di sini adalah <lnk>CC0</lnk>, yang berarti mereka praktis bebas dari hak cipta dan Anda dapat menggunakannya untuk tujuan apa pun."
   },
   "help": {
     "h1": "Bagaimana Anda bisa membantu?",
     "s1": "Dukung kami di Patreon",
-    "s1p1": "Jika Anda memiliki pendapatan yang dapat dibelanjakan dan Anda ingin membantu kami menerbitkan lebih banyak HDRI, tekstur, dan model 3D gratis, Anda dapat mendukung kami dengan sedikit donasi bulanan di<lnk> pelindung</lnk> :)",
+    "s1p1": "Jika Anda memiliki beberapa pemasukan sekali pakai dan Anda ingin membantu kami menerbitkan lebih banyak HDRI, tekstur, dan model 3D gratis, Anda dapat mendukung kami dengan sedikit donasi bulanan di <lnk>Patreon</lnk> :)",
     "s1p2": "Sebagai imbalannya, kami dapat memberi Anda sedikit tanda terima kasih, seperti akses ke folder cloud yang dapat Anda sinkronkan ke hard drive Anda sehingga Anda selalu memiliki aset terbaru kami di ujung jari Anda, atau mengabadikan nama Anda di situs kami.",
     "s1p3": "Kami menggunakan donasi Anda secara langsung untuk menutupi pengeluaran kami dan mendanai aset baru, sebagaimana diverifikasi oleh <lnk>laporan keuangan</lnk> kami.",
     "s2": "Donasikan aset Anda",
@@ -30,7 +30,7 @@
     "li2": "Kontraktor independen yang kami sewa, ditugaskan untuk proyek tertentu.",
     "li3": "Pengguna yang dengan bebas menyumbangkan karya mereka ke platform.",
     "p1": "Kami adalah studio kecil jarak jauh yang berbasis di Afrika Selatan, bekerja dengan pembuat konten di seluruh dunia yang memiliki visi yang sama dengan kami.",
-    "p2": "Dari segi pendanaan, kami terutama didukung oleh donasi dari orang-orang seperti Anda di<lnk> pelindung</lnk> , pendapatan iklan, dan sponsor perusahaan yang percaya bahwa mereka dapat memperoleh manfaat dari mendukung pekerjaan kami dalam jangka panjang.",
+    "p2": "Dari segi pendanaan, kami utamanya didukung oleh donasi dari orang-orang seperti Anda di <lnk>pelindung</lnk>, pendapatan iklan, dan sponsor perusahaan yang percaya bahwa mereka dapat memperoleh manfaat dari mendukung pekerjaan kami dalam jangka panjang.",
     "p3": "Untuk pembuatan aset, ada tiga sumber:"
   },
   "title": "Tentang / Kontak",
@@ -39,7 +39,7 @@
     "li1": "Kami menulis Log Dev reguler di<lnk> blog kami</lnk> untuk berbagi apa yang telah kami kerjakan baru-baru ini.",
     "li2": "<lnk>Postingan di Patreon</lnk> kami juga merupakan tempat yang baik untuk menemukan pembaruan lebih kecil dan jajak pendapat ketika kami membutuhkan bantuan untuk membuat keputusan.",
     "li3": "<lnk>Discord</lnk> adalah tempat kita nongkrong setiap hari, jangan ragu untuk menyapa!",
-    "li4": "Media sosial kami terutama otomatis untuk memposting aset terbaru kami, tetapi terkadang kami juga aktif di sana (tautan di<lnk> catatan kaki</lnk> ).",
+    "li4": "Media sosial kami utamanya otomatis untuk memposting aset terbaru kami, tetapi terkadang kami juga aktif di sana (tautan di <lnk>catatan kaki</lnk>).",
     "li5": "<lnk>Laporan keuangan</lnk> kami merinci dengan tepat bagaimana kita membelanjakan atau menyimpan dana kami.",
     "p1": "Karena sebagian besar dana kami berasal dari donasi, penting bagi kami bahwa siapa pun dapat melihat apa yang kami lakukan, apa yang kami rencanakan, dan alasan di balik semua keputusan kami.",
     "p2": "Berbagi aset adalah prioritas kami, tetapi kami juga ingin berbagi pengetahuan, sehingga orang lain dapat belajar cara membuat aset seperti milik kami dan mungkin juga membagikannya."
