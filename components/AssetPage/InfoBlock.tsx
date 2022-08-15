@@ -7,7 +7,7 @@ const InfoBlock = ({ value, label, condition, link, tip }) => {
   if (condition) {
     return (<>
       {link ?
-        <Link href={link}><a className={styles.infoBlock} data-tip={tip} data-for="InfoBlock">
+        <Link href={link} target="_blank"><a className={styles.infoBlock} data-tip={tip} data-for="InfoBlock">
           <strong>{value}</strong>
           <p>{label}</p>
         </a></Link>

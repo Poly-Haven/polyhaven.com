@@ -224,7 +224,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
               {data.dimensions ? <InfoBlock value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`} label={t('wide')} condition={Boolean(data.dimensions)} tip={`${Math.round(data.dimensions[0])} millimeters wide.`} /> : null}
               <InfoBlock value={data.evs_cap} label="EVs" condition={Boolean(data.evs_cap)} tip={`${data.evs_cap} EVs of dynamic range captured. Unclipped.`} />
               <InfoBlock value={`${data.whitebalance}K`} label="WB" condition={Boolean(data.whitebalance)} tip="Whitebalance" />
-              <InfoBlock value={<MdLocationOn />} label="GPS" condition={Boolean(data.coords)} link={data.coords ? `https://www.google.com/maps/place/${data.coords.join('+')}` : null} />
+              <InfoBlock value={<MdLocationOn />} label="GPS" condition={Boolean(data.coords)} link={data.coords ? `https://www.openstreetmap.org/?mlat=${data.coords[0]}&mlon=${data.coords[1]}&zoom=14#map=13/${data.coords[0]}/${data.coords[1]}` : null} />
             </div>
 
             <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
