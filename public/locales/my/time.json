@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "ယခုမှစ၍ {{count}} ။",
+    "day_other": "ယခုမှစ၍ ရက်များကို {{count}} ။",
+    "hour_one": "ယခုမှစ၍ နာရီကို {{count}} ။",
+    "hour_other": "ယခုမှနာရီကို {{count}} ။",
+    "month_one": "ယခုမှလကို {{count}} ။",
+    "month_other": "ယခုမှလများကို {{count}} ။",
+    "week_one": "ယခုမှ တစ်ပတ်ကို {{count}} ။",
+    "week_other": "ယခုမှ ရက်သတ္တပတ်များကို {{count}} ။",
+    "year_one": "ယခုမှစ၍ တစ်နှစ်ကို {{count}} ။",
+    "year_other": "ယခုမှနှစ်များကို {{count}} ။"
+  },
+  "new": "အသစ်",
+  "past": {
+    "day_one": "လွန်ခဲ့သောရက် {{count}}",
+    "day_other": "လွန်ခဲ့သောရက်များ {{count}}",
+    "hour_one": "လွန်ခဲ့သော နာရီက {{count}}",
+    "hour_other": "ပြီးခဲ့သောနာရီ {{count}}",
+    "month_one": "လွန်ခဲ့သောလ {{count}}",
+    "month_other": "လွန်ခဲ့သောလ {{count}}",
+    "week_one": "လွန်ခဲ့သော တစ်ပတ်က {{count}}",
+    "week_other": "လွန်ခဲ့သော ရက်သတ္တပတ် {{count}}",
+    "year_one": "လွန်ခဲ့သောနှစ် {{count}}",
+    "year_other": "လွန်ခဲ့တဲ့နှစ် {{count}}"
+  },
+  "today": "ဒီနေ့"
+}

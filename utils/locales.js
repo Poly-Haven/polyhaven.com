@@ -1,5 +1,5 @@
 // Resources:
-// http://www.borgendale.com/locname.htm
+// https://github.com/mozilla/language-mapping-list/blob/master/language-mapping-list.js
 // https://country-code.cl/
 
 module.exports = {
@@ -11,6 +11,10 @@ module.exports = {
     name: "اَلْعَرَبِيَّةُ",
     flag: "SA",
     rtl: true
+  },
+  my: {
+    name: "ဗမာစကာ",
+    flag: "MM"
   },
   zh: {
     name: "中文",
