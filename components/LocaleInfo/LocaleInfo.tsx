@@ -16,6 +16,8 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
     }
   }
 
+  const sortedCredits = Object.keys(credits).length ? Object.keys(credits).sort((a, b) => credits[a].localeCompare(credits[b])) : []
+
   let status = <span>Loading...</span>
   if (progress === 100) {
     status = <span>Complete!</span>
@@ -34,7 +36,7 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
         <div className={styles.text}>
           <h3>{name}</h3>
           {credits ?
-            <p>{Object.keys(credits).map(c =>
+            <p>{sortedCredits.map(c =>
               <span key={c} className={styles.credit}>{credits[c] ? <a href={credits[c]} rel="nofollow noopener" target="_blank">{c}</a> : c}</span>
             )}</p>
             : null}
