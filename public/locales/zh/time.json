@@ -1,15 +1,15 @@
 {
   "future": {
-    "day_one": "从现在开始{{count}}天",
-    "day_other": "从现在开始{{count}}天数",
-    "hour_one": "从现在开始{{count}}",
-    "hour_other": "从现在{{count}}",
-    "month_one": "从现在开始{{count}}月",
-    "month_other": "从现在开始{{count}}月",
-    "week_one": "{{count}}周前",
-    "week_other": "{{count}}周前",
-    "year_one": "从现在{{count}}一年",
-    "year_other": "从现在开始{{count}}年"
+    "day_one": "已{{count}}天",
+    "day_other": "已{{count}}天",
+    "hour_one": "已{{count}}小时",
+    "hour_other": "已{{count}}小时",
+    "month_one": "已{{count}}月",
+    "month_other": "已{{count}}月",
+    "week_one": "已{{count}}周",
+    "week_other": "已{{count}}周",
+    "year_one": "已{{count}}年",
+    "year_other": "已{{count}}年"
   },
   "new": "刚刚发布",
   "past": {
