@@ -1,0 +1,65 @@
+{
+  "account": "Akaun",
+  "hi": "Hai",
+  "login": {
+    "li1": "Pembuangan kekal iklan.",
+    "li2": "Akses awal kepada aset, sebelum ia dikeluarkan secara terbuka.",
+    "li3": "Akses kepada perkhidmatan awan kami, untuk menyegerakkan semua aset kami ke cakera keras anda.",
+    "li4": "Taja aset secara kekal setiap bulan, menunjukkan nama dan pautan anda di sebelah butang muat turun.",
+    "p1": "Jika anda seorang<lnk> penaung</lnk> daripada Poly Haven, log masuk di sini akan memberi anda akses kepada ganjaran anda secara langsung di tapak ini.",
+    "p2": "Bergantung pada peringkat sokongan anda, ganjaran anda mungkin termasuk:"
+  },
+  "not-patron": "Anda nampaknya bukan penaung Poly Haven :( jika ini tidak betul, sila<lnk> berhubung</lnk> jadi kami boleh menyiasat masalah di halaman ini. Kami memerlukan maklumat berikut:",
+  "not-patron-anymore": "Nampaknya anda bukan lagi penaung Poly Haven. Itu OK, dan kami menghargai sokongan anda yang lalu :)",
+  "reward_one": "Ini memberi anda ganjaran berikut:",
+  "reward_other": "Ini memberi anda ganjaran berikut:",
+  "rewards": {
+    "credit": {
+      "invalid": "Nama tidak sah",
+      "p1": "Nama anda pada masa ini",
+      "p2": "{{hidden}} dalam senarai penaung di kaki tapak ini.",
+      "p3": "Menukar tetapan ini mungkin mengambil masa beberapa jam untuk mengemas kini setiap halaman tapak.",
+      "p4": "Nama paparan:",
+      "title": "Kredit Pengaki"
+    },
+    "early-access": {
+      "p1": "Sekarang setelah anda log masuk, the<lnk> Perpustakaan Aset</lnk> akan termasuk aset yang telah kami jadualkan untuk diterbitkan pada masa hadapan.",
+      "p2": "Mereka ditandakan dengan bulatan biru dan logo Patreon di bahagian atas sebelah kanan, seperti ini:",
+      "p3": "Anda sudah boleh memuat turunnya, mendahului orang lain :)",
+      "title": "Akses awal"
+    },
+    "no-ads": {
+      "p1": "Kami menggunakan Google AdSense di polyhaven.com. Untuk menyembunyikan iklan ini, hanya dayakan suis ini:",
+      "p2": "Iklan sekarang ialah:",
+      "title": "Tiada iklan"
+    },
+    "offline-access": {
+      "p1": "Masukkan alamat e-mel anda untuk menghantar sendiri jemputan ke folder awan kami:",
+      "p2": "Semak email anda :)",
+      "p3": "Jemputan berjaya dihantar. Jika anda menghadapi sebarang masalah atau perlu menukar e-mel akaun anda,<lnk> sila hubungi kami</lnk> .",
+      "p4": "Lihat<lnk> jawatan ini</lnk> untuk arahan lanjut tentang cara menyediakan Nextcloud dan mula menyegerakkan aset ke komputer anda.",
+      "title": "Akses Luar Talian"
+    },
+    "sponsor": {
+      "p1": "Anda boleh memilih aset setiap bulan untuk melekatkan nama anda dan pautan di sebelah secara kekal. Untuk melakukan ini, kami bekerja dengan sistem \"token\".",
+      "p2": "Pada permulaan setiap bulan selepas pembayaran anda diproses oleh Patreon, anda secara automatik menerima satu<ticket /> <b>Token Penaja</b> .",
+      "p3": "Terdapat dua cara untuk membelanjakan token ini:",
+      "p3li1": "Dengan melawati halaman aset yang anda ingin taja, dan mengklik \"<ticket /> Butang taja aset ini\" di sebelah kanan halaman.",
+      "p3li2": "Atau anda boleh menghidupkan tajaan automatik di bawah, yang akan memilih aset rawak untuk anda setiap bulan.",
+      "p4": "Token tidak luput, jadi anda boleh kembali selepas beberapa bulan dan membelanjakan token terkumpul anda.",
+      "p5": "Sebaik sahaja token dibelanjakan, ia tidak boleh dibatalkan atau dialihkan ke aset lain.",
+      "p6": "Autotaja aset rawak setiap bulan:",
+      "p7": "Pada hari ke-15 setiap bulan, sebarang token tersedia yang anda miliki akan dibelanjakan untuk aset rawak. Ini memberi anda 15 hari untuk membelanjakan token anda secara manual jika anda mahu.",
+      "p8": "Jika anda ingin dimaklumkan apabila aset dipilih secara automatik untuk anda, sila masukkan alamat e-mel anda di bawah:",
+      "p9": "Untuk berhenti melanggan pemberitahuan, kosongkan alamat e-mel anda di atas dan klik butang simpan.",
+      "title": "Penaja"
+    },
+    "stakeholder": {
+      "p1": "Sebagai pemegang kepentingan Poly Haven, anda mendapat akses yang lebih mendalam kepada saluran komunikasi dalaman kami untuk membantu kami membincangkan perkara yang perlu diusahakan dan diikuti sepanjang perjalanan kami.",
+      "p2": "Jika kami belum menghubungi anda, sila<lnk> berhubung</lnk> jadi kami boleh memberi anda akses kepada saluran ini dan memperkenalkan anda kepada pasukan.",
+      "title": "Pihak berkepentingan"
+    }
+  },
+  "support-amount": "Anda kini menyokong Poly Haven dengan {{amount}} $ sebulan, terima kasih!",
+  "title": "Log masuk"
+}

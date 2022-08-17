@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Kenalan",
+    "p1": "Ada soalan? Sila baca<lnk> Soalan Lazim</lnk> pertama :)",
+    "p2": "Cara paling mudah untuk mendapatkan kami adalah melalui e-mel (<lnk1> info@polyhaven.com</lnk1> ) atau pada<lnk2> Perselisihan</lnk2> ."
+  },
+  "description": "Apakah itu Poly Haven, perkara yang kami lakukan dan mengapa kami melakukannya.",
+  "greeting": {
+    "h1": "Hai!",
+    "p1": "Poly Haven ialah perpustakaan aset awam yang dipilih susun untuk artis kesan visual dan pereka permainan, menyediakan aset 3D berkualiti tinggi yang berguna dengan cara yang mudah diperoleh.",
+    "p2": "Tiada tembok berbayar, akaun atau borang e-mel diperlukan, cuma muat turun aset dan gunakannya tanpa bimbang.",
+    "p3": "Semua aset di sini adalah<lnk> CC0</lnk> , yang bermaksud ia boleh dikatakan bebas daripada hak cipta dan anda boleh menggunakannya untuk sebarang tujuan."
+  },
+  "help": {
+    "h1": "Bagaimana anda boleh membantu",
+    "s1": "Sokong kami di Patreon",
+    "s1p1": "Jika anda mempunyai sedikit pendapatan boleh guna dan anda ingin membantu kami menerbitkan lebih banyak HDRI, tekstur dan model 3D percuma, anda boleh menyokong kami dengan derma bulanan yang kecil pada<lnk> Patreon</lnk> :)",
+    "s1p2": "Sebagai balasan, kami boleh memberi anda beberapa tanda terima kasih, seperti akses kepada folder awan yang boleh anda segerakkan ke cakera keras anda supaya anda sentiasa mempunyai aset terkini kami di hujung jari anda, atau mengabadikan nama anda di tapak kami.",
+    "s1p3": "Kami menggunakan derma anda secara langsung untuk menampung perbelanjaan kami dan membiayai aset baharu, seperti yang disahkan oleh kami<lnk> laporan kewangan</lnk> .",
+    "s2": "Sumbangkan aset anda",
+    "s2p1": "Mempunyai model 3D, tekstur atau HDRI terkemuka yang anda ingin kongsi dengan komuniti? Kami ingin menerbitkannya untuk anda :)",
+    "s2p2": "Kami mempunyai standard kualiti yang ketat untuk dikekalkan, dan semua yang kami terbitkan mestilah begitu<lnk1> CC0</lnk1> , tetapi jika aset anda diterima, seluruh komuniti 3D akan mendapat manfaat daripadanya.<lnk2> Baca lebih lanjut dan serahkan aset anda di sini</lnk2> .",
+    "s3": "Sebarkan",
+    "s3p1": "Tidak mengapa jika anda tidak mampu, atau tidak mahu menderma kepada kami :) Anda masih boleh membantu kami berkembang dengan memastikan rakan dan rakan sekerja anda mengetahui tentang kami, lebih ramai orang yang boleh kami bantu lebih baik!",
+    "s3p2": "Ia tidak diperlukan sama sekali, tetapi jika anda menggunakan aset kami dalam kerja anda, anda boleh menyebut dari mana anda memperolehnya dan itu akan membantu menunjukkan kepada lebih ramai orang bahawa kami wujud"
+  },
+  "how": {
+    "h1": "Bagaimana kita melakukan ini?",
+    "li1": "Artis yang diambil bekerja oleh Poly Haven, memberi tumpuan kepada gambaran besar.",
+    "li2": "Kontraktor bebas yang kami ambil, ditugaskan dengan projek tertentu.",
+    "li3": "Pengguna yang secara bebas menyumbangkan kerja mereka ke platform.",
+    "p1": "Kami adalah studio terpencil kecil yang berpangkalan di Afrika Selatan, bekerjasama dengan pencipta di seluruh dunia yang berkongsi visi kami.",
+    "p2": "Dari segi pembiayaan, kami disokong terutamanya oleh sumbangan daripada orang seperti anda<lnk> Patreon</lnk> , hasil pengiklanan dan penaja korporat yang percaya mereka boleh mendapat manfaat daripada menyokong kerja kami dalam jangka panjang.",
+    "p3": "Untuk penciptaan aset, terdapat tiga sumber:"
+  },
+  "title": "Perihal / Kenalan",
+  "transparency": {
+    "h1": "Ketelusan",
+    "li1": "Kami menulis Log Dev biasa<lnk> blog kami</lnk> untuk berkongsi apa yang telah kami usahakan baru-baru ini.",
+    "li2": "kami<lnk> siaran di Patreon</lnk> juga merupakan tempat yang baik untuk mencari kemas kini dan tinjauan pendapat yang lebih kecil apabila kami memerlukan bantuan membuat keputusan.",
+    "li3": "<lnk>Perselisihan</lnk> adalah tempat kami melepak setiap hari, jangan ragu untuk bertanya khabar!",
+    "li4": "Media sosial kami terutamanya automatik untuk menyiarkan aset terkini kami, tetapi kami kadang-kadang aktif di sana juga (pautan dalam<lnk> pengaki</lnk> ).",
+    "li5": "kami<lnk> laporan kewangan</lnk> terperinci dengan tepat cara kita membelanjakan atau menyimpan dana kita.",
+    "p1": "Memandangkan majoriti pembiayaan kami datang daripada derma, adalah penting bagi kami bahawa sesiapa sahaja dapat melihat apa yang kami lakukan, apa yang kami rancang dan alasan di sebalik semua keputusan kami.",
+    "p2": "Berkongsi aset kami adalah keutamaan kami, tetapi kami juga ingin berkongsi pengetahuan kami, supaya orang lain mungkin belajar cara mencipta aset seperti milik kami dan mungkin berkongsinya juga."
+  },
+  "why": {
+    "h1": "Mengapa kita melakukan ini?",
+    "p1": "Kerana kita boleh!",
+    "p2": "Dan kerana kami percaya kami boleh membantu komuniti 3D yang lebih besar berkembang dengan menyediakan aset kami secara percuma dan bukannya menjualnya.",
+    "p3": "Kami mahu mengurangkan halangan kemasukan artis baharu, menghapuskan halangan kewangan dan memudahkan artis berpengalaman menumpukan pada kreativiti berbanding mencipta semula roda untuk setiap prop yang mereka perlukan."
+  }
+}

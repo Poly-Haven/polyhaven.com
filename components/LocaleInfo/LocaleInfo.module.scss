@@ -23,6 +23,7 @@
 
   .text {
     font-size: 1rem;
+    text-align: center;
     flex-grow: 1;
     @include flex(column, true, true);
 

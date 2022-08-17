@@ -1,0 +1,27 @@
+{
+  "Clear author": "Pengarang yang jelas",
+  "backplates": "Termasuk satu set imej latar belakang resolusi tinggi.",
+  "by-author": "oleh {{author}}",
+  "early-access": "Akses awal",
+  "new": "Baru!",
+  "no-results": "Tiada keputusan",
+  "no-results-keyword": "Cuba gunakan kata kunci yang berbeza",
+  "results": "keputusan",
+  "search-en": "Carian hanya berfungsi dalam bahasa Inggeris, maaf!",
+  "sort": {
+    "downloads": "Muat turun",
+    "downloads-d": "Jumlah kiraan muat turun sepanjang masa.",
+    "hot": "panas",
+    "hot-d": "Muat turun setiap hari, dengan aset yang lebih baharu ditimbang lebih tinggi sedikit.",
+    "latest": "Terkini",
+    "latest-d": "Terbaharu diterbitkan.",
+    "name": "Nama",
+    "name-d": "Diisih mengikut abjad.",
+    "random": "rawak",
+    "random-d": "Senarai aset dikocok.",
+    "relevance": "Isih mengikut perkaitan carian.",
+    "top": "Atas",
+    "top-d": "Muat turun setiap hari."
+  },
+  "sort-by": "Disusun mengikut"
+}
