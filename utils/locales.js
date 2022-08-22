@@ -56,10 +56,6 @@ module.exports = {
     name: "한국어",
     flag: 'KR'
   },
-  ms: {
-    name: "Bahasa Melayu",
-    flag: 'MY'
-  },
   pl: {
     name: "Polish",
     flag: 'PL'
