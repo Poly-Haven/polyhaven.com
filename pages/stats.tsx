@@ -63,13 +63,16 @@ export async function getStaticProps(context) {
     .catch(e => error = e)
 
   // Assets per month graph
-  const assets = await fetch(`${baseUrl}/assets`)
+  const assets = await fetch(`${baseUrl}/assets?future=true`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => error = e)
   let months = {}
   for (const info of Object.values(assets)) {
     const month = new Date(info['date_published'] * 1000).toISOString().substring(0, 7)
+    if (month > today) {
+      continue
+    }
     const type = Object.keys(asset_types)[info['type']]
     months[month] = months[month] || {
       hdris: 0,

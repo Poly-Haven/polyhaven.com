@@ -18,10 +18,10 @@ const CategoryList = (props) => {
     return <></>
   }
   const activeCat = props.categories[props.level + 1];
-  let url = `/categories/${props.assetType}`;
+  let url = `/categories/${props.assetType}?future=true`;
   const in_cats = props.categories.slice(0, Math.max(0, props.level + 1))
   if (in_cats.length) {
-    url += `?in=${[...in_cats].sort().join(',')}`
+    url += `&in=${[...in_cats].sort().join(',')}`
   }
   const { data, error } = apiSWR(url, { revalidateOnFocus: false });
 

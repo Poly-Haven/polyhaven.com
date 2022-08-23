@@ -29,7 +29,7 @@ function handleErrors(response) {
 
 export const getStaticProps = async (ctx) => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
-  const data = await fetch(`${baseUrl}/assets?t=hdris`)
+  const data = await fetch(`${baseUrl}/assets?t=hdris&future=true`)
     .then(handleErrors)
     .then(response => response.json())
     .catch(e => console.log(e));

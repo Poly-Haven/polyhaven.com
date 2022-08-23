@@ -53,6 +53,19 @@
   }
 }
 
+.blur {
+  .thumb{
+    filter: blur(4px) saturate(0);
+    @include transition;
+  }
+
+  &:hover {
+    .thumb{
+      filter: none;
+    }
+  }
+}
+
 .skelly {
   background: rgba($c-background-light, 0.5);
   min-height: 280px;

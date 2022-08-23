@@ -108,9 +108,11 @@ const Grid = (props) => {
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
 
+  let blurUpcoming = !(patron['rewards'] && patron['rewards'].includes('Early Access'))
+
   let sortedKeys = []
   let data = {}
-  let urlParams = `?t=${props.assetType}`
+  let urlParams = `?t=${props.assetType}&future=true`
   if (props.categories.length) {
     urlParams += "&c=" + props.categories.join(',')
   }
@@ -119,20 +121,13 @@ const Grid = (props) => {
     data = { ...data, ...publicData }
   }
 
-  const { data: privateData, error: privateError } = useSWR(uuid ? `/api/earlyAccess${urlParams}&uuid=${uuid}` : "/api/null", fetcher, { revalidateOnFocus: false });
-  if (uuid && privateData && !privateError) {
-    if (patron['rewards'] && patron['rewards'].includes('Early Access')) {
-      data = { ...data, ...privateData }
-    }
-  }
-
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false });
   const news = newsData ? randomArraySelection(newsData) : null
 
   if (data) {
     sortedKeys = sortBy[props.sort](data);
   } else {
-    console.error({ publicError, privateError })
+    console.error({ publicError })
   }
 
   if (props.search && data) {
@@ -152,6 +147,12 @@ const Grid = (props) => {
 
   if (props.author) {
     sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
+  }
+
+  if (blurUpcoming) {
+    sortedKeys = sortedKeys.filter((k, i) => {
+      return i < 3 || data[k].date_published <= Math.floor(Date.now() / 1000)
+    })
   }
 
   let title = tc(asset_type_name);
@@ -262,11 +263,12 @@ const Grid = (props) => {
               asset={data[asset]}
               assetID={asset}
               onClick={setHeaderPath}
+              blurUpcoming={blurUpcoming}
               scrollPosition={props.scrollPosition} />);
           })}
         </div>
         :
-        (publicData && privateData ?
+        (publicData ?
           <div className={styles.noResults}>
             <h2>{t('no-results')} :(</h2>
             {props.search ? <p>{t('no-results-keyword')}</p> : null}

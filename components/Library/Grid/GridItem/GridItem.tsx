@@ -11,7 +11,7 @@ import SimpleAuthorCredit from 'components/AuthorCredit/SimpleAuthorCredit';
 
 import styles from './GridItem.module.scss';
 
-const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming, scrollPosition }) => {
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('library');
 
@@ -22,11 +22,14 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
     size = [450, 300]
   }
 
+  const blur = blurUpcoming && daysOld(asset.date_published) < 0
+
   let badge;
   if (daysOld(asset.date_published) < 0) {
     badge = {
       text: <><IconPatreon />{t('early-access')}</>,
-      style: styles.soon
+      style: styles.soon,
+      tooltip: t("$3+ Patrons can log in to download early")
     }
   } else if (daysOld(asset.date_published) < 7) {
     badge = {
@@ -45,7 +48,7 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
-    <Link href="/a/[id]" as={`/a/${assetID}`}><a className={styles.gridItem} onClick={onClick}>
+    <Link href="/a/[id]" as={`/a/${assetID}`}><a className={`${styles.gridItem} ${blur ? styles.blur : ''}`} onClick={onClick}>
       <div className={styles.author}>
         <div className={styles.authorInner}>
           {Object.keys(asset.authors).sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
@@ -62,14 +65,15 @@ const GridItem = ({ asset, assetID, onClick, scrollPosition }) => {
         <h3>{asset.name}</h3>
         <p>{timeago(asset.date_published * 1000, tt)}</p>
       </div>
-      {badge ? <div className={`${styles.badge} ${badge.style}`}>{badge.text}</div> : null}
+      {badge ? <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>{badge.text}</div> : null}
       <div className={styles.indicators}>{indicators.map(i => <div key={i.text} title={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
     </a></Link>
   );
 }
 
 GridItem.defaultProps = {
-  onClick: null
+  onClick: null,
+  blurUpcoming: true,
 }
 
 export default GridItem;
