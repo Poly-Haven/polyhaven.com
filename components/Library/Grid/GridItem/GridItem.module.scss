@@ -54,6 +54,9 @@
 }
 
 .blur {
+  @media screen and (max-width: 810px) {
+    display: none;
+  }
   .thumb{
     filter: blur(4px) saturate(0);
     @include transition;
