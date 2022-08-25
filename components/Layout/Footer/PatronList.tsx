@@ -1,4 +1,4 @@
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'
 

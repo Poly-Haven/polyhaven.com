@@ -5,7 +5,7 @@ import tlc from 'constants/top_level_categories.json';
 import { assetTypeName } from 'utils/assetTypeName'
 import apiSWR from 'utils/apiSWR'
 
-import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/UI/Spinner/Spinner';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import styles from './Sidebar.module.scss';

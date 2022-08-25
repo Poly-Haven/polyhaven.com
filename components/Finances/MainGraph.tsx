@@ -8,7 +8,7 @@ import { FiArrowDownLeft, FiArrowUpRight, FiArrowRight } from 'react-icons/fi'
 import { MdStackedLineChart, MdShowChart } from 'react-icons/md'
 
 import Dropdown from 'components/UI/Dropdown/Dropdown';
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Finances.module.scss'

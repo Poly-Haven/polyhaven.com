@@ -4,7 +4,7 @@ import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 import { sortObjByValue } from 'utils/arrayUtils'
 import { getCurrency, catColor } from 'utils/finances';
 
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 import Tooltip from 'components/Tooltip/Tooltip';
 
 import styles from './Finances.module.scss'

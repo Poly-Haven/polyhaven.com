@@ -4,7 +4,7 @@ import useDivSize from 'hooks/useDivSize';
 
 import { MdAdd, MdRemove, MdUndo, MdGridOn } from "react-icons/md";
 
-import Spinner from "components/Spinner/Spinner";
+import Spinner from "components/UI/Spinner/Spinner";
 import IconButton from "components/UI/Button/IconButton";
 
 import styles from './TilePreview.module.scss'

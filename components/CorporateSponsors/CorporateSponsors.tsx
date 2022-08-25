@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import CorporateSponsorLogo from './CorporateSponsorLogo'
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'
 

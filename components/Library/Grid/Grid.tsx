@@ -19,7 +19,7 @@ import apiSWR from 'utils/apiSWR'
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard';
-import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/UI/Spinner/Spinner';
 import DisplayAd from 'components/Ads/DisplayAd';
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import apiSWR from 'utils/apiSWR'
 
 import IconButton from 'components/UI/Button/IconButton';
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 import Gallery from 'components/Gallery/Gallery'
 
 import { MdAdd } from "react-icons/md";

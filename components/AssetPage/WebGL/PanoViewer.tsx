@@ -4,7 +4,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { MdFullscreen } from "react-icons/md";
 
-import Spinner from "components/Spinner/Spinner";
+import Spinner from "components/UI/Spinner/Spinner";
 import IconButton from "components/UI/Button/IconButton";
 
 import styles from './PanoViewer.module.scss'

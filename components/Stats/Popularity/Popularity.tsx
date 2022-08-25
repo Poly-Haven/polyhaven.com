@@ -7,7 +7,7 @@ import apiSWR from 'utils/apiSWR'
 
 import AssetDlGraph from 'components/Stats/AssetDlGraph';
 import Avatar from 'components/Avatar/Avatar'
-import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/UI/Spinner/Spinner';
 
 import styles from './Popularity.module.scss'
 

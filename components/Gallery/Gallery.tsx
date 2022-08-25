@@ -12,7 +12,7 @@ import useQuery from 'hooks/useQuery';
 
 import { MdClose } from 'react-icons/md';
 
-import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/UI/Spinner/Spinner';
 
 import styles from './Gallery.module.scss'
 

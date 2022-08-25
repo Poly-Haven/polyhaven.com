@@ -25,7 +25,7 @@ import InfoItem from './InfoItem'
 import InfoBlock from "./InfoBlock";
 import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
-import Spinner from 'components/Spinner/Spinner'
+import Spinner from 'components/UI/Spinner/Spinner'
 import Sponsor from './Sponsor'
 import TagsList from "./TagsList";
 import TilePreview from './WebGL/TilePreview'
