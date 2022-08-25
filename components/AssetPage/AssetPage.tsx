@@ -14,7 +14,7 @@ import { getPatronInfo } from 'utils/patronInfo';
 import { MdFileDownload, MdLastPage, MdLocationOn } from "react-icons/md";
 
 import AssetDlGraph from "components/Stats/AssetDlGraph";
-import AuthorCredit from 'components/AuthorCredit/AuthorCredit'
+import AuthorCredit from 'components/AssetPage/AuthorCredit'
 import Carousel from './Carousel/Carousel'
 import DisplayAd from 'components/Ads/DisplayAd';
 import Download from './Download/Download'

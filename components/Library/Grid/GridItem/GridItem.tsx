@@ -7,7 +7,7 @@ import { MdCollections } from 'react-icons/md';
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
-import SimpleAuthorCredit from 'components/AuthorCredit/SimpleAuthorCredit';
+import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit';
 
 import styles from './GridItem.module.scss';
 
