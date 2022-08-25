@@ -11,7 +11,7 @@ import { MdCloudDownload, MdCropFree, MdLink, MdChat, MdInfo } from 'react-icons
 import { timeago, fixTzOffset, isoDay } from 'utils/dateUtils';
 
 import InfoBlock from 'components/Layout/InfoBlock/InfoBlock';
-import TierBlock from 'components/Layout/TierBlock/TierBlock';
+import TierBlock from 'components/CorporateSponsors/TierBlock/TierBlock';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import StatBlock from 'components/Stats/StatBlock/StatBlock';
