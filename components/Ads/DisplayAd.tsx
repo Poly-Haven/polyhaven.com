@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { useEffect } from 'react'
 
-import Button from 'components/Button/Button';
+import Button from 'components/UI/Button/Button';
 import Heart from 'components/UI/Icons/Heart';
 
 import styles from './Ads.module.scss'

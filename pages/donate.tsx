@@ -3,7 +3,7 @@ import { useTranslation, Trans } from 'next-i18next';
 
 import LinkText from 'components/LinkText/LinkText';
 import TextPage from 'components/Layout/TextPage/TextPage'
-import Button from 'components/Button/Button';
+import Button from 'components/UI/Button/Button';
 
 const Page = () => {
   const { t } = useTranslation(['common', 'donate']);

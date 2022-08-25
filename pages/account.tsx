@@ -5,7 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation, Trans } from 'next-i18next';
 import { getPatronInfo } from 'utils/patronInfo';
 
-import Button from 'components/Button/Button'
+import Button from 'components/UI/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
 import TextPage from 'components/Layout/TextPage/TextPage'
 import Other from 'components/RewardInfo/Other';

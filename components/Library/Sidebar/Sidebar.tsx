@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { assetTypeName } from 'utils/assetTypeName'
 import { MdApps, MdFilterList, MdFirstPage, MdUnarchive } from 'react-icons/md'
 
-import Button from 'components/Button/Button';
+import Button from 'components/UI/Button/Button';
 import DisplayAd from 'components/Ads/DisplayAd';
 import IconButton from "components/UI/Button/IconButton";
 import CategoryList from './CategoryList';

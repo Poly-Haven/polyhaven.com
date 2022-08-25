@@ -1,4 +1,4 @@
-import Button from 'components/Button/Button';
+import Button from 'components/UI/Button/Button';
 import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 import styles from './TierBlock.module.scss'

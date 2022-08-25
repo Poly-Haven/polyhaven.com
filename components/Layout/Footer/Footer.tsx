@@ -2,7 +2,7 @@ import { useTranslation, Trans } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import Button from 'components/Button/Button'
+import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
 import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'

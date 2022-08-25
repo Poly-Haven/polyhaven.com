@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { MdDescription, MdUnarchive } from 'react-icons/md';
 
-import Button from 'components/Button/Button';
+import Button from 'components/UI/Button/Button';
 import TextPage from 'components/Layout/TextPage/TextPage'
 
 const Contribute = () => {
