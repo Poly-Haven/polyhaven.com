@@ -1,4 +1,4 @@
-import Avatar from 'components/Avatar/Avatar'
+import Avatar from 'components/UI/Avatar/Avatar'
 
 import Heart from 'components/UI/Icons/Heart'
 

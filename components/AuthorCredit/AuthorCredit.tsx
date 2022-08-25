@@ -5,7 +5,7 @@ import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
 import Heart from 'components/UI/Icons/Heart'
 
-import Avatar from 'components/Avatar/Avatar'
+import Avatar from 'components/UI/Avatar/Avatar'
 
 import apiSWR from 'utils/apiSWR'
 import { titleCase } from 'utils/stringUtils';

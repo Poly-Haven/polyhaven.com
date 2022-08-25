@@ -6,7 +6,7 @@ import { getCurrency } from 'utils/finances';
 import apiSWR from 'utils/apiSWR'
 
 import AssetDlGraph from 'components/Stats/AssetDlGraph';
-import Avatar from 'components/Avatar/Avatar'
+import Avatar from 'components/UI/Avatar/Avatar'
 import Spinner from 'components/UI/Spinner/Spinner';
 
 import styles from './Popularity.module.scss'

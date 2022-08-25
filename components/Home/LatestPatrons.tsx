@@ -1,4 +1,4 @@
-import Patron from 'components/Avatar/Patron'
+import Patron from 'components/UI/Avatar/Patron'
 import Spinner from 'components/UI/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'

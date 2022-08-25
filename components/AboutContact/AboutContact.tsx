@@ -1,7 +1,7 @@
 import { useTranslation, Trans } from 'next-i18next';
 
 import LinkText from 'components/LinkText/LinkText';
-import Staff from 'components/Avatar/Staff'
+import Staff from 'components/UI/Avatar/Staff'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 
 import styles from './AboutContact.module.scss'

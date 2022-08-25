@@ -10,7 +10,7 @@ import LatestPatrons from './LatestPatrons'
 import GoalProgress from 'components/UI/ProgressBar/GoalProgress'
 import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
-import Staff from 'components/Avatar/Staff'
+import Staff from 'components/UI/Avatar/Staff'
 import Gallery from 'components/Gallery/Gallery';
 import Loader from 'components/UI/Loader/Loader';
 
