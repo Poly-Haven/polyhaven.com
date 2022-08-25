@@ -51,7 +51,19 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link }) => {
         <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />
       </div>
       <Link href={link}>
-        <a className={styles.img}><img src={pause ? pausedImg : img} /></a>
+        <a className={styles.img} target="_blank">{pause ? <img src={pausedImg} /> : img.endsWith('mp4') ? <video
+          width="384"
+          autoPlay={true}
+          controls={false}
+          loop={true}
+          disablePictureInPicture={true}
+          disableRemotePlayback={true}
+          muted={true}
+        >
+          <source src={img}
+            type="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video> : <img src={img} />}</a>
       </Link>
       <Link href={link}><a className={styles.bottomText}>
         {bottomText}
