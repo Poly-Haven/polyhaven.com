@@ -9,7 +9,7 @@ import { MdCheck, MdSave } from "react-icons/md";
 import Switch from "components/UI/Switch/Switch"
 import Loader from "components/UI/Loader/Loader"
 import Disabled from "components/UI/Disabled/Disabled";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/UI/Tooltip/Tooltip";
 
 import styles from './RewardInfo.module.scss'
 

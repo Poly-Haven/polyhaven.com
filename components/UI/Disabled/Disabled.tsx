@@ -1,4 +1,4 @@
-import Tooltip from 'components/Tooltip/Tooltip';
+import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 import styles from './Disabled.module.scss'
 

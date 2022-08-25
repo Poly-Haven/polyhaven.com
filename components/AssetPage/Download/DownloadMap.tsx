@@ -2,7 +2,7 @@ import filesize from 'filesize'
 
 import { MdFileDownload } from 'react-icons/md'
 
-import Tooltip from 'components/Tooltip/Tooltip'
+import Tooltip from 'components/UI/Tooltip/Tooltip'
 import MapSelector from './MapSelector'
 
 import { titleCase } from 'utils/stringUtils'

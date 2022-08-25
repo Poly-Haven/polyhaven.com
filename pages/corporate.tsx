@@ -15,7 +15,7 @@ import TierBlock from 'components/Layout/TierBlock/TierBlock';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import StatBlock from 'components/Stats/StatBlock/StatBlock';
-import Tooltip from 'components/Tooltip/Tooltip';
+import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 const Corporate = (props) => {
   const { t: tt } = useTranslation('time');

@@ -1,4 +1,4 @@
-import Tooltip from 'components/Tooltip/Tooltip'
+import Tooltip from 'components/UI/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
 import RelativeCat from './RelativeCat'
 import RelativeType from './RelativeType'

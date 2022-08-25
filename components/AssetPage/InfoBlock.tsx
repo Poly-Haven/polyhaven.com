@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './AssetPage.module.scss'
 
-import Tooltip from 'components/Tooltip/Tooltip';
+import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 const InfoBlock = ({ value, label, condition, link, tip }) => {
   if (condition) {

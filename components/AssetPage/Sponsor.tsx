@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { MdHelp } from 'react-icons/md'
 import apiSWR from 'utils/apiSWR'
 
-import Tooltip from 'components/Tooltip/Tooltip'
+import Tooltip from 'components/UI/Tooltip/Tooltip'
 import AddSponsor from './AddSponsor'
 
 import styles from './AssetPage.module.scss'

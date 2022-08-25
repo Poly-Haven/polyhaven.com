@@ -5,7 +5,7 @@ import { sortObjByValue } from 'utils/arrayUtils'
 import { getCurrency, catColor } from 'utils/finances';
 
 import Spinner from 'components/UI/Spinner/Spinner'
-import Tooltip from 'components/Tooltip/Tooltip';
+import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 import styles from './Finances.module.scss'
 

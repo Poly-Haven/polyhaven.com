@@ -14,7 +14,7 @@ import Loader from 'components/UI/Loader/Loader'
 import IconBlender from 'components/UI/Icons/Blender'
 import IconGltf from 'components/UI/Icons/glTF'
 import IconFile from 'components/UI/Icons/File'
-import Tooltip from 'components/Tooltip/Tooltip'
+import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
