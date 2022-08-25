@@ -1,6 +1,6 @@
 import { useTranslation, Trans } from 'next-i18next';
 
-import ProgressBar from 'components/ProgressBar/ProgressBar'
+import ProgressBar from 'components/UI/ProgressBar/ProgressBar'
 import Tooltip from 'components/Tooltip/Tooltip'
 
 import apiSWR from 'utils/apiSWR'

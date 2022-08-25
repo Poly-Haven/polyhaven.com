@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import GoalProgress from 'components/ProgressBar/GoalProgress'
+import GoalProgress from 'components/UI/ProgressBar/GoalProgress'
 import Nav from './Nav/Nav'
 
 import styles from './Header.module.scss';
