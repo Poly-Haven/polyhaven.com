@@ -251,8 +251,8 @@ const Grid = (props) => {
             <NewsCard
               newsKey={news.key}
               topText={news.text_top}
-              img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}${news.image.endsWith('webp') ? "" : "?width=384"}`}
-              pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}${news.image_paused.endsWith('webp') ? "" : "?width=384"}` : null}
+              img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
+              pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null}
               bottomText={news.text_bottom}
               link={news.link}
             />
