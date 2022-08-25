@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import CountryFlag from 'components/CountryFlag/CountryFlag'
+import CountryFlag from 'components/UI/Icons/CountryFlag'
 
 import styles from './Avatar.module.scss'
 

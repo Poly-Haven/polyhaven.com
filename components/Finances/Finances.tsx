@@ -6,7 +6,7 @@ import apiSWR from 'utils/apiSWR'
 import MainGraph from './MainGraph'
 import Monthly from './Monthly'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
-import CountryFlag from 'components/CountryFlag/CountryFlag'
+import CountryFlag from 'components/UI/Icons/CountryFlag'
 
 import styles from './Finances.module.scss'
 

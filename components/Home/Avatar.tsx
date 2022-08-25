@@ -1,4 +1,4 @@
-import CountryFlag from 'components/CountryFlag/CountryFlag'
+import CountryFlag from 'components/UI/Icons/CountryFlag'
 
 import styles from './Home.module.scss'
 

@@ -1,4 +1,4 @@
-import CountryFlag from "../../../CountryFlag/CountryFlag";
+import CountryFlag from "components/UI/Icons/CountryFlag";
 
 const LocaleFlag = ({ locale, flag, name }) => {
   return (<>
