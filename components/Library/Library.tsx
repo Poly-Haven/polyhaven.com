@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import Sidebar from 'components/Sidebar/Sidebar';
+import Sidebar from 'components/Library/Sidebar/Sidebar';
 import Grid from 'components/Library/Grid/Grid';
 import Page from 'components/Layout/Page/Page'
 

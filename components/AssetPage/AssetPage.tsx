@@ -19,7 +19,7 @@ import Carousel from './Carousel/Carousel'
 import DisplayAd from 'components/Ads/DisplayAd';
 import Download from './Download/Download'
 import GLTFViewer from './WebGL/GLTFViewer'
-import Heart from 'components/Heart/Heart'
+import Heart from 'components/UI/Icons/Heart'
 import IconButton from "components/UI/Button/IconButton";
 import InfoItem from './InfoItem'
 import InfoBlock from "./InfoBlock";

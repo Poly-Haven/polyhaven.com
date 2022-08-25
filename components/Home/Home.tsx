@@ -4,7 +4,7 @@ import LinkText from 'components/LinkText/LinkText';
 import apiSWR from 'utils/apiSWR'
 
 import Slider from './Slider/Slider'
-import Heart from 'components/Heart/Heart'
+import Heart from 'components/UI/Icons/Heart'
 import Button from 'components/Button/Button'
 import LatestPatrons from './LatestPatrons'
 import GoalProgress from 'components/ProgressBar/GoalProgress'

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
-import Heart from 'components/Heart/Heart'
+import Heart from 'components/UI/Icons/Heart'
 
 import Avatar from 'components/Avatar/Avatar'
 

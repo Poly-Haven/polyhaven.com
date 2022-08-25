@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import Button from 'components/Button/Button'
-import Heart from 'components/Heart/Heart'
+import Heart from 'components/UI/Icons/Heart'
 import SocialIcons from 'components/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import PatronList from './PatronList'

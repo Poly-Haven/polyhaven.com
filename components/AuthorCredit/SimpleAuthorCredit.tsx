@@ -1,6 +1,6 @@
 import Avatar from 'components/Avatar/Avatar'
 
-import Heart from 'components/Heart/Heart'
+import Heart from 'components/UI/Icons/Heart'
 
 import styles from './SimpleAuthorCredit.module.scss'
 
