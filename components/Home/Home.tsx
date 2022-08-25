@@ -8,7 +8,7 @@ import Heart from 'components/UI/Icons/Heart'
 import Button from 'components/Button/Button'
 import LatestPatrons from './LatestPatrons'
 import GoalProgress from 'components/ProgressBar/GoalProgress'
-import SocialIcons from 'components/SocialIcons/SocialIcons'
+import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/Avatar/Staff'
 import Gallery from 'components/Gallery/Gallery';
