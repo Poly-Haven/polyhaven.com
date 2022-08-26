@@ -161,6 +161,19 @@ const Home = () => {
         <div className={styles.hoverBrowseModels} />
       </div>
 
+      <div className={`${styles.sectionWrapper}`}>
+        <div className={`${styles.section} ${styles.testimonials}`}>
+          <div className={styles.testimonial}>
+            <img src={`https://cdn.polyhaven.com/people/Tudor Bodeanu.jpg?width=80`} />
+            <p>"In today's fast paced content creation environment, Poly Haven is a free library of quality content with no strings attached to get your project off the ground!"<br /><strong>-Tudor Bodeanu, Sr. Tech/Product Artist at Unity</strong></p>
+          </div>
+          <div className={styles.testimonial}>
+            <img src={`https://cdn.polyhaven.com/people/Fenner Rockliffe.jpg?width=80`} />
+            <p>"Any time I'm looking for an awesome HDRI, Material, or high quality model the first place I always look is on polyhaven.com. I've used it a ton for my Blender projects and it's definitely a site every VFX artist should know about!"<br /><strong>-Fenner Rockliffe, VFX Supervisor at Corridor Digital</strong></p>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
           <div className={styles.subSection}>

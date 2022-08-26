@@ -247,6 +247,27 @@
   }
 }
 
+.testimonials {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.testimonial {
+  @include flex(row, true, true);
+  max-width: 600px;
+  font-style: italic;
+  padding: 0 1em;
+
+  img {
+    border-radius: 50%;
+  }
+
+  p {
+    padding: 0 1em;
+    text-align: left;
+  }
+}
+
 .staff {
   @include flex(column, true, true);
 
