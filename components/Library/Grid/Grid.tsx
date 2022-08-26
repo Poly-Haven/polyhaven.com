@@ -1,7 +1,5 @@
 import { useTranslation } from 'next-i18next';
 import Fuse from 'fuse.js';
-import useSWR from 'swr';
-import fetcher from 'utils/fetcher';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
@@ -35,6 +33,7 @@ const Grid = (props) => {
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
+  const [news, setNews] = useState(null)
   const { locale } = useRouter()
 
   useEffect(() => {  // Handle user loading
@@ -122,7 +121,10 @@ const Grid = (props) => {
   }
 
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false });
-  const news = newsData ? randomArraySelection(newsData) : null
+  if (newsData && !news) {
+    setNews(randomArraySelection(newsData))
+  }
+  console.log("RENDER", news ? news.key : null)
 
   if (data) {
     sortedKeys = sortBy[props.sort](data);
