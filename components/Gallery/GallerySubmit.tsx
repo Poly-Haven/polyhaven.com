@@ -14,7 +14,7 @@ import Popup from 'components/UI/Popup/Popup';
 import useQuery from 'hooks/useQuery';
 
 import styles from './GallerySubmit.module.scss'
-import btnStyles from 'components/Button/Button.module.scss'
+import btnStyles from 'components/UI/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
 const GallerySubmit = ({ assets, galleryApiUrl }) => {
