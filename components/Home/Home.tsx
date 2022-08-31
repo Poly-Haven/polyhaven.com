@@ -213,7 +213,7 @@ const Home = () => {
                 <Staff id="Andreas Mischok" name="Andreas Mischok" role={`${tc('common:HDRIs')}`} country="DE" mode="compact" />
                 <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${tc('common:HDRIs')}`} country="UA" mode="compact" />
                 <Staff id="Dimitrios Savva" name="Dimitrios Savva" role={`${tc('common:Textures')}, ${tc('common:HDRIs')}`} country="ZA" mode="compact" />
-                <Staff id="Jurita Burger" name="Jurita Burger" role={`${tc('common:Graphic-Design')}`} country="ZA" mode="compact" />
+                <Staff id="Jarod Guest" name="Jarod Guest" role={`${tc('common:HDRIs')}`} country="ZA" mode="compact" />
               </div>
             </div>
           </div>

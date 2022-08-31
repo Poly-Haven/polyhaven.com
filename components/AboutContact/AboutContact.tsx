@@ -35,7 +35,7 @@ const AboutPage = () => {
         <Staff id="Andreas Mischok" name="Andreas Mischok" role={`${t('common:HDRIs')}`} country="DE" mode="full" />
         <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UA" mode="full" />
         <Staff id="Dimitrios Savva" name="Dimitrios Savva" role={`${t('common:Textures')}, ${t('common:HDRIs')}`} country="ZA" mode="full" />
-        <Staff id="Jurita Burger" name="Jurita Burger" role={`${t('common:Graphic-Design')}`} country="ZA" mode="full" />
+        <Staff id="Jarod Guest" name="Jarod Guest" role={`${t('common:HDRIs')}`} country="ZA" mode="full" />
       </div>
 
       <CorporateSponsors header={`${t('common:corporate-sponsor', { count: 100 })}:`} />
