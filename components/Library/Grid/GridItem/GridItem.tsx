@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
 
 import { MdCollections } from 'react-icons/md';
@@ -11,7 +10,7 @@ import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit';
 
 import styles from './GridItem.module.scss';
 
-const GridItem = ({ asset, assetID, onClick, blurUpcoming, scrollPosition }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('library');
 
@@ -54,12 +53,9 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, scrollPosition }) => 
           {Object.keys(asset.authors).sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
         </div>
       </div>
-      <div className={styles.thumb}><LazyLoadImage
+      <div className={styles.thumb}><img
         src={img_src}
         alt={asset.name}
-        scrollPosition={scrollPosition}
-        threshold={500}
-        placeholder={<div className={styles.skelly}></div>}
       /></div>
       <div className={styles.text}>
         <h3>{asset.name}</h3>

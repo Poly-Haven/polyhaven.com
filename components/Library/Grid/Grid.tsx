@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
-import { trackWindowScroll } from 'react-lazy-load-image-component';
+import LazyLoad from 'react-lazy-load';
 import { MdSearch, MdClose } from 'react-icons/md'
 import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle } from 'react-icons/md'
 
@@ -259,13 +259,12 @@ const Grid = (props) => {
             />
             : null}
           {sortedKeys.map(asset => {
-            return (<GridItem
-              key={asset}
+            return (<LazyLoad offset={500} key={asset}><GridItem
               asset={data[asset]}
               assetID={asset}
               onClick={setHeaderPath}
               blurUpcoming={blurUpcoming}
-              scrollPosition={props.scrollPosition} />);
+            /></LazyLoad>);
           })}
         </div>
         :
@@ -283,4 +282,4 @@ const Grid = (props) => {
   );
 }
 
-export default trackWindowScroll(Grid);
+export default Grid;

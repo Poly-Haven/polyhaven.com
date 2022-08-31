@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useUser } from '@auth0/nextjs-auth0';
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx';
-import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { timeago } from 'utils/dateUtils';
 
 import useDivSize from 'hooks/useDivSize';
@@ -39,7 +38,7 @@ const PanoViewer = dynamic(
   { ssr: false }
 )
 
-const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
+const AssetPage = ({ assetID, data, files, renders }) => {
   const { t: tc } = useTranslation('common');
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('asset');
@@ -186,7 +185,7 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
         </div>
         <div className={styles.similar}>
           <h2>{t('similar-assets')}</h2>
-          <Similar slug={assetID} scrollPosition={scrollPosition} onClick={clickSimilar} />
+          <Similar slug={assetID} onClick={clickSimilar} />
         </div>
         <UserRenders assetID={assetID} />
       </Page>
@@ -249,4 +248,4 @@ const AssetPage = ({ assetID, data, files, renders, scrollPosition }) => {
   )
 }
 
-export default trackWindowScroll(AssetPage)
+export default AssetPage

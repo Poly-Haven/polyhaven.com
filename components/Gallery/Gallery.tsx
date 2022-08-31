@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Masonry from 'react-masonry-css'
 import { isURL } from 'validator';
-import { trackWindowScroll } from 'react-lazy-load-image-component';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyLoad from 'react-lazy-load';
 
 import useDivSize from 'hooks/useDivSize';
 import useQuery from 'hooks/useQuery';
@@ -16,7 +15,7 @@ import Spinner from 'components/UI/Spinner/Spinner';
 
 import styles from './Gallery.module.scss'
 
-const Gallery = ({ data, assetPage, scrollPosition }) => {
+const Gallery = ({ data, assetPage }) => {
   const { t } = useTranslation('gallery');
   const [clicked, setClicked] = useState({})
   const [lightboxData, setLightboxData] = useState(null)
@@ -98,12 +97,10 @@ const Gallery = ({ data, assetPage, scrollPosition }) => {
         columnClassName={styles.masonryColumn}
       >
         {data.map((d, k) => <div key={k} className={styles.thumbnail} data-info={JSON.stringify(d)} onClick={viewImage}>
-          <LazyLoadImage
+          <LazyLoad offset={500}><img
             src={`https://cdn.polyhaven.com/gallery/${d.file_name}?width=${imgWidth}`}
             alt={d.name}
-            scrollPosition={scrollPosition}
-            threshold={500}
-          />
+          /></LazyLoad>
         </div>)}
         {!assetPage && <Link href="/gallery-submit" prefetch={false}><a>
           <div className={styles.add}><strong>+</strong><p>{t('submit.title')}</p></div>
@@ -137,4 +134,4 @@ Gallery.defaultProps = {
   assetPage: false
 }
 
-export default trackWindowScroll(Gallery)
+export default Gallery

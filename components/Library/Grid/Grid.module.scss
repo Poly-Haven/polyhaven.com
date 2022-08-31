@@ -140,6 +140,11 @@
   position: relative;
   width: calc(100% - 2rem);
   padding: 1rem;
+
+  > * {
+    min-width: 200px;
+    min-height: 170px;
+  }
 }
 
 .noResults {
@@ -159,4 +164,9 @@
   @media screen and (max-width: 520px) {
     display: none;
   }
+}
+
+.skelly {
+  background: rgba($c-background-light, 0.5);
+  min-height: 280px;
 }
