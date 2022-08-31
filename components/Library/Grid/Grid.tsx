@@ -124,7 +124,6 @@ const Grid = (props) => {
   if (newsData && !news) {
     setNews(randomArraySelection(newsData))
   }
-  console.log("RENDER", news ? news.key : null)
 
   if (data) {
     sortedKeys = sortBy[props.sort](data);
