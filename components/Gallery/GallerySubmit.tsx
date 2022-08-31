@@ -36,7 +36,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
 
   useEffect(() => {
     if (query && query.asset) {
-      if (typeof query.asset === 'string' && Object.keys(assets).includes(query.asset)) {
+      if (typeof query.asset === 'string' && assets.includes(query.asset)) {
         setAssetsUsed([{ value: query.asset, label: query.asset }])
       }
     }
@@ -163,7 +163,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
 
   // Assets Used
   let assetOptions = [];
-  for (const [assetID, assetData] of Object.entries(assets)) {
+  for (const assetID of assets) {
     assetOptions.push({
       value: assetID,
       label: assetID,

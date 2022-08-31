@@ -32,15 +32,11 @@ export async function getStaticProps(context) {
   }
 
   const sortedKeys = Object.keys(assets).sort((a, b) => assets[a].name.localeCompare(assets[b].name))
-  const sortedAssets = {}
-  for (const k of sortedKeys) {
-    sortedAssets[k] = assets[k]
-  }
 
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
-      assets: sortedAssets,
+      assets: sortedKeys,
       galleryApiUrl: process.env.NEXT_ADMIN_API_URL || "https://admin.polyhaven.com",
     },
     revalidate: 60 * 30 // 30 minutes
