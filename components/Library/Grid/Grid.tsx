@@ -29,7 +29,7 @@ const Grid = (props) => {
   const { t: tcat } = useTranslation('categories');
   const { t } = useTranslation('library');
   const optionsRef = useRef(null)
-  const { height } = useDivSize(optionsRef)
+  const { width, height } = useDivSize(optionsRef)
   const { user, isLoading: userIsLoading } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
@@ -151,9 +151,15 @@ const Grid = (props) => {
   }
 
   if (blurUpcoming) {
-    sortedKeys = sortedKeys.filter((k, i) => {
-      return i < 3 || data[k].date_published <= Math.floor(Date.now() / 1000)
-    })
+    if (width <= 810) {
+      sortedKeys = sortedKeys.filter((k, i) => {
+        return data[k].date_published <= Math.floor(Date.now() / 1000)
+      })
+    } else {
+      sortedKeys = sortedKeys.filter((k, i) => {
+        return i < 3 || data[k].date_published <= Math.floor(Date.now() / 1000)
+      })
+    }
   }
 
   let title = tc(asset_type_name);
