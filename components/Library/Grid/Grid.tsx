@@ -262,6 +262,7 @@ const Grid = (props) => {
               pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null}
               bottomText={news.text_bottom}
               link={news.link}
+              isMobile={width <= 810}
             />
             : null}
           {sortedKeys.map(asset => {
