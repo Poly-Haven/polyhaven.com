@@ -1,3 +1,5 @@
+import { stringHash } from "./stringUtils";
+
 export function getCurrency(v, c, rates) {
   const defaultRates = {
     ZAR: 1,
@@ -55,5 +57,38 @@ export function catColor(t) {
     "Catering & Events": `#8BC34A`,
     "BlenderKit": `#6434ff`,
   }
-  return colors[t] || `hsl(${Math.floor(Math.random() * 360)}, 50%, 50%)`
+  // Random colors from material design
+  const colorSet = [
+    `#F44336`,
+    `#E91E63`,
+    `#9C27B0`,
+    `#673AB7`,
+    `#3F51B5`,
+    `#2196F3`,
+    `#03A9F4`,
+    `#00BCD4`,
+    `#009688`,
+    `#4CAF50`,
+    `#8BC34A`,
+    `#CDDC39`,
+    `#FFEB3B`,
+    `#FFC107`,
+    `#FF9800`,
+    `#FF5722`,
+    `#795548`,
+    `#9E9E9E`,
+    `#607D8B`,
+    `#F44336`,
+    `#E91E63`,
+    `#9C27B0`,
+    `#673AB7`,
+    `#3F51B5`,
+    `#2196F3`,
+    `#03A9F4`,
+    `#00BCD4`,
+    `#009688`,
+    `#4CAF50`,
+    `#8BC34A`,
+  ]
+  return colors[t] || colorSet[Math.abs(stringHash(t) % colorSet.length)]
 }
