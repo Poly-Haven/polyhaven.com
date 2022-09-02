@@ -52,6 +52,8 @@ const Contribute = () => {
           <li>In real-world scale.</li>
           <li>Uses only custom original textures, or textures that are CC0/public domain.</li>
           <li>In either ".blend" format, or a format we can import into Blender (fbx, gltf, etc.).</li>
+          <li>For reference, here's <a href="https://blog.polyhaven.com/simple-prop-workflow/">how we make high quality 3D models</a>.</li>
+          <li>If you'd like to make our lives easier and get your asset published more quickly, please check out our <a href="https://docs.google.com/document/d/17vLGfCbouvwcp1mcbsMe892DB0QkGLoR3gSjLtsVTGM/edit?usp=sharing">technical standards document</a>.</li>
         </ul>
 
         <h4>Requirements for Textures:</h4>
@@ -62,6 +64,7 @@ const Contribute = () => {
           <li>Seamless/tileable on at least one axis.</li>
           <li>Minimum 8k resolution.</li>
           <li>As 16-bit PNGs.</li>
+          <li>For reference, here's <a href="https://blog.polyhaven.com/photoscanned-texture-creation-process/">how we make high quality textures</a>.</li>
         </ul>
 
         <h4>Requirements for HDRIs:</h4>
@@ -76,11 +79,8 @@ const Contribute = () => {
           <li>No recognizable people. If you can't mask them out or remove them, their faces need to be obscured.</li>
           <li>Tripod & shadow removed from bottom.</li>
           <li>If you want to include backplates, there are more requirements for these, <Link href="/about-contact">please get in touch</Link> :)</li>
+          <li>For reference, here's <a href="https://blog.polyhaven.com/how-to-create-high-quality-hdri/">how we make high quality HDRIs</a>.</li>
         </ul>
-
-        <p>If you'd like to make our lives easier and get your asset published more quickly, please check out our technical standards document:</p>
-
-        <Button href="https://docs.google.com/document/d/17vLGfCbouvwcp1mcbsMe892DB0QkGLoR3gSjLtsVTGM/edit?usp=sharing" text="View Technical Standards" icon={<MdDescription />} />
 
         <hr />
 
