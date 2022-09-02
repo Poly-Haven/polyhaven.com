@@ -135,9 +135,13 @@ const Grid = (props) => {
     const fuse = new Fuse(Object.values(data), {
       keys: ['categories', 'tags', 'name'],
       includeScore: true,
+      useExtendedSearch: true,
       threshold: 0.2
     })
-    const searchResults = fuse.search(props.search);
+    let search = props.search
+    search = search.replace(/ /g, '|')  // Use spaces as OR operation
+    search = search.replace(/\+/g, ' ')  // Use + as AND operation
+    const searchResults = fuse.search(search);
     const filteredData = {};
     for (const sr of searchResults) {
       let srID = Object.keys(data)[sr.refIndex];
