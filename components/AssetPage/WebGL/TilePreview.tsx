@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 import useDivSize from 'hooks/useDivSize';
 
-import { MdAdd, MdRemove, MdUndo, MdGridOn } from "react-icons/md";
+import { MdAdd, MdRemove, MdGridOn } from "react-icons/md";
 
 import Spinner from "components/UI/Spinner/Spinner";
 import IconButton from "components/UI/Button/IconButton";

@@ -11,6 +11,7 @@
   padding: 1rem;
   text-decoration: none;
   color: $c-text-light;
+  // box-shadow: 0 0 0 2px rgba(red, 0.2); // DEBUG
   @include transition();
 
   &:hover {
@@ -79,6 +80,23 @@
   img {
     display: block;
     width: 100%;
+  }
+}
+
+.turnaround {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 2rem);
+  overflow: hidden;
+  // box-shadow: 0 0 0 2px rgba(green, 0.2); // DEBUG
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: None;
   }
 }
 
@@ -185,4 +203,8 @@
     position: relative;
     top: 0;
   }
+}
+
+.small {
+  font-size: 0.5em;
 }
