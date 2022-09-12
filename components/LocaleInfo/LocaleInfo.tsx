@@ -21,7 +21,7 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
   let status = <span>Loading...</span>
   if (progress === 100) {
     status = <span>Complete!</span>
-  } else if (progress > 10) {
+  } else if (progress > 40) {
     status = <span>In progress...</span>
   } else if (progress === -1) {
     status = <span>Loading...</span>
