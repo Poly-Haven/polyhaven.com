@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} nap múlva",
+    "day_other": "{{count}} a napokat mostantól",
+    "hour_one": "{{count}} óra múlva",
+    "hour_other": "{{count}} az órákat mostantól",
+    "month_one": "{{count}} hónap múlva",
+    "month_other": "{{count}} hónap múlva",
+    "week_one": "{{count}} hét múlva",
+    "week_other": "{{count}} hét múlva",
+    "year_one": "{{count}} év múlva",
+    "year_other": "{{count}} év múlva"
+  },
+  "new": "Új",
+  "past": {
+    "day_one": "{{count}} napja",
+    "day_other": "{{count}} napja",
+    "hour_one": "{{count}} órája",
+    "hour_other": "órával ezelőtt {{count}}",
+    "month_one": "{{count}} hónapja",
+    "month_other": "{{count}} hónapja",
+    "week_one": "{{count}} hete",
+    "week_other": "{{count}} hete",
+    "year_one": "{{count}} éve",
+    "year_other": "{{count}} éve"
+  },
+  "today": "Ma"
+}

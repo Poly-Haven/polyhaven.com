@@ -1,0 +1,27 @@
+{
+  "Clear author": "Világos szerző",
+  "backplates": "Tartalmaz egy sor nagy felbontású háttérképet.",
+  "by-author": "{{author}}",
+  "early-access": "Korai hozzáférés",
+  "new": "Új!",
+  "no-results": "Nincs eredmény",
+  "no-results-keyword": "Próbáljon meg másik kulcsszót használni",
+  "results": "eredmények",
+  "search-en": "A keresés csak angolul működik!",
+  "sort": {
+    "downloads": "Letöltések",
+    "downloads-d": "Minden idők teljes letöltési száma.",
+    "hot": "Forró",
+    "hot-d": "Letöltések naponta, az újabb eszközök súlya valamivel magasabb.",
+    "latest": "Legújabb",
+    "latest-d": "Legutóbb megjelent.",
+    "name": "Név",
+    "name-d": "ABC sorrendben.",
+    "random": "Véletlen",
+    "random-d": "Kevert eszközlista.",
+    "relevance": "Rendezés keresési relevancia szerint.",
+    "top": "Top",
+    "top-d": "Letöltések naponta."
+  },
+  "sort-by": "Sorrend"
+}
