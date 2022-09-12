@@ -36,6 +36,10 @@ module.exports = {
     name: "Français",
     flag: 'FR'
   },
+  hu: {
+    name: "Magyar",
+    flag: 'HU'
+  },
   it: {
     name: "Italiano",
     flag: 'IT'
