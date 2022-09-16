@@ -70,6 +70,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
     }
     turnaroundRef.current.src = turnaroundSrc
     turnaroundWrapperRef.current.style.width = imgRef.current.offsetWidth + 'px'
+    turnaroundWrapperRef.current.style.height = imgRef.current.offsetHeight + 'px'
     turnaroundWrapperRef.current.style.left = `${imgRef.current.getBoundingClientRect().left - wrapperRef.current.getBoundingClientRect().left}px`
     turnaroundWrapperRef.current.style.top = `${imgRef.current.getBoundingClientRect().top - wrapperRef.current.getBoundingClientRect().top}px`
     turnaroundRef.current.style.width = (imgRef.current.offsetWidth * 15) + 'px'; // Force correct width, sometimes there are rounding errors
