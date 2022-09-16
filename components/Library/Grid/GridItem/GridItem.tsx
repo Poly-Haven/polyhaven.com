@@ -82,7 +82,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   }
   const updateTurnaround = (e) => {
     if (turnaround) {
-      const relative = (e.pageX - offsetStart) / -wrapperRef.current.offsetWidth
+      const relative = (e.pageX - offsetStart) / -wrapperRef.current.offsetWidth + (1 / 15 / 4)
       let step = Math.round(mod(relative, 1) * 14)
       step = step * imgRef.current.offsetWidth
       const rotate = `-${step}px`
