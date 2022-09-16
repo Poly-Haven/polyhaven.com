@@ -67,7 +67,6 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
     const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
     if (turnaroundRef.current.src !== turnaroundSrc) {
       setImageLoading(true)
-      console.log("LOAD")
     }
     turnaroundRef.current.src = turnaroundSrc
     turnaroundWrapperRef.current.style.width = imgRef.current.offsetWidth + 'px'
@@ -88,14 +87,17 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
       const rotate = `-${step}px`
       turnaroundRef.current.style.left = rotate
       if (!imageLoading) {
-        // if (step === 0) {
-        //   imgRef.current.style.opacity = 1
-        //   turnaroundRef.current.style.display = 'None'
-        // } else {
-        //   imgRef.current.style.opacity = 0
-        //   turnaroundRef.current.style.display = 'block'
-        // }
+        if (step === 0) {
+          imgRef.current.style.opacity = 1
+          turnaroundRef.current.style.display = 'None'
+        } else {
+          turnaroundRef.current.style.display = 'block'
+          imgRef.current.style.opacity = 0
+        }
       }
+    }
+    if (imageLoading) {
+      setOffsetStart(e.pageX)
     }
   }
   const imageLoaded = (e) => {
@@ -103,7 +105,6 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
     if (turnaround) {
       imgRef.current.style.opacity = 0
     }
-    console.log("LOADED")
   }
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
