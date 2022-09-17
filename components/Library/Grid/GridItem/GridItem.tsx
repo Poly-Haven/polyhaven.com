@@ -124,9 +124,9 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
     <Link href="/a/[id]" as={`/a/${assetID}`}><a
       className={`${styles.gridItem} ${blur ? styles.blur : ''}`}
       onClick={onClick}
-      onMouseEnter={createTurnaround}
-      onMouseMove={updateTurnaround}
-      onMouseLeave={destroyTurnaround}
+      onMouseEnter={asset.type === 2 ? createTurnaround : null}
+      onMouseMove={asset.type === 2 ? updateTurnaround : null}
+      onMouseLeave={asset.type === 2 ? destroyTurnaround : null}
       ref={wrapperRef}
     >
       <div className={styles.author}>
@@ -139,12 +139,14 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
         alt={asset.name}
         ref={imgRef}
       /></div>
-      <div className={styles.turnaround} ref={turnaroundWrapperRef}><img
-        src={""}
-        alt={" "} // Empty alt text to prevent glitches when loading
-        onLoad={imageLoaded}
-        ref={turnaroundRef}
-      /></div>
+      {asset.type === 2 ?
+        <div className={styles.turnaround} ref={turnaroundWrapperRef}><img
+          src={""}
+          alt={" "} // Empty alt text to prevent glitches when loading
+          onLoad={imageLoaded}
+          ref={turnaroundRef}
+        /></div>
+        : null}
       <div className={styles.text}>
         <h3>{asset.name}</h3>
         <p>{timeago(asset.date_published * 1000, tt)}</p>
