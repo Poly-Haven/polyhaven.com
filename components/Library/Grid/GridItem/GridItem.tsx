@@ -23,6 +23,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   const [turnaround, setTurnaround] = useState(false)
   const [offsetStart, setOffsetStart] = useState(0)
   const [imageLoading, setImageLoading] = useState(false)
+  const [hasTurned, setHasTurned] = useState(false)
 
   const imgRef = useRef(null)
   const turnaroundWrapperRef = useRef(null)
@@ -62,8 +63,8 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
 
   const createTurnaround = (e) => {
     setTurnaround(true)
+    setHasTurned(false)
     setOffsetStart(e.pageX)
-    turnaroundRef.current.style.display = 'block'
     const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
     if (turnaroundRef.current.src !== turnaroundSrc) {
       setImageLoading(true)
@@ -77,8 +78,14 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   }
   const destroyTurnaround = (e) => {
     setTurnaround(false)
+    if (imgRef.current.style.opacity == 0 && hasTurned) {
+      imgRef.current.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150 })
+    }
     imgRef.current.style.opacity = 1
-    turnaroundRef.current.style.display = 'None'
+    if (turnaroundRef.current.style.opacity == 1 && hasTurned) {
+      turnaroundRef.current.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 })
+    }
+    turnaroundRef.current.style.opacity = 0
   }
   const updateTurnaround = (e) => {
     if (turnaround) {
@@ -87,12 +94,15 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
       step = step * imgRef.current.offsetWidth
       const rotate = `-${step}px`
       turnaroundRef.current.style.left = rotate
-      if (!imageLoading) {
+      if (!imageLoading && step !== 0) {
+        setHasTurned(true)
+      }
+      if (!imageLoading && !hasTurned) {
         if (step === 0) {
           imgRef.current.style.opacity = 1
-          turnaroundRef.current.style.display = 'None'
+          turnaroundRef.current.style.opacity = 0
         } else {
-          turnaroundRef.current.style.display = 'block'
+          turnaroundRef.current.style.opacity = 1
           imgRef.current.style.opacity = 0
         }
       }
@@ -103,7 +113,8 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   }
   const imageLoaded = (e) => {
     setImageLoading(false)
-    if (turnaround) {
+    if (turnaround && hasTurned) {
+      turnaroundRef.current.style.opacity = 1
       imgRef.current.style.opacity = 0
     }
   }
