@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import LazyLoad from 'react-lazy-load';
 import { MdSearch, MdClose } from 'react-icons/md'
-import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle } from 'react-icons/md'
+import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle, MdSettings } from 'react-icons/md'
 
 import useDivSize from 'hooks/useDivSize';
 import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
@@ -14,6 +14,7 @@ import { randomArraySelection, shuffleArray } from 'utils/arrayUtils';
 import { assetTypeName } from 'utils/assetTypeName'
 import { getPatronInfo } from 'utils/patronInfo';
 import apiSWR from 'utils/apiSWR'
+import useStoredState from 'hooks/useStoredState';
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard';
@@ -21,20 +22,31 @@ import Spinner from 'components/UI/Spinner/Spinner';
 import DisplayAd from 'components/Ads/DisplayAd';
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
+import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Grid.module.scss';
+import btnStyles from 'components/UI/Button/Button.module.scss'
 
 const Grid = (props) => {
   const { t: tc } = useTranslation('common');
   const { t: tcat } = useTranslation('categories');
   const { t } = useTranslation('library');
   const optionsRef = useRef(null)
-  const { width, height } = useDivSize(optionsRef)
   const { user } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
   const [news, setNews] = useState(null)
   const { locale } = useRouter()
+
+  // Advanced options
+  const [showAdvanced, setShowAdvanced] = useState(false)
+  const [enableTurnaround, setEnableTurnaround] = useStoredState('enableTurnaround', true)
+  const [preloadTurnaround, setPreloadTurnaround] = useStoredState('lib_adv_preloadTurnaround', false)
+  const [eaPref, setEAPref] = useStoredState('lib_adv_eaPref', 'some')
+  const [thumbSize, setThumbSize] = useStoredState('lib_adv_thumbSize', "medium")
+  // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
+
+  const { width, height } = useDivSize(optionsRef, [showAdvanced])
 
   useEffect(() => {  // Handle user loading
     if (uuid) {
@@ -155,11 +167,11 @@ const Grid = (props) => {
   }
 
   if (blurUpcoming) {
-    if (width <= 810) {
+    if (width <= 810 || eaPref === 'none') {
       sortedKeys = sortedKeys.filter((k, i) => {
         return data[k].date_published <= Math.floor(Date.now() / 1000)
       })
-    } else {
+    } else if (eaPref === 'some') {
       sortedKeys = sortedKeys.filter((k, i) => {
         return i < 3 || data[k].date_published <= Math.floor(Date.now() / 1000)
       })
@@ -174,6 +186,15 @@ const Grid = (props) => {
     title += ` (${t("by-author", { author: props.author })})`;
   }
   const fSize = Math.floor(title.length / 17.5);  // Rough detection of line length used to reduce font size.
+
+  const resetNews = () => {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith("newsHide__")) {
+        localStorage.removeItem(key)
+      }
+    }
+    window.location.reload()
+  }
 
   const sortOptions = {
     hot: {
@@ -219,6 +240,11 @@ const Grid = (props) => {
               : null}
           </div>
           <div className={styles.options}>
+            <div className={styles.advWrapper}>
+              <div className={`${styles.advButton} ${showAdvanced ? styles.active : ''}`} onClick={() => setShowAdvanced(!showAdvanced)}>
+                <MdSettings />
+              </div>
+            </div>
             <div className={styles.menuSelection}>
               <Disabled
                 disabled={Boolean(props.search)}
@@ -252,6 +278,81 @@ const Grid = (props) => {
             <DisplayAd id="9488083725" x={468} y={60} />
           </div>
         </div>
+        <div style={{ flexBasis: '100%', width: 0 }} />
+        {showAdvanced ?
+          <div className={styles.advOptions}>
+            <div className={styles.advOpt}>
+              Turntables on mouse over:
+              <Switch
+                on={enableTurnaround}
+                onClick={() => setEnableTurnaround(!enableTurnaround)}
+              />
+            </div>
+            <Disabled disabled={!enableTurnaround}>
+              <div className={styles.advOpt}>
+                Preload turntables:
+                <Switch
+                  on={preloadTurnaround}
+                  onClick={() => setPreloadTurnaround(!preloadTurnaround)}
+                />
+              </div>
+            </Disabled>
+            <Disabled disabled={!blurUpcoming} tooltip="As a patron, upcoming assets are always shown for you.">
+              <div className={styles.advOpt}>
+                <Dropdown
+                  label="Show upcoming"
+                  value={eaPref}
+                  options={{
+                    none: {
+                      label: "None",
+                      tooltip: "Hide all upcoming content"
+                    },
+                    some: {
+                      label: "Some",
+                      tooltip: "Show up to 3 assets that will be published soon",
+                    },
+                    all: {
+                      label: "All",
+                      tooltip: "Show all upcoming content and unblur them"
+                    }
+                  }}
+                  onChange={setEAPref}
+                />
+              </div>
+            </Disabled>
+            <div className={styles.advOpt}>
+              <Dropdown
+                label="Thumb size"
+                value={thumbSize}
+                options={{
+                  "small": {
+                    label: "Small"
+                  },
+                  "medium": {
+                    label: "Medium"
+                  },
+                  "large": {
+                    label: "Large"
+                  },
+                  "huge": {
+                    label: "Huge"
+                  },
+                }}
+                onChange={setThumbSize}
+              />
+            </div>
+            <div className={styles.advOpt}>
+              <div
+                className={`${btnStyles.button} ${btnStyles['accent']}`}
+                onClick={resetNews}
+              >
+                <div className={btnStyles.inner}>
+                  Reset hidden news
+                </div>
+              </div>
+            </div>
+          </div>
+          : null}
       </div>
 
       <div className={styles.optionsSpacer} style={{ marginTop: height }} />
@@ -274,7 +375,10 @@ const Grid = (props) => {
               asset={data[asset]}
               assetID={asset}
               onClick={setHeaderPath}
-              blurUpcoming={blurUpcoming}
+              blurUpcoming={blurUpcoming && eaPref !== 'all'}
+              enableTurnaround={enableTurnaround}
+              preloadTurnaround={preloadTurnaround}
+              thumbSize={thumbSize}
             /></LazyLoad>);
           })}
         </div>

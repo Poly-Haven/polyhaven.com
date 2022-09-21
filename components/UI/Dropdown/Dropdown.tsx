@@ -32,7 +32,10 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
     };
   });
 
-  const buttonValue = small ? <>{options[value].icon || options[value].label}</> : <>{options[value].icon ? options[value].icon : null}{options[value].label}</>
+  let buttonValue = <>{Object.keys(options)[0]}</>
+  if (Object.keys(options).includes(value)) {
+    buttonValue = small ? <>{options[value].icon || options[value].label}</> : <>{options[value].icon ? options[value].icon : null}{options[value].label}</>
+  }
 
   return (
     <div className={small ? styles.wrapperSmall : styles.wrapper} ref={ref}>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function useDivSize(ref) {
+export default function useDivSize(ref, updaters = []) {
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
 
@@ -15,7 +15,7 @@ export default function useDivSize(ref) {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, updaters);
 
   return { width, height }
 }

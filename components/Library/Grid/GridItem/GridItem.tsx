@@ -17,7 +17,7 @@ const mod = (a, b) => {
   return ((a % b) + b) % b;
 }
 
-const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, preloadTurnaround }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, preloadTurnaround, thumbSize }) => {
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('library');
   const [turnaround, setTurnaround] = useState(false)
@@ -30,19 +30,35 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, pre
   const turnaroundRef = useRef(null)
   const wrapperRef = useRef(null)
 
-  let size = [371, 278];
-  if (asset.type === 1) {
-    size = [285, 285]
-  } else if (asset.type === 2) {
-    size = [450, 300]
+  const sizes = {
+    hdris: {
+      small: [230, 172],
+      medium: [371, 278],
+      large: [510, 382],
+      huge: [790, 592],
+    },
+    textures: {
+      small: [188, 188],
+      medium: [284, 284],
+      large: [368, 368],
+      huge: [506, 506],
+    },
+    models: {
+      small: [450 * 0.66, 300 * 0.66],
+      medium: [450, 300],
+      large: [450 * 1.30, 300 * 1.30],
+      huge: [450 * 1.78, 300 * 1.78],
+    },
   }
+  const size = Object.values(sizes)[asset.type][thumbSize]
+
   const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
 
   useEffect(() => {
     if (enableTurnaround && preloadTurnaround) {
       turnaroundRef.current.src = turnaroundSrc
     }
-  }, [])
+  }, [preloadTurnaround])
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
@@ -168,6 +184,7 @@ GridItem.defaultProps = {
   blurUpcoming: true,
   enableTurnaround: true,
   preloadTurnaround: false,
+  thumbSize: 'medium',
 }
 
 export default GridItem;

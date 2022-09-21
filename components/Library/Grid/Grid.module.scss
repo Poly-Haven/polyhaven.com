@@ -7,6 +7,7 @@
   z-index: 10;
   width: calc(100% - #{$v-sidebar-width} - 1rem);
   @include flex(row, true);
+  flex-wrap: wrap;
   padding: 0.5rem;
   background: rgba($c-background, 0.8);
 
@@ -72,6 +73,44 @@
     column-gap: 0.5em;
     row-gap: 0.3em;
 
+    .advWrapper {
+
+      .advButton {
+        @include flex(row, true, true);
+        font-size: 1.5em;
+        width: calc(2.5rem - 2px);
+        height: calc(2.5rem - 2px);
+        border: 1px solid rgba($c-text-light, 0.2);
+        background-color: $c-background;
+        @include transition;
+
+        svg {
+          @include transition;
+        }
+
+        &:hover {
+          background-color: $c-background-light;
+          cursor: pointer;
+
+          svg {
+            transform: rotate(-60deg);
+          }
+        }
+      }
+      .active {
+        background-color: $c-accent;
+        color: white;
+
+        &:hover {
+          background-color: $c-accent-light;
+
+          svg {
+            transform: rotate(-120deg);
+          }
+        }
+      }
+    }
+
     .menuSelection {
       display: block;
     }
@@ -123,6 +162,19 @@
     padding: 0.5rem;
     text-align: center;
     min-width: 11ch;
+  }
+}
+
+.advOptions {
+  @include flex(row, true, true);
+  background: rgba(black, 0.2);
+  width: calc(100% + 1rem);
+  margin: 0.5rem -0.5rem -0.5rem;
+  // padding: 0.5rem;
+
+  .advOpt {
+    @include flex(row, true, true);
+    padding: 0 1rem;
   }
 }
 
