@@ -17,7 +17,7 @@ const mod = (a, b) => {
   return ((a % b) + b) % b;
 }
 
-const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, preloadTurnaround }) => {
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('library');
   const [turnaround, setTurnaround] = useState(false)
@@ -38,7 +38,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) 
   }
 
   useEffect(() => {
-    if (preloadTurnaround) {
+    if (enableTurnaround && preloadTurnaround) {
       const img = new Image();
       img.src = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
     }
@@ -131,9 +131,9 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) 
     <Link href="/a/[id]" as={`/a/${assetID}`}><a
       className={`${styles.gridItem} ${blur ? styles.blur : ''}`}
       onClick={onClick}
-      onMouseEnter={asset.type === 2 ? createTurnaround : null}
-      onMouseMove={asset.type === 2 ? updateTurnaround : null}
-      onMouseLeave={asset.type === 2 ? destroyTurnaround : null}
+      onMouseEnter={asset.type === 2 && enableTurnaround ? createTurnaround : null}
+      onMouseMove={asset.type === 2 && enableTurnaround ? updateTurnaround : null}
+      onMouseLeave={asset.type === 2 && enableTurnaround ? destroyTurnaround : null}
       ref={wrapperRef}
     >
       <div className={styles.author}>
@@ -146,7 +146,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) 
         alt={asset.name}
         ref={imgRef}
       /></div>
-      {asset.type === 2 ?
+      {asset.type === 2 && enableTurnaround ?
         <div className={styles.turnaround} ref={turnaroundWrapperRef}><img
           src={""}
           alt={" "} // Empty alt text to prevent glitches when loading
@@ -167,6 +167,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) 
 GridItem.defaultProps = {
   onClick: null,
   blurUpcoming: true,
+  enableTurnaround: true,
   preloadTurnaround: false,
 }
 
