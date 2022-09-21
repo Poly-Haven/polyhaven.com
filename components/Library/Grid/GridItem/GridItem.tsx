@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link'
 import { timeago } from 'utils/dateUtils';
 
@@ -17,7 +17,7 @@ const mod = (a, b) => {
   return ((a % b) + b) % b;
 }
 
-const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming, preloadTurnaround }) => {
   const { t: tt } = useTranslation('time');
   const { t } = useTranslation('library');
   const [turnaround, setTurnaround] = useState(false)
@@ -36,6 +36,13 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
   } else if (asset.type === 2) {
     size = [450, 300]
   }
+
+  useEffect(() => {
+    if (preloadTurnaround) {
+      const img = new Image();
+      img.src = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
+    }
+  }, [])
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
@@ -160,6 +167,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming }) => {
 GridItem.defaultProps = {
   onClick: null,
   blurUpcoming: true,
+  preloadTurnaround: false,
 }
 
 export default GridItem;

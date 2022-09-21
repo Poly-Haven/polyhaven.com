@@ -30,7 +30,7 @@ const Grid = (props) => {
   const { t } = useTranslation('library');
   const optionsRef = useRef(null)
   const { width, height } = useDivSize(optionsRef)
-  const { user, isLoading: userIsLoading } = useUser();
+  const { user } = useUser();
   const [uuid, setUuid] = useState(null);
   const [patron, setPatron] = useState({});
   const [news, setNews] = useState(null)
