@@ -1,11 +1,13 @@
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0';
 import locales from 'utils/locales'
 
-import { MdMenu, MdExpandLess, MdAccountCircle } from 'react-icons/md'
+import { MdMenu, MdExpandLess, MdAccountCircle, MdClose } from 'react-icons/md'
 import { IoMdLogIn } from 'react-icons/io';
+
+import useStoredState from 'hooks/useStoredState';
 
 import NavItem from './NavItem'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag';
@@ -15,8 +17,32 @@ import styles from './Nav.module.scss'
 const Nav = () => {
   const { t } = useTranslation(['common']);
   const router = useRouter()
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
+  const [suggestedLocale, setSuggestedLocale] = useState()
+  const [suggestLocale, setSuggestLocale] = useStoredState("suggestLocale", true)
   const [navHide, setToggle] = useState(true);
+
+  useEffect(() => {
+    const fetchHeaders = async () => {
+      await fetch(`/api/reqHeaders`, { method: 'POST' }).then(res => res.json())
+        .then(resdata => {
+          const reqLocales = resdata['accept-language'].split(',').map(l => l.split(';')[0])
+          for (const locale of reqLocales) {
+            if (locales[locale]) {
+              // This is the first requested locale that we support
+              if (router.locale !== locale) {
+                console.log(`Suggesting locale "${locale}" based on request headers`)
+                setSuggestedLocale(locale)
+              }
+              break
+            }
+          }
+        })
+    }
+    if (suggestLocale) {
+      fetchHeaders()
+    }
+  }, [])
 
   const toggle = () => {
     setToggle(!navHide)
@@ -49,6 +75,12 @@ const Nav = () => {
       </div>
 
       <div style={{ height: '100%', display: 'flex' }}>
+        {suggestedLocale && suggestLocale ?
+          <div className={styles.suggestedLocale}>
+            <NavItem text={<LocaleFlag locale={suggestedLocale} flag={locales[suggestedLocale]['flag']} name={locales[suggestedLocale]['name']} />} link={router.asPath} locale={suggestedLocale} />
+            <MdClose title="Don't suggest a locale again" onClick={() => setSuggestLocale(false)} />
+          </div>
+          : null}
         <NavItem compact={true} text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
           {Object.keys(locales).map(l =>
             <NavItem key={l} text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />} link={router.asPath} locale={l} />

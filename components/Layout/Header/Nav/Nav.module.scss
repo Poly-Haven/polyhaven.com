@@ -157,3 +157,31 @@
     display: none;
   }
 }
+
+.suggestedLocale {
+  @include flex(row);
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  > * {
+    height: 2rem;
+
+    > * {
+      border: none;
+      padding: 0.3em 0.8em;
+      background: $c-background-dark;
+    }
+  }
+  svg {
+    background: $c-background-dark;
+    padding: 0.25em 0.25em;
+    @include transition();
+
+    &:hover {
+      background: $c-accent;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
