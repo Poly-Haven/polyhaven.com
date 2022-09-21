@@ -36,11 +36,11 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, pre
   } else if (asset.type === 2) {
     size = [450, 300]
   }
+  const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
 
   useEffect(() => {
     if (enableTurnaround && preloadTurnaround) {
-      const img = new Image();
-      img.src = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
+      turnaroundRef.current.src = turnaroundSrc
     }
   }, [])
 
@@ -72,7 +72,6 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, pre
     setTurnaround(true)
     setHasTurned(false)
     setOffsetStart(e.pageX)
-    const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
     if (turnaroundRef.current.src !== turnaroundSrc) {
       setImageLoading(true)
     }
