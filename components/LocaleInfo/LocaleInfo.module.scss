@@ -82,3 +82,10 @@
   height: 100%;
   transition: width 0.5s ease;
 }
+
+.statusComplete {
+  background: $c-green;
+}
+.statusHelp {
+  background: $c-red;
+}

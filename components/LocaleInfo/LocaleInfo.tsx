@@ -26,7 +26,7 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
   } else if (progress === -1) {
     status = <span>Loading...</span>
   } else {
-    status = <strong><span className="text-red">Needs help!</span></strong>
+    status = <strong><span>Needs help!</span></strong>
   }
 
   return (
@@ -43,7 +43,7 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
         </div>
       </div>
       <div className={styles.status}>
-        <div className={styles.statusInner} style={{ width: `${Math.max(0, progress)}%` }} />
+        <div className={`${styles.statusInner} ${progress === 100 ? styles.statusComplete : ''} ${progress <= 40 ? styles.statusHelp : ''}`} style={{ width: `${Math.max(0, progress)}%` }} />
         <em>{status}</em>
         <div className={styles.spacer} />
         {progress >= 0 ? <em>{progress}%</em> : null}
