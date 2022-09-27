@@ -9,8 +9,9 @@ import useDivSize from 'hooks/useDivSize';
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
 import { getPatronInfo } from 'utils/patronInfo';
+import useStoredState from 'hooks/useStoredState';
 
-import { MdFileDownload, MdLastPage, MdLocationOn } from "react-icons/md";
+import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from "react-icons/md";
 
 import AssetDlGraph from "components/Stats/AssetDlGraph";
 import AuthorCredit from 'components/AssetPage/AuthorCredit'
@@ -51,6 +52,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
   const [showTilePreview, setShowTilePreview] = useState("")
+  const [showDownloadGraph, setShowDownloadGraph] = useStoredState("asset_showDownloadGraph", false)
   const [hideSidebar, setHideSidebar] = useState(true);
   const widthRef = useRef(null)
   const { width: sidebarWidth } = useDivSize(widthRef)
@@ -228,7 +230,11 @@ const AssetPage = ({ assetID, data, files, renders }) => {
 
             <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
               <span data-tip={`${Math.round(data.download_count / daysOld)} ${t('downloads-pd')}`}>{data.download_count}</span>
-              {isOlderThanFourDays ? <AssetDlGraph slug={assetID} dateFrom={monthAgo} /> : null}
+              {isOlderThanFourDays ?
+                showDownloadGraph ?
+                  <AssetDlGraph slug={assetID} dateFrom={monthAgo} />
+                  : <div className={styles.tag}><MdShowChart onClick={_ => setShowDownloadGraph(true)} /></div>
+                : null}
             </InfoItem>
 
             <div className={styles.spacer} />

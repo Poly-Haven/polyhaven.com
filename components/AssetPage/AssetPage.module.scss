@@ -184,11 +184,16 @@
       font-size: 0.75em;
       color: $c-text-light;
       white-space: nowrap;
+      cursor: pointer;
       @include transition();
 
       &:hover {
         background: $c-accent;
         color: white;
+      }
+
+      svg {
+        display: block;
       }
     }
     .expand {
