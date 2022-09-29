@@ -97,6 +97,8 @@ const Popularity = ({ data }) => {
     setMonth(months[Math.min(months.length - 1, months.indexOf(month) + 1)])
   }
 
+  const poolContribution = month >= "2022-11" ? 100 : 50
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.bumperWrapper}>
@@ -117,7 +119,7 @@ const Popularity = ({ data }) => {
 
       <p>The purpose of rewarding more popular textures is to encourage contributions that are more useful or more wanted by users.</p>
 
-      <p>The total amount to share for bonus earnings is comprised of a pool of $50 per asset.</p>
+      <p>The total amount to share for bonus earnings is comprised of a pool of ${poolContribution} per asset.</p>
 
       {popDataJSX}
 
