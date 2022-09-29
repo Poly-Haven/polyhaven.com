@@ -24,7 +24,7 @@ const Popularity = ({ data }) => {
   }
   if (popData) {
     popDataJSX = <>
-      <table>
+      <div className={styles.tableWrapper}><table>
         <tr>
           <th></th>
           <th>Texture</th>
@@ -67,9 +67,9 @@ const Popularity = ({ data }) => {
         </tr>
         )}
 
-      </table>
+      </table></div>
 
-      <table>
+      <div className={styles.tableWrapper}><table>
         <tr>
           <th>Author</th>
           <th>Bonus (USD)</th>
@@ -86,7 +86,7 @@ const Popularity = ({ data }) => {
           </td>
         </tr>
         )}
-      </table>
+      </table></div>
     </>
   }
 

@@ -3,11 +3,18 @@
 @import "constants/variables";
 
 .wrapper {
+
+  .tableWrapper {
+    margin: 0 1em;
+    width: calc(100% - 2em);
+    overflow-x: auto;
+  }
+
   table {
     text-align: center;
-    margin: 1.5em 1em;
+    margin: 1rem 0;
     border: 1px solid rgba(black, 0.3);
-    width: calc(100% - 2em);
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
 
