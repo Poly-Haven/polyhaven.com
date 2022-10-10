@@ -32,6 +32,7 @@ export function catColor(t) {
     "Once-off Donations": `#673AB7`,
     "Epic Grant": `#673AB7`,
     "Store Sales": `#795548`,
+    "Add-on Sales": `#ea8a0f`,
     "License Sales": `#673AB7`,
     "Crowdfunding": `#eb1478`,
     "Refunds": `#607D8B`,
