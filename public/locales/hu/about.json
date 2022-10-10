@@ -1,28 +1,28 @@
 {
   "contact": {
-    "h1": "Kapcsolatba lépni",
-    "p1": "Kérdésed van? Kérjük, olvassa el a<lnk> GYIK</lnk> első :)",
-    "p2": "A legegyszerűbben e-mailben érhet el minket (<lnk1> info@polyhaven.com</lnk1> ) vagy tovább<lnk2> Viszály</lnk2> ."
+    "h1": "Kapcsolat",
+    "p1": "Kérdése van? Kérjük, olvassa el a <lnk>GYIK</lnk>-et :)",
+    "p2": "A legegyszerűbben e-mailben érhet el minket (<lnk1>info@polyhaven.com</lnk1>) vagy <lnk2>Discordon</lnk2> ."
   },
   "description": "Mi az a Poly Haven, mit csinálunk, és miért csináljuk.",
   "greeting": {
     "h1": "Szia!",
-    "p1": "A Poly Haven egy kurált nyilvános eszköztár vizuális effektusok művészeinek és játéktervezőknek, amely hasznos, kiváló minőségű 3D-s eszközöket biztosít könnyen hozzáférhető módon.",
-    "p2": "Nincs szükség fizetőfalakra, fiókokra vagy e-mail űrlapokra, csak töltsön le egy eszközt, és gond nélkül használja.",
-    "p3": "Minden eszköz itt van<lnk> CC0</lnk> , ami azt jelenti, hogy gyakorlatilag mentesek a szerzői jogoktól, és bármilyen célra felhasználhatod őket."
+    "p1": "A Poly Haven egy kurált nyilvános eszköztár vizuális effektusok művészeinek és játéktervezőknek, amely hasznos, kiváló minőségű 3D-s tartalmakat biztosít könnyen hozzáférhető módon.",
+    "p2": "Nincs szükség fizetőfalakra, fiókokra vagy e-mail űrlapokra, csak töltsön le bármit az oldalról, és használja gond nélkül.",
+    "p3": "Minden tartalom itt található <lnk>CC0</lnk>, ami azt jelenti, hogy gyakorlatilag mentesek a szerzői jogoktól, és bármilyen célra felhasználhatod őket."
   },
   "help": {
     "h1": "Hogyan segíthetsz",
     "s1": "Támogass minket a Patreonon",
-    "s1p1": "Ha van rendelkezésre álló jövedelme, és szeretne segíteni abban, hogy több ingyenes HDRI-t, textúrát és 3D-s modellt tegyünk közzé, támogathat minket egy kis havi adománnyal<lnk> Patreon</lnk> :)",
-    "s1p2": "Cserébe adhatunk néhány apró köszönetet, például hozzáférést egy felhőmappához, amelyet szinkronizálhat a merevlemezével, így mindig kéznél tarthatja legújabb eszközeinket, vagy megörökítheti nevét webhelyünkön.",
-    "s1p3": "Adományait közvetlenül kiadásaink fedezésére és új eszközök finanszírozására használjuk fel, amint azt a mi ellenőrzésünk is alátámasztja<lnk> pénzügyi jelentések</lnk> .",
-    "s2": "Adományozza át vagyonát",
-    "s2p1": "Van egy csúcsminőségű 3D-modellje, textúrája vagy HDRI-je, amelyet meg szeretne osztani a közösséggel? Szeretnénk közzétenni nektek :)",
-    "s2p2": "Szigorú minőségi szabványt kell betartanunk, és mindennek, amit publikálunk, annak meg kell lennie<lnk1> CC0</lnk1> , de ha az eszközét elfogadják, az egész 3D-s közösség hasznot húz belőle.<lnk2> Olvasson többet, és küldje be eszközét itt</lnk2> .",
+    "s1p1": "Ha van rendelkezésre álló jövedelme, és szeretne segíteni abban, hogy több ingyenes HDRI-t, textúrát és 3D-s modellt tegyünk közzé, támogathat minket egy kis havi adománnyal a <lnk>Patreon</lnk>on :)",
+    "s1p2": "Cserébe adhatunk néhány apró köszönetet, például hozzáférést egy felhőmappához, amelyet szinkronizálhat a merevlemezével, így mindig kéznél vannak legújabb tartalmaink, vagy bevésheti nevét webhelyünkbe.",
+    "s1p3": "Adományait közvetlenül kiadásaink fedezésére és új tartalmak finanszírozására használjuk fel, amint azt alátámasztja a <lnk>pénzügyi jelentésünk</lnk> .",
+    "s2": "Adományozd tartalmaidat",
+    "s2p1": "Van egy csúcsminőségű 3D-modellje, textúrája vagy HDRI-je, amelyet meg szeretne osztani a közösséggel? Szívesen közzétennénk :)",
+    "s2p2": "Szigorú minőségi szabványt kell betartanunk, és mindennek, amit publikálunk, annak <lnk1>CC0</lnk1> szinten kell lennie, de ha a tartalmait elfogadják, az egész 3D-s közösség hasznot húz belőle. <lnk2>Olvasson többet, és küldje be tartalmait itt</lnk2> .",
     "s3": "Terjeszd a hírt",
-    "s3p1": "Nem baj, ha nem engedheti meg magának, vagy nem akar nekünk adományozni :) Továbbra is segíthet a növekedésben, ha gondoskodik arról, hogy barátai és munkatársai tudjanak rólunk, minél több embernek tudunk segíteni, annál jobb!",
-    "s3p2": "Egyáltalán nem kötelező, de ha a munkája során használja eszközeinket, akkor megemlítheti, honnan szerezte azokat, és ez segít több embernek megmutatni, hogy létezünk."
+    "s3p1": "Nem baj, ha nem engedheti meg magának, vagy nem akar nekünk adományozni :) Továbbra is segíthet a növekedésben, ha gondoskodik arról, hogy barátai és munkatársai tudjanak rólunk. Minél több embernek tudunk segíteni, annál jobb!",
+    "s3p2": "Egyáltalán nem kötelező, de ha a munkája során használja tartalmainkat, akkor megemlítheti, honnan szerezte azokat, és ez segít több embernek megmutatni, hogy létezünk."
   },
   "how": {
     "h1": "Hogyan csináljuk ezt?",
@@ -30,24 +30,24 @@
     "li2": "Önálló vállalkozókat alkalmazunk, konkrét projektekkel megbízva.",
     "li3": "Felhasználók, akik szabadon adományozzák munkájukat a platformnak.",
     "p1": "Egy kis távoli stúdió vagyunk Dél-Afrikában, és olyan alkotókkal dolgozunk szerte a világon, akik osztják elképzeléseinket.",
-    "p2": "A finanszírozást tekintve elsősorban a hozzád hasonló emberek adományaiból támogatunk bennünket<lnk> Patreon</lnk> , reklámbevételek és vállalati szponzorok, akik úgy vélik, hogy hosszú távon hasznot húzhatnak munkánk támogatásából.",
-    "p3": "Az eszközök létrehozásának három forrása van:"
+    "p2": "A finanszírozást tekintve, elsősorban a hozzád hasonló emberek adományaiból (te is támogathatsz minket a <lnk>Patreon</lnk>on), reklámbevételekből és vállalati szponzorokból tartjuk fenn az oldalt, akik úgy vélik, hogy hosszú távon hasznot húzhatnak munkánk támogatásából.",
+    "p3": "Az tartalmaknak három forrása van:"
   },
-  "title": "Névjegy / Kapcsolat",
+  "title": "Rólunk / Kapcsolat",
   "transparency": {
     "h1": "Átláthatóság",
-    "li1": "Rendszeres fejlesztői naplókat írunk<lnk> a blogunkat</lnk> hogy megosszuk, min dolgoztunk mostanában.",
-    "li2": "A miénk<lnk> bejegyzések a Patreonon</lnk> jó hely a kisebb frissítések és szavazások megtalálására is, amikor segítségre van szükségünk a döntések meghozatalában.",
-    "li3": "<lnk>Viszály</lnk> ott lógunk minden nap, köszönj nyugodtan!",
-    "li4": "Közösségi médiánk elsősorban a legújabb tartalmaink közzétételére automatizált, de alkalmanként ott is aktívak vagyunk (linkek a<lnk> lábléc</lnk> ).",
-    "li5": "A miénk<lnk> pénzügyi jelentések</lnk> pontosan részletezzük, hogyan költjük vagy takarítjuk meg pénzeszközeinket.",
-    "p1": "Mivel finanszírozásunk nagy része adományokból származik, fontos számunkra, hogy bárki lássa, mire készülünk, mit tervezünk, és hogy döntéseink mögött mi az oka.",
-    "p2": "Eszközeink megosztása a prioritásunk, de meg akarjuk osztani tudásunkat is, hogy mások megtanulják, hogyan hozhatnak létre a miénkhez hasonló eszközöket, és esetleg meg is oszthatják azokat."
+    "li1": "Rendszeres fejlesztői naplókat írunk <lnk>a blogunkon</lnk>, hogy megosszuk, min dolgoztunk mostanában.",
+    "li2": "A <lnk>Patreonos bejegyzéseink</lnk> jó helyek a kisebb frissítések és szavazások megtalálására is, ha szükségünk van segítségre döntések meghozatalában.",
+    "li3": "A <lnk>Discord</lnk>on lógunk minden nap, köszönj be nyugodtan!",
+    "li4": "Közösségi médiánk elsősorban a legújabb tartalmaink közzétételére automatizált, de alkalmanként ott is aktívak vagyunk (linkek a <lnk>lábléc</lnk>ben).",
+    "li5": "A <lnk>pénzügyi jelentéseink</lnk>ben pontosan részletezzük, hogyan költjük vagy takarítjuk meg a pénzünket.",
+    "p1": "Mivel finanszírozásunk nagy része adományokból származik, fontos számunkra, hogy bárki lássa, mire készülünk, mit tervezünk, és hogy döntéseink mögött mi áll.",
+    "p2": "Tartalmaink megosztása a prioritásunk, de meg akarjuk osztani tudásunkat is, hogy mások megtanulják, hogyan hozhatnak létre a mieinkhez hasonló tartalmakat, és esetleg meg is oszthatják azokat."
   },
   "why": {
     "h1": "Miért csináljuk ezt?",
     "p1": "Mert megtehetjük!",
     "p2": "És mert hiszünk abban, hogy a nagyobb 3D-s közösség növekedését segíthetjük, ha eszközeinket ingyen biztosítjuk, ahelyett, hogy eladnánk azokat.",
-    "p3": "Csökkenteni akarjuk az új művészek belépési korlátait, elhárítani az anyagi akadályokat, és megkönnyíteni a tapasztalt művészek számára, hogy a kreativitásra összpontosítsanak ahelyett, hogy minden kellékhez újra feltalálják a kereket."
+    "p3": "Csökkenteni akarjuk az új művészek belépési korlátait, elhárítani az anyagi akadályokat, és megkönnyíteni a tapasztalt művészek számára, hogy a kreativitásra összpontosítsanak ahelyett, hogy minden kellékhez újra feltalálják a spanyol viaszt."
   }
 }

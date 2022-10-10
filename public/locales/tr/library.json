@@ -1,0 +1,27 @@
+{
+  "Clear author": "Yazarı temizle",
+  "backplates": "Bir dizi yüksek çözünürlüklü arka plan görüntüsü içerir.",
+  "by-author": "{{author}} tarafından",
+  "early-access": "Erken erişim",
+  "new": "Yeni!",
+  "no-results": "Sonuç yok",
+  "no-results-keyword": "Farklı bir anahtar kelime kullanmayı deneyin",
+  "results": "Sonuçlar",
+  "search-en": "Arama yalnızca İngilizce olarak çalışır, üzgünüm!",
+  "sort": {
+    "downloads": "İndirilenler",
+    "downloads-d": "Tüm zamanların toplam indirme sayısı.",
+    "hot": "Sıcak",
+    "hot-d": "Yeni öğelerin biraz daha yüksek ağırlıklı olduğu günlük indirmeler.",
+    "latest": "En sonuncu",
+    "latest-d": "En son yayınlanan.",
+    "name": "İsim",
+    "name-d": "Alfabetik olarak sıralanmıştır.",
+    "random": "Rastgele",
+    "random-d": "Karışık varlık listesi.",
+    "relevance": "Arama alaka düzeyine göre sıralama.",
+    "top": "Tepe",
+    "top-d": "Günlük indirme sayısı."
+  },
+  "sort-by": "Göre sırala"
+}

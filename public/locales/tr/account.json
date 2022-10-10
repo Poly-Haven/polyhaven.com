@@ -1,0 +1,65 @@
+{
+  "account": "Hesap",
+  "hi": "Merhaba",
+  "login": {
+    "li1": "Reklamların kalıcı olarak kaldırılması.",
+    "li2": "Kamuya açıklanmadan önce varlıklara erken erişim.",
+    "li3": "Tüm varlıklarımızı sabit sürücünüzle senkronize etmek için bulut hizmetimize erişim.",
+    "li4": "İndirme düğmelerinin yanında adınızı ve bağlantınızı göstererek her ay kalıcı olarak bir varlığa sponsor olun.",
+    "p1": "eğer sen bir<lnk> patron</lnk> Poly Haven'dan buraya giriş yapmak, ödüllerinize doğrudan bu siteden erişmenizi sağlayacaktır.",
+    "p2": "Destek seviyenize bağlı olarak ödülleriniz şunları içerebilir:"
+  },
+  "not-patron": "Poly Haven'ın patronu gibi görünmüyorsunuz :( eğer bu yanlışsa, lütfen<lnk> temasta olmak</lnk> böylece bu sayfadaki sorunu araştırabiliriz. Aşağıdaki bilgilere ihtiyacımız olacak:",
+  "not-patron-anymore": "Görünüşe göre artık Poly Haven'ın patronu değilsin. Sorun değil ve geçmişteki desteğiniz için teşekkür ederiz :)",
+  "reward_one": "Bu size aşağıdaki ödülü verir:",
+  "reward_other": "Bu size aşağıdaki ödülleri verir:",
+  "rewards": {
+    "credit": {
+      "invalid": "Geçersiz isim",
+      "p1": "Adınız şu anda",
+      "p2": "bu sitenin altbilgisindeki kullanıcı listesinde {{hidden}} .",
+      "p3": "Bu ayarın değiştirilmesi, sitenin her sayfasının güncellenmesi için birkaç saat sürebilir.",
+      "p4": "Ekran adı:",
+      "title": "Altbilgi Kredisi"
+    },
+    "early-access": {
+      "p1": "Artık giriş yaptığınıza göre,<lnk> Varlık Kitaplığı</lnk> gelecekte yayınlamayı planladığımız varlıkları içerecektir.",
+      "p2": "Mavi bir daire ve sağ üstte Patreon logosu ile işaretlenirler, şöyle:",
+      "p3": "Onları zaten indirebilirsiniz, herkesten önce :)",
+      "title": "Erken erişim"
+    },
+    "no-ads": {
+      "p1": "Polyhaven.com'da Google AdSense kullanıyoruz. Bu reklamları gizlemek için bu anahtarı etkinleştirmeniz yeterlidir:",
+      "p2": "Reklamlar artık:",
+      "title": "Reklamsız"
+    },
+    "offline-access": {
+      "p1": "Kendinize bulut klasörümüze davet göndermek için e-posta adresinizi girin:",
+      "p2": "E-postanı kontrol et :)",
+      "p3": "Davet başarıyla gönderildi. Herhangi bir sorun yaşarsanız veya hesap e-postanızı değiştirmeniz gerekiyorsa,<lnk> lütfen bizimle iletişime geçin</lnk> .",
+      "p4": "Görmek<lnk> bu gönderi</lnk> Nextcloud'u nasıl kuracağınıza ve varlıkları bilgisayarınızla eşitlemeye nasıl başlayacağınıza ilişkin daha fazla talimat için.",
+      "title": "Çevrimdışı Erişim"
+    },
+    "sponsor": {
+      "p1": "Adınızı ve kalıcı olarak yanına bir bağlantı yapıştırmak için her ay bir varlık seçersiniz. Bunu yapmak için bir \"belirteç\" sistemi ile çalışıyoruz.",
+      "p2": "Ödemeniz Patreon tarafından işlendikten sonra her ayın başında otomatik olarak bir tane alırsınız.<ticket /> <b>Sponsor Simgesi</b> .",
+      "p3": "Bu jetonu harcamanın iki yolu vardır:",
+      "p3li1": "Sponsor olmak istediğiniz varlığın sayfasını ziyaret ederek ve \"<ticket /> Sayfanın sağ tarafındaki bu varlığa sponsor ol\" düğmesini tıklayın.",
+      "p3li2": "Veya her ay sizin için rastgele bir varlık seçecek olan otomatik sponsorlukları aşağıdan açabilirsiniz.",
+      "p4": "Jetonların süresi dolmaz, böylece birkaç ay sonra geri gelebilir ve birikmiş jetonlarınızı harcayabilirsiniz.",
+      "p5": "Bir jeton harcandıktan sonra, iptal edilemez veya farklı bir varlığa taşınamaz.",
+      "p6": "Her ay rastgele bir varlığa otomatik sponsor olun:",
+      "p7": "Her ayın 15'inde, sahip olduğunuz tüm jetonlar rastgele varlıklara harcanacaktır. Bu, isterseniz jetonlarınızı manuel olarak harcamanız için size 15 gün verir.",
+      "p8": "Bir varlık sizin için otomatik olarak seçildiğinde bilgilendirilmek istiyorsanız, lütfen aşağıya e-posta adresinizi girin:",
+      "p9": "Bildirim aboneliğinden çıkmak için yukarıdaki e-posta adresinizi temizleyin ve kaydet düğmesine tıklayın.",
+      "title": "Sponsor"
+    },
+    "stakeholder": {
+      "p1": "Poly Haven'ın bir paydaşı olarak, yolculuğumuz boyunca ne üzerinde çalışacağımızı ve takip edeceğimizi tartışmamıza yardımcı olmak için dahili iletişim kanallarımıza daha derin erişim elde edersiniz.",
+      "p2": "Sizinle henüz iletişim kurmadıysak, lütfen<lnk> temasta olmak</lnk> böylece bu kanallara erişmenizi sağlayabilir ve sizi ekiple tanıştırabiliriz.",
+      "title": "Menfaat sahibi"
+    }
+  },
+  "support-amount": "Şu anda Poly Haven'ı ayda $ {{amount}} destekliyorsunuz, teşekkürler!",
+  "title": "Giriş yapmak"
+}

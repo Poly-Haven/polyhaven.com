@@ -1,13 +1,13 @@
 {
   "add-yours": "Add hozzá a tiédet",
-  "author-donated": "Ezt az eszközt a szerző ingyen adományozta Poly Havennek :)",
-  "author_one": "Szerző",
+  "author-donated": "Ezt a készítő ingyen adományozta Poly Havennek :)",
+  "author_one": "Készítő",
   "author_other": "Készítők",
   "categories": "Kategóriák",
   "cloud-sync": "Offline hozzáférés",
   "cloud-sync-d": "Támogasson minket havi 5 dollárral, és hozzáférést kap felhőrendszerünkhöz, amely lehetővé teszi, hogy teljes könyvtárunkat szinkronizálja merevlemezével.",
   "coming-soon": "Hamarosan!",
-  "coming-soon-d": "{{tier}} Patrons jelentkezzen be, hogy korán letölthesse",
+  "coming-soon-d": "{{tier}} támogatók számára; jelentkezzen be, hogy letölthesse",
   "credits": {
     "graphic design": "grafikai tervezés",
     "modeling": "modellezés",
@@ -32,13 +32,13 @@
   "no-files": "Nincsenek fájlok",
   "no-files-d": "Próbálja meg frissíteni, ellenkező esetben kérjük, jelentse ezt nekünk.",
   "no-renders": "Még nincs, <lnk>add hozzá a tiédet</lnk> .",
-  "nor-standard": "Normál térkép szabvány:",
-  "similar-assets": "Hasonló eszközök",
+  "nor-standard": "Normal map szabvány:",
+  "similar-assets": "Hasonló tartalmak",
   "sponsored-by": "Támogatta:",
   "sponsored-by-d": "Támogasd a Poly Havent a Patreonon, és a neved meg fog jelenni itt.",
   "sponsored-by-none": "Még senki :(",
   "tags": "Címkék",
   "user-renders": "Felhasználói renderek:",
   "wide": "széles",
-  "zip-choose": "Válassza ki a ZIP tartalmat:"
+  "zip-choose": "Válassza ki a ZIP tartalmát:"
 }

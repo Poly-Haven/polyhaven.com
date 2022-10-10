@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "İletişim",
+    "p1": "Bir sorun var mı? lütfen okuyun<lnk> SSS</lnk> ilk :)",
+    "p2": "Bize ulaşmanın en kolay yolu e-postadır (<lnk1> info@polyhaven.com</lnk1> ) veya üzerinde<lnk2> anlaşmazlık</lnk2> ."
+  },
+  "description": "Poly Haven nedir, ne yapıyoruz ve neden yapıyoruz.",
+  "greeting": {
+    "h1": "Merhaba!",
+    "p1": "Poly Haven, görsel efekt sanatçıları ve oyun tasarımcıları için küratörlü bir kamu varlık kitaplığı olup, kolay elde edilebilir bir şekilde kullanışlı yüksek kaliteli 3D varlıklar sağlar.",
+    "p2": "Ödeme duvarları, hesaplar veya e-posta formları gerekmez, sadece bir varlığı indirin ve endişelenmeden kullanın.",
+    "p3": "Buradaki tüm varlıklar<lnk> CC0</lnk> , bu da neredeyse telif hakkı olmadığı anlamına gelir ve bunları kesinlikle herhangi bir amaç için kullanabilirsiniz."
+  },
+  "help": {
+    "h1": "Nasıl yardım edebilirsin",
+    "s1": "Patreon'da bizi destekleyin",
+    "s1p1": "Harcanabilir bir geliriniz varsa ve daha fazla ücretsiz HDRI, doku ve 3D model yayınlamamıza yardımcı olmak istiyorsanız, bize aylık küçük bir bağışla destek olabilirsiniz.<lnk> patreon</lnk> :)",
+    "s1p2": "Karşılığında, sabit sürücünüzle senkronize edebileceğiniz bir bulut klasörüne erişim gibi küçük bir teşekkür belirteci verebiliriz, böylece en son varlıklarımızı her zaman parmaklarınızın ucunda tutabilirsiniz veya adınızı sitemizde ölümsüzleştirebiliriz.",
+    "s1p3": "Tarafımızca doğrulandığı üzere, bağışlarınızı doğrudan harcamalarımızı karşılamak ve yeni varlıkları finanse etmek için kullanırız.<lnk> finans raporları</lnk> .",
+    "s2": "Varlıklarınızı bağışlayın",
+    "s2p1": "Toplulukla paylaşmak istediğiniz birinci sınıf bir 3D model, doku veya HDRI var mı? Sizin için yayınlamak isteriz :)",
+    "s2p2": "Korumamız gereken katı bir kalite standardımız var ve yayınladığımız her şey<lnk1> CC0</lnk1> , ancak varlığınız kabul edilirse, tüm 3D topluluğu bundan faydalanacaktır.<lnk2> Daha fazlasını okuyun ve varlığınızı buraya gönderin</lnk2> .",
+    "s3": "Haberi yayın",
+    "s3p1": "Ödeyemiyorsan veya bize bağış yapmak istemiyorsan sorun değil :) Arkadaşlarınızın ve iş arkadaşlarınızın bizi bilmesini sağlayarak büyümemize yardımcı olabilirsiniz, ne kadar çok insana yardım edersek o kadar iyi!",
+    "s3p2": "Hiç gerekli değil, ancak varlıklarımızı işinizde kullanırsanız, onları nereden aldığınızı söyleyebilirsiniz ve bu, daha fazla kişiye var olduğumuzu göstermeye yardımcı olur."
+  },
+  "how": {
+    "h1": "Bunu nasıl yapıyoruz?",
+    "li1": "Poly Haven tarafından istihdam edilen ve büyük resme odaklanan sanatçılar.",
+    "li2": "Belirli projelerle görevlendirilmiş, işe aldığımız bağımsız yükleniciler.",
+    "li3": "Çalışmalarını platforma ücretsiz olarak bağışlayan kullanıcılar.",
+    "p1": "Güney Afrika merkezli küçük bir uzak stüdyoyuz ve dünyanın her yerinden vizyonumuzu paylaşan içerik oluşturucularla birlikte çalışıyoruz.",
+    "p2": "Finansman açısından, öncelikle sizin gibi insanlardan gelen bağışlarla destekleniyoruz.<lnk> patreon</lnk> , reklam gelirleri ve uzun vadede çalışmalarımızı desteklemekten fayda sağlayabileceklerine inanan kurumsal sponsorlar.",
+    "p3": "Varlıkların oluşturulması için üç kaynak vardır:"
+  },
+  "title": "Hakkında / İletişim",
+  "transparency": {
+    "h1": "şeffaflık",
+    "li1": "Düzenli Geliştirme Günlükleri yazıyoruz<lnk> bizim blogumuz</lnk> son zamanlarda üzerinde çalıştıklarımızı paylaşmak için.",
+    "li2": "Bizim<lnk> Patreon'daki gönderiler</lnk> ayrıca karar verme konusunda yardıma ihtiyacımız olduğunda daha küçük güncellemeler ve anketler bulmak için iyi bir yerdir.",
+    "li3": "<lnk>anlaşmazlık</lnk> her gün takıldığımız yer, merhaba demekten çekinmeyin!",
+    "li4": "Sosyal medyamız öncelikle en son varlıklarımızı yayınlamak için otomatikleştirilmiştir, ancak zaman zaman orada da aktif oluyoruz (bağlantılar<lnk> altbilgi</lnk> ).",
+    "li5": "Bizim<lnk> finans raporları</lnk> fonlarımızı nasıl harcadığımızı veya biriktirdiğimizi tam olarak detaylandırın.",
+    "p1": "Finansmanımızın büyük kısmı bağışlardan geldiğinden, herkesin neyin peşinde olduğumuzu, ne planladığımızı ve tüm kararlarımızın arkasındaki mantığı görebilmesi bizim için önemlidir.",
+    "p2": "Varlıklarımızı paylaşmak önceliğimizdir, ancak başkaları da bizimki gibi varlıkları nasıl oluşturacaklarını öğrenebilsin ve belki de bunları paylaşabilsin diye bilgimizi de paylaşmak istiyoruz."
+  },
+  "why": {
+    "h1": "Bunu neden yapıyoruz?",
+    "p1": "Çünkü yapabiliriz!",
+    "p2": "Ve varlıklarımızı satmak yerine ücretsiz sağlayarak daha büyük 3D topluluğunun büyümesine yardımcı olabileceğimize inandığımız için.",
+    "p3": "Yeni sanatçılar için giriş engelini azaltmak, finansal engelleri kaldırmak ve deneyimli sanatçıların ihtiyaç duydukları her aksesuar için tekerleği yeniden icat etmek yerine yaratıcılığa odaklanmalarını kolaylaştırmak istiyoruz."
+  }
+}

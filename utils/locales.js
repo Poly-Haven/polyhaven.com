@@ -56,6 +56,10 @@ module.exports = {
     name: "한국어",
     flag: 'KR'
   },
+  hu: {
+    name: "Magyar",
+    flag: 'HU'
+  },
   pl: {
     name: "Polish",
     flag: 'PL'
@@ -67,6 +71,10 @@ module.exports = {
   ru: {
     name: "Русский",
     flag: 'RU'
+  },
+  tr: {
+    name: "Türkçe",
+    flag: 'TR'
   },
   uk: {
     name: "українська",

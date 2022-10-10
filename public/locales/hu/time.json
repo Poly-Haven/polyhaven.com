@@ -1,9 +1,9 @@
 {
   "future": {
     "day_one": "{{count}} nap múlva",
-    "day_other": "{{count}} a napokat mostantól",
+    "day_other": "{{count}} nap múlva",
     "hour_one": "{{count}} óra múlva",
-    "hour_other": "{{count}} az órákat mostantól",
+    "hour_other": "{{count}} óra múlva",
     "month_one": "{{count}} hónap múlva",
     "month_other": "{{count}} hónap múlva",
     "week_one": "{{count}} hét múlva",
@@ -16,7 +16,7 @@
     "day_one": "{{count}} napja",
     "day_other": "{{count}} napja",
     "hour_one": "{{count}} órája",
-    "hour_other": "órával ezelőtt {{count}}",
+    "hour_other": "{{count}} órával ezelőtt",
     "month_one": "{{count}} hónapja",
     "month_other": "{{count}} hónapja",
     "week_one": "{{count}} hete",

@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "bugünden itibaren gün {{count}}",
+    "day_other": "artık günleri {{count}}",
+    "hour_one": "şu andan itibaren saati {{count}}",
+    "hour_other": "bundan sonra saatleri {{count}}",
+    "month_one": "bundan sonra ayı {{count}}",
+    "month_other": "bundan sonra ayları {{count}}",
+    "week_one": "bundan sonraki haftayı {{count}}",
+    "week_other": "haftalar sonrasını {{count}}",
+    "year_one": "bundan sonra yılı {{count}}",
+    "year_other": "yıllar sonrasını {{count}}"
+  },
+  "new": "Yeni",
+  "past": {
+    "day_one": "gün önce {{count}}",
+    "day_other": "gün önce {{count}}",
+    "hour_one": "saat önce {{count}}",
+    "hour_other": "saatler önce {{count}}",
+    "month_one": "ay önce {{count}}",
+    "month_other": "aylar önce {{count}}",
+    "week_one": "hafta öncesini {{count}}",
+    "week_other": "haftalar önce {{count}}",
+    "year_one": "yıl önce {{count}}",
+    "year_other": "yıllar önce {{count}}"
+  },
+  "today": "Bugün"
+}
