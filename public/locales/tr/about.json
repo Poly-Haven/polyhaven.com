@@ -2,27 +2,27 @@
   "contact": {
     "h1": "İletişim",
     "p1": "Bir sorun var mı? lütfen okuyun<lnk> SSS</lnk> ilk :)",
-    "p2": "Bize ulaşmanın en kolay yolu e-postadır (<lnk1> info@polyhaven.com</lnk1> ) veya üzerinde<lnk2> anlaşmazlık</lnk2> ."
+    "p2": "Bize ulaşmanın en kolay yolu e-postadır (<lnk1> info@polyhaven.com</lnk1> ) veya <lnk2> Discord</lnk2> üzerinden."
   },
   "description": "Poly Haven nedir, ne yapıyoruz ve neden yapıyoruz.",
   "greeting": {
     "h1": "Merhaba!",
     "p1": "Poly Haven, görsel efekt sanatçıları ve oyun tasarımcıları için küratörlü bir kamu varlık kitaplığı olup, kolay elde edilebilir bir şekilde kullanışlı yüksek kaliteli 3D varlıklar sağlar.",
-    "p2": "Ödeme duvarları, hesaplar veya e-posta formları gerekmez, sadece bir varlığı indirin ve endişelenmeden kullanın.",
+    "p2": "Ödeme ekranına, hesaplara veya e-posta formlarına gerek duymadan bir varlığı indirin ve endişelenmeden gönül rahatlığıyla kullanın.",
     "p3": "Buradaki tüm varlıklar<lnk> CC0</lnk> , bu da neredeyse telif hakkı olmadığı anlamına gelir ve bunları kesinlikle herhangi bir amaç için kullanabilirsiniz."
   },
   "help": {
-    "h1": "Nasıl yardım edebilirsin",
+    "h1": "Nasıl yardımcı olabilirsin?",
     "s1": "Patreon'da bizi destekleyin",
     "s1p1": "Harcanabilir bir geliriniz varsa ve daha fazla ücretsiz HDRI, doku ve 3D model yayınlamamıza yardımcı olmak istiyorsanız, bize aylık küçük bir bağışla destek olabilirsiniz.<lnk> patreon</lnk> :)",
     "s1p2": "Karşılığında, sabit sürücünüzle senkronize edebileceğiniz bir bulut klasörüne erişim gibi küçük bir teşekkür belirteci verebiliriz, böylece en son varlıklarımızı her zaman parmaklarınızın ucunda tutabilirsiniz veya adınızı sitemizde ölümsüzleştirebiliriz.",
     "s1p3": "Tarafımızca doğrulandığı üzere, bağışlarınızı doğrudan harcamalarımızı karşılamak ve yeni varlıkları finanse etmek için kullanırız.<lnk> finans raporları</lnk> .",
-    "s2": "Varlıklarınızı bağışlayın",
+    "s2": "Varlıklarınızı bağışlayın!",
     "s2p1": "Toplulukla paylaşmak istediğiniz birinci sınıf bir 3D model, doku veya HDRI var mı? Sizin için yayınlamak isteriz :)",
     "s2p2": "Korumamız gereken katı bir kalite standardımız var ve yayınladığımız her şey<lnk1> CC0</lnk1> , ancak varlığınız kabul edilirse, tüm 3D topluluğu bundan faydalanacaktır.<lnk2> Daha fazlasını okuyun ve varlığınızı buraya gönderin</lnk2> .",
     "s3": "Haberi yayın",
     "s3p1": "Ödeyemiyorsan veya bize bağış yapmak istemiyorsan sorun değil :) Arkadaşlarınızın ve iş arkadaşlarınızın bizi bilmesini sağlayarak büyümemize yardımcı olabilirsiniz, ne kadar çok insana yardım edersek o kadar iyi!",
-    "s3p2": "Hiç gerekli değil, ancak varlıklarımızı işinizde kullanırsanız, onları nereden aldığınızı söyleyebilirsiniz ve bu, daha fazla kişiye var olduğumuzu göstermeye yardımcı olur."
+    "s3p2": "Gerekli değil fakat varlıklarımızı işinizde kullanırsanız ve onları nereden aldığınızı söyleyebilirseniz. Bu, daha fazla kişiye var olduğumuzu göstermeye yardımcı olur."
   },
   "how": {
     "h1": "Bunu nasıl yapıyoruz?",
