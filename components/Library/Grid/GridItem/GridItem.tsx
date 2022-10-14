@@ -55,7 +55,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, pre
   const turnaroundSrc = `https://cdn.polyhaven.com/asset_img/turnarounds/${assetID}.png?width=7680height=${size[1]}`
 
   useEffect(() => {
-    if (enableTurnaround && preloadTurnaround) {
+    if (enableTurnaround && preloadTurnaround && turnaroundRef && turnaroundRef.current) {
       turnaroundRef.current.src = turnaroundSrc
     }
   }, [preloadTurnaround])
@@ -85,18 +85,20 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, enableTurnaround, pre
   }
 
   const createTurnaround = (e) => {
-    setTurnaround(true)
-    setHasTurned(false)
-    setOffsetStart(e.pageX)
-    if (turnaroundRef.current.src !== turnaroundSrc) {
-      setImageLoading(true)
+    if (turnaroundRef && turnaroundRef.current && turnaroundWrapperRef && turnaroundWrapperRef.current) {
+      setTurnaround(true)
+      setHasTurned(false)
+      setOffsetStart(e.pageX)
+      if (turnaroundRef.current.src !== turnaroundSrc) {
+        setImageLoading(true)
+      }
+      turnaroundRef.current.src = turnaroundSrc
+      turnaroundWrapperRef.current.style.width = imgRef.current.offsetWidth + 'px'
+      turnaroundWrapperRef.current.style.height = imgRef.current.offsetHeight + 'px'
+      turnaroundWrapperRef.current.style.left = `${imgRef.current.getBoundingClientRect().left - wrapperRef.current.getBoundingClientRect().left}px`
+      turnaroundWrapperRef.current.style.top = `${imgRef.current.getBoundingClientRect().top - wrapperRef.current.getBoundingClientRect().top}px`
+      turnaroundRef.current.style.width = (imgRef.current.offsetWidth * 15) + 'px'; // Force correct width, sometimes there are rounding errors
     }
-    turnaroundRef.current.src = turnaroundSrc
-    turnaroundWrapperRef.current.style.width = imgRef.current.offsetWidth + 'px'
-    turnaroundWrapperRef.current.style.height = imgRef.current.offsetHeight + 'px'
-    turnaroundWrapperRef.current.style.left = `${imgRef.current.getBoundingClientRect().left - wrapperRef.current.getBoundingClientRect().left}px`
-    turnaroundWrapperRef.current.style.top = `${imgRef.current.getBoundingClientRect().top - wrapperRef.current.getBoundingClientRect().top}px`
-    turnaroundRef.current.style.width = (imgRef.current.offsetWidth * 15) + 'px'; // Force correct width, sometimes there are rounding errors
   }
   const destroyTurnaround = (e) => {
     setTurnaround(false)
