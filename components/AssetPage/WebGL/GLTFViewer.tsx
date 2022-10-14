@@ -22,9 +22,10 @@ interface Props {
   readonly show: boolean;
   readonly assetID: string;
   readonly files: { gltf };
+  readonly onLoad: Function;
 }
 
-const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
+const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
   if (!show) return null;
 
   const handle = useFullScreenHandle();
@@ -95,7 +96,10 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
         <div style={{ position: "absolute", width: "100%", height: "100%" }}>
           <Canvas
             camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
-            onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
+            onCreated={({ gl }) => {
+              gl.toneMapping = CineonToneMapping
+              onLoad()
+            }}
           >
             <Suspense fallback={null}>
               <Environment preset={envPreset} background={showEnvironment} />

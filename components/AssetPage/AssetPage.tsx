@@ -117,6 +117,9 @@ const AssetPage = ({ assetID, data, files, renders }) => {
     if (!activeImage.startsWith(src)) {
       setImageLoading(true)
     }
+    if (showWebGL) {
+      setShowWebGL(false)
+    }
     setActiveImageSrc(src)
     if (src.startsWith("https://cdn.polyhaven.com/")) {
       src += "?height=780"
@@ -135,6 +138,9 @@ const AssetPage = ({ assetID, data, files, renders }) => {
     setShowWebGL(true)
     setShowTilePreview('')
     setActiveImageSrc('webGL')
+    if (data.type !== 0) {
+      setImageLoading(true)
+    }
   }
 
   const clickShowTilePreview = src => {
@@ -167,7 +173,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
               (showWebGL ? <PanoViewer assetID={assetID} /> : null)
               :
               <ErrorBoundary>
-                <GLTFViewer show={showWebGL} assetID={assetID} files={files} />
+                <GLTFViewer show={showWebGL} assetID={assetID} files={files} onLoad={_ => { setImageLoading(false) }} />
               </ErrorBoundary>
             }
             {data.type !== 0 && showTilePreview ?
