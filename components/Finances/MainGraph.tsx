@@ -14,7 +14,7 @@ import Switch from 'components/UI/Switch/Switch';
 import styles from './Finances.module.scss'
 
 const MainGraph = ({ data, currency, startingBalance }) => {
-  const [mode, setMode] = useState('balance')
+  const [mode, setMode] = useState('income')
   const [stack, setStack] = useState(true)
 
   if (!data) return <Spinner />
@@ -80,6 +80,19 @@ const MainGraph = ({ data, currency, startingBalance }) => {
     }
   }
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className={styles.graphTooltip}>
+          <p className={styles.tooltipHeader}>{label}</p>
+          {payload.filter(v => v.value).map((v, i) => <p key={i} style={{ color: v.color }}>{`${v.name}: ${getCurrency(v.value, currency, {})}`}</p>)}
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   const modes = {
     income: { label: "Income", icon: <FiArrowDownLeft /> },
     expense: { label: "Expenses", icon: <FiArrowUpRight /> },
@@ -119,12 +132,12 @@ const MainGraph = ({ data, currency, startingBalance }) => {
             <YAxis />
             <Brush dataKey="name" height={30} stroke="#666666" fill="#2d2d2d" />
             <Tooltip
-              contentStyle={{ backgroundColor: 'rgba(30,30,30,0.9)' }}
+              // @ts-ignore complaints about missing active, payload, labelts
+              content={<CustomTooltip />}
               itemStyle={{
                 padding: 0,
                 fontSize: '0.8em'
               }}
-              formatter={(value, name) => getCurrency(value, currency, {})}
             />
             {Object.keys(areas).map((a, i) => <Area key={i} type={mode === 'balance' || !stack ? "monotone" : "linear"} dataKey={a} stackId={stack ? '1' : i} stroke={colors[a]} fill={colors[a]} animationDuration={500} fillOpacity={mode === 'balance' || stack ? 0.6 : 0} strokeWidth={mode === 'balance' || stack ? 0 : 3} />)}
           </AreaChart>
