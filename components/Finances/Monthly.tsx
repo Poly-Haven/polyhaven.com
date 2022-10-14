@@ -112,7 +112,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
   }
 
   const averageOperatingCosts = operatingCostsList.reduce(function (p, c, i) { return p + (c - p) / (i + 1) }, 0)
-  const emergencyFundMonths = 2
+  const emergencyFundMonths = 3
   const targetEmergencyFund = averageOperatingCosts * emergencyFundMonths
   const savings = balance - targetEmergencyFund
 
