@@ -86,11 +86,3 @@
   padding: 0.7em 1em;
   @include drop-shadow;
 }
-
-.allArtists {
-  @include flex(row, true, true);
-  flex-wrap: wrap;
-  gap: 0.25em;
-  padding: 1.8em;
-  line-height: 0;
-}
