@@ -3,8 +3,8 @@ import Spinner from 'components/UI/Spinner/Spinner'
 
 import apiSWR from 'utils/apiSWR'
 
-const LatestPatrons = () => {
-  let { data, error } = apiSWR(`/patrons_latest`, { revalidateOnFocus: false });
+const LatestPatrons = ({ mode }) => {
+  let { data, error } = apiSWR(`/patrons_${mode}`, { revalidateOnFocus: false });
   if (error) return <div />
   if (!data) {
     return (<Spinner />)
@@ -15,6 +15,10 @@ const LatestPatrons = () => {
       {data.map(p => <Patron key={p[0]} name={p[1]} image={`https://c8.patreon.com/2/36/${p[0]}`} size={36} timestamp={p[2]} />)}
     </>
   )
+}
+
+LatestPatrons.defaultProps = {
+  mode: 'latest',
 }
 
 export default LatestPatrons

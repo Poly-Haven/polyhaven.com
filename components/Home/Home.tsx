@@ -139,7 +139,13 @@ const Home = () => {
           <LatestPatrons />
           <div className={styles.fade} />
         </div>
+        <div className={styles.newestPatrons} style={{ marginTop: '0' }}>
+          <h4>{t('s4p2')}</h4>
+          <LatestPatrons mode="top" />
+          <div className={styles.fade} />
+        </div>
         <CorporateSponsors home header={tc('also-supported-by')} />
+        <div style={{ margin: '1em' }} />
       </div>
 
       <div className={`${styles.sectionWrapper} ${styles.sectionBrowse}`}>
