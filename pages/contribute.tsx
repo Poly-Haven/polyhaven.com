@@ -1,10 +1,11 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
-import { MdDescription, MdUnarchive } from 'react-icons/md';
+import { MdUnarchive } from 'react-icons/md';
 
 import Button from 'components/UI/Button/Button';
 import TextPage from 'components/Layout/TextPage/TextPage'
+import AllArtists from 'components/UI/Avatar/AllArtists';
 
 const Contribute = () => {
   return (
@@ -15,6 +16,9 @@ const Contribute = () => {
     >
       <div dir="ltr" style={{ textAlign: 'left' }}>
         <h1>Donate Your 3D Asset to Poly Haven</h1>
+
+        <AllArtists />
+
         <p>Have a top-notch 3D model/texture/hdri you'd like to publish on Poly Haven? We'd be happy to check it out :)</p>
         <p>We do have a very high standard of quality and some strict legal requirements - please read the following before submitting your asset:</p>
 
