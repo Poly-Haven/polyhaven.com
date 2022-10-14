@@ -7,7 +7,6 @@ import Slider from './Slider/Slider'
 import Heart from 'components/UI/Icons/Heart'
 import Button from 'components/UI/Button/Button'
 import LatestPatrons from './LatestPatrons'
-import GoalProgress from 'components/UI/ProgressBar/GoalProgress'
 import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/UI/Avatar/Staff'
@@ -114,13 +113,8 @@ const Home = () => {
       <div className={styles.sectionWrapper}>
         <div className={`${styles.section} ${styles.sectionHalfMobile}`}>
           <div className={styles.subSection}>
-            <h2>{t('s3t')} <Heart color="#F96854" /></h2>
-            <GoalProgress mode="big" />
-            <Button text={t('s3b1')} href="https://www.patreon.com/polyhaven/overview" />
-            <Button text={tc('nav.finances')} href="/finance-reports" color='hollow' />
-          </div>
-          <div className={styles.subSection}>
-            <div className={styles.textLeft}>
+            <div>
+              <h2>{t('s3t')} <Heart color="#F96854" /></h2>
               <p>{t('s3p1')}</p>
               <p>{t('s3p2')}</p>
               <p>{t('s3p3')}</p>
@@ -132,6 +126,10 @@ const Home = () => {
                 }}
               /></p>
             </div>
+          </div>
+          <div className={styles.subSection}>
+            <Button text={'🚀 ' + t('s3b1')} href="https://www.patreon.com/polyhaven/overview" />
+            <Button text={tc('nav.finances')} href="/finance-reports" color='hollow' />
           </div>
         </div>
         <div className={styles.newestPatrons}>

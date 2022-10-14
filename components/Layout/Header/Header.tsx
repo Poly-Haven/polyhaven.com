@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import GoalProgress from 'components/UI/ProgressBar/GoalProgress'
 import Nav from './Nav/Nav'
 
 import styles from './Header.module.scss';
@@ -19,9 +18,6 @@ const header = () => {
       <div className={styles.assetHeader}><h2 id='header-path' /> <h1 id='header-title' /></div>
       <div style={{ display: 'none' }} id='header-frompath' />
       <div className={styles.spacer} />
-      <a href="https://www.patreon.com/polyhaven/overview" className={styles.progressBar}>
-        <GoalProgress mode="small" />
-      </a>
       <Nav />
     </div>
   );

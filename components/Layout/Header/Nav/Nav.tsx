@@ -11,6 +11,7 @@ import useStoredState from 'hooks/useStoredState';
 
 import NavItem from './NavItem'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag';
+import Heart from 'components/UI/Icons/Heart';
 
 import styles from './Nav.module.scss'
 
@@ -57,7 +58,7 @@ const Nav = () => {
           <NavItem text={<span className={styles.assetType}><img src="/icons/a_models.png" /> {t('common:Models')}</span>} link="/models" />
         </NavItem>
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
-        <NavItem text={t('common:nav.support-us')} link="https://www.patreon.com/polyhaven/overview" />
+        <NavItem text={<><Heart color="#F96854" /> {t('common:nav.support-us')}</>} link="https://www.patreon.com/polyhaven/overview" />
         <NavItem text={t('common:nav.about-contact')} link="/about-contact">
           <NavItem text={t('common:nav.license')} link="/license" />
           <NavItem text={t('common:nav.news')} link="https://www.patreon.com/polyhaven/posts?public=true" />
