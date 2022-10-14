@@ -13,8 +13,7 @@ import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Finances.module.scss'
 
-const MainGraph = ({ data, currency, startingBalance }) => {
-  const [mode, setMode] = useState('income')
+const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, setMode }) => {
   const [stack, setStack] = useState(true)
 
   if (!data) return <Spinner />
@@ -26,6 +25,7 @@ const MainGraph = ({ data, currency, startingBalance }) => {
     for (const [month, v] of Object.entries(data)) {
       let values = {}
       for (const k of Object.keys(v[mode])) {
+        if (filter.length && !filter.includes(k)) continue
         v['rates']['ZAR'] = 1
         values[k] = v[mode][k] / v['rates'][currency]
       }

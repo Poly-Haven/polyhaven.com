@@ -12,6 +12,9 @@ import styles from './Finances.module.scss'
 
 const Finances = () => {
   const [currency, setCurrency] = useState('USD');
+  const [filter, setFilter] = useState([]);
+  const [mode, setMode] = useState('income');
+
   let finances = null;
   const { data, error } = apiSWR(`/finances`, { revalidateOnFocus: false });
   if (!error && data) {
@@ -43,11 +46,11 @@ const Finances = () => {
       </div>
       <div className={styles.row}>
         <div className={styles.half}>
-          <MainGraph data={finances} currency={currency} startingBalance={startingBalance} />
+          <MainGraph data={finances} currency={currency} startingBalance={startingBalance} filter={filter} setFilter={setFilter} mode={mode} setMode={setMode} />
         </div>
         <div className={styles.divider} />
         <div className={styles.half}>
-          <Monthly data={finances} currency={currency} startingBalance={startingBalance} />
+          <Monthly data={finances} currency={currency} startingBalance={startingBalance} filter={filter} setFilter={setFilter} mode={mode} setMode={setMode} />
         </div>
       </div>
       <div className={styles.textBlock}>

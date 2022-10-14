@@ -9,9 +9,16 @@ import Tooltip from 'components/UI/Tooltip/Tooltip';
 
 import styles from './Finances.module.scss'
 
-const Bar = ({ label, data, total, max, currency, rates }) => {
+const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode, setMode }) => {
   const [expand, setExpand] = useState(false);
   if (total === 0) return null
+
+  const modeMap = {
+    "Income": "income",
+    "Expenses": "expense",
+  }
+  const barMode = modeMap[label]
+
   return (
     <div className={styles.barWrapper}>
       <p>{label}: {getCurrency(total, currency, rates)}</p>
@@ -20,11 +27,35 @@ const Bar = ({ label, data, total, max, currency, rates }) => {
           {Object.keys(data).map((c, i) => {
             const percent = data[c] / max * 100;
             const percentStr = percent > 10 ? Math.round(percent) : percent.toFixed(1)
-            return <div key={i} className={styles.sumCat} style={{
-              width: `${percent}%`,
-              background: catColor(c)
-            }}>
+            return <div
+              key={i}
+              className={styles.sumCat}
+              title={`${c}: ${getCurrency(data[c], currency, rates)} (${percentStr}%)`}
+              onClick={(e) => {
+                if (barMode !== mode) {
+                  setMode(barMode)
+                }
+                if (e.shiftKey) {
+                  if (filter.includes(c)) {
+                    setFilter(filter.filter(f => f !== c))
+                  } else {
+                    setFilter([...filter, c])
+                  }
+                } else {
+                  if ((JSON.stringify(filter)) === (JSON.stringify([c]))) {
+                    setFilter([])
+                  } else {
+                    setFilter([c])
+                  }
+                }
+              }}
+              style={{
+                width: `${percent}%`,
+                background: !filter.length || filter.includes(c) ? catColor(c) : 'rgba(0,0,0,0.1)'
+              }}
+            >
               {expand ? <p>{c}<br />{getCurrency(data[c], currency, rates)} ({percentStr}%)</p> : <p>{c}</p>}
+              <div className={styles.barHover} />
             </div>
           }
           )}
@@ -36,7 +67,7 @@ const Bar = ({ label, data, total, max, currency, rates }) => {
   )
 }
 
-const Monthly = ({ data, currency, startingBalance }) => {
+const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, setMode }) => {
   const [monthState, setMonth] = useState(null);
   if (!data) return <Spinner />
 
@@ -81,7 +112,8 @@ const Monthly = ({ data, currency, startingBalance }) => {
   }
 
   const averageOperatingCosts = operatingCostsList.reduce(function (p, c, i) { return p + (c - p) / (i + 1) }, 0)
-  const targetEmergencyFund = averageOperatingCosts * 2
+  const emergencyFundMonths = 2
+  const targetEmergencyFund = averageOperatingCosts * emergencyFundMonths
   const savings = balance - targetEmergencyFund
 
   const latestMonth = Object.keys(mutableData).slice(-1).pop()
@@ -132,8 +164,8 @@ const Monthly = ({ data, currency, startingBalance }) => {
           <MdChevronRight />
         </div>
       </div>
-      <Bar label="Income" data={sortObjByValue(mutableData[month].income)} total={totalIncome} max={barMax} currency={currency} rates={rates} />
-      <Bar label="Expenses" data={sortObjByValue(mutableData[month].expense)} total={totalExpense} max={barMax} currency={currency} rates={rates} />
+      <Bar label="Income" data={sortObjByValue(mutableData[month].income)} total={totalIncome} max={barMax} currency={currency} rates={rates} filter={filter} setFilter={setFilter} mode={mode} setMode={setMode} />
+      <Bar label="Expenses" data={sortObjByValue(mutableData[month].expense)} total={totalExpense} max={barMax} currency={currency} rates={rates} filter={filter} setFilter={setFilter} mode={mode} setMode={setMode} />
       <ul>
         {currency !== 'ZAR' ? <li>
           Exchange Rate in {month === 'This Year' ? latestMonth : month}: {getCurrency(1 * rates[currency], currency, rates)} = {getCurrency(1 * rates[currency], 'ZAR', rates)}
@@ -144,7 +176,7 @@ const Monthly = ({ data, currency, startingBalance }) => {
         </li>
         <li>
           Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
-          <MdHelp data-tip="Enough to cover our operating costs for 2 months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is." />
+          <MdHelp data-tip={`Enough to cover our operating costs for ${emergencyFundMonths} months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`} />
         </li>
         {savings >= 0 ?
           <li>

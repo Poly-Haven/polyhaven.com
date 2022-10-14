@@ -127,6 +127,8 @@
       line-height: 0.9em;
       overflow: clip;
       position: relative;
+      cursor: pointer;
+      user-select: none;
 
       p {
         @include text-shadow;
@@ -136,6 +138,19 @@
         margin: 0;
         font-size: 0.85em;
         @include center;
+      }
+
+      .barHover {
+        @include absolute_cover;
+        background-color: rgba(white, 0.2);
+        @include transition(0.1s);
+        opacity: 0;
+      }
+
+      &:hover {
+        .barHover {
+          opacity: 1;
+        }
       }
     }
 
