@@ -12,7 +12,7 @@ const LatestPatrons = ({ mode }) => {
 
   return (
     <>
-      {data.map(p => <Patron key={p[0]} name={p[1]} image={`https://c8.patreon.com/2/36/${p[0]}`} size={36} timestamp={p[2]} />)}
+      {data.map(p => <Patron key={p[0]} name={p[1]} size={36} timestamp={p[2]} />)}
     </>
   )
 }
