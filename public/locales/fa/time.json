@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "از الان روز {{count}} کن",
+    "day_other": "از الان روز {{count}}",
+    "hour_one": "از الان ساعت {{count}}",
+    "hour_other": "از الان ساعت {{count}}",
+    "month_one": "از الان ماه {{count}}",
+    "month_other": "از الان ماه {{count}}",
+    "week_one": "از الان هفته {{count}} کن",
+    "week_other": "از الان هفته {{count}}",
+    "year_one": "از الان سال {{count}} کن",
+    "year_other": "از هم اکنون سال {{count}}"
+  },
+  "new": "جدید",
+  "past": {
+    "day_one": "{{count}} روز قبل",
+    "day_other": "{{count}} روز قبل",
+    "hour_one": "ساعت قبل {{count}}",
+    "hour_other": "ساعت قبل {{count}}",
+    "month_one": "{{count}} ماه پیش",
+    "month_other": "ماه ها پیش {{count}}",
+    "week_one": "{{count}} هفته پیش",
+    "week_other": "هفته پیش {{count}}",
+    "year_one": "سال پیش {{count}} کن",
+    "year_other": "سال پیش {{count}}"
+  },
+  "today": "امروز"
+}

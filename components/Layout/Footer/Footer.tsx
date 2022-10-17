@@ -15,7 +15,7 @@ const footer = () => {
   const router = useRouter()
 
   return (
-    <div id={styles.footer} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div id={styles.footer} dir={['ar', 'fa'].includes(router.locale) ? 'rtl' : 'ltr'}>
       <h2><Trans
         i18nKey="common:footer.thanks"
         t={t}
