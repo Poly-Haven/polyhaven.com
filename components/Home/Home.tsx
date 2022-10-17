@@ -115,16 +115,7 @@ const Home = () => {
           <div className={styles.subSection}>
             <div>
               <h2>{t('s3t')} <Heart color="#F96854" /></h2>
-              <p>{t('s3p1')}</p>
-              <p>{t('s3p2')}</p>
-              <p>{t('s3p3')}</p>
-              <p><Trans
-                i18nKey="s3p4"
-                t={t}
-                components={{
-                  strong: <strong />
-                }}
-              /></p>
+              <p>Thanks to your donations, we can work sustainably on growing our library of assets and improving our standard of quality.</p>
             </div>
           </div>
           <div className={styles.subSection}>
