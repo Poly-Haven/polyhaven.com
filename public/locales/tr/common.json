@@ -1,8 +1,8 @@
 {
   "All Assets": "Tüm Varlıklar",
-  "All Things": "her {{things}}",
+  "All Things": "Tüm {{things}}",
   "Assets": "Varlıklar",
-  "Co-founder": "kurucu ortak",
+  "Co-founder": "Kurucu ortak",
   "Director": "Müdür",
   "Graphic-Design": "Grafik dizayn",
   "HDRIs": "HDRI'lar",
@@ -16,7 +16,7 @@
   "email-address": "E-posta adresi",
   "footer": {
     "join-ranks": "Saflara katılın, Poly Haven'ı Patreon'da destekleyin",
-    "thanks": "bizim sayesinde<lnk> patronlar</lnk> Poly Haven'ı mümkün kılmak için"
+    "thanks": "<lnk> Kullanıcılarımıza</lnk>  Poly Haven'ı mümkün kıldığı için teşekkürler."
   },
   "goal": {
     "complete": "Tamamlamak!",
@@ -37,7 +37,7 @@
     "faq": "SSS",
     "finances": "Finans Raporları",
     "gallery": "Galeri",
-    "home": "Ev",
+    "home": "Ana Sayfa",
     "license": "Lisans",
     "logout": "Çıkış Yap",
     "map": "HDRI Dünya Haritası",
@@ -48,10 +48,10 @@
     "support-us": "Bizi destekle"
   },
   "optional": "İsteğe bağlı",
-  "patron_one": "Patron",
-  "patron_other": "patronlar",
-  "please-wait": "Lütfen bekle...",
-  "remove-ads": "reklamları kaldırmak",
+  "patron_one": "Kullanıcı",
+  "patron_other": "Kullanıcılar",
+  "please-wait": "Lütfen bekleyin...",
+  "remove-ads": "reklamları kaldır",
   "required": "Gerekli",
   "tagline": "Genel 3B Varlık Kitaplığı",
   "visible": "Gözle görülür"

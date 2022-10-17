@@ -6,25 +6,25 @@
     "li2": "Kamuya açıklanmadan önce varlıklara erken erişim.",
     "li3": "Tüm varlıklarımızı sabit sürücünüzle senkronize etmek için bulut hizmetimize erişim sağlayın.",
     "li4": "İndirme düğmelerinin yanında adınızı ve bağlantınızı göstererek her ay kalıcı olarak bir varlığa sponsor olun.",
-    "p1": "Eğer sen bir<lnk> patronuysanız</lnk> Poly Haven'dan buraya giriş yaparak ödüllerinize doğrudan bu siteden erişiminizi sağlayacaktır.",
+    "p1": "Eğer sen bir<lnk> kullanıcısıysanız</lnk> Poly Haven'dan buraya giriş yaparak ödüllerinize doğrudan bu siteden erişiminizi sağlayacaktır.",
     "p2": "Destek seviyenize bağlı olarak ödülleriniz şunları içerebilir:"
   },
-  "not-patron": "Poly Haven'ın patronu gibi görünmüyorsunuz :( eğer bu yanlışsa, lütfen<lnk> temasta olmak</lnk> böylece bu sayfadaki sorunu araştırabiliriz. Aşağıdaki bilgilere ihtiyacımız olacak:",
-  "not-patron-anymore": "Görünüşe göre artık Poly Haven'ın patronu değilsin. Sorun değil ve geçmişteki desteğiniz için teşekkür ederiz :)",
+  "not-patron": "Poly Haven'ın kullanıcısı gibi görünmüyorsunuz :( eğer bu yanlışsa, lütfen<lnk> tıklayarak</lnk> böylece bu sayfadaki sorunu araştırabiliriz. Aşağıdaki bilgilere ihtiyacımız olacak:",
+  "not-patron-anymore": "Görünüşe göre artık Poly Haven'ın kullanıcısı değilsin. Sorun değil ve geçmişteki desteğiniz için teşekkür ederiz :)",
   "reward_one": "Bu size aşağıdaki ödülü verir:",
   "reward_other": "Bu size aşağıdaki ödülleri verir:",
   "rewards": {
     "credit": {
       "invalid": "Geçersiz isim",
       "p1": "Adınız şu anda mevcut",
-      "p2": "bu sitenin altbilgisindeki kullanıcı listesinde {{hidden}} .",
+      "p2": "Kullanıcı listesi sitenin altbilgisindedir.{{hidden}} .",
       "p3": "Bu ayarın değiştirilmesi, sitenin her sayfasının güncellenmesi için birkaç saat sürebilir.",
       "p4": "Ekran adı:",
-      "title": "Altbilgi Kredisi"
+      "title": "Altbilgi"
     },
     "early-access": {
       "p1": "Artık giriş yaptığınıza göre,<lnk> Varlık Kitaplığı</lnk> gelecekte yayınlamayı planladığımız varlıkları içerecektir.",
-      "p2": "Mavi bir daire ve sağ üstte Patreon logosu ile işaretlenirler, şöyle:",
+      "p2": "Mavi bir daire ve sağ üstte Patreon logosu ile işaretli, şöyle:",
       "p3": "Onları zaten indirebilirsiniz, tabi ki herkesten önce :)",
       "title": "Erken erişim"
     },
@@ -37,7 +37,7 @@
       "p1": "Kendinize bulut klasörümüze davet göndermek için kendi e-posta adresinizi girin:",
       "p2": "E-postanı kontrol et :)",
       "p3": "Davet başarıyla gönderildi. Herhangi bir sorun yaşarsanız veya hesap e-postanızı değiştirmeniz gerekiyorsa,<lnk> lütfen bizimle iletişime geçiniz</lnk> .",
-      "p4": "Görmek<lnk> bu gönderi</lnk> Nextcloud'u nasıl kuracağınıza ve varlıkları bilgisayarınızla eşitlemeye nasıl başlayacağınıza ilişkin daha fazla talimat için.",
+      "p4": "<lnk> Bu gönderiye</lnk> bakarak Nextcloud'u nasıl kuracağınıza ve varlıkları bilgisayarınızla eşitlemeyi nasıl başlayacağınıza ilişkin daha fazla bilgi alın.",
       "title": "Çevrimdışı Erişim"
     },
     "sponsor": {
@@ -55,8 +55,8 @@
       "title": "Sponsor"
     },
     "stakeholder": {
-      "p1": "Poly Haven'ın bir paydaşı olarak, yolculuğumuz boyunca ne üzerinde çalışacağımızı ve takip edeceğimizi tartışmamıza yardımcı olmak için dahili iletişim kanallarımıza daha derin erişim elde edersiniz.",
-      "p2": "Sizinle henüz iletişim kurmadıysak, lütfen<lnk> temasta olmak</lnk> böylece bu kanallara erişmenizi sağlayabilir ve sizi ekiple tanıştırabiliriz.",
+      "p1": "Poly Haven'ın bir paydaşı olarak, yolculuğumuz boyunca ne üzerinde çalışacağımızı ve takip edeceğimizi ele almamıza yardımcı olmak için dahili iletişim kanallarımıza daha derin erişim elde edersiniz.",
+      "p2": "Sizinle henüz iletişim kurmadıysak, lütfen<lnk> tıklayınız </lnk> böylece bu kanallara erişmenizi sağlayabilir ve sizi ekiple tanıştırabiliriz.",
       "title": "Hak sahibi"
     }
   },
