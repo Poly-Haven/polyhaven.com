@@ -7,7 +7,7 @@ import Button from 'components/UI/Button/Button';
 import TextPage from 'components/Layout/TextPage/TextPage'
 import AllArtists from 'components/UI/Avatar/AllArtists';
 
-const Contribute = () => {
+const Contribute = ({ authors }) => {
   return (
     <TextPage
       title="Contribute"
@@ -17,7 +17,7 @@ const Contribute = () => {
       <div dir="ltr" style={{ textAlign: 'left' }}>
         <h1>Donate Your 3D Asset to Poly Haven</h1>
 
-        <AllArtists />
+        <AllArtists data={authors} />
 
         <p>Have a top-notch 3D model/texture/hdri you'd like to publish on Poly Haven? We'd be happy to check it out :)</p>
         <p>We do have a very high standard of quality and some strict legal requirements - please read the following before submitting your asset:</p>
@@ -109,10 +109,26 @@ const Contribute = () => {
 }
 
 export async function getStaticProps({ locale }) {
+  let error = null
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+
+  const authors = await fetch(`${baseUrl}/authors`)
+    .then(response => response.json())
+    .catch(e => error = e)
+
+  if (error) {
+    return {
+      props: { ...(await serverSideTranslations(locale, ['common'])) },
+      revalidate: 5 * 60 // 5 minutes
+    }
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      authors
     },
+    revalidate: 24 * 60 * 60 // 24 hours
   };
 }
 

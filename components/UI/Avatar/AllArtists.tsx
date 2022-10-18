@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import apiSWR from 'utils/apiSWR'
 import { stringHash } from 'utils/stringUtils'
 
 import Heart from 'components/UI/Icons/Heart'
 
-import Spinner from '../Spinner/Spinner';
 import Tooltip from '../Tooltip/Tooltip';
 
 import styles from './AllArtists.module.scss'
@@ -35,11 +33,7 @@ const placeholderAvatar = (name) => {
   return `https://ui-avatars.com/api/?name=${name}&size=50&background=${colorSet[Math.abs(stringHash(name) % colorSet.length)]}`
 }
 
-const AllArtists = () => {
-  const { data, error } = apiSWR(`/authors`, { revalidateOnFocus: false });
-  if (error || !data) {
-    return <Spinner />
-  }
+const AllArtists = ({ data }) => {
 
   let authors = Object.keys(data)
   authors.sort((a, b) => data[a].name.localeCompare(data[b].name));
