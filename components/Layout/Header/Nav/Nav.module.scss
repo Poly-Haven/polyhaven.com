@@ -47,6 +47,7 @@
   color: $c-text-light;
   font-size: 1rem;
   position: relative;
+  @include transition;
 
   &:hover {
     background: $c-accent;
