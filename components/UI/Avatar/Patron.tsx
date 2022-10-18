@@ -7,7 +7,7 @@ import styles from './Avatar.module.scss'
 const Avatar = ({ name, size, timestamp }) => {
   const numImages = 333
   const imgIndex = Math.abs(stringHash(name) % numImages)
-  const avatar = `https://cdn.polyhaven.com/site_images/owls/${imgIndex.toString().padStart(3, '0')}.png?width=36`
+  const avatar = `https://cdn.polyhaven.com/site_images/owls/${imgIndex.toString().padStart(3, '0')}.png?width=${size}`
 
   const { t } = useTranslation('time');
   return (
