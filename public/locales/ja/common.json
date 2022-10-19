@@ -16,12 +16,12 @@
   "email-address": "メールアドレス",
   "footer": {
     "join-ranks": "参加して、Patreon で Poly Haven をサポートしてください。",
-    "thanks": "私たちのおかげで<lnk>常連客</lnk>ポリヘブンを可能にするため"
+    "thanks": "Poly Havenを可能にしてくれた<lnk>パトロン</lnk>に感謝します"
   },
   "goal": {
     "complete": "完了！",
     "current": "現在の目標：",
-    "reached": "最後の目標を達成しました！何か新しいものがすぐにここに現れるはずです:)",
+    "reached": "最後の目標を達成しました！何か新しいものがすぐにここに現れるはずです :)",
     "to-go": "残り ${{dollars}}"
   },
   "hidden": "非表示",
