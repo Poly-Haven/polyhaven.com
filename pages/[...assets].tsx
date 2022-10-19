@@ -6,6 +6,7 @@ import Library from 'components/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json';
 import { assetTypeName } from 'utils/assetTypeName'
+import asset_types from 'constants/asset_types.json'
 import { titleCase } from 'utils/stringUtils'
 
 const LibraryPage = (props) => {
@@ -21,6 +22,9 @@ const LibraryPage = (props) => {
       <Head
         title={title}
         url={`/${props.assetType}/${props.categories.join('/')}`}
+        description={`Hundreds of free ${title === 'Models' ? '3D models' : title}, ready to use for any purpose.`}
+        assetType={asset_types[props.assetType]}
+        image={`https://cdn.polyhaven.com/site_images/meta/assets_${props.assetType}.jpg?width=630`}
       />
       <Library
         assetType={props.assetType}
