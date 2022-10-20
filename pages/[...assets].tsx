@@ -22,12 +22,26 @@ const LibraryPage = (props) => {
     imageUrl += `&categories=${props.categories.join(',')}`
   }
 
+  let description = ''
+  if (props.categories.length) {
+    description = `Free ${props.categories[props.categories.length - 1]}`
+  } else {
+    description = "Hundreds of free"
+  }
+  const typeDescription = {
+    hdris: "HDRI environments",
+    textures: "PBR texture sets",
+    models: "3D models",
+    all: "HDRIs, textures, and 3D models"
+  }
+  description += ` ${typeDescription[props.assetType]}, ready to use for any purpose.`
+
   return (
     <>
       <Head
         title={title}
         url={`/${props.assetType}/${props.categories.join('/')}`}
-        description={`Hundreds of free ${title === 'Models' ? '3D models' : title}, ready to use for any purpose.`}
+        description={description}
         assetType={asset_types[props.assetType]}
         image={imageUrl}
       />
