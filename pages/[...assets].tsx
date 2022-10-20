@@ -17,6 +17,11 @@ const LibraryPage = (props) => {
     title += ": " + titleCase(props.categories.join(' > '))
   }
 
+  let imageUrl = `https://dev.polyhaven.com/api/og-image?type=${props.assetType}`
+  if (props.categories.length) {
+    imageUrl += `&categories=${props.categories.join(',')}`
+  }
+
   return (
     <>
       <Head
@@ -24,7 +29,7 @@ const LibraryPage = (props) => {
         url={`/${props.assetType}/${props.categories.join('/')}`}
         description={`Hundreds of free ${title === 'Models' ? '3D models' : title}, ready to use for any purpose.`}
         assetType={asset_types[props.assetType]}
-        image={`https://cdn.polyhaven.com/site_images/meta/assets_${props.assetType}.jpg?width=630`}
+        image={imageUrl}
       />
       <Library
         assetType={props.assetType}
