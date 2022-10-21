@@ -186,6 +186,12 @@ export async function getStaticProps(context) {
     .then(response => response.json())
     .catch(e => error = e)
 
+  // Assets with date_published
+  const assetDates = {}
+  for (const [slug, info] of Object.entries(assets)) {
+    assetDates[slug] = info['date_published']
+  }
+
   if (error) {
     return {
       props: { ...(await serverSideTranslations(context.locale, ['common'])) },
@@ -206,6 +212,7 @@ export async function getStaticProps(context) {
         monthlyDownloads,
         traffic,
         cfdaily,
+        assetDates,
       }
     },
     revalidate: 24 * 60 * 60 // 1 day

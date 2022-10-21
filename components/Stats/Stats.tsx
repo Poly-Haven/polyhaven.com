@@ -86,7 +86,7 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.row}>
         <div className={styles.half}>
-          <TrafficGraph data={datasets.cfdaily} />
+          <TrafficGraph data={datasets.cfdaily} assetDates={datasets.assetDates} />
         </div>
       </div>
 

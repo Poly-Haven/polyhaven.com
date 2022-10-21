@@ -6,9 +6,13 @@ import { MdWarning } from 'react-icons/md';
 
 import styles from './Stats.module.scss'
 
-const average = (array) => Math.round(array.reduce((a, b) => a + b) / array.length);
+const average = (array) => array.reduce((a, b) => a + b) / array.length;
 
-const TrafficGraph = ({ data }) => {
+interface AssetDates {
+  slug: number,
+}
+
+const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates }) => {
   const [dataType, setdataType] = useState('uniques')
 
   let graphData = []
@@ -24,6 +28,8 @@ const TrafficGraph = ({ data }) => {
       bytes: 0,
       bytesPerUser: 0,
       requestsPerUser: 0,
+      assetsPublished: 0,
+      usersPerAsset: 0,
     }
     for (const siteData of Object.values(stats)) {
       if (!siteData.data) continue
@@ -35,8 +41,17 @@ const TrafficGraph = ({ data }) => {
       dayData.threats += d.sum.threats
       dayData.bytes += d.sum.bytes
     }
+    for (const [slug, datePublished] of Object.entries(assetDates)) {
+      const date = new Date(datePublished * 1000).toISOString().split('T')[0]
+      if (date < day) {
+        dayData.assetsPublished++
+      }
+    }
+
     dayData.bytesPerUser += dayData.bytes / dayData.uniques
     dayData.requestsPerUser += dayData.requests / dayData.uniques
+    dayData.usersPerAsset += dayData.uniques / dayData.assetsPublished
+
     graphData.push(dayData)
   }
 
@@ -79,14 +94,14 @@ const TrafficGraph = ({ data }) => {
       tooltip: "The number of users visiting the whole site.",
       scale: "linear",
       color: "rgb(190, 111, 255)",
-      formatter: value => value,
+      formatter: value => Math.round(value),
     },
     requests: {
       label: "Requests",
       tooltip: "Total HTTP requests.",
       scale: "linear",
       color: "rgb(65, 187, 217)",
-      formatter: value => value,
+      formatter: value => Math.round(value),
     },
     requestsPerUser: {
       label: "Requests per User",
@@ -109,19 +124,33 @@ const TrafficGraph = ({ data }) => {
       color: "rgb(243, 130, 55)",
       formatter: value => `${Math.round(value / 1024 / 1024)} MB`,
     },
+    assetsPublished: {
+      label: "Assets Published",
+      tooltip: "The number of assets live on this day.",
+      scale: "linear",
+      color: "rgb(161, 208, 77)",
+      formatter: value => Math.round(value),
+    },
+    usersPerAsset: {
+      label: "Users per Asset",
+      tooltip: "The number of unique users per assets live on this day.",
+      scale: "linear",
+      color: "rgb(161, 208, 77)",
+      formatter: value => Math.round(value),
+    },
     pageViews: {
       label: <>CF "Page Views" <MdWarning /></>,
       tooltip: "Our site is a single-page-application, so Cloudflare is very inconsistent about what it counts as a \"page view\". Take this graph with a billion grains of salt and rather don't try to make any sense of it.",
       scale: "linear",
-      color: "rgb(161, 208, 77)",
-      formatter: value => value,
+      color: "rgb(242, 191, 56)",
+      formatter: value => Math.round(value),
     },
     threats: {
       label: "Threats",
       tooltip: "(Log scale) Requests that Cloudflare determines are coming from spam bots or malicious sources.",
       scale: "log",
       color: "rgb(249, 104, 84)",
-      formatter: value => value,
+      formatter: value => Math.round(value),
     },
   }
 
