@@ -34,6 +34,8 @@
   },
   "nav": {
     "home": "Home",
+    "add-on": "Add-on",
+    "plugins": "Plugins",
     "gallery": "Gallery",
     "support-us": "Support Us",
     "about-contact": "About/Contact",
