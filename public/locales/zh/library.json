@@ -1,5 +1,22 @@
 {
   "Clear author": "清除作者",
+  "adv": {
+    "thumb-size": "缩略图大小",
+    "thumb-size-1": "小型",
+    "thumb-size-2": "中型",
+    "thumb-size-3": "大型",
+    "thumb-size-4": "巨大的",
+    "turntables": "鼠标移动时的转台。",
+    "turntables-preload": "预装转盘。",
+    "upcoming": "显示即将到来的",
+    "upcoming-1": "无",
+    "upcoming-1d": "隐藏所有即将到来的内容",
+    "upcoming-2": "一些，模糊不清的",
+    "upcoming-2d": "显示最多 3 项即将发布的资产",
+    "upcoming-3": "全部",
+    "upcoming-3d": "显示所有即将到来的内容并解除模糊",
+    "upcoming-patron": "作为一个赞助人，即将到来的资产总是为你显示。"
+  },
   "backplates": "包括一组高分辨率背景图像。",
   "by-author": "作者：{{author}}",
   "early-access": "抢先体验",

@@ -1,5 +1,22 @@
 {
   "Clear author": "Hapus penulis",
+  "adv": {
+    "thumb-size": "Ukuran thumbnail",
+    "thumb-size-1": "Kecil",
+    "thumb-size-2": "Sedang",
+    "thumb-size-3": "Besar",
+    "thumb-size-4": "Besar",
+    "turntables": "Turntable pada mouse di atas:",
+    "turntables-preload": "Preload turntable (meja putar):",
+    "upcoming": "Tampilkan yang akan datang",
+    "upcoming-1": "Tidak ada",
+    "upcoming-1d": "Sembunyikan semua konten yang akan datang",
+    "upcoming-2": "Beberapa, kabur",
+    "upcoming-2d": "Tampilkan hingga 3 aset yang akan segera diterbitkan",
+    "upcoming-3": "Semua",
+    "upcoming-3d": "Tampilkan semua konten yang akan datang dan hilangkan keburamannya",
+    "upcoming-patron": "Sebagai patron, aset yang akan datang selalu ditampilkan untuk Anda."
+  },
   "backplates": "Termasuk satu set gambar latar belakang beresolusi tinggi.",
   "by-author": "oleh {{author}}",
   "early-access": "Akses Awal",

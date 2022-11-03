@@ -1,5 +1,22 @@
 {
   "Clear author": "Usuń autorstwo ",
+  "adv": {
+    "thumb-size": "Rozmiar miniaturki",
+    "thumb-size-1": "Mała",
+    "thumb-size-2": "Medium",
+    "thumb-size-3": "Duża",
+    "thumb-size-4": "Ogromna",
+    "turntables": "Gramofony po najechaniu myszką:",
+    "turntables-preload": "Wstępne obciążenie gramofonów:",
+    "upcoming": "Pokaż nadchodzące",
+    "upcoming-1": "Brak",
+    "upcoming-1d": "Ukryj całą nadchodzącą zawartość",
+    "upcoming-2": "Niektóre, zamazane",
+    "upcoming-2d": "Pokaż do 3 aktywów, które zostaną wkrótce opublikowane",
+    "upcoming-3": "Wszystkie",
+    "upcoming-3d": "Pokaż wszystkie nadchodzące treści i rozjaśnij je",
+    "upcoming-patron": "Jako patron, nadchodzące aktywa są zawsze pokazywane dla Ciebie."
+  },
   "backplates": "Zawiera zestaw teł w wysokiej rozdzielczości.",
   "by-author": "autorstwa: {{author}}",
   "early-access": "Wczesny Dostęp",

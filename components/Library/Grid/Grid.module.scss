@@ -170,10 +170,10 @@
   background: rgba(black, 0.2);
   width: calc(100% + 1rem);
   margin: 0.5rem -0.5rem -0.5rem;
-  // padding: 0.5rem;
 
   .advOpt {
-    @include flex(row, true, true);
+    @include flex(row, true);
+    justify-content: right;
     padding: 0 1rem;
   }
 }
@@ -210,6 +210,12 @@
 .loading {
   min-height: 85vh;
   @include center;
+}
+
+.column {
+  @include flex(column);
+  padding: 0.5em;
+  gap: 0.5em;
 }
 
 .adGridTop {

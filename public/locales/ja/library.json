@@ -1,5 +1,22 @@
 {
   "Clear author": "作者欄を消去",
+  "adv": {
+    "thumb-size": "サムネイルサイズ",
+    "thumb-size-1": "小型",
+    "thumb-size-2": "ミディアム",
+    "thumb-size-3": "大型",
+    "thumb-size-4": "巨大な",
+    "turntables": "マウスオーバーでターンテーブル",
+    "turntables-preload": "ターンテーブルのプリロード",
+    "upcoming": "近日公開",
+    "upcoming-1": "なし",
+    "upcoming-1d": "今後のコンテンツをすべて非表示にする",
+    "upcoming-2": "一部、不鮮明",
+    "upcoming-2d": "近日公開予定のアセットを最大3つまで表示可能",
+    "upcoming-3": "すべて",
+    "upcoming-3d": "近日公開のコンテンツをすべて表示し、ぼかしを解除",
+    "upcoming-patron": "パトロンになると、今後予定されているアセットが常に表示されるようになります。"
+  },
   "backplates": "高解像度の背景画像のセットが含まれています。",
   "by-author": "{{author}}制作した",
   "early-access": "早期アクセス",

@@ -1,5 +1,22 @@
 {
   "Clear author": "Auteur wissen",
+  "adv": {
+    "thumb-size": "Grootte thumbnail",
+    "thumb-size-1": "Kleine",
+    "thumb-size-2": "Medium",
+    "thumb-size-3": "Groot",
+    "thumb-size-4": "Enorme",
+    "turntables": "Draaitafels op muis over:",
+    "turntables-preload": "Voorbelasting draaitafels:",
+    "upcoming": "Toon komende",
+    "upcoming-1": "Geen",
+    "upcoming-1d": "Verberg alle komende inhoud",
+    "upcoming-2": "Sommige, wazig",
+    "upcoming-2d": "Toon tot 3 activa die binnenkort worden gepubliceerd",
+    "upcoming-3": "Alle",
+    "upcoming-3d": "Alle komende inhoud tonen en onscherp maken",
+    "upcoming-patron": "Als mecenas worden de komende activa altijd voor u getoond."
+  },
   "backplates": "Bevat een set achtergrondafbeeldingen met hoge resolutie.",
   "by-author": "door {{author}}",
   "early-access": "Vroege toegang",

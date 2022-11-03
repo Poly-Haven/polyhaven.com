@@ -1,5 +1,22 @@
 {
   "Clear author": "Autor entfernen",
+  "adv": {
+    "thumb-size": "Größe der Vorschaubilder",
+    "thumb-size-1": "Klein",
+    "thumb-size-2": "Mittel",
+    "thumb-size-3": "Groß",
+    "thumb-size-4": "Riesig",
+    "turntables": "Drehteller bei Mouseover:",
+    "turntables-preload": "Drehteller vorspannen:",
+    "upcoming": "Kommende anzeigen",
+    "upcoming-1": "Keine",
+    "upcoming-1d": "Alle kommenden Inhalte ausblenden",
+    "upcoming-2": "Einige, verschwommene",
+    "upcoming-2d": "Bis zu 3 Assets anzeigen, die demnächst veröffentlicht werden",
+    "upcoming-3": "Alle",
+    "upcoming-3d": "Alle anstehenden Inhalte anzeigen und die Unschärfe aufheben",
+    "upcoming-patron": "Als Mäzen werden Ihnen die nächsten Veranstaltungen immer angezeigt."
+  },
   "backplates": "Enthält eine Reihe von hochauflösenden Hintergrundbildern.",
   "by-author": "von {{author}}",
   "early-access": "Vorab-Zugang",

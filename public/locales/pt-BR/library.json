@@ -1,5 +1,22 @@
 {
   "Clear author": "Limpar autor",
+  "adv": {
+    "thumb-size": "Tamanho da miniatura",
+    "thumb-size-1": "Pequeno",
+    "thumb-size-2": "Médio",
+    "thumb-size-3": "Grande",
+    "thumb-size-4": "Enorme",
+    "turntables": "Gira-discos em cima do mouse:",
+    "turntables-preload": "Pré-carga de mesas giratórias:",
+    "upcoming": "Mostrar em breve",
+    "upcoming-1": "Nenhum",
+    "upcoming-1d": "Esconder todo o conteúdo futuro",
+    "upcoming-2": "Alguns, embaçados",
+    "upcoming-2d": "Mostrar até 3 ativos que serão publicados em breve",
+    "upcoming-3": "Todos",
+    "upcoming-3d": "Mostrar todos os próximos conteúdos e desobstruí-los",
+    "upcoming-patron": "Como patrono, os próximos bens são sempre mostrados para você."
+  },
   "backplates": "Inclui um conjunto de imagens de fundo de alta resolução.",
   "by-author": "por {{author}}",
   "early-access": "Acesso Antecipado",

@@ -1,5 +1,22 @@
 {
   "Clear author": "Effacer l'auteur",
+  "adv": {
+    "thumb-size": "Taille de la vignette",
+    "thumb-size-1": "Petit",
+    "thumb-size-2": "Moyen",
+    "thumb-size-3": "Large",
+    "thumb-size-4": "Enorme",
+    "turntables": "Les tables tournantes au passage de la souris :",
+    "turntables-preload": "Précharger les platines :",
+    "upcoming": "Spectacle à venir",
+    "upcoming-1": "Aucun",
+    "upcoming-1d": "Cacher tout le contenu à venir",
+    "upcoming-2": "Certaines, floues",
+    "upcoming-2d": "Montrer jusqu'à 3 actifs qui seront publiés prochainement",
+    "upcoming-3": "Tous",
+    "upcoming-3d": "Afficher tous les contenus à venir et les rendre flous",
+    "upcoming-patron": "En tant que mécène, les actifs à venir sont toujours affichés pour vous."
+  },
   "backplates": "Comprend un ensemble d'images d'arrière-plan haute résolution.",
   "by-author": "par {{author}}",
   "early-access": "Accès anticipé",
