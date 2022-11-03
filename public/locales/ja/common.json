@@ -31,6 +31,7 @@
   "missing-invalid": "欠落または無効",
   "nav": {
     "about-contact": "会社概要/お問い合わせ",
+    "add-on": "アドオン",
     "api": "API",
     "blog": "ブログ",
     "contribute": "資する",
@@ -42,6 +43,7 @@
     "logout": "ログアウト",
     "map": "HDRI世界地図",
     "news": "ニュース",
+    "plugins": "プラグイン",
     "privacy": "プライバシー",
     "source": "ソース",
     "stats": "統計",

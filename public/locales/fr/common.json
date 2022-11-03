@@ -31,6 +31,7 @@
   "missing-invalid": "Manquant ou invalide",
   "nav": {
     "about-contact": "À propos/Contact",
+    "add-on": "Supplémentaire",
     "api": "API",
     "blog": "Blog",
     "contribute": "Contribuer",
@@ -42,6 +43,7 @@
     "logout": "Déconnexion",
     "map": "Carte du monde de HDRI",
     "news": "Actualités",
+    "plugins": "Plugins",
     "privacy": "Confidentialité",
     "source": "Source",
     "stats": "Statistiques",

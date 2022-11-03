@@ -31,6 +31,7 @@
   "missing-invalid": "Hiányzik vagy érvénytelen",
   "nav": {
     "about-contact": "Névjegy/Kapcsolat",
+    "add-on": "Kiegészítő",
     "api": "API",
     "blog": "Blog",
     "contribute": "Hozzájárul",
@@ -42,6 +43,7 @@
     "logout": "Kijelentkezés",
     "map": "HDRI világtérkép",
     "news": "hírek",
+    "plugins": "Plugins",
     "privacy": "Magánélet",
     "source": "Forrás",
     "stats": "Statisztika",

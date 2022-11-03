@@ -31,6 +31,7 @@
   "missing-invalid": "Ontbreekt of ongeldig",
   "nav": {
     "about-contact": "Over/Contact",
+    "add-on": "Add-on",
     "api": "API",
     "blog": "Blog",
     "contribute": "Bijdrage leveren",
@@ -42,6 +43,7 @@
     "logout": "Uitloggen",
     "map": "HDRI-wereldkaart",
     "news": "Nieuws",
+    "plugins": "Plugins",
     "privacy": "Privacy",
     "source": "Bron",
     "stats": "Statistieken",

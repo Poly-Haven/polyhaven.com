@@ -31,6 +31,7 @@
   "missing-invalid": "مفقود یا نامعتبر است",
   "nav": {
     "about-contact": "درباره/تماس",
+    "add-on": "افزونه",
     "api": "API",
     "blog": "وبلاگ",
     "contribute": "مشارکت",
@@ -42,6 +43,7 @@
     "logout": "خروج",
     "map": "نقشه جهانی HDRI",
     "news": "اخبار",
+    "plugins": "پلاگین ها",
     "privacy": "حریم خصوصی",
     "source": "منبع",
     "stats": "آمار",

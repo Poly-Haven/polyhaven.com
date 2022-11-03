@@ -31,6 +31,7 @@
   "missing-invalid": "Eksik veya geçersiz",
   "nav": {
     "about-contact": "Hakkında/İletişim",
+    "add-on": "Eklenti",
     "api": "API",
     "blog": "Blog",
     "contribute": "Katkıda bulunmak",
@@ -42,6 +43,7 @@
     "logout": "Çıkış Yap",
     "map": "HDRI Dünya Haritası",
     "news": "Haberler",
+    "plugins": "Eklentiler",
     "privacy": "Mahremiyet",
     "source": "Kaynak",
     "stats": "İstatistikler",

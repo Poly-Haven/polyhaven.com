@@ -31,6 +31,7 @@
   "missing-invalid": "Algo falta o no es válido",
   "nav": {
     "about-contact": "Acerca de/Contacto",
+    "add-on": "Complemento",
     "api": "API",
     "blog": "Blog",
     "contribute": "Contribuir",
@@ -42,6 +43,7 @@
     "logout": "Cerrar sesión",
     "map": "Mapa Mundial HDRI",
     "news": "Noticias",
+    "plugins": "Plugins",
     "privacy": "Privacidad",
     "source": "Fuente",
     "stats": "Estadísticas",

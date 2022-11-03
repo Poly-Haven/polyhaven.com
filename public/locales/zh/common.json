@@ -31,6 +31,7 @@
   "missing-invalid": "丢失或无效",
   "nav": {
     "about-contact": "关于/联系方式",
+    "add-on": "附加装置",
     "api": "API",
     "blog": "博客",
     "contribute": "支援",
@@ -42,6 +43,7 @@
     "logout": "注销",
     "map": "HDRI世界地图",
     "news": "新闻",
+    "plugins": "插件",
     "privacy": "隐私性",
     "source": "源代码",
     "stats": "统计数据",

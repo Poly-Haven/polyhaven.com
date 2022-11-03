@@ -31,6 +31,7 @@
   "missing-invalid": "Brakujące lub nieprawidłowe dane",
   "nav": {
     "about-contact": "O Nas/Kontakt",
+    "add-on": "Dodatek",
     "api": "API",
     "blog": "Blog",
     "contribute": "Jak Pomóc?",
@@ -42,6 +43,7 @@
     "logout": "Wyloguj",
     "map": "Mapa lokalizacji naszych HDRI",
     "news": "Aktualności",
+    "plugins": "Wtyczki",
     "privacy": "Prywatność",
     "source": "Źródło",
     "stats": "Statystyki",

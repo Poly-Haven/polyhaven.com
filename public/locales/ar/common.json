@@ -31,6 +31,7 @@
   "missing-invalid": "مفقود أو غير صالح",
   "nav": {
     "about-contact": "حول / تواصل",
+    "add-on": "اضافه",
     "api": "API",
     "blog": "المقالات",
     "contribute": "تبرع",
@@ -42,6 +43,7 @@
     "logout": "تسجيل الخروج",
     "map": "HDRI خريطة العالم",
     "news": "أخبار",
+    "plugins": "الإضافات",
     "privacy": "خصوصية",
     "source": "مصدر",
     "stats": "إحصائيات",

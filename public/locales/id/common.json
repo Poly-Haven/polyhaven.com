@@ -31,6 +31,7 @@
   "missing-invalid": "Tidak ada atau tidak sah",
   "nav": {
     "about-contact": "Tentang/Kontak",
+    "add-on": "Tambahan",
     "api": "API",
     "blog": "Blog",
     "contribute": "Kontribusi",
@@ -42,6 +43,7 @@
     "logout": "Keluar",
     "map": "Peta Dunia HDRI",
     "news": "Berita",
+    "plugins": "Plugin",
     "privacy": "Privasi",
     "source": "Sumber",
     "stats": "Statistik",

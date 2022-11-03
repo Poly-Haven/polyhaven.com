@@ -31,6 +31,7 @@
   "missing-invalid": "누락되었거나 유효하지 않음",
   "nav": {
     "about-contact": "정보/연락처",
+    "add-on": "애드온",
     "api": "API",
     "blog": "블로그",
     "contribute": "기여하기",
@@ -42,6 +43,7 @@
     "logout": "로그아웃",
     "map": "HDRI 세계 지도",
     "news": "소식",
+    "plugins": "플러그인",
     "privacy": "개인정보 정책",
     "source": "소스 코드",
     "stats": "통계",
