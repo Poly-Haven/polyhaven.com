@@ -15,8 +15,8 @@ import {
   MeshState,
 } from './GLTF_Visibility_reducer';
 
-
 import styles from './GLTFViewer.module.scss'
+import Spinner from "components/UI/Spinner/Spinner";
 
 interface Props {
   readonly show: boolean;
@@ -57,7 +57,13 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  const gltfFiles = files.gltf['4k'] ? files.gltf['4k'].gltf : files.gltf['2k'].gltf;
+  /* const gltfFiles = files.gltf["4k"] ? files.gltf["4k"].gltf
+    : files.gltf["2k"].gltf; */
+
+  // Use 2k by default
+  // TODO: check if we can load 1k first and 2k later
+  const gltfFiles = files.gltf["2k"]?.gltf || files.gltf["4k"]?.gltf;
+
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles);
 
   // As this functionality is not really necessary, it is overkill to useReducer to handle it.
@@ -67,7 +73,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
   useEffect(() => {
     if (!processedGLTFFromAPI) return;
     processedGLTFFromAPI.scene.children.map(processGroup);
-  }, [processedGLTFFromAPI])
+  }, [processedGLTFFromAPI]);
 
   // Split group into children and call process group on any groups
   const processGroup = (entity) => {
@@ -86,9 +92,45 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
     handle.active ? handle.exit() : handle.enter()
   }
 
-  if (!processedGLTFFromAPI) return null;
+  // if (!processedGLTFFromAPI) return null;
 
-  return (
+  return !processedGLTFFromAPI ? (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "#232323",
+          width: "100%",
+          height: "100%",
+          opacity: 0.5,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 1,
+        }}
+      ></div>
+      <div
+        style={{
+          zIndex: 2,
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <Spinner />
+      </div>
+    </div>
+  ) : (
     <FullScreen handle={handle}>
       <div className={styles.wrapper}>
         {/* Because Canvas wraps in relative div with width/height 100% */}
