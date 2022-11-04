@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { GLTF, GLTFLoader } from 'three-stdlib';
+import { GLTF } from 'three-stdlib';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 interface APIDataItem {
   readonly url: string;
