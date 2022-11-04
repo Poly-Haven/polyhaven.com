@@ -136,6 +136,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files }) => {
         {/* Because Canvas wraps in relative div with width/height 100% */}
         <div style={{ position: "absolute", width: "100%", height: "100%" }}>
           <Canvas
+            dpr={[1, 2]}
             camera={{ fov: 27, near: 0.1, far: 1000, position: [-(center.x + camDistance), center.y + (camDistance / 2), center.z + camDistance] }}
             onCreated={({ gl }) => { gl.toneMapping = CineonToneMapping }}
           >
