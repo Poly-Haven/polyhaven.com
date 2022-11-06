@@ -8,14 +8,14 @@
     "thumb-size-4": "Enorme",
     "turntables": "Giradischi al passaggio del mouse:",
     "turntables-preload": "Precaricare i giradischi:",
-    "upcoming": "Mostra prossimamente",
+    "upcoming": "Mostra novità in arrivo",
     "upcoming-1": "Nessuno",
     "upcoming-1d": "Nascondi tutti i contenuti in arrivo",
     "upcoming-2": "Alcuni, sfocati",
-    "upcoming-2d": "Mostrare fino a 3 beni che saranno pubblicati a breve",
+    "upcoming-2d": "Mostrare fino a 3 risorse che saranno pubblicate a breve",
     "upcoming-3": "Tutti",
-    "upcoming-3d": "Mostrare tutti i contenuti imminenti e sfocarli",
-    "upcoming-patron": "In qualità di mecenate, le attività in programma vengono sempre mostrate per voi."
+    "upcoming-3d": "Mostrare tutti i contenuti imminenti e rimuovi la sfocatura",
+    "upcoming-patron": "In qualità di mecenate, potete vedere sempre le attività in programma."
   },
   "backplates": "Include una serie di immagini di sfondo ad alta risoluzione.",
   "by-author": "di {{author}}",
