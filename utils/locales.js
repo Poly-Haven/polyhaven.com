@@ -36,11 +36,6 @@ module.exports = {
     name: "Español",
     flag: 'ES'
   },
-  fa: {
-    name: "فارسی",
-    flag: 'IR',
-    rtl: true
-  },
   fr: {
     name: "Français",
     flag: 'FR'
