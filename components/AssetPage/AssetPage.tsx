@@ -205,7 +205,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
           <Download
             assetID={assetID}
             data={data}
-            files={files}
+            files={{preview: `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png` , ...files}}
             setPreview={setPreviewImage}
             patron={patron}
           />

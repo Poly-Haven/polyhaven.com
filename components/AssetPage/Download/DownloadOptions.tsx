@@ -71,16 +71,20 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
           !threeDFormats.includes(m) || fmt === 'zip' ?
             m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ?
               m !== 'nor_gl' || norMode === 'gl' || fmt === 'zip' ?
-                <DownloadMap
-                  key={i}
-                  name={m}
-                  res={res}
-                  fmt={fmt}
-                  type={type}
-                  data={files[m][res]}
-                  trackDownload={trackDownload}
-                  selectMap={selectMap}
-                />
+                // TODO: should we make it possible to download the bundle
+                // without the preview in it?
+                m !== 'preview' ?
+                  <DownloadMap
+                    key={i}
+                    name={m}
+                    res={res}
+                    fmt={fmt}
+                    type={type}
+                    data={files[m][res]}
+                    trackDownload={trackDownload}
+                    selectMap={selectMap}
+                  />
+                  : null
                 : null
               : null
             : null
