@@ -40,8 +40,6 @@ const Grid = (props) => {
 
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false)
-  const [enableTurnaround, setEnableTurnaround] = useStoredState('enableTurnaround', true)
-  const [preloadTurnaround, setPreloadTurnaround] = useStoredState('lib_adv_preloadTurnaround', false)
   const [eaPref, setEAPref] = useStoredState('lib_adv_eaPref', 'some')
   const [thumbSize, setThumbSize] = useStoredState('lib_adv_thumbSize', "medium")
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
@@ -281,24 +279,6 @@ const Grid = (props) => {
         <div style={{ flexBasis: '100%', width: 0 }} />
         {showAdvanced ?
           <div className={styles.advOptions}>
-            <div className={styles.column}>
-              <div className={styles.advOpt}>
-                {t('adv.turntables')}
-                <Switch
-                  on={enableTurnaround}
-                  onClick={() => setEnableTurnaround(!enableTurnaround)}
-                />
-              </div>
-              <Disabled disabled={!enableTurnaround}>
-                <div className={styles.advOpt}>
-                  {t('adv.turntables-preload')}
-                  <Switch
-                    on={preloadTurnaround}
-                    onClick={() => setPreloadTurnaround(!preloadTurnaround)}
-                  />
-                </div>
-              </Disabled>
-            </div>
             <Disabled disabled={!blurUpcoming} tooltip={t('adv.upcoming-patron')}>
               <div className={styles.advOpt}>
                 <Dropdown
@@ -368,8 +348,6 @@ const Grid = (props) => {
               assetID={asset}
               onClick={setHeaderPath}
               blurUpcoming={blurUpcoming && eaPref !== 'all'}
-              enableTurnaround={enableTurnaround}
-              preloadTurnaround={preloadTurnaround}
               thumbSize={thumbSize}
             /></LazyLoad>);
           })}
