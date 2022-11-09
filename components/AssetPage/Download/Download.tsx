@@ -236,9 +236,10 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     // Add the preview image to the zip
     if (files.preview) dlFiles.push({
       url: files.preview,
-      path: `${assetID}_preview.png`
-      // TODO: is the size of this image stored in the db?
-      // If yes, then we should get it and pass it down here
+      path: `${assetID}_preview.png`,
+      // TODO: use the real file size here
+      // when we finally have it the db
+      size: 0
     })
 
     startDownload(name, dlFiles)
