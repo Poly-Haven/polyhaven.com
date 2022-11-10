@@ -40,8 +40,6 @@ const Grid = (props) => {
 
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false)
-  const [enableTurnaround, setEnableTurnaround] = useStoredState('enableTurnaround', true)
-  const [preloadTurnaround, setPreloadTurnaround] = useStoredState('lib_adv_preloadTurnaround', false)
   const [eaPref, setEAPref] = useStoredState('lib_adv_eaPref', 'some')
   const [thumbSize, setThumbSize] = useStoredState('lib_adv_thumbSize', "medium")
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
@@ -281,39 +279,23 @@ const Grid = (props) => {
         <div style={{ flexBasis: '100%', width: 0 }} />
         {showAdvanced ?
           <div className={styles.advOptions}>
-            <div className={styles.advOpt}>
-              Turntables on mouse over:
-              <Switch
-                on={enableTurnaround}
-                onClick={() => setEnableTurnaround(!enableTurnaround)}
-              />
-            </div>
-            <Disabled disabled={!enableTurnaround}>
-              <div className={styles.advOpt}>
-                Preload turntables:
-                <Switch
-                  on={preloadTurnaround}
-                  onClick={() => setPreloadTurnaround(!preloadTurnaround)}
-                />
-              </div>
-            </Disabled>
-            <Disabled disabled={!blurUpcoming} tooltip="As a patron, upcoming assets are always shown for you.">
+            <Disabled disabled={!blurUpcoming} tooltip={t('adv.upcoming-patron')}>
               <div className={styles.advOpt}>
                 <Dropdown
-                  label="Show upcoming"
+                  label={t('adv.upcoming')}
                   value={eaPref}
                   options={{
                     none: {
-                      label: "None",
-                      tooltip: "Hide all upcoming content"
+                      label: t('adv.upcoming-1'),
+                      tooltip: t('adv.upcoming-1d')
                     },
                     some: {
-                      label: "Some",
-                      tooltip: "Show up to 3 assets that will be published soon",
+                      label: t('adv.upcoming-2'),
+                      tooltip: t('adv.upcoming-2d')
                     },
                     all: {
-                      label: "All",
-                      tooltip: "Show all upcoming content and unblur them"
+                      label: t('adv.upcoming-3'),
+                      tooltip: t('adv.upcoming-3d')
                     }
                   }}
                   onChange={setEAPref}
@@ -322,34 +304,24 @@ const Grid = (props) => {
             </Disabled>
             <div className={styles.advOpt}>
               <Dropdown
-                label="Thumb size"
+                label={t('adv.thumb-size')}
                 value={thumbSize}
                 options={{
                   "small": {
-                    label: "Small"
+                    label: t('adv.thumb-size-1')
                   },
                   "medium": {
-                    label: "Medium"
+                    label: t('adv.thumb-size-2')
                   },
                   "large": {
-                    label: "Large"
+                    label: t('adv.thumb-size-3')
                   },
                   "huge": {
-                    label: "Huge"
+                    label: t('adv.thumb-size-4')
                   },
                 }}
                 onChange={setThumbSize}
               />
-            </div>
-            <div className={styles.advOpt}>
-              <div
-                className={`${btnStyles.button} ${btnStyles['accent']}`}
-                onClick={resetNews}
-              >
-                <div className={btnStyles.inner}>
-                  Reset hidden news
-                </div>
-              </div>
             </div>
           </div>
           : null}
@@ -376,8 +348,6 @@ const Grid = (props) => {
               assetID={asset}
               onClick={setHeaderPath}
               blurUpcoming={blurUpcoming && eaPref !== 'all'}
-              enableTurnaround={enableTurnaround}
-              preloadTurnaround={preloadTurnaround}
               thumbSize={thumbSize}
             /></LazyLoad>);
           })}

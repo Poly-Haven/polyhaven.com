@@ -19,6 +19,23 @@
     "random-d": "Shuffled asset list.",
     "relevance": "Sorting by search relevance."
   },
+  "adv": {
+    "turntables": "Turntables on mouse over:",
+    "turntables-preload": "Preload turntables:",
+    "upcoming": "Show upcoming",
+    "upcoming-1": "None",
+    "upcoming-1d": "Hide all upcoming content",
+    "upcoming-2": "Some, blurred",
+    "upcoming-2d": "Show up to 3 assets that will be published soon",
+    "upcoming-3": "All",
+    "upcoming-3d": "Show all upcoming content and unblur them",
+    "upcoming-patron": "As a patron, upcoming assets are always shown for you.",
+    "thumb-size": "Thumbnail size",
+    "thumb-size-1": "Small",
+    "thumb-size-2": "Medium",
+    "thumb-size-3": "Large",
+    "thumb-size-4": "Huge"
+  },
   "by-author": "by {{author}}",
   "new": "New!",
   "backplates": "Includes a set of high-res background images.",

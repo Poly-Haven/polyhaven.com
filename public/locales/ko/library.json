@@ -1,5 +1,22 @@
 {
   "Clear author": "작가 초기화",
+  "adv": {
+    "thumb-size": "썸네일 크기",
+    "thumb-size-1": "작은",
+    "thumb-size-2": "중간",
+    "thumb-size-3": "크기가 큰",
+    "thumb-size-4": "거대한",
+    "turntables": "마우스 오버 시 턴테이블:",
+    "turntables-preload": "턴테이블 예압:",
+    "upcoming": "예정된 표시",
+    "upcoming-1": "없음",
+    "upcoming-1d": "예정된 모든 콘텐츠 숨기기",
+    "upcoming-2": "일부, 흐리게",
+    "upcoming-2d": "곧 게시될 자산을 최대 3개까지 표시합니다.",
+    "upcoming-3": "모두",
+    "upcoming-3d": "예정된 모든 콘텐츠를 표시하고 흐리게 처리",
+    "upcoming-patron": "후원자로서 향후 자산이 항상 표시됩니다."
+  },
   "backplates": "고해상도 배경 이미지 세트를 포함합니다",
   "by-author": "{{author}}",
   "early-access": "얼리 액세스",

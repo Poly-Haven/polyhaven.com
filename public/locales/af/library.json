@@ -1,5 +1,22 @@
 {
   "Clear author": "Verwyder outeur",
+  "adv": {
+    "thumb-size": "Kleinkiekie grootte",
+    "thumb-size-1": "Klein",
+    "thumb-size-2": "Medium",
+    "thumb-size-3": "Groot",
+    "thumb-size-4": "Groot",
+    "turntables": "Draaitafels op muis oor:",
+    "turntables-preload": "Voorlaai draaitafels:",
+    "upcoming": "Wys opkomende",
+    "upcoming-1": "Geen",
+    "upcoming-1d": "Versteek alle komende inhoud",
+    "upcoming-2": "Sommige, vaag",
+    "upcoming-2d": "Wys tot 3 bates wat binnekort gepubliseer sal word",
+    "upcoming-3": "Almal",
+    "upcoming-3d": "Wys alle komende inhoud en ontvaag dit",
+    "upcoming-patron": "As 'n beskermheer word opkomende bates altyd vir jou gewys."
+  },
   "backplates": "Sluit 'n stel hoë-resolusie agtergrond foto's in.",
   "by-author": "deur {{author}}",
   "early-access": "Vroeë toegang",

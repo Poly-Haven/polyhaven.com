@@ -1,5 +1,22 @@
 {
   "Clear author": "Világos szerző",
+  "adv": {
+    "thumb-size": "Miniatűr méret",
+    "thumb-size-1": "Kis",
+    "thumb-size-2": "Közepes",
+    "thumb-size-3": "Nagy",
+    "thumb-size-4": "Hatalmas",
+    "turntables": "Forgótányérok az egérrel:",
+    "turntables-preload": "Előfeszített lemezjátszók:",
+    "upcoming": "Mutasd meg a közelgő",
+    "upcoming-1": "Nincs",
+    "upcoming-1d": "Az összes következő tartalom elrejtése",
+    "upcoming-2": "Néhány, elmosódott",
+    "upcoming-2d": "Legfeljebb 3 olyan eszköz megjelenítése, amely hamarosan közzétételre kerül",
+    "upcoming-3": "Minden",
+    "upcoming-3d": "Minden közelgő tartalom megjelenítése és elmosódás megszüntetése",
+    "upcoming-patron": "Védnökként a közelgő eszközök mindig megjelennek az Ön számára."
+  },
   "backplates": "Tartalmaz egy sor nagy felbontású háttérképet.",
   "by-author": "{{author}}",
   "early-access": "Korai hozzáférés",

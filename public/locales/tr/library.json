@@ -1,5 +1,22 @@
 {
   "Clear author": "Yazarı temizle",
+  "adv": {
+    "thumb-size": "Küçük resim boyutu",
+    "thumb-size-1": "Küçük",
+    "thumb-size-2": "Orta",
+    "thumb-size-3": "Büyük",
+    "thumb-size-4": "Çok büyük",
+    "turntables": "Fare üzerinde döner tablalar:",
+    "turntables-preload": "Pikapları önceden yükleyin:",
+    "upcoming": "Yaklaşan göster",
+    "upcoming-1": "Hiçbiri",
+    "upcoming-1d": "Yaklaşan tüm içeriği gizle",
+    "upcoming-2": "Bazıları, bulanık",
+    "upcoming-2d": "Yakında yayınlanacak en fazla 3 varlığı gösterin",
+    "upcoming-3": "Tümü",
+    "upcoming-3d": "Yaklaşan tüm içeriği gösterin ve bulanıklığı kaldırın",
+    "upcoming-patron": "Bir kullanıcı olarak, yaklaşan varlıklar her zaman sizin için gösterilir."
+  },
   "backplates": "Bir dizi yüksek çözünürlüklü arka plan görüntüsü içerir.",
   "by-author": "{{author}} tarafından",
   "early-access": "Erken Erişim",

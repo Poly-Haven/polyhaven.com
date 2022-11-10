@@ -2,7 +2,7 @@
 
 This repo contains source code for the [polyhaven.com](https://polyhaven.com) site.
 
-Poly Haven is a public project, we'd be happy to review any code contributions :)
+Poly Haven is a public project, we'd be happy to review any code contributions :) Please use the `dev` branch for any PRs.
 
 If you want to help but are unsure what to do, [here's a list of things that need doing](https://github.com/Poly-Haven/polyhaven.com/projects/1).
 
@@ -17,6 +17,10 @@ To build the application yourself, you'll need to:
 2. Clone this repo
 3. Run `npm install`
 4. Then `npm run dev` will start a local server at http://localhost:3002/ - or use `next dev -p 3002` to specify a different port.
+
+## Contributing
+
+If you'd like to help us out developing this site, please use the `dev` branch!
 
 
 ## API
