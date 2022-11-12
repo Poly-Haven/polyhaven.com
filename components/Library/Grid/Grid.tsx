@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Fuse from 'fuse.js';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import LazyLoad from 'react-lazy-load';
@@ -26,6 +26,7 @@ import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Grid.module.scss';
 import btnStyles from 'components/UI/Button/Button.module.scss'
+import debounce from 'lodash.debounce'
 
 const Grid = (props) => {
   const { t: tc } = useTranslation('common');
@@ -141,28 +142,36 @@ const Grid = (props) => {
     console.error({ publicError })
   }
 
-  if (props.search && data) {
-    const fuse = new Fuse(Object.values(data), {
-      keys: ['categories', 'tags', 'name'],
-      includeScore: true,
-      useExtendedSearch: true,
-      threshold: 0.2
-    })
-    let search = props.search
-    search = search.replace(/ /g, '|')  // Use spaces as OR operation
-    search = search.replace(/\+/g, ' ')  // Use + as AND operation
-    const searchResults = fuse.search(search);
-    const filteredData = {};
-    for (const sr of searchResults) {
-      let srID = Object.keys(data)[sr.refIndex];
-      filteredData[srID] = data[srID];
+  const searchFunction = ({search, author}) => {
+    if (search && data) {
+      const fuse = new Fuse(Object.values(data), {
+        keys: ['categories', 'tags', 'name'],
+        includeScore: true,
+        useExtendedSearch: true,
+        threshold: 0.2
+      })
+      let searchVal = search
+      console.log('searching for: ', searchVal)
+      searchVal = searchVal.replace(/ /g, '|')  // Use spaces as OR operation
+      searchVal = searchVal.replace(/\+/g, ' ')  // Use + as AND operation
+      const searchResults = fuse.search(searchVal);
+      const filteredData = {};
+      for (const sr of searchResults) {
+        let srID = Object.keys(data)[sr.refIndex];
+        filteredData[srID] = data[srID];
+      }
+      sortedKeys = Object.keys(filteredData)
     }
-    sortedKeys = Object.keys(filteredData)
+
+    if (author) {
+      sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(author));
+    }
   }
 
-  if (props.author) {
-    sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
-  }
+  const handleSearch = useCallback(debounce ((value) => searchFunction(value), 300), [])
+  console.log(props.search)
+  // searchFunction(props)
+  handleSearch(props)
 
   if (blurUpcoming) {
     if (width <= 810 || eaPref === 'none') {
