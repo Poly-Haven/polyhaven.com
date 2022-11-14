@@ -64,6 +64,16 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     })
   }
 
+  let creditedAuthors = []
+  for (const [author, credit] of Object.entries(asset.authors)) {
+    if (credit === 'All') {
+      creditedAuthors.push(author)
+    }
+  }
+  if (creditedAuthors.length === 0) {
+    creditedAuthors = Object.keys(asset.authors)
+  }
+
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}><a
@@ -73,7 +83,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     >
       <div className={styles.author}>
         <div className={styles.authorInner}>
-          {Object.keys(asset.authors).sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
+          {creditedAuthors.sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
         </div>
       </div>
       <div className={styles.thumb}><img
