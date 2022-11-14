@@ -1,4 +1,5 @@
 import styles from './Avatar.module.scss'
+import { placeholderAvatar } from 'utils/placeholderAvatar';
 
 const Avatar = ({ id, size }) => {
   return (
@@ -8,7 +9,7 @@ const Avatar = ({ id, size }) => {
       height={size}
       onError={e => {
         const target = e.target as HTMLImageElement;
-        target.src = `https://cdn.polyhaven.com/people/fallback.png?width=${size}`
+        target.src = placeholderAvatar(id, size)
       }}
       className={styles.avatar}
     />
