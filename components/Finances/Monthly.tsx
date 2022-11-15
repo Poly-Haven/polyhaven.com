@@ -99,6 +99,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
     "Insurance",
     "Bank Charges",
     "Subscription Fees",
+    "Rent & Utilities",
   ]
   for (const m of Object.keys(mutableData).slice(-12)) {
     const d = mutableData[m]
