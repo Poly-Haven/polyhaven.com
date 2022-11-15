@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 
 import { sortObjByValue } from 'utils/arrayUtils'
-import { getCurrency, catColor } from 'utils/finances';
+import { getCurrency, catColor, categories } from 'utils/finances';
 
 import Spinner from 'components/UI/Spinner/Spinner'
 import Tooltip from 'components/UI/Tooltip/Tooltip';
@@ -27,10 +27,11 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
           {Object.keys(data).map((c, i) => {
             const percent = data[c] / max * 100;
             const percentStr = percent > 10 ? Math.round(percent) : percent.toFixed(1)
+            const description = categories[c] && categories[c].description;
             return <div
               key={i}
               className={styles.sumCat}
-              title={`${c}: ${getCurrency(data[c], currency, rates)} (${percentStr}%)`}
+              title={`${c}: ${getCurrency(data[c], currency, rates)} (${percentStr}%)${description ? ` - ${description}` : ""}`}
               onClick={(e) => {
                 if (barMode !== mode) {
                   setMode(barMode)
