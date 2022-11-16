@@ -25,6 +25,42 @@ interface Props {
   readonly onLoad: Function;
 }
 
+const renderMesh = (mesh, soloMap, wireframe) => {
+  const objects = [];
+  if (mesh.children) {
+    mesh.children.forEach(child => {
+      objects.push(renderMesh(child, soloMap, wireframe))
+    })
+  }
+  objects.push(<React.Fragment key={mesh.uuid}>
+    <mesh
+      geometry={mesh.geometry}
+      position={mesh.getWorldPosition(new Vector3)}
+      scale={mesh.getWorldScale(new Vector3)}
+      quaternion={mesh.getWorldQuaternion(new Quaternion)}
+    >
+      {(soloMap === "" ? <meshPhysicalMaterial {...mesh.material} /> :
+        <meshBasicMaterial>
+          {mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...mesh.material['map']} />}
+          {mesh.material['normalMap'] && soloMap === "NORMAL" && <texture attach="map" {...mesh.material['normalMap']} />}
+          {mesh.material['metalnessMap'] && soloMap === "METALNESS" && <texture attach="map" {...mesh.material['metalnessMap']} />}
+          {mesh.material['roughnessMap'] && soloMap === "ROUGHNESS" && <texture attach="map" {...mesh.material['roughnessMap']} />}
+        </meshBasicMaterial>)
+      }
+    </mesh>
+
+    <mesh
+      geometry={mesh.geometry}
+      position={mesh.getWorldPosition(new Vector3)}
+      scale={mesh.getWorldScale(new Vector3)}
+      quaternion={mesh.getWorldQuaternion(new Quaternion)}
+    >
+      <meshStandardMaterial wireframe={true} visible={wireframe} color='black' />
+    </mesh>
+  </React.Fragment>)
+  return objects;
+}
+
 const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
   if (!show) return null;
 
@@ -107,35 +143,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
 
               {
                 processedGLTFFromAPI && state.meshes &&
-                Object.values(state.meshes).map(node => {
-                  return <React.Fragment key={node.mesh.uuid}>
-                    <mesh
-                      geometry={node.mesh.geometry}
-                      position={node.mesh.getWorldPosition(new Vector3)}
-                      scale={node.mesh.getWorldScale(new Vector3)}
-                      quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
-                    >
-                      {/*  @ts-ignore - Types are strange here, TS complains but these items exist.. investigate */}
-                      {(soloMap === "" ? <meshPhysicalMaterial {...node.mesh.material} /> :
-                        <meshBasicMaterial>
-                          {node.mesh.material['map'] && soloMap === "DIFFUSE" && <texture attach="map" {...node.mesh.material['map']} />}
-                          {node.mesh.material['normalMap'] && soloMap === "NORMAL" && <texture attach="map" {...node.mesh.material['normalMap']} />}
-                          {node.mesh.material['metalnessMap'] && soloMap === "METALNESS" && <texture attach="map" {...node.mesh.material['metalnessMap']} />}
-                          {node.mesh.material['roughnessMap'] && soloMap === "ROUGHNESS" && <texture attach="map" {...node.mesh.material['roughnessMap']} />}
-                        </meshBasicMaterial>)
-                      }
-                    </mesh>
-
-                    <mesh
-                      geometry={node.mesh.geometry}
-                      position={node.mesh.getWorldPosition(new Vector3)}
-                      scale={node.mesh.getWorldScale(new Vector3)}
-                      quaternion={node.mesh.getWorldQuaternion(new Quaternion)}
-                    >
-                      <meshStandardMaterial wireframe={true} visible={wireframe} color='black' />
-                    </mesh>
-                  </React.Fragment>
-                })
+                Object.values(state.meshes).map(node => renderMesh(node.mesh, soloMap, wireframe))
               }
             </Suspense>
           </Canvas>
