@@ -26,7 +26,7 @@ import InfoBlock from "./InfoBlock";
 import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
 import Spinner from 'components/UI/Spinner/Spinner'
-import Sponsor from './Sponsor'
+import SponsorList from './SponsorList/SponsorList'
 import TagsList from "./TagsList";
 import TilePreview from './WebGL/TilePreview'
 import UserRenders from './UserRenders';
@@ -244,7 +244,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
             </InfoItem>
 
             <div className={styles.spacer} />
-            <Sponsor assetID={assetID} sponsors={data.sponsors} patron={patron} />
+            <SponsorList assetID={assetID} sponsors={data.sponsors} patron={patron} />
             <div className={styles.spacer} />
 
             <div ref={widthRef}>

@@ -6,7 +6,7 @@ import { MdCheck, MdClose } from "react-icons/md";
 
 import Disabled from 'components/UI/Disabled/Disabled'
 
-import styles from './AssetPage.module.scss'
+import styles from '../AssetPage.module.scss'
 
 const AddSponsor = ({ assetID, patron }) => {
   const [loading, setLoading] = useState(false)
