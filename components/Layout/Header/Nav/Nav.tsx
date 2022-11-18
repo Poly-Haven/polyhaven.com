@@ -62,10 +62,10 @@ const Nav = () => {
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
         <NavItem text={<><Heart color="#F96854" /> {t('common:nav.support-us')}</>} link="https://www.patreon.com/polyhaven/overview" />
         <NavItem text={t('common:nav.about-contact')} link="/about-contact">
+          <NavItem text={t('common:nav.faq')} link="/faq" />
           <NavItem text={t('common:nav.license')} link="/license" />
           <NavItem text={t('common:nav.news')} link="https://www.patreon.com/polyhaven/posts?public=true" />
           <NavItem text={t('common:nav.blog')} link="https://blog.polyhaven.com" />
-          <NavItem text={t('common:nav.faq')} link="/faq" />
         </NavItem>
 
         {user ?
