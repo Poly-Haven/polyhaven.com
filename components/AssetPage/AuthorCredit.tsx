@@ -1,11 +1,12 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic'
 
 import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
 import Heart from 'components/UI/Icons/Heart'
 
-import Avatar from 'components/UI/Avatar/Avatar'
+const Avatar = dynamic(() => import('components/UI/Avatar/Avatar'), { ssr: false });
 
 import apiSWR from 'utils/apiSWR'
 import { titleCase } from 'utils/stringUtils';

@@ -1,8 +1,8 @@
 import Link from 'next/link';
-
-import { placeholderAvatar } from 'utils/placeholderAvatar';
+import dynamic from 'next/dynamic'
 
 import Heart from 'components/UI/Icons/Heart'
+const Avatar = dynamic(() => import('components/UI/Avatar/Avatar'), { ssr: false });
 
 import Tooltip from '../Tooltip/Tooltip';
 
@@ -22,13 +22,7 @@ const AllArtists = ({ data }) => {
           data-for="allAssets"
           className={styles.avatar}
         >
-          <img
-            src={`https://cdn.polyhaven.com/people/${author}.jpg?width=50`}
-            onError={e => {
-              const target = e.target as HTMLImageElement;
-              target.src = placeholderAvatar(author)
-            }}
-          />
+          <Avatar id={author} size={50} />
           {data[author].regular_donor ?
             <div className={styles.regularDonor} data-tip="Regular asset donor" data-for="allAssets"><Heart color="#F96854" /></div>
             : null}
