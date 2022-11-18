@@ -83,7 +83,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     >
       <div className={styles.author}>
         <div className={styles.authorInner}>
-          {creditedAuthors.sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} />)}
+          {creditedAuthors.sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} short={creditedAuthors.length > 1} />)}
         </div>
       </div>
       <div className={styles.thumb}><img
