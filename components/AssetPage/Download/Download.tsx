@@ -162,10 +162,12 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     }
   } else {
     for (const f of zipList.files) {
-      const fileInfo = files[f.map][dlRes][f.fmt]
-      fsize += fileInfo.size
-      if (f.map === 'gltf') {
-        fsize += files[f.map][dlRes][f.fmt].include[`${assetID}.bin`].size
+      if (files[f.map]) {
+        const fileInfo = files[f.map][dlRes][f.fmt]
+        fsize += fileInfo.size
+        if (f.map === 'gltf') {
+          fsize += files[f.map][dlRes][f.fmt].include[`${assetID}.bin`].size
+        }
       }
     }
   }
