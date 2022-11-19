@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Fuse from 'fuse.js';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0';
 import LazyLoad from 'react-lazy-load';
@@ -26,7 +26,6 @@ import Switch from 'components/UI/Switch/Switch';
 
 import styles from './Grid.module.scss';
 import btnStyles from 'components/UI/Button/Button.module.scss'
-import debounce from 'lodash.debounce'
 
 const Grid = (props) => {
   const { t: tc } = useTranslation('common');
@@ -38,6 +37,8 @@ const Grid = (props) => {
   const [patron, setPatron] = useState({});
   const [news, setNews] = useState(null)
   const { locale } = useRouter()
+
+  const [searchInputFieldText, setSearchInputFieldText] = useState(props.search)
 
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false)
@@ -93,13 +94,25 @@ const Grid = (props) => {
     props.setSort(selectedOption)
   };
   const setSearch = event => {
-    props.setSearch(event.target.value);
+    const newSearchText = event.target.value;
+    // TODO: remove this console.log
+    console.log(newSearchText);
+    // FIX: Unfortunately, if the user starts typing a lot of characters really fast
+    // into the search input field, something like this:
+    // "alsjdfllakjsdfkjahsdfahsdjfoijwqoeifjhweoifhuipewowjerfjwoiefhwiaeohfoawiejfew"
+    // and they stop, and then start typing more weird stuff like this again,
+    // they can slow down their computer + crash the page.
+    // This is not really a new bug, but I don't like this behavior.
+    setSearchInputFieldText(newSearchText);
+    props.setSearchDebounced(newSearchText);
+
   }
   const submitSearch = event => {
     event.preventDefault();
   }
   const resetSearch = () => {
-    props.setSearch("");
+    setSearchInputFieldText("");
+    props.setSearchDebounced("");
   }
 
   const asset_type_name = assetTypeName(props.assetType)
@@ -142,36 +155,28 @@ const Grid = (props) => {
     console.error({ publicError })
   }
 
-  const searchFunction = ({search, author}) => {
-    if (search && data) {
-      const fuse = new Fuse(Object.values(data), {
-        keys: ['categories', 'tags', 'name'],
-        includeScore: true,
-        useExtendedSearch: true,
-        threshold: 0.2
-      })
-      let searchVal = search
-      console.log('searching for: ', searchVal)
-      searchVal = searchVal.replace(/ /g, '|')  // Use spaces as OR operation
-      searchVal = searchVal.replace(/\+/g, ' ')  // Use + as AND operation
-      const searchResults = fuse.search(searchVal);
-      const filteredData = {};
-      for (const sr of searchResults) {
-        let srID = Object.keys(data)[sr.refIndex];
-        filteredData[srID] = data[srID];
-      }
-      sortedKeys = Object.keys(filteredData)
+  if (props.search && data) {
+    const fuse = new Fuse(Object.values(data), {
+      keys: ['categories', 'tags', 'name'],
+      includeScore: true,
+      useExtendedSearch: true,
+      threshold: 0.2
+    })
+    let search = props.search
+    search = search.replace(/ /g, '|')  // Use spaces as OR operation
+    search = search.replace(/\+/g, ' ')  // Use + as AND operation
+    const searchResults = fuse.search(search);
+    const filteredData = {};
+    for (const sr of searchResults) {
+      let srID = Object.keys(data)[sr.refIndex];
+      filteredData[srID] = data[srID];
     }
-
-    if (author) {
-      sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(author));
-    }
+    sortedKeys = Object.keys(filteredData)
   }
 
-  const handleSearch = useCallback(debounce ((value) => searchFunction(value), 300), [])
-  console.log(props.search)
-  // searchFunction(props)
-  handleSearch(props)
+  if (props.author) {
+    sortedKeys = sortedKeys.filter(k => Object.keys(data[k].authors).includes(props.author));
+  }
 
   if (blurUpcoming) {
     if (width <= 810 || eaPref === 'none') {
@@ -272,7 +277,7 @@ const Grid = (props) => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  value={props.search}
+                  value={searchInputFieldText}
                   onChange={setSearch} />
               </form>
               {props.search ?
