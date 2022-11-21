@@ -6,7 +6,7 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
     defaultKeywords = "hdri,ibl,hdr,environment,exr," + defaultKeywords
   }
   if (assetType === 1) {
-    defaultKeywords = "texture,pbr,scan,png,exr,material," + defaultKeywords
+    defaultKeywords = "texture,pbr,scan,png,exr,material,tileable,seamless" + defaultKeywords
   }
   if (assetType === 2) {
     defaultKeywords = "3D Model,Textured,pbr,gltf,fbx," + defaultKeywords
