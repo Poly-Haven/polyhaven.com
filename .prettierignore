@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+public
+.next
+.github
+*.json
+*.scss
+*.md
