@@ -38,6 +38,8 @@ const Grid = (props) => {
   const [news, setNews] = useState(null)
   const { locale } = useRouter()
 
+  const [searchInputFieldText, setSearchInputFieldText] = useState(props.search)
+
   // Advanced options
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [eaPref, setEAPref] = useStoredState('lib_adv_eaPref', 'some')
@@ -92,13 +94,25 @@ const Grid = (props) => {
     props.setSort(selectedOption)
   };
   const setSearch = event => {
-    props.setSearch(event.target.value);
+    const newSearchText = event.target.value;
+    // TODO: remove this console.log
+    console.log(newSearchText);
+    // FIX: Unfortunately, if the user starts typing a lot of characters really fast
+    // into the search input field, something like this:
+    // "alsjdfllakjsdfkjahsdfahsdjfoijwqoeifjhweoifhuipewowjerfjwoiefhwiaeohfoawiejfew"
+    // and they stop, and then start typing more weird stuff like this again,
+    // they can slow down their computer + crash the page.
+    // This is not really a new bug, but I don't like this behavior.
+    setSearchInputFieldText(newSearchText);
+    props.setSearchDebounced(newSearchText);
+
   }
   const submitSearch = event => {
     event.preventDefault();
   }
   const resetSearch = () => {
-    props.setSearch("");
+    setSearchInputFieldText("");
+    props.setSearchDebounced("");
   }
 
   const asset_type_name = assetTypeName(props.assetType)
@@ -263,7 +277,7 @@ const Grid = (props) => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  value={props.search}
+                  value={searchInputFieldText}
                   onChange={setSearch} />
               </form>
               {props.search ?
