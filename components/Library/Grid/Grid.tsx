@@ -95,8 +95,6 @@ const Grid = (props) => {
   };
   const setSearch = event => {
     const newSearchText = event.target.value;
-    // TODO: remove this console.log
-    console.log(newSearchText);
     // FIX: Unfortunately, if the user starts typing a lot of characters really fast
     // into the search input field, something like this:
     // "alsjdfllakjsdfkjahsdfahsdjfoijwqoeifjhweoifhuipewowjerfjwoiefhwiaeohfoawiejfew"

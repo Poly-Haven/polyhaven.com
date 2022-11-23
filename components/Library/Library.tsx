@@ -12,9 +12,7 @@ const Library = ({ assetType, categories, author, search, sort }) => {
   const [searchState, setSearch] = useState(search)
   const [sortState, setSort] = useState(sort)
 
-  const setSearchDebounced = useCallback(debounce ((newSearchText) => {
-    // TODO: remove this console.log
-    console.log('searched for: ', newSearchText);
+  const setSearchDebounced = useCallback(debounce((newSearchText) => {
     setSearch(newSearchText);
   }, 300), []);
 
