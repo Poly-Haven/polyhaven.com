@@ -31,8 +31,8 @@ const RelativeCat = ({ data, type, name }: { data: DataSet; type: string; name: 
     models: 'rgba(161, 208, 77, 0.2)',
   }
 
-  // @ts-ignore ...x[1] Spread types may only be created from object types.
   const graphData = Object.entries(data[type]).map((x) => {
+    // @ts-ignore ...x[1] Spread types may only be created from object types.
     return { ...x[1], cat: x[0], type: type }
   })
 
