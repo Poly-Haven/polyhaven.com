@@ -1,7 +1,7 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
-import EvDiff from 'components/EvDiff/EvDiff';
+import EvDiff from 'components/EvDiff/EvDiff'
 
 const Page = () => {
   return (
@@ -20,7 +20,7 @@ export async function getStaticProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
     },
-  };
+  }
 }
 
 export default Page

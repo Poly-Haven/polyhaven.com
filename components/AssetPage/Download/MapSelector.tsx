@@ -24,16 +24,16 @@ const MapSelector = ({ name, res, fmt, type, data, filesize, selectMap }) => {
     'Emission_png',
     'Mask_png',
   ]
-  enabledByDefault.forEach((name, index) => enabledByDefault[index] = `assetPref_sel_${type}_${name}`);
+  enabledByDefault.forEach((name, index) => (enabledByDefault[index] = `assetPref_sel_${type}_${name}`))
 
   useEffect(() => {
     const storedValue = JSON.parse(localStorage.getItem(storageKey))
     const v = storedValue !== null ? storedValue : enabledByDefault.includes(storageKey)
     setChecked(v)
     selectMap({ map: name, fmt, md5: data.md5 }, v)
-  }, []);
+  }, [])
 
-  const toggle = _ => {
+  const toggle = (_) => {
     const v = !checked
     setChecked(v)
     selectMap({ map: name, fmt, md5: data.md5 }, v)
@@ -47,7 +47,8 @@ const MapSelector = ({ name, res, fmt, type, data, filesize, selectMap }) => {
       data-key={fmt}
       data-tip={`${res} ${fmt}: ${filesize}`}
     >
-      {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}{fmt}
+      {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+      {fmt}
     </span>
   )
 }

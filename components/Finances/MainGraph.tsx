@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { getCurrency, catColor } from 'utils/finances';
+import { useState } from 'react'
+import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { getCurrency, catColor } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
-import { titleCase } from 'utils/stringUtils';
+import { titleCase } from 'utils/stringUtils'
 
 import { FiArrowDownLeft, FiArrowUpRight, FiArrowRight } from 'react-icons/fi'
 import { MdStackedLineChart, MdShowChart } from 'react-icons/md'
 
-import Dropdown from 'components/UI/Dropdown/Dropdown';
+import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Spinner from 'components/UI/Spinner/Spinner'
-import Switch from 'components/UI/Switch/Switch';
+import Switch from 'components/UI/Switch/Switch'
 
 import styles from './Finances.module.scss'
 
@@ -31,7 +31,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
       }
       graphData.push({
         name: month,
-        ...values
+        ...values,
       })
       for (const cat of Object.keys(values)) {
         areas[cat] = areas[cat] || 0
@@ -43,7 +43,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
     let balance = startingBalance / Object.values(data)[0]['rates'][currency]
     graphData.push({
       name: '2020-10',
-      ...{ 'Balance': balance }
+      ...{ Balance: balance },
     })
     for (const [month, v] of Object.entries(data)) {
       let values = {}
@@ -60,7 +60,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
       values['Balance'] = balance
       graphData.push({
         name: month,
-        ...values
+        ...values,
       })
       for (const cat of Object.keys(values)) {
         areas[cat] = areas[cat] || 0
@@ -85,36 +85,38 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
       return (
         <div className={styles.graphTooltip}>
           <p className={styles.tooltipHeader}>{label}</p>
-          {payload.filter(v => v.value).map((v, i) => <p key={i} style={{ color: v.color }}>{`${v.name}: ${getCurrency(v.value, currency, {})}`}</p>)}
+          {payload
+            .filter((v) => v.value)
+            .map((v, i) => (
+              <p key={i} style={{ color: v.color }}>{`${v.name}: ${getCurrency(v.value, currency, {})}`}</p>
+            ))}
         </div>
-      );
+      )
     }
 
-    return null;
+    return null
   }
 
   const modes = {
-    income: { label: "Income", icon: <FiArrowDownLeft /> },
-    expense: { label: "Expenses", icon: <FiArrowUpRight /> },
-    balance: { label: "Balance", icon: <FiArrowRight /> },
+    income: { label: 'Income', icon: <FiArrowDownLeft /> },
+    expense: { label: 'Expenses', icon: <FiArrowUpRight /> },
+    balance: { label: 'Balance', icon: <FiArrowRight /> },
   }
   return (
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
-        <Dropdown
-          value={mode}
-          options={modes}
-          onChange={setMode}
-        />
+        <Dropdown value={mode} options={modes} onChange={setMode} />
         <h2>{titleCase(modes[mode].label)} over time:</h2>
-        {mode !== 'balance' ?
+        {mode !== 'balance' ? (
           <Switch
             on={stack}
-            onClick={_ => { setStack(!stack) }}
+            onClick={(_) => {
+              setStack(!stack)
+            }}
             labelOff={<MdShowChart />}
             labelOn={<MdStackedLineChart />}
           />
-          : null}
+        ) : null}
       </div>
       <div className={styles.mainGraph}>
         <ResponsiveContainer>
@@ -136,10 +138,22 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
               content={<CustomTooltip />}
               itemStyle={{
                 padding: 0,
-                fontSize: '0.8em'
+                fontSize: '0.8em',
               }}
             />
-            {Object.keys(areas).map((a, i) => <Area key={i} type={mode === 'balance' || !stack ? "monotone" : "linear"} dataKey={a} stackId={stack ? '1' : i} stroke={colors[a]} fill={colors[a]} animationDuration={500} fillOpacity={mode === 'balance' || stack ? 0.6 : 0} strokeWidth={mode === 'balance' || stack ? 0 : 3} />)}
+            {Object.keys(areas).map((a, i) => (
+              <Area
+                key={i}
+                type={mode === 'balance' || !stack ? 'monotone' : 'linear'}
+                dataKey={a}
+                stackId={stack ? '1' : i}
+                stroke={colors[a]}
+                fill={colors[a]}
+                animationDuration={500}
+                fillOpacity={mode === 'balance' || stack ? 0.6 : 0}
+                strokeWidth={mode === 'balance' || stack ? 0 : 3}
+              />
+            ))}
           </AreaChart>
         </ResponsiveContainer>
       </div>

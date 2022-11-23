@@ -1,26 +1,26 @@
-import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0'
 import crypto from 'crypto'
 require('dotenv').config()
 
 import patreon_tiers from 'constants/patreon_tiers.json'
 
 const Route = async (req, res) => {
-  let data = req.body;
-  const { user } = getSession(req, res);
+  let data = req.body
+  const { user } = getSession(req, res)
   if (data.uuid !== user.sub.split('|').pop()) {
     res.status(403).json({
-      error: "403",
-      message: "UIDs do not match."
-    });
+      error: '403',
+      message: 'UIDs do not match.',
+    })
     return
   }
   data.key = crypto.createHmac('sha256', process.env.PATRON_INFO_KEY).update(data.uuid).digest('hex')
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
   let returnData = {
-    error: "500",
-    message: "Unknown error"
+    error: '500',
+    message: 'Unknown error',
   }
   await fetch(`${baseUrl}/patron_info`, {
     method: 'POST',
@@ -28,15 +28,16 @@ const Route = async (req, res) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  }).then(res => res.json())
-    .then(resdata => {
+  })
+    .then((res) => res.json())
+    .then((resdata) => {
       returnData = resdata
     })
 
   let patronIsValid = false
   if (returnData['status'] === 'active_patron') {
     patronIsValid = true
-  } else if (returnData['last_charge_status'] === "Paid") {
+  } else if (returnData['last_charge_status'] === 'Paid') {
     const now = Date.now()
     const lastCharge = Date.parse(returnData['last_charge_date'])
     const daysAgo = (now - lastCharge) / 1000 / 60 / 60 / 24
@@ -64,7 +65,7 @@ const Route = async (req, res) => {
   }
   returnData['rewards'] = Object.keys(rewards)
 
-  res.status(200).json(returnData);
+  res.status(200).json(returnData)
 }
 
-export default withApiAuthRequired(Route);
+export default withApiAuthRequired(Route)

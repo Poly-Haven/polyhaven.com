@@ -5,7 +5,6 @@ export default function useDivSize(ref, updaters = []) {
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
-
     function handleResize() {
       if (ref && ref.current) {
         if (ref.current.offsetWidth !== width) setWidth(ref.current.offsetWidth)
@@ -15,9 +14,9 @@ export default function useDivSize(ref, updaters = []) {
 
     handleResize() // First call
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, updaters);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, updaters)
 
   return { width, height }
 }

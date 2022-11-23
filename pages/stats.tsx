@@ -1,8 +1,8 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'components/Head/Head'
 import { subMonths, startOfMonth, endOfMonth } from 'date-fns'
 
-import { fixTzOffset, isoDay } from 'utils/dateUtils';
+import { fixTzOffset, isoDay } from 'utils/dateUtils'
 
 import asset_types from 'constants/asset_types.json'
 
@@ -12,11 +12,7 @@ import Stats from 'components/Stats/Stats'
 export default function HomePage({ datasets }) {
   return (
     <Page>
-      <Head
-        title="Stats"
-        description="Site statistics for polyhaven.com."
-        url="/stats"
-      />
+      <Head title="Stats" description="Site statistics for polyhaven.com." url="/stats" />
       <div dir="ltr" style={{ textAlign: 'left' }}>
         <Stats datasets={datasets} />
       </div>
@@ -26,47 +22,47 @@ export default function HomePage({ datasets }) {
 
 function handleErrors(response) {
   if (!response.ok) {
-    throw Error(response.ok);
+    throw Error(response.ok)
   }
-  return response;
+  return response
 }
 
 export async function getStaticProps(context) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   let error = null
 
   const msPerDay = 24 * 60 * 60 * 1000
   const today = new Date().toISOString().split('T')[0]
-  const aMonthAgo = new Date(Date.now() - (30 * msPerDay)).toISOString().split('T')[0]
-  const threeMonthsAgo = new Date(Date.now() - ((91 + 6) * msPerDay)).toISOString().split('T')[0]
-  const oneYearAgo = new Date(Date.now() - (365 * msPerDay)).toISOString().split('T')[0]
+  const aMonthAgo = new Date(Date.now() - 30 * msPerDay).toISOString().split('T')[0]
+  const threeMonthsAgo = new Date(Date.now() - (91 + 6) * msPerDay).toISOString().split('T')[0]
+  const oneYearAgo = new Date(Date.now() - 365 * msPerDay).toISOString().split('T')[0]
 
   // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
   const threeMonthsHDRI = await fetch(`${threeMonthsAgoBaseUrl}&slug=T0`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
   const threeMonthsTex = await fetch(`${threeMonthsAgoBaseUrl}&slug=T1`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
   const threeMonthsMod = await fetch(`${threeMonthsAgoBaseUrl}&slug=T2`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   // Relative type graph
   const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${aMonthAgo}&date_to=${today}`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   // Assets per month graph
   const assets = await fetch(`${baseUrl}/assets?future=true`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
   let months = {}
   for (const info of Object.values(assets)) {
     const month = new Date(info['date_published'] * 1000).toISOString().substring(0, 7)
@@ -79,7 +75,7 @@ export async function getStaticProps(context) {
       textures: 0,
       models: 0,
     }
-    months[month][type]++;
+    months[month][type]++
   }
   const sortedKeys = Object.keys(months).sort()
   let monthlyAssets = {}
@@ -88,10 +84,12 @@ export async function getStaticProps(context) {
   }
 
   // Resolution graphs
-  const resolutionsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`)
+  const resolutionsData = await fetch(
+    `${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`
+  )
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
   let resolutions = {
     hdris: { total: 0 },
     textures: { total: 0 },
@@ -100,7 +98,7 @@ export async function getStaticProps(context) {
   const ignoredRes = ['12k'] // Ignore some uncommon resolutions
   for (const stat of resolutionsData) {
     const type = Object.keys(resolutions)[parseInt(stat.slug.substring(1, 2))]
-    if (!type) continue;
+    if (!type) continue
     let resStr = stat.slug.substring(4)
     if (ignoredRes.includes(resStr)) continue
     if (!resStr.endsWith('k')) continue
@@ -108,18 +106,18 @@ export async function getStaticProps(context) {
     if (isNaN(resNumStr)) continue
     const res = parseInt(resNumStr)
     if (res >= 16) {
-      resStr = "16k+"
+      resStr = '16k+'
     }
     resolutions[type][resStr] = resolutions[type][resStr] || 0
-    resolutions[type][resStr] += stat.downloads;
-    resolutions[type].total += stat.downloads;
+    resolutions[type][resStr] += stat.downloads
+    resolutions[type].total += stat.downloads
   }
   for (const [type, reses] of Object.entries(resolutions)) {
     const sortedKeys = Object.keys(reses).sort((a, b) => parseInt(a) - parseInt(b))
     let tmp = {}
     for (const r of sortedKeys) {
       if (r === 'total') continue
-      tmp[r] = reses[r] / reses.total * 100
+      tmp[r] = (reses[r] / reses.total) * 100
     }
     resolutions[type] = tmp
   }
@@ -127,8 +125,8 @@ export async function getStaticProps(context) {
   // Format graphs
   const formatsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
   let formats = {
     hdris: { total: 0 },
     textures: { total: 0 },
@@ -136,7 +134,7 @@ export async function getStaticProps(context) {
   }
   for (const stat of formatsData) {
     const type = Object.keys(formats)[parseInt(stat.slug.substring(1, 2))]
-    if (!type) continue;
+    if (!type) continue
     let fmtStr = stat.slug.substring(4)
     if (fmtStr.includes(':')) {
       fmtStr = fmtStr.split(':').pop()
@@ -145,46 +143,48 @@ export async function getStaticProps(context) {
       fmtStr = 'backplate'
     }
     formats[type][fmtStr] = formats[type][fmtStr] || 0
-    formats[type][fmtStr] += stat.downloads;
-    formats[type].total += stat.downloads;
+    formats[type][fmtStr] += stat.downloads
+    formats[type].total += stat.downloads
   }
   for (const [type, fmts] of Object.entries(formats)) {
     const sortedKeys = Object.keys(fmts).sort((a, b) => parseInt(a) - parseInt(b))
     let tmp = {}
     for (const r of sortedKeys) {
       if (r === 'total') continue
-      tmp[r] = fmts[r] / fmts.total * 100
+      tmp[r] = (fmts[r] / fmts.total) * 100
     }
     formats[type] = tmp
   }
 
   // Relative category
   const relativecategory = await fetch(`${baseUrl}/stats/relativecategory`)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   // Asset downloads
   const now = new Date()
   const monthAgo = subMonths(now, 1)
   const dateFrom = isoDay(fixTzOffset(startOfMonth(monthAgo)))
   const dateTo = isoDay(fixTzOffset(endOfMonth(monthAgo)))
-  const dailyDownloads = await fetch(`${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`)
-    .then(response => response.json())
-    .catch(e => error = e)
-  let monthlyDownloads = 0;
+  const dailyDownloads = await fetch(
+    `${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`
+  )
+    .then((response) => response.json())
+    .catch((e) => (error = e))
+  let monthlyDownloads = 0
   for (const day of dailyDownloads) {
     monthlyDownloads += day.downloads
   }
 
   // Traffic
   const traffic = await fetch(`${baseUrl}/stats/cfmonth`)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   // Cloudflare Daily
   const cfdaily = await fetch(`${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   // Assets with date_published
   const assetDates = {}
@@ -195,7 +195,7 @@ export async function getStaticProps(context) {
   if (error) {
     return {
       props: { ...(await serverSideTranslations(context.locale, ['common'])) },
-      revalidate: 60 * 60 // 60 minutes
+      revalidate: 60 * 60, // 60 minutes
     }
   }
 
@@ -213,8 +213,8 @@ export async function getStaticProps(context) {
         traffic,
         cfdaily,
         assetDates,
-      }
+      },
     },
-    revalidate: 24 * 60 * 60 // 1 day
+    revalidate: 24 * 60 * 60, // 1 day
   }
 }

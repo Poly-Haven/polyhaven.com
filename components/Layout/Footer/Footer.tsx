@@ -1,6 +1,6 @@
-import { useTranslation, Trans } from 'next-i18next';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useTranslation, Trans } from 'next-i18next'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
@@ -8,19 +8,22 @@ import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import PatronList from './PatronList'
 
-import styles from './Footer.module.scss';
+import styles from './Footer.module.scss'
 
 const footer = () => {
-  const { t } = useTranslation(['common']);
+  const { t } = useTranslation(['common'])
   const router = useRouter()
 
   return (
     <div id={styles.footer} dir={['ar', 'fa'].includes(router.locale) ? 'rtl' : 'ltr'}>
-      <h2><Trans
-        i18nKey="common:footer.thanks"
-        t={t}
-        components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
-      /> <Heart color="#F96854" /></h2>
+      <h2>
+        <Trans
+          i18nKey="common:footer.thanks"
+          t={t}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+        />{' '}
+        <Heart color="#F96854" />
+      </h2>
       <div className={styles.patrons}>
         <div className={styles.patronsScrollWrapper}>
           <div className={styles.patronsScroll}>
@@ -37,43 +40,71 @@ const footer = () => {
       <div className={styles.linksWrapper}>
         <a id="social" />
         <div className={styles.links}>
-          <Link href="/"><a>
-            <div className={styles.logoWrapper}>
-              <img src='/Logo 256.png' className={styles.logo} />
-              <h1>Poly Haven</h1>
-              <p>{t('common:tagline')}</p>
-            </div>
-          </a></Link>
+          <Link href="/">
+            <a>
+              <div className={styles.logoWrapper}>
+                <img src="/Logo 256.png" className={styles.logo} />
+                <h1>Poly Haven</h1>
+                <p>{t('common:tagline')}</p>
+              </div>
+            </a>
+          </Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link prefetch={false} href="/"><a>{t('common:nav.home')}</a></Link>
-              <Link prefetch={false} href="/faq"><a>{t('common:nav.faq')}</a></Link>
-              <Link prefetch={false} href="/about-contact"><a>{t('common:nav.about-contact')}</a></Link>
-              <Link prefetch={false} href="/gallery"><a>{t('common:nav.gallery')}</a></Link>
-              <Link prefetch={false} href="/map"><a>{t('common:nav.map')}</a></Link>
+              <Link prefetch={false} href="/">
+                <a>{t('common:nav.home')}</a>
+              </Link>
+              <Link prefetch={false} href="/faq">
+                <a>{t('common:nav.faq')}</a>
+              </Link>
+              <Link prefetch={false} href="/about-contact">
+                <a>{t('common:nav.about-contact')}</a>
+              </Link>
+              <Link prefetch={false} href="/gallery">
+                <a>{t('common:nav.gallery')}</a>
+              </Link>
+              <Link prefetch={false} href="/map">
+                <a>{t('common:nav.map')}</a>
+              </Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link prefetch={false} href="/license"><a>{t('common:nav.license')}</a></Link>
-              <Link prefetch={false} href="/privacy"><a>{t('common:nav.privacy')}</a></Link>
-              <Link prefetch={false} href="/finance-reports"><a>{t('common:nav.finances')}</a></Link>
-              <Link prefetch={false} href="/stats"><a>{t('common:nav.stats')}</a></Link>
+              <Link prefetch={false} href="/license">
+                <a>{t('common:nav.license')}</a>
+              </Link>
+              <Link prefetch={false} href="/privacy">
+                <a>{t('common:nav.privacy')}</a>
+              </Link>
+              <Link prefetch={false} href="/finance-reports">
+                <a>{t('common:nav.finances')}</a>
+              </Link>
+              <Link prefetch={false} href="/stats">
+                <a>{t('common:nav.stats')}</a>
+              </Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
-              <Link prefetch={false} href="https://blog.polyhaven.com"><a>{t('common:nav.blog')}</a></Link>
-              <Link prefetch={false} href="/contribute"><a>{t('common:nav.contribute')}</a></Link>
-              <Link prefetch={false} href="https://github.com/Poly-Haven/Public-API"><a>{t('common:nav.api')}</a></Link>
-              <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com"><a>{t('common:nav.source')}</a></Link>
+              <Link prefetch={false} href="https://blog.polyhaven.com">
+                <a>{t('common:nav.blog')}</a>
+              </Link>
+              <Link prefetch={false} href="/contribute">
+                <a>{t('common:nav.contribute')}</a>
+              </Link>
+              <Link prefetch={false} href="https://github.com/Poly-Haven/Public-API">
+                <a>{t('common:nav.api')}</a>
+              </Link>
+              <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com">
+                <a>{t('common:nav.source')}</a>
+              </Link>
             </div>
           </div>
           <SocialIcons />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default footer;
+export default footer

@@ -7,8 +7,8 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 import styles from './Dropdown.module.scss'
 
 const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltipID }) => {
-  const [expand, setExpand] = useState(false);
-  const ref = useRef(null);
+  const [expand, setExpand] = useState(false)
+  const ref = useRef(null)
 
   const toggle = () => {
     setExpand(!expand)
@@ -16,25 +16,32 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
 
   const handleClickOutside = (event) => {
     if (expand && ref.current && !ref.current.contains(event.target)) {
-      setExpand(false);
+      setExpand(false)
     }
-  };
+  }
 
   const setValue = (e) => {
-    setExpand(false);
-    onChange(e.target.dataset.value);
+    setExpand(false)
+    onChange(e.target.dataset.value)
   }
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside, true)
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  });
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  })
 
   let buttonValue = <>{Object.keys(options)[0]}</>
   if (Object.keys(options).includes(value)) {
-    buttonValue = small ? <>{options[value].icon || options[value].label}</> : <>{options[value].icon ? options[value].icon : null}{options[value].label}</>
+    buttonValue = small ? (
+      <>{options[value].icon || options[value].label}</>
+    ) : (
+      <>
+        {options[value].icon ? options[value].icon : null}
+        {options[value].label}
+      </>
+    )
   }
 
   return (
@@ -47,18 +54,19 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
         </div>
       </div>
       <div className={`${styles.menu} ${expand ? styles.show : null}`}>
-        {Object.keys(options).map((k, i) =>
+        {Object.keys(options).map((k, i) => (
           <div
             key={i}
             data-value={k}
             data-tip={options[k].tooltip || null}
             data-for={tooltipID}
-            className={`${styles.option} ${k === value ? styles.active : null}`} onClick={setValue}
+            className={`${styles.option} ${k === value ? styles.active : null}`}
+            onClick={setValue}
           >
             {options[k].icon ? options[k].icon : null}
             {options[k].label}
           </div>
-        )}
+        ))}
       </div>
       <Tooltip id={tooltipID} place={tooltipSide} />
     </div>
@@ -68,8 +76,8 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
 Dropdown.defaultProps = {
   label: null,
   small: false,
-  tooltipSide: "right",
-  tooltipID: "dropdown"
+  tooltipSide: 'right',
+  tooltipID: 'dropdown',
 }
 
 export default Dropdown

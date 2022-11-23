@@ -1,10 +1,10 @@
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import styles from './GallerySubmit.module.scss'
 
 const GalleryFormItem = ({ label, description, optional, children }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
   return (
     <div className={styles.formItem}>

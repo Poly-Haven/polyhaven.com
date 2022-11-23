@@ -1,19 +1,19 @@
-import { useTranslation } from 'next-i18next';
-import { useRef } from 'react';
+import { useTranslation } from 'next-i18next'
+import { useRef } from 'react'
 import Link from 'next/link'
-import { timeago } from 'utils/dateUtils';
+import { timeago } from 'utils/dateUtils'
 
-import { MdCollections } from 'react-icons/md';
+import { MdCollections } from 'react-icons/md'
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
-import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit';
+import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit'
 
-import styles from './GridItem.module.scss';
+import styles from './GridItem.module.scss'
 
 const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
-  const { t: tt } = useTranslation('time');
-  const { t } = useTranslation('library');
+  const { t: tt } = useTranslation('time')
+  const { t } = useTranslation('library')
 
   const imgRef = useRef(null)
   const wrapperRef = useRef(null)
@@ -34,7 +34,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     models: {
       small: [450 * 0.66, 300 * 0.66],
       medium: [450, 300],
-      large: [450 * 1.30, 300 * 1.30],
+      large: [450 * 1.3, 300 * 1.3],
       huge: [450 * 1.78, 300 * 1.78],
     },
   }
@@ -42,17 +42,22 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
-  let badge;
+  let badge
   if (daysOld(asset.date_published) < 0) {
     badge = {
-      text: <><IconPatreon />{t('early-access')}</>,
+      text: (
+        <>
+          <IconPatreon />
+          {t('early-access')}
+        </>
+      ),
       style: styles.soon,
-      tooltip: t("$3+ Patrons can log in to download early")
+      tooltip: t('$3+ Patrons can log in to download early'),
     }
   } else if (daysOld(asset.date_published) < 7) {
     badge = {
       text: t('new'),
-      style: styles.new
+      style: styles.new,
     }
   }
 
@@ -76,29 +81,37 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
-    <Link href="/a/[id]" as={`/a/${assetID}`}><a
-      className={`${styles.gridItem} ${blur ? styles.blur : ''}`}
-      onClick={onClick}
-      ref={wrapperRef}
-    >
-      <div className={styles.author}>
-        <div className={styles.authorInner}>
-          {creditedAuthors.sort().map(a => <SimpleAuthorCredit key={a} id={a} donated={asset.donated} short={creditedAuthors.length > 1} />)}
+    <Link href="/a/[id]" as={`/a/${assetID}`}>
+      <a className={`${styles.gridItem} ${blur ? styles.blur : ''}`} onClick={onClick} ref={wrapperRef}>
+        <div className={styles.author}>
+          <div className={styles.authorInner}>
+            {creditedAuthors.sort().map((a) => (
+              <SimpleAuthorCredit key={a} id={a} donated={asset.donated} short={creditedAuthors.length > 1} />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={styles.thumb}><img
-        src={img_src}
-        alt={asset.name}
-        ref={imgRef}
-      /></div>
-      <div className={styles.text}>
-        <h3>{asset.name}</h3>
-        <p>{timeago(asset.date_published * 1000, tt)}</p>
-      </div>
-      {badge ? <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>{badge.text}</div> : null}
-      <div className={styles.indicators}>{indicators.map(i => <div key={i.text} title={i.text} className={styles.indicator}>{i.icon}</div>)}</div>
-    </a></Link>
-  );
+        <div className={styles.thumb}>
+          <img src={img_src} alt={asset.name} ref={imgRef} />
+        </div>
+        <div className={styles.text}>
+          <h3>{asset.name}</h3>
+          <p>{timeago(asset.date_published * 1000, tt)}</p>
+        </div>
+        {badge ? (
+          <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>
+            {badge.text}
+          </div>
+        ) : null}
+        <div className={styles.indicators}>
+          {indicators.map((i) => (
+            <div key={i.text} title={i.text} className={styles.indicator}>
+              {i.icon}
+            </div>
+          ))}
+        </div>
+      </a>
+    </Link>
+  )
 }
 
 GridItem.defaultProps = {
@@ -107,4 +120,4 @@ GridItem.defaultProps = {
   thumbSize: 'medium',
 }
 
-export default GridItem;
+export default GridItem

@@ -1,24 +1,25 @@
 require('dotenv').config()
 
 const Route = async (req, res) => {
-  let data = req.body;
+  let data = req.body
   data.ip = data.uuid
   delete data.uuid
   data.key = process.env.DL_KEY
 
-  let returnData = { message: "Failed to track." }
+  let returnData = { message: 'Failed to track.' }
   await fetch(`https://api.polyhaven.com/dl_track`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  }).then(res => res.json())
-    .then(resdata => {
+  })
+    .then((res) => res.json())
+    .then((resdata) => {
       returnData = resdata
     })
 
-  res.status(200).json(returnData);
+  res.status(200).json(returnData)
 }
 
-export default Route;
+export default Route

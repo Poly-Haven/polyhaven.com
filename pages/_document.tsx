@@ -1,11 +1,14 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class CustomDocument extends Document {
   render() {
-    const gaTrackingID = 'G-D4YXRFPL5Z';
+    const gaTrackingID = 'G-D4YXRFPL5Z'
 
     return (
-      <Html dir={['ar', 'fa'].includes(this.props.locale) ? 'rtl' : 'ltr'} style={this.props.locale === 'ar' ? { textAlign: 'right' } : null}>
+      <Html
+        dir={['ar', 'fa'].includes(this.props.locale) ? 'rtl' : 'ltr'}
+        style={this.props.locale === 'ar' ? { textAlign: 'right' } : null}
+      >
         <Head>
           <link rel="icon" href="/favicon.ico" />
 
@@ -27,7 +30,11 @@ export default class CustomDocument extends Document {
 
           {/* Google Analytics & AdSense with consent */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingID}`}></script>
-          <script data-ad-client="ca-pub-2284751191864068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script
+            data-ad-client="ca-pub-2284751191864068"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -51,7 +58,6 @@ export default class CustomDocument extends Document {
         <body>
           <Main />
           <NextScript />
-
         </body>
       </Html>
     )

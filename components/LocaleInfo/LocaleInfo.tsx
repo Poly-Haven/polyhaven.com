@@ -1,4 +1,4 @@
-import LocaleFlag from "components/Layout/Header/Nav/LocaleFlag"
+import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
 
 import styles from './LocaleInfo.module.scss'
 
@@ -16,7 +16,9 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
     }
   }
 
-  const sortedCredits = Object.keys(credits).length ? Object.keys(credits).sort((a, b) => credits[a].localeCompare(credits[b])) : []
+  const sortedCredits = Object.keys(credits).length
+    ? Object.keys(credits).sort((a, b) => credits[a].localeCompare(credits[b]))
+    : []
 
   let status = <span>Loading...</span>
   if (progress === 100) {
@@ -26,7 +28,11 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
   } else if (progress === -1) {
     status = <span>Loading...</span>
   } else {
-    status = <strong><span>Needs help!</span></strong>
+    status = (
+      <strong>
+        <span>Needs help!</span>
+      </strong>
+    )
   }
 
   return (
@@ -35,15 +41,30 @@ const LocaleInfo = ({ locale, flag, name, translation_progress }) => {
         <LocaleFlag locale={locale} flag={flag} />
         <div className={styles.text}>
           <h3>{name}</h3>
-          {credits ?
-            <p>{sortedCredits.map(c =>
-              <span key={c} className={styles.credit}>{credits[c] ? <a href={credits[c]} rel="nofollow noopener" target="_blank">{c}</a> : c}</span>
-            )}</p>
-            : null}
+          {credits ? (
+            <p>
+              {sortedCredits.map((c) => (
+                <span key={c} className={styles.credit}>
+                  {credits[c] ? (
+                    <a href={credits[c]} rel="nofollow noopener" target="_blank">
+                      {c}
+                    </a>
+                  ) : (
+                    c
+                  )}
+                </span>
+              ))}
+            </p>
+          ) : null}
         </div>
       </div>
       <div className={styles.status}>
-        <div className={`${styles.statusInner} ${progress === 100 ? styles.statusComplete : ''} ${progress <= 40 ? styles.statusHelp : ''}`} style={{ width: `${Math.max(0, progress)}%` }} />
+        <div
+          className={`${styles.statusInner} ${progress === 100 ? styles.statusComplete : ''} ${
+            progress <= 40 ? styles.statusHelp : ''
+          }`}
+          style={{ width: `${Math.max(0, progress)}%` }}
+        />
         <em>{status}</em>
         <div className={styles.spacer} />
         {progress >= 0 ? <em>{progress}%</em> : null}

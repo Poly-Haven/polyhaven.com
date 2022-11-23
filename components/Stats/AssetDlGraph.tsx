@@ -1,10 +1,11 @@
-import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
+import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts'
 
 import apiSWR from 'utils/apiSWR'
 
-const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string, dateFrom: string, dateTo: string }) => {
-
-  const { data, error } = apiSWR(`/stats/downloads?type=ASSET&slug=${slug}&date_from=${dateFrom}&date_to=${dateTo}`, { revalidateOnFocus: false });
+const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string; dateFrom: string; dateTo: string }) => {
+  const { data, error } = apiSWR(`/stats/downloads?type=ASSET&slug=${slug}&date_from=${dateFrom}&date_to=${dateTo}`, {
+    revalidateOnFocus: false,
+  })
   if (error || !data) {
     return null
   }
@@ -37,7 +38,7 @@ const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string, dateFrom: stri
             marginTop: '-0.5em',
           }}
           labelFormatter={(value) => data[value].day}
-          formatter={(value, name) => [value, "Unique Downloads"]}
+          formatter={(value, name) => [value, 'Unique Downloads']}
         />
         <Area type="monotone" dataKey="unique" stroke="rgb(190, 111, 255)" fill="rgba(190, 111, 255,0.5)" />
       </AreaChart>
@@ -45,7 +46,7 @@ const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string, dateFrom: stri
   )
 }
 AssetDlGraph.defaultProps = {
-  dateTo: new Date().toISOString().split('T')[0]
+  dateTo: new Date().toISOString().split('T')[0],
 }
 
 export default AssetDlGraph

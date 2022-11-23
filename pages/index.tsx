@@ -1,4 +1,4 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
@@ -23,5 +23,5 @@ export async function getStaticProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'home', 'time'])),
     },
-  };
+  }
 }

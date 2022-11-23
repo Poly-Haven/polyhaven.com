@@ -1,24 +1,27 @@
 import { useCallback, useState, useEffect } from 'react'
 
-import Sidebar from 'components/Library/Sidebar/Sidebar';
-import Grid from 'components/Library/Grid/Grid';
+import Sidebar from 'components/Library/Sidebar/Sidebar'
+import Grid from 'components/Library/Grid/Grid'
 import Page from 'components/Layout/Page/Page'
 import debounce from 'lodash.debounce'
 
-import styles from './Library.module.scss';
+import styles from './Library.module.scss'
 
 const Library = ({ assetType, categories, author, search, sort }) => {
   const [authorState, setAuthor] = useState(author)
   const [searchState, setSearch] = useState(search)
   const [sortState, setSort] = useState(sort)
 
-  const setSearchDebounced = useCallback(debounce((newSearchText) => {
-    setSearch(newSearchText);
-  }, 300), []);
+  const setSearchDebounced = useCallback(
+    debounce((newSearchText) => {
+      setSearch(newSearchText)
+    }, 300),
+    []
+  )
 
   useEffect(() => {
     document.getElementById('page').scrollTop = 0
-  });
+  })
 
   return (
     <div id={styles.library}>
@@ -36,7 +39,7 @@ const Library = ({ assetType, categories, author, search, sort }) => {
         />
       </Page>
     </div>
-  );
+  )
 }
 
-export default Library;
+export default Library

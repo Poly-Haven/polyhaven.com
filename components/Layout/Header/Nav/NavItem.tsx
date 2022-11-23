@@ -1,22 +1,24 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 import styles from './Nav.module.scss'
 
 const NavItem = ({ text, link, locale, compact, children }) => {
   return (
     <div className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''}`}>
-      {link ?
-        (locale ?
+      {link ? (
+        locale ? (
           <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem}>
             {text}
-          </a> :
-          <Link href={link}><a className={styles.navItem}>
-            {text}
-          </a></Link>)
-        : <span className={styles.navItem}>{text}</span>}
-      {children ?
-        <div className={styles.subNav}>{children}</div>
-        : null}
+          </a>
+        ) : (
+          <Link href={link}>
+            <a className={styles.navItem}>{text}</a>
+          </Link>
+        )
+      ) : (
+        <span className={styles.navItem}>{text}</span>
+      )}
+      {children ? <div className={styles.subNav}>{children}</div> : null}
     </div>
   )
 }

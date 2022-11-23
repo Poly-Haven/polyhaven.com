@@ -1,4 +1,4 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'components/Head/Head'
 
 import { assetTypeName } from 'utils/assetTypeName'
@@ -8,9 +8,9 @@ import ErrorPage from 'components/Layout/Page/CenteredPage'
 
 function handleErrors(response) {
   if (!response.ok) {
-    throw Error(response.ok);
+    throw Error(response.ok)
   }
-  return response;
+  return response
 }
 
 const Page = ({ assetID, data, files, renders }) => {
@@ -44,32 +44,32 @@ const Page = ({ assetID, data, files, renders }) => {
 
 export async function getStaticProps(context) {
   const id = context.params.id
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
   let error = null
 
   const info = await fetch(`${baseUrl}/info/${id}`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   const files = await fetch(`${baseUrl}/files/${id}`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   const renders = await fetch(`${baseUrl}/renders/${id}`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => error = e)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
 
   if (error) {
     return {
       props: {
         ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'time'])),
-        assetID: id
+        assetID: id,
       },
-      revalidate: 60 * 5 // 5 minutes
+      revalidate: 60 * 5, // 5 minutes
     }
   }
 
@@ -81,24 +81,23 @@ export async function getStaticProps(context) {
       files: files,
       renders: renders,
     },
-    revalidate: 60 * 30 // 30 minutes
+    revalidate: 60 * 30, // 30 minutes
   }
 }
 
 export async function getStaticPaths() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.polyhaven.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   const data = await fetch(`${baseUrl}/assets`)
     .then(handleErrors)
-    .then(response => response.json())
-    .catch(e => console.log(e));
+    .then((response) => response.json())
+    .catch((e) => console.log(e))
 
-  const paths = Object.keys(data).map((a) => ({ params: { id: a } }));
+  const paths = Object.keys(data).map((a) => ({ params: { id: a } }))
 
   return {
     paths,
-    fallback: 'blocking'
-  };
+    fallback: 'blocking',
+  }
 }
-
 
 export default Page

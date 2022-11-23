@@ -4,80 +4,80 @@
 
 module.exports = {
   af: {
-    name: "Afrikaans",
-    flag: "ZA"
+    name: 'Afrikaans',
+    flag: 'ZA',
   },
   ar: {
-    name: "اَلْعَرَبِيَّةُ",
-    flag: "SA",
-    rtl: true
+    name: 'اَلْعَرَبِيَّةُ',
+    flag: 'SA',
+    rtl: true,
   },
   my: {
-    name: "ဗမာစကာ",
-    flag: "MM"
+    name: 'ဗမာစကာ',
+    flag: 'MM',
   },
   zh: {
-    name: "中文",
-    flag: "CN"
+    name: '中文',
+    flag: 'CN',
   },
   de: {
-    name: "Deutsch",
-    flag: 'DE'
+    name: 'Deutsch',
+    flag: 'DE',
   },
   nl: {
-    name: "Dutch",
-    flag: 'NL'
+    name: 'Dutch',
+    flag: 'NL',
   },
   en: {
-    name: "English",
-    flag: "GB"
+    name: 'English',
+    flag: 'GB',
   },
   es: {
-    name: "Español",
-    flag: 'ES'
+    name: 'Español',
+    flag: 'ES',
   },
   fr: {
-    name: "Français",
-    flag: 'FR'
+    name: 'Français',
+    flag: 'FR',
   },
   it: {
-    name: "Italiano",
-    flag: 'IT'
+    name: 'Italiano',
+    flag: 'IT',
   },
   id: {
-    name: "Indonesian",
-    flag: 'ID'
+    name: 'Indonesian',
+    flag: 'ID',
   },
   ja: {
-    name: "日本語",
-    flag: 'JP'
+    name: '日本語',
+    flag: 'JP',
   },
   ko: {
-    name: "한국어",
-    flag: 'KR'
+    name: '한국어',
+    flag: 'KR',
   },
   hu: {
-    name: "Magyar",
-    flag: 'HU'
+    name: 'Magyar',
+    flag: 'HU',
   },
   pl: {
-    name: "Polish",
-    flag: 'PL'
+    name: 'Polish',
+    flag: 'PL',
   },
-  "pt-BR": {
-    name: "Português (BR)",
-    flag: 'BR'
+  'pt-BR': {
+    name: 'Português (BR)',
+    flag: 'BR',
   },
   ru: {
-    name: "Русский",
-    flag: 'RU'
+    name: 'Русский',
+    flag: 'RU',
   },
   tr: {
-    name: "Türkçe",
-    flag: 'TR'
+    name: 'Türkçe',
+    flag: 'TR',
   },
   uk: {
-    name: "українська",
-    flag: 'UA'
+    name: 'українська',
+    flag: 'UA',
   },
 }

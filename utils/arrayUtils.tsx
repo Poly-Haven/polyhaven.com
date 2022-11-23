@@ -1,18 +1,18 @@
 export function randomArraySelection(array) {
-  return array[Math.floor(Math.random() * array.length)];
+  return array[Math.floor(Math.random() * array.length)]
 }
 
 export function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
-  return array;
+  return array
 }
 
 export function sortObjByValue(obj) {
   const sortedKeys = Object.keys(obj).sort(function (a, b) {
-    return (obj[b] - obj[a]);
+    return obj[b] - obj[a]
   })
   let tempObj = {}
   for (const k of sortedKeys) {
@@ -26,12 +26,12 @@ export function sortRes(arr: string[]) {
   for (const r of arr) {
     let pixels = parseInt(r)
     if (r.endsWith('k')) {
-      pixels = pixels * 1024;
+      pixels = pixels * 1024
     }
     dict[r] = pixels
   }
   return Object.keys(dict).sort(function (a, b) {
-    return (dict[a] - dict[b]);
+    return dict[a] - dict[b]
   })
 }
 
@@ -51,9 +51,9 @@ export function sortByPreference(arr: string[], preference, prefixes = []) {
         prefB = preference[swp]
       }
     }
-    prefA = prefA || preference["ANYTHING ELSE"]
-    prefB = prefB || preference["ANYTHING ELSE"]
-    let result = 0;
+    prefA = prefA || preference['ANYTHING ELSE']
+    prefB = prefB || preference['ANYTHING ELSE']
+    let result = 0
     if (prefA !== prefB) {
       result = prefA < prefB ? -1 : 1
     }
@@ -62,10 +62,10 @@ export function sortByPreference(arr: string[], preference, prefixes = []) {
 }
 
 export function sliceIntoChunks(arr, chunkSize) {
-  const res = [];
+  const res = []
   for (let i = 0; i < arr.length; i += chunkSize) {
-    const chunk = arr.slice(i, i + chunkSize);
-    res.push(chunk);
+    const chunk = arr.slice(i, i + chunkSize)
+    res.push(chunk)
   }
-  return res;
+  return res
 }

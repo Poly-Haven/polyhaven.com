@@ -19,7 +19,7 @@ const Tooltip = ({ id, place }) => {
 
 Tooltip.defaultProps = {
   id: null,
-  place: null
+  place: null,
 }
 
 export default Tooltip

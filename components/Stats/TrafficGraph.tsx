@@ -1,18 +1,29 @@
-import { useState } from 'react';
-import { LineChart, Line, ReferenceLine, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
+import { useState } from 'react'
+import {
+  LineChart,
+  Line,
+  ReferenceLine,
+  Brush,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Label,
+  ResponsiveContainer,
+} from 'recharts'
 
-import Dropdown from 'components/UI/Dropdown/Dropdown';
-import { MdWarning } from 'react-icons/md';
+import Dropdown from 'components/UI/Dropdown/Dropdown'
+import { MdWarning } from 'react-icons/md'
 
 import styles from './Stats.module.scss'
 
-const average = (array) => array.reduce((a, b) => a + b) / array.length;
+const average = (array) => array.reduce((a, b) => a + b) / array.length
 
 interface AssetDates {
-  slug: number,
+  slug: number
 }
 
-const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates }) => {
+const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates }) => {
   const [dataType, setdataType] = useState('uniques')
 
   let graphData = []
@@ -56,12 +67,12 @@ const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates 
   }
 
   // Smoothed data
-  let i = 0;
+  let i = 0
   for (const day of graphData) {
     for (const [key, value] of Object.entries(day)) {
       if (key === 'day') continue
-      const weeks = 2;
-      const adjacentDays = weeks * 7 - 4;
+      const weeks = 2
+      const adjacentDays = weeks * 7 - 4
       const smoothFac = 7
       let values = Array(smoothFac).fill(value)
       for (var j = 1; j <= adjacentDays; j++) {
@@ -76,7 +87,7 @@ const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates 
       }
       day[`s:${key}`] = average(values)
     }
-    i++;
+    i++
   }
 
   const all_notes = {}
@@ -90,67 +101,72 @@ const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates 
 
   const dataTypes = {
     uniques: {
-      label: "Unique Users",
-      tooltip: "The number of users visiting the whole site.",
-      scale: "linear",
-      color: "rgb(190, 111, 255)",
-      formatter: value => Math.round(value),
+      label: 'Unique Users',
+      tooltip: 'The number of users visiting the whole site.',
+      scale: 'linear',
+      color: 'rgb(190, 111, 255)',
+      formatter: (value) => Math.round(value),
     },
     requests: {
-      label: "Requests",
-      tooltip: "Total HTTP requests.",
-      scale: "linear",
-      color: "rgb(65, 187, 217)",
-      formatter: value => Math.round(value),
+      label: 'Requests',
+      tooltip: 'Total HTTP requests.',
+      scale: 'linear',
+      color: 'rgb(65, 187, 217)',
+      formatter: (value) => Math.round(value),
     },
     requestsPerUser: {
-      label: "Requests per User",
-      tooltip: "Average HTTP requests per user.",
-      scale: "linear",
-      color: "rgb(65, 187, 217)",
-      formatter: value => Math.round(value),
+      label: 'Requests per User',
+      tooltip: 'Average HTTP requests per user.',
+      scale: 'linear',
+      color: 'rgb(65, 187, 217)',
+      formatter: (value) => Math.round(value),
     },
     bytes: {
-      label: "Bandwidth",
-      tooltip: "The number of gigabytes downloaded from the site.",
-      scale: "linear",
-      color: "rgb(243, 130, 55)",
-      formatter: value => `${Math.round(value / 1024 / 1024 / 1024)} GB`,
+      label: 'Bandwidth',
+      tooltip: 'The number of gigabytes downloaded from the site.',
+      scale: 'linear',
+      color: 'rgb(243, 130, 55)',
+      formatter: (value) => `${Math.round(value / 1024 / 1024 / 1024)} GB`,
     },
     bytesPerUser: {
-      label: "Bandwidth per User",
-      tooltip: "The number of megabytes downloaded per user.",
-      scale: "linear",
-      color: "rgb(243, 130, 55)",
-      formatter: value => `${Math.round(value / 1024 / 1024)} MB`,
+      label: 'Bandwidth per User',
+      tooltip: 'The number of megabytes downloaded per user.',
+      scale: 'linear',
+      color: 'rgb(243, 130, 55)',
+      formatter: (value) => `${Math.round(value / 1024 / 1024)} MB`,
     },
     assetsPublished: {
-      label: "Assets Published",
-      tooltip: "The number of assets live on this day.",
-      scale: "linear",
-      color: "rgb(161, 208, 77)",
-      formatter: value => Math.round(value),
+      label: 'Assets Published',
+      tooltip: 'The number of assets live on this day.',
+      scale: 'linear',
+      color: 'rgb(161, 208, 77)',
+      formatter: (value) => Math.round(value),
     },
     usersPerAsset: {
-      label: "Users per Asset",
-      tooltip: "The number of unique users per assets live on this day.",
-      scale: "linear",
-      color: "rgb(161, 208, 77)",
-      formatter: value => Math.round(value),
+      label: 'Users per Asset',
+      tooltip: 'The number of unique users per assets live on this day.',
+      scale: 'linear',
+      color: 'rgb(161, 208, 77)',
+      formatter: (value) => Math.round(value),
     },
     pageViews: {
-      label: <>CF "Page Views" <MdWarning /></>,
-      tooltip: "Our site is a single-page-application, so Cloudflare is very inconsistent about what it counts as a \"page view\". Take this graph with a billion grains of salt and rather don't try to make any sense of it.",
-      scale: "linear",
-      color: "rgb(242, 191, 56)",
-      formatter: value => Math.round(value),
+      label: (
+        <>
+          CF "Page Views" <MdWarning />
+        </>
+      ),
+      tooltip:
+        'Our site is a single-page-application, so Cloudflare is very inconsistent about what it counts as a "page view". Take this graph with a billion grains of salt and rather don\'t try to make any sense of it.',
+      scale: 'linear',
+      color: 'rgb(242, 191, 56)',
+      formatter: (value) => Math.round(value),
     },
     threats: {
-      label: "Threats",
-      tooltip: "(Log scale) Requests that Cloudflare determines are coming from spam bots or malicious sources.",
-      scale: "log",
-      color: "rgb(249, 104, 84)",
-      formatter: value => Math.round(value),
+      label: 'Threats',
+      tooltip: '(Log scale) Requests that Cloudflare determines are coming from spam bots or malicious sources.',
+      scale: 'log',
+      color: 'rgb(249, 104, 84)',
+      formatter: (value) => Math.round(value),
     },
   }
 
@@ -158,19 +174,17 @@ const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates 
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
         <p>Website traffic in the last year:</p>
-        <Dropdown
-          value={dataType}
-          options={dataTypes}
-          onChange={setdataType}
-          label="Data"
-        />
+        <Dropdown value={dataType} options={dataTypes} onChange={setdataType} label="Data" />
       </div>
       <div className={styles.bigGraph}>
         <ResponsiveContainer>
           <LineChart data={graphData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="day" />
-            <YAxis scale={dataTypes[dataType].scale} domain={[dataTypes[dataType].scale === 'log' ? 'auto' : 0, 'auto']} />
+            <YAxis
+              scale={dataTypes[dataType].scale}
+              domain={[dataTypes[dataType].scale === 'log' ? 'auto' : 0, 'auto']}
+            />
             <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
 
             <Tooltip
@@ -188,22 +202,53 @@ const TrafficGraph = ({ data, assetDates }: { data: any, assetDates: AssetDates 
                 textAlign: 'center',
                 marginTop: '-0.5em',
               }}
-              formatter={(value, name) => [dataTypes[dataType].formatter(value), name.startsWith("s:") ? "Smoothed" : dataTypes[dataType].label]}
+              formatter={(value, name) => [
+                dataTypes[dataType].formatter(value),
+                name.startsWith('s:') ? 'Smoothed' : dataTypes[dataType].label,
+              ]}
             />
 
-            <Line type="monotone" dataKey={dataType} stroke={dataTypes[dataType].color} strokeWidth={1.5} animationDuration={500} dot={false} opacity={0.5} />
-            <Line type="monotone" dataKey={`s:${dataType}`} stroke={dataTypes[dataType].color} strokeWidth={3} animationDuration={500} dot={false} />
+            <Line
+              type="monotone"
+              dataKey={dataType}
+              stroke={dataTypes[dataType].color}
+              strokeWidth={1.5}
+              animationDuration={500}
+              dot={false}
+              opacity={0.5}
+            />
+            <Line
+              type="monotone"
+              dataKey={`s:${dataType}`}
+              stroke={dataTypes[dataType].color}
+              strokeWidth={3}
+              animationDuration={500}
+              dot={false}
+            />
 
-            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
+            {Object.keys(notes).map((d, i) => (
+              <ReferenceLine
+                key={i}
+                x={d}
+                stroke="rgba(255, 70, 70, 0.75)"
+                label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />}
+              />
+            ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
-      {Object.keys(notes).length > 0 ? <>
-        <p style={{ marginBottom: 0 }}>Notes:</p>
-        <ol className={styles.notesList}>
-          {Object.keys(notes).map((d, i) => <li key={i}><strong>{d}</strong>: <span>{notes[d]}</span></li>)}
-        </ol>
-      </> : null}
+      {Object.keys(notes).length > 0 ? (
+        <>
+          <p style={{ marginBottom: 0 }}>Notes:</p>
+          <ol className={styles.notesList}>
+            {Object.keys(notes).map((d, i) => (
+              <li key={i}>
+                <strong>{d}</strong>: <span>{notes[d]}</span>
+              </li>
+            ))}
+          </ol>
+        </>
+      ) : null}
     </div>
   )
 }

@@ -1,9 +1,19 @@
-import { BarChart, Bar, XAxis, YAxis, Brush, CartesianGrid, Tooltip, ReferenceLine, Label, ResponsiveContainer } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Brush,
+  CartesianGrid,
+  Tooltip,
+  ReferenceLine,
+  Label,
+  ResponsiveContainer,
+} from 'recharts'
 
 import styles from './Stats.module.scss'
 
 const FormatComparison = ({ data, type }) => {
-
   const colors = {
     hdris: 'rgb(65, 187, 217)',
     textures: 'rgb(243, 130, 55)',

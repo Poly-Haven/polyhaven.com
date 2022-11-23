@@ -1,20 +1,20 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { ImageResponse } from '@vercel/og'
+import { NextRequest } from 'next/server'
 
 export const config = {
   runtime: 'experimental-edge',
-};
+}
 
 export default async function handler(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = new URL(req.url)
 
     const type = searchParams.get('type') || 'all'
     const categories = searchParams.get('categories')
 
     // Image size & content
-    const width = 1200;
-    const height = 630;
+    const width = 1200
+    const height = 630
     const numImages = {
       hdris: 6,
       textures: 8,
@@ -35,58 +35,67 @@ export default async function handler(req: NextRequest) {
     if (categories) {
       url += `&c=${categories}`
     }
-    const data = await fetch(url)
-      .then(response => response.ok ? response.json() : {})
-    const sortedKeys = Object.keys(data).sort(function (a, b) {
-      return (data[b].download_count - data[a].download_count);
-    }).slice(0, numImages[type]);
+    const data = await fetch(url).then((response) => (response.ok ? response.json() : {}))
+    const sortedKeys = Object.keys(data)
+      .sort(function (a, b) {
+        return data[b].download_count - data[a].download_count
+      })
+      .slice(0, numImages[type])
 
     if (sortedKeys.length === 0) {
       return new ImageResponse(
         (
-          <div style={{
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              fontSize: 0,
+              padding: '10px',
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgb(45, 45, 45)',
+            }}
+          >
+            <h1
+              style={{
+                color: 'white',
+                fontSize: '72px',
+                fontFamily: "'Open Sans', sans-serif",
+                textAlign: 'center',
+              }}
+            >
+              No assets found
+            </h1>
+          </div>
+        ),
+        {
+          width: width,
+          height: height,
+        }
+      )
+    }
+
+    return new ImageResponse(
+      (
+        <div
+          style={{
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-around',
             flexWrap: 'wrap',
             fontSize: 0,
             padding: '10px',
             width: '100%',
             height: '100%',
             backgroundColor: 'rgb(45, 45, 45)',
-          }}>
-            <h1 style={{
-              color: 'white',
-              fontSize: '72px',
-              fontFamily: "'Open Sans', sans-serif",
-              textAlign: 'center',
-            }}>No assets found</h1>
-          </div>
-        ),
-        {
-          width: width,
-          height: height,
-        },
-      );
-    }
-
-
-    return new ImageResponse(
-      (
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          flexWrap: 'wrap',
-          fontSize: 0,
-          padding: '10px',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgb(45, 45, 45)',
-        }}>
-          ${sortedKeys.map(key =>
+          }}
+        >
+          $
+          {sortedKeys.map((key) => (
             <img
               key={key}
               src={`https://cdn.polyhaven.com/asset_img/thumbs/${key}.png?width=371&height=278`}
@@ -96,18 +105,18 @@ export default async function handler(req: NextRequest) {
                 maxHeight: `${thumbHeight}px`,
               }}
             />
-          )}
+          ))}
         </div>
       ),
       {
         width: width,
         height: height,
-      },
-    );
+      }
+    )
   } catch (e: any) {
-    console.log(`${e.message}`);
+    console.log(`${e.message}`)
     return new Response(`Failed to generate the image`, {
       status: 500,
-    });
+    })
   }
 }

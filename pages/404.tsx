@@ -1,5 +1,5 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 
 import Page from 'components/Layout/Page/CenteredPage'
 
@@ -8,10 +8,7 @@ export default function Custom404() {
     <Page>
       <Head>
         <title>¯\_(ツ)_/¯</title>
-        <meta
-          name="description"
-          content="Page not found."
-        />
+        <meta name="description" content="Page not found." />
       </Head>
       <h1>404</h1>
       <p>Page Not Found</p>
@@ -24,5 +21,5 @@ export async function getStaticProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
     },
-  };
+  }
 }

@@ -1,26 +1,26 @@
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
+import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
 import { MdLink } from 'react-icons/md'
 import { MdMail } from 'react-icons/md'
 import Heart from 'components/UI/Icons/Heart'
 
-const Avatar = dynamic(() => import('components/UI/Avatar/Avatar'), { ssr: false });
+const Avatar = dynamic(() => import('components/UI/Avatar/Avatar'), { ssr: false })
 
 import apiSWR from 'utils/apiSWR'
-import { titleCase } from 'utils/stringUtils';
+import { titleCase } from 'utils/stringUtils'
 
 import styles from './AuthorCredit.module.scss'
 
 const AuthorCredit = ({ id, size, credit }) => {
-  const { t } = useTranslation('asset');
+  const { t } = useTranslation('asset')
   let name = id
-  let link = "/"
-  let email = ""
-  let donate = ""
+  let link = '/'
+  let email = ''
+  let donate = ''
 
-  const { data, error } = apiSWR(`/author/${id}`, { revalidateOnFocus: false });
+  const { data, error } = apiSWR(`/author/${id}`, { revalidateOnFocus: false })
   if (error) {
     link = null
   } else if (data) {
@@ -31,13 +31,14 @@ const AuthorCredit = ({ id, size, credit }) => {
   }
 
   if (donate && donate.startsWith('paypal:')) {
-    const paypalEmailToLink = (email, description) => `https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=${email}&item_name=${description}`;
-    donate = paypalEmailToLink(donate.slice('paypal:'.length), "Poly Haven: " + name)
+    const paypalEmailToLink = (email, description) =>
+      `https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=${email}&item_name=${description}`
+    donate = paypalEmailToLink(donate.slice('paypal:'.length), 'Poly Haven: ' + name)
   }
 
   const assetLink = `/all?a=${id}`
 
-  let creditStr = ""
+  let creditStr = ''
   if (credit) {
     creditStr = t(`credits.${credit.trim().toLowerCase()}`)
     if (creditStr.startsWith('credits.')) {
@@ -51,20 +52,42 @@ const AuthorCredit = ({ id, size, credit }) => {
       <Link href={assetLink} prefetch={false}>
         <a className={styles.avatar}>
           <Avatar id={id} size={50} />
-          {data && data.regular_donor ?
-            <div className={styles.regularDonor} data-tip="Regular asset donor"><Heart color="#F96854" /></div>
-            : null}
+          {data && data.regular_donor ? (
+            <div className={styles.regularDonor} data-tip="Regular asset donor">
+              <Heart color="#F96854" />
+            </div>
+          ) : null}
         </a>
       </Link>
       <div className={styles.name}>
         <Link href={assetLink} prefetch={false}>
-          <a><strong>{id}</strong></a>
+          <a>
+            <strong>{id}</strong>
+          </a>
         </Link>
-        {credit ? <span className={styles.credit}>{creditStr}</span> : ""}
+        {credit ? <span className={styles.credit}>{creditStr}</span> : ''}
         <div className={styles.links}>
-          {link ? <a href={link} target="_blank" rel="noopener"><MdLink /></a> : ""}
-          {email ? <a href={`mailto:${email}`} target="_blank" rel="noopener"><MdMail /></a> : ""}
-          {donate ? <a href={donate} target="_blank" rel="noopener"><Heart /></a> : ""}
+          {link ? (
+            <a href={link} target="_blank" rel="noopener">
+              <MdLink />
+            </a>
+          ) : (
+            ''
+          )}
+          {email ? (
+            <a href={`mailto:${email}`} target="_blank" rel="noopener">
+              <MdMail />
+            </a>
+          ) : (
+            ''
+          )}
+          {donate ? (
+            <a href={donate} target="_blank" rel="noopener">
+              <Heart />
+            </a>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>
@@ -72,8 +95,8 @@ const AuthorCredit = ({ id, size, credit }) => {
 }
 
 AuthorCredit.defaultProps = {
-  size: "small",
-  credit: ""
+  size: 'small',
+  credit: '',
 }
 
 export default AuthorCredit

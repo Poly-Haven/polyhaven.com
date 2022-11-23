@@ -1,7 +1,6 @@
 import styles from './Popup.module.scss'
 
 const Popup = ({ show, hide, children }) => {
-
   if (!show) {
     return null
   }

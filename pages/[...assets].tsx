@@ -1,20 +1,20 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 import Head from 'components/Head/Head'
 import Library from 'components/Library/Library'
 
-import typesAvailable from 'constants/asset_types.json';
+import typesAvailable from 'constants/asset_types.json'
 import { assetTypeName } from 'utils/assetTypeName'
 import asset_types from 'constants/asset_types.json'
 import { titleCase } from 'utils/stringUtils'
 
 const LibraryPage = (props) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
   let title = t(assetTypeName(props.assetType))
   if (props.categories.length) {
-    title += ": " + titleCase(props.categories.join(' > '))
+    title += ': ' + titleCase(props.categories.join(' > '))
   }
 
   let imageUrl = `https://dev.polyhaven.com/api/og-image?type=${props.assetType}`
@@ -26,13 +26,13 @@ const LibraryPage = (props) => {
   if (props.categories.length) {
     description = `Free ${props.categories[props.categories.length - 1]}`
   } else {
-    description = "Hundreds of free"
+    description = 'Hundreds of free'
   }
   const typeDescription = {
-    hdris: "HDRI environments",
-    textures: "PBR texture sets",
-    models: "3D models",
-    all: "HDRIs, textures, and 3D models"
+    hdris: 'HDRI environments',
+    textures: 'PBR texture sets',
+    models: '3D models',
+    all: 'HDRIs, textures, and 3D models',
   }
   description += ` ${typeDescription[props.assetType]}, ready to use for any purpose.`
 
@@ -67,19 +67,14 @@ export async function getServerSideProps(context) {
     return {
       notFound: true,
       props: {
-        ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time']))
-      }
+        ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
+      },
     }
   }
 
-  const allowedSorts = [
-    "hot",
-    "latest",
-    "top",
-    "name"
-  ]
+  const allowedSorts = ['hot', 'latest', 'top', 'name']
   if (!allowedSorts.includes(sort)) {
-    sort = "hot";
+    sort = 'hot'
   }
 
   return {
@@ -87,11 +82,11 @@ export async function getServerSideProps(context) {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: assetType,
       categories: params,
-      author: author ? author : "",
-      search: search ? search : "",
-      sort: sort ? sort : "hot"
-    }
+      author: author ? author : '',
+      search: search ? search : '',
+      sort: sort ? sort : 'hot',
+    },
   }
 }
 
-export default LibraryPage;
+export default LibraryPage

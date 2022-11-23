@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { MdHelp, MdStackedLineChart, MdShowChart } from 'react-icons/md';
+import { useState } from 'react'
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { MdHelp, MdStackedLineChart, MdShowChart } from 'react-icons/md'
 
-import Switch from 'components/UI/Switch/Switch';
+import Switch from 'components/UI/Switch/Switch'
 
 import styles from './Stats.module.scss'
 
 interface DataSet {
   string: {
-    hdris: number,
-    textures: number,
-    models: number,
+    hdris: number
+    textures: number
+    models: number
   }
 }
 
@@ -30,17 +30,23 @@ const RelativeType = ({ data }: { data: DataSet }) => {
     days.push(day)
     graphData.push({
       day: day,
-      ...stats
+      ...stats,
     })
   }
 
   return (
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
-        <p>Relative demand <MdHelp data-tip="Demand is calculated as the number of downloads per asset of that type available. I.e. If there are 10000 downloads for HDRIs in a day, and 500 HDRIs available on that day, the demand is 10000/500 = 20.<br />If there are 2000 model downloads and 100 models available, the demand would also be 20. This provides a more useful indication of what people come to Poly Haven for.<br />This graph is also relative, normalizing the demand of all asset types to 100%. Essentially it compares what asset types are most desired, taking into account the number of that type available, and ignoring ubiquitous daily fluctuations." /> per type:</p>
+        <p>
+          Relative demand{' '}
+          <MdHelp data-tip="Demand is calculated as the number of downloads per asset of that type available. I.e. If there are 10000 downloads for HDRIs in a day, and 500 HDRIs available on that day, the demand is 10000/500 = 20.<br />If there are 2000 model downloads and 100 models available, the demand would also be 20. This provides a more useful indication of what people come to Poly Haven for.<br />This graph is also relative, normalizing the demand of all asset types to 100%. Essentially it compares what asset types are most desired, taking into account the number of that type available, and ignoring ubiquitous daily fluctuations." />{' '}
+          per type:
+        </p>
         <Switch
           on={stack}
-          onClick={_ => { setStack(!stack) }}
+          onClick={(_) => {
+            setStack(!stack)
+          }}
           labelOff={<MdShowChart />}
           labelOn={<MdStackedLineChart />}
         />
@@ -68,10 +74,22 @@ const RelativeType = ({ data }: { data: DataSet }) => {
                 textAlign: 'center',
                 marginTop: '-0.5em',
               }}
-              itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
+              itemSorter={(item) => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            {areas.map(a => <Area key={a} type="monotone" dataKey={a} stackId={stack ? '1' : a} stroke={colors[a]} strokeWidth={stack ? 0.5 : 3} fill={colors[a]} fillOpacity={stack ? 0.75 : 0} animationDuration={500} />)}
+            {areas.map((a) => (
+              <Area
+                key={a}
+                type="monotone"
+                dataKey={a}
+                stackId={stack ? '1' : a}
+                stroke={colors[a]}
+                strokeWidth={stack ? 0.5 : 3}
+                fill={colors[a]}
+                fillOpacity={stack ? 0.75 : 0}
+                animationDuration={500}
+              />
+            ))}
           </AreaChart>
         </ResponsiveContainer>
       </div>

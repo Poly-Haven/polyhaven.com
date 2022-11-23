@@ -7,7 +7,7 @@ export default function useStoredState(key: string, defaultValue) {
 
   const [val, setVal] = useState(defaultValue)
 
-  const extSetVal = v => {
+  const extSetVal = (v) => {
     setVal(v)
     localStorage.setItem(key, JSON.stringify(v))
   }
@@ -16,7 +16,7 @@ export default function useStoredState(key: string, defaultValue) {
     const storedValue = JSON.parse(localStorage.getItem(key))
     const v = storedValue !== null ? storedValue : defaultValue
     setVal(v)
-  }, []);
+  }, [])
 
   return [val, extSetVal]
 }

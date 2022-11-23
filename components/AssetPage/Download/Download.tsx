@@ -1,12 +1,12 @@
-import { useTranslation } from 'next-i18next';
-import { useState, useEffect, useReducer } from "react";
+import { useTranslation } from 'next-i18next'
+import { useState, useEffect, useReducer } from 'react'
 import { useRouter } from 'next/router'
-import Link from "next/link";
+import Link from 'next/link'
 import filesize from 'filesize'
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid'
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
-import { GoFileZip } from "react-icons/go";
+import { GoFileZip } from 'react-icons/go'
 
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import DownloadOptions from './DownloadOptions'
@@ -26,14 +26,14 @@ import styles from './Download.module.scss'
 declare const startDownload
 
 const Download = ({ assetID, data, files, setPreview, patron }) => {
-  const { t } = useTranslation('asset');
+  const { t } = useTranslation('asset')
   const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
-  const [zipList, dispatch] = useReducer(reducer, { files: [] });
+  const [zipList, dispatch] = useReducer(reducer, { files: [] })
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
-  const [tempUUID, setTempUUID] = useState(uuid())  // Used if storage consent not given.
+  const [tempUUID, setTempUUID] = useState(uuid()) // Used if storage consent not given.
 
   const isHDRI = data.type === 0
 
@@ -45,9 +45,9 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
           return { files: state.files }
         }
       }
-      return { files: [...state.files, data] };
+      return { files: [...state.files, data] }
     } else {
-      return { files: state.files.filter(k => k.md5 !== data.md5) };
+      return { files: state.files.filter((k) => k.md5 !== data.md5) }
     }
   }
 
@@ -58,21 +58,37 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   useEffect(() => {
     setRes(localStorage.getItem(`assetPref_${data.type}_resolution`) || '4k')
     setFmt(localStorage.getItem(`assetPref_${data.type}_format`) || 'exr')
-  }, [prefRes, prefFmt]);
+  }, [prefRes, prefFmt])
 
   if (!files) {
-    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}><span className={styles.error}>No files?<br /><em>Try refresh, otherwise please report this to us.</em></span></div></div>
+    return (
+      <div className={styles.downloadBtnWrapper}>
+        <div className={styles.downloadBtn}>
+          <span className={styles.error}>
+            No files?
+            <br />
+            <em>Try refresh, otherwise please report this to us.</em>
+          </span>
+        </div>
+      </div>
+    )
   }
 
   if (data.date_published * 1000 > Date.now()) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
-      return <div className={styles.downloadBtnWrapper}>
-        <div className={styles.downloadBtn}>
-          <Link href={`/account?returnTo=${router.asPath}`} >
-            <a className={styles.error}>Coming Soon!<br /><em>$3+ Patrons log in to download early</em></a>
-          </Link>
+      return (
+        <div className={styles.downloadBtnWrapper}>
+          <div className={styles.downloadBtn}>
+            <Link href={`/account?returnTo=${router.asPath}`}>
+              <a className={styles.error}>
+                Coming Soon!
+                <br />
+                <em>$3+ Patrons log in to download early</em>
+              </a>
+            </Link>
+          </div>
         </div>
-      </div>
+      )
     }
   }
 
@@ -82,59 +98,65 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
   for (const k of baseKeys) {
     if (Object.keys(files).includes(k)) {
       baseKey = k
-      break;
+      break
     }
   }
   if (baseKey === 'UNKNOWN') {
-    return <div className={styles.downloadBtnWrapper}><div className={styles.downloadBtn}>baseKey unknown!</div></div>
+    return (
+      <div className={styles.downloadBtnWrapper}>
+        <div className={styles.downloadBtn}>baseKey unknown!</div>
+      </div>
+    )
   }
 
   const toggleDlOptions = () => {
-    setDlOptions(!dlOptions);
+    setDlOptions(!dlOptions)
   }
 
-  const resOptionKeys = sortRes(Object.keys(files[baseKey]));
+  const resOptionKeys = sortRes(Object.keys(files[baseKey]))
   const resOptions = {}
   for (const r of resOptionKeys) {
     resOptions[r] = { label: r.toUpperCase() }
   }
-  const setResValue = v => {
+  const setResValue = (v) => {
     setRes(v)
     localStorage.setItem(`assetPref_${data.type}_resolution`, v)
   }
   const dlRes = resOptionKeys.includes(prefRes) ? prefRes : resOptionKeys.slice(-1)[0]
 
-  const fmtOptions = isHDRI ? {
-    hdr: {
-      label: "HDR",
-      tooltip: `Radiance RGBE (.hdr)<br/>${t('formats.hdr')}`
-    },
-    exr: {
-      label: "EXR",
-      tooltip: `Open EXR (.exr)<br/>${t('formats.exr')}`
-    },
-  } : {
-    blend: {
-      label: "Blend",
-      tooltip: `Blender 2.8+<br/>${t('formats.incl-tex')}`,
-      icon: <IconBlender />
-    },
-    gltf: {
-      label: "glTF",
-      tooltip: `glTF 2.0, ${t('formats.some-software')}<br/>${t('formats.incl-tex')}`,
-      icon: <IconGltf />
-    },
-    fbx: {
-      label: "FBX",
-      tooltip: `Autodesk FBX, ${t('formats.most-software')}`,
-      icon: <IconFile text="F" />
-    },
-    zip: {
-      label: "ZIP",
-      tooltip: t('formats.zip'),
-      icon: <GoFileZip />
-    },
-  };
+  const fmtOptions = isHDRI
+    ? {
+        hdr: {
+          label: 'HDR',
+          tooltip: `Radiance RGBE (.hdr)<br/>${t('formats.hdr')}`,
+        },
+        exr: {
+          label: 'EXR',
+          tooltip: `Open EXR (.exr)<br/>${t('formats.exr')}`,
+        },
+      }
+    : {
+        blend: {
+          label: 'Blend',
+          tooltip: `Blender 2.8+<br/>${t('formats.incl-tex')}`,
+          icon: <IconBlender />,
+        },
+        gltf: {
+          label: 'glTF',
+          tooltip: `glTF 2.0, ${t('formats.some-software')}<br/>${t('formats.incl-tex')}`,
+          icon: <IconGltf />,
+        },
+        fbx: {
+          label: 'FBX',
+          tooltip: `Autodesk FBX, ${t('formats.most-software')}`,
+          icon: <IconFile text="F" />,
+        },
+        zip: {
+          label: 'ZIP',
+          tooltip: t('formats.zip'),
+          icon: <GoFileZip />,
+        },
+      }
   const optionalFormats = ['gltf', 'fbx']
   for (const f of optionalFormats) {
     if (!Object.keys(files).includes(f)) {
@@ -142,14 +164,14 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     }
   }
 
-  const setFmtValue = v => {
+  const setFmtValue = (v) => {
     setFmt(v)
     localStorage.setItem(`assetPref_${data.type}_format`, v)
     if (v === 'zip') {
       setDlOptions(true)
     }
   }
-  const dlFmt = Object.keys(fmtOptions).includes(prefFmt) ? prefFmt : (isHDRI ? 'hdr' : 'blend')
+  const dlFmt = Object.keys(fmtOptions).includes(prefFmt) ? prefFmt : isHDRI ? 'hdr' : 'blend'
 
   let fsize = 0
   if (dlFmt !== 'zip') {
@@ -177,7 +199,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       uuid: localStorage.getItem(`uuid`) || tempUUID,
       asset_id: assetID,
       res: dlRes,
-      format: dlFmt
+      format: dlFmt,
     }
     await fetch(`/api/dlTrack`, {
       method: 'POST',
@@ -185,9 +207,10 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(res => res.json())
-      .then(resdata => {
-        console.log("Tracked download:", data)
+    })
+      .then((res) => res.json())
+      .then((resdata) => {
+        console.log('Tracked download:', data)
       })
   }
 
@@ -204,55 +227,49 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       dlFiles.push({
         url: fileInfo.url,
         size: fileInfo.size,
-        path: name
+        path: name,
       })
       if (fileInfo.include) {
         for (const path of Object.keys(fileInfo.include)) {
           dlFiles.push({
             url: fileInfo.include[path].url,
             size: fileInfo.include[path].size,
-            path: path
+            path: path,
           })
         }
       }
     } else {
       for (const f of zipList.files) {
-        const basePath = threeDFormats.includes(f.fmt) ? "" : "textures/"
+        const basePath = threeDFormats.includes(f.fmt) ? '' : 'textures/'
         const fileInfo = files[f.map][dlRes][f.fmt]
         dlFiles.push({
           url: fileInfo.url,
           size: fileInfo.size,
-          path: basePath + urlBaseName(fileInfo.url)
+          path: basePath + urlBaseName(fileInfo.url),
         })
         if (f.map === 'gltf') {
           const binInfo = fileInfo.include[`${assetID}.bin`]
           dlFiles.push({
             url: binInfo.url,
             size: binInfo.size,
-            path: basePath + urlBaseName(binInfo.url)
+            path: basePath + urlBaseName(binInfo.url),
           })
         }
       }
     }
     startDownload(name, dlFiles)
 
-    await new Promise(r => setTimeout(r, 2000)).then(_ => {
+    await new Promise((r) => setTimeout(r, 2000)).then((_) => {
       // Purely for a visual indication that something is happending, and to prevent accidental double clicks.
       setBusyDownloading(false)
     })
-    await trackDownload();
+    await trackDownload()
   }
 
   return (
     <div>
       <div className={styles.downloadBtnWrapper}>
-        <Dropdown
-          value={dlRes}
-          options={resOptions}
-          onChange={setResValue}
-          small={true}
-          tooltipID="dropdown-res"
-        />
+        <Dropdown value={dlRes} options={resOptions} onChange={setResValue} small={true} tooltipID="dropdown-res" />
 
         <Dropdown
           value={dlFmt}
@@ -275,7 +292,9 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
             <h3>{t('download')}</h3>
             <p>{filesize(fsize)}</p>
           </div>
-          <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}><Loader /></div>
+          <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}>
+            <Loader />
+          </div>
         </a>
         <div className={styles.downloadBtnSml} onClick={toggleDlOptions}>
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
@@ -292,7 +311,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         type={data.type}
         setPreview={setPreview}
       />
-      <Tooltip id='dropdown' place='left' />
+      <Tooltip id="dropdown" place="left" />
     </div>
   )
 }

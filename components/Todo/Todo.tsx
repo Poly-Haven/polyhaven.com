@@ -1,5 +1,5 @@
 import { MdWarning } from 'react-icons/md'
-import styles from './Todo.module.scss';
+import styles from './Todo.module.scss'
 
 const Todo = ({ raw, children }) => {
   return (
@@ -14,7 +14,7 @@ const Todo = ({ raw, children }) => {
 
 Todo.defaultProps = {
   raw: false,
-  children: null
+  children: null,
 }
 
 export default Todo

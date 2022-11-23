@@ -1,4 +1,4 @@
-import { MdCheck, MdClose } from "react-icons/md";
+import { MdCheck, MdClose } from 'react-icons/md'
 
 import styles from './Switch.module.scss'
 

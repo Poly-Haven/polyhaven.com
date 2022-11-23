@@ -33,9 +33,9 @@ const Stats = ({ datasets }) => {
               <div className={styles.graphHeader}>
                 <p>Downloads by format chosen:</p>
               </div>
-              {Object.keys(datasets.formats).map((k, i) =>
+              {Object.keys(datasets.formats).map((k, i) => (
                 <ResolutionComparison key={i} data={datasets.formats[k]} type={k} />
-              )}
+              ))}
               <p style={{ marginBottom: 0 }}>Notes:</p>
               <ul className={styles.unNumberedNotesList}>
                 <li>EXR is the default format for HDRIs.</li>
@@ -48,9 +48,9 @@ const Stats = ({ datasets }) => {
               <div className={styles.graphHeader}>
                 <p>Downloads by resolution chosen:</p>
               </div>
-              {Object.keys(datasets.resolutions).map((k, i) =>
+              {Object.keys(datasets.resolutions).map((k, i) => (
                 <ResolutionComparison key={i} data={datasets.resolutions[k]} type={k} />
-              )}
+              ))}
               <p style={{ marginBottom: 0 }}>Notes:</p>
               <ul className={styles.unNumberedNotesList}>
                 <li>4k is the default resolution for all assets.</li>

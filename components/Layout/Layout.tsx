@@ -8,7 +8,7 @@ const layout = ({ children }) => {
       <Header />
       <div className={styles.page}>{children}</div>
     </div>
-  );
+  )
 }
 
-export default layout;
+export default layout

@@ -1,32 +1,43 @@
-import { useState } from 'react';
-import { AreaChart, Area, ReferenceLine, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
+import { useState } from 'react'
+import {
+  AreaChart,
+  Area,
+  ReferenceLine,
+  Brush,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Label,
+  ResponsiveContainer,
+} from 'recharts'
 
 import { MdStackedLineChart, MdShowChart } from 'react-icons/md'
 
-import Switch from 'components/UI/Switch/Switch';
+import Switch from 'components/UI/Switch/Switch'
 
 import styles from './Stats.module.scss'
 
 interface Day {
-  downloads: number,
-  unique: number,
-  day: string,
-  slug: string,
-  type: string,
+  downloads: number
+  unique: number
+  day: string
+  slug: string
+  type: string
 }
 
 interface DataSet {
-  hdris: Day[],
-  textures: Day[],
-  models: Day[],
+  hdris: Day[]
+  textures: Day[]
+  models: Day[]
 }
 
 interface DayStats {
   string: {
-    hdris: number,
-    textures: number,
-    models: number,
-    total: number,
+    hdris: number
+    textures: number
+    models: number
+    total: number
   }
 }
 
@@ -51,28 +62,28 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
     }
   }
   let rollingAverage = Array(7).fill(0) // 7 day rolling average
-  const average = (array) => Math.round(array.reduce((a, b) => a + b) / array.length);
+  const average = (array) => Math.round(array.reduce((a, b) => a + b) / array.length)
   for (const stats of Object.values(days)) {
     rollingAverage.shift()
     rollingAverage.push(stats.total)
     stats['7d average total'] = average(JSON.parse(JSON.stringify(rollingAverage)))
   }
-  let i = 0;
+  let i = 0
   for (const [day, stats] of Object.entries(days)) {
-    i++;
+    i++
     if (i < 7) continue // Remove first week since the rolling average isn't complete yet.
     graphData.push({
       day: day,
-      ...stats
+      ...stats,
     })
   }
 
   const all_notes = {
-    "2021-06-15": "Launch of polyhaven.com.",
-    "2021-07-13": "texturehaven.com and 3dmodelhaven.com redirected to polyhaven.com.",
-    "2021-07-19": `hdrihaven.com redirected to polyhaven.com. Any HDRI downloads before this date were tracked from the old site, using the new site's API.`,
-    "2021-10-28": `API downtime causing inconsistent download tracking for the next week.`,
-    "2022-05-08": `API downtime causing incomplete download tracking.`,
+    '2021-06-15': 'Launch of polyhaven.com.',
+    '2021-07-13': 'texturehaven.com and 3dmodelhaven.com redirected to polyhaven.com.',
+    '2021-07-19': `hdrihaven.com redirected to polyhaven.com. Any HDRI downloads before this date were tracked from the old site, using the new site's API.`,
+    '2021-10-28': `API downtime causing inconsistent download tracking for the next week.`,
+    '2022-05-08': `API downtime causing incomplete download tracking.`,
   }
   // Remove notes not in displayed date range
   const notes = {}
@@ -88,7 +99,9 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
         <p>Unique downloads in the last 3 months:</p>
         <Switch
           on={stack}
-          onClick={_ => { setStack(!stack) }}
+          onClick={(_) => {
+            setStack(!stack)
+          }}
           labelOff={<MdShowChart />}
           labelOn={<MdStackedLineChart />}
         />
@@ -116,22 +129,54 @@ const LastThreeMonths = ({ data }: { data: DataSet }) => {
                 textAlign: 'center',
                 marginTop: '-0.5em',
               }}
-              itemSorter={item => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
+              itemSorter={(item) => areas.slice().reverse().indexOf(item.name.toString())} // Reversed areas without mutating.
             />
 
-            <Area type="monotone" dataKey="7d average total" stroke="rgb(190, 111, 255)" strokeWidth={1.5} fill="transparent" animationDuration={500} />
-            {areas.map((a, i) => <Area key={a} type="monotone" dataKey={a} stackId={stack ? '1' : i} stroke={colors[a]} fill={colors[a]} fillOpacity={stack ? 0.75 : 0} animationDuration={500} strokeWidth={stack ? 0.5 : 3} />)}
+            <Area
+              type="monotone"
+              dataKey="7d average total"
+              stroke="rgb(190, 111, 255)"
+              strokeWidth={1.5}
+              fill="transparent"
+              animationDuration={500}
+            />
+            {areas.map((a, i) => (
+              <Area
+                key={a}
+                type="monotone"
+                dataKey={a}
+                stackId={stack ? '1' : i}
+                stroke={colors[a]}
+                fill={colors[a]}
+                fillOpacity={stack ? 0.75 : 0}
+                animationDuration={500}
+                strokeWidth={stack ? 0.5 : 3}
+              />
+            ))}
 
-            {Object.keys(notes).map((d, i) => <ReferenceLine key={i} x={d} stroke="rgba(255, 70, 70, 0.75)" label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />} />)}
+            {Object.keys(notes).map((d, i) => (
+              <ReferenceLine
+                key={i}
+                x={d}
+                stroke="rgba(255, 70, 70, 0.75)"
+                label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />}
+              />
+            ))}
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      {Object.keys(notes).length > 0 ? <>
-        <p style={{ marginBottom: 0 }}>Notes:</p>
-        <ol className={styles.notesList}>
-          {Object.keys(notes).map((d, i) => <li key={i}><strong>{d}</strong>: <span>{notes[d]}</span></li>)}
-        </ol>
-      </> : null}
+      {Object.keys(notes).length > 0 ? (
+        <>
+          <p style={{ marginBottom: 0 }}>Notes:</p>
+          <ol className={styles.notesList}>
+            {Object.keys(notes).map((d, i) => (
+              <li key={i}>
+                <strong>{d}</strong>: <span>{notes[d]}</span>
+              </li>
+            ))}
+          </ol>
+        </>
+      ) : null}
     </div>
   )
 }

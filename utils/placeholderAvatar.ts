@@ -23,5 +23,7 @@ export const placeholderAvatar = (name, size = 50) => {
     'bdbdbd',
     '78909c',
   ]
-  return `https://ui-avatars.com/api/?name=${name}&size=${size}&background=${colorSet[Math.abs(stringHash(name) % colorSet.length)]}`
+  return `https://ui-avatars.com/api/?name=${name}&size=${size}&background=${
+    colorSet[Math.abs(stringHash(name) % colorSet.length)]
+  }`
 }

@@ -7,9 +7,7 @@ const IconButton = ({ icon, label, onClick, active, children }) => {
         <div className={styles.icon}>{icon}</div>
         {label && <div className={styles.label}>{label}</div>}
       </div>
-      {children ?
-        <div className={styles.menu}>{children}</div>
-        : null}
+      {children ? <div className={styles.menu}>{children}</div> : null}
     </div>
   )
 }
@@ -17,7 +15,7 @@ IconButton.defaultProps = {
   label: null,
   active: false,
   onClick: null,
-  children: null
+  children: null,
 }
 
 export default IconButton

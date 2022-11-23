@@ -1,5 +1,5 @@
 const nextBuildId = require('next-build-id')
-const { i18n } = require('./next-i18next.config');
+const { i18n } = require('./next-i18next.config')
 
 module.exports = {
   i18n,
@@ -10,13 +10,13 @@ module.exports = {
   webpack: (config, { webpack, buildId, isServer }) => {
     config.plugins.push(
       new webpack.DefinePlugin({
-        'process.env.CONFIG_BUILD_ID': JSON.stringify(buildId)
+        'process.env.CONFIG_BUILD_ID': JSON.stringify(buildId),
       })
-    );
-    return config;
+    )
+    return config
   },
   serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname
+    PROJECT_ROOT: __dirname,
   },
   async redirects() {
     return [

@@ -4,7 +4,8 @@ const InfoItem = ({ label, condition, flex, children }) => {
   if (condition) {
     return (
       <span className={`${styles.infoItem} ${flex ? styles.flex : null}`}>
-        <strong>{label}: </strong>{children}
+        <strong>{label}: </strong>
+        {children}
       </span>
     )
   } else {
@@ -14,7 +15,7 @@ const InfoItem = ({ label, condition, flex, children }) => {
 
 InfoItem.defaultProps = {
   condition: true,
-  flex: false
+  flex: false,
 }
 
 export default InfoItem
