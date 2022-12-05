@@ -1,5 +1,5 @@
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
-import { Vector3, Quaternion, Box3, CineonToneMapping } from 'three'
+import { Vector3, Quaternion, Box3, CineonToneMapping, Texture } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Environment, OrbitControls } from '@react-three/drei'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
@@ -24,11 +24,11 @@ interface Props {
   readonly onLoad: Function
 }
 
-const renderMesh = (mesh, soloMap, wireframe) => {
+const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
   const objects = []
   if (mesh.children) {
     mesh.children.forEach((child) => {
-      objects.push(renderMesh(child, soloMap, wireframe))
+      objects.push(renderMesh(child, soloMap, wireframe, maxAnisotropy))
     })
   }
   objects.push(
@@ -40,18 +40,26 @@ const renderMesh = (mesh, soloMap, wireframe) => {
         quaternion={mesh.getWorldQuaternion(new Quaternion())}
       >
         {soloMap === '' ? (
-          <meshPhysicalMaterial {...mesh.material} />
+          <meshPhysicalMaterial {...mesh.material}>
+            {Object.entries(mesh.material).map(([key, value]) =>
+              value instanceof Texture ? (
+                <texture key={key} attach={key} {...value} anisotropy={maxAnisotropy} />
+              ) : null
+            )}
+          </meshPhysicalMaterial>
         ) : (
           <meshBasicMaterial>
-            {mesh.material['map'] && soloMap === 'DIFFUSE' && <texture attach="map" {...mesh.material['map']} />}
+            {mesh.material['map'] && soloMap === 'DIFFUSE' && (
+              <texture attach="map" {...mesh.material['map']} anisotropy={maxAnisotropy} />
+            )}
             {mesh.material['normalMap'] && soloMap === 'NORMAL' && (
-              <texture attach="map" {...mesh.material['normalMap']} />
+              <texture attach="map" {...mesh.material['normalMap']} anisotropy={maxAnisotropy} />
             )}
             {mesh.material['metalnessMap'] && soloMap === 'METALNESS' && (
-              <texture attach="map" {...mesh.material['metalnessMap']} />
+              <texture attach="map" {...mesh.material['metalnessMap']} anisotropy={maxAnisotropy} />
             )}
             {mesh.material['roughnessMap'] && soloMap === 'ROUGHNESS' && (
-              <texture attach="map" {...mesh.material['roughnessMap']} />
+              <texture attach="map" {...mesh.material['roughnessMap']} anisotropy={maxAnisotropy} />
             )}
           </meshBasicMaterial>
         )}
@@ -94,6 +102,8 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
     park: 'rooitou_park',
     lobby: 'st_fagans_interior',
   }
+
+  const [maxAnisotropy, setMaxAnisotropy] = useState(1)
 
   const [state, dispatch] = useReducer(GLTF_Visibility_reducer, GLTF_Visibility_reducer_defaultState)
 
@@ -157,6 +167,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
             }}
             onCreated={({ gl }) => {
               gl.toneMapping = CineonToneMapping
+              setMaxAnisotropy(Math.max(1, Math.min(16, gl.capabilities.getMaxAnisotropy())))
               onLoad()
             }}
           >
@@ -166,7 +177,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
 
               {processedGLTFFromAPI &&
                 state.meshes &&
-                Object.values(state.meshes).map((node) => renderMesh(node.mesh, soloMap, wireframe))}
+                Object.values(state.meshes).map((node) => renderMesh(node.mesh, soloMap, wireframe, maxAnisotropy))}
             </Suspense>
           </Canvas>
         </div>
