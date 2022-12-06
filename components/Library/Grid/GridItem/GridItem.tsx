@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { timeago } from 'utils/dateUtils'
 
 import { MdCollections } from 'react-icons/md'
-import { TbBone } from 'react-icons/tb'
+import { TbBone, TbDrone } from 'react-icons/tb'
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
@@ -73,6 +73,12 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     indicators.push({
       text: `✔ Rigged: ${t('rigged')}`,
       icon: <TbBone />,
+    })
+  }
+  if (asset.categories.includes('aerial')) {
+    indicators.push({
+      text: `✔ Aerial: ${t('aerial')}`,
+      icon: <TbDrone />,
     })
   }
 
