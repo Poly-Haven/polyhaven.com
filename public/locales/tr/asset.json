@@ -26,7 +26,7 @@
     "some-software": "bazı 3D yazılımlar tarafından desteklenir.",
     "thumb": "Küçük Resim / Önizleme",
     "thumb-d": "Varlık yöneticinizde kullanmak için kullanışlı küçük resim.",
-    "tm": "HDRI'nin düşük dinamik aralık önizlemesi. Bazen bir önizleme olarak veya CG ile ilgili olmayan kullanımlar için yararlıdır, ancak aydınlatma için kullanmayın.",
+    "tm": "HDRI'nin düşük dinamik aralıklı önizlemesi. Bazen önizleme olarak veya CG ile ilgili olmayan işlemler için kullanışlıdır ancak aydınlatma için önerilmez.",
     "zip": "Tam olarak hangi dosyaların indirileceğini seçiniz."
   },
   "no-files": "Dosya yok",
@@ -38,7 +38,7 @@
   "sponsored-by-d": "Adınızı buraya eklemek için Poly Haven'ı Patreon'da destekleyin.",
   "sponsored-by-none": "Henüz kimse yok :(",
   "tags": "Etiketler",
-  "user-renders": "Kullanıcı İşlemleri:",
+  "user-renders": "Kullanıcı Çalışmaları:",
   "wide": "geniş",
   "zip-choose": "ZIP içeriğini seçin:"
 }

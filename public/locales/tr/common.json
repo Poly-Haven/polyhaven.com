@@ -8,23 +8,23 @@
   "HDRIs": "HDRI'lar",
   "Models": "Modeller",
   "Textures": "Dokular",
-  "also-supported-by": "Ayrıca şunlar tarafından desteklenir:",
+  "also-supported-by": "Ayrıca destekçiler:",
   "corporate-sponsor_one": "Kurumsal Sponsor",
   "corporate-sponsor_other": "Kurumsal Sponsorlar",
   "corporate-sponsors": "Kurumsal Sponsorlar",
   "display-name": "Ekran adı",
   "email-address": "E-posta adresi",
   "footer": {
-    "join-ranks": "Saflara katılın, Poly Haven'ı Patreon'da destekleyin",
+    "join-ranks": "Bize katılın, Poly Haven'ı Patreon'da destekleyin",
     "thanks": "<lnk> Kullanıcılarımıza</lnk>  Poly Haven'ı mümkün kıldığı için teşekkürler."
   },
   "goal": {
-    "complete": "Tamamlamak!",
+    "complete": "Tamamlandı!",
     "current": "Mevcut hedef:",
     "reached": "Son hedefimize ulaştık! Yakında burada yeni bir şey ortaya çıkmalı :)",
     "to-go": "gitmek için {{dollars}}"
   },
-  "hidden": "Gizlenmiş",
+  "hidden": "Gizli",
   "invalid-email": "Geçersiz e-posta adresi",
   "invalid-name-url": "Geçersiz ad veya url",
   "loading": "Yükleniyor...",
@@ -34,7 +34,7 @@
     "add-on": "Eklenti",
     "api": "API",
     "blog": "Blog",
-    "contribute": "Katkıda bulunmak",
+    "contribute": "Katkıda bulunmak için",
     "faq": "SSS",
     "finances": "Finans Raporları",
     "gallery": "Galeri",
@@ -44,9 +44,9 @@
     "map": "HDRI Dünya Haritası",
     "news": "Haberler",
     "plugins": "Eklentiler",
-    "privacy": "Mahremiyet",
+    "privacy": "Gizlilik",
     "source": "Kaynak",
-    "stats": "İstatistikler",
+    "stats": "İstatistik",
     "support-us": "Bizi destekle"
   },
   "optional": "İsteğe bağlı",
@@ -55,6 +55,6 @@
   "please-wait": "Lütfen bekleyin...",
   "remove-ads": "reklamları kaldır",
   "required": "Gerekli",
-  "tagline": "Genel 3B Varlık Kitaplığı",
-  "visible": "Gözle görülür"
+  "tagline": "Herkese Açık 3D Öğe Kitaplığı",
+  "visible": "Görünür"
 }
