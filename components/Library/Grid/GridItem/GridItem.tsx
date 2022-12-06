@@ -69,7 +69,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
       icon: <MdCollections />,
     })
   }
-  if (asset.rigged) {
+  if (asset.categories.includes('rigged')) {
     indicators.push({
       text: `✔ Rigged: ${t('rigged')}`,
       icon: <TbBone />,
