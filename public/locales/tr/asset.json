@@ -20,12 +20,12 @@
   "downloads-pd": "günlük",
   "formats": {
     "exr": "Kanal başına gerçek 32 bit, kayıpsız sıkıştırılmış.",
-    "hdr": "Genellikle EXR'den daha küçüktür ve daha yaygın olarak desteklenir, ancak çok nadiren daha az doğru renklere sahip olabilir.",
+    "hdr": "Genellikle EXR'dan daha küçüktür ve yaygın olarak desteklenir, ancak daha az doğru renklere nadiren sahip olabilir.",
     "incl-tex": "Gerekli tüm doku haritalarını içerir.",
     "most-software": "çoğu 3D yazılım tarafından bir dereceye kadar desteklenir, ancak malzemelerin manuel olarak ayarlanması gerekebilir.",
     "some-software": "bazı 3D yazılımlar tarafından desteklenir.",
     "thumb": "Küçük Resim / Önizleme",
-    "thumb-d": "Varlık yöneticinizde kullanmak için kullanışlı küçük resim.",
+    "thumb-d": "Öğe yöneticinizde kullanmak için kullanışlı küçük resim.",
     "tm": "HDRI'nin düşük dinamik aralıklı önizlemesi. Bazen önizleme olarak veya CG ile ilgili olmayan işlemler için kullanışlıdır ancak aydınlatma için önerilmez.",
     "zip": "Tam olarak hangi dosyaların indirileceğini seçiniz."
   },

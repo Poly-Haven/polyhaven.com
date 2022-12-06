@@ -10,7 +10,7 @@
     "form": {
       "art-name": "Eser adı",
       "assets": "Kullanılan öğeler",
-      "assets-d": "Poly Haven'dan hangi HDRI'ları, dokuları veya 3B modelleri kullandınız?",
+      "assets-d": "Poly Haven'dan hangi HDRI, dokuları veya 3D modelleri kullandınız?",
       "file-change": "Dosyayı Değiştir...",
       "file-size": "1 MB'ın altında JPG",
       "link": "Bağlantı",
@@ -36,7 +36,7 @@
     "s2p3": "Çıplaklık veya diğer NSFW içeriği kabul edilemez.",
     "s3": "Not:",
     "s3p1": "<strong>Çok</strong> sayıda başvuru alıyoruz, bu nedenle ne yazık ki galerinin dağınık olmasını önlemek için yalnızca en kaliteli sanat eserlerini kabul edebiliyoruz.",
-    "s3p2": "Başka bir ArtStation olmaya çalışmıyoruz, bu galeri Poly Haven'ın varlıklarıyla neler yapabileceğinizi göstermeye adanmıştır.",
+    "s3p2": "Başka bir ArtStation olmaya çalışmıyoruz, bu galeri Poly Haven'ın öğeleriyle neler yapabileceğinizi göstermek amacına hizmet etmektedir.",
     "s3p3": "Göndermeden önce çalışmanız hakkında geri bildirim almak isterseniz, <lnk>Discord</lnk>'da yardımsever bir topluluğumuz var. .",
     "s3p4": "Çalışmanız kabul edilir veya reddedilirse sizi e-posta ile bilgilendireceğiz. Gönderimler toplu olarak incelendiğinden bu bir veya iki gün sürebilir.",
     "s3p5": "İşte reddetmenin bazı nedenleri:",

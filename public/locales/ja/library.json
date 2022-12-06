@@ -21,6 +21,7 @@
   "backplates": "高解像度の背景画像のセットが含まれています。",
   "by-author": "{{author}}制作した",
   "early-access": "早期アクセス",
+  "lods": "このアセットには、複数のLOD（詳細レベル）が含まれています。",
   "new": "New!",
   "no-results": "結果なし",
   "no-results-keyword": "別のキーワードを使用してみてください",
