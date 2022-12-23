@@ -158,6 +158,37 @@ const AboutPage = () => {
       <h2>3. {t('about:help.s3')}</h2>
       <p>{t('about:help.s3p1')}</p>
       <p>{t('about:help.s3p2')}</p>
+
+      <h1>Acknowledgements</h1>
+      <p>
+        Firstly, big thanks to all our <LinkText href="/contribute">asset contributors</LinkText>,{' '}
+        <a href="https://github.com/Poly-Haven/polyhaven.com/graphs/contributors">code contributors</a> and{' '}
+        <LinkText href="/translate">translators</LinkText> who help us build this project, and of course all our Patrons
+        (named in the footer below) and corporate sponsors.
+      </p>
+      <p>
+        This project would also not be possible without <a href="https://www.blender.org/">Blender</a>, the basis of all
+        our work and inspiration for everything we do.
+      </p>
+      <p>
+        Thanks also to the <a href="https://sites.google.com/site/openimageio/home?pli=1">OpenImageIO</a> and{' '}
+        <a href="https://nextjs.org/">Next.js</a> projects.
+      </p>
+      <p>
+        <a href="https://www.peppercarrot.com/extras/html/2016_cat-generator/">Cat avatars</a> are generated based on
+        work by David Revoy released under the <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY license</a>.
+      </p>
+      <p>
+        <a href="https://blenderartists.org/t/lone-monk-cc0-scene-and-assets">Lone Monk</a> scene used for HDRI previews
+        created by Monorender and released as <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </p>
+      <p>
+        Icons by <a href="https://developers.google.com/fonts/docs/material_icons">Material Design</a>,{' '}
+        <a href="https://primer.style/octicons/">Octicons</a>,{' '}
+        <a href="https://github.com/tabler/tabler-icons">Tabler Icons</a>,{' '}
+        <a href="https://simpleicons.org/">Simple Icons</a>, and <a href="https://ionic.io/ionicons">Ionicons</a> using{' '}
+        <a href="https://react-icons.github.io/react-icons">react-icons</a>.
+      </p>
     </div>
   )
 }
