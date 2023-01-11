@@ -41,7 +41,7 @@
       "title": "Çevrimdışı Erişim"
     },
     "sponsor": {
-      "p1": "Adınızı ve kalıcı olarak yanına bir bağlantı yapıştırmak için her ay bir varlık seçersiniz. Bunu yapmak için bir \"belirteç\" sistemi ile çalışıyoruz.",
+      "p1": "Adınız ve yanına kalıcı olarak bir bağlantı eklemek için her ay bir öğe seçebilirsiniz. Bunu yapmak için bir \"token\" sistemi ile çalışıyoruz.",
       "p2": "Ödemeniz Patreon tarafından işlendikten sonra her ayın başında otomatik olarak bir bilet alırsınız.<ticket /> <b>Sponsor Simgesi</b> .",
       "p3": "Bu jetonu harcamanın iki yolu vardır:",
       "p3li1": "Sponsor olmak istediğiniz varlığın sayfasını ziyaret ederek ve \"<ticket /> Sayfanın sağ tarafındaki bu varlığa sponsor ol\" düğmesine tıklayın.",

@@ -17,7 +17,7 @@
     "upcoming-3d": "Mostrare tutti i contenuti imminenti e rimuovi la sfocatura",
     "upcoming-patron": "In qualità di mecenate, potete vedere sempre le attività in programma."
   },
-  "aerial": "Questo bene è stato scansionato con un drone, il che significa che è tipicamente su scala molto più grande rispetto ad altri beni.",
+  "aerial": "Questa risorsa è stata scansionata con un drone, il che significa che è tipicamente su scala molto più grande rispetto ad altre risorse.",
   "backplates": "Include una serie di immagini di sfondo ad alta risoluzione.",
   "by-author": "di {{author}}",
   "early-access": "Accesso anticipato",
@@ -26,7 +26,7 @@
   "no-results": "Nessun risultato",
   "no-results-keyword": "Prova a utilizzare una parola chiave diversa",
   "results": "risultati",
-  "rigged": "Questo modello è truccato e pronto per l'animazione.",
+  "rigged": "Questo modello è riggato e pronto per l'animazione.",
   "search-en": "Spiacente, la ricerca funziona solo in inglese!",
   "sort": {
     "downloads": "Download",

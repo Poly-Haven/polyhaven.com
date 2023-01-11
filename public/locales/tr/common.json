@@ -22,7 +22,7 @@
     "complete": "Tamamlandı!",
     "current": "Mevcut hedef:",
     "reached": "Son hedefimize ulaştık! Yakında burada yeni bir şey ortaya çıkmalı :)",
-    "to-go": "gitmek için {{dollars}}"
+    "to-go": "{{dollars}} gerekli"
   },
   "hidden": "Gizli",
   "invalid-email": "Geçersiz e-posta adresi",

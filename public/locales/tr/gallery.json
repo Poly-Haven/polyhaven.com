@@ -4,7 +4,7 @@
   "description": "Öğelerimiz kullanılarak oluşturulmuş, düzinelerce kullanıcı tarafından sunulan sanat eseri.",
   "submit": {
     "description": "Varlıklarımızdan birini kullanarak harika sanat eserleri mi yarattınız? Bu sitede gösterin!",
-    "err-asset-limit": "Sınırlı varlıklardan fazlasını {{limit}} , lütfen yalnızca oluşturmanızda görünen en belirgin olanları seçin.",
+    "err-asset-limit": "En fazla {{limit}} öğe seçebilirsiniz. Lütfen yalnızca en iyi görünen çalışmalarınızı seçin.",
     "err-jpg": "Resim JPG olmalıdır",
     "err-size": "Resminiz çok büyük, 1 MB'ın altında olmalı",
     "form": {
@@ -20,7 +20,7 @@
       "software-d": "Çalışmanızı oluşturmak için hangi 3D yazılımı kullandınız?",
       "submit": "Gönder",
       "thanks": "Gönderiniz için teşekkürler!",
-      "thanks-d": "Oluşturmanızı birkaç gün içinde inceleyeceğiz ve sonuçları size e-posta ile göndereceğiz.",
+      "thanks-d": "Çalılmanızı birkaç gün içinde inceleyeceğiz ve sonuçları size e-posta ile göndereceğiz.",
       "uploading": "Yükleniyor, lütfen Bekleyin...",
       "your-email": "E-posta adresiniz",
       "your-email-d": "Yalnızca çalışmanız yayınlandığında sizi bilgilendirmek için kullanılır. Güvenli bir şekilde saklanır ve kimseyle paylaşılmaz.",
@@ -43,7 +43,7 @@
     "s3p5l1": "Düşük eforlu işlemeler (örn. basit aydınlatma testleri).",
     "s3p5l2": "Düşük kaliteli çalışmalar.",
     "s3p5l3": "Poly Haven öğesi kullanılmadı.",
-    "s3p5l4": "Halihazırda mevcut olan başka bir sanatçıdan çok benzer render (örneğin, aynı arka plakaya sahip \"araba arka plaka\" tipi renderlar).",
+    "s3p5l4": "Halihazırda mevcut olan başka bir sanatçıya çok benzer çalışma (örneğin, aynı arka plakaya sahip \"araba arka plakası\" tipi çalışmalar).",
     "s3p5l5": "Çok fazla başvuru - genellikle sanatçı başına ayda en fazla 3 farklı resim kabul ediyoruz.",
     "s3p5l6": "Aynı projenin birden fazla render'ı (farklı kamera açıları veya aydınlatma kurulumları) - <strong>her proje için yalnızca en iyi</strong> renderinizi gönderin ve ardından insanların daha fazlasını bulabileceği ArtStation sayfanıza bağlantı verin.",
     "title": "Çalışmanızı Gönderin"
