@@ -1,27 +1,58 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
 .wrapper {
   width: 100%;
   height: 57vh;
-  min-height: 550px;
+  min-height: calc(100vh - 53px - 5em);
   color: white;
   text-shadow: 1px 1px 3px black;
-  background: url(https://cdn.polyhaven.com/site_images/home/landing.jpg?width=1903) no-repeat center center;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .placeholder {
+    @include absolute_cover;
+    background: url(https://cdn.polyhaven.com/site_images/home/slider/grassland_ruine.jpg?width=200&blur=10) no-repeat
+      center center;
+    margin: -5px;
+    background-size: cover;
+    filter: blur(5px);
+  }
+  .sliderImage {
+    @include absolute_cover;
+    background-size: cover;
+    z-index: 1;
+  }
+  .hidden {
+    opacity: 0;
+    transition-delay: 1.5s;
+  }
+  .visible {
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+  }
 
   .logo {
     height: 8rem;
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+    z-index: 4;
   }
 
   h1 {
+    position: relative;
     font-size: 3rem;
     margin: 2rem 1rem 0.5rem;
+    z-index: 4;
   }
 
   p {
+    position: relative;
     margin: 0;
+    z-index: 4;
   }
 }
