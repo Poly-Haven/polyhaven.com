@@ -92,6 +92,8 @@ const Slider = () => {
     }, 1500)
   }, [imageIndex])
 
+  const render = images[imageIndex % images.length || 0]
+
   return (
     <div
       className={styles.wrapper}
@@ -107,6 +109,16 @@ const Slider = () => {
         ref={imageA}
       />
       <div className={`${styles.sliderImage} ${imageIndex % 2 ? styles.visible : styles.hidden}`} ref={imageB} />
+      <div className={`${styles.renderCredit} ${imageIndex === null ? styles.hidden : styles.visible}`}>
+        by{' '}
+        {render.link ? (
+          <a href={render.link} rel="noopener">
+            {render.credit}
+          </a>
+        ) : (
+          render.credit
+        )}
+      </div>
       <img src="/Logo 256.png" className={styles.logo} />
       <h1>Poly Haven</h1>
       <p>{t('tagline')}</p>
