@@ -204,7 +204,7 @@ const Slider = () => {
       <div className={`${styles.renderCredit} ${imageIndex === null ? styles.hidden : styles.visible}`}>
         by{' '}
         {render.link ? (
-          <a href={render.link} rel="noopener">
+          <a href={render.link} rel="noopener" target="_blank">
             {render.credit}
           </a>
         ) : (
