@@ -1,13 +1,20 @@
 import { useTranslation } from 'next-i18next'
 import { useState, useRef, useEffect } from 'react'
 import useDivSize from 'hooks/useDivSize'
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 import styles from './Slider.module.scss'
+
+const mod = (a, b) => {
+  // Replacement for % that supports negative numbers.
+  return ((a % b) + b) % b
+}
 
 const Slider = () => {
   const { t } = useTranslation('common')
   const [imageIndex, setImageIndex] = useState(null)
   const [transitionBusy, setTransitionBusy] = useState(false)
+  const [userInControl, setUserInControl] = useState(false)
   const [images, setImages] = useState([
     {
       credit: 'Rob Tuytel',
@@ -58,11 +65,11 @@ const Slider = () => {
     if (!width || !height || imageIndex === null) return
     setTransitionBusy(true)
 
-    const renderCurrent = images[imageIndex % images.length]
-    const renderNext = images[(imageIndex + 1) % images.length]
+    const renderCurrent = images[mod(imageIndex, images.length)]
+    const renderNext = images[mod(imageIndex + 1, images.length)]
 
-    const imgCurrent = imageIndex % 2 ? imageB : imageA
-    const imgNext = imageIndex % 2 ? imageA : imageB
+    const imgCurrent = mod(imageIndex, 2) ? imageB : imageA
+    const imgNext = mod(imageIndex, 2) ? imageA : imageB
 
     const urlParams = {
       aspect_ratio: `${width}:${height}`,
@@ -92,23 +99,38 @@ const Slider = () => {
     }, 1500)
   }, [imageIndex])
 
-  const render = images[imageIndex % images.length || 0]
+  const render = images[mod(imageIndex, images.length) || 0]
 
   return (
-    <div
-      className={styles.wrapper}
-      ref={wrapperRef}
-      onClick={(_) => {
-        if (transitionBusy) return
-        setImageIndex(imageIndex + 1)
-      }}
-    >
+    <div className={styles.wrapper} ref={wrapperRef}>
       <div className={styles.placeholder} />
       <div
-        className={`${styles.sliderImage} ${imageIndex === null || imageIndex % 2 ? styles.hidden : styles.visible}`}
+        className={`${styles.sliderImage} ${
+          imageIndex === null || mod(imageIndex, 2) ? styles.hidden : styles.visible
+        }`}
         ref={imageA}
       />
-      <div className={`${styles.sliderImage} ${imageIndex % 2 ? styles.visible : styles.hidden}`} ref={imageB} />
+      <div className={`${styles.sliderImage} ${mod(imageIndex, 2) ? styles.visible : styles.hidden}`} ref={imageB} />
+      <div
+        className={styles.paddleLeft}
+        onClick={(_) => {
+          if (transitionBusy) return
+          setUserInControl(true)
+          setImageIndex(imageIndex - 1)
+        }}
+      >
+        <MdChevronLeft />
+      </div>
+      <div
+        className={styles.paddleRight}
+        onClick={(_) => {
+          if (transitionBusy) return
+          setUserInControl(true)
+          setImageIndex(imageIndex + 1)
+        }}
+      >
+        <MdChevronRight />
+      </div>
       <div className={`${styles.renderCredit} ${imageIndex === null ? styles.hidden : styles.visible}`}>
         by{' '}
         {render.link ? (

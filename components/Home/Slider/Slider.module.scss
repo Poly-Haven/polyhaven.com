@@ -15,6 +15,15 @@
   position: relative;
   overflow: hidden;
 
+  .hidden {
+    opacity: 0;
+    transition-delay: 1.5s;
+  }
+  .visible {
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+  }
+
   .placeholder {
     @include absolute_cover;
     background: url(https://cdn.polyhaven.com/site_images/home/slider/grassland_ruine.jpg?width=200&blur=10) no-repeat
@@ -28,13 +37,32 @@
     background-size: cover;
     z-index: 1;
   }
-  .hidden {
-    opacity: 0;
-    transition-delay: 1.5s;
+
+  .paddle {
+    position: absolute;
+    top: calc(50% - 0.575em);
+    font-size: 3em;
+    height: 1.15em;
+    cursor: pointer;
+    z-index: 4;
+    @include transition;
+
+    &:hover {
+      transform: scale(1.2);
+      @include transition;
+    }
+
+    > * {
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 1));
+    }
   }
-  .visible {
-    opacity: 1;
-    transition: opacity 1.5s ease-out;
+  .paddleLeft {
+    @extend .paddle;
+    left: 0;
+  }
+  .paddleRight {
+    @extend .paddle;
+    right: 0;
   }
 
   .renderCredit {
