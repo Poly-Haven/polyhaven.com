@@ -3,12 +3,86 @@ import { useState, useRef, useEffect } from 'react'
 import useDivSize from 'hooks/useDivSize'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
+import { shuffleArray } from 'utils/arrayUtils'
 import styles from './Slider.module.scss'
 
 const mod = (a, b) => {
   // Replacement for % that supports negative numbers.
   return ((a % b) + b) % b
 }
+
+const imageSet = [
+  {
+    credit: 'Vishwesh Taskar',
+    link: 'https://www.artstation.com/artwork/KO52ZX',
+    filename: '1f93945808787492934f.jpg',
+  },
+  {
+    credit: 'ARTI EKSİ SIFIR',
+    link: 'https://www.artieksisifir.com/en/selectedworks',
+    filename: 'Art Eski Sfr Visualization Studio_beachparking_M1yO.jpg',
+  },
+  {
+    credit: 'Dmitry Kremiansky',
+    link: 'https://www.artstation.com/dmitrykremiansky',
+    filename: 'Dmitry Kremiansky_winterlake01_O30K.jpg',
+  },
+  {
+    credit: 'Gregory Smith',
+    link: 'https://www.artstation.com/artwork/xznOGY',
+    filename: 'Gregory Smith_graypier_5C5s.jpg',
+  },
+  {
+    credit: 'Ján Morek',
+    link: 'http://www.janmorek.com/',
+    filename: 'jan-morek-1.jpg',
+  },
+  {
+    credit: 'Phil Derbyshire',
+    link: 'https://www.artstation.com/philderbyshire',
+    filename: 'Phil Derbyshire_mossy_forest_uc4U.jpg',
+  },
+  {
+    credit: 'Sebastien Evrard',
+    link: 'https://www.artstation.com/artwork/bK5O9n',
+    filename: 'Sebastien Evrard_kiara_1_dawn_P9sT.jpg',
+  },
+  {
+    credit: 'seunghee seo',
+    link: 'https://www.artstation.com/artwork/68Zdxn',
+    filename: 'seunghee seo_railway_bridges_5dJS.jpg',
+  },
+  {
+    credit: 'Rob Tuytel',
+    link: 'https://www.artstation.com/tuytel',
+    filename: 'grassland_ruine.jpg',
+  },
+  {
+    credit: 'Oleksii',
+    link: 'https://www.behance.net/alexgoshenskiy',
+    filename: 'Jungle mansion.jpg',
+  },
+  {
+    credit: 'Rob Tuytel',
+    link: 'https://www.artstation.com/tuytel',
+    filename: 'river_winter1.jpg',
+  },
+  {
+    credit: 'Rob Tuytel',
+    link: 'https://www.artstation.com/tuytel',
+    filename: 'forest_farmhouse.jpg',
+  },
+  {
+    credit: 'Rob Tuytel',
+    link: 'https://www.artstation.com/tuytel',
+    filename: 'river_autumn2.jpg',
+  },
+  {
+    credit: 'Rob Tuytel',
+    link: 'https://www.artstation.com/tuytel',
+    filename: 'medieval_urban_village.jpg',
+  },
+]
 
 const Slider = () => {
   const { t } = useTranslation('common')
@@ -20,32 +94,12 @@ const Slider = () => {
     {
       credit: 'Rob Tuytel',
       link: 'https://www.artstation.com/tuytel',
-      filename: 'grassland_ruine.jpg',
-    },
-    {
-      credit: 'Oleksii',
-      link: 'https://www.behance.net/alexgoshenskiy',
-      filename: 'Jungle mansion.jpg',
+      filename: 'placeholder.png',
     },
     {
       credit: 'Rob Tuytel',
       link: 'https://www.artstation.com/tuytel',
-      filename: 'river_winter1.jpg',
-    },
-    {
-      credit: 'Rob Tuytel',
-      link: 'https://www.artstation.com/tuytel',
-      filename: 'forest_farmhouse.jpg',
-    },
-    {
-      credit: 'Rob Tuytel',
-      link: 'https://www.artstation.com/tuytel',
-      filename: 'river_autumn2.jpg',
-    },
-    {
-      credit: 'Rob Tuytel',
-      link: 'https://www.artstation.com/tuytel',
-      filename: 'medieval_urban_village.jpg',
+      filename: 'placeholder.png',
     },
   ])
 
@@ -57,6 +111,7 @@ const Slider = () => {
   // Initialize
   useEffect(() => {
     if (imageIndex === null) {
+      setImages(shuffleArray(imageSet))
       setTimeout((_) => {
         // First tick happens after 5 seconds
         setTick((tick) => tick + 1)
