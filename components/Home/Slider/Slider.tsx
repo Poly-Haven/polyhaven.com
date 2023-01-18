@@ -15,6 +15,7 @@ const Slider = () => {
   const [imageIndex, setImageIndex] = useState(null)
   const [transitionBusy, setTransitionBusy] = useState(false)
   const [userInControl, setUserInControl] = useState(false)
+  const [tick, setTick] = useState(0)
   const [images, setImages] = useState([
     {
       credit: 'Rob Tuytel',
@@ -22,14 +23,9 @@ const Slider = () => {
       filename: 'grassland_ruine.jpg',
     },
     {
-      credit: 'Rob Tuytel',
-      link: 'https://www.artstation.com/tuytel',
-      filename: 'river_autumn2.jpg',
-    },
-    {
-      credit: 'Rob Tuytel',
-      link: 'https://www.artstation.com/tuytel',
-      filename: 'forest_farmhouse.jpg',
+      credit: 'Oleksii',
+      link: 'https://www.behance.net/alexgoshenskiy',
+      filename: 'Jungle mansion.jpg',
     },
     {
       credit: 'Rob Tuytel',
@@ -39,12 +35,17 @@ const Slider = () => {
     {
       credit: 'Rob Tuytel',
       link: 'https://www.artstation.com/tuytel',
-      filename: 'medieval_urban_village.jpg',
+      filename: 'forest_farmhouse.jpg',
     },
     {
-      credit: 'Oleksii',
-      link: 'https://www.behance.net/alexgoshenskiy',
-      filename: 'Jungle mansion.jpg',
+      credit: 'Rob Tuytel',
+      link: 'https://www.artstation.com/tuytel',
+      filename: 'river_autumn2.jpg',
+    },
+    {
+      credit: 'Rob Tuytel',
+      link: 'https://www.artstation.com/tuytel',
+      filename: 'medieval_urban_village.jpg',
     },
   ])
 
@@ -56,9 +57,23 @@ const Slider = () => {
   // Initialize
   useEffect(() => {
     if (imageIndex === null) {
-      setImageIndex(0)
+      setTimeout((_) => {
+        // First tick happens after 5 seconds
+        setTick((tick) => tick + 1)
+        setInterval((_) => {
+          // Subsequent ticks happen every 9 seconds
+          setTick((tick) => tick + 1)
+        }, 9000)
+      }, 5000)
     }
   }, [width])
+
+  // Auto change image on tick
+  useEffect(() => {
+    if (!userInControl && !transitionBusy) {
+      setImageIndex(imageIndex === null ? 0 : imageIndex + 1)
+    }
+  }, [tick])
 
   // Image change
   useEffect(() => {
