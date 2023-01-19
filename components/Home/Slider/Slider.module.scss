@@ -97,6 +97,7 @@
   }
 
   .logo {
+    position: relative;
     height: 8rem;
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
     z-index: 4;
@@ -105,6 +106,7 @@
   h1 {
     position: relative;
     font-size: 3rem;
+    white-space: nowrap;
     margin: 2rem 1rem 0.5rem;
     z-index: 4;
   }
@@ -112,6 +114,7 @@
   p {
     position: relative;
     margin: 0;
+    white-space: nowrap;
     z-index: 4;
   }
 }

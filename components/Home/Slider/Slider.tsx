@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next'
+import dynamic from 'next/dynamic'
 import { useState, useRef, useEffect } from 'react'
 import useDivSize from 'hooks/useDivSize'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
@@ -83,6 +84,15 @@ const imageSet = [
     filename: 'medieval_urban_village.jpg',
   },
 ]
+
+const SliderLogoDynamic = dynamic(
+  () => {
+    return import('./SliderLogo')
+  },
+  {
+    ssr: false,
+  }
+)
 
 const Slider = () => {
   const { t } = useTranslation('common')
@@ -171,12 +181,15 @@ const Slider = () => {
 
   const render = images[mod(imageIndex, images.length) || 0]
 
+  const easter = true
+
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       <div className={styles.placeholder} />
       <div
-        className={`${styles.sliderImage} ${imageIndex === null || mod(imageIndex, 2) ? styles.hidden : styles.visible
-          }`}
+        className={`${styles.sliderImage} ${
+          imageIndex === null || mod(imageIndex, 2) ? styles.hidden : styles.visible
+        }`}
         ref={imageA}
       />
       <div className={`${styles.sliderImage} ${mod(imageIndex, 2) ? styles.visible : styles.hidden}`} ref={imageB} />
@@ -210,9 +223,15 @@ const Slider = () => {
           render.credit
         )}
       </div>
-      <img src="/Logo 256.png" className={styles.logo} />
-      <h1>Poly Haven</h1>
-      <p>{t('tagline')}</p>
+      {easter ? (
+        <SliderLogoDynamic containerWidth={width} containerHeight={height} />
+      ) : (
+        <>
+          <img src="/Logo 256.png" className={styles.logo} />
+          <h1>Poly Haven</h1>
+          <p>{t('tagline')}</p>
+        </>
+      )}
     </div>
   )
 }
