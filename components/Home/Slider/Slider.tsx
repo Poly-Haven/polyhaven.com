@@ -143,8 +143,8 @@ const Slider = () => {
 
     const urlParams = {
       aspect_ratio: `${width}:${height}`,
-      width: width,
-      height: height,
+      width: width * window.devicePixelRatio,
+      height: height * window.devicePixelRatio,
     }
     const urlParamsStr = Object.entries(urlParams)
       .map(([k, v]) => `${k}=${v}`)
@@ -175,9 +175,8 @@ const Slider = () => {
     <div className={styles.wrapper} ref={wrapperRef}>
       <div className={styles.placeholder} />
       <div
-        className={`${styles.sliderImage} ${
-          imageIndex === null || mod(imageIndex, 2) ? styles.hidden : styles.visible
-        }`}
+        className={`${styles.sliderImage} ${imageIndex === null || mod(imageIndex, 2) ? styles.hidden : styles.visible
+          }`}
         ref={imageA}
       />
       <div className={`${styles.sliderImage} ${mod(imageIndex, 2) ? styles.visible : styles.hidden}`} ref={imageB} />
