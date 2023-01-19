@@ -181,7 +181,7 @@ const Slider = () => {
 
   const render = images[mod(imageIndex, images.length) || 0]
 
-  const easter = true
+  const egg = new Date().toISOString().substring(5, 10) === '04-01'
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
@@ -223,7 +223,7 @@ const Slider = () => {
           render.credit
         )}
       </div>
-      {easter ? (
+      {egg ? (
         <SliderLogoDynamic containerWidth={width} containerHeight={height} />
       ) : (
         <>
