@@ -26,8 +26,7 @@
 
   .placeholder {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/slider/grassland_ruine.jpg?width=200&blur=10) no-repeat
-      center center;
+    background: $c-background-dark no-repeat center center;
     margin: -5px;
     background-size: cover;
     filter: blur(5px);
