@@ -31,7 +31,7 @@ export const getStaticProps = async (ctx) => {
     .catch((e) => console.log(e))
 
   for (const [slug, info] of Object.entries(data)) {
-    if (!info['coords']) {
+    if (!info['coords'] || slug.endsWith('_puresky')) {
       delete data[slug]
     }
   }
