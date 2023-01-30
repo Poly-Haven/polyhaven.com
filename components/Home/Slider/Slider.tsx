@@ -101,6 +101,7 @@ const Slider = () => {
   const [userInControl, setUserInControl] = useState(false)
   const [tick, setTick] = useState(0)
   const [images, setImages] = useState([
+    // These placeholder images are probably never shown, so they're just here to keep the array from being empty ¯\_(ツ)_/¯
     {
       credit: 'Rob Tuytel',
       link: 'https://www.artstation.com/tuytel',
@@ -172,9 +173,11 @@ const Slider = () => {
 
     // Wait until after transition to fetch next image
     setTimeout(() => {
-      imgNext.current.style.zIndex = 1
-      imgCurrent.current.style.zIndex = 2
-      imgNext.current.style.background = `url(${urlNext}) no-repeat center center`
+      if (imgNext.current) {
+        imgNext.current.style.zIndex = 1
+        imgCurrent.current.style.zIndex = 2
+        imgNext.current.style.background = `url(${urlNext}) no-repeat center center`
+      }
       setTransitionBusy(false)
     }, 1500)
   }, [imageIndex])
