@@ -77,7 +77,7 @@ module.exports = {
     flag: 'TR',
   },
   uk: {
-    name: 'українська',
+    name: 'Українська',
     flag: 'UA',
   },
 }
