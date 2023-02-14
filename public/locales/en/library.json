@@ -39,6 +39,7 @@
   "by-author": "by {{author}}",
   "new": "New!",
   "backplates": "Includes a set of high-res background images.",
+  "non-square": "This asset uses non-square aspect ratio textures.",
   "rigged": "This model is rigged and ready to animate.",
   "aerial": "This asset was scanned with a drone, meaning it is typically a much larger scale than other assets.",
   "lods": "This asset has multiple LODs (levels of detail) included.",

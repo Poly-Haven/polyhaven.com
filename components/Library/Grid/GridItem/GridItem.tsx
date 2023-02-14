@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { timeago } from 'utils/dateUtils'
 
 import { MdCollections } from 'react-icons/md'
-import { TbBone, TbDrone, TbPyramid } from 'react-icons/tb'
+import { TbBone, TbDrone, TbPyramid, TbAspectRatio } from 'react-icons/tb'
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
@@ -67,6 +67,12 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
     indicators.push({
       text: `✔ Backplates: ${t('backplates')}`,
       icon: <MdCollections />,
+    })
+  }
+  if (asset.tags.includes('non square')) {
+    indicators.push({
+      text: `⚠️ Non-square: ${t('non-square')}`,
+      icon: <TbAspectRatio />,
     })
   }
   if (asset.categories.includes('rigged')) {
