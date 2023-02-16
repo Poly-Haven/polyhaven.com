@@ -8,18 +8,18 @@
   "HDRIs": "HDRI ها",
   "Models": "مدل ها",
   "Textures": "بافت ها",
-  "also-supported-by": "همچنین توسط:",
+  "also-supported-by": "همچنین حمایت شده توسط:",
   "corporate-sponsor_one": "حامی شرکتی",
   "corporate-sponsor_other": "حامیان شرکتی",
   "corporate-sponsors": "حامیان شرکتی",
   "display-name": "نام نمایشی",
   "email-address": "آدرس ایمیل",
   "footer": {
-    "join-ranks": "به صفوف بپیوندید، از Poly Haven در Patreon حمایت کنید",
-    "thanks": "با تشکر از ما<lnk> حامیان</lnk> برای امکان پذیر ساختن Poly Haven"
+    "join-ranks": "به صفوف بپیوندید، از پُلی هِون در Patreon حمایت کنید",
+    "thanks": "با تشکر از<lnk> حامیانمان</lnk> برای امکان پذیر ساختن Poly Haven"
   },
   "goal": {
-    "complete": "کامل!",
+    "complete": "کامل شده!",
     "current": "هدف فعلی:",
     "reached": "به آخرین هدفمان رسیدیم! چیز جدیدی باید به زودی اینجا ظاهر شود :)",
     "to-go": "{{dollars}} دلار باقی مانده است"
@@ -40,7 +40,7 @@
     "gallery": "آلبوم عکس",
     "home": "صفحه اصلی",
     "license": "مجوز",
-    "logout": "خروج",
+    "logout": "خارج شوید",
     "map": "نقشه جهانی HDRI",
     "news": "اخبار",
     "plugins": "پلاگین ها",
