@@ -5,8 +5,8 @@
   "Co-founder": "بنیانگذاران",
   "Director": "کارگردان",
   "Graphic-Design": "طراحی گرافیک",
-  "HDRIs": "HDRI ها",
-  "Models": "مدل ها",
+  "HDRIs": "HDRIs",
+  "Models": "مدل سه بعدی",
   "Textures": "بافت ها",
   "also-supported-by": "همچنین حمایت شده توسط:",
   "corporate-sponsor_one": "حامی شرکتی",
@@ -15,24 +15,24 @@
   "display-name": "نام نمایشی",
   "email-address": "آدرس ایمیل",
   "footer": {
-    "join-ranks": "به صفوف بپیوندید، از پُلی هِون در Patreon حمایت کنید",
+    "join-ranks": "به صفوف بپیوندید و از Poly Haven در Patreon حمایت کنید",
     "thanks": "با تشکر از<lnk> حامیانمان</lnk> برای امکان پذیر ساختن Poly Haven"
   },
   "goal": {
     "complete": "کامل شده!",
     "current": "هدف فعلی:",
-    "reached": "به آخرین هدفمان رسیدیم! چیز جدیدی باید به زودی اینجا ظاهر شود :)",
+    "reached": "به آخرین هدفمان رسیدیم! يه چيز جديد بايد به زودي اينجا ظاهر بشه :)",
     "to-go": "{{dollars}} دلار باقی مانده است"
   },
-  "hidden": "پنهان شده است",
+  "hidden": "پنهان شده",
   "invalid-email": "آدرس ایمیل نامعتبر است",
   "invalid-name-url": "نام یا آدرس اینترنتی نامعتبر است",
   "loading": "بارگذاری...",
-  "missing-invalid": "مفقود یا نامعتبر است",
+  "missing-invalid": "گمشده یا نامعتبراست",
   "nav": {
     "about-contact": "درباره/تماس",
     "add-on": "افزودنی",
-    "api": "API",
+    "api": "رابط برنامه نویسی کاربردی",
     "blog": "وبلاگ",
     "contribute": "مشارکت",
     "faq": "سوالات متداول",
@@ -56,5 +56,5 @@
   "remove-ads": "حذف تبلیغات",
   "required": "ضروری",
   "tagline": "کتابخانه دارایی سه بعدی عمومی",
-  "visible": "قابل رویت"
+  "visible": "قابل دیدن"
 }

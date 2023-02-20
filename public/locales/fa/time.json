@@ -18,7 +18,7 @@
     "hour_one": "ساعت قبل {{count}}",
     "hour_other": "ساعت قبل {{count}}",
     "month_one": "ماه پیش {{count}}",
-    "month_other": "ماه ها پیش {{count}}",
+    "month_other": "ماه پیش {{count}}",
     "week_one": "{{count}} هفته پیش",
     "week_other": "هفته پیش {{count}}",
     "year_one": "سال پیش {{count}}",
