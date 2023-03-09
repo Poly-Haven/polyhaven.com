@@ -50,6 +50,14 @@ const FaqPage = () => {
           />
         </p>
       </FaqItem>
+      <FaqItem question={t('faq:q14')} activeQ={clicked} qID="commercial">
+        <p>
+          <Trans i18nKey="faq:q14p1" t={t} components={{ lnk: <LinkText href="/license" /> }} />
+        </p>
+        <p>
+          <Trans i18nKey="faq:q14p2" t={t} components={{ lnk: <LinkText href="/corporate" /> }} />
+        </p>
+      </FaqItem>
       <FaqItem question={t('faq:q03')} activeQ={clicked} qID="commissions">
         <p>
           <Trans

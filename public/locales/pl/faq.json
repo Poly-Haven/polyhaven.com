@@ -44,5 +44,8 @@
   "q13p1": "Kiedy uruchomiliśmy 3D Model Haven w 2020 roku, zleciliśmy tam opublikowanie kilku modeli broni różnych autorów. Zostały one teraz usunięte, ponieważ zakładamy, że ich twórcy oparli swoją pracę na projektach prawdziwej broni, które prawdopodobnie są własnością intelektualną producentów.",
   "q13p2": "Jest to legalna szara strefa, której wolelibyśmy uniknąć – same modele są CC0, ale design przedmiotów, na których mogą być oparte, prawdopodobnie nie jest – więc bezpieczniejszą opcją jest po prostu usuwanie ich z naszej strony.",
   "q13p3": "W przyszłości planujemy zastąpić je modelami opartymi na fikcyjnych projektach.",
+  "q14": "Czy mogę wytrenować SI za pomocą Twoich treści?",
+  "q14p1": "Absolutnie! Udostępniamy wszystkie nasze zasoby na <lnk>licencji CC0</lnk> (zasadniczo wolnej od praw autorskich w jurysdykcjach, które ją wspierają), co pozwala robić z nimi co tylko chcesz, w tym trenować modele AI. Chcielibyśmy pomóc w rozwoju branży i mamy nadzieję, że dostarczenie wysokiej jakości zbioru danych do treningu może pomóc w poprawie wyników modeli AI.",
+  "q14p2": "Jeśli pracujesz w firmie lub grupie badawczej, która korzysta z naszej biblioteki i chciałbyś pomóc nam powiększyć zbiór danych, który udostępniamy dla wszystkich, poprawiając jakość własnych wyników, <lnk>prosimy o pomoc w finansowaniu nas</lnk>.",
   "title": "Często Zadawane Pytania (FAQ)"
 }

@@ -44,5 +44,8 @@
   "q13p1": "Amikor 2020-ban elindítottuk a 3D Model Havent, megbíztunk néhány fegyvermodellt különböző szerzőktől, hogy közzétegyük ott. Ezeket most eltávolítottuk, mivel feltételezzük, hogy készítőik munkájukat valós fegyvertervekre alapozták, amelyek valószínűleg a gyártók szellemi tulajdonát képezik.",
   "q13p2": "Ez egy jogi szürke terület, amelyet inkább kerülni szeretnénk – maguk a modellek CC0-sek, de a tervek, amelyeken alapulhatnak, valószínűleg nem –, így mindenki számára biztonságosabb, ha csak eltávolítjuk őket az oldalról.",
   "q13p3": "A jövőben azt tervezzük, hogy lecseréljük őket eredeti kitalált tervek alapján készült modellekre.",
+  "q14": "Képezhetek mesterséges intelligenciát az Ön tartalmaival?",
+  "q14p1": "Abszolút! Minden eszközünket a <lnk>CC0 licenc</lnk> alatt adjuk ki (lényegében szerzői jogmentes az ezt támogató joghatóságokban), ami lehetővé teszi, hogy azt csinálj velük, amit csak akarsz, beleértve az AI modellek képzését is. Szeretnénk segíteni az iparág fejlődését, és reméljük, hogy egy kiváló minőségű adathalmaz biztosítása a képzéshez segíthet javítani az Ön AI-modelljeinek eredményeit.",
+  "q14p2": "Ha Ön olyan vállalatnál vagy kutatócsoportnál dolgozik, amely hasznot húz a könyvtárunkból, és szeretne segíteni abban, hogy bővítsük az általunk mindenki számára elérhetővé tett adathalmazt, javítva ezzel saját eredményeinek minőségét, <lnk>kérjük, segítsen támogatni minket</lnk>.",
   "title": "Gyakran Ismételt Kérdések"
 }

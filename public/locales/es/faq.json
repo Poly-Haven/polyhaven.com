@@ -44,5 +44,8 @@
   "q13p1": "Cuando lanzamos 3D Model Haven en 2020, encargamos algunos modelos de armas de varios autores para publicar allí. Estos ahora se han eliminado, ya que asumimos que sus creadores basaron su trabajo en diseños de armas reales, que probablemente sean propiedad intelectual de los fabricantes.",
   "q13p2": "Esta es un área gris legal que preferimos evitar: los modelos en sí mismos son CC0, pero los diseños en los que se pueden basar probablemente no lo sean, por lo que es más seguro para todos si simplemente los eliminamos del sitio.",
   "q13p3": "En el futuro planeamos reemplazarlos con modelos basados en diseños ficticios originales.",
+  "q14": "¿Puedo entrenar a una IA con sus contenidos?",
+  "q14p1": "Por supuesto. Liberamos todos nuestros activos bajo la <lnk>licencia CC0</lnk> (esencialmente libre de derechos de autor en las jurisdicciones que lo soportan) que le permite hacer lo que quiera con ellos, incluyendo el entrenamiento de modelos de IA. Nos encantaría ayudar a la industria a crecer y esperamos que proporcionar un conjunto de datos de alta calidad para entrenar pueda ayudar a mejorar los resultados de sus modelos de IA.",
+  "q14p2": "Si trabaja para una empresa o grupo de investigación que se beneficia de nuestra biblioteca y desea ayudarnos a ampliar el conjunto de datos que ponemos a disposición de todos, mejorando la calidad de sus propios resultados, <lnk>ayúdenos a financiarnos</lnk>.",
   "title": "Preguntas frecuentes"
 }

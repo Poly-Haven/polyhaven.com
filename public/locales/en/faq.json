@@ -44,5 +44,8 @@
   "q13": "Where did the gun models go?",
   "q13p1": "When we launched 3D Model Haven in 2020, we commissioned a few gun models from various authors to publish there. These have now been removed, as we assume their creators based their work off of real-world gun designs, which is likely the intellectual property of the manufacturers.",
   "q13p2": "This is a legal grey area we'd rather avoid - the models themselves are CC0, but the designs they may be based off of probably aren't - so it's safer for everyone if we just remove them from the site.",
-  "q13p3": "In future we plan to replace them with models based on original fictional designs."
+  "q13p3": "In future we plan to replace them with models based on original fictional designs.",
+  "q14": "Can I train an AI with your content?",
+  "q14p1": "Absolutely! We release all our assets under the <lnk>CC0 license</lnk> (essentially copyright-free in jurisdictions that support it) which allows you to do whatever you want with them, including training AI models. We would love to help the industry grow and we hope that providing a high quality dataset to train with can help improve outputs of your AI models.",
+  "q14p2": "If you work for a company or research group that benefits from our library and would like to help us grow the dataset we make available for everone, improving the quality of your own outputs, <lnk>please help fund us</lnk>."
 }

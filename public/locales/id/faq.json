@@ -44,5 +44,8 @@
   "q13p1": "Ketika kami meluncurkan 3D Model Haven pada tahun 2020, kami menugaskan beberapa model senjata dari berbagai penulis untuk diterbitkan di sana. Ini sekarang telah dihapus, karena kami menganggap pencipta mereka mendasarkan pekerjaan mereka dari desain senjata dunia nyata, yang kemungkinan merupakan kekayaan intelektual dari produsen.",
   "q13p2": "Ini adalah area hukum abu-abu yang sebaiknya kami hindari - modelnya sendiri adalah CC0, tetapi desain yang menjadi dasarnya mungkin bukan - jadi lebih aman bagi semua orang jika kami menghapusnya dari situs.",
   "q13p3": "Di masa depan kami berencana untuk menggantinya dengan model berdasarkan desain fiksi asli.",
+  "q14": "Dapatkah saya melatih AI dengan konten Anda?",
+  "q14p1": "Tentu saja! Kami merilis semua aset kami di bawah <lnk>lisensi CC0</lnk> (pada dasarnya bebas hak cipta di yurisdiksi yang mendukungnya) yang memungkinkan Anda untuk melakukan apa pun yang Anda inginkan dengan aset-aset tersebut, termasuk melatih model-model AI. Kami ingin membantu industri ini berkembang dan kami berharap dengan menyediakan dataset berkualitas tinggi untuk dilatih dapat membantu meningkatkan hasil dari model AI Anda.",
+  "q14p2": "Jika Anda bekerja di perusahaan atau kelompok penelitian yang memanfaatkan perpustakaan kami dan ingin membantu kami mengembangkan set data yang kami sediakan untuk semua orang, dengan meningkatkan kualitas hasil penelitian Anda, mohon <lnk>bantu mendanai kami</lnk>.",
   "title": "Pertanyaan Sering Diajukan"
 }
