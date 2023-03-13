@@ -7,14 +7,16 @@ import debounce from 'lodash.debounce'
 
 import styles from './Library.module.scss'
 
-const Library = ({ assetType, categories, author, search, sort }) => {
+const Library = ({ assetType, categories, author, search, strictSearch, sort }) => {
   const [authorState, setAuthor] = useState(author)
   const [searchState, setSearch] = useState(search)
+  const [strictSearchState, setStrictSearch] = useState(strictSearch)
   const [sortState, setSort] = useState(sort)
 
   const setSearchDebounced = useCallback(
     debounce((newSearchText) => {
       setSearch(newSearchText)
+      if (strictSearchState) setStrictSearch(false)
     }, 300),
     []
   )
@@ -34,6 +36,8 @@ const Library = ({ assetType, categories, author, search, sort }) => {
           setAuthor={setAuthor}
           search={searchState}
           setSearchDebounced={setSearchDebounced}
+          strictSearch={strictSearchState}
+          setStrictSearch={setStrictSearch}
           sort={sortState}
           setSort={setSort}
         />

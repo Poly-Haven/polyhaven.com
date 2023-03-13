@@ -50,6 +50,7 @@ const LibraryPage = (props) => {
         categories={props.categories}
         author={props.author}
         search={props.search}
+        strictSearch={props.strictSearch}
         sort={props.sort}
       />
     </>
@@ -61,6 +62,7 @@ export async function getServerSideProps(context) {
   const assetType = params.shift()
   const author = context.query.a
   const search = context.query.s
+  const strictSearch = context.query.strict
   let sort = context.query.o
 
   if (typesAvailable[assetType] === undefined) {
@@ -84,6 +86,7 @@ export async function getServerSideProps(context) {
       categories: params,
       author: author ? author : '',
       search: search ? search : '',
+      strictSearch: strictSearch ? true : false,
       sort: sort ? sort : 'hot',
     },
   }

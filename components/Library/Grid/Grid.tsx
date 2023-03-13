@@ -174,6 +174,14 @@ const Grid = (props) => {
       let srID = Object.keys(data)[sr.refIndex]
       filteredData[srID] = data[srID]
     }
+    if (props.strictSearch) {
+      // Used to remove results that don't have a tag that exactly matches the search term
+      for (const [k, v] of Object.entries(filteredData)) {
+        if (!v['tags'].includes(props.search)) {
+          delete filteredData[k]
+        }
+      }
+    }
     sortedKeys = Object.keys(filteredData)
   }
 
