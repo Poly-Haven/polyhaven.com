@@ -1,0 +1,46 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  padding: 1rem;
+  text-align: center;
+}
+
+.collectionsList {
+  @include flex(row, true, true);
+}
+
+.collection {
+  max-width: 33%;
+  padding: 1rem;
+  color: $c-text-light;
+  background: $c-background-lightish;
+  border: 1px solid $c-background-light;
+  @include drop-shadow;
+
+  img {
+    max-width: 100%;
+  }
+
+  .row {
+    @include flex(row);
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .col {
+    @include flex(column);
+
+    * {
+      margin: 0;
+    }
+  }
+}
+
+.alignLeft {
+  text-align: left;
+}
+.alignRight {
+  text-align: right;
+}
