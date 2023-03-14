@@ -91,7 +91,7 @@ const Nav = () => {
               <Blender /> {t('common:nav.add-on')}
             </>
           }
-          link="https://blendermarket.com/products/poly-haven-asset-browser"
+          link="/plugins/blender"
         />
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
         <NavItem
