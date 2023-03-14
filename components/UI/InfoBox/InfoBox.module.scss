@@ -1,0 +1,33 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  background: rgba($c-blue, 0.3);
+  border: 1px solid $c-blue;
+  padding: 1em;
+  @include drop-shadow;
+
+  .header {
+    font-weight: bold;
+    color: white;
+    margin-top: 0;
+    @include flex(row, true);
+
+    svg {
+      font-size: 2em;
+      margin-right: 0.3em;
+    }
+  }
+
+  a {
+    color: $c-blue;
+    box-shadow: 0 1px 0 $c-blue;
+    @include transition();
+
+    &:hover {
+      color: $c-blue-light;
+      box-shadow: 0 3px 0 $c-blue;
+    }
+  }
+}

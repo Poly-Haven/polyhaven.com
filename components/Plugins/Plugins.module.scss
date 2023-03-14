@@ -1,0 +1,140 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  h1 {
+    text-align: center;
+    // font-size: 3em;
+  }
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2em;
+  }
+  .callToAction {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 2em;
+  }
+
+  video {
+    width: 100%;
+  }
+
+  hr {
+    margin: 2em 0;
+  }
+}
+
+.row {
+  @include flex(row, true);
+  justify-content: space-evenly;
+
+  .callToAction {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+}
+.purchaseOption {
+  @include flex(column, true, true);
+  background: $c-background-light;
+  border: 1px solid $c-background-lighter;
+  @include drop-shadow;
+  padding: 3em;
+  margin: 1em;
+
+  svg {
+    width: 150px;
+    height: 150px;
+    padding: 1em;
+    overflow: visible;
+    background-color: rgba(white, 0.3);
+    border: 1px solid rgba(white, 0.3);
+    border-radius: 50%;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 0;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+
+.primaryFeature {
+  margin: 2em 0.5em 0;
+  text-align: center;
+
+  svg {
+    font-size: 8em;
+  }
+}
+
+.feature {
+  @include flex(row, true, true);
+  text-align: right;
+  margin: 2em 0;
+  @include transition;
+
+  &:hover {
+    background-color: $c-background-lightish;
+    @include transition;
+  }
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column-reverse !important;
+  }
+
+  .images {
+    width: 440px;
+    max-width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    line-height: 0;
+
+    img {
+      width: 440px;
+      max-width: 100%;
+    }
+
+    .hover {
+      @include absolute_cover;
+      @include transition;
+    }
+  }
+
+  .featureText {
+    margin: 1em 0;
+    padding: 0 1em;
+  }
+}
+.feature:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: left;
+}
+
+.green {
+  color: $c-green;
+}
+.blue {
+  color: $c-blue;
+}
+.yellow {
+  color: $c-yellow;
+}
+
+.spacer {
+  margin: 4em 0;
+}
+.hidden {
+  opacity: 0;
+  @include transition;
+}
