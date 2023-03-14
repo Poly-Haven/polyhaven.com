@@ -9,15 +9,48 @@
 
 .collectionsList {
   @include flex(row, true, true);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1em;
 }
 
 .collection {
-  max-width: 33%;
-  padding: 1rem;
-  color: $c-text-light;
   background: $c-background-lightish;
   border: 1px solid $c-background-light;
   @include drop-shadow;
+
+  .collectionInner {
+    padding: 1rem;
+    color: $c-text-light;
+    position: relative;
+
+    .banner {
+      @include absolute_cover;
+      margin: 1rem;
+      text-align: left;
+      overflow: hidden;
+
+      .bannerInner {
+        font-size: 0.9rem;
+        text-align: center;
+        display: inline-block;
+        background: $c-accent;
+        color: $c-text-bright;
+        padding: 0.7em;
+        width: 250px;
+        transform: rotate(-30deg);
+        transform-origin: top left;
+        position: relative;
+        left: -48px;
+        top: 100px;
+        font-weight: bold;
+
+        svg {
+          vertical-align: top;
+        }
+      }
+    }
+  }
 
   img {
     max-width: 100%;

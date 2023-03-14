@@ -13,7 +13,7 @@ export default function HomePage() {
       <Head
         title={t('collections:title')}
         description={t('collections:description')}
-        url="/"
+        url="/collections"
         image="https://cdn.polyhaven.com/collections/the-shed.png?width=630"
       />
       <Collections />

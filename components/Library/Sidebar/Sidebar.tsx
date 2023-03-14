@@ -100,7 +100,7 @@ const Sidebar = (props) => {
                       >
                         <MdKeyboardArrowRight className={styles.caret} />
                         {t_c('nav.collections')}
-                        <div className={styles.num}>99</div>
+                        <div className={styles.num}>3</div>
                       </a>
                     </Link>
                   </div>
