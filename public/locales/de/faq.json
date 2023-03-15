@@ -14,7 +14,7 @@
   "q04p2": "In unseren <lnk>Öffentlichen Finanzberichten</lnk> veröffentlichen wir die Einzelheiten unserer finanziellen Arbeit.",
   "q05": "Was ist ein HDRI überhaupt?",
   "q05p1": "Im Allgemeinen ist ein HDRI (High Dynamic Range Image) einfach ein Bild, das mehr als 8 Bit Daten pro Pixel und Kanal enthält. Bildformate wie JPG und PNG haben in der Regel 8 Bit und werden manchmal als \"LDR\"-Bilder (Low Dynamic Range) bezeichnet, während Bildformate wie <lnk1>EXR</lnk1> und <lnk2>HDR</lnk2> mehr Daten speichern und daher HDRIs sind.",
-  "q05p2": "In der CG-Welt (und auf dieser Website) verwenden wir jedoch den Begriff \"HDRI\", um ein 32-Bit-360x180-Grad-<lnk>gleichrechteckig</lnk> Bild zu beschreiben, das für die Beleuchtung von CG-Szenen verwendet wird.",
+  "q05p2": "In der CG-Welt (und auf dieser Website) verwenden wir jedoch den Begriff \"HDRI\", um ein 32-Bit-360x180-Grad-<lnk>äquirektanguläres</lnk> Bild zu beschreiben, das für die Beleuchtung von CG-Szenen verwendet wird.",
   "q05p3": "HDRIs werden oft als einzige Lichtquelle verwendet, um eine sehr realistisch beleuchtete Szene zu schaffen oder um die Beleuchtung von Videomaterial anzupassen (mit einem HDRI, das am selben Set aufgenommen wurde, an dem auch das Video gedreht wurde). Aber natürlich werden sie auch zur Ergänzung von Standard-Beleuchtungstechniken und zum Hinzufügen von Details zu Reflexionen verwendet.",
   "q06": "Wie verwende ich eure HDRIs?",
   "q06p1": "Es ist super einfach und unterscheidet sich nicht von der Verwendung anderer HDRIs. Hier sind einige kurze Videos, die dir genau zeigen, wie es geht:",
@@ -44,8 +44,8 @@
   "q13p1": "Als wir im Jahr 2020 3D Model Haven ins Leben riefen, gaben wir einige Waffenmodelle bei verschiedenen Autoren in Auftrag, um sie dort zu veröffentlichen. Diese wurden nun entfernt, da wir davon ausgehen, dass ihre Schöpfer ihre Arbeit auf realen Waffendesigns basierten, die wahrscheinlich das geistige Eigentum der Hersteller sind.",
   "q13p2": "Das ist eine rechtliche Grauzone, die wir lieber vermeiden möchten - die Modelle selbst sind CC0, aber die Entwürfe, auf denen sie basieren, sind es wahrscheinlich nicht - also ist es für alle sicherer, wenn wir sie einfach von der Website entfernen.",
   "q13p3": "In Zukunft wollen wir sie durch Modelle ersetzen, die auf fiktiven Originalentwürfen basieren.",
-  "q14": "Kann ich eine KI mit Ihren Inhalten trainieren?",
-  "q14p1": "Auf jeden Fall! Wir veröffentlichen alle unsere Daten unter der <lnk>CC0-Lizenz</lnk> (im Wesentlichen urheberrechtsfrei in Ländern, die dies unterstützen), die es Ihnen erlaubt, damit zu tun, was Sie wollen, einschließlich des Trainings von KI-Modellen. Wir möchten der Branche helfen, zu wachsen, und hoffen, dass die Bereitstellung eines hochwertigen Datensatzes zum Trainieren die Ergebnisse Ihrer KI-Modelle verbessern kann.",
-  "q14p2": "Wenn Sie für ein Unternehmen oder eine Forschungsgruppe arbeiten, das/die von unserer Bibliothek profitiert, und uns helfen möchten, den Datenbestand zu erweitern, den wir allen zur Verfügung stellen, um die Qualität Ihrer eigenen Ergebnisse zu verbessern, <lnk>dann helfen Sie uns bitte bei der Finanzierung</lnk>.",
+  "q14": "Kann ich eine KI mit euren Inhalten trainieren?",
+  "q14p1": "Auf jeden Fall! Wir veröffentlichen alle unsere Daten unter der <lnk>CC0-Lizenz</lnk> (im Wesentlichen urheberrechtsfrei in Ländern, die dies unterstützen). Die erlaubt es Ihnen, damit zu tun, was Sie wollen, einschließlich des Trainings von KI-Modellen. Wir möchten der Branche wachsen helfen, und hoffen, dass die Bereitstellung eines hochwertigen Datensatzes zum Trainieren die Ergebnisse Ihrer KI-Modelle verbessern kann.",
+  "q14p2": "Wenn Sie für ein Unternehmen oder eine Forschungsgruppe arbeiten, das/die von unserer Bibliothek profitiert. Wollen Sie uns helfen, den Datenbestand zu erweitern, den wir allen zur Verfügung stellen, um damit auch die Qualität Ihrer eigenen Ergebnisse zu verbessern?<lnk>Dann helfen Sie uns bitte bei der Finanzierung.</lnk>.",
   "title": "Häufig gestellte Fragen"
 }
