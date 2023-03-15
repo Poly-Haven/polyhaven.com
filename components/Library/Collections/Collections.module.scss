@@ -18,9 +18,16 @@
   background: $c-background-lightish;
   border: 1px solid $c-background-light;
   @include drop-shadow;
+  @include transition;
+
+  &:hover {
+    filter: brightness(1.1);
+    @include transition;
+  }
 
   .collectionInner {
     padding: 1rem;
+    max-width: 580px;
     color: $c-text-light;
     position: relative;
 
@@ -29,6 +36,7 @@
       margin: 1rem;
       text-align: left;
       overflow: hidden;
+      pointer-events: none;
 
       .bannerInner {
         font-size: 0.9rem;
@@ -60,6 +68,51 @@
     @include flex(row);
     justify-content: space-between;
     width: 100%;
+  }
+
+  .assetList {
+    @include flex(row, true, false);
+    overflow-x: hidden;
+    margin-top: 1em;
+    position: relative;
+
+    .asset {
+      flex-shrink: 0;
+      padding: 0.2em;
+      @include transition;
+
+      &:hover {
+        filter: brightness(1.2);
+        @include transition;
+      }
+    }
+
+    .arrow {
+      position: absolute;
+      right: 0;
+      top: -0.2em;
+      bottom: 0;
+      padding-left: 1.5em;
+      left: calc(100% - 3em);
+      pointer-events: none;
+      font-size: 2rem;
+      color: white;
+      background: linear-gradient(90deg, transparent, $c-background-lightish);
+      @include center;
+
+      svg {
+        padding: 0;
+        border-radius: 50%;
+        pointer-events: all;
+        @include transition;
+
+        &:hover {
+          padding: 0.2em;
+          background: $c-accent;
+          @include transition;
+        }
+      }
+    }
   }
 
   .col {
