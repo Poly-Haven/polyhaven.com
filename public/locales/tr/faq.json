@@ -44,8 +44,8 @@
   "q13p1": "2020'de 3D Model Haven'ı piyasaya sürdüğümüzde, orada yayınlamak için çeşitli sanatçılardan birkaç silah modeli yükledik. Yaratıcılarının çalışmalarını muhtemelen üreticilerin fikri mülkiyeti olan gerçek dünya silah tasarımlarına dayandırdığını varsaydığımız için bunlar artık kaldırıldı.",
   "q13p2": "Bu, kaçınmayı tercih ettiğimiz yasal bir gri alandır - modellerin kendileri CC0'dır, ancak temel aldıkları tasarımlar muhtemelen değildir - bu yüzden onları siteden kaldırmak herkes için daha güvenli olur.",
   "q13p3": "Gelecekte, onları orijinal kurgusal tasarımlara dayanan modellerle değiştirmeyi planlıyoruz.",
-  "q14": "İçeriğinizle bir yapay zekayı eğitebilir miyim?",
-  "q14p1": "Kesinlikle! Tüm varlıklarımızı <lnk>CC0 lisansı</lnk> altında yayınlıyoruz (bunu destekleyen yargı bölgelerinde esasen telif hakkı yoktur), bu da AI modellerini eğitmek de dahil olmak üzere onlarla istediğiniz her şeyi yapmanıza olanak tanır. Sektörün büyümesine yardımcı olmayı çok isteriz ve eğitmek için yüksek kaliteli bir veri seti sağlamanın YZ modellerinizin çıktılarını iyileştirmeye yardımcı olabileceğini umuyoruz.",
+  "q14": "İçeriğinizle bir yapay zekayı kullanabilir miyim?",
+  "q14p1": "Kesinlikle! Tüm öğelerimizi <lnk>CC0 lisansı</lnk> altında yayınlıyoruz (bunu destekleyen yargı bölgelerinde esasen telif hakkı yoktur), bu da AI modellerini deneyimlemek de dahil olmak üzere onlarla istediğiniz her şeyi yapmanıza olanak tanır. Sektörün büyümesine yardımcı olmayı çok istiyor ve gelişmek için yüksek kaliteli bir veri olanağı sağlamanın AI modellerinizin çıktılarını iyileştirmeye yardımcı olabileceğini umuyoruz.",
   "q14p2": "Kütüphanemizden yararlanan bir şirket veya araştırma grubu için çalışıyorsanız ve herkesin kullanımına sunduğumuz veri setini büyütmemize ve kendi çıktılarınızın kalitesini artırmamıza yardımcı olmak istiyorsanız, <lnk>lütfen bize fon</lnk> sağlamaya yardımcı olun.",
   "title": "Sıkça Sorulan Sorular"
 }

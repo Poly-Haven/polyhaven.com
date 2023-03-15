@@ -50,7 +50,8 @@
     "contribute": "Contribute",
     "api": "API",
     "source": "Source",
-    "logout": "Logout"
+    "logout": "Logout",
+    "collections": "Collections"
   },
   "footer": {
     "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible",

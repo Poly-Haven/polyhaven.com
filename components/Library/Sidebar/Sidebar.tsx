@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { assetTypeName } from 'utils/assetTypeName'
-import { MdApps, MdFilterList, MdFirstPage, MdUnarchive } from 'react-icons/md'
+import { MdApps, MdFilterList, MdFirstPage, MdUnarchive, MdKeyboardArrowRight } from 'react-icons/md'
 
 import Button from 'components/UI/Button/Button'
 import DisplayAd from 'components/Ads/DisplayAd'
@@ -86,6 +86,28 @@ const Sidebar = (props) => {
             <h2 id="typeHeader">{typeHeader}</h2>
           </div>
           <CategoryList assetType={props.assetType} categories={props.categories} level={-1} />
+          {props.assetType === 'all' && (
+            <>
+              <hr />
+              <div>
+                <div>
+                  <div>
+                    <Link href="/collections">
+                      <a
+                        className={`
+                  ${styles.cat}
+                  `}
+                      >
+                        <MdKeyboardArrowRight className={styles.caret} />
+                        {t_c('nav.collections')}
+                        <div className={styles.num}>3</div>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <div className={styles.spacer} />
         <hr />

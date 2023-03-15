@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
 import locales from 'utils/locales'
 
-import { MdMenu, MdExpandLess, MdAccountCircle, MdClose } from 'react-icons/md'
+import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder } from 'react-icons/md'
 import { IoMdLogIn } from 'react-icons/io'
 
 import useStoredState from 'hooks/useStoredState'
@@ -83,6 +83,16 @@ const Nav = () => {
               </span>
             }
             link="/models"
+          />
+          <hr />
+          <NavItem
+            text={
+              <span className={styles.assetType}>
+                <MdFolder />
+                {t('common:nav.collections')}
+              </span>
+            }
+            link="/collections"
           />
         </NavItem>
         <NavItem
