@@ -36,7 +36,7 @@ const CallToAction = () => {
           <strong>$5/month</strong>
         </p>
         <p>
-          Includes other perks
+          Includes other rewards
           <br />
           Cancel any time
         </p>
