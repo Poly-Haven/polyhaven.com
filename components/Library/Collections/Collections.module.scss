@@ -18,12 +18,6 @@
   background: $c-background-lightish;
   border: 1px solid $c-background-light;
   @include drop-shadow;
-  @include transition;
-
-  &:hover {
-    filter: brightness(1.1);
-    @include transition;
-  }
 
   .collectionInner {
     padding: 1rem;

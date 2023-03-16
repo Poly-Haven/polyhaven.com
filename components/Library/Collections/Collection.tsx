@@ -20,56 +20,60 @@ const Collection = ({ collectionId, data }) => {
   const buttonStyle = { whiteSpace: 'nowrap', margin: 0, padding: '0.5em 0.8em', width: 'calc(100% - 2em - 2px)' }
 
   return (
-    <Link href={collectionLink}>
-      <a className={styles.collection}>
-        <div className={styles.collectionInner}>
-          <img src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=580`} alt={`${data.name}`} />
-          {data.community && (
-            <div className={styles.banner}>
-              <div className={styles.bannerInner}>
-                <Heart /> Community Project
-              </div>
-            </div>
-          )}
-
-          <div className={styles.row}>
-            <div className={`${styles.col} ${styles.alignLeft}`}>
-              <h2>{data.name}</h2>
-              <p>{data.description}</p>
-            </div>
-            <div className={styles.buttonCol}>
-              <Button text="View Assets" href={collectionLink} style={buttonStyle} />
-              {data.scene && (
-                <>
-                  {Object.keys(data.scene).map((software) => (
-                    <Button
-                      text="Scene File"
-                      href={data.scene[software]}
-                      icon={softwareIcons[software]}
-                      style={buttonStyle}
-                      color="hollow"
-                    />
-                  ))}
-                </>
-              )}
+    <div className={styles.collection}>
+      <div className={styles.collectionInner}>
+        <Link href={collectionLink}>
+          <a>
+            <img src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=580`} alt={`${data.name}`} />
+          </a>
+        </Link>
+        {data.community && (
+          <div className={styles.banner}>
+            <div className={styles.bannerInner}>
+              <Heart /> Community Project
             </div>
           </div>
+        )}
 
-          <div className={styles.assetList}>
-            {data.assets.map((slug) => (
-              <Link href="/a/[id]" as={`/a/${slug}`}>
-                <a className={styles.asset}>
-                  <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=64&height=64 `} />
-                </a>
-              </Link>
-            ))}
-            <div className={styles.arrow}>
-              <MdArrowForward />
-            </div>
+        <div className={styles.row}>
+          <div className={`${styles.col} ${styles.alignLeft}`}>
+            <h2>{data.name}</h2>
+            <p>{data.description}</p>
+          </div>
+          <div className={styles.buttonCol}>
+            <Button text="View Assets" href={collectionLink} style={buttonStyle} />
+            {data.scene && (
+              <>
+                {Object.keys(data.scene).map((software) => (
+                  <Button
+                    text="Scene File"
+                    href={data.scene[software]}
+                    icon={softwareIcons[software]}
+                    style={buttonStyle}
+                    color="hollow"
+                  />
+                ))}
+              </>
+            )}
           </div>
         </div>
-      </a>
-    </Link>
+
+        <div className={styles.assetList}>
+          {data.assets.map((slug) => (
+            <Link href="/a/[id]" as={`/a/${slug}`}>
+              <a className={styles.asset}>
+                <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=64&height=64 `} />
+              </a>
+            </Link>
+          ))}
+          <Link href={collectionLink}>
+            <a className={styles.arrow}>
+              <MdArrowForward />
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
   )
 }
 
