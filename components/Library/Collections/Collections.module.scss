@@ -70,6 +70,13 @@
     width: 100%;
   }
 
+  .buttonCol {
+    @include flex(column, true, true);
+    margin: 0.5em 0;
+    margin-left: 0.5em;
+    gap: 0.3em;
+  }
+
   .assetList {
     @include flex(row, true, false);
     overflow-x: hidden;

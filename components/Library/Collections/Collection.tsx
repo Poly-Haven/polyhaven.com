@@ -15,8 +15,12 @@ const Collection = ({ collectionId, data }) => {
     unreal: <Unreal />,
   }
 
+  const collectionLink = `/all?s=collection: ${collectionId}&strict=true`
+
+  const buttonStyle = { whiteSpace: 'nowrap', margin: 0, padding: '0.5em 0.8em', width: 'calc(100% - 2em - 2px)' }
+
   return (
-    <Link href={`/all?s=collection: ${collectionId}&strict=true`}>
+    <Link href={collectionLink}>
       <a className={styles.collection}>
         <div className={styles.collectionInner}>
           <img src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=580`} alt={`${data.name}`} />
@@ -33,18 +37,22 @@ const Collection = ({ collectionId, data }) => {
               <h2>{data.name}</h2>
               <p>{data.description}</p>
             </div>
-            {data.scene && (
-              <div>
-                {Object.keys(data.scene).map((software) => (
-                  <Button
-                    text="Download Scene File"
-                    href={data.scene[software]}
-                    icon={softwareIcons[software]}
-                    style={{ whiteSpace: 'nowrap' }}
-                  />
-                ))}
-              </div>
-            )}
+            <div className={styles.buttonCol}>
+              <Button text="View Assets" href={collectionLink} style={buttonStyle} />
+              {data.scene && (
+                <>
+                  {Object.keys(data.scene).map((software) => (
+                    <Button
+                      text="Scene File"
+                      href={data.scene[software]}
+                      icon={softwareIcons[software]}
+                      style={buttonStyle}
+                      color="hollow"
+                    />
+                  ))}
+                </>
+              )}
+            </div>
           </div>
 
           <div className={styles.assetList}>
