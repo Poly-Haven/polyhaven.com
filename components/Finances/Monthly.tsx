@@ -243,10 +243,6 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
           </li>
         )}
       </ul>
-      <div style={{ flexGrow: 1 }} />
-      <p style={{ textAlign: 'right' }}>
-        <strong>Coming soon:</strong> Comparison of Patreon tiers
-      </p>
       <Tooltip />
     </div>
   )
