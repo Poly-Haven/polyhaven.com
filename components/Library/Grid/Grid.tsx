@@ -1,9 +1,10 @@
 import { useTranslation } from 'next-i18next'
 import Fuse from 'fuse.js'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0'
 import LazyLoad from 'react-lazy-load'
+import debounce from 'lodash.debounce'
 import { MdSearch, MdClose } from 'react-icons/md'
 import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle, MdSettings } from 'react-icons/md'
 
@@ -38,6 +39,8 @@ const Grid = (props) => {
   const [news, setNews] = useState(null)
   const { locale } = useRouter()
 
+  let sortedKeys = []
+
   const [searchInputFieldText, setSearchInputFieldText] = useState(props.search)
 
   // Advanced options
@@ -60,6 +63,20 @@ const Grid = (props) => {
       }
     }
   }, [user, uuid])
+
+  // Work around stale state issues
+  const numResults = useRef(null)
+  useEffect(() => {
+    numResults.current = sortedKeys.length
+  }, [sortedKeys])
+  const refAssetType = useRef(null)
+  useEffect(() => {
+    refAssetType.current = props.assetType
+  }, [props.assetType])
+  const refCategories = useRef(null)
+  useEffect(() => {
+    refCategories.current = props.categories
+  }, [props.categories])
 
   const sortBy = {
     hot: (d: Object) => {
@@ -95,10 +112,38 @@ const Grid = (props) => {
       return shuffleArray(Object.keys(d))
     },
   }
-
   const setSort = (selectedOption) => {
     props.setSort(selectedOption)
   }
+
+  const doTrackSearch = async (newSearchText) => {
+    await fetch(`/api/trackSearch`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        search_term: newSearchText,
+        results: numResults.current,
+        type: refAssetType.current,
+        categories: refCategories.current,
+      }),
+    })
+      .then((res) => res.json())
+      .then((resdata) => {
+        console.log(
+          `Tracked search: ${newSearchText} - this helps us learn what assets you're looking for so we can decide what to make next!`
+        )
+      })
+  }
+
+  const trackSearch = useCallback(
+    debounce((newSearchText) => {
+      doTrackSearch(newSearchText)
+    }, 2000),
+    []
+  )
+
   const setSearch = (event) => {
     const newSearchText = event.target.value
     // FIX: Unfortunately, if the user starts typing a lot of characters really fast
@@ -109,6 +154,7 @@ const Grid = (props) => {
     // This is not really a new bug, but I don't like this behavior.
     setSearchInputFieldText(newSearchText)
     props.setSearchDebounced(newSearchText)
+    trackSearch(newSearchText)
   }
   const submitSearch = (event) => {
     event.preventDefault()
@@ -136,7 +182,6 @@ const Grid = (props) => {
 
   let blurUpcoming = !(patron['rewards'] && patron['rewards'].includes('Early Access'))
 
-  let sortedKeys = []
   let data = {}
   let urlParams = `?t=${props.assetType}&future=true`
   if (props.categories.length) {
