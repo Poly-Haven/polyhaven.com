@@ -1,6 +1,7 @@
 {
   "Clear author": "清除作者",
   "adv": {
+    "show-names": "始终显示文本",
     "thumb-size": "缩略图大小",
     "thumb-size-1": "小型",
     "thumb-size-2": "中型",

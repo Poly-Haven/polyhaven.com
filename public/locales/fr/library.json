@@ -1,6 +1,7 @@
 {
   "Clear author": "Effacer l'auteur",
   "adv": {
+    "show-names": "Toujours afficher le texte",
     "thumb-size": "Taille de la vignette",
     "thumb-size-1": "Petit",
     "thumb-size-2": "Moyen",

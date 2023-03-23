@@ -12,7 +12,7 @@ import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit'
 
 import styles from './GridItem.module.scss'
 
-const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
+const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }) => {
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('library')
 
@@ -107,7 +107,11 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize }) => {
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
     <Link href="/a/[id]" as={`/a/${assetID}`}>
-      <a className={`${styles.gridItem} ${blur ? styles.blur : ''}`} onClick={onClick} ref={wrapperRef}>
+      <a
+        className={`${styles.gridItem} ${blur ? styles.blur : ''} ${showText ? styles.showText : ''}`}
+        onClick={onClick}
+        ref={wrapperRef}
+      >
         <div className={styles.author}>
           <div className={styles.authorInner}>
             {creditedAuthors.sort().map((a) => (
@@ -143,6 +147,7 @@ GridItem.defaultProps = {
   onClick: null,
   blurUpcoming: true,
   thumbSize: 'medium',
+  showText: false,
 }
 
 export default GridItem

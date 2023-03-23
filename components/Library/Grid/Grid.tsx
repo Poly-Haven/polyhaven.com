@@ -47,6 +47,7 @@ const Grid = (props) => {
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [eaPref, setEAPref] = useStoredState('lib_adv_eaPref', 'some')
   const [thumbSize, setThumbSize] = useStoredState('lib_adv_thumbSize', 'medium')
+  const [showText, setShowText] = useStoredState('lib_adv_showText', false)
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
 
   const { width, height } = useDivSize(optionsRef, [showAdvanced])
@@ -384,6 +385,10 @@ const Grid = (props) => {
                 onChange={setThumbSize}
               />
             </div>
+            <div className={styles.advOpt}>
+              {t('adv.show-names')}
+              <Switch on={showText} onClick={() => setShowText(!showText)} />
+            </div>
           </div>
         ) : null}
       </div>
@@ -414,6 +419,7 @@ const Grid = (props) => {
                   onClick={setHeaderPath}
                   blurUpcoming={blurUpcoming && eaPref !== 'all'}
                   thumbSize={thumbSize}
+                  showText={showText}
                 />
               </LazyLoad>
             )

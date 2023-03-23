@@ -1,6 +1,7 @@
 {
   "Clear author": "작가 초기화",
   "adv": {
+    "show-names": "항상 텍스트 표시",
     "thumb-size": "썸네일 크기",
     "thumb-size-1": "작은",
     "thumb-size-2": "중간",

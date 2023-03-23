@@ -1,6 +1,7 @@
 {
   "Clear author": "Cancella autore",
   "adv": {
+    "show-names": "Mostra sempre il testo",
     "thumb-size": "Dimensione miniatura",
     "thumb-size-1": "Piccolo",
     "thumb-size-2": "Medio",

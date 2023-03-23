@@ -1,6 +1,7 @@
 {
   "Clear author": "Világos szerző",
   "adv": {
+    "show-names": "Mindig szöveg megjelenítése",
     "thumb-size": "Miniatűr méret",
     "thumb-size-1": "Kis",
     "thumb-size-2": "Közepes",

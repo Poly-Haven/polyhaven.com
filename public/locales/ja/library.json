@@ -1,6 +1,7 @@
 {
   "Clear author": "作者欄を消去",
   "adv": {
+    "show-names": "常にテキストを表示する",
     "thumb-size": "サムネイルのサイズ",
     "thumb-size-1": "小型",
     "thumb-size-2": "ミディアム",

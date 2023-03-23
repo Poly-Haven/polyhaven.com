@@ -34,7 +34,8 @@
     "thumb-size-1": "Small",
     "thumb-size-2": "Medium",
     "thumb-size-3": "Large",
-    "thumb-size-4": "Huge"
+    "thumb-size-4": "Huge",
+    "show-names": "Always show text"
   },
   "by-author": "by {{author}}",
   "new": "New!",
