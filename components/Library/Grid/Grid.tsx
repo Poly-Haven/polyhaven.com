@@ -139,6 +139,7 @@ const Grid = (props) => {
 
   const trackSearch = useCallback(
     debounce((newSearchText) => {
+      if (newSearchText.length < 3) return
       doTrackSearch(newSearchText)
     }, 2000),
     []
