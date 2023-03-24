@@ -128,6 +128,7 @@ const Grid = (props) => {
         results: numResults.current,
         type: refAssetType.current,
         categories: refCategories.current,
+        session: props.libSessionID,
       }),
     })
       .then((res) => res.json())

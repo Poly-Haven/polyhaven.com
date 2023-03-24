@@ -1,9 +1,10 @@
 import { useCallback, useState, useEffect } from 'react'
+import debounce from 'lodash.debounce'
+import { v4 as uuid } from 'uuid'
 
 import Sidebar from 'components/Library/Sidebar/Sidebar'
 import Grid from 'components/Library/Grid/Grid'
 import Page from 'components/Layout/Page/Page'
-import debounce from 'lodash.debounce'
 
 import styles from './Library.module.scss'
 
@@ -12,6 +13,7 @@ const Library = ({ assetType, categories, author, search, strictSearch, sort }) 
   const [searchState, setSearch] = useState(search)
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
   const [sortState, setSort] = useState(sort)
+  const [libSessionID, _] = useState(uuid()) // Anonymous session ID used to help determine synonyms in search tracking
 
   const setSearchDebounced = useCallback(
     debounce((newSearchText) => {
@@ -40,6 +42,7 @@ const Library = ({ assetType, categories, author, search, strictSearch, sort }) 
           setStrictSearch={setStrictSearch}
           sort={sortState}
           setSort={setSort}
+          libSessionID={libSessionID}
         />
       </Page>
     </div>
