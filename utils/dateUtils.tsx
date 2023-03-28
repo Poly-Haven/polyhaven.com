@@ -22,6 +22,26 @@ export function timeago(epoch, t, returnList = false) {
   return returnList ? [num, returnStr] : returnStr
 }
 
+export function timeDiff(d1, d2) {
+  const segments = {
+    year: 3.154e10,
+    month: 2.628e9,
+    week: 6.048e8,
+    day: 8.64e7,
+    hour: 3.6e6,
+    minute: 60000,
+    second: 1000,
+    millisecond: -Infinity,
+  }
+
+  let timeDifference = d1 - d2
+  timeDifference = Math.abs(timeDifference)
+  const unit = Object.keys(segments)[Object.values(segments).findIndex((time) => timeDifference >= time)]
+  const num = Math.floor(timeDifference / segments[unit])
+
+  return `${num} ${unit}${num === 1 ? '' : 's'}`
+}
+
 export function weightedDownloadsPerDay(download_count, epoch, name) {
   const oneDay = 24 * 60 * 60 * 1000
   const now = Date.now()

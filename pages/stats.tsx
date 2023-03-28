@@ -186,6 +186,11 @@ export async function getStaticProps(context) {
     .then((response) => response.json())
     .catch((e) => (error = e))
 
+  // Searches
+  const searches = await fetch(`${baseUrl}/stats/searches`)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
+
   // Assets with date_published
   const assetDates = {}
   for (const [slug, info] of Object.entries(assets)) {
@@ -212,6 +217,7 @@ export async function getStaticProps(context) {
         monthlyDownloads,
         traffic,
         cfdaily,
+        searches,
         assetDates,
       },
     },

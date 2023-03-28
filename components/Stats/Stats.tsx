@@ -5,6 +5,7 @@ import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
 import TrafficGraph from './TrafficGraph'
+import SearchPop from './SearchPop'
 import StatBlock from './StatBlock/StatBlock'
 
 import styles from './Stats.module.scss'
@@ -79,6 +80,20 @@ const Stats = ({ datasets }) => {
         </div>
         <div className={styles.half}>
           <AssetsPerMonth data={datasets.monthlyAssets} />
+        </div>
+      </div>
+
+      <div className={styles.spacer} />
+
+      <div className={styles.row}>
+        <div className={styles.half}>
+          <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+        </div>
+        <div className={styles.half}>
+          <SearchPop data={datasets.searches} type="textures" name="Texture" />
+        </div>
+        <div className={styles.half}>
+          <SearchPop data={datasets.searches} type="models" name="Model" />
         </div>
       </div>
 
