@@ -9,7 +9,7 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
     defaultKeywords = 'texture,pbr,scan,png,exr,material,tileable,seamless' + defaultKeywords
   }
   if (assetType === 2) {
-    defaultKeywords = '3D Model,Textured,pbr,gltf,fbx,' + defaultKeywords
+    defaultKeywords = '3D Model,Textured,pbr,gltf,fbx,usd,' + defaultKeywords
   }
   const fullUrl = 'https://polyhaven.com' + url
   return (

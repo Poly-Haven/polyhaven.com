@@ -85,7 +85,7 @@ const Contribute = ({ authors }) => {
           <li>Minimum 4k resolution textures, preferably 8k.</li>
           <li>In real-world scale.</li>
           <li>Uses only custom original textures, or textures that are CC0/public domain.</li>
-          <li>In either ".blend" format, or a format we can import into Blender (fbx, gltf, etc.).</li>
+          <li>In either ".blend" format, or a format we can import into Blender (fbx, usd, gltf, etc.).</li>
           <li>
             For reference, here's{' '}
             <a href="https://blog.polyhaven.com/simple-prop-workflow/">how we make high quality 3D models</a>.

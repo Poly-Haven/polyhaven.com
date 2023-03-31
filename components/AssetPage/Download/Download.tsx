@@ -13,6 +13,7 @@ import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
 import IconBlender from 'components/UI/Icons/Blender'
 import IconGltf from 'components/UI/Icons/glTF'
+import IconUSD from 'components/UI/Icons/USD'
 import IconFile from 'components/UI/Icons/File'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
 
@@ -146,6 +147,11 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
           tooltip: `glTF 2.0, ${t('formats.some-software')}<br/>${t('formats.incl-tex')}`,
           icon: <IconGltf />,
         },
+        usd: {
+          label: 'USD',
+          tooltip: `Universal Scene Description, ${t('formats.most-software')}`,
+          icon: <IconUSD />,
+        },
         fbx: {
           label: 'FBX',
           tooltip: `Autodesk FBX, ${t('formats.most-software')}`,
@@ -157,7 +163,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
           icon: <GoFileZip />,
         },
       }
-  const optionalFormats = ['gltf', 'fbx']
+  const optionalFormats = ['gltf', 'fbx', 'usd']
   for (const f of optionalFormats) {
     if (!Object.keys(files).includes(f)) {
       delete fmtOptions[f]
