@@ -27,7 +27,7 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
           <MdHelp />
         </a>
       </h4>
-      {sponsorData.length ? sponsorData.map((s, i) => s) : null}
+      {sponsorData.length ? sponsorData.map((s, i) => <span key={i}>{s}</span>) : null}
       {patron.rewards && patron.rewards.includes('Sponsor') && !sponsors.includes(patron.uuid) && (
         <AddSponsor assetID={assetID} patron={patron} />
       )}
