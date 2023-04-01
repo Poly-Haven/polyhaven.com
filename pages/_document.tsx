@@ -22,6 +22,7 @@ export default class CustomDocument extends Document {
           <meta content="text/html;charset=utf-8" httpEquiv="Content-Type" />
           <meta content="utf-8" httpEquiv="encoding" />
           <meta name="theme-color" content="rgb(190, 111, 255)" />
+          <meta property="commit_hash" content={process.env.CONFIG_BUILD_ID} />
 
           {/* Download service worker */}
           <script src="/download-js/ua-parser.min.js"></script>
