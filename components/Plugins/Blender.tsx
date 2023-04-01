@@ -112,7 +112,7 @@ const Blender = ({ numAssets }) => {
         </p>
         <p>
           So far the sales of this add-on alone have allowed us to hire new artists and set up a studio to capture more
-          assets, work on R&D of entire new asset types, and travel around to world to capture free content for
+          assets, work on R&D of entire new asset types, and travel around the world to capture free content for
           everyone.
         </p>
         <p>
