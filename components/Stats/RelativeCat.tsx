@@ -50,7 +50,7 @@ const RelativeCat = ({ data, type, name }: { data: DataSet; type: string; name: 
             <ZAxis dataKey="cat" name="Category" />
 
             <Tooltip
-              formatter={(value, name) => Math.round(value) || value}
+              formatter={(value, name) => Math.round(Number(value)) || value}
               contentStyle={{
                 backgroundColor: 'rgba(30,30,30,0.3)',
                 padding: '0.5em',

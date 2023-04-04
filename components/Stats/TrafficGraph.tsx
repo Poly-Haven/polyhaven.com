@@ -204,7 +204,7 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
               }}
               formatter={(value, name) => [
                 dataTypes[dataType].formatter(value),
-                name.startsWith('s:') ? 'Smoothed' : dataTypes[dataType].label,
+                String(name).startsWith('s:') ? 'Smoothed' : dataTypes[dataType].label,
               ]}
             />
 

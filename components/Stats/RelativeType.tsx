@@ -60,7 +60,7 @@ const RelativeType = ({ data }: { data: DataSet }) => {
 
             <Tooltip
               label="day"
-              formatter={(value, name) => value.toFixed(1) + '%'}
+              formatter={(value, name) => Number(value).toFixed(1) + '%'}
               contentStyle={{
                 backgroundColor: 'rgba(30,30,30,0.3)',
                 padding: '0.5em',
