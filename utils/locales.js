@@ -20,6 +20,10 @@ module.exports = {
     name: '中文',
     flag: 'CN',
   },
+  hr: {
+    name: 'Hrvatski',
+    flag: 'HR',
+  },
   de: {
     name: 'Deutsch',
     flag: 'DE',

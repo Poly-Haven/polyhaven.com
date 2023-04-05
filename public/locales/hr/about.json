@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Kontakt",
+    "p1": "Imate pitanje? Molimo pročitajte<lnk> Pitanja</lnk> prva :)",
+    "p2": "Najlakši način da dođete do nas je putem e-pošte (<lnk1> info@polyhaven.com</lnk1> ) ili na<lnk2> Razdor</lnk2> ."
+  },
+  "description": "Što je Poly Haven, što radimo i zašto to radimo.",
+  "greeting": {
+    "h1": "Bok tamo!",
+    "p1": "Poly Haven je odabrana javna biblioteka sredstava za umjetnike vizualnih efekata i dizajnere igara, koja pruža korisne 3D elemente visoke kvalitete na lako dostupan način.",
+    "p2": "Nema potrebnih obrazaca za plaćanje, račune ili e-poštu, samo preuzmite sredstvo i koristite ga bez brige.",
+    "p3": "Sva imovina je ovdje<lnk> CC0</lnk> , što znači da su praktički bez autorskih prava i da ih možete koristiti u apsolutno sve svrhe."
+  },
+  "help": {
+    "h1": "Kako možete pomoći",
+    "s1": "Podržite nas na Patreonu",
+    "s1p1": "Ako imate neki raspoloživi prihod i želite nam pomoći da objavimo više besplatnih HDRI-a, tekstura i 3D modela, možete nas podržati malom mjesečnom donacijom na<lnk> Patreon</lnk> :)",
+    "s1p2": "Zauzvrat, možemo vam dati neki mali znak zahvalnosti, poput pristupa mapi u oblaku koju možete sinkronizirati sa svojim tvrdim diskom tako da uvijek imate naša najnovija sredstva na dohvat ruke ili ovjekovječiti svoje ime na našoj stranici.",
+    "s1p3": "Vaše donacije koristimo izravno za pokrivanje naših troškova i financiranje nove imovine, što potvrđuje naš<lnk> financijska izvješća</lnk> .",
+    "s2": "Donirajte svoju imovinu",
+    "s2p1": "Imate vrhunski 3D model, teksturu ili HDRI koji želite podijeliti sa zajednicom? Rado ćemo ga objaviti za vas :)",
+    "s2p2": "Moramo održavati stroge standarde kvalitete i sve što objavimo mora biti tako<lnk1> CC0</lnk1> , ali ako vaša imovina bude prihvaćena, cijela će 3D zajednica imati koristi od nje.<lnk2> Pročitajte više i pošaljite svoje sredstvo ovdje</lnk2> .",
+    "s3": "Proširite vijest",
+    "s3p1": "U redu je ako si to ne možete priuštiti ili nam ne želite donirati :) I dalje nam možete pomoći da rastemo tako što ćete se pobrinuti da vaši prijatelji i suradnici znaju za nas, što više ljudi možemo pomoći, to bolje!",
+    "s3p2": "To uopće nije potrebno, ali ako koristite našu imovinu u svom radu, možete spomenuti odakle ste je dobili i to će pomoći da većem broju ljudi pokažete da postojimo"
+  },
+  "how": {
+    "h1": "Kako to radimo?",
+    "li1": "Umjetnici zaposleni u Poly Havenu, fokusirani na veliku sliku.",
+    "li2": "Unajmljujemo neovisne izvođače za specifične projekte.",
+    "li3": "Korisnici koji besplatno doniraju svoj rad platformi.",
+    "p1": "Mi smo mali udaljeni studio sa sjedištem u Južnoafričkoj Republici, koji radi s kreatorima diljem svijeta koji dijele našu viziju.",
+    "p2": "Što se tiče financiranja, primarno smo podržani donacijama ljudi poput vas<lnk> Patreon</lnk> , prihod od oglašavanja i korporativni sponzori koji vjeruju da dugoročno mogu imati koristi od potpore našem radu.",
+    "p3": "Za stvaranje imovine postoje tri izvora:"
+  },
+  "title": "O / Kontakt",
+  "transparency": {
+    "h1": "Transparentnost",
+    "li1": "Pišemo redovite Dev zapisnike<lnk> naš blog</lnk> da podijelimo ono na čemu smo nedavno radili.",
+    "li2": "Naše<lnk> objave na Patreonu</lnk> također su dobro mjesto za pronalaženje manjih ažuriranja i anketa kada trebamo pomoć pri donošenju odluka.",
+    "li3": "<lnk>Razdor</lnk> gdje se družimo svaki dan, slobodno nas pozdravi!",
+    "li4": "Naši društveni mediji prvenstveno su automatizirani za objavljivanje naših najnovijih sredstava, ali povremeno smo i tamo aktivni (veze u<lnk> podnožje</lnk> ).",
+    "li5": "Naše<lnk> financijska izvješća</lnk> detaljno opisuju kako točno trošimo ili štedimo svoja sredstva.",
+    "p1": "Budući da većina našeg financiranja dolazi od donacija, važno nam je da svatko može vidjeti što namjeravamo, što planiramo i razloge svih naših odluka.",
+    "p2": "Dijeljenje naše imovine naš je prioritet, ali također želimo podijeliti svoje znanje, kako bi drugi mogli naučiti kako stvoriti imovinu poput naše i možda ih također podijeliti."
+  },
+  "why": {
+    "h1": "Zašto ovo radimo?",
+    "p1": "Jer možemo!",
+    "p2": "I zato što vjerujemo da možemo pomoći široj 3D zajednici da raste davanjem svoje imovine besplatno umjesto da je prodajemo.",
+    "p3": "Želimo smanjiti barijeru ulaska za nove umjetnike, ukloniti financijske prepreke i olakšati iskusnim umjetnicima da se usredotoče na kreativnost umjesto da ponovno izmišljaju kotač za svaki rekvizit koji im treba."
+  }
+}

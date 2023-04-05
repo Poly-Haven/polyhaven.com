@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} dan od sada",
+    "day_other": "{{count}} dane od sada",
+    "hour_one": "{{count}} sat od sada",
+    "hour_other": "{{count}} sate od sada",
+    "month_one": "{{count}} mjesec od sada",
+    "month_other": "{{count}} mjesece od sada",
+    "week_one": "{{count}} tjedan od sada",
+    "week_other": "{{count}} tjedne od sada",
+    "year_one": "{{count}} godinu od sada",
+    "year_other": "{{count}} godine od sada"
+  },
+  "new": "Novi",
+  "past": {
+    "day_one": "{{count}} dan prije",
+    "day_other": "{{count}} dane prije",
+    "hour_one": "{{count}} prije sat vremena",
+    "hour_other": "{{count}} sati prije",
+    "month_one": "{{count}} prije mjesec dana",
+    "month_other": "{{count}} prije nekoliko mjeseci",
+    "week_one": "{{count}} prije tjedan dana",
+    "week_other": "{{count}} prije nekoliko tjedana",
+    "year_one": "{{count}} prije godinu dana",
+    "year_other": "{{count}} godine prije"
+  },
+  "today": "Danas"
+}

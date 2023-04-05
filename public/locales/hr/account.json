@@ -1,0 +1,65 @@
+{
+  "account": "Račun",
+  "hi": "bok",
+  "login": {
+    "li1": "Trajno uklanjanje oglasa.",
+    "li2": "Rani pristup imovini, prije nego što se javno objavi.",
+    "li3": "Pristup našoj usluzi u oblaku za sinkronizaciju svih naših sredstava na vaš tvrdi disk.",
+    "li4": "Stalno sponzorirajte sredstvo svakog mjeseca, prikazujući svoje ime i vezu pored gumba za preuzimanje.",
+    "p1": "Ako ste a<lnk> pokrovitelj</lnk> Poly Havena, prijavom ovdje dobit ćete pristup svojim nagradama izravno na ovoj stranici.",
+    "p2": "Ovisno o vašoj razini podrške, vaše nagrade mogu uključivati:"
+  },
+  "not-patron": "Čini se da nisi pokrovitelj Poly Havena :( ako je ovo netočno, molim te<lnk> javiti se</lnk> tako da možemo istražiti problem na ovoj stranici. Trebat će nam sljedeće informacije:",
+  "not-patron-anymore": "Čini se da više nisi pokrovitelj Poly Havena. To je u redu, i cijenimo vašu prethodnu podršku :)",
+  "reward_one": "Time dobivate sljedeću nagradu:",
+  "reward_other": "Time dobivate sljedeće nagrade:",
+  "rewards": {
+    "credit": {
+      "invalid": "Nevažeći naziv",
+      "p1": "Vaše ime je trenutno",
+      "p2": "{{hidden}} u popisu pokrovitelja u podnožju ove stranice.",
+      "p3": "Promjena ove postavke može potrajati nekoliko sati za ažuriranje svake stranice web-mjesta.",
+      "p4": "Ime za prikaz:",
+      "title": "Kredit za podnožje"
+    },
+    "early-access": {
+      "p1": "Sada kada ste prijavljeni,<lnk> Knjižnica sredstava</lnk> će uključivati materijale koje smo planirali objaviti u budućnosti.",
+      "p2": "Označeni su plavim krugom i logotipom Patreona u gornjem desnom kutu, ovako:",
+      "p3": "Već ih možete preuzeti, prije svih :)",
+      "title": "Rani pristup"
+    },
+    "no-ads": {
+      "p1": "Koristimo Google AdSense na polyhaven.com. Da biste sakrili te oglase, jednostavno uključite ovaj prekidač:",
+      "p2": "Oglasi su sada:",
+      "title": "Bez reklama"
+    },
+    "offline-access": {
+      "p1": "Unesite svoju adresu e-pošte kako biste sebi poslali pozivnicu za našu mapu u oblaku:",
+      "p2": "Provjerite e-poštu :)",
+      "p3": "Poziv je uspješno poslan. Ako imate problema ili trebate promijeniti e-poštu računa,<lnk> molimo kontaktirajte nas</lnk> .",
+      "p4": "Vidjeti<lnk> ovaj post</lnk> za daljnje upute o tome kako postaviti Nextcloud i započeti sinkronizaciju imovine s vašim računalom.",
+      "title": "Izvanmrežni pristup"
+    },
+    "sponsor": {
+      "p1": "Svaki mjesec možete odabrati sredstvo uz koje ćete zauvijek staviti svoje ime i vezu. Da bismo to učinili, radimo sa sustavom \"žetona\".",
+      "p2": "Na početku svakog mjeseca nakon što Patreon obradi tvoju uplatu, automatski ćeš dobiti jednu<ticket /> <b>Token sponzora</b> .",
+      "p3": "Postoje dva načina da potrošite ovaj token:",
+      "p3li1": "Posjetom stranici sredstva koje želite sponzorirati i klikom na \"<ticket /> Sponzoriraj ovo sredstvo\" gumb na desnoj strani stranice.",
+      "p3li2": "Ili u nastavku možete uključiti automatska sponzorstva koja će za vas svaki mjesec odabrati nasumično sredstvo.",
+      "p4": "Tokeni ne ističu, tako da se možete vratiti nakon nekoliko mjeseci i potrošiti svoje akumulirane tokene.",
+      "p5": "Nakon što se token potroši, ne može se opozvati ili premjestiti na drugo sredstvo.",
+      "p6": "Automatski sponzorirajte nasumično sredstvo svaki mjesec:",
+      "p7": "15. dana svakog mjeseca svi dostupni tokeni koje imate potrošit će se na nasumična sredstva. To vam daje 15 dana da ručno potrošite svoje tokene ako to želite.",
+      "p8": "Ako želite biti obaviješteni kada se sredstvo automatski odabere za vas, unesite svoju adresu e-pošte u nastavku:",
+      "p9": "Da biste otkazali pretplatu na obavijesti, obrišite svoju gornju e-mail adresu i kliknite gumb Spremi.",
+      "title": "Sponzor"
+    },
+    "stakeholder": {
+      "p1": "Kao dionik tvrtke Poly Haven, dobivate dublji pristup našim internim komunikacijskim kanalima kako biste nam pomogli da razgovaramo o tome na čemu raditi i pratimo na našem putu.",
+      "p2": "Ako vas već nismo kontaktirali, molimo<lnk> javiti se</lnk> kako bismo vam mogli omogućiti pristup tim kanalima i predstaviti vas timu.",
+      "title": "Sudionik"
+    }
+  },
+  "support-amount": "Trenutno podržavate Poly Haven s {{amount}} $ mjesečno, hvala!",
+  "title": "Prijaviti se"
+}
