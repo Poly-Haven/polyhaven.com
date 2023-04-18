@@ -3,7 +3,17 @@ const Route = async (req, res) => {
     res.status(405).json({ message: 'Method not allowed' })
     return
   }
-  res.status(200).json(req.headers)
+
+  let headers = req.headers
+  // Remove all but needed headers
+  const rtn = ['accept-language']
+  for (const key in headers) {
+    if (!rtn.includes(key)) {
+      delete headers[key]
+    }
+  }
+
+  res.status(200).json(headers)
 }
 
 export default Route
