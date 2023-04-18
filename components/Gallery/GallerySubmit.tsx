@@ -1,6 +1,7 @@
 import { useTranslation, Trans } from 'next-i18next'
 import React, { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
+import Turnstile from 'react-turnstile'
 import LinkText from 'components/LinkText/LinkText'
 import useStoredState from 'hooks/useStoredState'
 import { isURL, isEmail } from 'validator'
@@ -33,6 +34,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [link, setLink] = useStoredState('gallery_link', '')
   const [assetsUsed, setAssetsUsed] = useState([])
   const [software, setSoftware] = useState([])
+  const [turnStile, setTurnStile] = useState(false)
 
   useEffect(() => {
     if (query && query.asset) {
@@ -67,6 +69,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
       invalidFields.push(k)
     }
   }
+  if (!turnStile) invalidFields.push('CAPTCHA Verification')
 
   // SUBMIT ---------------------------------------------------------------------------------------
   const [busy, setBusyState] = useState(false)
@@ -318,7 +321,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
           <div>{Object.keys(response).length ? response['message'] : null}</div>
           <Disabled
             tooltip={busy ? t_c('please-wait') : `${t_c('missing-invalid')}: ${invalidFields.join(', ')}`}
-            disabled={!valid || busy}
+            disabled={!valid || busy || !turnStile}
           >
             <div className={`${btnStyles.button} ${btnStyles['accent']}`} onClick={submit}>
               <div className={btnStyles.inner}>
@@ -326,6 +329,23 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               </div>
             </div>
           </Disabled>
+          <Turnstile
+            sitekey="0x4AAAAAAAEEuWAzktXa7tBj"
+            onVerify={(_) => {
+              setTurnStile(true)
+              console.log('Turnstile verified!')
+            }}
+            onError={(error) => {
+              console.log('Turnstile error: ', error)
+            }}
+            onExpire={() => {
+              console.log('Turnstile expired!')
+            }}
+            onTimeout={() => {
+              console.log('Turnstile timed out!')
+            }}
+            appearance="interaction-only"
+          />
         </div>
       </div>
       <Popup show={successPopup} hide={(_) => showSuccessPopup(false)}>
