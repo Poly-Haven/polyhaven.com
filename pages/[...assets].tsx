@@ -17,7 +17,7 @@ const LibraryPage = (props) => {
     title += ': ' + titleCase(props.categories.join(' > '))
   }
 
-  let imageUrl = `https://dev.polyhaven.com/api/og-image?type=${props.assetType}`
+  let imageUrl = `https://polyhaven.com/api/og-image?type=${props.assetType}`
   if (props.categories.length) {
     imageUrl += `&categories=${props.categories.join(',')}`
   }
