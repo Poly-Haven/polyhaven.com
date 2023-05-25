@@ -2,11 +2,13 @@
 @import "constants/mixins";
 @import "constants/variables";
 
+$mobileBreakpoint: 890px;
+
 .nav {
   @include flex(row);
   height: 100%;
 
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: $mobileBreakpoint) {
     @include flex(column);
     position: absolute;
     top: 100%;
@@ -58,7 +60,7 @@
     font-size: 1.3em;
   }
 
-  .assetType{
+  .assetType {
     @include flex(row, true);
     gap: 0.5em;
     margin-left: -0.3rem;
@@ -148,13 +150,13 @@
     color: white;
   }
 
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: $mobileBreakpoint) {
     display: grid;
   }
 }
 
 .hiddenMobile {
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: $mobileBreakpoint) {
     display: none;
   }
 }
