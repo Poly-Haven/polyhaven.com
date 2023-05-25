@@ -71,6 +71,22 @@ $mobileBreakpoint: 890px;
   }
 }
 
+.navItemMenuFlag {
+  &::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.5em 0.5em 0 0;
+    border-color: transparent $c-text-light transparent transparent;
+    opacity: 0.8;
+  }
+}
+
 .subNav {
   @include flex(column);
   flex-wrap: wrap-reverse;

@@ -4,7 +4,11 @@ import styles from './Nav.module.scss'
 
 const NavItem = ({ text, link, locale, compact, children }) => {
   return (
-    <div className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''}`}>
+    <div
+      className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''} ${
+        children ? styles.navItemMenuFlag : ''
+      }`}
+    >
       {link ? (
         locale ? (
           <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem}>
