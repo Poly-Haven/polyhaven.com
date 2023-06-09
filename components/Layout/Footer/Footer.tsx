@@ -89,6 +89,9 @@ const footer = () => {
               <Link prefetch={false} href="https://blog.polyhaven.com">
                 <a>{t('common:nav.blog')}</a>
               </Link>
+              <Link prefetch={false} href="https://docs.polyhaven.com">
+                <a>Wiki</a>
+              </Link>
               <Link prefetch={false} href="/contribute">
                 <a>{t('common:nav.contribute')}</a>
               </Link>
