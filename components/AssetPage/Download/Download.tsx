@@ -139,7 +139,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
     : {
         blend: {
           label: 'Blend',
-          tooltip: `Blender 2.8+<br/>${t('formats.incl-tex')}`,
+          tooltip: `Blender<br/>${t('formats.incl-tex')}`,
           icon: <IconBlender />,
         },
         gltf: {
