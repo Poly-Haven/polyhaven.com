@@ -15,7 +15,8 @@ export default function GalleryPage(props) {
 
 export async function getStaticProps(context) {
   let error = null
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+  const baseUrl =
+    (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_API_URL) || 'https://api.polyhaven.com'
   const assets = await fetch(`${baseUrl}/assets?future=true`)
     .then((response) => response.json())
     .catch((e) => (error = e))
