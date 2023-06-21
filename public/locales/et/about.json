@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Kontakt",
+    "p1": "Kas teil on küsimus? Palun lugege esmalt <lnk>KKK-d</lnk>:}}",
+    "p2": "Kõige lihtsam viis meiega ühendust võtta on e-posti teel<lnk1>(info@polyhaven.com</lnk1>}} </span> või <lnk2>Discordis</lnk2>."
+  },
+  "description": "Mis on Poly Haven, mida me teeme ja miks me seda teeme.",
+  "greeting": {
+    "h1": "Tervist!",
+    "p1": "Poly Haven on kureeritud avalik varade raamatukogu visuaalsete efektide kunstnikele ja mängude disaineritele, mis pakub kasulikke ja kvaliteetseid 3D varasid kergesti kättesaadaval viisil.",
+    "p2": "Ei ole mingeid maksemüüre, kontosid ega e-posti vorme vaja, lihtsalt lae alla vara ja kasuta seda muretult.",
+    "p3": "Kõik siin olevad varad on <lnk>CC0</lnk>, mis tähendab, et nad on praktiliselt autoriõigusest vabad ja sa võid neid kasutada absoluutselt mistahes eesmärgil."
+  },
+  "help": {
+    "h1": "Kuidas saate aidata",
+    "s1": "Toetage meid Patreonis",
+    "s1p1": "Kui teil on veidi vaba tulu ja soovite aidata meil avaldada rohkem tasuta HDRIsid, tekstuure ja 3D-mudeleid, saate meid toetada väikese igakuise annetusega <lnk>Patreonis</lnk>:}}",
+    "s1p2": "Vastutasuks saame anda teile väikese tänuavalduse, näiteks juurdepääsu pilvekaustale, mida saate sünkroonida oma kõvakettaga, et teil oleks alati meie uusimad varad käeulatuses, või jäädvustada teie nimi meie veebisaidil.",
+    "s1p3": "Me kasutame teie annetusi otse meie kulude katmiseks ja uute varade rahastamiseks, nagu meie <lnk>finantsaruanded</lnk> tõendavad.",
+    "s2": "Annetage oma vara",
+    "s2p1": "Kas sul on tipptasemel 3D-mudel, tekstuur või HDRI, mida soovid kogukonnaga jagada? Me avaldame selle hea meelega sinu eest:}}",
+    "s2p2": "Meil on ranged kvaliteedistandardid ja kõik, mida me avaldame, peab olema <lnk1>CC0</lnk1>, kuid kui teie vara võetakse vastu, saab sellest kasu kogu 3D-kogukond. <lnk2>Loe lähemalt ja esita oma vara siin</lnk2>.",
+    "s3": "Levita sõna",
+    "s3p1": "See on okei, kui sa ei saa või ei taha meile annetada :}} Sa võid ikkagi aidata meil kasvada, tagades, et sinu sõbrad ja kolleegid teavad meist, mida rohkem inimesi me saame aidata, seda parem!",
+    "s3p2": "See ei ole üldse nõutav, kuid kui kasutate meie varasid oma töös, võite mainida, kust te need saite, ja see aitab näidata rohkematele inimestele, et me oleme olemas."
+  },
+  "how": {
+    "h1": "Kuidas me seda teeme?",
+    "li1": "Poly Havenis töötavad kunstnikud, kes keskenduvad suurele pildile.",
+    "li2": "Sõltumatud töövõtjad, keda me palgame ja kellele antakse ülesanne konkreetsete projektide teostamiseks.",
+    "li3": "Kasutajad, kes vabalt annetavad oma tööd platvormile.",
+    "p1": "Me oleme väike Lõuna-Aafrikas asuv kaugtööstuudio, mis teeb koostööd meie visiooni jagavate loojatega üle maailma.",
+    "p2": "Rahastamist toetame peamiselt <lnk>Patreonis</lnk> olevate inimeste annetustest, reklaamituludest ja ettevõtete sponsoritest, kes usuvad, et saavad meie töö toetamisest pikemas perspektiivis kasu.",
+    "p3": "Varade loomiseks on kolm allikat:"
+  },
+  "title": "Teave / Kontakt",
+  "transparency": {
+    "h1": "Läbipaistvus",
+    "li1": "Me kirjutame <lnk>oma blogis</lnk> regulaarselt Dev Logs'i, et jagada, millega oleme viimasel ajal tegelenud.",
+    "li2": "Meie <lnk>postitused Patreonis</lnk> on samuti hea koht, kust leida väiksemaid uuendusi ja küsitlusi, kui vajame abi otsuste tegemisel.",
+    "li3": "<lnk>Discord</lnk> on koht, kus me iga päev koos käime, võite julgelt tere öelda!",
+    "li4": "Meie sotsiaalmeedia on peamiselt automatiseeritud meie uusimate varade postitamiseks, kuid aeg-ajalt oleme ka seal aktiivsed (lingid <lnk>jaluses</lnk>}}.",
+    "li5": "Meie <lnk>finantsaruannetes</lnk> on täpselt kirjas, kuidas me oma raha kulutame või säästame.",
+    "p1": "Kuna suurem osa meie rahastamisest tuleb annetustest, on meile oluline, et igaüks saaks näha, millega me tegeleme, mida plaanime ja mis on meie otsuste taga.",
+    "p2": "Meie prioriteediks on oma varade jagamine, kuid me tahame jagada ka oma teadmisi, et teised õpiksid, kuidas luua selliseid varasid nagu meie omad, ja ehk ka neid jagada."
+  },
+  "why": {
+    "h1": "Miks me seda teeme?",
+    "p1": "Sest me saame!",
+    "p2": "Ja kuna me usume, et saame aidata suuremale 3D-kogukonnale kasvada, pakkudes oma varasid tasuta, mitte müües neid.",
+    "p3": "Me tahame alandada uute kunstnike jaoks sisenemisbarjääri, kõrvaldada rahalised tõkked ja teha kogenud kunstnikele lihtsamaks keskenduda loovusele, selle asemel et iga vajaliku rekvisiidi jaoks ratast uuesti leiutada."
+  }
+}

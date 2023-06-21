@@ -1,0 +1,65 @@
+{
+  "account": "Konto",
+  "hi": "Tere",
+  "login": {
+    "li1": "Reklaamide püsiv eemaldamine.",
+    "li2": "Varajane juurdepääs varadele, enne kui need avalikustatakse.",
+    "li3": "Juurdepääs meie pilveteenusele, et sünkroonida kõik meie varad teie kõvakettale.",
+    "li4": "Sponsoreerige püsivalt iga kuu ühte vara, näidates oma nime ja linki allalaadimisnuppude kõrval.",
+    "p1": "Kui oled Poly Haven'i <lnk>patroon</lnk>, saad siin sisse logides juurdepääsu oma preemiatele otse sellel saidil.",
+    "p2": "Sõltuvalt teie toetusastmest võivad teie preemiad sisaldada järgmist:"
+  },
+  "not-patron": "Te ei tundu olevat Poly Haven'i patroon :( Kui see ei ole õige, võtke palun <lnk>ühendust</lnk>, et me saaksime probleemi sellel lehel uurida. Vajame järgmisi andmeid:",
+  "not-patron-anymore": "Paistab, et te ei ole enam Poly Haven'i patroon. See on okei, ja me hindame teie varasemat toetust:}}",
+  "reward_one": "See annab teile järgmise preemia:",
+  "reward_other": "See annab teile järgmised preemiad:",
+  "rewards": {
+    "credit": {
+      "invalid": "Vale nimi",
+      "p1": "Teie praegune nimi on",
+      "p2": "{{hidden}} selle saidi jaluses olevas patroonide nimekirjas.",
+      "p3": "Selle seadistuse muutmine võib võtta paar tundi, et uuendada kõiki saidi lehekülgi.",
+      "p4": "Kuva nimi:",
+      "title": "Alumise osa krediit"
+    },
+    "early-access": {
+      "p1": "Nüüd, kui olete sisse loginud, sisaldab <lnk>varade kogumik</lnk> varasid, mille avaldamine on planeeritud tulevikus.",
+      "p2": "Need on tähistatud sinise ringiga ja Patreoni logoga üleval paremal:",
+      "p3": "Saate neid juba alla laadida, enne kõiki teisi :}}",
+      "title": "Varajane juurdepääs"
+    },
+    "no-ads": {
+      "p1": "Me kasutame Google AdSense'i veebilehel polyhaven.com. Nende reklaamide peitmiseks lülitage lihtsalt see lüliti sisse:",
+      "p2": "Reklaamid on nüüd:",
+      "title": "Pole reklaame"
+    },
+    "offline-access": {
+      "p1": "Sisestage oma e-posti aadress, et saata endale kutse meie pilvekausta:",
+      "p2": "Kontrollige oma e-posti aadressi :}}",
+      "p3": "Kutse edukalt saadetud. Kui teil on probleeme või kui teil on vaja muuta oma konto e-posti aadressi, <lnk>võtke meiega ühendust</lnk>.",
+      "p4": "Lisajuhiseid Nextcloudi seadistamiseks ja varade sünkroonimise alustamiseks arvutiga leiate <lnk>sellest postitusest</lnk>.",
+      "title": "Ligipääs võrguühenduseta"
+    },
+    "sponsor": {
+      "p1": "Saate iga kuu valida ühe vara, mille kõrvale saate püsivalt oma nime ja lingi kleepida. Selleks töötame \"žetoonide\" süsteemiga.",
+      "p2": "Iga kuu alguses pärast seda, kui Patreon on teie makseid töödelnud, saate automaatselt ühe <ticket /> <b>sponsor-tokendi</b>.",
+      "p3": "Selle märgi kulutamiseks on kaks võimalust:",
+      "p3li1": "Külastades selle vara lehekülge, mida soovite sponsoreerida, ja klõpsates lehekülje paremal pool nuppu \"<ticket /> Sponsor this asset\".",
+      "p3li2": "Või saate lülitada sisse automaatse sponsorluse, mis valib iga kuu juhusliku vara teie jaoks.",
+      "p4": "Märgised ei aegu, seega võid mõne kuu pärast tagasi tulla ja oma kogutud märgid ära kulutada.",
+      "p5": "Kui žetooni on kulutatud, ei saa seda tühistada ega teise varasse ümber paigutada.",
+      "p6": "Automaatne sponsorlus juhusliku vara iga kuu:",
+      "p7": "Iga kuu 15. päeval kulutatakse kõik olemasolevad žetoonid juhuslikele varadele. See annab sulle 15 päeva aega, et soovi korral oma žetoonid käsitsi ära kulutada.",
+      "p8": "Kui soovite, et teid teavitatakse, kui teie jaoks valitakse automaatselt vara, sisestage palun allpool oma e-posti aadress:",
+      "p9": "Teavitustest loobumiseks tühjendage oma e-posti aadress ülalpool ja klõpsake nuppu \"Salvesta\".",
+      "title": "Sponsor"
+    },
+    "stakeholder": {
+      "p1": "Poly Haven'i sidusrühmana saate sügavama juurdepääsu meie sisekommunikatsioonikanalitele, et aidata meil arutada, mille kallal tööd teha, ja jälgida meie teekonda.",
+      "p2": "Kui me ei ole teiega veel ühendust võtnud, võtke palun <lnk>ühendust</lnk>, et me saaksime teile juurdepääsu nendele kanalitele anda ja teid meeskonnaga tutvustada.",
+      "title": "Sidusrühmad"
+    }
+  },
+  "support-amount": "Te toetate praegu Poly Haven'it ${{amount}} kuus, aitäh teile!",
+  "title": "Logi sisse"
+}

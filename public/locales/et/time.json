@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} päeva pärast",
+    "day_other": "{{count}} päeva pärast",
+    "hour_one": "{{count}} tunni aja pärast",
+    "hour_other": "{{count}} tunni aja pärast",
+    "month_one": "{{count}} kuu pärast",
+    "month_other": "{{count}} kuu pärast",
+    "week_one": "{{count}} nädala pärast",
+    "week_other": "{{count}} nädala pärast",
+    "year_one": "{{count}} aasta pärast",
+    "year_other": "{{count}} aasta pärast"
+  },
+  "new": "Uus",
+  "past": {
+    "day_one": "{{count}} päev tagasi",
+    "day_other": "{{count}} päeva tagasi",
+    "hour_one": "{{count}} tund aega tagasi",
+    "hour_other": "{{count}} tundi tagasi",
+    "month_one": "{{count}} kuu aega tagasi",
+    "month_other": "{{count}} kuud tagasi",
+    "week_one": "{{count}} nädal tagasi",
+    "week_other": "{{count}} nädalat tagasi",
+    "year_one": "{{count}} aasta tagasi",
+    "year_other": "{{count}} aastat tagasi"
+  },
+  "today": "Täna"
+}

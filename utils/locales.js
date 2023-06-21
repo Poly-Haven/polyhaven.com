@@ -40,6 +40,10 @@ module.exports = {
     name: 'Español',
     flag: 'ES',
   },
+  et: {
+    name: 'eesti keel',
+    flag: 'EE',
+  },
   fa: {
     name: 'فارسی',
     flag: 'IR',
