@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { useUser } from '@auth0/nextjs-auth0'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation, Trans } from 'next-i18next'
 import { getPatronInfo } from 'utils/patronInfo'

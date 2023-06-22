@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import React, { useState, useEffect, useRef } from 'react'
-import { useUser } from '@auth0/nextjs-auth0'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
@@ -319,7 +319,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default AssetPage

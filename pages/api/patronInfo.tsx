@@ -6,7 +6,8 @@ import patreon_tiers from 'constants/patreon_tiers.json'
 
 const Route = async (req, res) => {
   let data = req.body
-  const { user } = getSession(req, res)
+  const session = await getSession(req, res)
+  const user = session?.user
   if (data.uuid !== user.sub.split('|').pop()) {
     res.status(403).json({
       error: '403',

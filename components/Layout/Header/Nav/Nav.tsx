@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useUser } from '@auth0/nextjs-auth0'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import locales from 'utils/locales'
 
 import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder } from 'react-icons/md'
