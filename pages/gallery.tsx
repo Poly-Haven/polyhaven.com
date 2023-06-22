@@ -36,14 +36,14 @@ export default function GalleryPage(props) {
           <em>{t('gallery:description')}</em>
         </p>
         <Link href={`/gallery-submit`} prefetch={false}>
-          <a>
-            <IconButton icon={<MdAdd />} label={t('gallery:add')} />
-          </a>
+
+          <IconButton icon={<MdAdd />} label={t('gallery:add')} />
+
         </Link>
       </div>
       <Gallery data={props.data} />
     </Page>
-  )
+  );
 }
 
 export async function getStaticProps(context) {

@@ -28,15 +28,15 @@ const Home = () => {
         <div className={styles.assetTypeBanner}>
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
             <Link href="/hdris">
-              <a>
-                <div className={styles.assetTypeImage}>
-                  <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
-                  <img
-                    src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300"
-                    className={styles.hover}
-                  />
-                </div>
-              </a>
+
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
+                <img
+                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300"
+                  className={styles.hover}
+                />
+              </div>
+
             </Link>
             <div className={styles.text}>
               <h2>{tc('HDRIs')}</h2>
@@ -46,15 +46,15 @@ const Home = () => {
           </div>
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
             <Link href="/textures">
-              <a>
-                <div className={styles.assetTypeImage}>
-                  <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
-                  <img
-                    src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300"
-                    className={styles.hover}
-                  />
-                </div>
-              </a>
+
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
+                <img
+                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300"
+                  className={styles.hover}
+                />
+              </div>
+
             </Link>
             <div className={styles.text}>
               <h2>{tc('Textures')}</h2>
@@ -64,15 +64,15 @@ const Home = () => {
           </div>
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
             <Link href="/models">
-              <a>
-                <div className={styles.assetTypeImage}>
-                  <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
-                  <img
-                    src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300"
-                    className={styles.hover}
-                  />
-                </div>
-              </a>
+
+              <div className={styles.assetTypeImage}>
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
+                <img
+                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300"
+                  className={styles.hover}
+                />
+              </div>
+
             </Link>
             <div className={styles.text}>
               <h2>{tc('Models')}</h2>
@@ -336,7 +336,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Home

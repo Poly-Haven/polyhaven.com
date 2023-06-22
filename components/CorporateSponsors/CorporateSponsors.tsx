@@ -33,11 +33,11 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
       <h2>
         {header}
         {!hideInfoBtn && (
-          <Link href="/corporate">
-            <a>
-              <MdInfoOutline />
-            </a>
-          </Link>
+          (<Link href="/corporate">
+
+            <MdInfoOutline />
+
+          </Link>)
         )}
       </h2>
       {diamondSponsors.length ? (
@@ -62,7 +62,7 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
         </div>
       ) : null}
     </div>
-  )
+  );
 }
 
 CorporateSponsors.defaultProps = {

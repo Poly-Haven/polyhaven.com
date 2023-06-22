@@ -18,15 +18,15 @@ const Map = ({ hdris }) => {
         <Marker key={slug} position={hdris[slug].coords}>
           <Popup>
             <Link href={`/a/${slug}`}>
-              <a>
-                <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200`} width="200" />
-              </a>
+
+              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200`} width="200" />
+
             </Link>
           </Popup>
         </Marker>
       ))}
     </MapContainer>
-  )
+  );
 }
 
 export default Map

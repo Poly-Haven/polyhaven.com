@@ -53,22 +53,20 @@ const CategoryList = (props) => {
                 as={`${props.assetType === 'all' ? (cat === 'all' ? 'all' : '') : `/${props.assetType}`}/${
                   in_cats.length ? in_cats.join('/') + '/' : ''
                 }${cat !== 'all' ? cat : ''}`}
-              >
-                <a
-                  className={`
-            ${styles.cat}
-            ${cat === activeCat ? styles.catSemiActive : ''}
-            ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ''}
-            `}
-                >
-                  {level === 0 ? (
-                    <MdKeyboardArrowRight className={styles.caret} />
-                  ) : (
-                    <MdKeyboardArrowRight className={styles.smallCaret} />
-                  )}
-                  {props.assetType === 'all' ? tc(assetTypeName(cat)) : t(cat)}
-                  <div className={styles.num}>{data[cat] ? data[cat] : 0}</div>
-                </a>
+                className={`
+          ${styles.cat}
+          ${cat === activeCat ? styles.catSemiActive : ''}
+          ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ''}
+          `}>
+
+                {level === 0 ? (
+                  <MdKeyboardArrowRight className={styles.caret} />
+                ) : (
+                  <MdKeyboardArrowRight className={styles.smallCaret} />
+                )}
+                {props.assetType === 'all' ? tc(assetTypeName(cat)) : t(cat)}
+                <div className={styles.num}>{data[cat] ? data[cat] : 0}</div>
+
               </Link>
               {cat === activeCat ? (
                 <CategoryList
@@ -85,7 +83,7 @@ const CategoryList = (props) => {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 export default CategoryList

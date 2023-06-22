@@ -80,16 +80,14 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
       return (
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.downloadBtn}>
-            <Link href={`/account?returnTo=${router.asPath}`}>
-              <a className={styles.error}>
-                Coming Soon!
-                <br />
-                <em>$3+ Patrons log in to download early</em>
-              </a>
+            <Link href={`/account?returnTo=${router.asPath}`} className={styles.error}>
+              Coming Soon!<br />
+              <em>$3+ Patrons log in to download early</em>
+
             </Link>
           </div>
         </div>
-      )
+      );
     }
   }
 

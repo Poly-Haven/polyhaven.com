@@ -176,7 +176,7 @@ const FaqPage = () => {
         <p>{t('faq:q11p1')}</p>
         <p>{t('faq:q11p2')}</p>
         <p>
-          <Link href="/contribute">{t('faq:q11p3')}</Link>.
+          <Link href="/contribute" legacyBehavior>{t('faq:q11p3')}</Link>.
         </p>
       </FaqItem>
       <FaqItem question={t('faq:q12')} activeQ={clicked} qID="photoscanning">
@@ -188,7 +188,7 @@ const FaqPage = () => {
         <p>{t('faq:q13p3')}</p>
       </FaqItem>
     </div>
-  )
+  );
 }
 
 export default FaqPage

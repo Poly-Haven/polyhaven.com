@@ -31,108 +31,106 @@ const Sidebar = (props) => {
     setTypeHeader(t_c(assetTypeName(props.assetType)))
   }
 
-  return (
-    <>
-      <div id={styles.sidebar} className={hideSidebar ? styles.hiddenMobile : null}>
-        <div className={styles.sidebarInner}>
-          <div className={styles.typeSelector}>
-            <Link href="/all">
-              <a
-                className={`${styles.type}
-            ${props.assetType === 'all' ? styles.activeType : ''}`}
-                data-assettype="All Assets"
-                onMouseEnter={hovType}
-                onMouseLeave={hovTypeLeave}
-              >
-                <MdApps />
-              </a>
-            </Link>
-            <Link href="/hdris">
-              <a
-                className={`${styles.type}
-            ${props.assetType !== 'all' && props.assetType !== 'hdris' ? styles.desaturate : ''}
-            ${props.assetType === 'hdris' ? styles.activeType : ''}`}
-                data-assettype="HDRIs"
-                onMouseEnter={hovType}
-                onMouseLeave={hovTypeLeave}
-              >
-                <img src="/icons/a_hdris.png" />
-              </a>
-            </Link>
-            <Link href="/textures">
-              <a
-                className={`${styles.type}
-            ${props.assetType !== 'all' && props.assetType !== 'textures' ? styles.desaturate : ''}
-            ${props.assetType === 'textures' ? styles.activeType : ''}`}
-                data-assettype="Textures"
-                onMouseEnter={hovType}
-                onMouseLeave={hovTypeLeave}
-              >
-                <img src="/icons/a_textures.png" />
-              </a>
-            </Link>
-            <Link href="/models">
-              <a
-                className={`${styles.type}
-            ${props.assetType !== 'all' && props.assetType !== 'models' ? styles.desaturate : ''}
-            ${props.assetType === 'models' ? styles.activeType : ''}`}
-                data-assettype="Models"
-                onMouseEnter={hovType}
-                onMouseLeave={hovTypeLeave}
-              >
-                <img src="/icons/a_models.png" />
-              </a>
-            </Link>
-            <h2 id="typeHeader">{typeHeader}</h2>
-          </div>
-          <CategoryList assetType={props.assetType} categories={props.categories} level={-1} />
-          {props.assetType === 'all' && (
-            <>
-              <hr />
+  return <>
+    <div id={styles.sidebar} className={hideSidebar ? styles.hiddenMobile : null}>
+      <div className={styles.sidebarInner}>
+        <div className={styles.typeSelector}>
+          <Link
+            href="/all"
+            className={`${styles.type}
+        ${props.assetType === 'all' ? styles.activeType : ''}`}
+            data-assettype="All Assets"
+            onMouseEnter={hovType}
+            onMouseLeave={hovTypeLeave}>
+
+            <MdApps />
+
+          </Link>
+          <Link
+            href="/hdris"
+            className={`${styles.type}
+        ${props.assetType !== 'all' && props.assetType !== 'hdris' ? styles.desaturate : ''}
+        ${props.assetType === 'hdris' ? styles.activeType : ''}`}
+            data-assettype="HDRIs"
+            onMouseEnter={hovType}
+            onMouseLeave={hovTypeLeave}>
+
+            <img src="/icons/a_hdris.png" />
+
+          </Link>
+          <Link
+            href="/textures"
+            className={`${styles.type}
+        ${props.assetType !== 'all' && props.assetType !== 'textures' ? styles.desaturate : ''}
+        ${props.assetType === 'textures' ? styles.activeType : ''}`}
+            data-assettype="Textures"
+            onMouseEnter={hovType}
+            onMouseLeave={hovTypeLeave}>
+
+            <img src="/icons/a_textures.png" />
+
+          </Link>
+          <Link
+            href="/models"
+            className={`${styles.type}
+        ${props.assetType !== 'all' && props.assetType !== 'models' ? styles.desaturate : ''}
+        ${props.assetType === 'models' ? styles.activeType : ''}`}
+            data-assettype="Models"
+            onMouseEnter={hovType}
+            onMouseLeave={hovTypeLeave}>
+
+            <img src="/icons/a_models.png" />
+
+          </Link>
+          <h2 id="typeHeader">{typeHeader}</h2>
+        </div>
+        <CategoryList assetType={props.assetType} categories={props.categories} level={-1} />
+        {props.assetType === 'all' && (
+          <>
+            <hr />
+            <div>
               <div>
                 <div>
-                  <div>
-                    <Link href="/collections">
-                      <a
-                        className={`
-                  ${styles.cat}
-                  `}
-                      >
-                        <MdKeyboardArrowRight className={styles.caret} />
-                        {t_c('nav.collections')}
-                      </a>
-                    </Link>
-                  </div>
+                  <Link
+                    href="/collections"
+                    className={`
+              ${styles.cat}
+              `}>
+
+                    <MdKeyboardArrowRight className={styles.caret} />
+                    {t_c('nav.collections')}
+
+                  </Link>
                 </div>
               </div>
-            </>
-          )}
-        </div>
-        <div className={styles.spacer} />
-        <hr />
-        <div className={styles.footerWrapper}>
-          <DisplayAd id="9211333899" x={200} y={200} showRemoveBtn />
-          <div className={styles.footer}>
-            <Button
-              text={t_c('nav.contribute')}
-              icon={<MdUnarchive />}
-              href="/contribute"
-              color="hollowFaded"
-              style={{ padding: '0.5em', margin: 0 }}
-            />
-            <p>
-              <Link href="/faq">{t_c('nav.faq')}</Link>
-              <br />
-              <Link href="/license">{t_c('nav.license')}</Link>
-            </p>
-          </div>
+            </div>
+          </>
+        )}
+      </div>
+      <div className={styles.spacer} />
+      <hr />
+      <div className={styles.footerWrapper}>
+        <DisplayAd id="9211333899" x={200} y={200} showRemoveBtn />
+        <div className={styles.footer}>
+          <Button
+            text={t_c('nav.contribute')}
+            icon={<MdUnarchive />}
+            href="/contribute"
+            color="hollowFaded"
+            style={{ padding: '0.5em', margin: 0 }}
+          />
+          <p>
+            <Link href="/faq" legacyBehavior>{t_c('nav.faq')}</Link>
+            <br />
+            <Link href="/license" legacyBehavior>{t_c('nav.license')}</Link>
+          </p>
         </div>
       </div>
-      <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
-        <IconButton icon={hideSidebar ? <MdFilterList /> : <MdFirstPage />} onClick={toggleSidebar} />
-      </div>
-    </>
-  )
+    </div>
+    <div className={`${styles.sidebarToggle} ${!hideSidebar ? styles.sidebarToggleClose : ''}`}>
+      <IconButton icon={hideSidebar ? <MdFilterList /> : <MdFirstPage />} onClick={toggleSidebar} />
+    </div>
+  </>;
 }
 
 export default Sidebar

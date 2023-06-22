@@ -50,35 +50,35 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
         ) : null}
         <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />
       </div>
-      <Link href={link}>
-        <a className={styles.img} target="_blank">
-          {(pause || isMobile) && pausedImg ? (
-            <img
-              src={['.png', '.jpg'].includes(pausedImg.slice(-4).toLowerCase()) ? `${pausedImg}?width=384` : pausedImg}
-            />
-          ) : img.endsWith('mp4') ? (
-            <video
-              width="384"
-              autoPlay={true}
-              controls={false}
-              loop={true}
-              disablePictureInPicture={true}
-              disableRemotePlayback={true}
-              muted={true}
-            >
-              <source src={img} type="video/mp4" />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-          ) : (
-            <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384` : img} />
-          )}
-        </a>
+      <Link href={link} className={styles.img} target="_blank">
+
+        {(pause || isMobile) && pausedImg ? (
+          <img
+            src={['.png', '.jpg'].includes(pausedImg.slice(-4).toLowerCase()) ? `${pausedImg}?width=384` : pausedImg}
+          />
+        ) : img.endsWith('mp4') ? (
+          <video
+            width="384"
+            autoPlay={true}
+            controls={false}
+            loop={true}
+            disablePictureInPicture={true}
+            disableRemotePlayback={true}
+            muted={true}
+          >
+            <source src={img} type="video/mp4" />
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+        ) : (
+          <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384` : img} />
+        )}
+
       </Link>
-      <Link href={link}>
-        <a className={styles.bottomText}>{bottomText}</a>
+      <Link href={link} className={styles.bottomText}>
+        {bottomText}
       </Link>
     </div>
-  )
+  );
 }
 
 export default NewsCard

@@ -26,11 +26,11 @@ const TagsList = ({ label, list, linkPrefix, width }) => {
         <div className={`${styles.tagsListWrapper} ${expand ? styles.wrap : null}`} ref={parentWidthRef}>
           <div className={`${styles.tagsList} ${expand ? styles.wrap : null}`} ref={widthRef}>
             {list.map((i) => (
-              <Link href={`${linkPrefix}${i}`} key={i}>
-                <a>
-                  <div className={styles.tag}>{t(i)}</div>
-                </a>
-              </Link>
+              (<Link href={`${linkPrefix}${i}`} key={i}>
+
+                <div className={styles.tag}>{t(i)}</div>
+
+              </Link>)
             ))}
           </div>
         </div>
@@ -41,7 +41,7 @@ const TagsList = ({ label, list, linkPrefix, width }) => {
         ) : null}
       </InfoItem>
     </div>
-  )
+  );
 }
 
 export default TagsList

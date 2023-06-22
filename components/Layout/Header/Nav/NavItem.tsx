@@ -15,8 +15,8 @@ const NavItem = ({ text, link, locale, compact, children }) => {
             {text}
           </a>
         ) : (
-          <Link href={link}>
-            <a className={styles.navItem}>{text}</a>
+          <Link href={link} className={styles.navItem}>
+            {text}
           </Link>
         )
       ) : (
@@ -24,7 +24,7 @@ const NavItem = ({ text, link, locale, compact, children }) => {
       )}
       {children ? <div className={styles.subNav}>{children}</div> : null}
     </div>
-  )
+  );
 }
 
 NavItem.defaultProps = {

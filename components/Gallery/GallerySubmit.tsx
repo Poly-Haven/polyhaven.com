@@ -305,11 +305,11 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               {assetsUsed ? (
                 <div className={styles.assetsWrapper}>
                   {assetsUsed.map((a) => (
-                    <Link href={`/a/${a.value}`} key={a.value}>
-                      <a>
-                        <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a.value}.png?height=100&width=200`} />
-                      </a>
-                    </Link>
+                    (<Link href={`/a/${a.value}`} key={a.value}>
+
+                      <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a.value}.png?height=100&width=200`} />
+
+                    </Link>)
                   ))}
                 </div>
               ) : null}
@@ -355,7 +355,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
         <p>{t('submit.form.thanks-d')}</p>
       </Popup>
     </div>
-  )
+  );
 }
 
 export default GallerySubmit

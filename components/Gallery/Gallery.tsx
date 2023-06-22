@@ -106,14 +106,14 @@ const Gallery = ({ data, assetPage }) => {
           </div>
         ))}
         {!assetPage && (
-          <Link href="/gallery-submit" prefetch={false}>
-            <a>
-              <div className={styles.add}>
-                <strong>+</strong>
-                <p>{t('submit.title')}</p>
-              </div>
-            </a>
-          </Link>
+          (<Link href="/gallery-submit" prefetch={false}>
+
+            <div className={styles.add}>
+              <strong>+</strong>
+              <p>{t('submit.title')}</p>
+            </div>
+
+          </Link>)
         )}
       </Masonry>
       {lightboxData && (
@@ -136,7 +136,7 @@ const Gallery = ({ data, assetPage }) => {
               {t('using')}
               {lightboxData.assets_used.slice(0, 3).map((a, key) => (
                 <Link key={key} href={`/a/${a}`}>
-                  <a>{a}</a>
+                  {a}
                 </Link>
               ))}
               {lightboxData.assets_used.length > 3 ? (
@@ -148,7 +148,7 @@ const Gallery = ({ data, assetPage }) => {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 Gallery.defaultProps = {

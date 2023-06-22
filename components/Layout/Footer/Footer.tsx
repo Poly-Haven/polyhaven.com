@@ -41,65 +41,65 @@ const footer = () => {
         <a id="social" />
         <div className={styles.links}>
           <Link href="/">
-            <a>
-              <div className={styles.logoWrapper}>
-                <img src="/Logo 256.png" className={styles.logo} />
-                <h1>Poly Haven</h1>
-                <p>{t('common:tagline')}</p>
-              </div>
-            </a>
+
+            <div className={styles.logoWrapper}>
+              <img src="/Logo 256.png" className={styles.logo} />
+              <h1>Poly Haven</h1>
+              <p>{t('common:tagline')}</p>
+            </div>
+
           </Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
               <Link prefetch={false} href="/">
-                <a>{t('common:nav.home')}</a>
+                {t('common:nav.home')}
               </Link>
               <Link prefetch={false} href="/faq">
-                <a>{t('common:nav.faq')}</a>
+                {t('common:nav.faq')}
               </Link>
               <Link prefetch={false} href="/about-contact">
-                <a>{t('common:nav.about-contact')}</a>
+                {t('common:nav.about-contact')}
               </Link>
               <Link prefetch={false} href="/gallery">
-                <a>{t('common:nav.gallery')}</a>
+                {t('common:nav.gallery')}
               </Link>
               <Link prefetch={false} href="/map">
-                <a>{t('common:nav.map')}</a>
+                {t('common:nav.map')}
               </Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
               <Link prefetch={false} href="/license">
-                <a>{t('common:nav.license')}</a>
+                {t('common:nav.license')}
               </Link>
               <Link prefetch={false} href="/privacy">
-                <a>{t('common:nav.privacy')}</a>
+                {t('common:nav.privacy')}
               </Link>
               <Link prefetch={false} href="/finance-reports">
-                <a>{t('common:nav.finances')}</a>
+                {t('common:nav.finances')}
               </Link>
               <Link prefetch={false} href="/stats">
-                <a>{t('common:nav.stats')}</a>
+                {t('common:nav.stats')}
               </Link>
             </div>
           </div>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
               <Link prefetch={false} href="https://blog.polyhaven.com">
-                <a>{t('common:nav.blog')}</a>
+                {t('common:nav.blog')}
               </Link>
               <Link prefetch={false} href="https://docs.polyhaven.com">
-                <a>Wiki</a>
+                Wiki
               </Link>
               <Link prefetch={false} href="/contribute">
-                <a>{t('common:nav.contribute')}</a>
+                {t('common:nav.contribute')}
               </Link>
               <Link prefetch={false} href="https://github.com/Poly-Haven/Public-API">
-                <a>{t('common:nav.api')}</a>
+                {t('common:nav.api')}
               </Link>
               <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com">
-                <a>{t('common:nav.source')}</a>
+                {t('common:nav.source')}
               </Link>
             </div>
           </div>
@@ -107,7 +107,7 @@ const footer = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default footer

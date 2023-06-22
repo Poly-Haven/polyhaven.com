@@ -319,7 +319,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default AssetPage

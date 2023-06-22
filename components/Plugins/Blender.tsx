@@ -105,7 +105,7 @@ const Blender = ({ numAssets }) => {
         <p>
           While all our assets are 100% free and{' '}
           <Link href="/license">
-            <a>CC0</a>
+            CC0
           </Link>
           , we are exploring the idea of funding our work by selling tools like this to make it easier for you to use
           our free assets.
@@ -212,7 +212,7 @@ const Blender = ({ numAssets }) => {
         />
       </div>
     </div>
-  )
+  );
 }
 
 export default Blender

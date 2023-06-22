@@ -16,9 +16,9 @@ const UserRenders = ({ assetID }) => {
     <div className={styles.userRendersTitle}>
       <h1>{t('user-renders')}</h1>
       <Link href={`/gallery-submit?asset=${assetID}`} prefetch={false}>
-        <a>
-          <IconButton icon={<MdAdd />} label={t('add-yours')} />
-        </a>
+
+        <IconButton icon={<MdAdd />} label={t('add-yours')} />
+
       </Link>
     </div>
   )

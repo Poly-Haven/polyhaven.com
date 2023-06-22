@@ -41,13 +41,13 @@ const Popularity = ({ data }) => {
               <tr>
                 <td>
                   <Link href={`/a/${pop.slug}`}>
-                    <a>
-                      <img src={`https://cdn.polyhaven.com/asset_img/primary/${pop.slug}.png?height=50`} />
-                    </a>
+
+                    <img src={`https://cdn.polyhaven.com/asset_img/primary/${pop.slug}.png?height=50`} />
+
                   </Link>
                 </td>
                 <td>
-                  <Link href={`/a/${pop.slug}`}>{pop.name}</Link>
+                  <Link href={`/a/${pop.slug}`} legacyBehavior>{pop.name}</Link>
                   {pop.backplates ? <abbr title="Includes backplates (+40% popularity)"> +B</abbr> : null}
                 </td>
                 <td>

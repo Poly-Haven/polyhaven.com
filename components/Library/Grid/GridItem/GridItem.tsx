@@ -106,41 +106,42 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
-    <Link href="/a/[id]" as={`/a/${assetID}`}>
-      <a
-        className={`${styles.gridItem} ${blur ? styles.blur : ''} ${showText ? styles.showText : ''}`}
-        onClick={onClick}
-        ref={wrapperRef}
-      >
-        <div className={styles.author}>
-          <div className={styles.authorInner}>
-            {creditedAuthors.sort().map((a) => (
-              <SimpleAuthorCredit key={a} id={a} donated={asset.donated} short={creditedAuthors.length > 1} />
-            ))}
-          </div>
-        </div>
-        <div className={styles.thumb}>
-          <img src={img_src} alt={asset.name} ref={imgRef} />
-        </div>
-        <div className={styles.text}>
-          <h3>{asset.name}</h3>
-          <p>{timeago(asset.date_published * 1000, tt)}</p>
-        </div>
-        {badge ? (
-          <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>
-            {badge.text}
-          </div>
-        ) : null}
-        <div className={styles.indicators}>
-          {indicators.map((i) => (
-            <div key={i.text} title={i.text} className={styles.indicator}>
-              {i.icon}
-            </div>
+    (<Link
+      href="/a/[id]"
+      as={`/a/${assetID}`}
+      className={`${styles.gridItem} ${blur ? styles.blur : ''} ${showText ? styles.showText : ''}`}
+      onClick={onClick}
+      ref={wrapperRef}>
+
+      <div className={styles.author}>
+        <div className={styles.authorInner}>
+          {creditedAuthors.sort().map((a) => (
+            <SimpleAuthorCredit key={a} id={a} donated={asset.donated} short={creditedAuthors.length > 1} />
           ))}
         </div>
-      </a>
-    </Link>
-  )
+      </div>
+      <div className={styles.thumb}>
+        <img src={img_src} alt={asset.name} ref={imgRef} />
+      </div>
+      <div className={styles.text}>
+        <h3>{asset.name}</h3>
+        <p>{timeago(asset.date_published * 1000, tt)}</p>
+      </div>
+      {badge ? (
+        <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>
+          {badge.text}
+        </div>
+      ) : null}
+      <div className={styles.indicators}>
+        {indicators.map((i) => (
+          <div key={i.text} title={i.text} className={styles.indicator}>
+            {i.icon}
+          </div>
+        ))}
+      </div>
+
+    </Link>)
+  );
 }
 
 GridItem.defaultProps = {

@@ -235,7 +235,7 @@ const Corporate = (props) => {
         <Tooltip />
       </div>
     </TextPage>
-  )
+  );
 }
 
 export async function getStaticProps(context) {
