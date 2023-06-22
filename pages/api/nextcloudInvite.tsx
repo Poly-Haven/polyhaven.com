@@ -1,6 +1,6 @@
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0'
 import crypto from 'crypto'
-import parseXML from 'fast-xml-parser'
+import { XMLParser } from 'fast-xml-parser'
 require('dotenv').config()
 
 const Route = async (req, res) => {
@@ -65,6 +65,7 @@ const Route = async (req, res) => {
   })
     .then((res) => res.text())
     .then((resdata) => {
+      const parseXML = new XMLParser()
       returnData = parseXML.parse(resdata)
     })
 
