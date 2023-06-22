@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { UserProvider } from '@auth0/nextjs-auth0'
+import { UserProvider } from '@auth0/nextjs-auth0/client'
 import Head from 'next/head'
 import Link from 'next/link'
 import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
