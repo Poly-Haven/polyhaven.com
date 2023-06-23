@@ -23,9 +23,7 @@ const Collection = ({ collectionId, data }) => {
     <div className={styles.collection}>
       <div className={styles.collectionInner}>
         <Link href={collectionLink}>
-
           <img src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=580`} alt={`${data.name}`} />
-
         </Link>
         {data.community && (
           <div className={styles.banner}>
@@ -44,13 +42,14 @@ const Collection = ({ collectionId, data }) => {
             <Button text="View Assets" href={collectionLink} style={buttonStyle} />
             {data.scene && (
               <>
-                {Object.keys(data.scene).map((software) => (
+                {Object.keys(data.scene).map((software, i) => (
                   <Button
                     text="Scene File"
                     href={data.scene[software]}
                     icon={softwareIcons[software]}
                     style={buttonStyle}
                     color="hollow"
+                    key={i}
                   />
                 ))}
               </>
@@ -60,21 +59,17 @@ const Collection = ({ collectionId, data }) => {
 
         <div className={styles.assetList}>
           {data.assets.map((slug) => (
-            (<Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset}>
-
+            <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
               <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=64&height=64 `} />
-
-            </Link>)
+            </Link>
           ))}
           <Link href={collectionLink} className={styles.arrow}>
-
             <MdArrowForward />
-
           </Link>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Collection
