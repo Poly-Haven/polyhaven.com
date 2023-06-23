@@ -217,24 +217,24 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
         ) : null}
         <li>
           Current Balance: {getCurrency(balance, currency, latestRates)}
-          <MdHelp data-tip="Actual balance of our combined accounts, ignoring interest earned." />
+          <MdHelp data-tooltip-html="Actual balance of our combined accounts, ignoring interest earned." />
         </li>
         <li>
           Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
           <MdHelp
-            data-tip={`Enough to cover our operating costs for ${emergencyFundMonths} months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
+            data-tooltip-html={`Enough to cover our operating costs for ${emergencyFundMonths} months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
           />
         </li>
         {savings >= 0 ? (
           <li>
             <strong>Usable Funds: {getCurrency(savings, currency, latestRates)}</strong>
-            <MdHelp data-tip="Balance minus emergency savings." />
+            <MdHelp data-tooltip-html="Balance minus emergency savings." />
           </li>
         ) : (
           <li>
             <strong>Deficit: {getCurrency(savings, currency, latestRates)}</strong>
             <MdHelp
-              data-tip={`We need to save an additional ${getCurrency(
+              data-tooltip-html={`We need to save an additional ${getCurrency(
                 savings,
                 currency,
                 latestRates

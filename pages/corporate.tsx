@@ -32,7 +32,7 @@ const Corporate = (props) => {
       text: (
         <>
           Monthly asset sponsorships.{' '}
-          <MdInfo data-tip="Every month you may choose an asset to sponsor permanently.<br />Your logo &amp; link will be shown on the asset page near the download buttons.<br />You can also choose to have the asset selected randomly for you each month." />
+          <MdInfo data-tooltip-html="Every month you may choose an asset to sponsor permanently.<br />Your logo &amp; link will be shown on the asset page near the download buttons.<br />You can also choose to have the asset selected randomly for you each month." />
         </>
       ),
     },
@@ -115,7 +115,7 @@ const Corporate = (props) => {
             </div>
             <p
               style={{ opacity: 0.5, textAlign: 'right' }}
-              data-tip={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString('en-ZA')}`}
+              data-tooltip-html={`Stats automatically updated:<br/>${new Date(props.updated).toLocaleString('en-ZA')}`}
             >
               <em>Last updated: {timeago(props.updated, tt)}</em>
             </p>
@@ -235,7 +235,7 @@ const Corporate = (props) => {
         <Tooltip />
       </div>
     </TextPage>
-  );
+  )
 }
 
 export async function getStaticProps(context) {

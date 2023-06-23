@@ -20,7 +20,7 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
     <>
       <h3>
         Backplates:{' '}
-        <MdHelp data-tip="The images below are separate photos that you can use as high resolution background images in your render.<br />Depending on your render resolution and camera settings, sometimes an HDRI (even a very large one) might not have enough pixels to still appear sharp in the background of your render. In these cases you can use one of these backplates in the background instead, and use a lower resolution HDRI just for lighting and reflections." />
+        <MdHelp data-tooltip-html="The images below are separate photos that you can use as high resolution background images in your render.<br />Depending on your render resolution and camera settings, sometimes an HDRI (even a very large one) might not have enough pixels to still appear sharp in the background of your render. In these cases you can use one of these backplates in the background instead, and use a lower resolution HDRI just for lighting and reflections." />
       </h3>
       <Masonry breakpointCols={2} className={styles.masonry} columnClassName={styles.masonryColumn}>
         {Object.keys(files)
@@ -60,7 +60,7 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
                           onClick={trackDownload}
                           data-res="backplate"
                           data-format={t}
-                          data-tip={types[t].tip + `<br/>(${filesize(bp[t].size)})`}
+                          data-tooltip-html={types[t].tip + `<br/>(${filesize(bp[t].size)})`}
                         >
                           {types[t].name}
                         </a>

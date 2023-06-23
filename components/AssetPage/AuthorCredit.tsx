@@ -50,20 +50,16 @@ const AuthorCredit = ({ id, size, credit }) => {
   return (
     <div className={styles.author}>
       <Link href={assetLink} prefetch={false} className={styles.avatar}>
-
         <Avatar id={id} size={50} />
         {data && data.regular_donor ? (
-          <div className={styles.regularDonor} data-tip="Regular asset donor">
+          <div className={styles.regularDonor} data-tooltip-html="Regular asset donor">
             <Heart color="#F96854" />
           </div>
         ) : null}
-
       </Link>
       <div className={styles.name}>
         <Link href={assetLink} prefetch={false}>
-
           <strong>{id}</strong>
-
         </Link>
         {credit ? <span className={styles.credit}>{creditStr}</span> : ''}
         <div className={styles.links}>
@@ -91,7 +87,7 @@ const AuthorCredit = ({ id, size, credit }) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 AuthorCredit.defaultProps = {

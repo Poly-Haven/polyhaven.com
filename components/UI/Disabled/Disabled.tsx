@@ -7,7 +7,7 @@ const Disabled = ({ disabled, tooltip, tooltipSide, style, children }) => {
     return children
   }
   return (
-    <div className={styles.disabled} data-tip={tooltip} style={style}>
+    <div className={styles.disabled} data-tooltip-html={tooltip} style={style}>
       <div className={styles.contents}>{children}</div>
       <Tooltip place={tooltipSide} />
     </div>

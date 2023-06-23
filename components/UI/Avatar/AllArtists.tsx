@@ -16,26 +16,27 @@ const AllArtists = ({ data }) => {
   return (
     <div className={styles.allArtists}>
       {authors.map((author) => (
-        (<Link
+        <Link
           key={author}
           href={`/all?a=${author}`}
           prefetch={false}
-          data-tip={`${author} (${data[author].assetCount} ${data[author].assetCount === 1 ? 'asset' : 'assets'})`}
-          data-for="allAssets"
-          className={styles.avatar}>
-
+          data-tooltip-html={`${author} (${data[author].assetCount} ${
+            data[author].assetCount === 1 ? 'asset' : 'assets'
+          })`}
+          data-tooltip-id="allAssets"
+          className={styles.avatar}
+        >
           <Avatar id={author} size={50} />
           {data[author].regular_donor ? (
-            <div className={styles.regularDonor} data-tip="Regular asset donor" data-for="allAssets">
+            <div className={styles.regularDonor} data-tooltip-html="Regular asset donor" data-tooltip-id="allAssets">
               <Heart color="#F96854" />
             </div>
           ) : null}
-
-        </Link>)
+        </Link>
       ))}
       <Tooltip id="allAssets" />
     </div>
-  );
+  )
 }
 
 export default AllArtists
