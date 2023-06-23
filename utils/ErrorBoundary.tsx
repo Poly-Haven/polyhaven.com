@@ -1,31 +1,33 @@
 // Taken from https://reactjs.org/docs/error-boundaries.html
 // helpful for development
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-interface State {
-  readonly hasError: boolean
+interface ErrorBoundaryProps {
+  children: ReactNode
 }
 
-class ErrorBoundary extends React.Component<{}, State> {
-  constructor(props) {
+interface State {
+  hasError: boolean
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
+  constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+  static getDerivedStateFromError(error: any) {
     return { hasError: true }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     // You can also log the error to an error reporting service
     // logErrorToMyService(error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return <h1>Something went wrong.</h1>
     }
 
