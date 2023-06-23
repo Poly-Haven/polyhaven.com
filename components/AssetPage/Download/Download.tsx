@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { useState, useEffect, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import filesize from 'filesize'
+import { filesize } from 'filesize'
 import { v4 as uuid } from 'uuid'
 
 import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
@@ -81,13 +81,13 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
         <div className={styles.downloadBtnWrapper}>
           <div className={styles.downloadBtn}>
             <Link href={`/account?returnTo=${router.asPath}`} className={styles.error}>
-              Coming Soon!<br />
+              Coming Soon!
+              <br />
               <em>$3+ Patrons log in to download early</em>
-
             </Link>
           </div>
         </div>
-      );
+      )
     }
   }
 
@@ -294,7 +294,7 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
           <MdFileDownload />
           <div>
             <h3>{t('download')}</h3>
-            <p>{filesize(fsize)}</p>
+            <p>{filesize(fsize).toString()}</p>
           </div>
           <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}>
             <Loader />

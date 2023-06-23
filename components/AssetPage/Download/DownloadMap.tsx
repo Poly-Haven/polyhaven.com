@@ -1,4 +1,4 @@
-import filesize from 'filesize'
+import { filesize } from 'filesize'
 
 import { MdFileDownload } from 'react-icons/md'
 
@@ -70,7 +70,7 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) =
               fmt={f}
               type={type}
               data={data[f]}
-              filesize={filesize(data[f].size)}
+              filesize={filesize(data[f].size).toString()}
               selectMap={selectMap}
             />
           ))}

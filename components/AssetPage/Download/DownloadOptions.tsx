@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from 'react'
-import filesize from 'filesize'
+import { filesize } from 'filesize'
 
 import { GoLinkExternal } from 'react-icons/go'
 import { MdImage } from 'react-icons/md'
@@ -105,7 +105,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
                 data-res="tm"
                 onClick={trackDownload}
               >
-                8K Tonemapped JPG • {filesize(files['tonemapped'].size)}
+                8K Tonemapped JPG • {filesize(files['tonemapped'].size).toString()}
               </a>
             </div>
           </>
@@ -135,7 +135,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
                 onClick={trackDownload}
               >
                 <IconMacbeth />
-                Color Chart • {filesize(files['colorchart'].size)}
+                Color Chart • {filesize(files['colorchart'].size).toString()}
               </a>
             </div>
           </>

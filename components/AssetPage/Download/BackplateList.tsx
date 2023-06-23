@@ -1,4 +1,4 @@
-import filesize from 'filesize'
+import { filesize } from 'filesize'
 import Masonry from 'react-masonry-css'
 
 import { MdHelp, MdVisibility, MdFileDownload } from 'react-icons/md'
