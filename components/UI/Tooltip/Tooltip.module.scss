@@ -1,5 +1,9 @@
+@import "constants/colors";
+
 .tooltip {
   max-width: 300px;
+  border: 1px solid rgba($c-accent, 0.5);
   border-radius: 0 !important;
+  background: rgb(60, 60, 60);
   white-space: normal;
 }
