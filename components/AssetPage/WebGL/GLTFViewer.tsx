@@ -24,6 +24,8 @@ interface Props {
   readonly onLoad: Function
 }
 
+const linearMaps = ['normalMap', 'emissiveMap', 'metalnessMap', 'roughnessMap', 'aoMap']
+
 const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
   const objects = []
   if (mesh.children) {
@@ -43,7 +45,13 @@ const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
           <meshPhysicalMaterial {...mesh.material}>
             {Object.entries(mesh.material).map(([key, value]) =>
               value instanceof Texture ? (
-                <texture key={key} attach={key} {...value} anisotropy={maxAnisotropy} />
+                <texture
+                  key={key}
+                  attach={key}
+                  {...value}
+                  colorSpace={linearMaps.includes(key) ? 'srgb-linear' : 'srgb'}
+                  anisotropy={maxAnisotropy}
+                />
               ) : null
             )}
           </meshPhysicalMaterial>
