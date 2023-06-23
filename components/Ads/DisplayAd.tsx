@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
@@ -39,7 +39,11 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     />
   ) : null
 
-  const isServer = typeof window === 'undefined'
+  const [isServer, setIsServer] = useState(true)
+  useEffect(() => {
+    setIsServer(false)
+  }, [])
+
   if (isServer || localStorage.getItem(`hideAds`) === 'yes') {
     return null
   }
