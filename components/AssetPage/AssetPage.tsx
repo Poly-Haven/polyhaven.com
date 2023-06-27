@@ -165,7 +165,24 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         <div className={styles.previewWrapper}>
           <div className={`${styles.activePreview}${showWebGL ? ' ' + styles.activePreviewGLTF : ''}`}>
             <img id="activePreview" onLoad={imageLoaded} src={activeImage} />
-            {data.type === 0 ? (
+            {data.sketchfab_id ? (
+              showWebGL ? (
+                <div className={styles.sketchfabWrapper}>
+                  <iframe
+                    className={styles.sketchfabFrame}
+                    title="Cannon"
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    src={`https://sketchfab.com/models/${data.sketchfab_id}/embed?autostart=1&ui_theme=dark&dnt=1&ui_stop=0`}
+                    onLoad={() => {
+                      setImageLoading(false)
+                    }}
+                  ></iframe>
+                </div>
+              ) : null
+            ) : data.type === 0 ? (
               showWebGL ? (
                 <PanoViewer assetID={assetID} />
               ) : null
