@@ -89,14 +89,14 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         {type === 0 || fmt === 'zip' ? null : (
           <div className={styles.optionRow}>
             <p style={{ textAlign: 'right' }}>{t('nor-standard')}</p>
-            <div data-tooltip-html="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / 3ds Max.">
+            <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / 3ds Max.">
               <Switch on={norMode === 'gl'} onClick={toggleNormalStyle} labelOn="GL" labelOff="DX" />
             </div>
           </div>
         )}
         {type === 0 && files['tonemapped'] ? (
           <>
-            <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tooltip-html={t('formats.tm')}>
+            <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.tm')}>
               <a
                 href={files['tonemapped'].url}
                 className={styles.format}
@@ -110,7 +110,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             </div>
           </>
         ) : null}
-        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tooltip-html={t('formats.thumb-d')}>
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.thumb-d')}>
           <a
             href={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?format=png`}
             className={styles.format}
@@ -140,7 +140,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             </div>
           </>
         ) : null}
-        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tooltip-html={t('cloud-sync-d')}>
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('cloud-sync-d')}>
           <a href="https://www.patreon.com/polyhaven/overview" className={styles.format} target="_blank">
             <IconPatreon color="#f96753" />
             {t('cloud-sync')} <GoLinkExternal style={{ marginLeft: '0.5em' }} />

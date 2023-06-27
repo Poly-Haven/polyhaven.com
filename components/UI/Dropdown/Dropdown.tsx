@@ -58,8 +58,8 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
           <div
             key={i}
             data-value={k}
-            data-tooltip-html={options[k].tooltip || null}
-            data-tooltip-id={tooltipID}
+            data-tip={options[k].tooltip || null}
+            data-for={tooltipID}
             className={`${styles.option} ${k === value ? styles.active : null}`}
             onClick={setValue}
           >

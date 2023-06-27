@@ -1,17 +1,5 @@
-@import "constants/colors";
-
 .tooltip {
   max-width: 300px;
-  border: 1px solid rgba($c-accent, 0.5);
   border-radius: 0 !important;
-  background: rgb(60, 60, 60);
   white-space: normal;
-  z-index: 1000;
-}
-
-.arrow {
-  border-right: 1px solid rgba($c-accent, 0.5);
-  border-top: 1px solid rgba($c-accent, 0.5);
-  padding: 0.2em;
-  margin-right: calc(-0.2em - 1px);
 }

@@ -90,11 +90,11 @@ const Sponsor = ({ uuid, patron }) => {
       <div className={styles.row}>
         <p>{t('common:display-name')}:</p>
         <form onSubmit={preventDefault}>
-          <input type="text" value={displayName} data-tooltip-html={t('common:required')} onChange={updateName} />
+          <input type="text" value={displayName} data-tip={t('common:required')} onChange={updateName} />
         </form>
         <p>Link:</p>
         <form onSubmit={preventDefault}>
-          <input type="text" value={url} data-tooltip-html={t('common:optional')} onChange={updateUrl} />
+          <input type="text" value={url} data-tip={t('common:optional')} onChange={updateUrl} />
         </form>
         <Disabled
           disabled={(!isURL(url, { require_protocol: true }) && url.length) || !displayName.length}

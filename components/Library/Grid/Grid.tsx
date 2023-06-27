@@ -306,9 +306,7 @@ const Grid = (props) => {
         <div className={styles.gridHeader}>
           <div className={styles.gridTitle}>
             <h1 className={styles['s' + fSize]}>{title}</h1>
-            {props.author ? (
-              <MdClose onClick={(_) => props.setAuthor(undefined)} data-tooltip-html={t('Clear author')} />
-            ) : null}
+            {props.author ? <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('Clear author')} /> : null}
           </div>
           <div className={styles.options}>
             <div className={styles.advWrapper}>
@@ -324,7 +322,7 @@ const Grid = (props) => {
                 <Dropdown value={props.sort} options={sortOptions} label={t('sort-by')} onChange={setSort} />
               </Disabled>
             </div>
-            <div className={styles.search} data-tooltip-html={locale !== 'en' ? t('search-en') : null}>
+            <div className={styles.search} data-tip={locale !== 'en' ? t('search-en') : null}>
               <MdSearch className={styles.searchIcon} />
               <form onSubmit={submitSearch}>
                 <input type="text" placeholder="Search..." value={searchInputFieldText} onChange={setSearch} />

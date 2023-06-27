@@ -47,7 +47,7 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) =
               data-res={res}
               data-format={`${name}:${f}`}
               onClick={trackDownload}
-              data-tooltip-html={`${res} ${f}: ${filesize(data[f].size)}`}
+              data-tip={`${res} ${f}: ${filesize(data[f].size)}`}
             >
               <MdFileDownload />
               {f}

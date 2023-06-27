@@ -45,7 +45,7 @@ const MapSelector = ({ name, res, fmt, type, data, filesize, selectMap }) => {
       className={`${styles.format} ${checked ? styles.checked : ''}`}
       onClick={toggle}
       data-key={fmt}
-      data-tooltip-html={`${res} ${fmt}: ${filesize}`}
+      data-tip={`${res} ${fmt}: ${filesize}`}
     >
       {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       {fmt}

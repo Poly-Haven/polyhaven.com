@@ -237,7 +237,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 ))}
               </div>
               {data.donated ? (
-                <div className={styles.heart} data-tooltip-html={t('author-donated')}>
+                <div className={styles.heart} data-tip={t('author-donated')}>
                   <Heart />
                 </div>
               ) : null}
@@ -296,7 +296,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
             </div>
 
             <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
-              <span data-tooltip-html={`${Math.round(data.download_count / daysOld)} ${t('downloads-pd')}`}>
+              <span data-tip={`${Math.round(data.download_count / daysOld)} ${t('downloads-pd')}`}>
                 {data.download_count}
               </span>
               {isOlderThanFourDays ? (

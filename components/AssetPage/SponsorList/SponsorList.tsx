@@ -23,7 +23,7 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
     <div className={styles.sponsor}>
       <h4>
         {t('sponsored-by')}{' '}
-        <a href="https://www.patreon.com/polyhaven/overview" data-tooltip-html={t('sponsored-by-d')}>
+        <a href="https://www.patreon.com/polyhaven/overview" data-tip={t('sponsored-by-d')}>
           <MdHelp />
         </a>
       </h4>
