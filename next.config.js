@@ -40,6 +40,12 @@ module.exports = {
         destination: 'https://blog.polyhaven.com',
         permanent: true,
       },
+      {
+        source: '/:locale/faq',
+        destination: 'https://docs.polyhaven.com/:locale/faq',
+        permanent: true,
+        locale: false,
+      },
     ]
   },
 }
