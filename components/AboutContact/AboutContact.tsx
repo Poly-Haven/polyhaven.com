@@ -1,4 +1,5 @@
 import { useTranslation, Trans } from 'next-i18next'
+import { useRouter } from 'next/router'
 
 import LinkText from 'components/LinkText/LinkText'
 import Staff from 'components/UI/Avatar/Staff'
@@ -8,6 +9,7 @@ import styles from './AboutContact.module.scss'
 
 const AboutPage = () => {
   const { t } = useTranslation(['common', 'about'])
+  const router = useRouter()
 
   return (
     <div>
@@ -64,7 +66,11 @@ const AboutPage = () => {
 
       <h1>{t('about:contact.h1')}</h1>
       <p>
-        <Trans i18nKey="about:contact.p1" t={t} components={{ lnk: <LinkText href="/faq" /> }} />
+        <Trans
+          i18nKey="about:contact.p1"
+          t={t}
+          components={{ lnk: <LinkText href={`https://docs.polyhaven.com/${router.locale}/faq`} /> }}
+        />
       </p>
       <p>
         <Trans

@@ -41,20 +41,18 @@ const footer = () => {
         <a id="social" />
         <div className={styles.links}>
           <Link href="/">
-
             <div className={styles.logoWrapper}>
               <img src="/Logo 256.png" className={styles.logo} />
               <h1>Poly Haven</h1>
               <p>{t('common:tagline')}</p>
             </div>
-
           </Link>
           <div className={styles.linkListWrapper}>
             <div className={styles.linkList}>
               <Link prefetch={false} href="/">
                 {t('common:nav.home')}
               </Link>
-              <Link prefetch={false} href="/faq">
+              <Link prefetch={false} href={`https://docs.polyhaven.com/${router.locale}/faq`}>
                 {t('common:nav.faq')}
               </Link>
               <Link prefetch={false} href="/about-contact">
@@ -107,7 +105,7 @@ const footer = () => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default footer
