@@ -1,15 +1,15 @@
 {
   "future": {
-    "day_one": "{{count}} Tag ab jetzt",
-    "day_other": "{{count}} Tage ab jetzt",
-    "hour_one": "{{count}} Stunde ab jetzt",
-    "hour_other": "{{count}} Stunden ab jetzt",
-    "month_one": "{{count}} Monat ab jetzt",
-    "month_other": "{{count}} Monate ab jetzt",
-    "week_one": "{{count}} Woche ab jetzt",
-    "week_other": "{{count}} Wochen ab jetzt",
-    "year_one": "{{count}} Jahr ab jetzt",
-    "year_other": "{{count}} Jahre von jetzt an"
+    "day_one": "In {{count}} Tag",
+    "day_other": "In {{count}} Tagen",
+    "hour_one": "In {{count}} Stunde",
+    "hour_other": "In {{count}} Stunden",
+    "month_one": "In {{count}} Monat",
+    "month_other": "In {{count}} Monaten",
+    "week_one": "In {{count}} Woche",
+    "week_other": "In {{count}} Wochen",
+    "year_one": "In {{count}} Jahr",
+    "year_other": "In {{count}} Jahren"
   },
   "new": "Neu",
   "past": {

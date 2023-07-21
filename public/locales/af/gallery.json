@@ -1,14 +1,14 @@
 {
-  "add": "Voeg joune by",
+  "add": "Voeg jou kuns by",
   "by": "deur",
   "description": "Kunswerk ingedien deur dosyne gebruikers, geskep met behulp van ons bates.",
   "submit": {
     "description": "Het jy 'n wonderlike kunswerk geskep deur een van ons bates te gebruik? Wys dit op hierdie webwerf!",
-    "err-asset-limit": "Jy kan nie meer as {{limit}} bates kies nie, kies asseblief net die mees prominente wat in jou weergawe sigbaar is.",
+    "err-asset-limit": "Jy kan nie meer as {{limit}} bates kies nie, kies asseblief net die mees prominente bates wat in jou weergawe sigbaar is.",
     "err-jpg": "Prent moet 'n JPG wees",
-    "err-size": "Jou prent is te groot, moet minder as 1 MB wees",
+    "err-size": "Jou prent is te groot, moet onder 1MB wees",
     "form": {
-      "art-name": "Kunswerk naam",
+      "art-name": "Kunswerk se naam",
       "assets": "Bates gebruik",
       "assets-d": "Watter HDRI's, teksture of 3D-modelle van Poly Haven het jy gebruik?",
       "file-change": "Verander lêer...",
@@ -18,23 +18,23 @@
       "select-change": "Kies lêer...",
       "software": "Sagteware gebruik",
       "software-d": "Watter 3D-sagteware het jy gebruik om jou kunswerk te skep?",
-      "submit": "Indien",
+      "submit": "Dien In",
       "thanks": "Dankie vir jou voorlegging!",
       "thanks-d": "Ons sal jou lewering binne 'n paar dae hersien en vir jou die resultate e-pos.",
       "uploading": "Laai tans op, wag asseblief...",
       "your-email": "Jou epos",
-      "your-email-d": "Word slegs gebruik om jou in kennis te stel wanneer jou kunswerk gepubliseer word. Veilig gestoor en met niemand gedeel nie.",
+      "your-email-d": "Word slegs gebruik om vir jou kennis te gee wanneer jou kunswerk gepubliseer word. Veilig gestoor en met niemand gedeel nie.",
       "your-name": "Jou naam",
       "your-name-d": "Soos jy gekrediteer wil word."
     },
-    "s1p1": "Het jy 'n paar geskep<lnk> wonderlike kunswerk</lnk> een van ons bates gebruik? Wys dit op hierdie webwerf!",
+    "s1p1": "Het jy 'n paar <lnk>wonderlike kunswerke</lnk> geskep een van ons bates gebruik? Wys dit op hierdie webwerf!",
     "s1p2": "Nadat jy jou lewering ingedien het, sal dit aan ons gestuur word vir goedkeuring. As ons daarvan hou, sal dit vir 'n paar weke in die galery verskyn, en ook op die bladsye van die bates wat jy gebruik het om dit te skep.",
     "s1p3": "As ons baie van jou weergawe <em>hou</em> , sal ons dit permanent vertoon en dit op ons sosiale media deel.",
     "s2": "Reëls:",
-    "s2p1": "Die kunswerk <strong>moet jou eie skepping wees</strong> , en jy moet toegelaat word om dit in die publiek te vertoon.",
-    "s2p2": "Jy moes ten minste een van <strong>Poly Haven se HDRI's/teksture/modelle gebruik</strong> het in die skepping van jou kunswerk.",
+    "s2p1": "Die kunswerk <strong>moet jou eie skepping wees</strong> en jy moet toestemming hê om dit in die publiek te vertoon.",
+    "s2p2": "Jy moes ten minste een van  <strong>Poly Haven se HDRI's /teksture/modelle</strong> in die skepping van jou kunswerk gebruik het.",
     "s2p3": "Naaktheid of ander NSFW-inhoud kan nie aanvaar word nie.",
-    "s3": "Let wel:",
+    "s3": "Let wel op:",
     "s3p1": "Ons kry <strong>baie</strong> voorleggings, so ons kan ongelukkig net die hoogste gehalte kunswerk aanvaar om te verhoed dat die galery deurmekaar raak.",
     "s3p2": "Ons probeer nie om 'n ander ArtStation te wees nie, hierdie galery is toegewy om te wys wat jy met Poly Haven se bates kan doen.",
     "s3p3": "As jy graag terugvoer oor jou lewering wil vra voordat jy dit indien, het ons 'n baie nuttige gemeenskap op<lnk> Onenigheid</lnk> .",
@@ -49,5 +49,5 @@
     "title": "Dien jou aflewering in"
   },
   "title": "Render Gallery",
-  "using": "gebruik"
+  "using": "met gebruik van "
 }

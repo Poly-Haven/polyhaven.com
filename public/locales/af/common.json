@@ -4,11 +4,11 @@
   "Assets": "Bates",
   "Co-founder": "Medestigter",
   "Director": "Direkteur",
-  "Graphic-Design": "Grafiese ontwerp",
+  "Graphic-Design": "Grafiese Ontwerp",
   "HDRIs": "HDRI's",
   "Models": "Modelle",
   "Textures": "Teksture",
-  "also-supported-by": "Ook ondersteun deur:",
+  "also-supported-by": "Ook geondersteun deur:",
   "corporate-sponsor_one": "Korporatiewe Borg",
   "corporate-sponsor_other": "Korporatiewe borge",
   "corporate-sponsors": "Korporatiewe borge",
@@ -16,10 +16,10 @@
   "email-address": "E-pos adres",
   "footer": {
     "join-ranks": "Sluit aan, ondersteun Poly Haven op Patreon",
-    "thanks": "Danksy ons<lnk> Beskermhere</lnk> om Poly Haven moontlik te maak"
+    "thanks": "Danksy ons <lnk> Beskermhere</lnk> om Poly Haven moontlik te maak"
   },
   "goal": {
-    "complete": "Voltooi!",
+    "complete": "Bereik!",
     "current": "Huidige doelwit:",
     "reached": "Ons het ons laaste doelwit bereik! Iets nuuts behoort binnekort hier te verskyn :)",
     "to-go": "$ {{dollars}} om te gaan"
@@ -47,7 +47,7 @@
     "privacy": "Privaatheid",
     "source": "Bron",
     "stats": "Statistieke",
-    "support-us": "Ondersteun ons"
+    "support-us": "Ondersteun Ons"
   },
   "optional": "Opsioneel",
   "patron_one": "Beskermheer",
