@@ -22,6 +22,7 @@
   "backplates": "Enthält eine Reihe von hochauflösenden Hintergrundbildern.",
   "by-author": "von {{author}}",
   "early-access": "Vorab-Zugang",
+  "geonodes": "Dieses Asset wurde mit den Geometrieknoten von Blender erstellt und ist nur mit Blender 3.0+ kompatibel.",
   "lods": "Dieses Asset enthält mehrere LODs (Levels of Detail).",
   "new": "Neu!",
   "no-results": "Keine Ergebnisse",

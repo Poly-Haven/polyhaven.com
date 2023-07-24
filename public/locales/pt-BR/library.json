@@ -22,6 +22,7 @@
   "backplates": "Inclui um conjunto de imagens de fundo de alta resolução.",
   "by-author": "por {{author}}",
   "early-access": "Acesso Antecipado",
+  "geonodes": "Esse recurso foi criado usando os nós de geometria do Blender e é compatível apenas com o Blender 3.0+.",
   "lods": "Este ativo tem vários LODs (níveis de detalhe) incluídos.",
   "new": "Novo!",
   "no-results": "Sem resultados",

@@ -10,7 +10,7 @@
     "p2": "Afhangende van jou ondersteuningsvlak, kan jou belonings die volgende insluit:"
   },
   "not-patron": "Dit lyk nie of jy 'n beskermheer van Poly Haven is nie :( as dit verkeerd is, asseblief kan jy my <lnk> kontak my</lnk> sodat ons die probleem op hierdie bladsy kan ondersoek. Ons sal die volgende inligting benodig:",
-  "not-patron-anymore": "Dit lyk of jy nie meer 'n beskermheer van Poly Haven is nie. Dit is reg, en ons waardeer jou vorige ondersteuning :)",
+  "not-patron-anymore": "Dit lyk of jy nie meer 'n beskermheer van Poly Haven is nie. Dis ok, en ons waardeer jou vorige ondersteuning :)",
   "reward_one": "Dit gee jou die volgende beloning:",
   "reward_other": "Dit gee jou die volgende belonings:",
   "rewards": {
@@ -23,7 +23,7 @@
       "title": "Voetskrif krediet"
     },
     "early-access": {
-      "p1": "Noudat jy aangemeld is, is die<lnk> Batebiblioteek</lnk> sal bates insluit wat ons in die toekoms geskeduleer het om te publiseer.",
+      "p1": "Noudat jy aangemeld is, sal die <lnk> Batebiblioteek</lnk> bates insluit wat ons in die toekoms geskeduleer het om te publiseer.",
       "p2": "Hulle word gemerk deur 'n blou sirkel en die Patreon-logo regs bo, soos volg:",
       "p3": "Jy kan hulle reeds aflaai, voor almal anders :)",
       "title": "Vroeë toegang"
@@ -44,7 +44,7 @@
       "p1": "Jy kan elke maand 'n bate kies om jou naam en 'n skakel permanent langsaan te plak. Om dit te doen, werk ons met 'n stelsel van \"tokens\".",
       "p2": "Aan die begin van elke maand nadat jou betaling deur Patreon verwerk is, ontvang jy outomaties een <ticket /> <b>Borg Token</b> .",
       "p3": "Daar is twee maniere om hierdie teken te spandeer:",
-      "p3li1": "Deur die bladsy van die bate te besoek wat jy wil borg, en klik op die \"<ticket /> Borg hierdie bate\"-knoppie aan die regterkant van die bladsy.",
+      "p3li1": "Deur die bladsy van die bate te besoek wat jy wil borg, en klik op die \"<ticket /> Borg hierdie bate\" knoppie aan die regterkant van die bladsy.",
       "p3li2": "Of jy kan outomatiese borgskappe hieronder aanskakel, wat elke maand vir jou 'n ewekansige bate sal kies.",
       "p4": "Tokens verval nie, so jy kan na 'n paar maande terugkom en jou opgehoopte tokens spandeer.",
       "p5": "Sodra 'n teken spandeer is, kan dit nie herroep of na 'n ander bate geskuif word nie.",

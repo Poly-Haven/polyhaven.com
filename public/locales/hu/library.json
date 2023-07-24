@@ -22,6 +22,7 @@
   "backplates": "Tartalmaz egy sor nagy felbontású háttérképet.",
   "by-author": "{{author}}",
   "early-access": "Korai hozzáférés",
+  "geonodes": "Ez az eszköz a Blender geometriai csomópontjainak használatával készült, és csak a Blender 3.0+ verzióval kompatibilis.",
   "lods": "Ez az eszköz több LOD (részletességi szint) tartalmaz.",
   "new": "Új!",
   "no-results": "Nincs eredmény",

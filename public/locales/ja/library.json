@@ -22,6 +22,7 @@
   "backplates": "高解像度の背景画像のセットが含まれています。",
   "by-author": "{{author}}制作した",
   "early-access": "早期アクセス",
+  "geonodes": "このアセットはBlenderのジオメトリノードを使用して作成されており、Blender 3.0+にのみ対応しています。",
   "lods": "このアセットには、複数のLOD（Level of Detail）が含まれています。",
   "new": "New!",
   "no-results": "結果なし",

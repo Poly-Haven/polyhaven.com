@@ -22,6 +22,7 @@
   "backplates": "Zawiera zestaw teł w wysokiej rozdzielczości.",
   "by-author": "autorstwa: {{author}}",
   "early-access": "Wczesny Dostęp",
+  "geonodes": "Ten zasób został stworzony przy użyciu węzłów geometrii Blendera i jest kompatybilny tylko z Blenderem 3.0+.",
   "lods": "Ten zasób ma wiele LOD (poziomów szczegółowości) w zestawie.",
   "new": "Nowy!",
   "no-results": "Brak wyników",

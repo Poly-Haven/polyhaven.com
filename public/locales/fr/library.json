@@ -22,6 +22,7 @@
   "backplates": "Comprend un ensemble d'images d'arrière-plan haute résolution.",
   "by-author": "par {{author}}",
   "early-access": "Accès anticipé",
+  "geonodes": "Cette ressource est réalisée en utilisant les nœuds géométriques de Blender et n'est compatible qu'avec Blender 3.0+.",
   "lods": "Cette ressource comprend plusieurs LOD (niveaux de détail).",
   "new": "Nouveau!",
   "no-results": "Aucun résultat",

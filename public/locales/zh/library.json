@@ -22,6 +22,7 @@
   "backplates": "包括一组高分辨率背景图像。",
   "by-author": "作者：{{author}}",
   "early-access": "抢先体验",
+  "geonodes": "该资产使用 Blender 的几何节点制作，仅与 Blender 3.0+ 兼容。",
   "lods": "该资产包括多个LOD（细节级别）。",
   "new": "新！",
   "no-results": "没有结果",

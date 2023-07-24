@@ -22,6 +22,7 @@
   "backplates": "Sisaldab komplekti kõrge eraldusvõimega taustapilte",
   "by-author": "Loodud {{author}} poolt",
   "early-access": "Varajane juurdepääs",
+  "geonodes": "See vara on tehtud Blenderi geomeetriasõlmede abil ja ühildub ainult Blender 3.0+ versiooniga.",
   "lods": "Sellel varal on mitu LOD-i (detailsuse taset}} </span>.",
   "new": "Uus!",
   "no-results": "Tulemus pole",

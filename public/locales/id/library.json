@@ -22,6 +22,7 @@
   "backplates": "Termasuk satu set gambar latar belakang beresolusi tinggi.",
   "by-author": "oleh {{author}}",
   "early-access": "Akses Awal",
+  "geonodes": "Aset ini dibuat menggunakan node geometri Blender dan hanya kompatibel dengan Blender 3.0+.",
   "lods": "Aset ini memiliki beberapa LOD (level detail) yang disertakan.",
   "new": "Baru!",
   "no-results": "Tidak ada hasil",

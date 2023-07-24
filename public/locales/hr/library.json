@@ -22,6 +22,7 @@
   "backplates": "Uključuje skup pozadinskih slika visoke rezolucije.",
   "by-author": "po {{author}}",
   "early-access": "Rani pristup",
+  "geonodes": "Ovo je sredstvo napravljeno korištenjem Blenderovih geometrijskih čvorova i kompatibilno je samo s Blenderom 3.0+.",
   "lods": "Ovaj materijal sadrži više LOD-ova (razina detalja).",
   "new": "Novo!",
   "no-results": "Nema rezultata",

@@ -22,6 +22,7 @@
   "backplates": "Bir dizi yüksek çözünürlüklü arka plan görüntüsü içerir.",
   "by-author": "{{author}} tarafından",
   "early-access": "Erken Erişim",
+  "geonodes": "Bu varlık Blender'ın geometri düğümleri kullanılarak yapılmıştır ve yalnızca Blender 3.0+ ile uyumludur.",
   "lods": "Bu öğede birden fazla LOD (ayrıntı düzeyi) bulunmaktadır.",
   "new": "Yeni!",
   "no-results": "Sonuç yok",

@@ -22,6 +22,7 @@
   "backplates": "Incluye un set de imágenes de fondo de alta resolución.",
   "by-author": "por {{author}}",
   "early-access": "Acceso anticipado",
+  "geonodes": "Este activo está hecho usando los nodos de geometría de Blender y sólo es compatible con Blender 3.0+.",
   "lods": "Este activo tiene múltiples LODs (niveles de detalle) incluidos.",
   "new": "¡Nuevo!",
   "no-results": "No hay resultados",
