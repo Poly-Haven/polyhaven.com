@@ -189,7 +189,8 @@ const AboutPage = () => {
         created by Monorender and released as <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
       </p>
       <p>
-        Icons by <a href="https://developers.google.com/fonts/docs/material_icons">Material Design</a>,{' '}
+        Icons by <a href="https://blender.org">Blender</a>,{' '}
+        <a href="https://developers.google.com/fonts/docs/material_icons">Material Design</a>,{' '}
         <a href="https://primer.style/octicons/">Octicons</a>,{' '}
         <a href="https://github.com/tabler/tabler-icons">Tabler Icons</a>,{' '}
         <a href="https://simpleicons.org/">Simple Icons</a>, and <a href="https://ionic.io/ionicons">Ionicons</a> using{' '}

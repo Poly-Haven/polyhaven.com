@@ -44,6 +44,7 @@
   "rigged": "This model is rigged and ready to animate.",
   "aerial": "This asset was scanned with a drone, meaning it is typically a much larger scale than other assets.",
   "lods": "This asset has multiple LODs (levels of detail) included.",
+  "geonodes": "This asset is made using Blender's geometry nodes and is only compatible with Blender 3.0+.",
   "early-access": "Early Access",
   "search-en": "Search only works in English, sorry!"
 }

@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { timeago } from 'utils/dateUtils'
 
 import { MdCollections } from 'react-icons/md'
-import { TbBone, TbDrone, TbPyramid, TbAspectRatio } from 'react-icons/tb'
+import { TbBone, TbDrone, TbPyramid, TbAspectRatio, TbTool } from 'react-icons/tb'
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
+import NodeTree from 'components/UI/Icons/NodeTree'
 import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit'
 
 import styles from './GridItem.module.scss'
@@ -93,6 +94,12 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
       icon: <TbPyramid />,
     })
   }
+  if (asset.geonodes) {
+    indicators.push({
+      text: `✔ Geometry Nodes: ${t('geonodes')}`,
+      icon: <NodeTree />,
+    })
+  }
 
   let creditedAuthors = []
   for (const [author, credit] of Object.entries(asset.authors)) {
@@ -106,13 +113,13 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}`
   return (
-    (<Link
+    <Link
       href="/a/[id]"
       as={`/a/${assetID}`}
       className={`${styles.gridItem} ${blur ? styles.blur : ''} ${showText ? styles.showText : ''}`}
       onClick={onClick}
-      ref={wrapperRef}>
-
+      ref={wrapperRef}
+    >
       <div className={styles.author}>
         <div className={styles.authorInner}>
           {creditedAuthors.sort().map((a) => (
@@ -139,9 +146,8 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
           </div>
         ))}
       </div>
-
-    </Link>)
-  );
+    </Link>
+  )
 }
 
 GridItem.defaultProps = {
