@@ -10,7 +10,10 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
 
   const isProduction = process.env.NODE_ENV === 'production'
-  const isClient = typeof window !== 'undefined'
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     if (isProduction && isClient && localStorage.getItem('hideAds') !== 'yes') {
