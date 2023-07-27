@@ -20,7 +20,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
         console.error(err)
       }
     }
-  }, [])
+  }, [id])
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
@@ -61,6 +61,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     <>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins
+        key={id}
         className="adsbygoogle"
         style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
         data-ad-client="ca-pub-2284751191864068"
