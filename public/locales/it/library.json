@@ -22,7 +22,7 @@
   "backplates": "Include una serie di immagini di sfondo ad alta risoluzione.",
   "by-author": "di {{author}}",
   "early-access": "Accesso anticipato",
-  "geonodes": "Questa risorsa è realizzata utilizzando i nodi geometrici di Blender ed è compatibile solo con Blender 3.0+.",
+  "geonodes": "Questa risorsa è realizzata utilizzando i \"geometry nodes\" di Blender ed è compatibile solo con le versioni di Blender superiori alla 3.0.",
   "lods": "Questa risorsa include più LOD (livelli di dettaglio).",
   "new": "Nuovo!",
   "no-results": "Nessun risultato",
