@@ -10,17 +10,31 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
 
   const isProduction = process.env.NODE_ENV === 'production'
+  const isClient = typeof window !== 'undefined'
 
   useEffect(() => {
-    if (isProduction && localStorage.getItem(`hideAds`) !== 'yes') {
+    if (isProduction && isClient && localStorage.getItem('hideAds') !== 'yes') {
       try {
         // @ts-ignore - adsbygoogle not detected as a prop of window
-        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        if (!window.adsbygoogle) {
+          // Load Google AdSense script only if it's not already loaded
+          const script = document.createElement('script')
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+          script.async = true
+          document.body.appendChild(script)
+        }
+
+        // Push the ads only if adsbygoogle is defined
+        // @ts-ignore - adsbygoogle not detected as a prop of window
+        if (window.adsbygoogle) {
+          // @ts-ignore - adsbygoogle not detected as a prop of window
+          window.adsbygoogle.push({})
+        }
       } catch (err) {
         console.error(err)
       }
     }
-  }, [id])
+  }, [])
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
@@ -39,12 +53,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     />
   ) : null
 
-  const [isServer, setIsServer] = useState(true)
-  useEffect(() => {
-    setIsServer(false)
-  }, [])
-
-  if (isServer || localStorage.getItem(`hideAds`) === 'yes') {
+  if (!isClient || localStorage.getItem('hideAds') === 'yes') {
     return null
   }
 
@@ -59,14 +68,12 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
 
   return (
     <>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins
-        key={id}
         className="adsbygoogle"
         style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
         data-ad-client="ca-pub-2284751191864068"
         data-ad-slot={id}
-      ></ins>
+      />
       {jsxRemoveAds}
     </>
   )
