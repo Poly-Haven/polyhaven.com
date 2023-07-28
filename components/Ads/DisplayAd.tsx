@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
@@ -8,36 +8,22 @@ import styles from './Ads.module.scss'
 
 const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
+  const adRef = useRef(null)
 
   const isProduction = process.env.NODE_ENV === 'production'
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   useEffect(() => {
-    if (isProduction && isClient && localStorage.getItem('hideAds') !== 'yes') {
+    if (isProduction && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
       try {
+        // console.log(`Loading ad ${id}`, adRef.current, window.adsbygoogle)
         // @ts-ignore - adsbygoogle not detected as a prop of window
-        if (!window.adsbygoogle) {
-          // Load Google AdSense script only if it's not already loaded
-          const script = document.createElement('script')
-          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-          script.async = true
-          document.body.appendChild(script)
-        }
-
-        // Push the ads only if adsbygoogle is defined
-        // @ts-ignore - adsbygoogle not detected as a prop of window
-        if (window.adsbygoogle) {
-          // @ts-ignore - adsbygoogle not detected as a prop of window
-          window.adsbygoogle.push({})
-        }
+        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        // console.log(`Loaded ad ${id}`, window.adsbygoogle)
       } catch (err) {
         console.error(err)
       }
     }
-  }, [])
+  }, [adRef.current])
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
@@ -56,7 +42,12 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     />
   ) : null
 
-  if (!isClient || localStorage.getItem('hideAds') === 'yes') {
+  const [isServer, setIsServer] = useState(true)
+  useEffect(() => {
+    setIsServer(false)
+  }, [])
+
+  if (isServer || localStorage.getItem(`hideAds`) === 'yes') {
     return null
   }
 
@@ -71,12 +62,14 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
 
   return (
     <>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <ins
         className="adsbygoogle"
         style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
         data-ad-client="ca-pub-2284751191864068"
         data-ad-slot={id}
-      />
+        ref={adRef}
+      ></ins>
       {jsxRemoveAds}
     </>
   )
