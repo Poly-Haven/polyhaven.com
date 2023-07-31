@@ -12,7 +12,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const adRef = useRef(null)
 
-  const isProduction = true // process.env.NODE_ENV === 'production'
+  const isProduction = process.env.NODE_ENV === 'production'
 
   useEffect(() => {
     if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
