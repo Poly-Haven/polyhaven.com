@@ -8,22 +8,23 @@ import styles from './Ads.module.scss'
 
 const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
+  const [isServer, setIsServer] = useState(true)
+  const [isLoaded, setIsLoaded] = useState(false)
   const adRef = useRef(null)
 
-  const isProduction = process.env.NODE_ENV === 'production'
+  const isProduction = true // process.env.NODE_ENV === 'production'
 
   useEffect(() => {
-    if (isProduction && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
+    if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
       try {
-        // console.log(`Loading ad ${id}`, adRef.current, window.adsbygoogle)
         // @ts-ignore - adsbygoogle not detected as a prop of window
         ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-        // console.log(`Loaded ad ${id}`, window.adsbygoogle)
+        setIsLoaded(true)
       } catch (err) {
         console.error(err)
       }
     }
-  }, [adRef.current])
+  }, [adRef.current, isServer])
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
@@ -42,7 +43,6 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     />
   ) : null
 
-  const [isServer, setIsServer] = useState(true)
   useEffect(() => {
     setIsServer(false)
   }, [])
