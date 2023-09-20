@@ -4,7 +4,7 @@
   "Assets": "Assets",
   "Co-founder": "Mitbegründer",
   "Director": "Direktor",
-  "Graphic-Design": "Grafik-Design",
+  "Graphic-Design": "Grafikdesign",
   "HDRIs": "HDRIs",
   "Models": "Modelle",
   "Textures": "Texturen",
@@ -16,7 +16,7 @@
   "email-address": "E-Mail Adresse",
   "footer": {
     "join-ranks": "Schließ dich an, unterstütze Poly Haven auf Patreon",
-    "thanks": "Dank an unsere <lnk>Unterstützer</lnk>, die Poly Haven möglich gemacht haben"
+    "thanks": "Vielen Dank an unsere <lnk>Unterstützer</lnk>, die Poly Haven möglich gemacht haben"
   },
   "goal": {
     "complete": "Ziel erreicht!",

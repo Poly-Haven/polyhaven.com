@@ -13,10 +13,10 @@
     "upcoming-1": "Keine",
     "upcoming-1d": "Alle kommenden Inhalte ausblenden",
     "upcoming-2": "Einige, verschwommen",
-    "upcoming-2d": "Zeige bis zu 3 Assets , die demnächst veröffentlicht werden",
+    "upcoming-2d": "Zeige bis zu 3 Assets, die demnächst veröffentlicht werden",
     "upcoming-3": "Alle",
     "upcoming-3d": "Zeige alle anstehenden Inhalte und hebe die Unschärfe auf",
-    "upcoming-patron": "Als Patron werden dir immer die bevorstehenden Assets angezeigt."
+    "upcoming-patron": "Als Patron werden dir die bevorstehenden Assets immer angezeigt."
   },
   "aerial": "Dieses Objekt wurde mit einer Drohne gescannt, was bedeutet, dass es in der Regel einen viel größeren Maßstab hat als andere Objekte.",
   "backplates": "Enthält eine Reihe von hochauflösenden Hintergrundbildern.",
@@ -33,7 +33,7 @@
   "search-en": "Die Suche funktioniert nur auf Englisch, sorry!",
   "sort": {
     "downloads": "Downloads",
-    "downloads-d": "Gesamtzahl der aller Downloads.",
+    "downloads-d": "Gesamtzahl aller Downloads.",
     "hot": "Beliebt",
     "hot-d": "Downloads pro Tag, wobei neuere Inhalte etwas stärker gewichtet sind.",
     "latest": "Neueste",

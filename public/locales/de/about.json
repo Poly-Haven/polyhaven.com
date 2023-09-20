@@ -22,7 +22,7 @@
     "s2p2": "Wir haben einen strengen Qualitätsstandard einzuhalten, und alles, was wir veröffentlichen, muss <lnk1>CC0</lnk1> sein, aber wenn dein Asset akzeptiert wird, profitiert die gesamte 3D-Gemeinschaft davon. <lnk2>Erfahre mehr und reiche dein Projekt hier ein</lnk2>.",
     "s3": "Erwähne uns",
     "s3p1": "Es ist in Ordnung, wenn du es dir nicht leisten kannst oder willst, uns zu unterstützen :) Du kannst uns trotzdem helfen zu wachsen, indem du dafür sorgst, dass deine Freunde und Arbeitskollegen von uns erfahren. Je mehr Menschen wir helfen können, desto besser!",
-    "s3p2": "Es ist nicht zwingend, aber wenn du unsere Assets in deiner Arbeit verwendest, erwähne uns gerne, damit mehr Menschen wissen, dass es uns gibt."
+    "s3p2": "Es ist nicht nötig, aber wenn du unsere Assets in deiner Arbeit verwendest, erwähne uns gerne, damit mehr Menschen erfahren, dass es uns gibt."
   },
   "how": {
     "h1": "Wie machen wir das?",
@@ -37,12 +37,12 @@
   "transparency": {
     "h1": "Transparenz",
     "li1": "Wir schreiben regelmäßig Dev Logs auf <lnk>unserem Blog</lnk>, um mitzuteilen, woran wir in letzter Zeit gearbeitet haben.",
-    "li2": "Unsere <lnk>Beiträge auf Patreon</lnk> sind auch ein guter Ort, um kleinere Updates und Umfragen zu finden, wenn wir Hilfe bei der Entscheidungsfindung brauchen.",
+    "li2": "Unsere <lnk>Beiträge auf Patreon</lnk> sind auch ein guter Ort, um kleinere Updates und Umfragen zu finden, wenn wir Hilfe bei Entscheidungen brauchen.",
     "li3": "<lnk>Discord</lnk> ist der Ort, an dem wir uns jeden Tag aufhalten, sag einfach Hallo!",
     "li4": "Unsere sozialen Medien sind in erster Linie automatisiert, um unsere neuesten Inhalte zu veröffentlichen, aber wir sind gelegentlich auch dort aktiv (Links in der <lnk>Fußzeile</lnk>).",
     "li5": "Unsere <lnk>Finanzberichte</lnk> geben genau an, wie wir unsere Mittel ausgeben oder sparen.",
     "p1": "Da wir uns zum größten Teil über Spenden finanzieren, ist es uns wichtig, dass jeder sehen kann, was wir tun, was wir planen und welche Gründe hinter unseren Entscheidungen stehen.",
-    "p2": "Die Bereitstellung unserer Assets hat für uns Priorität, aber wir möchten auch unser Wissen teilen, damit andere lernen können, wie man solche Assets erstellt und sie vielleicht auch teilen kann."
+    "p2": "Die Bereitstellung unserer Assets hat für uns Priorität, aber wir möchten auch unser Wissen teilen, damit Andere lernen können, wie man solche Assets erstellt und diese vielleicht auch teilen."
   },
   "why": {
     "h1": "Warum tun wir das?",

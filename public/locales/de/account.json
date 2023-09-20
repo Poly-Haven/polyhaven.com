@@ -34,8 +34,8 @@
       "title": "Keine Werbung"
     },
     "offline-access": {
-      "p1": "Geben Sie Ihre E-Mail-Adresse ein, um sich eine Einladung zu unserem Cloud-Ordner zu schicken:",
-      "p2": "Prüfe deine E-Mail :)",
+      "p1": "Gib deine E-Mail-Adresse ein, um dir eine Einladung zu unserem Cloud-Ordner zu schicken:",
+      "p2": "Überprüfe deine E-Mails :)",
       "p3": "Einladung erfolgreich gesendet. Wenn du Probleme hast oder deine E-Mail-Adresse ändern musst, <lnk>kontaktiere uns bitte</lnk>.",
       "p4": "In <lnk>diesem Beitrag</lnk> findest du weitere Anweisungen, wie du Nextcloud einrichtest und mit der Synchronisierung von Assets auf deinem Computer beginnst.",
       "title": "Offline-Zugriff"
@@ -60,6 +60,6 @@
       "title": "Interessensvertreter"
     }
   },
-  "support-amount": "Du unterstützt Poly Haven derzeit mit ${{amount}} pro Monat, vielen Dank!",
+  "support-amount": "Du unterstützt Poly Haven derzeit mit {{amount}}$ pro Monat, vielen Dank!",
   "title": "Anmelden"
 }
