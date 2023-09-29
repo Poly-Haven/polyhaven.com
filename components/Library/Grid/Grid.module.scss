@@ -189,6 +189,8 @@
 }
 
 .optionsSpacer {
+  @include transition();
+
   @media screen and (max-width: 1370px) {
     display: none;
   }

@@ -37,6 +37,7 @@ const Grid = (props) => {
   const [uuid, setUuid] = useState(null)
   const [patron, setPatron] = useState({})
   const [news, setNews] = useState(null)
+  const [delay, setDelay] = useState(false)
   const { locale } = useRouter()
 
   let sortedKeys = []
@@ -50,7 +51,7 @@ const Grid = (props) => {
   const [showText, setShowText] = useStoredState('lib_adv_showText', false)
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
 
-  const { width, height } = useDivSize(optionsRef, [showAdvanced])
+  const { width, height } = useDivSize(optionsRef, [showAdvanced, delay])
 
   useEffect(() => {
     // Handle user loading
@@ -64,6 +65,13 @@ const Grid = (props) => {
       }
     }
   }, [user, uuid])
+
+  useEffect(() => {
+    // Delay useDivSize to ensure the options bar is not covering anything.
+    setTimeout(() => {
+      setDelay(true)
+    }, 1000)
+  }, [])
 
   // Work around stale state issues
   const numResults = useRef(null)
