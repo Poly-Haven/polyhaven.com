@@ -11,17 +11,28 @@
   padding: 0.5rem;
   background: rgba($c-background, 0.8);
 
-  @media screen and (max-width: 810px) {
-    width: calc(100% - 1rem);
+  @media screen and (max-width: 1370px) {
     position: relative;
+    width: calc(100% - 1rem);
   }
 
-  .gridHeader {
+  .gridHeaderWrapper {
     flex-grow: 1;
     @include flex(row, true, false);
-    flex-wrap: wrap;
     row-gap: 0.5em;
     padding: 0 1rem;
+
+    @media screen and (max-width: 1518px) {
+      flex-direction: column;
+    }
+
+    .gridHeader {
+      @include flex(row, true, false);
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      flex-grow: 1;
+    }
 
     .gridTitle {
       flex-grow: 1;
@@ -74,7 +85,6 @@
     row-gap: 0.3em;
 
     .advWrapper {
-
       .advButton {
         @include flex(row, true, true);
         font-size: 1.5em;
@@ -119,7 +129,7 @@
       display: flex;
       align-items: center;
       height: calc(2.5rem - 2px);
-      width: calc(198px - 0.6rem);
+      width: calc(150px - 0.6rem);
       padding: 0 0.3rem;
       border: 1px solid rgba($c-text-light, 0.2);
       background-color: $c-background;
@@ -179,7 +189,7 @@
 }
 
 .optionsSpacer {
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 1370px) {
     display: none;
   }
 }
@@ -219,7 +229,7 @@
 }
 
 .adGridTop {
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 980px) {
     display: none;
   }
 }

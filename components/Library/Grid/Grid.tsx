@@ -303,43 +303,46 @@ const Grid = (props) => {
   return (
     <>
       <div className={styles.optionsBar} ref={optionsRef}>
-        <div className={styles.gridHeader}>
-          <div className={styles.gridTitle}>
-            <h1 className={styles['s' + fSize]}>{title}</h1>
-            {props.author ? <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('Clear author')} /> : null}
-          </div>
-          <div className={styles.options}>
-            <div className={styles.advWrapper}>
-              <div
-                className={`${styles.advButton} ${showAdvanced ? styles.active : ''}`}
-                onClick={() => setShowAdvanced(!showAdvanced)}
-              >
-                <MdSettings />
+        <div className={styles.gridHeaderWrapper}>
+          <div className={styles.gridHeader}>
+            <div className={styles.gridTitle}>
+              <h1 className={styles['s' + fSize]}>{title}</h1>
+              {props.author ? (
+                <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('Clear author')} />
+              ) : null}
+            </div>
+            <div className={styles.options}>
+              <div className={styles.advWrapper}>
+                <div
+                  className={`${styles.advButton} ${showAdvanced ? styles.active : ''}`}
+                  onClick={() => setShowAdvanced(!showAdvanced)}
+                >
+                  <MdSettings />
+                </div>
               </div>
+              <div className={styles.menuSelection}>
+                <Disabled disabled={Boolean(props.search)} tooltip={t('sort.relevance')} tooltipSide={'bottom'}>
+                  <Dropdown value={props.sort} options={sortOptions} label={t('sort-by')} onChange={setSort} />
+                </Disabled>
+              </div>
+              <div className={styles.search} data-tip={locale !== 'en' ? t('search-en') : null}>
+                <MdSearch className={styles.searchIcon} />
+                <form onSubmit={submitSearch}>
+                  <input type="text" placeholder="Search..." value={searchInputFieldText} onChange={setSearch} />
+                </form>
+                {props.search ? <MdClose className={styles.resetSearchIcon} onClick={resetSearch} /> : null}
+              </div>
+              {
+                <p className={styles.numResults}>
+                  {sortedKeys.length} {t('results')}
+                </p>
+              }
             </div>
-            <div className={styles.menuSelection}>
-              <Disabled disabled={Boolean(props.search)} tooltip={t('sort.relevance')} tooltipSide={'bottom'}>
-                <Dropdown value={props.sort} options={sortOptions} label={t('sort-by')} onChange={setSort} />
-              </Disabled>
-            </div>
-            <div className={styles.search} data-tip={locale !== 'en' ? t('search-en') : null}>
-              <MdSearch className={styles.searchIcon} />
-              <form onSubmit={submitSearch}>
-                <input type="text" placeholder="Search..." value={searchInputFieldText} onChange={setSearch} />
-              </form>
-              {props.search ? <MdClose className={styles.resetSearchIcon} onClick={resetSearch} /> : null}
-            </div>
-            {
-              <p className={styles.numResults}>
-                {sortedKeys.length} {t('results')}
-              </p>
-            }
           </div>
           <div className={styles.adGridTop}>
-            <DisplayAd id="9488083725" x={468} y={60} />
+            <DisplayAd id="9488083725" x={728} y={90} />
           </div>
         </div>
-        <div style={{ flexBasis: '100%', width: 0 }} />
         {showAdvanced ? (
           <div className={styles.advOptions}>
             <Disabled disabled={!blurUpcoming} tooltip={t('adv.upcoming-patron')}>
