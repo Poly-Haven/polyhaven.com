@@ -40,7 +40,7 @@ const CategoryList = (props) => {
   }
 
   const wholeList = props.level === -1 ? tlc[props.assetType] : Object.keys(data)
-  const list = wholeList.filter((cat) => data[cat] > 1)
+  const list = wholeList.filter((cat) => data[cat] > 1).filter((cat) => !cat.startsWith('collection: '))
 
   return (
     <div className={`${level > 0 ? styles.subCat : ''}`}>
@@ -57,8 +57,8 @@ const CategoryList = (props) => {
           ${styles.cat}
           ${cat === activeCat ? styles.catSemiActive : ''}
           ${cat === activeCat && level === props.categories.length - 1 ? styles.catActive : ''}
-          `}>
-
+          `}
+              >
                 {level === 0 ? (
                   <MdKeyboardArrowRight className={styles.caret} />
                 ) : (
@@ -66,7 +66,6 @@ const CategoryList = (props) => {
                 )}
                 {props.assetType === 'all' ? tc(assetTypeName(cat)) : t(cat)}
                 <div className={styles.num}>{data[cat] ? data[cat] : 0}</div>
-
               </Link>
               {cat === activeCat ? (
                 <CategoryList
@@ -83,7 +82,7 @@ const CategoryList = (props) => {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default CategoryList
