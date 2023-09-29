@@ -7,7 +7,7 @@
   position: fixed;
   flex-shrink: 0;
   height: calc(100vh - #{$v-header-height});
-  width: 210px;
+  width: $v-sidebar-width;
   background: $c-background-dark;
   text-transform: capitalize;
   z-index: 11;
