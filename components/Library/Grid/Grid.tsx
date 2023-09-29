@@ -250,11 +250,15 @@ const Grid = (props) => {
   }
 
   let title = tc(asset_type_name)
-  if (props.categories.length) {
-    title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
-  }
-  if (props.author) {
-    title += ` (${t('by-author', { author: props.author })})`
+  if (props.collection) {
+    title = props.collection.name
+  } else {
+    if (props.categories.length) {
+      title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
+    }
+    if (props.author) {
+      title += ` (${t('by-author', { author: props.author })})`
+    }
   }
   const fSize = Math.floor(title.length / 17.5) // Rough detection of line length used to reduce font size.
 

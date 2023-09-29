@@ -8,7 +8,7 @@ import Page from 'components/Layout/Page/Page'
 
 import styles from './Library.module.scss'
 
-const Library = ({ assetType, categories, author, search, strictSearch, sort }) => {
+const Library = ({ assetType, collection, categories, author, search, strictSearch, sort }) => {
   const [authorState, setAuthor] = useState(author)
   const [searchState, setSearch] = useState(search)
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
@@ -34,6 +34,7 @@ const Library = ({ assetType, categories, author, search, strictSearch, sort }) 
         <Grid
           assetType={assetType}
           categories={categories}
+          collection={collection}
           author={authorState}
           setAuthor={setAuthor}
           search={searchState}

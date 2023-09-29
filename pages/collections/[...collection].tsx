@@ -10,45 +10,19 @@ import asset_types from 'constants/asset_types.json'
 import { titleCase } from 'utils/stringUtils'
 
 const LibraryPage = (props) => {
-  const { t } = useTranslation('common')
-
-  let title = t(assetTypeName(props.assetType))
-  if (props.categories.length) {
-    title += ': ' + titleCase(props.categories.join(' > '))
-  }
-
-  let imageUrl = `https://polyhaven.com/api/og-image?type=${props.assetType}`
-  if (props.categories.length) {
-    imageUrl += `&categories=${props.categories.join(',')}`
-  }
-
-  let description = ''
-  if (props.categories.length) {
-    description = `Free ${props.categories[props.categories.length - 1]}`
-  } else {
-    description = 'Hundreds of free'
-  }
-  const typeDescription = {
-    hdris: 'HDRI environments',
-    textures: 'PBR texture sets',
-    models: '3D models',
-    all: 'HDRIs, textures, and 3D models',
-  }
-  description += ` ${typeDescription[props.assetType]}, ready to use for any purpose.`
-
   return (
     <>
       <Head
-        title={title}
-        url={`/${props.assetType}/${props.categories.join('/')}`}
-        description={description}
+        title={props.collectionData.name}
+        url={`/collections/${props.collectionID}/${props.assetType}/${props.categories.join('/')}`}
+        description={props.collectionData.description}
         assetType={asset_types[props.assetType]}
-        image={imageUrl}
+        image={`https://cdn.polyhaven.com/collections/${props.collectionID}.png?width=580`}
       />
       <Library
         assetType={props.assetType}
         categories={props.categories}
-        collection={null}
+        collection={props.collectionData}
         author={props.author}
         search={props.search}
         strictSearch={props.strictSearch}
@@ -58,15 +32,31 @@ const LibraryPage = (props) => {
   )
 }
 
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.ok)
+  }
+  return response
+}
+
 export async function getServerSideProps(context) {
-  const params = context.params.assets
-  const assetType = params.shift()
+  const params = context.params.collection
+  const collectionID = params.shift()
   const author = context.query.a
   const search = context.query.s
   const strictSearch = context.query.strict
   let sort = context.query.o
 
-  if (typesAvailable[assetType] === undefined) {
+  const baseUrl =
+    (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_API_URL) || 'https://api.polyhaven.com'
+  let error = null
+
+  const collections = await fetch(`${baseUrl}/collections`)
+    .then(handleErrors)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
+
+  if (!Object.keys(collections).includes(collectionID)) {
     return {
       notFound: true,
       props: {
@@ -74,6 +64,16 @@ export async function getServerSideProps(context) {
       },
     }
   }
+
+  const assetType = 'all'
+  // if (typesAvailable[assetType] === undefined) {
+  //   return {
+  //     notFound: true,
+  //     props: {
+  //       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
+  //     },
+  //   }
+  // }
 
   const allowedSorts = ['hot', 'latest', 'top', 'name']
   if (!allowedSorts.includes(sort)) {
@@ -84,7 +84,9 @@ export async function getServerSideProps(context) {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: assetType,
-      categories: params,
+      collectionID: collectionID,
+      collectionData: collections[collectionID],
+      categories: [`collection: ${collectionID}`, ...params],
       author: author ? author : '',
       search: search ? search : '',
       strictSearch: strictSearch ? true : false,
