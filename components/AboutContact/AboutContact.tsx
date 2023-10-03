@@ -50,7 +50,13 @@ const AboutPage = () => {
         />
         <Staff id="James Ray Cock" name="James Ray Cock" role={`${t('common:Models')}`} country="ZA" mode="full" />
         <Staff id="Dario Barresi" name="Dario Barresi" role={`${t('common:Textures')}`} country="ZA" mode="full" />
-        <Staff id="Andreas Mischok" name="Andreas Mischok" role={`${t('common:HDRIs')}`} country="DE" mode="full" />
+        <Staff
+          id="Jandre van Heerden"
+          name="Jandre van Heerden"
+          role={`${t('common:Models')}, ${t('common:Textures')}`}
+          country="ZA"
+          mode="full"
+        />
         <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UA" mode="full" />
         <Staff
           id="Dimitrios Savva"

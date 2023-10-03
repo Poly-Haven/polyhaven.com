@@ -28,7 +28,6 @@ const Home = () => {
         <div className={styles.assetTypeBanner}>
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
             <Link href="/hdris">
-
               <div className={styles.assetTypeImage}>
                 <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
                 <img
@@ -36,7 +35,6 @@ const Home = () => {
                   className={styles.hover}
                 />
               </div>
-
             </Link>
             <div className={styles.text}>
               <h2>{tc('HDRIs')}</h2>
@@ -46,7 +44,6 @@ const Home = () => {
           </div>
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
             <Link href="/textures">
-
               <div className={styles.assetTypeImage}>
                 <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
                 <img
@@ -54,7 +51,6 @@ const Home = () => {
                   className={styles.hover}
                 />
               </div>
-
             </Link>
             <div className={styles.text}>
               <h2>{tc('Textures')}</h2>
@@ -64,7 +60,6 @@ const Home = () => {
           </div>
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
             <Link href="/models">
-
               <div className={styles.assetTypeImage}>
                 <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
                 <img
@@ -72,7 +67,6 @@ const Home = () => {
                   className={styles.hover}
                 />
               </div>
-
             </Link>
             <div className={styles.text}>
               <h2>{tc('Models')}</h2>
@@ -275,10 +269,10 @@ const Home = () => {
               </div>
               <div className={styles.avatarRow}>
                 <Staff
-                  id="Andreas Mischok"
-                  name="Andreas Mischok"
-                  role={`${tc('common:HDRIs')}`}
-                  country="DE"
+                  id="Jandre van Heerden"
+                  name="Jandre van Heerden"
+                  role={`${tc('common:Models')}, ${tc('common:Textures')}`}
+                  country="ZA"
                   mode="compact"
                 />
                 <Staff
@@ -336,7 +330,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Home
