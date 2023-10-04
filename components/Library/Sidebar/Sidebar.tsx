@@ -90,12 +90,7 @@ const Sidebar = (props) => {
               <div>
                 <div>
                   <div>
-                    <Link
-                      href="/collections"
-                      className={`
-              ${styles.cat}
-              `}
-                    >
+                    <Link href="/collections" className={`${styles.cat}`}>
                       <MdKeyboardArrowRight className={styles.caret} />
                       {t_c('nav.collections')}
                     </Link>

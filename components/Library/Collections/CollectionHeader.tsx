@@ -14,8 +14,17 @@ import styles from './CollectionHeader.module.scss'
 
 const CollectionHeader = ({ collection }) => {
   const wrapperRef = useRef(null)
+  const textRef = useRef(null)
   const { width } = useDivSize(wrapperRef)
   const [imageWidth, setImageWidth] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+
+  // Super fancy scroll effect
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Set imageWidth once on load
   useEffect(() => {
@@ -38,7 +47,7 @@ const CollectionHeader = ({ collection }) => {
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center center',
+        backgroundPosition: `center ${Math.min(100, 50 + (scrollY / 512) * 20)}%`,
       }}
     >
       <div className={styles.gradient} />
@@ -49,7 +58,14 @@ const CollectionHeader = ({ collection }) => {
           </div>
         </div>
       )}
-      <div className={styles.text}>
+      <div
+        className={styles.text}
+        ref={textRef}
+        style={{
+          transform: `translateY(${scrollY / 2}px)`,
+          opacity: Math.max(0, 1 - scrollY / 260 + 0.65),
+        }}
+      >
         <h1>Collection: {collection.name}</h1>
         <p>{collection.description}</p>
       </div>
