@@ -15,7 +15,7 @@ const Collection = ({ collectionId, data }) => {
     unreal: <Unreal />,
   }
 
-  const collectionLink = `/all?s=collection: ${collectionId}&strict=true`
+  const collectionLink = `/collections/${collectionId}`
 
   const buttonStyle = { whiteSpace: 'nowrap', margin: 0, padding: '0.5em 0.8em', width: 'calc(100% - 2em - 2px)' }
 

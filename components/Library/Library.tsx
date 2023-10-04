@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid'
 import Sidebar from 'components/Library/Sidebar/Sidebar'
 import Grid from 'components/Library/Grid/Grid'
 import Page from 'components/Layout/Page/Page'
+import CollectionHeader from 'components/Library/Collections/CollectionHeader'
 
 import styles from './Library.module.scss'
 
@@ -31,6 +32,7 @@ const Library = ({ assetType, collection, categories, author, search, strictSear
     <div id={styles.library}>
       <Sidebar assetType={assetType} categories={categories} />
       <Page library>
+        {collection ? <CollectionHeader collection={collection} /> : null}
         <Grid
           assetType={assetType}
           categories={categories}

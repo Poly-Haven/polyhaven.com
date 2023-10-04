@@ -73,6 +73,26 @@ const Grid = (props) => {
     }, 1000)
   }, [])
 
+  const [noSticky, setNoSticky] = useState(props.collection ? true : false)
+  const topOfPageRef = useRef(null)
+  // Set noSticky to true if collection is set, and we've scrolled past the top
+  useEffect(() => {
+    if (props.collection) {
+      const handleScroll = () => {
+        const headerHeight = document.getElementById('mainheader').offsetHeight
+        if (window.scrollY > topOfPageRef.current.offsetTop - headerHeight) {
+          setNoSticky(false)
+        } else {
+          setNoSticky(true)
+        }
+      }
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    } else {
+      setNoSticky(false)
+    }
+  }, [props.collection])
+
   // Work around stale state issues
   const numResults = useRef(null)
   useEffect(() => {
@@ -314,7 +334,8 @@ const Grid = (props) => {
 
   return (
     <>
-      <div className={styles.optionsBar} ref={optionsRef}>
+      <div ref={topOfPageRef} />
+      <div className={`${styles.optionsBar} ${noSticky ? styles.noSticky : ''}`} ref={optionsRef}>
         <div className={styles.gridHeaderWrapper}>
           <div className={styles.gridHeader}>
             <div className={styles.gridTitle}>
@@ -409,7 +430,10 @@ const Grid = (props) => {
         ) : null}
       </div>
 
-      <div className={styles.optionsSpacer} style={{ marginTop: height }} />
+      <div
+        className={`${styles.optionsSpacer} ${noSticky ? styles.noStickySpacer : ''}`}
+        style={{ marginTop: height }}
+      />
 
       {sortedKeys.length ? (
         <div className={styles.grid}>
