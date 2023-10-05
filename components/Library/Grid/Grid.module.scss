@@ -175,6 +175,15 @@
   }
 }
 
+.noSticky {
+  position: relative;
+  width: calc(100% - 1rem);
+}
+
+.noStickySpacer {
+  display: none !important;
+}
+
 .advOptions {
   @include flex(row, true, true);
   background: rgba(black, 0.2);
