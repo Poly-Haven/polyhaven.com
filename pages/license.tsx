@@ -1,11 +1,11 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation, Trans } from 'next-i18next'
-import Link from 'next/link'
+import Markdown from 'markdown-to-jsx'
 import LinkText from 'components/LinkText/LinkText'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 
-const LicensePage = () => {
+const LicensePage = (props) => {
   const { t: t_c } = useTranslation('common')
   const { t } = useTranslation('license')
 
@@ -74,14 +74,25 @@ const LicensePage = () => {
       <p>
         <Trans i18nKey="p13" t={t} components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }} />
       </p>
+      <div lang="en">
+        <Markdown>{props.termsOfService.replace(/\\n/g, '\n')}</Markdown>
+      </div>
     </TextPage>
   )
 }
 
 export async function getStaticProps({ locale }) {
+  let error = null
+  const baseUrl =
+    (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_API_URL) || 'https://api.polyhaven.com'
+  const termsOfService = await fetch(`${baseUrl}/text/terms_of_service`)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'license'])),
+      termsOfService: termsOfService.content,
     },
   }
 }
