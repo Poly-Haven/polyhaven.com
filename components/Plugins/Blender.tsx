@@ -15,7 +15,24 @@ import styles from './Plugins.module.scss'
 const CallToAction = () => {
   return (
     <div className={styles.row}>
-      <div className={styles.purchaseOption}>
+      <a
+        href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111"
+        className={`${styles.purchaseOption} ${styles.recommendedPurchaseOption}`}
+      >
+        <Patreon />
+        <h3>Patreon</h3>
+        <p>
+          <strong>$5</strong>/month
+        </p>
+        <p>
+          Includes other rewards
+          <br />
+          Cancel any time
+        </p>
+        <Button text="Sign up" href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111" />
+      </a>
+      <p className={styles.callToAction}>or</p>
+      <a href="https://blendermarket.com/products/poly-haven-asset-browser" className={styles.purchaseOption}>
         <BlenderMarket />
         <h3>Blender Market</h3>
         <p>
@@ -27,21 +44,7 @@ const CallToAction = () => {
           Free updates forever
         </p>
         <Button text="Purchase" href="https://blendermarket.com/products/poly-haven-asset-browser" />
-      </div>
-      <p className={styles.callToAction}>or</p>
-      <div className={styles.purchaseOption}>
-        <Patreon />
-        <h3>Patreon</h3>
-        <p>
-          <strong>$5/month</strong>
-        </p>
-        <p>
-          Includes other rewards
-          <br />
-          Cancel any time
-        </p>
-        <Button text="Sign up" href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111" />
-      </div>
+      </a>
     </div>
   )
 }
@@ -103,12 +106,8 @@ const Blender = ({ numAssets }) => {
       <hr />
       <InfoBox type="info" header="This is a paid product">
         <p>
-          While all our assets are 100% free and{' '}
-          <Link href="/license">
-            CC0
-          </Link>
-          , we are exploring the idea of funding our work by selling tools like this to make it easier for you to use
-          our free assets.
+          While all our assets are 100% free and <Link href="/license">CC0</Link>, we are exploring the idea of funding
+          our work by selling tools like this to make it easier for you to use our free assets.
         </p>
         <p>
           So far the sales of this add-on alone have allowed us to hire new artists and set up a studio to capture more
@@ -212,7 +211,7 @@ const Blender = ({ numAssets }) => {
         />
       </div>
     </div>
-  );
+  )
 }
 
 export default Blender

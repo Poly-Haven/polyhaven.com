@@ -48,6 +48,12 @@
   @include drop-shadow;
   padding: 3em;
   margin: 1em;
+  color: $c-text-light;
+
+  &:hover {
+    background: $c-background-lighter;
+    @include transition;
+  }
 
   svg {
     width: 150px;
@@ -66,6 +72,24 @@
 
   p {
     text-align: center;
+  }
+}
+.recommendedPurchaseOption {
+  position: relative;
+  box-shadow: 0 0 0 0.4em $c-accent;
+
+  &::after {
+    content: "Recommended";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: -1px;
+    padding: 0.3em;
+    text-align: center;
+    background-color: rgba($c-accent, 0.7);
+    color: $c-text-bright;
+    font-style: italic;
   }
 }
 
