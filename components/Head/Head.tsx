@@ -3,7 +3,7 @@ import Head from 'next/head'
 const HeadComponent = ({ title, description, keywords, url, author, assetType, image, children }) => {
   let defaultKeywords = 'Arch-viz,Game,Unreal,Unity,Blender,Maya,Max,free,cc0,creative commons'
   if (assetType === 0) {
-    defaultKeywords = 'hdri,ibl,hdr,environment,exr,' + defaultKeywords
+    defaultKeywords = 'hdri,hdri haven,ibl,hdr,environment,exr,' + defaultKeywords
   }
   if (assetType === 1) {
     defaultKeywords = 'texture,pbr,scan,png,exr,material,tileable,seamless' + defaultKeywords

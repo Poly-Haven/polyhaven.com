@@ -26,7 +26,10 @@ const LibraryPage = (props) => {
   if (props.categories.length) {
     description = `Free ${props.categories[props.categories.length - 1]}`
   } else {
-    description = 'Hundreds of free'
+    if (props.assetType === 'hdris') {
+      description += 'Previously known as HDRI Haven. '
+    }
+    description += 'Hundreds of free'
   }
   const typeDescription = {
     hdris: 'HDRI environments',
@@ -34,7 +37,7 @@ const LibraryPage = (props) => {
     models: '3D models',
     all: 'HDRIs, textures, and 3D models',
   }
-  description += ` ${typeDescription[props.assetType]}, ready to use for any purpose.`
+  description += ` ${typeDescription[props.assetType]}, ready to use for any purpose. No login required.`
 
   return (
     <>
