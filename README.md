@@ -25,7 +25,7 @@ If you'd like to help us out developing this site, please use the `dev` branch!
 
 ## API
 
-This application works in tandem with [our API](https://github.com/Poly-Haven/Public-API).
+This application works in tandem with [our API](https://polyhaven.com/our-api).
 
 By default it uses the public https://api.polyhaven.com base URL, but if you need to override this you can set an environment variable `NEXT_PUBLIC_API_URL="http://localhost:3000"`.
 

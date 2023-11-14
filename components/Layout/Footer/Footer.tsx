@@ -93,7 +93,7 @@ const footer = () => {
               <Link prefetch={false} href="/contribute">
                 {t('common:nav.contribute')}
               </Link>
-              <Link prefetch={false} href="https://github.com/Poly-Haven/Public-API">
+              <Link prefetch={false} href="/our-api">
                 {t('common:nav.api')}
               </Link>
               <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com">

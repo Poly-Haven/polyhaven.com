@@ -41,8 +41,8 @@ Poly Haven is an open source project. This site's git repo is here: ` +
           `%c
 
 We have a public API intended to help you integrate our assets into your software/plugin: ` +
-          `%chttps://github.com/Poly-Haven/Public-API` +
-          `%c, you don't need to try and scrape this site for data :)`,
+          `%chttps://polyhaven.com/our-api` +
+          `%c, scraping this site for data is against our ToS :)`,
         'color: rgb(190, 111, 255); font-size: 3em; font-weight: bold',
         '',
         'color: rgb(65, 187, 217); text-decoration:underline',
@@ -53,37 +53,39 @@ We have a public API intended to help you integrate our assets into your softwar
     }
   }, [])
 
-  return <>
-    <UserProvider>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+  return (
+    <>
+      <UserProvider>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </Head>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
 
-      <CookieConsent
-        onAccept={consentGranted}
-        buttonText="Got it!"
-        style={{
-          background: 'rgb(190, 111, 255)',
-          alignItems: 'center',
-          padding: '1em',
-          width: 'auto',
-        }}
-        buttonStyle={{
-          fontSize: '1.1em',
-          padding: '0.7em 1em',
-          fontWeight: 'bold',
-        }}
-      >
-        This website uses cookies to enhance the user experience.{' '}
-        <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
-          Learn more.
-        </Link>
-      </CookieConsent>
-    </UserProvider>
-  </>;
+        <CookieConsent
+          onAccept={consentGranted}
+          buttonText="Got it!"
+          style={{
+            background: 'rgb(190, 111, 255)',
+            alignItems: 'center',
+            padding: '1em',
+            width: 'auto',
+          }}
+          buttonStyle={{
+            fontSize: '1.1em',
+            padding: '0.7em 1em',
+            fontWeight: 'bold',
+          }}
+        >
+          This website uses cookies to enhance the user experience.{' '}
+          <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
+            Learn more.
+          </Link>
+        </CookieConsent>
+      </UserProvider>
+    </>
+  )
 }
 
 export default appWithTranslation(MyApp)
