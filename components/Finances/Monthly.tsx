@@ -150,7 +150,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
     }
   }
 
-  mutableData['This Year'] = thisYear
+  mutableData['Last 12 Months'] = thisYear
 
   const months = Object.keys(mutableData)
 
@@ -211,7 +211,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
       <ul>
         {currency !== 'ZAR' ? (
           <li>
-            Exchange Rate in {month === 'This Year' ? latestMonth : month}:{' '}
+            Exchange Rate in {month === 'Last 12 Months' ? latestMonth : month}:{' '}
             {getCurrency(1 * rates[currency], currency, rates)} = {getCurrency(1 * rates[currency], 'ZAR', rates)}
           </li>
         ) : null}
