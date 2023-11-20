@@ -10,6 +10,8 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
   const [isServer, setIsServer] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(1100)
   const adRef = useRef(null)
 
   const isProduction = process.env.NODE_ENV === 'production'
@@ -25,6 +27,25 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
       }
     }
   }, [adRef.current, isServer])
+
+  useEffect(() => {
+    function handleResize() {
+      if (windowWidth !== window.innerWidth) setWindowWidth(window.innerWidth)
+    }
+
+    handleResize() // First call
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (!isServer && windowWidth < 1100) {
+      setIsMobile(true)
+    } else if (isMobile && windowWidth >= 1100) {
+      setIsMobile(false)
+    }
+  }, [windowWidth])
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
@@ -47,7 +68,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     setIsServer(false)
   }, [])
 
-  if (isServer || localStorage.getItem(`hideAds`) === 'yes') {
+  if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile) {
     return null
   }
 
