@@ -90,3 +90,8 @@
   @include center();
   padding: 1em;
 }
+
+.error {
+  font-weight: bold;
+  color: $c-red;
+}

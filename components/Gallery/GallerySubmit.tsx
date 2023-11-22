@@ -11,6 +11,7 @@ import CreatableSelect from 'react-select/creatable'
 import GalleryFormItem from './GalleryFormItem'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Popup from 'components/UI/Popup/Popup'
+import Spinner from 'components/UI/Spinner/Spinner'
 
 import useQuery from 'hooks/useQuery'
 
@@ -43,6 +44,23 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
       }
     }
   }, [query])
+
+  // Check availability of upload server, and if not available, disable the form
+  const [serverAvailable, setServerAvailable] = useState('pending')
+  const pingUrl = 'https://admin.polyhaven.com/api/ping'
+  useEffect(() => {
+    fetch(pingUrl)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setServerAvailable('yes')
+        },
+        (result) => {
+          console.error("Gallery server's down!", result)
+          setServerAvailable('nope')
+        }
+      )
+  }, [])
 
   const resetState = () => {
     setImage(null)
@@ -180,6 +198,17 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     setAssetsUsed(newValue)
   }
 
+  if (serverAvailable === 'nope') {
+    return (
+      <div className={styles.wrapper}>
+        <h1>{t('submit.title')}</h1>
+        <h2 className={styles.error}>
+          😢 Sorry, our gallery is having technical difficulties. Please try again later.
+        </h2>
+      </div>
+    )
+  }
+
   return (
     <div className={styles.wrapper}>
       <h1>{t('submit.title')}</h1>
@@ -305,11 +334,9 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               {assetsUsed ? (
                 <div className={styles.assetsWrapper}>
                   {assetsUsed.map((a) => (
-                    (<Link href={`/a/${a.value}`} key={a.value}>
-
+                    <Link href={`/a/${a.value}`} key={a.value}>
                       <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a.value}.png?height=100&width=200`} />
-
-                    </Link>)
+                    </Link>
                   ))}
                 </div>
               ) : null}
@@ -321,7 +348,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
           <div>{Object.keys(response).length ? response['message'] : null}</div>
           <Disabled
             tooltip={busy ? t_c('please-wait') : `${t_c('missing-invalid')}: ${invalidFields.join(', ')}`}
-            disabled={!valid || busy || !turnStile}
+            disabled={!valid || busy || !turnStile || serverAvailable === 'pending'}
           >
             <div className={`${btnStyles.button} ${btnStyles['accent']}`} onClick={submit}>
               <div className={btnStyles.inner}>
@@ -346,6 +373,13 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
             }}
             appearance="interaction-only"
           />
+
+          {serverAvailable === 'pending' ? (
+            <strong>
+              <Spinner />
+              Checking if upload server is available...
+            </strong>
+          ) : null}
         </div>
       </div>
       <Popup show={successPopup} hide={(_) => showSuccessPopup(false)}>
@@ -355,7 +389,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
         <p>{t('submit.form.thanks-d')}</p>
       </Popup>
     </div>
-  );
+  )
 }
 
 export default GallerySubmit
