@@ -47,7 +47,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
 
   // Check availability of upload server, and if not available, disable the form
   const [serverAvailable, setServerAvailable] = useState('pending')
-  const pingUrl = 'https://admin.polyhaven.com/api/ping'
+  const pingUrl = `${galleryApiUrl}/ping`
   useEffect(() => {
     fetch(pingUrl)
       .then((res) => res.json())
@@ -108,7 +108,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     const body = new FormData()
     body.append('file', image)
     body.append('fields', JSON.stringify(allFields))
-    await fetch(`${galleryApiUrl}/api/public/gallerySubmit`, {
+    await fetch(`${galleryApiUrl}/submit`, {
       method: 'POST',
       body,
     })

@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
       assets: sortedKeys,
-      galleryApiUrl: process.env.NEXT_ADMIN_API_URL || 'https://admin.polyhaven.com',
+      galleryApiUrl: process.env.NEXT_GALLERY_API_URL || 'https://gallery.polyhaven.com',
     },
     revalidate: 60 * 30, // 30 minutes
   }
