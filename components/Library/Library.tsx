@@ -1,4 +1,5 @@
 import { useCallback, useState, useEffect } from 'react'
+import useStoredState from 'hooks/useStoredState'
 import debounce from 'lodash.debounce'
 import { v4 as uuid } from 'uuid'
 
@@ -13,7 +14,7 @@ const Library = ({ assetType, collection, categories, author, search, strictSear
   const [authorState, setAuthor] = useState(author)
   const [searchState, setSearch] = useState(search)
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
-  const [sortState, setSort] = useState(sort)
+  const [sortState, setSort] = useStoredState('library_sort', sort)
   const [libSessionID, _] = useState(uuid()) // Anonymous session ID used to help determine synonyms in search tracking
 
   const setSearchDebounced = useCallback(
