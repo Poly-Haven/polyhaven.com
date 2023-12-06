@@ -102,20 +102,35 @@ const Contribute = ({ authors }) => {
         <h4>Requirements for Textures:</h4>
 
         <ul>
-          <li>Created using photoscanning/photogrammetry.</li>
+          <li>Created using photoscanning/photogrammetry or photometric stereo (where suitable).</li>
           <li>
             Full set of standard PBR maps - diffuse/albedo, roughness, metalness (if applicable), displacement, normal -
             not just a single image.
           </li>
           <li>Seamless/tileable on at least one axis.</li>
+          <li>
+            Around 2 meters square. Some exceptions for smaller surfaces can be made where the material is still highly
+            useful.
+          </li>
           <li>Minimum 8k resolution.</li>
           <li>As 16-bit PNGs.</li>
+          <li>
+            <a href="https://docs.polyhaven.com/en/technical-standards/texture-color-calibration">
+              Calibrated exposure and whitebalance
+            </a>{' '}
+            using a color chart, or sheet of white paper.
+          </li>
           <li>
             For reference, here's{' '}
             <a href="https://blog.polyhaven.com/photoscanned-texture-creation-process/">
               how we make high quality textures
             </a>
             .
+          </li>
+          <li>
+            A more detailed list of{' '}
+            <a href="https://docs.polyhaven.com/en/technical-standards/textures">technical texture standards</a> is
+            available here. We stick to these internally, and provide them as a guideline for donated textures too.
           </li>
         </ul>
 
