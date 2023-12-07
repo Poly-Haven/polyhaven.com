@@ -46,7 +46,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [activeImage, setActiveImage] = useState(
-    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=780`
+    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760`
   )
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
@@ -122,7 +122,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
     }
     setActiveImageSrc(src)
     if (src.startsWith('https://cdn.polyhaven.com/')) {
-      src += '?height=780'
+      src += '?height=760'
     }
     setActiveImage(src)
     setShowTilePreview('')
@@ -205,18 +205,18 @@ const AssetPage = ({ assetID, data, files, renders }) => {
               <Spinner />
             </div>
           </div>
-          <div className={styles.carousel}>
-            <Carousel
-              slug={assetID}
-              data={renders}
-              files={files}
-              assetType={data.type}
-              setter={setPreviewImage}
-              showWebGL={clickShowWebGL}
-              showTilePreview={clickShowTilePreview}
-              active={activeImageSrc}
-            />
-          </div>
+        </div>
+        <div className={styles.carousel}>
+          <Carousel
+            slug={assetID}
+            data={renders}
+            files={files}
+            assetType={data.type}
+            setter={setPreviewImage}
+            showWebGL={clickShowWebGL}
+            showTilePreview={clickShowTilePreview}
+            active={activeImageSrc}
+          />
         </div>
         <div className={styles.similar}>
           <h2>{t('similar-assets')}</h2>

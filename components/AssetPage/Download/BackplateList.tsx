@@ -35,7 +35,7 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
             return (
               <div key={i} className={styles.thumbnail}>
                 <img
-                  src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=144`}
+                  src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=152`}
                   data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg`}
                   onClick={preview}
                 />
