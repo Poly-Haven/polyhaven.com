@@ -15,7 +15,7 @@ const Logo = ({ url, color }) => {
 
 const LogoGuidelines = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} dir="ltr" style={{ textAlign: 'left' }}>
       <h1>Poly Haven Logo</h1>
       <p>
         While our assets are <Link href="/license">CC0</Link>, our logo is not :)
