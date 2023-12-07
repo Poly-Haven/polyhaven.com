@@ -6,9 +6,10 @@ import { MdDownload } from 'react-icons/md'
 import styles from './LogoGuidelines.module.scss'
 
 const Logo = ({ url, color }) => {
+  const text = url.split('/').pop().split('.')[0]
   return (
     <a href={url} className={color === 'dark' ? styles.logoBoxDark : styles.logoBoxLight}>
-      <img src={url} />
+      <img src={url} alt={text} title={text} />
     </a>
   )
 }
