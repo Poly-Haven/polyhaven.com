@@ -51,7 +51,8 @@
     "api": "API",
     "source": "Source",
     "logout": "Logout",
-    "collections": "Collections"
+    "collections": "Collections",
+    "logo": "Logo"
   },
   "footer": {
     "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible",

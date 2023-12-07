@@ -1,0 +1,37 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.logoBoxes {
+  @include flex(row, true, true);
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+
+  .logoBox {
+    width: 100%;
+    padding: 1rem;
+    line-height: 0;
+    border: 1px solid $c-background-darker;
+    background-color: $c-background-dark;
+    @include drop-shadow;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .logoBoxDark {
+    @extend .logoBox;
+  }
+
+  .logoBoxLight {
+    @extend .logoBox;
+    border: 1px solid $c-background-lighterer;
+    background-color: $c-background-lighter;
+  }
+}
+
+.buttonBox {
+  width: 100%;
+  text-align: right;
+}

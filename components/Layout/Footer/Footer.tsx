@@ -74,6 +74,9 @@ const footer = () => {
               <Link prefetch={false} href="/privacy">
                 {t('common:nav.privacy')}
               </Link>
+              <Link prefetch={false} href="/logo">
+                {t('common:nav.logo')}
+              </Link>
               <Link prefetch={false} href="/finance-reports">
                 {t('common:nav.finances')}
               </Link>
