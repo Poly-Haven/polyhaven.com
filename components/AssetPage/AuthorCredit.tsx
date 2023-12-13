@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -16,6 +17,8 @@ import styles from './AuthorCredit.module.scss'
 
 const AuthorCredit = ({ id, size, credit }) => {
   const { t } = useTranslation('asset')
+  const [popup, setPopup] = useState(false)
+
   let name = id
   let link = '/'
   let encryptedEmail = {}
@@ -48,6 +51,15 @@ const AuthorCredit = ({ id, size, credit }) => {
     creditStr = titleCase(creditStr)
   }
 
+  const emailClick = () => {
+    navigator.clipboard.writeText(decrypt(encryptedEmail))
+    setPopup(true)
+
+    setTimeout(() => {
+      setPopup(false)
+    }, 3000)
+  }
+
   return (
     <div className={styles.author}>
       <Link href={assetLink} prefetch={false} className={styles.avatar}>
@@ -72,8 +84,9 @@ const AuthorCredit = ({ id, size, credit }) => {
             ''
           )}
           {encryptedEmail ? (
-            <div className={styles.a} onClick={(_) => navigator.clipboard.writeText(decrypt(encryptedEmail))}>
+            <div className={styles.a} onClick={emailClick}>
               <MdMail />
+              <div className={`${styles.popup} ${!popup ? styles.hide : ''}`}>Copied email to clipboard!</div>
             </div>
           ) : (
             ''
