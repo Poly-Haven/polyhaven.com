@@ -31,7 +31,7 @@ const AuthorCredit = ({ id, size, credit }) => {
     name = data.name
     link = data.link
     donate = data.donate
-    encryptedEmail = data.encrypted_email
+    encryptedEmail = data.encryptedEmail
   }
 
   if (donate && donate.startsWith('paypal:')) {
