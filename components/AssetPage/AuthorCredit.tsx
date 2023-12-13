@@ -9,6 +9,7 @@ import Heart from 'components/UI/Icons/Heart'
 const Avatar = dynamic(() => import('components/UI/Avatar/Avatar'), { ssr: false })
 
 import apiSWR from 'utils/apiSWR'
+import { decrypt } from 'utils/insecureStringEncryption'
 import { titleCase } from 'utils/stringUtils'
 
 import styles from './AuthorCredit.module.scss'
@@ -17,7 +18,7 @@ const AuthorCredit = ({ id, size, credit }) => {
   const { t } = useTranslation('asset')
   let name = id
   let link = '/'
-  let email = ''
+  let encryptedEmail = {}
   let donate = ''
 
   const { data, error } = apiSWR(`/author/${id}`, { revalidateOnFocus: false })
@@ -26,8 +27,8 @@ const AuthorCredit = ({ id, size, credit }) => {
   } else if (data) {
     name = data.name
     link = data.link
-    email = data.email
     donate = data.donate
+    encryptedEmail = data.encrypted_email
   }
 
   if (donate && donate.startsWith('paypal:')) {
@@ -70,10 +71,10 @@ const AuthorCredit = ({ id, size, credit }) => {
           ) : (
             ''
           )}
-          {email ? (
-            <a href={`mailto:${email}`} target="_blank" rel="noopener">
+          {encryptedEmail ? (
+            <div className={styles.a} onClick={(_) => navigator.clipboard.writeText(decrypt(encryptedEmail))}>
               <MdMail />
-            </a>
+            </div>
           ) : (
             ''
           )}

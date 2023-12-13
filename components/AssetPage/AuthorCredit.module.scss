@@ -63,7 +63,8 @@
     @include flex(row, true, true);
     padding-right: 0.3em;
 
-    a {
+    a,
+    .a {
       padding: 0.1em;
       padding-bottom: 0;
       display: flex;
@@ -72,6 +73,11 @@
       &:hover {
         color: white;
       }
+    }
+
+    .a {
+      cursor: pointer;
+      color: $c-accent;
     }
 
     svg {
