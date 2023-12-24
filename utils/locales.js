@@ -85,6 +85,10 @@ module.exports = {
     name: 'Русский',
     flag: 'RU',
   },
+  sr: {
+    name: 'Српски',
+    flag: 'RS',
+  },
   tr: {
     name: 'Türkçe',
     flag: 'TR',
