@@ -16,7 +16,7 @@
   "email-address": "Адреса е-поште",
   "footer": {
     "join-ranks": "Придружите се редовима, подржите Poly Haven на Patreon-у",
-    "thanks": "Захваљујући нашим<lnk> Патронс</lnk> за омогућавање Поли Хавена"
+    "thanks": "Хвала нашим <lnk>Покровитељима</lnk> што чине Poly Haven могућим"
   },
   "goal": {
     "complete": "Комплетан!",
@@ -31,7 +31,7 @@
   "missing-invalid": "Недостаје или неважеће",
   "nav": {
     "about-contact": "Оpis/Контакт",
-    "add-on": "Додати на",
+    "add-on": "Додатак",
     "api": "АPI",
     "blog": "Блог",
     "contribute": "Допринесите",
@@ -44,7 +44,7 @@
     "logout": "Одјавити се",
     "map": "HDRI Mапа Sвета",
     "news": "Вести",
-    "plugins": "Dodaci",
+    "plugins": "Прикључци",
     "privacy": "Приватност",
     "source": "Извор",
     "stats": "Статистика",
