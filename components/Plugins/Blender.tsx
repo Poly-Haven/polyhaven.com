@@ -153,8 +153,8 @@ const Blender = ({ numAssets }) => {
       <h1>Features:</h1>
       <Feature
         title="Organized catalogs"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat1.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat1h.png"
+        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat1h.png"
+        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat1.png"
       >
         <p>
           Assets are organized according to our categories and asset types, making it easy to filter through the lists
@@ -164,8 +164,8 @@ const Blender = ({ numAssets }) => {
       </Feature>
       <Feature
         title="Resolution switching"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat2.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat2h.png"
+        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat2h.png"
+        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat2.png"
       >
         <p>
           By default assets will be imported at 1K resolution for quick previews, but you can swap to higher resolutions
@@ -178,8 +178,8 @@ const Blender = ({ numAssets }) => {
       </Feature>
       <Feature
         title="Auto texture scale"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat3.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat3h.png"
+        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat3h.png"
+        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat3.png"
       >
         <p>
           No more eye-balling texture sizes. Simply click the "Fix Texture Scale" button and the add-on will compare the
@@ -189,8 +189,8 @@ const Blender = ({ numAssets }) => {
       </Feature>
       <Feature
         title="One-click displacement setup"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat4.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat4h.png"
+        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat4h.png"
+        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat4.png"
       >
         <p>
           Almost all of our materials are designed to be used with real mesh displacement, using tessellation/adaptive
