@@ -11,6 +11,7 @@ import { MdApps, MdOutlineInstallDesktop } from 'react-icons/md'
 import { RiVipCrownLine } from 'react-icons/ri'
 
 import styles from './Plugins.module.scss'
+import buttonStyles from 'components/UI/Button/Button.module.scss'
 
 const CallToAction = () => {
   return (
@@ -29,7 +30,9 @@ const CallToAction = () => {
           <br />
           Cancel any time
         </p>
-        <Button text="Sign up" href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111" />
+        <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
+          <div className={buttonStyles.inner}>Sign up</div>
+        </div>
       </a>
       <p className={styles.callToAction}>or</p>
       <a href="https://blendermarket.com/products/poly-haven-asset-browser" className={styles.purchaseOption}>
@@ -43,7 +46,9 @@ const CallToAction = () => {
           <br />
           Free updates forever
         </p>
-        <Button text="Purchase" href="https://blendermarket.com/products/poly-haven-asset-browser" />
+        <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
+          <div className={buttonStyles.inner}>Purchase</div>
+        </div>
       </a>
     </div>
   )
