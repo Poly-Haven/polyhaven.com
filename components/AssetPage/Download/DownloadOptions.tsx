@@ -142,7 +142,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         ) : null}
         <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('cloud-sync-d')}>
           <a href="https://www.patreon.com/polyhaven/overview" className={styles.format} target="_blank">
-            <IconPatreon color="#f96753" />
+            <IconPatreon />
             {t('cloud-sync')} <GoLinkExternal style={{ marginLeft: '0.5em' }} />
           </a>
         </div>

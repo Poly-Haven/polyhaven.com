@@ -56,9 +56,9 @@
   }
 
   svg {
-    width: 150px;
-    height: 150px;
-    padding: 1em;
+    width: calc(150px - 2em);
+    height: calc(150px - 2em);
+    padding: 2em;
     overflow: visible;
     background-color: rgba(white, 0.3);
     border: 1px solid rgba(white, 0.3);

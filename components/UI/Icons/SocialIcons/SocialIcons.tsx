@@ -1,10 +1,10 @@
 import { SiDiscord } from 'react-icons/si'
 import { SiPatreon } from 'react-icons/si'
 import { SiFacebook } from 'react-icons/si'
-import { SiTwitter } from 'react-icons/si'
 import { SiInstagram } from 'react-icons/si'
 import { SiYoutube } from 'react-icons/si'
 import { SiMastodon } from 'react-icons/si'
+import { SiX } from 'react-icons/si'
 
 import styles from './SocialIcons.module.scss'
 
@@ -24,7 +24,7 @@ const SocialIcons = () => {
         <SiFacebook />
       </a>
       <a href="https://twitter.com/polyhaven">
-        <SiTwitter />
+        <SiX />
       </a>
       <a href="https://www.instagram.com/polyhaven">
         <SiInstagram />
