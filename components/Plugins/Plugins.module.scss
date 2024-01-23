@@ -78,6 +78,10 @@
   position: relative;
   box-shadow: 0 0 0 0.4em $c-accent;
 
+  svg {
+    background-color: $c-pink;
+  }
+
   &::after {
     content: "Recommended";
     position: absolute;
