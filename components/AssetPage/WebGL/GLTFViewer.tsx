@@ -42,7 +42,7 @@ const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
         quaternion={mesh.getWorldQuaternion(new Quaternion())}
       >
         {soloMap === '' ? (
-          <meshPhysicalMaterial {...mesh.material}>
+          <meshPhysicalMaterial {...mesh.material} vertexColors={false}>
             {Object.entries(mesh.material).map(([key, value]) =>
               value instanceof Texture ? (
                 <texture
