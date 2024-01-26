@@ -4,6 +4,7 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
+import { formatNumber } from 'utils/stringUtils'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -315,6 +316,12 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                     ? `https://www.openstreetmap.org/?mlat=${data.coords[0]}&mlon=${data.coords[1]}&zoom=14#map=13/${data.coords[0]}/${data.coords[1]}`
                     : null
                 }
+              />
+              <InfoBlock
+                value={formatNumber(data.polycount)}
+                label="tris"
+                condition={Boolean(data.polycount)}
+                tip="Triangle count, before any subdivisions."
               />
             </div>
 

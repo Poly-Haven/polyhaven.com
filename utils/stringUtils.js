@@ -34,3 +34,19 @@ export function stringHash(str) {
   }
   return hash
 }
+
+export function formatNumber(num) {
+  if (num < 1000) {
+    return num.toString()
+  }
+  if (num < 1000000) {
+    return Math.round(num / 1000) + 'K'
+  }
+  if (num < 1000000000) {
+    return Math.round(num / 1000000) + 'M'
+  }
+  if (num < 1000000000000) {
+    return Math.round(num / 1000000000) + 'B'
+  }
+  return Math.round(num / 1000000000000) + 'T'
+}
