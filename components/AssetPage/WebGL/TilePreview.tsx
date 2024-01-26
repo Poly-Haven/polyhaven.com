@@ -141,7 +141,11 @@ const TilePreview = ({ image, resolutions, type }) => {
         {type === 1 ? <IconButton icon={<MdGridOn />} onClick={(_) => setGrid(!grid)} active={grid} /> : null}
         <IconButton icon={<MdRemove />} onClick={(_) => setZoom(zoom / zoomFactor)} />
         <IconButton icon={<MdAdd />} onClick={(_) => setZoom(zoom * zoomFactor)} />
-        <IconButton icon={<p>1:1</p>} onClick={(_) => setZoom(1 / (startRes / 1024))} />
+        <IconButton icon={<p>1:1</p>} onClick={(_) => setZoom(1 / (startRes / 1024))}>
+          {resList.reverse().map((r) => (
+            <IconButton key={r} icon={<p>{r}K</p>} onClick={(_) => setZoom(1 / (startRes / (r * 1024)))} />
+          ))}
+        </IconButton>
       </div>
     </div>
   )
