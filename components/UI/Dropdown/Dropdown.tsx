@@ -6,7 +6,7 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import styles from './Dropdown.module.scss'
 
-const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltipID }) => {
+const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, tooltipID }) => {
   const [expand, setExpand] = useState(false)
   const ref = useRef(null)
 
@@ -64,7 +64,10 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
             onClick={setValue}
           >
             {options[k].icon ? options[k].icon : null}
-            {options[k].label}
+            <div className={styles.label}>
+              {options[k].label}
+              {options[k].sub ? <span className={styles.sub}>{options[k].sub}</span> : null}
+            </div>
           </div>
         ))}
       </div>
@@ -75,6 +78,7 @@ const Dropdown = ({ value, options, label, onChange, small, tooltipSide, tooltip
 
 Dropdown.defaultProps = {
   label: null,
+  sub: null,
   small: false,
   tooltipSide: 'right',
   tooltipID: 'dropdown',

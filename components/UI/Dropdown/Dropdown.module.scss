@@ -131,6 +131,9 @@
       background-color: $c-accent;
       cursor: pointer;
       color: white;
+      .sub {
+        opacity: 1;
+      }
     }
 
     & * {
@@ -146,6 +149,15 @@
     img {
       max-height: 1em;
       max-width: 1em;
+    }
+
+    .label {
+      @include flex(column, true, true);
+    }
+    .sub {
+      opacity: 0.5;
+      font-size: 0.7em;
+      margin-top: -0.3em;
     }
   }
   .active {

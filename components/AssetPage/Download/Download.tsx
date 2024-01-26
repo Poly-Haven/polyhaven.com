@@ -26,7 +26,7 @@ import styles from './Download.module.scss'
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data, files, setPreview, patron }) => {
+const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) => {
   const { t } = useTranslation('asset')
   const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
@@ -114,8 +114,12 @@ const Download = ({ assetID, data, files, setPreview, patron }) => {
 
   const resOptionKeys = sortRes(Object.keys(files[baseKey]))
   const resOptions = {}
+  const maxRes = parseInt(resOptionKeys.slice(-1)[0])
   for (const r of resOptionKeys) {
-    resOptions[r] = { label: r.toUpperCase() }
+    resOptions[r] = {
+      label: r.toUpperCase(),
+      sub: texelDensity ? `${parseFloat(((texelDensity * (parseInt(r) / maxRes)) / 100).toFixed(1))}px/cm` : null,
+    }
   }
   const setResValue = (v) => {
     setRes(v)

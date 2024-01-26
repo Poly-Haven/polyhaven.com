@@ -67,6 +67,14 @@ const AssetPage = ({ assetID, data, files, renders }) => {
   ageValue = ageValue === 0 ? tt('new') : ageValue
   ageLabel = ageLabel.replace(ageValue, '').trim()
 
+  const maxRes = files['blend']
+    ? Object.keys(files['blend'])
+        .map((r) => parseInt(r))
+        .sort((a, b) => a - b)
+        .pop()
+    : 0
+  const texelDensity = data.dimensions ? (maxRes * 1024) / (data.dimensions[0] / 1000) : 0 // px/m
+
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
   }
@@ -227,7 +235,14 @@ const AssetPage = ({ assetID, data, files, renders }) => {
 
       <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : ''}`}>
         <div className={styles.info}>
-          <Download assetID={assetID} data={data} files={files} setPreview={setPreviewImage} patron={patron} />
+          <Download
+            assetID={assetID}
+            data={data}
+            files={files}
+            setPreview={setPreviewImage}
+            patron={patron}
+            texelDensity={texelDensity}
+          />
 
           <div className={styles.infoItems}>
             <InfoItem label={t('author', { count: authors.length })} flex>
@@ -264,12 +279,20 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 tip={new Date(data.date_published * 1000).toLocaleString('en-ZA')}
               />
               {data.dimensions ? (
-                <InfoBlock
-                  value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`}
-                  label={t('wide')}
-                  condition={Boolean(data.dimensions)}
-                  tip={`${Math.round(data.dimensions[0])} millimeters wide.`}
-                />
+                <>
+                  <InfoBlock
+                    value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`}
+                    label={t('wide')}
+                    condition={Boolean(data.dimensions)}
+                    tip={`${Math.round(data.dimensions[0])} millimeters wide.`}
+                  />
+                  <InfoBlock
+                    value={`${parseFloat((texelDensity / 100).toFixed(1))}`}
+                    label="px/cm"
+                    condition={Boolean(data.dimensions)}
+                    tip={`Texel density at ${maxRes}K. Equal to ${Math.round(texelDensity)}px/m.`}
+                  />
+                </>
               ) : null}
               <InfoBlock
                 value={data.evs_cap}
