@@ -41,7 +41,7 @@ module.exports = {
     flag: 'ES',
   },
   et: {
-    name: 'eesti keel',
+    name: 'Eesti Keel',
     flag: 'EE',
   },
   fa: {
