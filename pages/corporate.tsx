@@ -156,8 +156,6 @@ const Corporate = (props) => {
             title="Gold"
             image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_gold.png" />}
             price="300"
-            numExisting={props.numGold}
-            limit={8}
             link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Gold"
             features={[
               {
@@ -186,8 +184,6 @@ const Corporate = (props) => {
             title="Diamond"
             image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_diamond.svg" />}
             price="900"
-            numExisting={props.numDiamond}
-            limit={3}
             link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
             features={[
               {
@@ -235,7 +231,7 @@ const Corporate = (props) => {
         <Tooltip />
       </div>
     </TextPage>
-  );
+  )
 }
 
 export async function getStaticProps(context) {
