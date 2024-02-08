@@ -74,7 +74,11 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         .sort((a, b) => a - b)
         .pop()
     : 0
-  const texelDensity = data.dimensions ? (maxRes * 1024) / (data.dimensions[0] / 1000) : 0 // px/m
+  const texelDensity = data.type === 1 && data.dimensions ? (maxRes * 1024) / (data.dimensions[0] / 1000) : 0 // px/m
+
+  const largestDimension = data.dimensions ? Math.max(...data.dimensions) : 0
+  const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
+  const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -280,20 +284,20 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 tip={new Date(data.date_published * 1000).toLocaleString('en-ZA')}
               />
               {data.dimensions ? (
-                <>
-                  <InfoBlock
-                    value={`${parseFloat((data.dimensions[0] / 1000).toFixed(1))}m`}
-                    label={t('wide')}
-                    condition={Boolean(data.dimensions)}
-                    tip={`${Math.round(data.dimensions[0])} millimeters wide.`}
-                  />
-                  <InfoBlock
-                    value={`${parseFloat((texelDensity / 100).toFixed(1))}`}
-                    label="px/cm"
-                    condition={Boolean(data.dimensions)}
-                    tip={`Texel density at ${maxRes}K. Equal to ${Math.round(texelDensity)}px/m.`}
-                  />
-                </>
+                <InfoBlock
+                  value={`${parseFloat((largestDimension / 1000).toFixed(1))}m`}
+                  label={t(sizeWord)}
+                  condition={Boolean(data.dimensions)}
+                  tip={`${data.dimensions.map((x) => Math.round(x)).join(' x ')}mm`}
+                />
+              ) : null}
+              {texelDensity ? (
+                <InfoBlock
+                  value={`${parseFloat((texelDensity / 100).toFixed(1))}`}
+                  label="px/cm"
+                  condition={Boolean(data.dimensions)}
+                  tip={`Texel density at ${maxRes}K. Equal to ${Math.round(texelDensity)}px/m.`}
+                />
               ) : null}
               <InfoBlock
                 value={data.evs_cap}
