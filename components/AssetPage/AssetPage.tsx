@@ -179,7 +179,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 <div className={styles.sketchfabWrapper}>
                   <iframe
                     className={styles.sketchfabFrame}
-                    title="Cannon"
+                    title={data.name}
                     allow="autoplay; fullscreen; xr-spatial-tracking"
                     xr-spatial-tracking
                     execution-while-out-of-viewport
