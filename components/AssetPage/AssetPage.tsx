@@ -74,7 +74,13 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         .sort((a, b) => a - b)
         .pop()
     : 0
-  const texelDensity = data.type === 1 && data.dimensions ? (maxRes * 1024) / (data.dimensions[0] / 1000) : 0 // px/m
+
+  // Use texel density if available, otherwise calculate from dimensions (only for textures), otherwise 0
+  const texelDensity = data.texel_density
+    ? data.texel_density
+    : data.type === 1 && data.dimensions
+    ? (maxRes * 1024) / (data.dimensions[0] / 1000)
+    : 0 // px/m
 
   const largestDimension = data.dimensions ? Math.max(...data.dimensions) : 0
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
