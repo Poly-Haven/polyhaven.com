@@ -242,6 +242,7 @@
 
 .sponsor {
   @include flex(column, true, true);
+  text-align: center;
 
   h4 {
     font-size: 0.9rem;
