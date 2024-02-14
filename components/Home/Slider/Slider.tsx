@@ -66,11 +66,6 @@ const imageSet = [
   {
     credit: 'Rob Tuytel',
     link: 'https://www.artstation.com/tuytel',
-    filename: 'river_winter1.jpg',
-  },
-  {
-    credit: 'Rob Tuytel',
-    link: 'https://www.artstation.com/tuytel',
     filename: 'forest_farmhouse.jpg',
   },
   {
@@ -82,6 +77,11 @@ const imageSet = [
     credit: 'Rob Tuytel',
     link: 'https://www.artstation.com/tuytel',
     filename: 'medieval_urban_village.jpg',
+  },
+  {
+    credit: 'Julien Rollin',
+    link: 'https://www.artstation.com/artwork/Jv6Xv0',
+    filename: 'countryside_still.jpeg',
   },
 ]
 
