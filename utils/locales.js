@@ -45,6 +45,10 @@ module.exports = {
     name: 'Français',
     flag: 'FR',
   },
+  el: {
+    name: 'Ελληνικά',
+    flag: 'GR',
+  },
   it: {
     name: 'Italiano',
     flag: 'IT',

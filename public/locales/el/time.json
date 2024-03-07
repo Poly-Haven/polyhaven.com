@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} ημέρα από τώρα",
+    "day_other": "{{count}} ημέρες από τώρα",
+    "hour_one": "{{count}} ώρα από τώρα",
+    "hour_other": "{{count}} ώρες από τώρα",
+    "month_one": "{{count}} μήνα από τώρα",
+    "month_other": "{{count}} μήνες από τώρα",
+    "week_one": "{{count}} εβδομάδα από τώρα",
+    "week_other": "{{count}} εβδομάδες από τώρα",
+    "year_one": "{{count}} σε ένα χρόνο από τώρα",
+    "year_other": "{{count}} χρόνια από τώρα"
+  },
+  "new": "Νέα",
+  "past": {
+    "day_one": "{{count}} ημέρα πριν",
+    "day_other": "{{count}} ημέρες πριν",
+    "hour_one": "{{count}} ώρα πριν",
+    "hour_other": "{{count}} ώρες πριν",
+    "month_one": "{{count}} πριν από ένα μήνα",
+    "month_other": "{{count}} μήνες πριν",
+    "week_one": "{{count}} πριν από μια εβδομάδα",
+    "week_other": "{{count}} εβδομάδες πριν",
+    "year_one": "{{count}} πριν από ένα χρόνο",
+    "year_other": "{{count}} πριν από χρόνια"
+  },
+  "today": "Σήμερα"
+}
