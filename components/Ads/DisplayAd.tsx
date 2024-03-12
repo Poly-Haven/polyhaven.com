@@ -75,7 +75,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   if (!isProduction) {
     return (
       <>
-        <img src={`https://placekitten.com/${x}/${y}`} className={styles.placeholder} />
+        <img src={`https://picsum.photos/${x}/${y}`} className={styles.placeholder} />
         {jsxRemoveAds}
       </>
     )
