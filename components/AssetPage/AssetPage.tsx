@@ -331,7 +331,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 value={formatNumber(data.polycount)}
                 label="tris"
                 condition={Boolean(data.polycount)}
-                tip="Triangle count, before any subdivisions."
+                tip={`${data.polycount} triangles, before any subdivisions.`}
               />
             </div>
 
