@@ -49,6 +49,7 @@ const AssetsPerMonth = ({ data }: { data: DataSet }) => {
     '2018-06': `texturehaven.com launch.`,
     '2020-03': `3dmodelhaven.com launch.`,
     '2021-06': `polyhaven.com launch.`,
+    '2024-02': `Verdant Trail collection published.`,
   }
 
   return (
