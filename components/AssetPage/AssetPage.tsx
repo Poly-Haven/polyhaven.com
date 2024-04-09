@@ -284,11 +284,6 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 link="/license"
                 tip="Use for any purpose, including commercial.<br/>Click for more info."
               />
-              <InfoBlock
-                value={ageValue}
-                label={ageLabel}
-                tip={new Date(data.date_published * 1000).toLocaleString('en-ZA')}
-              />
               {data.dimensions ? (
                 <InfoBlock
                   value={`${parseFloat((largestDimension / 1000).toFixed(1))}m`}
@@ -368,6 +363,9 @@ const AssetPage = ({ assetID, data, files, renders }) => {
                 width={sidebarWidth}
               />
             </div>
+            <InfoItem label={t('released')}>
+              {ageValue} {ageLabel}
+            </InfoItem>
           </div>
         </div>
 
