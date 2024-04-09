@@ -22,7 +22,7 @@
     "week_one": "{{count}} πριν από μια εβδομάδα",
     "week_other": "{{count}} εβδομάδες πριν",
     "year_one": "{{count}} πριν από ένα χρόνο",
-    "year_other": "{{count}} πριν από χρόνια"
+    "year_other": "{{count}} χρόνια πριν"
   },
   "today": "Σήμερα"
 }
