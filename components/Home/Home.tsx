@@ -252,6 +252,8 @@ const Home = () => {
                   country="ZA"
                   mode="compact"
                 />
+              </div>
+              <div className={styles.avatarRow}>
                 <Staff
                   id="James Ray Cock"
                   name="James Ray Cock"
@@ -266,20 +268,11 @@ const Home = () => {
                   country="ZA"
                   mode="compact"
                 />
-              </div>
-              <div className={styles.avatarRow}>
                 <Staff
                   id="Jandre van Heerden"
                   name="Jandre van Heerden"
                   role={`${tc('common:Models')}, ${tc('common:Textures')}`}
                   country="ZA"
-                  mode="compact"
-                />
-                <Staff
-                  id="Sergej Majboroda"
-                  name="Sergej Majboroda"
-                  role={`${tc('common:HDRIs')}`}
-                  country="UA"
                   mode="compact"
                 />
                 <Staff
@@ -289,7 +282,17 @@ const Home = () => {
                   country="ZA"
                   mode="compact"
                 />
+              </div>
+              <div className={styles.avatarRow}>
                 <Staff id="Jarod Guest" name="Jarod Guest" role={`${tc('common:HDRIs')}`} country="ZA" mode="compact" />
+                <Staff id="Amal Kumar" name="Amal Kumar" role={`${t('common:Textures')}`} country="IN" mode="compact" />
+                <Staff
+                  id="Charlotte Baglioni"
+                  name="Charlotte Baglioni"
+                  role={`${t('common:Textures')}`}
+                  country="FR"
+                  mode="compact"
+                />
               </div>
             </div>
           </div>

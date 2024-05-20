@@ -66,6 +66,14 @@ const AboutPage = () => {
           mode="full"
         />
         <Staff id="Jarod Guest" name="Jarod Guest" role={`${t('common:HDRIs')}`} country="ZA" mode="full" />
+        <Staff id="Amal Kumar" name="Amal Kumar" role={`${t('common:Textures')}`} country="IN" mode="full" />
+        <Staff
+          id="Charlotte Baglioni"
+          name="Charlotte Baglioni"
+          role={`${t('common:Textures')}`}
+          country="FR"
+          mode="full"
+        />
       </div>
 
       <CorporateSponsors header={`${t('common:corporate-sponsor', { count: 100 })}:`} />
