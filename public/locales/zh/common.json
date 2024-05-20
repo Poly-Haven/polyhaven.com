@@ -15,7 +15,7 @@
   "display-name": "显示名字",
   "email-address": "电子邮箱地址",
   "footer": {
-    "join-ranks": "加入行列，在 Patreon 上支持 Poly Haven",
+    "join-ranks": "加入赞助商的行列，在Patreon上支持我们",
     "thanks": "感谢我们的<lnk>赞助人</lnk>使Poly Haven成为可能"
   },
   "goal": {
@@ -31,7 +31,7 @@
   "missing-invalid": "丢失或无效",
   "nav": {
     "about-contact": "关于/联系方式",
-    "add-on": "附加装置",
+    "add-on": "Blender插件",
     "api": "API",
     "blog": "博客",
     "contribute": "支援",
@@ -40,7 +40,7 @@
     "gallery": "画廊",
     "home": "首页",
     "license": "许可证",
-    "logo": "标志",
+    "logo": "品牌标识",
     "logout": "注销",
     "map": "HDRI世界地图",
     "news": "新闻",

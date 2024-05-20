@@ -1,28 +1,28 @@
 {
   "future": {
-    "day_one": "已{{count}}天",
-    "day_other": "已{{count}}天",
-    "hour_one": "已{{count}}小时",
-    "hour_other": "已{{count}}小时",
-    "month_one": "已{{count}}月",
-    "month_other": "已{{count}}月",
-    "week_one": "已{{count}}周",
-    "week_other": "已{{count}}周",
-    "year_one": "已{{count}}年",
-    "year_other": "已{{count}}年"
+    "day_one": "即将于{{count}}天后发布",
+    "day_other": "即将于{{count}}天后发布",
+    "hour_one": "即将于{{count}}小时后发布",
+    "hour_other": "即将于{{count}}小时后发布",
+    "month_one": "即将于{{count}}月后发布",
+    "month_other": "即将于{{count}}月后发布",
+    "week_one": "{{count}}周前发布",
+    "week_other": "即将于{{count}}周后发布",
+    "year_one": "即将于{{count}}年后发布",
+    "year_other": "即将于{{count}}年后发布"
   },
   "new": "刚刚发布",
   "past": {
-    "day_one": "{{count}}天前",
-    "day_other": "{{count}}天前",
-    "hour_one": "{{count}}小时前",
-    "hour_other": "{{count}}小时前",
-    "month_one": "{{count}}个月前",
-    "month_other": "{{count}}个月前",
-    "week_one": "{{count}}周前",
-    "week_other": "{{count}}周前",
-    "year_one": "{{count}}年前",
-    "year_other": "{{count}}年前"
+    "day_one": "{{count}}天前发布",
+    "day_other": "{{count}}天前发布",
+    "hour_one": "{{count}}小时前发布",
+    "hour_other": "{{count}}小时前发布",
+    "month_one": "{{count}}个月前发布",
+    "month_other": "{{count}}个月前发布",
+    "week_one": "{{count}}周前发布",
+    "week_other": "{{count}}周前发布",
+    "year_one": "{{count}}年前发布",
+    "year_other": "{{count}}年前发布"
   },
   "today": "今天"
 }
