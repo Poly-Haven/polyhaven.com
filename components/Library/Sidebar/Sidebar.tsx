@@ -6,7 +6,6 @@ import { assetTypeName } from 'utils/assetTypeName'
 import { MdApps, MdFilterList, MdFirstPage, MdUnarchive, MdKeyboardArrowRight } from 'react-icons/md'
 
 import Button from 'components/UI/Button/Button'
-import DisplayAd from 'components/Ads/DisplayAd'
 import IconButton from 'components/UI/Button/IconButton'
 import CategoryList from './CategoryList'
 
@@ -103,7 +102,6 @@ const Sidebar = (props) => {
         <div className={styles.spacer} />
         <hr />
         <div className={styles.footerWrapper}>
-          <DisplayAd id="9211333899" x={200} y={200} showRemoveBtn />
           <div className={styles.footer}>
             <Button
               text={t_c('nav.contribute')}

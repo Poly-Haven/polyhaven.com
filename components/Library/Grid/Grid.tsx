@@ -332,6 +332,11 @@ const Grid = (props) => {
     },
   }
 
+  let adBreak = news ? 7 : 8 // If we have news, the ad should be after the 7th item, otherwise after the 8th. Doesn't account for when user has hidden this particular news card.
+  if (props.assetType === 'textures') {
+    adBreak++ // Texture thumbs are slightly narrower, can fit an extra one in before ad.
+  }
+
   return (
     <>
       <div ref={topOfPageRef} />
@@ -452,16 +457,22 @@ const Grid = (props) => {
           ) : null}
           {sortedKeys.map((asset) => {
             return (
-              <LazyLoad offset={500} key={asset}>
-                <GridItem
-                  asset={data[asset]}
-                  assetID={asset}
-                  onClick={setHeaderPath}
-                  blurUpcoming={blurUpcoming && eaPref !== 'all'}
-                  thumbSize={thumbSize}
-                  showText={showText}
-                />
-              </LazyLoad>
+              <>
+                <LazyLoad offset={500} key={asset}>
+                  <GridItem
+                    asset={data[asset]}
+                    assetID={asset}
+                    onClick={setHeaderPath}
+                    blurUpcoming={blurUpcoming && eaPref !== 'all'}
+                    thumbSize={thumbSize}
+                    showText={showText}
+                  />
+                </LazyLoad>
+                {(sortedKeys.indexOf(asset) === adBreak - 1 && sortedKeys.length >= adBreak) ||
+                sortedKeys.indexOf(asset) === sortedKeys.length - 1 ? (
+                  <DisplayAd id="4927930335" x={970} y={250} key="libraryContentAd" />
+                ) : null}
+              </>
             )
           })}
         </div>

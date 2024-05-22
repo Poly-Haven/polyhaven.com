@@ -68,6 +68,8 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     setIsServer(false)
   }, [])
 
+  // return null // TESTING for adblock/patrons
+
   if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile) {
     return null
   }
