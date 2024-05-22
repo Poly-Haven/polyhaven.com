@@ -332,9 +332,33 @@ const Grid = (props) => {
     },
   }
 
-  let adBreak = news ? 7 : 8 // If we have news, the ad should be after the 7th item, otherwise after the 8th. Doesn't account for when user has hidden this particular news card.
-  if (props.assetType === 'textures') {
-    adBreak++ // Texture thumbs are slightly narrower, can fit an extra one in before ad.
+  const adBreakIndex = {
+    hdris: {
+      small: 12,
+      medium: 8,
+      large: 6,
+      huge: 4,
+    },
+    textures: {
+      small: 14,
+      medium: 10,
+      large: 8,
+      huge: 6,
+    },
+    models: {
+      small: 12,
+      medium: 8,
+      large: 6,
+      huge: 4,
+    },
+  }
+
+  let adBreak = adBreakIndex[props.assetType][thumbSize]
+  if (news) {
+    adBreak--
+    if (thumbSize === 'small' || (thumbSize === 'medium' && props.assetType === 'textures')) {
+      adBreak--
+    }
   }
 
   return (
