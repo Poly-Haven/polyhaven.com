@@ -36,20 +36,17 @@ export default function GalleryPage(props) {
           <em>{t('gallery:description')}</em>
         </p>
         <Link href={`/gallery-submit`} prefetch={false}>
-
           <IconButton icon={<MdAdd />} label={t('gallery:add')} />
-
         </Link>
       </div>
       <Gallery data={props.data} />
     </Page>
-  );
+  )
 }
 
 export async function getStaticProps(context) {
   let error = null
-  const baseUrl =
-    (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_API_URL) || 'https://api.polyhaven.com'
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   const data = await fetch(`${baseUrl}/gallery`)
     .then((response) => response.json())
     .catch((e) => (error = e))
