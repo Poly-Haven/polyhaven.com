@@ -20,7 +20,7 @@
 }
 
 .previewWrapper {
-  @include flex(column, true, true);
+  @include flex(row, true, true);
   background: $c-background;
 
   .activePreview {
@@ -45,6 +45,21 @@
     img {
       max-width: 100%;
       max-height: 100%;
+    }
+  }
+
+  .previewAd {
+    & > * {
+      margin-left: 1em !important;
+      margin-right: 1em !important;
+    }
+
+    & > :first-child {
+      margin-top: 1em !important;
+    }
+
+    & > :last-child {
+      margin-bottom: 1em !important;
     }
   }
 

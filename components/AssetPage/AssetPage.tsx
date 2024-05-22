@@ -47,7 +47,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [activeImage, setActiveImage] = useState(
-    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760`
+    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=720`
   )
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
@@ -141,7 +141,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
     }
     setActiveImageSrc(src)
     if (src.startsWith('https://cdn.polyhaven.com/')) {
-      src += '?height=760'
+      src += '?height=720'
     }
     setActiveImage(src)
     setShowTilePreview('')
@@ -182,6 +182,9 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         </div>
 
         <div className={styles.previewWrapper}>
+          <div className={styles.previewAd}>
+            <DisplayAd id="1693508316" x={160} y={600} showRemoveBtn />
+          </div>
           <div className={`${styles.activePreview}${showWebGL ? ' ' + styles.activePreviewGLTF : ''}`}>
             <img id="activePreview" onLoad={imageLoaded} src={activeImage} />
             {data.sketchfab_id ? (
@@ -370,7 +373,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
         </div>
 
         <div className={styles.sidebarAd}>
-          <DisplayAd id="9249051205" x={336} y={280} showRemoveBtn />
+          <DisplayAd id="9249051205" x={336} y={280} />
         </div>
       </div>
     </div>
