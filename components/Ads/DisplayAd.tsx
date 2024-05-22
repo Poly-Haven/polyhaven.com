@@ -74,7 +74,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     return null
   }
 
-  if (!isProduction) {
+  if (!isProduction || localStorage.getItem(`dummyAds`)) {
     return (
       <>
         <img src={`https://picsum.photos/${x}/${y}`} className={styles.placeholder} />
