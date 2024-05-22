@@ -333,6 +333,12 @@ const Grid = (props) => {
   }
 
   const adBreakIndex = {
+    all: {
+      small: 12,
+      medium: 8,
+      large: 6,
+      huge: 4,
+    },
     hdris: {
       small: 12,
       medium: 8,
