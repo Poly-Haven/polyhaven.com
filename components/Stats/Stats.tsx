@@ -100,7 +100,8 @@ const Stats = ({ datasets }) => {
       </div>
       <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
         Based on {datasets.searches.meta.total} searches in the last{' '}
-        {timeDiff(new Date(datasets.searches.meta.earliestSearch), new Date(datasets.searches.meta.latestSearch))}.
+        {timeDiff(new Date(datasets.searches.meta.earliestSearch), new Date(datasets.searches.meta.latestSearch), true)}
+        .
       </div>
 
       <div className={styles.spacer} />

@@ -22,7 +22,7 @@ export function timeago(epoch, t, returnList = false) {
   return returnList ? [num, returnStr] : returnStr
 }
 
-export function timeDiff(d1, d2) {
+export function timeDiff(d1, d2, morePrecise = false) {
   const segments = {
     year: 3.154e10,
     month: 2.628e9,
@@ -36,7 +36,15 @@ export function timeDiff(d1, d2) {
 
   let timeDifference = d1 - d2
   timeDifference = Math.abs(timeDifference)
-  const unit = Object.keys(segments)[Object.values(segments).findIndex((time) => timeDifference >= time)]
+  let unit = Object.keys(segments)[Object.values(segments).findIndex((time) => timeDifference >= time)]
+
+  if (morePrecise) {
+    // One unit lower for more precision, fallback to milliseconds
+    unit =
+      unit === 'millisecond'
+        ? 'millisecond'
+        : Object.keys(segments)[Object.values(segments).findIndex((time) => timeDifference >= time) + 1]
+  }
   const num = Math.floor(timeDifference / segments[unit])
 
   return `${num} ${unit}${num === 1 ? '' : 's'}`
