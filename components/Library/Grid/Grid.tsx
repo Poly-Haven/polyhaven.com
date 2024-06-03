@@ -224,9 +224,11 @@ const Grid = (props) => {
   }
 
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
-  if (newsData && !news) {
-    setNews(randomArraySelection(newsData))
-  }
+  useEffect(() => {
+    if (newsData && !news) {
+      setNews(randomArraySelection(newsData))
+    }
+  }, [newsData])
 
   if (data) {
     sortedKeys = sortBy[props.sort](data)
