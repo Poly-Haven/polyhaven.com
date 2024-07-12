@@ -60,7 +60,7 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
     }
 
     dayData.bytesPerUser += dayData.bytes / dayData.uniques
-    dayData.requestsPerUser += dayData.requests / dayData.uniques
+    dayData.requestsPerUser += dayData.requests / Math.max(1, dayData.uniques)
     dayData.usersPerAsset += dayData.uniques / dayData.assetsPublished
 
     graphData.push(dayData)
@@ -183,7 +183,8 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
             <XAxis dataKey="day" />
             <YAxis
               scale={dataTypes[dataType].scale}
-              domain={[dataTypes[dataType].scale === 'log' ? 'auto' : 0, 'auto']}
+              domain={[dataTypes[dataType].scale === 'log' ? 1 : 0, 'auto']}
+              allowDataOverflow
             />
             <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
 
