@@ -269,8 +269,8 @@ const Home = () => {
                   mode="compact"
                 />
                 <Staff
-                  id="Jandre van Heerden"
-                  name="Jandre van Heerden"
+                  id="Janelle van Heerden"
+                  name="Janelle van Heerden"
                   role={`${tc('common:Models')}, ${tc('common:Textures')}`}
                   country="ZA"
                   mode="compact"
