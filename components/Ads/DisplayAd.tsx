@@ -16,18 +16,17 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
 
   const isProduction = process.env.NODE_ENV === 'production'
 
-  // TEMP Uncomment after architextures ads
-  // useEffect(() => {
-  //   if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
-  //     try {
-  //       // @ts-ignore - adsbygoogle not detected as a prop of window
-  //       ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-  //       setIsLoaded(true)
-  //     } catch (err) {
-  //       console.error(err)
-  //     }
-  //   }
-  // }, [adRef.current, isServer])
+  useEffect(() => {
+    if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
+      try {
+        // @ts-ignore - adsbygoogle not detected as a prop of window
+        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        setIsLoaded(true)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+  }, [adRef.current, isServer])
 
   useEffect(() => {
     function handleResize() {
@@ -69,17 +68,6 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile) {
     return null
   }
-
-  // TEMP architextures
-  return (
-    <>
-      <img
-        src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
-        style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
-      />
-      {jsxRemoveAds}
-    </>
-  )
 
   if (!isProduction || localStorage.getItem(`dummyAds`)) {
     return (
