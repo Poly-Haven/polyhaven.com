@@ -73,10 +73,12 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   // TEMP architextures
   return (
     <>
-      <img
-        src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
-        style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
-      />
+      <a href="https://architextures.org/?utm_source=polyhaven&utm_medium=ads&utm_campaign=ads_sept" rel="noopener">
+        <img
+          src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
+          style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
+        />
+      </a>
       {jsxRemoveAds}
     </>
   )
