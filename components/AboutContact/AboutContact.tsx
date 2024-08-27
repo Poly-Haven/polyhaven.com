@@ -51,8 +51,8 @@ const AboutPage = () => {
         <Staff id="James Ray Cock" name="James Ray Cock" role={`${t('common:Models')}`} country="ZA" mode="full" />
         <Staff id="Dario Barresi" name="Dario Barresi" role={`${t('common:Textures')}`} country="ZA" mode="full" />
         <Staff
-          id="Janelle van Heerden"
-          name="Janelle van Heerden"
+          id="Jenelle van Heerden"
+          name="Jenelle van Heerden"
           role={`${t('common:Models')}, ${t('common:Textures')}`}
           country="ZA"
           mode="full"
