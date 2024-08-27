@@ -50,12 +50,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
 
   const jsxRemoveAds = showRemoveBtn ? (
     <Button
-      text={
-        <>
-          {t('remove-ads')}
-          <Heart />
-        </>
-      }
+      text={<>{t('remove-ads')} ($1)</>}
       href="/account"
       style={{
         margin: '4px 0',
