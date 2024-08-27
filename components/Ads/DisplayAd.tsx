@@ -79,7 +79,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   return (
     <>
       <img
-        src={`https://u.polyhaven.org/architextures/${x}x${y}.webp`}
+        src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
         style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
       />
       {jsxRemoveAds}
