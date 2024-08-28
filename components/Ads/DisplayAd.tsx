@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next'
 import { useState, useEffect, useRef } from 'react'
 
 import Button from 'components/UI/Button/Button'
-import Heart from 'components/UI/Icons/Heart'
 
 import styles from './Ads.module.scss'
 
@@ -71,9 +70,15 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   }
 
   // TEMP architextures
+  const links = {
+    '160x600': 'https://architextures.org/create/152?ref=polyhaven-4',
+    '728x90': 'https://architextures.org/create/132?ref=polyhaven-2',
+    '336x280': 'https://architextures.org/create/share/37274?ref=polyhaven-3',
+    '970x250': 'https://architextures.org/create/812?ref=polyhaven-1',
+  }
   return (
     <>
-      <a href="https://architextures.org/?utm_source=polyhaven&utm_medium=ads&utm_campaign=ads_sept" rel="noopener">
+      <a href={links[`${x}x${y}`] || 'https://architextures.org/?ref=polyhaven-0'} rel="noopener">
         <img
           src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
           style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
