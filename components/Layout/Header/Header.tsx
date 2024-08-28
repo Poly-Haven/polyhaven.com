@@ -15,7 +15,7 @@ const header = () => {
       </Link>
 
       <img
-        src="https://ads.polyhaven.org/architextures/1px.png"
+        src="https://ads.polyhaven.org/architextures/160x600_test.png"
         className={styles.testPixel}
         data-comment="Transparent pixel images to gauge ad-blocking prevalence. This is for statistical curiosity only - Poly Haven respects user choices and does not attempt to circumvent ad blocking"
       />
