@@ -76,11 +76,17 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     '336x280': 'https://architextures.org/create/share/37274?ref=polyhaven-3',
     '970x250': 'https://architextures.org/create/812?ref=polyhaven-1',
   }
+  const fileNames = {
+    '160x600': 'architextures1',
+    '728x90': 'architextures2',
+    '336x280': 'architextures3',
+    '970x250': 'architextures4',
+  }
   return (
     <>
       <a href={links[`${x}x${y}`] || 'https://architextures.org/?ref=polyhaven-0'} rel="noopener">
         <img
-          src={`https://ads.polyhaven.org/architextures/${x}x${y}.webp`}
+          src={`https://ads.polyhaven.org/architextures/${fileNames[`${x}x${y}`]}.webp`}
           style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
         />
       </a>
