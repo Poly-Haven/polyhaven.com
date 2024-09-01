@@ -3,6 +3,7 @@ const { i18n } = require('./next-i18next.config')
 
 module.exports = {
   i18n,
+  staticPageGenerationTimeout: 300,
   images: {
     domains: ['cdn.polyhaven.com'],
   },
