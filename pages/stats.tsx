@@ -31,38 +31,59 @@ export async function getStaticProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   let error = null
 
+  const now = new Date()
+  const monthAgo = subMonths(now, 1)
   const msPerDay = 24 * 60 * 60 * 1000
   const today = new Date().toISOString().split('T')[0]
   const aMonthAgo = new Date(Date.now() - 30 * msPerDay).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - (91 + 6) * msPerDay).toISOString().split('T')[0]
   const oneYearAgo = new Date(Date.now() - 365 * msPerDay).toISOString().split('T')[0]
 
-  // Three months graph
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
-  const threeMonthsHDRI = await fetch(`${threeMonthsAgoBaseUrl}&slug=T0`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-  const threeMonthsTex = await fetch(`${threeMonthsAgoBaseUrl}&slug=T1`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-  const threeMonthsMod = await fetch(`${threeMonthsAgoBaseUrl}&slug=T2`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const fetchUrls = [
+    `${threeMonthsAgoBaseUrl}&slug=T0`,
+    `${threeMonthsAgoBaseUrl}&slug=T1`,
+    `${threeMonthsAgoBaseUrl}&slug=T2`,
+    `${baseUrl}/stats/relativetype?date_from=${aMonthAgo}&date_to=${today}`,
+    `${baseUrl}/assets?future=true`,
+    `${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`,
+    `${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`,
+    `${baseUrl}/stats/relativecategory`,
+    `${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${isoDay(
+      fixTzOffset(startOfMonth(monthAgo))
+    )}&date_to=${isoDay(fixTzOffset(endOfMonth(monthAgo)))}`,
+    `${baseUrl}/stats/cfmonth`,
+    `${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`,
+    `${baseUrl}/stats/searches`,
+  ]
 
-  // Relative type graph
-  const relativeType = await fetch(`${baseUrl}/stats/relativetype?date_from=${aMonthAgo}&date_to=${today}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const fetchData = async (url) => {
+    try {
+      const response = await fetch(url)
+      await handleErrors(response)
+      return response.json()
+    } catch (e) {
+      console.error(`STATS: Error fetching ${url}:`, e)
+      return null
+    }
+  }
+
+  const [
+    threeMonthsHDRI,
+    threeMonthsTex,
+    threeMonthsMod,
+    relativeType,
+    assets,
+    resolutionsData,
+    formatsData,
+    relativecategory,
+    dailyDownloads,
+    traffic,
+    cfdaily,
+    searches,
+  ] = await Promise.all(fetchUrls.map(fetchData))
 
   // Assets per month graph
-  const assets = await fetch(`${baseUrl}/assets?future=true`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
   let months = {}
   for (const info of Object.values(assets)) {
     const month = new Date(info['date_published'] * 1000).toISOString().substring(0, 7)
@@ -84,12 +105,6 @@ export async function getStaticProps(context) {
   }
 
   // Resolution graphs
-  const resolutionsData = await fetch(
-    `${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`
-  )
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
   let resolutions = {
     hdris: { total: 0 },
     textures: { total: 0 },
@@ -123,10 +138,6 @@ export async function getStaticProps(context) {
   }
 
   // Format graphs
-  const formatsData = await fetch(`${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
   let formats = {
     hdris: { total: 0 },
     textures: { total: 0 },
@@ -156,40 +167,11 @@ export async function getStaticProps(context) {
     formats[type] = tmp
   }
 
-  // Relative category
-  const relativecategory = await fetch(`${baseUrl}/stats/relativecategory`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-
   // Asset downloads
-  const now = new Date()
-  const monthAgo = subMonths(now, 1)
-  const dateFrom = isoDay(fixTzOffset(startOfMonth(monthAgo)))
-  const dateTo = isoDay(fixTzOffset(endOfMonth(monthAgo)))
-  const dailyDownloads = await fetch(
-    `${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`
-  )
-    .then((response) => response.json())
-    .catch((e) => (error = e))
   let monthlyDownloads = 0
   for (const day of dailyDownloads) {
     monthlyDownloads += day.downloads
   }
-
-  // Traffic
-  const traffic = await fetch(`${baseUrl}/stats/cfmonth`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  // Cloudflare Daily
-  const cfdaily = await fetch(`${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  // Searches
-  const searches = await fetch(`${baseUrl}/stats/searches`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
 
   // Assets with date_published
   const assetDates = {}
