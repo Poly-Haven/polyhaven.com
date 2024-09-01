@@ -2,7 +2,6 @@ import { useTranslation } from 'next-i18next'
 import { useState, useEffect, useRef } from 'react'
 
 import Button from 'components/UI/Button/Button'
-import Heart from 'components/UI/Icons/Heart'
 
 import styles from './Ads.module.scss'
 
@@ -16,17 +15,18 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
 
   const isProduction = process.env.NODE_ENV === 'production'
 
-  useEffect(() => {
-    if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
-      try {
-        // @ts-ignore - adsbygoogle not detected as a prop of window
-        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-        setIsLoaded(true)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-  }, [adRef.current, isServer])
+  // TEMP Uncomment after architextures ads
+  // useEffect(() => {
+  //   if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
+  //     try {
+  //       // @ts-ignore - adsbygoogle not detected as a prop of window
+  //       ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+  //       setIsLoaded(true)
+  //     } catch (err) {
+  //       console.error(err)
+  //     }
+  //   }
+  // }, [adRef.current, isServer])
 
   useEffect(() => {
     function handleResize() {
@@ -68,6 +68,31 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile) {
     return null
   }
+
+  // TEMP architextures
+  const links = {
+    '160x600': 'https://architextures.org/create/152?ref=polyhaven-4',
+    '728x90': 'https://architextures.org/create/132?ref=polyhaven-2',
+    '336x280': 'https://architextures.org/create/share/37274?ref=polyhaven-3',
+    '970x250': 'https://architextures.org/create/812?ref=polyhaven-1',
+  }
+  const fileNames = {
+    '160x600': 'architextures1',
+    '728x90': 'architextures2',
+    '336x280': 'architextures3',
+    '970x250': 'architextures4',
+  }
+  return (
+    <>
+      <a href={links[`${x}x${y}`] || 'https://architextures.org/?ref=polyhaven-0'} rel="noopener">
+        <img
+          src={`https://ads.polyhaven.org/architextures/${fileNames[`${x}x${y}`]}.webp`}
+          style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
+        />
+      </a>
+      {jsxRemoveAds}
+    </>
+  )
 
   if (!isProduction || localStorage.getItem(`dummyAds`)) {
     return (
