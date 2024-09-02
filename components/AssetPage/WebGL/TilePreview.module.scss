@@ -6,6 +6,7 @@
   @include absolute_cover;
   @include center;
   background-color: $c-background;
+  cursor: grab;
 }
 
 .image {
