@@ -32,17 +32,18 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
               // This rarely happens for very old assets where the spare raw files were included.
               return
             }
+            const fileName = bp['jpg_pretty']['url'].split('/').pop()
             return (
               <div key={i} className={styles.thumbnail}>
                 <img
-                  src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg?width=152`}
-                  data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg`}
+                  src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?width=152`}
+                  data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
                   onClick={preview}
                 />
                 <div className={styles.buttonWrapper}>
                   <div
                     className={styles.button}
-                    data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${n}.jpg`}
+                    data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
                     onClick={preview}
                   >
                     <MdVisibility />
