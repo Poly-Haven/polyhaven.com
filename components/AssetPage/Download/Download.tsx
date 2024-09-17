@@ -324,7 +324,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
       </div>
 
       <div className={styles.backplatePreviews} onClick={toggleDlOptions}>
-        <strong>Backplates:</strong>
+        <strong>{t('backplates')}:</strong>
         {backplates.map((bp, i) => (
           <img key={i} src={bp} />
         ))}
