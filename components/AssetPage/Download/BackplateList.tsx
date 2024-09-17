@@ -1,7 +1,8 @@
-import { filesize } from 'filesize'
 import Masonry from 'react-masonry-css'
 
-import { MdHelp, MdVisibility, MdFileDownload } from 'react-icons/md'
+import { MdHelp } from 'react-icons/md'
+
+import BackplateThumb from './BackplateThumb'
 
 import styles from './DownloadOptions.module.scss'
 
@@ -32,44 +33,15 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
               // This rarely happens for very old assets where the spare raw files were included.
               return
             }
-            const fileName = bp['jpg_pretty']['url'].split('/').pop()
             return (
-              <div key={i} className={styles.thumbnail}>
-                <img
-                  src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?width=152`}
-                  data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
-                  onClick={preview}
-                />
-                <div className={styles.buttonWrapper}>
-                  <div
-                    className={styles.button}
-                    data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
-                    onClick={preview}
-                  >
-                    <MdVisibility />
-                  </div>
-                  <div className={styles.button}>
-                    <MdFileDownload />
-                    <div className={styles.downloadMenu}>
-                      {Object.keys(types).map((t, j) => (
-                        <a
-                          key={j}
-                          className={styles.download}
-                          href={bp[t].url}
-                          target="_blank"
-                          rel="noopener"
-                          onClick={trackDownload}
-                          data-res="backplate"
-                          data-format={t}
-                          data-tip={types[t].tip + `<br/>(${filesize(bp[t].size)})`}
-                        >
-                          {types[t].name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <BackplateThumb
+                key={i}
+                assetID={assetID}
+                bp={bp}
+                fileName={bp['jpg_pretty']['url'].split('/').pop()}
+                preview={preview}
+                trackDownload={trackDownload}
+              />
             )
           })}
       </Masonry>
