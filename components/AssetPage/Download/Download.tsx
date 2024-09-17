@@ -127,6 +127,20 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
   }
   const dlRes = resOptionKeys.includes(prefRes) ? prefRes : resOptionKeys.slice(-1)[0]
 
+  // Gather backplate previews
+  let backplates = []
+  if (files['backplates']) {
+    for (const bp of Object.keys(files['backplates'])) {
+      if (backplates.length >= 7) {
+        break // Limit to 7
+      }
+      if (files['backplates'][bp]['jpg_pretty']) {
+        const fileName = files['backplates'][bp]['jpg_pretty']['url'].split('/').pop()
+        backplates.push(`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?height=32`)
+      }
+    }
+  }
+
   const fmtOptions = isHDRI
     ? {
         hdr: {
@@ -308,6 +322,15 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
         </div>
       </div>
+
+      <div className={styles.backplatePreviews} onClick={toggleDlOptions}>
+        <strong>Backplates:</strong>
+        {backplates.map((bp, i) => (
+          <img key={i} src={bp} />
+        ))}
+        <div className={styles.fadeOut} />
+      </div>
+
       <DownloadOptions
         open={dlOptions}
         assetID={assetID}

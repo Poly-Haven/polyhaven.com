@@ -117,3 +117,30 @@
 .disabled {
   cursor: not-allowed;
 }
+
+.backplatePreviews {
+  @include flex(row, true);
+  position: relative;
+  gap: 2px;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  strong {
+    margin-right: 0.5em;
+  }
+
+  .fadeOut {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2em;
+    background: linear-gradient(to right, transparent 0%, $c-background-dark 50%);
+  }
+}
