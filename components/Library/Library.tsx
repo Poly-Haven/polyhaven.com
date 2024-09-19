@@ -7,6 +7,7 @@ import Sidebar from 'components/Library/Sidebar/Sidebar'
 import Grid from 'components/Library/Grid/Grid'
 import Page from 'components/Layout/Page/Page'
 import CollectionHeader from 'components/Library/Collections/CollectionHeader'
+import CatBanner from 'components/Library/CatBanner'
 
 import styles from './Library.module.scss'
 
@@ -29,14 +30,19 @@ const Library = ({ assetType, collection, categories, author, search, strictSear
     document.getElementById('page').scrollTop = 0
   })
 
+  // Show banner if no category or collection is selected
+  const banner = !categories.length && !collection
+
   return (
     <div id={styles.library}>
       <Sidebar assetType={assetType} categories={categories} />
       <Page library>
         {collection ? <CollectionHeader collection={collection} /> : null}
+        {banner ? <CatBanner assetType={assetType} /> : null}
         <Grid
           assetType={assetType}
           categories={categories}
+          banner={banner}
           collection={collection}
           author={authorState}
           setAuthor={setAuthor}

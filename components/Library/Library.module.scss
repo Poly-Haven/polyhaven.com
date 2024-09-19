@@ -1,4 +1,6 @@
 @import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
 
 #library {
   display: flex;
@@ -6,4 +8,61 @@
   flex-grow: 100;
   width: 100vh;
   direction: ltr;
+}
+
+.catBannerWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 2px solid $c-background-light;
+  margin-bottom: 1.5rem;
+  @include dark_scrollbar();
+}
+
+.catBannerFlex {
+  position: relative;
+  padding: 1.9em;
+  @include flex(row, true);
+  min-width: min-content;
+  justify-content: center;
+  gap: 1.9em;
+
+  .cat {
+    position: relative;
+    flex-shrink: 0;
+    height: 180px;
+    line-height: 0;
+    @include transition(0.1s);
+    box-shadow: 0 0 0 -1em rgba(0, 0, 0, 1);
+
+    &:hover {
+      transform: translate(-0.2em, -0.3em);
+      box-shadow: 0.5em 0.5em 2em 0 rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      text-transform: capitalize;
+      color: $c-text-bright;
+      font-weight: bold;
+      padding: 0.2em 0.6em;
+      font-size: 1.1em;
+      text-shadow:
+        1px 1px 1px rgb(0, 0, 0),
+        1px 1px 3px rgba(0, 0, 0, 0.5);
+      @include transition(0.1s);
+    }
+  }
+
+  .modelCat {
+    &:hover {
+      background: rgba($c-background-lightish, 0.4);
+      padding: 0.5em;
+      margin: -0.5em;
+      p {
+        padding: 0.7em 1.1em;
+      }
+    }
+  }
 }

@@ -73,11 +73,11 @@ const Grid = (props) => {
     }, 1000)
   }, [])
 
-  const [noSticky, setNoSticky] = useState(props.collection ? true : false)
+  const [noSticky, setNoSticky] = useState(props.collection || props.banner ? true : false)
   const topOfPageRef = useRef(null)
   // Set noSticky to true if collection is set, and we've scrolled past the top
   useEffect(() => {
-    if (props.collection) {
+    if (props.collection || props.banner) {
       const handleScroll = () => {
         const headerHeight = document.getElementById('mainheader').offsetHeight
         if (window.scrollY > topOfPageRef.current.offsetTop - headerHeight) {
@@ -91,7 +91,7 @@ const Grid = (props) => {
     } else {
       setNoSticky(false)
     }
-  }, [props.collection])
+  }, [props.collection, props.banner])
 
   // Work around stale state issues
   const numResults = useRef(null)
