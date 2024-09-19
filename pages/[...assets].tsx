@@ -51,6 +51,7 @@ const LibraryPage = (props) => {
       <Library
         assetType={props.assetType}
         categories={props.categories}
+        collections={props.assetType === 'all' ? props.collections : {}}
         collection={null}
         author={props.author}
         search={props.search}
@@ -59,6 +60,13 @@ const LibraryPage = (props) => {
       />
     </>
   )
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.ok)
+  }
+  return response
 }
 
 export async function getServerSideProps(context) {
@@ -83,11 +91,22 @@ export async function getServerSideProps(context) {
     sort = 'hot'
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+
+  const collections = await fetch(`${baseUrl}/collections`)
+    .then(handleErrors)
+    .then((response) => response.json())
+  const collectionNames = {}
+  for (const name of Object.keys(collections)) {
+    collectionNames[name] = collections[name].name
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: assetType,
       categories: params,
+      collections: collectionNames,
       author: author ? author : '',
       search: search ? search : '',
       strictSearch: strictSearch ? true : false,

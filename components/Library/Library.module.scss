@@ -16,6 +16,12 @@
   border-bottom: 2px solid $c-background-light;
   margin-bottom: 1.5rem;
   @include dark_scrollbar();
+
+  h2 {
+    margin-left: 2rem;
+    margin-bottom: -1rem;
+    margin-top: 1.5em;
+  }
 }
 
 .catBannerFlex {
@@ -37,6 +43,10 @@
     &:hover {
       transform: translate(-0.2em, -0.3em);
       box-shadow: 0.5em 0.5em 2em 0 rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      height: 100%;
     }
 
     p {

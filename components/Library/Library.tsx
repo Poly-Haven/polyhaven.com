@@ -11,7 +11,7 @@ import CatBanner from 'components/Library/CatBanner'
 
 import styles from './Library.module.scss'
 
-const Library = ({ assetType, collection, categories, author, search, strictSearch, sort }) => {
+const Library = ({ assetType, collections, collection, categories, author, search, strictSearch, sort }) => {
   const [authorState, setAuthor] = useState(author)
   const [searchState, setSearch] = useState(search)
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
@@ -38,7 +38,7 @@ const Library = ({ assetType, collection, categories, author, search, strictSear
       <Sidebar assetType={assetType} categories={categories} />
       <Page library>
         {collection ? <CollectionHeader collection={collection} /> : null}
-        {banner ? <CatBanner assetType={assetType} /> : null}
+        {banner ? <CatBanner assetType={assetType} collections={collections} /> : null}
         <Grid
           assetType={assetType}
           categories={categories}
