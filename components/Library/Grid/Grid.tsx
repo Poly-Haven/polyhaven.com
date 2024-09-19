@@ -73,19 +73,20 @@ const Grid = (props) => {
     }, 1000)
   }, [])
 
+  // Once we've scrolled past the banner, stick the options bar at the top
   const [noSticky, setNoSticky] = useState(props.collection || props.banner ? true : false)
   const topOfPageRef = useRef(null)
-  // Set noSticky to true if collection is set, and we've scrolled past the top
   useEffect(() => {
-    if (props.collection || props.banner) {
-      const handleScroll = () => {
-        const headerHeight = document.getElementById('mainheader').offsetHeight
-        if (window.scrollY > topOfPageRef.current.offsetTop - headerHeight) {
-          setNoSticky(false)
-        } else {
-          setNoSticky(true)
-        }
+    const handleScroll = () => {
+      const headerHeight = document.getElementById('mainheader').offsetHeight
+      if (window.scrollY > topOfPageRef.current.offsetTop - headerHeight) {
+        setNoSticky(false)
+      } else {
+        setNoSticky(true)
       }
+    }
+    handleScroll() // Check on load
+    if (props.collection || props.banner) {
       window.addEventListener('scroll', handleScroll)
       return () => window.removeEventListener('scroll', handleScroll)
     } else {
