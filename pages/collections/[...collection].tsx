@@ -22,6 +22,7 @@ const LibraryPage = (props) => {
       <Library
         assetType={props.assetType}
         categories={props.categories}
+        collections={{}}
         collection={props.collection}
         author={props.author}
         search={props.search}
