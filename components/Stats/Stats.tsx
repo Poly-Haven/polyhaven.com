@@ -1,4 +1,5 @@
 import { timeDiff } from 'utils/dateUtils'
+import ErrorBoundary from 'utils/ErrorBoundary'
 
 import Tooltip from 'components/UI/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
@@ -27,18 +28,22 @@ const Stats = ({ datasets }) => {
       </div>
 
       <div className={styles.row}>
-        <div className={styles.half}>
-          <LastThreeMonths data={datasets.threeMonths} />
-        </div>
+        <ErrorBoundary>
+          <div className={styles.half}>
+            <LastThreeMonths data={datasets.threeMonths} />
+          </div>
+        </ErrorBoundary>
         <div className={styles.half}>
           <div className={styles.row}>
             <div className={styles.half}>
               <div className={styles.graphHeader}>
                 <p>Downloads by format chosen:</p>
               </div>
-              {Object.keys(datasets.formats).map((k, i) => (
-                <ResolutionComparison key={i} data={datasets.formats[k]} type={k} />
-              ))}
+              <ErrorBoundary>
+                {Object.keys(datasets.formats).map((k, i) => (
+                  <ResolutionComparison key={i} data={datasets.formats[k]} type={k} />
+                ))}
+              </ErrorBoundary>
               <p style={{ marginBottom: 0 }}>Notes:</p>
               <ul className={styles.unNumberedNotesList}>
                 <li>EXR is the default format for HDRIs.</li>
@@ -51,9 +56,11 @@ const Stats = ({ datasets }) => {
               <div className={styles.graphHeader}>
                 <p>Downloads by resolution chosen:</p>
               </div>
-              {Object.keys(datasets.resolutions).map((k, i) => (
-                <ResolutionComparison key={i} data={datasets.resolutions[k]} type={k} />
-              ))}
+              <ErrorBoundary>
+                {Object.keys(datasets.resolutions).map((k, i) => (
+                  <ResolutionComparison key={i} data={datasets.resolutions[k]} type={k} />
+                ))}
+              </ErrorBoundary>
               <p style={{ marginBottom: 0 }}>Notes:</p>
               <ul className={styles.unNumberedNotesList}>
                 <li>4k is the default resolution for all assets.</li>
@@ -67,59 +74,71 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.spacer} />
 
-      <div className={styles.row}>
-        <div className={styles.half}>
-          <RelativeCat data={datasets.relativecategory} type="hdris" name="HDRI" />
+      <ErrorBoundary>
+        <div className={styles.row}>
+          <div className={styles.half}>
+            <RelativeCat data={datasets.relativecategory} type="hdris" name="HDRI" />
+          </div>
+          <div className={styles.half}>
+            <RelativeCat data={datasets.relativecategory} type="textures" name="Texture" />
+          </div>
+          <div className={styles.half}>
+            <RelativeCat data={datasets.relativecategory} type="models" name="Model" />
+          </div>
+          <div className={styles.half}>
+            <RelativeType data={datasets.relativeType} />
+          </div>
+          <div className={styles.half}>
+            <AssetsPerMonth data={datasets.monthlyAssets} />
+          </div>
         </div>
-        <div className={styles.half}>
-          <RelativeCat data={datasets.relativecategory} type="textures" name="Texture" />
-        </div>
-        <div className={styles.half}>
-          <RelativeCat data={datasets.relativecategory} type="models" name="Model" />
-        </div>
-        <div className={styles.half}>
-          <RelativeType data={datasets.relativeType} />
-        </div>
-        <div className={styles.half}>
-          <AssetsPerMonth data={datasets.monthlyAssets} />
-        </div>
-      </div>
+      </ErrorBoundary>
 
       <div className={styles.spacer} />
 
-      <div className={styles.row}>
-        <div className={styles.half}>
-          <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+      <ErrorBoundary>
+        <div className={styles.row}>
+          <div className={styles.half}>
+            <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+          </div>
+          <div className={styles.half}>
+            <SearchPop data={datasets.searches} type="textures" name="Texture" />
+          </div>
+          <div className={styles.half}>
+            <SearchPop data={datasets.searches} type="models" name="Model" />
+          </div>
         </div>
-        <div className={styles.half}>
-          <SearchPop data={datasets.searches} type="textures" name="Texture" />
+        <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
+          Based on {datasets.searches.meta.total} searches in the last{' '}
+          {timeDiff(
+            new Date(datasets.searches.meta.earliestSearch),
+            new Date(datasets.searches.meta.latestSearch),
+            true
+          )}
+          .
         </div>
-        <div className={styles.half}>
-          <SearchPop data={datasets.searches} type="models" name="Model" />
-        </div>
-      </div>
-      <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
-        Based on {datasets.searches.meta.total} searches in the last{' '}
-        {timeDiff(new Date(datasets.searches.meta.earliestSearch), new Date(datasets.searches.meta.latestSearch), true)}
-        .
-      </div>
+      </ErrorBoundary>
 
       <div className={styles.spacer} />
 
-      <div className={styles.row}>
-        <div className={styles.half}>
-          <TrafficGraph data={datasets.cfdaily} assetDates={datasets.assetDates} />
+      <ErrorBoundary>
+        <div className={styles.row}>
+          <div className={styles.half}>
+            <TrafficGraph data={datasets.cfdaily} assetDates={datasets.assetDates} />
+          </div>
         </div>
-      </div>
+      </ErrorBoundary>
 
       <div className={styles.spacer} />
 
-      <div className={styles.row} style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <p>Monthly Traffic:</p>
-        <StatBlock head={`${(datasets.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
-        <StatBlock head={`${Math.round(datasets.traffic.terabytes)}TB`} text="Bandwidth" />
-        <StatBlock head={`${(datasets.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
-      </div>
+      <ErrorBoundary>
+        <div className={styles.row} style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <p>Monthly Traffic:</p>
+          <StatBlock head={`${(datasets.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
+          <StatBlock head={`${Math.round(datasets.traffic.terabytes)}TB`} text="Bandwidth" />
+          <StatBlock head={`${(datasets.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
+        </div>
+      </ErrorBoundary>
 
       <Tooltip />
     </div>
