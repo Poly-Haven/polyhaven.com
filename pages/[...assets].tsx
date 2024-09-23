@@ -64,7 +64,7 @@ const LibraryPage = (props) => {
 
 function handleErrors(response) {
   if (!response.ok) {
-    throw Error(response.ok)
+    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
   }
   return response
 }
