@@ -32,6 +32,10 @@
   justify-content: center;
   gap: 1.9em;
 
+  @media screen and (max-width: 810px) {
+    flex-wrap: wrap;
+  }
+
   .cat {
     position: relative;
     flex-shrink: 0;
@@ -39,6 +43,10 @@
     line-height: 0;
     @include transition(0.1s);
     box-shadow: 0 0 0 -1em rgba(0, 0, 0, 1);
+
+    @media screen and (max-width: 810px) {
+      height: calc(35vw);
+    }
 
     &:hover {
       transform: translate(-0.2em, -0.3em);
@@ -56,8 +64,9 @@
       text-transform: capitalize;
       color: $c-text-bright;
       font-weight: bold;
-      padding: 0.2em 0.6em;
+      padding: 0.2em 0.6em 0;
       font-size: 1.1em;
+      line-height: 1em;
       text-shadow:
         1px 1px 1px rgb(0, 0, 0),
         1px 1px 3px rgba(0, 0, 0, 0.5);
