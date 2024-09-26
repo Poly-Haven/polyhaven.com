@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Trenutno podržavate Poly Haven s {{amount}} $ mjesečno, hvala!",
+  "support-amount-yearly": "Trenutno podržavate Poly Haven s $ {{amount}} godišnje, hvala!",
   "title": "Prijaviti se"
 }

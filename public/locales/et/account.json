@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Te toetate praegu Poly Haven'it ${{amount}} kuus, aitäh teile!",
+  "support-amount-yearly": "Te toetate praegu Poly Havenit ${{amount}} aastas, aitäh!",
   "title": "Logi sisse"
 }

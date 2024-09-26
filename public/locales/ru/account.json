@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Сейчас вы поддерживаете Poly Haven на {{amount}} $ в месяц, спасибо большое!",
+  "support-amount-yearly": "В настоящее время вы поддерживаете Poly Haven на ${{amount}} в год, спасибо!",
   "title": "Войти"
 }

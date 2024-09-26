@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Αυτή τη στιγμή υποστηρίζετε το Poly Haven με ${{amount}} ανά μήνα, ευχαριστώ!",
+  "support-amount-yearly": "Αυτή τη στιγμή υποστηρίζετε το Poly Haven με ${{amount}} ετησίως, ευχαριστώ!",
   "title": "Σύνδεση"
 }

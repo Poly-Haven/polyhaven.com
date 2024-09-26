@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Jy ondersteun tans Poly Haven met $ {{amount}} per maand, dankie!",
+  "support-amount-yearly": "Jy ondersteun tans Poly Haven met $ {{amount}} per jaar, dankie!",
   "title": "Teken in"
 }

@@ -13,6 +13,7 @@
   "hi": "Hi",
   "not-patron-anymore": "It looks like you're no longer a patron of Poly Haven. That's OK, and we appreciate your past support :)",
   "support-amount": "You're currently supporting Poly Haven with ${{amount}} per month, thanks!",
+  "support-amount-yearly": "You're currently supporting Poly Haven with ${{amount}} per year, thanks!",
   "reward_one": "This grants you the following reward:",
   "reward_other": "This grants you the following rewards:",
   "rewards": {

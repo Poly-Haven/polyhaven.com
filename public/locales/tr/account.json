@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Şu anda Poly Haven'ı ayda $ {{amount}} destekliyorsunuz, teşekkürler!",
+  "support-amount-yearly": "Şu anda Poly Haven'ı yılda{{amount}} $ ile destekliyorsunuz, teşekkürler!",
   "title": "Giriş yap"
 }

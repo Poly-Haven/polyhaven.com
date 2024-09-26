@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Jelenleg havi $ {{amount}} támogatja a Poly Havent, köszönöm!",
+  "support-amount-yearly": "Ön jelenleg a Poly Haven-t támogatja a{{amount}} dollárral évente, köszönjük!",
   "title": "Belépés"
 }

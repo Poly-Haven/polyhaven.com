@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "شما در حال حاضر از Poly Haven با {{amount}} $ در ماه پشتیبانی می کنید، با تشکر!",
+  "support-amount-yearly": "شما در حال حاضر از Poly Haven با {{amount}} دلار در سال پشتیبانی می‌کنید، متشکرم!",
   "title": "وارد شوید"
 }

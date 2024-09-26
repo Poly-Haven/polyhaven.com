@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Actualmente estás apoyando a Poly Haven con ${{amount}} por mes, ¡gracias!",
+  "support-amount-yearly": "Actualmente apoyas a Poly Haven con ${{amount}} al año, ¡gracias!",
   "title": "Iniciar Sesión"
 }

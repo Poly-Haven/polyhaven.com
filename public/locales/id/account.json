@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "Saat ini Anda mendukung Poly Haven dengan ${{amount}} per bulan, terima kasih!",
+  "support-amount-yearly": "Saat ini Anda sedang mendukung Poly Haven dengan ${{amount}} per tahun, terima kasih!",
   "title": "Masuk"
 }

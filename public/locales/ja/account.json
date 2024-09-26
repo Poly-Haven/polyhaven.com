@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "あなたは現在、月額${{amount}}でPoly Havenをサポートしています。ありがとう！",
+  "support-amount-yearly": "あなたは現在、ポリヘブンを年間${{amount}} で支援してくれています！",
   "title": "ログイン"
 }

@@ -61,5 +61,6 @@
     }
   },
   "support-amount": "현재 매월 $ {{amount}} 으로 Poly Haven을 지원하고 있습니다. 감사합니다!",
+  "support-amount-yearly": "현재 연간 ${{amount}} 으로 Poly Haven을 후원하고 계십니다.",
   "title": "로그인"
 }

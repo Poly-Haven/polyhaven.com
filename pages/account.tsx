@@ -120,7 +120,11 @@ const Page = () => {
         {t('account:hi')} {(patron['display_name'] || patron['name']).trim()}!
       </h1>
       <p>
-        <Trans i18nKey="account:support-amount" t={t} values={{ amount: patron['cents'] / 100 }} />
+        <Trans
+          i18nKey={`account:support-amount${patron['yearly_pledge'] ? '-yearly' : ''}`}
+          t={t}
+          values={{ amount: patron['cents'] / 100 }}
+        />
       </p>
 
       {patron['rewards'].length > 0 && (
