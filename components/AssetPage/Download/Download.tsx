@@ -323,13 +323,15 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
         </div>
       </div>
 
-      <div className={styles.backplatePreviews} onClick={toggleDlOptions}>
-        <strong>{t('backplates')}:</strong>
-        {backplates.map((bp, i) => (
-          <img key={i} src={bp} />
-        ))}
-        <div className={styles.fadeOut} />
-      </div>
+      {backplates.length > 0 ? (
+        <div className={styles.backplatePreviews} onClick={toggleDlOptions}>
+          <strong>{t('backplates')}:</strong>
+          {backplates.map((bp, i) => (
+            <img key={i} src={bp} />
+          ))}
+          <div className={styles.fadeOut} />
+        </div>
+      ) : null}
 
       <DownloadOptions
         open={dlOptions}
