@@ -6,7 +6,7 @@ export default class CustomDocument extends Document {
 
     return (
       <Html
-        dir={['ar', 'fa'].includes(this.props.locale) ? 'rtl' : 'ltr'}
+        dir={['ar', 'fa', 'he'].includes(this.props.locale) ? 'rtl' : 'ltr'}
         style={this.props.locale === 'ar' ? { textAlign: 'right' } : null}
       >
         <Head>

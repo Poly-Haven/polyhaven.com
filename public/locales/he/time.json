@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": " יום {{count}} מהיום",
+    "day_other": "{{count}} ימים מעכשיו",
+    "hour_one": "{{count}} שעה מעכשיו",
+    "hour_other": "{{count}} שעות מעכשיו",
+    "month_one": "{{count}} חודש מהיום",
+    "month_other": "חודשים מעכשיו {{count}}",
+    "week_one": "{{count}} שבוע מהיום",
+    "week_other": "{{count}} שבועות מעכשיו",
+    "year_one": "{{count}} שנה מהיום",
+    "year_other": "{{count}} שנים מעכשיו"
+  },
+  "new": "חָדָשׁ",
+  "past": {
+    "day_one": "לפני יום {{count}}",
+    "day_other": "לפני {{count}} ימים",
+    "hour_one": "לפני {{count}} שעה",
+    "hour_other": "לפני {{count}} שעות",
+    "month_one": "לפני {{count}} חודשה",
+    "month_other": "לפני {{count}} חודשים",
+    "week_one": "לפני שבוע {{count}}",
+    "week_other": "לפני {{count}} שבועות",
+    "year_one": "לפני {{count}} שנה",
+    "year_other": "לפני {{count}} שנים"
+  },
+  "today": "הַיוֹם"
+}
