@@ -63,26 +63,28 @@ We have a public API intended to help you integrate our assets into your softwar
           <Component {...pageProps} />
         </Layout>
 
-        <CookieConsent
-          onAccept={consentGranted}
-          buttonText="Got it!"
-          style={{
-            background: 'rgb(190, 111, 255)',
-            alignItems: 'center',
-            padding: '1em',
-            width: 'auto',
-          }}
-          buttonStyle={{
-            fontSize: '1.1em',
-            padding: '0.7em 1em',
-            fontWeight: 'bold',
-          }}
-        >
-          This website uses cookies to enhance the user experience.{' '}
-          <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
-            Learn more.
-          </Link>
-        </CookieConsent>
+        <div lang="en" dir="ltr">
+          <CookieConsent
+            onAccept={consentGranted}
+            buttonText="Got it!"
+            style={{
+              background: 'rgb(190, 111, 255)',
+              alignItems: 'center',
+              padding: '1em',
+              width: 'auto',
+            }}
+            buttonStyle={{
+              fontSize: '1.1em',
+              padding: '0.7em 1em',
+              fontWeight: 'bold',
+            }}
+          >
+            This website uses cookies to enhance the user experience.{' '}
+            <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
+              Learn more.
+            </Link>
+          </CookieConsent>
+        </div>
       </UserProvider>
     </>
   )
