@@ -10,18 +10,18 @@ const Staff = ({ id, name, role, country, mode }) => {
   return (
     <div className={styles.staffAvatar}>
       <Link href={`/all?a=${id}`}>
-
         <img src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}`} width={size} height={size} />
-
       </Link>
       <div className={`${styles.staffInfo} ${mode === 'compact' ? styles.staffInfoCompact : null}`}>
-        <CountryFlag code={country} />
-        <strong>{name}</strong>
+        <span lang="en" dir="ltr">
+          <CountryFlag code={country} />
+          <strong>{name}</strong>
+        </span>
         <br />
         <em>{role}</em>
       </div>
     </div>
-  );
+  )
 }
 
 export default Staff
