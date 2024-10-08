@@ -50,7 +50,7 @@ const CatBanner = ({ assetType, collections }) => {
         {assetType === 'all'
           ? Object.keys(collections).map((collectionID, i) => (
               <Link key={i} href={`/collections/${collectionID}`} className={`${styles.cat}`}>
-                <img src={`https://cdn.polyhaven.com/collections/${collectionID}.png?width=578`} />
+                <img src={`https://cdn.polyhaven.com/collections/${collectionID}.png?width=578&aspect_ratio=16:9`} />
                 <p>{collections[collectionID]}</p>
               </Link>
             ))
