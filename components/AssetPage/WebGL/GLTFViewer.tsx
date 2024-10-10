@@ -30,7 +30,7 @@ const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy, transparent) => {
   const objects = []
   if (mesh.children) {
     mesh.children.forEach((child) => {
-      objects.push(renderMesh(child, soloMap, wireframe, maxAnisotropy))
+      objects.push(renderMesh(child, soloMap, wireframe, maxAnisotropy, transparent))
     })
   }
   objects.push(
