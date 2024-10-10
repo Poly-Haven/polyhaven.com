@@ -26,7 +26,7 @@ interface Props {
 
 const linearMaps = ['normalMap', 'emissiveMap', 'metalnessMap', 'roughnessMap', 'aoMap']
 
-const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
+const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy, transparent) => {
   const objects = []
   if (mesh.children) {
     mesh.children.forEach((child) => {
@@ -42,7 +42,7 @@ const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy) => {
         quaternion={mesh.getWorldQuaternion(new Quaternion())}
       >
         {soloMap === '' ? (
-          <meshPhysicalMaterial {...mesh.material} vertexColors={false}>
+          <meshPhysicalMaterial {...mesh.material} vertexColors={false} transparent={transparent}>
             {Object.entries(mesh.material).map(([key, value]) =>
               value instanceof Texture ? (
                 <texture
@@ -129,7 +129,10 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  const gltfFiles = files.gltf['4k'] ? files.gltf['4k'].gltf : files.gltf['2k'].gltf
+  const gltfFiles = files.gltf['4k']?.gltf ?? files.gltf['2k'].gltf
+  if (files['Alpha'] && files['Diffuse']) {
+    gltfFiles['alpha'] = files['Diffuse']['4k']?.png ?? files['Diffuse']['2k'].png
+  }
   const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles)
 
   // As this functionality is not really necessary, it is overkill to useReducer to handle it.
@@ -185,7 +188,9 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
 
               {processedGLTFFromAPI &&
                 state.meshes &&
-                Object.values(state.meshes).map((node) => renderMesh(node.mesh, soloMap, wireframe, maxAnisotropy))}
+                Object.values(state.meshes).map((node) =>
+                  renderMesh(node.mesh, soloMap, wireframe, maxAnisotropy, !!gltfFiles['alpha'])
+                )}
             </Suspense>
           </Canvas>
         </div>

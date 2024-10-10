@@ -9,6 +9,7 @@ interface APIDataItem {
 
 interface GLTFFromAPI extends APIDataItem {
   readonly include: { [s: string]: APIDataItem }
+  readonly alpha: APIDataItem
 }
 
 export const useGLTFFromAPI = (APIModelObject: GLTFFromAPI): GLTF => {
@@ -22,6 +23,13 @@ export const useGLTFFromAPI = (APIModelObject: GLTFFromAPI): GLTF => {
         setMappedGLTF({
           ...data,
           images: data.images.map((key, idx) => {
+            if (APIModelObject.alpha && (key.uri.endsWith('_diff_4k.jpg') || key.uri.endsWith('_diff_2k.jpg'))) {
+              return {
+                ...data.images[idx],
+                mimeType: 'image/png',
+                uri: APIModelObject.alpha.url,
+              }
+            }
             return {
               ...data.images[idx],
               uri: APIModelObject.include[key.uri].url,
