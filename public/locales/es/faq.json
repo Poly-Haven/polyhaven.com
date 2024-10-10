@@ -20,7 +20,7 @@
   "q06p1": "Es súper fácil y no es diferente de usar cualquier otro HDRI. Aquí hay algunos videos cortos que te muestran exactamente cómo:",
   "q06p2": "Todos nuestros HDRI están sin clip, lo que significa que obtendrás resultados realistas automáticamente y no necesitarás ajustar la gamma ni conectar la imagen a la entrada de fuerza/intensidad.",
   "q07": "¿Cómo se mide el rango dinámico (EV) de un HDRI?",
-  "q07p1": "El número de EV (o 'paradas') se basa únicamente en el número de imagenes capturadas. Por ejemplo, 12 EV significa que se tomaron 5 fotos con 3 EV entre ellas (velocidades de obturación: 1/4000, 1/500, 1/60 1/8, 1\"), y dado que hay 4 espacios de 3 EV entre ellas, se dice que el rango dinámico es de 12 EV (4x3=12).",
+  "q07p1": "El número de EV (o 'paradas') se basa únicamente en el número de imágenes capturadas. Por ejemplo, 12 EV significa que se tomaron 5 fotos con 3 EV entre ellas (velocidades de obturación: 1/4000, 1/500, 1/60 1/8, 1\"), y dado que hay 4 espacios de 3 EV entre ellas, se dice que el rango dinámico es de 12 EV (4x3=12).",
   "q07p2": "Desafortunadamente, no existe una forma estandarizada para medir el rango dinámico de un HDRI. Diferentes personas usan diferentes métodos, por lo que no hay una forma confiable de que tú, como usuario, pueda saber si el sitio web A que afirma tener 50 EV de rango dinámico es realmente mejor que el sitio web B que tiene 20 EV.",
   "q07p3": "Lo principal a tener en cuenta es si un HDRI es <lnk>sin clip</lnk> o no. Por lo general, no mencionan nada si de hecho tienen clip, así que ten cuidado. Estar sin clip significa que se capturó el <strong>rango completo de brillo en la escena</strong>, incluido un sol brillante súper loco. Si un HDRI tiene clip (también conocido como \"sujetado\"), producirá una iluminación poco realista que generalmente es plana y carece de contraste.",
   "q08": "¿Qué equipo/software utilizas para HDRI?",
@@ -44,8 +44,8 @@
   "q13p1": "Cuando lanzamos 3D Model Haven en 2020, encargamos algunos modelos de armas de varios autores para publicar allí. Estos ahora se han eliminado, ya que asumimos que sus creadores basaron su trabajo en diseños de armas reales, que probablemente sean propiedad intelectual de los fabricantes.",
   "q13p2": "Esta es un área gris legal que preferimos evitar: los modelos en sí mismos son CC0, pero los diseños en los que se pueden basar probablemente no lo sean, por lo que es más seguro para todos si simplemente los eliminamos del sitio.",
   "q13p3": "En el futuro planeamos reemplazarlos con modelos basados en diseños ficticios originales.",
-  "q14": "¿Puedo entrenar a una IA con sus contenidos?",
-  "q14p1": "Por supuesto. Liberamos todos nuestros activos bajo la <lnk>licencia CC0</lnk> (esencialmente libre de derechos de autor en las jurisdicciones que lo soportan) que le permite hacer lo que quiera con ellos, incluyendo el entrenamiento de modelos de IA. Nos encantaría ayudar a la industria a crecer y esperamos que proporcionar un conjunto de datos de alta calidad para entrenar pueda ayudar a mejorar los resultados de sus modelos de IA.",
+  "q14": "¿Puedo entrenar a una IA con el contenido?",
+  "q14p1": "Por supuesto! Publicamos todos nuestros recursos bajo la <lnk>licencia CC0</lnk> (esencialmente libre de derechos de autor en las jurisdicciones que lo apoyan) que le permite a usted hacer lo que quiera con ellos, incluyendo el entrenamiento de modelos de IA. Nos encantaría ayudar a la industria a crecer y esperamos que proporcionar un conjunto de datos de alta calidad para entrenarla pueda ayudar a mejorar los resultados de sus modelos de IA.",
   "q14p2": "Si trabaja para una empresa o grupo de investigación que se beneficia de nuestra biblioteca y desea ayudarnos a ampliar el conjunto de datos que ponemos a disposición de todos, mejorando la calidad de sus propios resultados, <lnk>ayúdenos a financiarnos</lnk>.",
   "title": "Preguntas frecuentes"
 }

@@ -2,7 +2,7 @@
   "future": {
     "day_one": " יום {{count}} מהיום",
     "day_other": "{{count}} ימים מעכשיו",
-    "hour_one": "{{count}} שעה מעכשיו",
+    "hour_one": " שעה {{count}} מעכשיו",
     "hour_other": "{{count}} שעות מעכשיו",
     "month_one": "{{count}} חודש מהיום",
     "month_other": "חודשים מעכשיו {{count}}",
