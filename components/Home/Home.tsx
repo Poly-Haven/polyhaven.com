@@ -306,7 +306,7 @@ const Home = () => {
         </div>
         <div className={styles.moreGallery}>
           <div className={styles.spacer} />
-          <div>
+          <div style={{ pointerEvents: 'initial' }}>
             <Button text={t('s7b')} href="/gallery" />
           </div>
         </div>

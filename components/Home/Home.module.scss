@@ -204,7 +204,8 @@
   }
   .hoverBrowseTextures {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseTextures.jpg?width=1920) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseTextures.jpg?width=1920) no-repeat center
+      center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
@@ -292,7 +293,6 @@
   max-height: 80vh;
   width: 100%;
   overflow-y: hidden;
-  pointer-events: none;
 }
 
 .moreGallery {
@@ -303,6 +303,7 @@
   left: 0;
   right: 0;
   padding: 1em;
+  pointer-events: none;
   @include flex(column, true);
 
   .spacer {
