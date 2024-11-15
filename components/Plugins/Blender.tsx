@@ -35,7 +35,7 @@ const CallToAction = () => {
         </div>
       </a>
       <p className={styles.callToAction}>or</p>
-      <a href="https://blendermarket.com/products/poly-haven-asset-browser" className={styles.purchaseOption}>
+      <a href="https://blendermarket.com/products/poly-haven-asset-browser?ref=3841" className={styles.purchaseOption}>
         <BlenderMarket />
         <h3>Blender Market</h3>
         <p>
