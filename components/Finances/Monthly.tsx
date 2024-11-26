@@ -152,9 +152,26 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
 
   mutableData['Last 12 Months'] = thisYear
 
+  let allTime = {}
+  allTime['rates'] = Object.values(mutableData).slice(-1).pop()['rates']
+  allTime['expense'] = {}
+  allTime['income'] = {}
+  for (const m of Object.keys(mutableData)) {
+    for (const mode of ['income', 'expense']) {
+      for (const [k, v] of Object.entries(mutableData[m][mode])) {
+        allTime[mode][k] = allTime[mode][k] || 0
+        // @ts-ignore  v type is unknown
+        const adjustedValue = v / (mutableData[m].rates[currency] / mutableData[latestMonth].rates[currency])
+        allTime[mode][k] += adjustedValue
+      }
+    }
+  }
+
+  mutableData['All Time'] = allTime
+
   const months = Object.keys(mutableData)
 
-  const month = monthState || months.slice(-1).pop()
+  const month = monthState || 'Last 12 Months' // Default
 
   const prevMonth = () => {
     setMonth(months[Math.max(0, months.indexOf(month) - 1)])
