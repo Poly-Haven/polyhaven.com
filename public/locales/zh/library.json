@@ -26,6 +26,7 @@
   "lods": "该资产包括多个LOD（多细节层次）。",
   "new": "新！",
   "no-results": "没有结果",
+  "no-results-fund": "<em>找</em>不到您需要的内容？<br/><lnk>在 Patreon 上支持我们</lnk>，帮助我们创建您需要的资产。",
   "no-results-keyword": "尝试搜索不同的关键字",
   "non-square": "这个资产使用了非正方形尺寸的纹理。",
   "results": "结果",

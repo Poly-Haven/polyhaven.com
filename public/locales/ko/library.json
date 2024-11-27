@@ -26,6 +26,7 @@
   "lods": "이 자산에는 여러 LOD(세부 수준)가 포함되어 있습니다.",
   "new": "신규!",
   "no-results": "결과 없음",
+  "no-results-fund": "필요한 것을 <em>찾을</em> 수 없나요? 대신 <em>펀딩해</em> 주세요!<br/><lnk>Patreon에서</lnk> 후원하여 필요한 에셋을 제작할 수 있도록 도와주세요.",
   "no-results-keyword": "다른 키워드를 사용해 보세요",
   "non-square": "이 에셋은 정사각형이 아닌 종횡비 텍스처를 사용합니다.",
   "results": "개",
