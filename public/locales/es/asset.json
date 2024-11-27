@@ -4,6 +4,7 @@
   "author_one": "Autor",
   "author_other": "Autores",
   "backplates": "Backplates",
+  "backplates-description": "Las imágenes de abajo son fotos separadas que puedes usar como imágenes de fondo de alta resolución en tu render.<br />Dependiendo de la resolución de tu render y de los ajustes de la cámara, a veces un HDRI (incluso uno muy grande) puede no tener suficientes píxeles para aparecer nítido en el fondo de tu render. En estos casos puedes utilizar una de estas imágenes de fondo en su lugar, y utilizar una HDRI de menor resolución sólo para la iluminación y los reflejos.",
   "categories": "Categorías",
   "cloud-sync": "Acceso sin conexión",
   "cloud-sync-d": "Apóyenos con $5 por mes y reciba acceso a nuestro sistema en la nube, lo que le permite sincronizar toda nuestra biblioteca con su disco duro.",

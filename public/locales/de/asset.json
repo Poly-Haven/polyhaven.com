@@ -4,6 +4,7 @@
   "author_one": "Autor",
   "author_other": "Autoren",
   "backplates": "Hintergrundbilder",
+  "backplates-description": "Die folgenden Bilder sind separate Fotos, die Sie als hochauflösende Hintergrundbilder in Ihrem Rendering verwenden können.<br />Je nach Renderauflösung und Kameraeinstellungen kann es vorkommen, dass ein HDRI (selbst ein sehr großes) nicht genug Pixel hat, um im Hintergrund Ihres Renderings noch scharf zu erscheinen. In diesen Fällen können Sie stattdessen eine dieser Backplates im Hintergrund verwenden und ein HDRI mit geringerer Auflösung nur für die Beleuchtung und Reflexionen nutzen.",
   "categories": "Kategorien",
   "cloud-sync": "Offline-Zugriff",
   "cloud-sync-d": "Unterstütze uns mit 5 $ pro Monat und erhalte Zugang zu unserem Cloud-System, mit dem du unsere gesamte Bibliothek auf deine Festplatte synchronisieren kannst.",

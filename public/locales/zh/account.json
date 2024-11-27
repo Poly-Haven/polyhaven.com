@@ -61,6 +61,6 @@
     }
   },
   "support-amount": "您目前以每月{{amount}}美元支持Poly Haven，谢谢！",
-  "support-amount-yearly": "您目前每年为保利天堂提供{{amount}} 美元的支持，谢谢！",
+  "support-amount-yearly": "您目前每年为Poly Haven提供了 {{amount}} 美元的支持，我们十分感谢您的支持与帮助！",
   "title": "登录"
 }

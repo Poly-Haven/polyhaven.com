@@ -4,6 +4,7 @@
   "author_one": "Pengarang",
   "author_other": "Pengarang",
   "backplates": "Pelat belakang",
+  "backplates-description": "Gambar di bawah ini adalah foto-foto terpisah yang dapat Anda gunakan sebagai gambar latar belakang beresolusi tinggi dalam render Anda.<br />Tergantung pada resolusi render dan pengaturan kamera Anda, terkadang HDRI (bahkan yang sangat besar) mungkin tidak memiliki cukup piksel untuk tetap terlihat tajam di latar belakang render Anda. Dalam kasus ini, Anda dapat menggunakan salah satu dari gambar latar belakang ini sebagai latar belakang, dan menggunakan HDRI beresolusi lebih rendah hanya untuk pencahayaan dan pantulan.",
   "categories": "Kategori",
   "cloud-sync": "Akses Offline",
   "cloud-sync-d": "Dukung kami dengan $5 per bulan dan dapatkan akses ke sistem awan kami, memungkinkan Anda untuk menyinkronkan seluruh perpustakaan kami ke perangkat keras Anda.",

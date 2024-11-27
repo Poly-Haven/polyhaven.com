@@ -4,6 +4,7 @@
   "author_one": "Auteur",
   "author_other": "Auteurs",
   "backplates": "Plaques arrière",
+  "backplates-description": "Les images ci-dessous sont des photos séparées que vous pouvez utiliser comme images d'arrière-plan en haute résolution dans votre rendu.<br />En fonction de la résolution du rendu et des paramètres de l'appareil photo, il peut arriver qu'une HDRI (même très grande) n'ait pas assez de pixels pour apparaître nette en arrière-plan de votre rendu. Dans ce cas, vous pouvez utiliser l'une de ces plaques d'arrière-plan en arrière-plan et utiliser une HDRI de résolution inférieure uniquement pour l'éclairage et les reflets.",
   "categories": "Catégories",
   "cloud-sync": "Accès hors ligne",
   "cloud-sync-d": "Soutenez-nous avec 5$ par mois et recevez un accès à notre système cloud, vous permettant de synchroniser l'intégralité de notre bibliothèque sur votre disque dur.",

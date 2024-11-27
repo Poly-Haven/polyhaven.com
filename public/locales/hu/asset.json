@@ -4,6 +4,7 @@
   "author_one": "Készítő",
   "author_other": "Készítők",
   "backplates": "Hátlapok",
+  "backplates-description": "Az alábbi képek különálló fotók, amelyeket nagy felbontású háttérképként használhatsz a rendereléshez.<br />A renderelő felbontásától és a kamera beállításaitól függően néha előfordulhat, hogy egy HDRI (még egy nagyon nagy HDRI is) nem rendelkezik elegendő pixellel ahhoz, hogy még mindig élesen jelenjen meg a renderelő hátterében. Ezekben az esetekben használhatsz helyette egy ilyen háttérképet a háttérben, és egy kisebb felbontású HDRI-t csak a megvilágításhoz és a tükröződésekhez.",
   "categories": "Kategóriák",
   "cloud-sync": "Offline hozzáférés",
   "cloud-sync-d": "Támogasson minket havi 5 dollárral, és hozzáférést kap felhőrendszerünkhöz, amely lehetővé teszi, hogy teljes könyvtárunkat szinkronizálja merevlemezével.",

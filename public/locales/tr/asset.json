@@ -4,6 +4,7 @@
   "author_one": "Yaratıcı",
   "author_other": "Yaratıcı",
   "backplates": "Arka plakalar",
+  "backplates-description": "Aşağıdaki görüntüler, renderınızda yüksek çözünürlüklü arka plan görüntüleri olarak kullanabileceğiniz ayrı fotoğraflardır.<br />Render çözünürlüğünüze ve kamera ayarlarınıza bağlı olarak, bazen bir HDRI (çok büyük bir HDRI bile olsa) renderınızın arka planında hala net görünmek için yeterli piksele sahip olmayabilir. Bu gibi durumlarda arka planda bu arka plakalardan birini kullanabilir ve sadece aydınlatma ve yansımalar için daha düşük çözünürlüklü bir HDRI kullanabilirsiniz.",
   "categories": "Kategoriler",
   "cloud-sync": "Çevrimdışı Erişim",
   "cloud-sync-d": "Ayda 5 ABD doları ile bizi destekleyin ve tüm kitaplığımızı sabit sürücünüzle eşitlemenize olanak tanıyan bulut sistemimize erişim kazanın.",

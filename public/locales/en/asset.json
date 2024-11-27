@@ -4,6 +4,7 @@
   "no-renders": "None yet, <lnk>add yours</lnk>.",
   "add-yours": "Add yours",
   "backplates": "Backplates",
+  "backplates-description": "The images below are separate photos that you can use as high resolution background images in your render.<br />Depending on your render resolution and camera settings, sometimes an HDRI (even a very large one) might not have enough pixels to still appear sharp in the background of your render. In these cases you can use one of these backplates in the background instead, and use a lower resolution HDRI just for lighting and reflections.",
   "download": "Download",
   "downloads": "Downloads",
   "downloads-pd": "per day",

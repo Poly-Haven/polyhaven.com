@@ -4,6 +4,7 @@
   "author_one": "Autor",
   "author_other": "Autorid",
   "backplates": "Tagaplaadid",
+  "backplates-description": "Allpool olevad pildid on eraldi fotod, mida saate kasutada kõrge resolutsiooniga taustapiltidena oma renderdamisel.<br />Sõltuvalt teie renderduse eraldusvõimest ja kaamera seadetest ei pruugi mõnikord HDRI (isegi väga suurel) olla piisavalt piksleid, et see oleks teie renderduse taustal ikka veel terav. Sellistel juhtudel võite selle asemel kasutada taustapildina ühte neist taustapiltidest ning kasutada väiksema resolutsiooniga HDRI-d ainult valgustuse ja peegelduste jaoks.",
   "categories": "Kategooriad",
   "cloud-sync": "Ligipääs võrguühenduseta",
   "cloud-sync-d": "Toetage meid 5 dollariga kuus ja saate juurdepääsu meie pilvesüsteemile, mis võimaldab teil sünkroonida kogu meie kogumikku oma kõvakettale.",

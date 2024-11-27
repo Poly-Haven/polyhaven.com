@@ -4,6 +4,7 @@
   "author_one": "Autor",
   "author_other": "Autorzy",
   "backplates": "Płyty tylne",
+  "backplates-description": "Poniższe obrazy to osobne zdjęcia, które można wykorzystać jako obrazy tła o wysokiej rozdzielczości w renderowaniu.<br />W zależności od rozdzielczości renderowania i ustawień kamery, czasami HDRI (nawet bardzo duży) może nie mieć wystarczającej liczby pikseli, aby nadal wyglądać ostro w tle renderowania. W takich przypadkach możesz zamiast tego użyć jednej z tych płyt tylnych w tle i użyć HDRI o niższej rozdzielczości tylko do oświetlenia i odbić.",
   "categories": "Kategorie",
   "cloud-sync": "Dostęp offline",
   "cloud-sync-d": "Wesprzyj nas $5 miesięcznie i uzyskaj dostęp do naszego systemu w chmurze, który pozwoli Ci zsynchronizować całą naszą bibliotekę z Twoim dyskiem twardym.",
