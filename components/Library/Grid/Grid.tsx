@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -474,45 +474,70 @@ const Grid = (props) => {
       />
 
       {sortedKeys.length ? (
-        <div className={styles.grid}>
-          {news ? (
-            <NewsCard
-              newsKey={news.key}
-              topText={news.text_top}
-              img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
-              pausedImg={
-                news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null
-              }
-              bottomText={news.text_bottom}
-              link={news.link}
-              isMobile={width <= 810}
-            />
-          ) : null}
-          {sortedKeys.map((asset) => {
-            return (
-              <>
-                <LazyLoad offset={500} key={asset}>
-                  <GridItem
-                    asset={data[asset]}
-                    assetID={asset}
-                    onClick={setHeaderPath}
-                    blurUpcoming={blurUpcoming && eaPref !== 'all'}
-                    thumbSize={thumbSize}
-                    showText={showText}
-                  />
-                </LazyLoad>
-                {(sortedKeys.indexOf(asset) === adBreak - 1 && sortedKeys.length >= adBreak) ||
-                sortedKeys.indexOf(asset) === sortedKeys.length - 1 ? (
-                  <DisplayAd id="4927930335" x={970} y={250} key="libraryContentAd" />
-                ) : null}
-              </>
-            )
-          })}
-        </div>
+        <>
+          <div className={styles.grid}>
+            {news ? (
+              <NewsCard
+                newsKey={news.key}
+                topText={news.text_top}
+                img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
+                pausedImg={
+                  news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null
+                }
+                bottomText={news.text_bottom}
+                link={news.link}
+                isMobile={width <= 810}
+              />
+            ) : null}
+            {sortedKeys.map((asset) => {
+              return (
+                <>
+                  <LazyLoad offset={500} key={asset}>
+                    <GridItem
+                      asset={data[asset]}
+                      assetID={asset}
+                      onClick={setHeaderPath}
+                      blurUpcoming={blurUpcoming && eaPref !== 'all'}
+                      thumbSize={thumbSize}
+                      showText={showText}
+                    />
+                  </LazyLoad>
+                  {(sortedKeys.indexOf(asset) === adBreak - 1 && sortedKeys.length >= adBreak) ||
+                  sortedKeys.indexOf(asset) === sortedKeys.length - 1 ? (
+                    <DisplayAd id="4927930335" x={970} y={250} key="libraryContentAd" />
+                  ) : null}
+                </>
+              )
+            })}
+          </div>
+          <div className={styles.noResults}>
+            <h3>
+              <Trans
+                i18nKey="no-results-fund"
+                t={t}
+                components={{
+                  em: <em />,
+                  br: <br />,
+                  lnk: <a href="https://www.patreon.com/polyhaven" />,
+                }}
+              />
+            </h3>
+          </div>
+        </>
       ) : publicData ? (
         <div className={styles.noResults}>
-          <h2>{t('no-results')} :(</h2>
-          {props.search ? <p>{t('no-results-keyword')}</p> : null}
+          {props.search ? <p>{t('no-results')} :(</p> : null}
+          <h3>
+            <Trans
+              i18nKey="no-results-fund"
+              t={t}
+              components={{
+                em: <em />,
+                br: <br />,
+                lnk: <a href="https://www.patreon.com/polyhaven" />,
+              }}
+            />
+          </h3>
         </div>
       ) : (
         <div className={styles.loading}>

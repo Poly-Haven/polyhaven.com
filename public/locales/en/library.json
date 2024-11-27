@@ -4,6 +4,7 @@
   "Clear author": "Clear author",
   "no-results": "No results",
   "no-results-keyword": "Try using a different keyword",
+  "no-results-fund": "Can't <em>find</em> what you need? <em>Fund</em> it instead!<br/><lnk>Support us on Patreon</lnk> to help us create the assets you need.",
   "sort": {
     "hot": "Hot",
     "hot-d": "Downloads per day, with newer assets weighted slightly higher.",
