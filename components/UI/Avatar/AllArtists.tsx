@@ -16,7 +16,7 @@ const AllArtists = ({ data }) => {
 
   // Remove authors with less than {threshold} assets if not showing all
   const [showAll, setShowAll] = useState(false)
-  const threshold = 2
+  const threshold = 3
   if (!showAll) authors = authors.filter((author) => data[author].assetCount >= threshold)
   const numFiltered = Object.keys(data).length - authors.length
 
