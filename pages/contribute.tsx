@@ -92,7 +92,7 @@ const Contribute = ({ authors }) => {
           </li>
           <li>
             If you'd like to make our lives easier and get your asset published more quickly, please check out our{' '}
-            <a href="https://docs.google.com/document/d/17vLGfCbouvwcp1mcbsMe892DB0QkGLoR3gSjLtsVTGM/edit?usp=sharing">
+            <a href="https://docs.polyhaven.com/en/technical-standards/models">
               technical standards document
             </a>
             .
