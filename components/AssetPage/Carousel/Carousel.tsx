@@ -1,4 +1,4 @@
-import { Md3DRotation } from 'react-icons/md'
+import { Md3dRotation } from 'react-icons/md'
 
 import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
@@ -63,7 +63,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
   return (
     <div className={styles.imageRow}>
       <div className={`${styles.iconBtn} ${active === 'webGL' ? styles.activeImage : ''}`}>
-        <IconButton icon={<Md3DRotation />} onClick={showWebGL} />
+        <IconButton icon={<Md3dRotation />} onClick={showWebGL} />
       </div>
       {renders.map((i, k) => (
         <div
