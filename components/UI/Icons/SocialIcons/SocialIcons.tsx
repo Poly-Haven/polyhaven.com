@@ -4,6 +4,7 @@ import { SiFacebook } from 'react-icons/si'
 import { SiInstagram } from 'react-icons/si'
 import { SiYoutube } from 'react-icons/si'
 import { SiMastodon } from 'react-icons/si'
+import { SiBluesky } from 'react-icons/si'
 import { SiX } from 'react-icons/si'
 
 import styles from './SocialIcons.module.scss'
@@ -20,6 +21,10 @@ const SocialIcons = () => {
       <a rel="me" href="https://masto.ai/@polyhaven">
         <SiMastodon />
       </a>
+      <a rel="me" href="https://bsky.app/profile/polyhaven.com">
+        <SiBluesky />
+      </a>
+      <br />
       <a href="https://www.facebook.com/polyhaven">
         <SiFacebook />
       </a>

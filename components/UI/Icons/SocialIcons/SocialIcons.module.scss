@@ -1,29 +1,33 @@
 @import "constants/colors";
 @import "constants/mixins";
 
-.communityIcons a {
-  padding: 0.1rem;
-  margin: 0.5rem;
-  display: inline-block;
-  line-height: 0;
-  background: transparent;
-  border-radius: 50%;
-  @include transition(0.1s);
+.communityIcons {
+  text-align: center;
 
-  svg {
-    $size: 2rem;
-    width: $size;
-    height: $size;
-    color: $c-text-light;
+  a {
+    padding: 0.1rem;
+    margin: 0.5rem;
+    display: inline-block;
+    line-height: 0;
+    background: transparent;
+    border-radius: 50%;
     @include transition(0.1s);
-  }
 
-  &:hover {
-    padding: 0.5rem;
-    margin: 0.1rem;
-    background: $c-accent;
     svg {
-      color: white;
+      $size: 2rem;
+      width: $size;
+      height: $size;
+      color: $c-text-light;
+      @include transition(0.1s);
+    }
+
+    &:hover {
+      padding: 0.5rem;
+      margin: 0.1rem;
+      background: $c-accent;
+      svg {
+        color: white;
+      }
     }
   }
 }
