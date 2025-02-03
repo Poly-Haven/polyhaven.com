@@ -28,7 +28,7 @@ const SocialIcons = () => {
       <a href="https://www.facebook.com/polyhaven">
         <SiFacebook />
       </a>
-      <a href="https://twitter.com/polyhaven">
+      <a href="https://x.com/polyhaven">
         <SiX />
       </a>
       <a href="https://www.instagram.com/polyhaven">
