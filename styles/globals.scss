@@ -62,6 +62,10 @@ span {
   color: $c-red;
 }
 
+.red-links {
+  @include red_link;
+}
+
 .Dropdown-option {
   color: $c-text-light !important;
   background-color: $c-background;

@@ -24,6 +24,7 @@ import DisplayAd from 'components/Ads/DisplayAd'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Switch from 'components/UI/Switch/Switch'
+import DonationBox from 'components/DonationBox/DonationBox'
 
 import styles from './Grid.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
@@ -511,7 +512,7 @@ const Grid = (props) => {
             })}
           </div>
           <div className={styles.noResults}>
-            <h3>
+            <h3 className="red-links">
               <Trans
                 i18nKey="no-results-fund"
                 t={t}
@@ -522,12 +523,13 @@ const Grid = (props) => {
                 }}
               />
             </h3>
+            <DonationBox />
           </div>
         </>
       ) : publicData ? (
         <div className={styles.noResults}>
           {props.search ? <p>{t('no-results')} :(</p> : null}
-          <h3>
+          <h3 className="red-links">
             <Trans
               i18nKey="no-results-fund"
               t={t}
@@ -538,6 +540,7 @@ const Grid = (props) => {
               }}
             />
           </h3>
+          <DonationBox />
         </div>
       ) : (
         <div className={styles.loading}>

@@ -29,6 +29,13 @@
     background: $c-accent-light;
   }
 }
+.red {
+  background: $c-red;
+
+  &:hover {
+    background: $c-red-light;
+  }
+}
 .blue {
   background: $c-blue;
 
@@ -60,6 +67,18 @@
     color: white;
     background: $c-accent-light;
     box-shadow: inset 0px 0px 0px 1px $c-accent-light;
+  }
+}
+
+.hollowRed {
+  color: $c-text-light;
+  background: none;
+  box-shadow: inset 0px 0px 0px 1px $c-red;
+
+  &:hover {
+    color: white;
+    background: $c-red-light;
+    box-shadow: inset 0px 0px 0px 1px $c-red-light;
   }
 }
 

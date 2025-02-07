@@ -93,3 +93,27 @@
   top: 0;
   bottom: 0;
 }
+
+@mixin red_link {
+  a {
+    color: $c-red;
+    text-decoration: none;
+
+    &:hover {
+      color: $c-red-light;
+    }
+  }
+}
+
+@mixin white_link {
+  a {
+    color: inherit;
+    box-shadow: 0 1px 0 rgba($c-text-light, 0.6);
+    text-decoration: none;
+
+    &:hover {
+      color: $c-text-bright;
+      box-shadow: 0 3px 0 $c-text-light;
+    }
+  }
+}
