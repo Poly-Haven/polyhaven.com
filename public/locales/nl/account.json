@@ -1,23 +1,23 @@
 {
   "account": "Account",
-  "hi": "Hoi",
+  "hi": "Hallo",
   "login": {
     "li1": "Permanente verwijdering van advertenties.",
-    "li2": "Vroegtijdige toegang tot activa, voordat ze openbaar worden vrijgegeven.",
+    "li2": "Vroegtijdige toegang tot assets, voordat ze openbaar worden vrijgegeven.",
     "li3": "Toegang tot onze cloudservice om al onze assets te synchroniseren met uw harde schijf.",
     "li4": "Sponsor elke maand permanent een asset, met uw naam en link naast de downloadknoppen.",
-    "p1": "Als je een<lnk> patroon</lnk> van Poly Haven, als u hier inlogt, krijgt u direct op deze site toegang tot uw beloningen.",
+    "p1": "Als je een <lnk>patron</lnk> van Poly Haven bent, als u hier inlogt, krijgt u direct op deze site toegang tot uw beloningen.",
     "p2": "Afhankelijk van uw ondersteuningsniveau kunnen uw beloningen het volgende omvatten:"
   },
-  "not-patron": "U lijkt geen beschermheer van Poly Haven te zijn :( als dit onjuist is, alstublieft<lnk> neem contact op</lnk> zodat we het probleem op deze pagina kunnen onderzoeken. We hebben de volgende informatie nodig:",
-  "not-patron-anymore": "Het lijkt erop dat je niet langer een beschermheer van Poly Haven bent. Dat is OK, en we waarderen uw eerdere steun :)",
+  "not-patron": "U lijkt geen patron van Poly Haven te zijn :C als dit onjuist is, neem dan alstublieft<lnk>contact</lnk> op zodat we het probleem op deze pagina kunnen onderzoeken. We hebben de volgende informatie nodig:",
+  "not-patron-anymore": "Het lijkt erop dat je niet langer een patron van Poly Haven bent. Da's OK, en we waarderen uw eerdere steun :)",
   "reward_one": "Dit levert je de volgende beloning op:",
   "reward_other": "Dit levert je de volgende beloningen op:",
   "rewards": {
     "credit": {
       "invalid": "Ongeldige naam",
       "p1": "Je naam is momenteel",
-      "p2": "{{hidden}} in de klantenlijst in de voettekst van deze site.",
+      "p2": "{{hidden}} in de patronlijst in de voettekst van deze site.",
       "p3": "Het wijzigen van deze instelling kan enkele uren duren om elke pagina van de site bij te werken.",
       "p4": "Weergavenaam:",
       "title": "Voettekst tegoed"
@@ -41,8 +41,8 @@
       "title": "Offline toegang"
     },
     "sponsor": {
-      "p1": "Je mag elke maand een item kiezen om je naam en een link naast permanent te plakken. Hiervoor werken we met een systeem van \"tokens\".",
-      "p2": "Aan het begin van elke maand nadat uw betaling door Patreon is verwerkt, ontvangt u er automatisch een<ticket /> <b>Sponsortoken</b> .",
+      "p1": "Je mag elke maand een asset kiezen om je naam en een link naast permanent te plakken. Hiervoor werken we met een systeem van \"tokens\".",
+      "p2": "Aan het begin van elke maand nadat uw betaling door Patreon is verwerkt, ontvangt u automatisch een<ticket /> <b>Sponsortoken</b> .",
       "p3": "Er zijn twee manieren om deze token te besteden:",
       "p3li1": "Door naar de pagina van het item dat u wilt sponsoren te gaan en op de \"<ticket /> Sponsor dit item\" aan de rechterkant van de pagina.",
       "p3li2": "Of u kunt hieronder automatische sponsoring inschakelen, die elke maand een willekeurig item voor u kiest.",
@@ -62,5 +62,5 @@
   },
   "support-amount": "Je steunt momenteel Poly Haven met een {{amount}} van $ per maand, bedankt!",
   "support-amount-yearly": "Je steunt Poly Haven momenteel met ${{amount}} per jaar, bedankt!",
-  "title": "Log in"
+  "title": "Inloggen"
 }

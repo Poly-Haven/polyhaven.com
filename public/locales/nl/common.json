@@ -16,13 +16,13 @@
   "email-address": "E-mailadres",
   "footer": {
     "join-ranks": "Sluit je aan bij de gelederen, steun Poly Haven op Patreon",
-    "thanks": "Dankzij onze<lnk> Patronen</lnk> voor het mogelijk maken van Poly Haven"
+    "thanks": "Bedankt voor onze <lnk>Patrons</lnk> voor het mogelijk maken van Poly Haven"
   },
   "goal": {
-    "complete": "Compleet!",
+    "complete": "Gehaald!",
     "current": "Huidige doel:",
     "reached": "We hebben ons laatste doel bereikt! Hier zou binnenkort iets nieuws moeten verschijnen :)",
-    "to-go": "$ {{dollars}} te gaan"
+    "to-go": "${{dollars}} te gaan"
   },
   "hidden": "Verborgen",
   "invalid-email": "Ongeldig e-mailadres",
@@ -51,9 +51,9 @@
     "support-us": "Steun ons"
   },
   "optional": "Optioneel",
-  "patron_one": "Patroon",
-  "patron_other": "Patronen",
-  "please-wait": "Even geduld aub...",
+  "patron_one": "Patron",
+  "patron_other": "Patrons",
+  "please-wait": "Deze site is aan het laden, heel even wachten a.u.b.",
   "remove-ads": "Verwijder advertenties",
   "required": "Verplicht",
   "tagline": "De openbare 3D-activabibliotheek",

@@ -1,19 +1,19 @@
 {
   "add": "Voeg de jouwe toe",
-  "by": "door",
+  "by": "gemaakt door",
   "description": "Kunstwerk ingediend door tientallen gebruikers, gemaakt met behulp van onze middelen.",
   "submit": {
-    "description": "Heb je geweldige kunstwerken gemaakt met een van onze middelen? Laat het zien op deze site!",
+    "description": "Heb je geweldige kunstwerken gemaakt met een van onze assets? Laat het zien op deze site!",
     "err-asset-limit": "U kunt niet meer dan {{limit}} selecteren, kies alleen de meest prominente die zichtbaar zijn in uw weergave.",
     "err-jpg": "Afbeelding moet een JPG zijn",
-    "err-size": "Je afbeelding is te groot, moet kleiner zijn dan 1 MB",
+    "err-size": "Je afbeelding is te groot, Je afbeelding moet kleiner zijn dan 1 MB",
     "form": {
       "art-name": "Naam kunstwerk",
       "assets": "Gebruikte activa",
       "assets-d": "Welke HDRI's, texturen of 3D-modellen van Poly Haven heb je gebruikt?",
       "file-change": "Wijzig bestand...",
       "file-size": "JPG onder 1MB",
-      "link": "Koppeling",
+      "link": "Link",
       "link-d": "Uw website/portfolio, of een link naar meer renders van dit project.",
       "select-change": "Selecteer bestand...",
       "software": "Gebruikte software",
@@ -27,10 +27,10 @@
       "your-name": "Uw naam",
       "your-name-d": "Zoals u wilt worden gecrediteerd."
     },
-    "s1p1": "Heb je wat gemaakt?<lnk> geweldig kunstwerk</lnk> gebruik maken van een van onze assets? Laat het zien op deze site!",
+    "s1p1": "Heb je een <lnk>geweldig kunstwerk</lnk> met gebruik van een van onze assets? Laat het zien op deze site!",
     "s1p2": "Nadat u uw weergave heeft ingediend, wordt deze ter goedkeuring naar ons verzonden. Als we het leuk vinden, wordt het een paar weken in de galerij weergegeven, en ook op de pagina's van de items die je hebt gebruikt om het te maken.",
     "s1p3": "Als we je weergave <em>erg</em> leuk vinden, zullen we deze permanent weergeven en delen op onze sociale media.",
-    "s2": "Reglement:",
+    "s2": "Regels:",
     "s2p1": "Het kunstwerk <strong>moet je eigen creatie</strong> zijn en je moet het publiekelijk mogen tonen.",
     "s2p2": "U moet ten minste één van <strong>Poly Haven's HDRI's/texturen/modellen</strong> hebben gebruikt bij het maken van uw kunstwerk.",
     "s2p3": "Naaktheid of andere NSFW-inhoud kan niet worden geaccepteerd.",
@@ -48,6 +48,6 @@
     "s3p5l6": "Meerdere renders van hetzelfde project (verschillende camerahoeken of verlichtingsinstellingen) - <strong>dien alleen uw beste render voor elk project</strong> in en link vervolgens naar uw ArtStation-pagina waar mensen meer kunnen vinden.",
     "title": "Dien uw weergave in"
   },
-  "title": "Galerij renderen",
-  "using": "gebruik makend van"
+  "title": "Render gallerij",
+  "using": "met gebruik van"
 }
