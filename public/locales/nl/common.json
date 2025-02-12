@@ -1,13 +1,13 @@
 {
   "All Assets": "Alle Assets",
   "All Things": "alle {{things}}",
-  "Assets": "Middelen",
+  "Assets": "Assets",
   "Co-founder": "Mede-oprichter",
   "Director": "Regisseur",
   "Graphic-Design": "Grafisch ontwerp",
   "HDRIs": "HDRI's",
-  "Models": "modellen",
-  "Textures": "texturen",
+  "Models": "Modellen",
+  "Textures": "Texturen",
   "also-supported-by": "Ook ondersteund door:",
   "corporate-sponsor_one": "Bedrijfssponsor",
   "corporate-sponsor_other": "Bedrijfssponsors",
@@ -38,7 +38,7 @@
     "faq": "FAQ",
     "finances": "Financiële rapporten",
     "gallery": "Galerij",
-    "home": "Huis",
+    "home": "Thuis",
     "license": "Licentie",
     "logo": "Logo",
     "logout": "Uitloggen",
@@ -56,6 +56,6 @@
   "please-wait": "Deze site is aan het laden, heel even wachten a.u.b.",
   "remove-ads": "Verwijder advertenties",
   "required": "Verplicht",
-  "tagline": "De openbare 3D-activabibliotheek",
+  "tagline": "De openbare 3D-asset bibliotheek",
   "visible": "Zichtbaar"
 }

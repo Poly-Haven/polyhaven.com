@@ -7,7 +7,7 @@
     "li3": "Toegang tot onze cloudservice om al onze assets te synchroniseren met uw harde schijf.",
     "li4": "Sponsor elke maand permanent een asset, met uw naam en link naast de downloadknoppen.",
     "p1": "Als je een <lnk>patron</lnk> van Poly Haven bent, als u hier inlogt, krijgt u direct op deze site toegang tot uw beloningen.",
-    "p2": "Afhankelijk van uw ondersteuningsniveau kunnen uw beloningen het volgende omvatten:"
+    "p2": "Afhankelijk van uw ondersteuningsniveau kunnen uw beloningen het volgende bevatten:"
   },
   "not-patron": "U lijkt geen patron van Poly Haven te zijn :C als dit onjuist is, neem dan alstublieft<lnk>contact</lnk> op zodat we het probleem op deze pagina kunnen onderzoeken. We hebben de volgende informatie nodig:",
   "not-patron-anymore": "Het lijkt erop dat je niet langer een patron van Poly Haven bent. Da's OK, en we waarderen uw eerdere steun :)",
@@ -23,7 +23,7 @@
       "title": "Voettekst tegoed"
     },
     "early-access": {
-      "p1": "Nu u bent ingelogd, wordt de<lnk> Activabibliotheek</lnk> zullen items bevatten die we in de toekomst zullen publiceren.",
+      "p1": "Nu dat u bent ingelogd, zal de <lnk>asset bibliotheek</lnk> items bevatten die we in de toekomst zullen publiceren.",
       "p2": "Ze zijn gemarkeerd door een blauwe cirkel en het Patreon-logo in de rechterbovenhoek, zoals dit:",
       "p3": "Je kunt ze nu al downloaden, voor iedereen :)",
       "title": "Vroege toegang"
@@ -37,19 +37,19 @@
       "p1": "Voer uw e-mailadres in om uzelf een uitnodiging voor onze cloudmap te sturen:",
       "p2": "Check je e-mail :)",
       "p3": "Uitnodiging succesvol verzonden. Als u problemen ondervindt of het e-mailadres van uw account moet wijzigen,<lnk> Gelieve ons te contacteren</lnk> .",
-      "p4": "Zien<lnk> deze post</lnk> voor verdere instructies over het instellen van Nextcloud en het synchroniseren van middelen met uw computer.",
+      "p4": "Zie <lnk>deze post</lnk> voor verdere instructies over het instellen van Nextcloud en het synchroniseren van assets met uw computer.",
       "title": "Offline toegang"
     },
     "sponsor": {
       "p1": "Je mag elke maand een asset kiezen om je naam en een link naast permanent te plakken. Hiervoor werken we met een systeem van \"tokens\".",
       "p2": "Aan het begin van elke maand nadat uw betaling door Patreon is verwerkt, ontvangt u automatisch een<ticket /> <b>Sponsortoken</b> .",
       "p3": "Er zijn twee manieren om deze token te besteden:",
-      "p3li1": "Door naar de pagina van het item dat u wilt sponsoren te gaan en op de \"<ticket /> Sponsor dit item\" aan de rechterkant van de pagina.",
-      "p3li2": "Of u kunt hieronder automatische sponsoring inschakelen, die elke maand een willekeurig item voor u kiest.",
+      "p3li1": "Door naar de pagina van het asset dat u wilt sponsoren te gaan en op de \"<ticket /> Sponsor dit item\" aan de rechterkant van de pagina te klikken.",
+      "p3li2": "Of u kunt hieronder automatische sponsoring inschakelen, die elke maand een willekeurig asset voor u kiest.",
       "p4": "Tokens verlopen niet, dus u kunt na een paar maanden terugkomen en uw verzamelde tokens uitgeven.",
-      "p5": "Als een token eenmaal is uitgegeven, kan deze niet worden ingetrokken of naar een ander activum worden verplaatst.",
-      "p6": "Elke maand automatisch een willekeurig item sponsoren:",
-      "p7": "Op de 15e van elke maand worden alle beschikbare tokens die je hebt uitgegeven aan willekeurige activa. Dit geeft je 15 dagen om je tokens handmatig uit te geven als je dat wilt.",
+      "p5": "Als een token eenmaal is uitgegeven, kan deze niet worden ingetrokken of naar een ander asset worden verplaatst.",
+      "p6": "Elke maand automatisch een willekeurig asset sponsoren:",
+      "p7": "Op de 15e van elke maand worden alle beschikbare tokens die je hebt uitgegeven aan willekeurige assets. Dit geeft je 15 dagen om je tokens handmatig uit te geven als je dat wilt.",
       "p8": "Als u op de hoogte wilt worden gehouden wanneer een item automatisch voor u wordt gekozen, voert u hieronder uw e-mailadres in:",
       "p9": "Om je af te melden voor meldingen, wis je je e-mailadres hierboven en klik je op de knop Opslaan.",
       "title": "Sponsor"

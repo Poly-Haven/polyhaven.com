@@ -8,7 +8,7 @@
     "thumb-size-3": "Groot",
     "thumb-size-4": "Enorm",
     "turntables": "Draaitafels op muis over:",
-    "turntables-preload": "laad draaitafels voor:",
+    "turntables-preload": "Laad draaitafels voor:",
     "upcoming": "Toon komende",
     "upcoming-1": "Geen",
     "upcoming-1d": "Verberg alle komende inhoud",
@@ -26,7 +26,7 @@
   "lods": "Dit object heeft meerdere LOD's (detailniveaus).",
   "new": "Nieuw!",
   "no-results": "Geen resultaten",
-  "no-results-fund": "Kun je niet <em>vinden</em> wat je nodig hebt? <em>Steun</em> het in plaats daarvan!<br/><lnk>Steun ons op Patreon</lnk> om ons te helpen de middelen te maken die jij nodig hebt.",
+  "no-results-fund": "Kun je niet <em>vinden</em> wat je nodig hebt? <em>Steun</em> het in plaats daarvan!<br/><lnk>Steun ons op Patreon</lnk> om ons te helpen de assets te maken die jij nodig hebt.",
   "no-results-keyword": "Probeer een ander trefwoord te gebruiken",
   "non-square": "Dit assets gebruikt niet-vierkante aspect ratio texturen.",
   "results": "resultaten",
@@ -44,7 +44,7 @@
     "random": "Willekeurig",
     "random-d": "Geshufflede assetlijst.",
     "relevance": "Sorteren op zoekrelevantie.",
-    "top": "Bovenkant",
+    "top": "Beste",
     "top-d": "Downloads per dag."
   },
   "sort-by": "Sorteer op"

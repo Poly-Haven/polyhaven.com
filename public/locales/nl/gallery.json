@@ -1,15 +1,15 @@
 {
   "add": "Voeg de jouwe toe",
   "by": "gemaakt door",
-  "description": "Kunstwerk ingediend door tientallen gebruikers, gemaakt met behulp van onze middelen.",
+  "description": "Kunstwerk ingediend door tientallen gebruikers, gemaakt met behulp van onze assets.",
   "submit": {
     "description": "Heb je geweldige kunstwerken gemaakt met een van onze assets? Laat het zien op deze site!",
-    "err-asset-limit": "U kunt niet meer dan {{limit}} selecteren, kies alleen de meest prominente die zichtbaar zijn in uw weergave.",
+    "err-asset-limit": "U kunt niet meer dan {{limit}} selecteren, kies alleen de meest prominente die zichtbaar zijn in uw render.",
     "err-jpg": "Afbeelding moet een JPG zijn",
     "err-size": "Je afbeelding is te groot, Je afbeelding moet kleiner zijn dan 1 MB",
     "form": {
       "art-name": "Naam kunstwerk",
-      "assets": "Gebruikte activa",
+      "assets": "Gebruikte assets",
       "assets-d": "Welke HDRI's, texturen of 3D-modellen van Poly Haven heb je gebruikt?",
       "file-change": "Wijzig bestand...",
       "file-size": "JPG onder 1MB",
@@ -25,7 +25,7 @@
       "your-email": "Jouw email",
       "your-email-d": "Wordt alleen gebruikt om u op de hoogte te stellen wanneer uw kunstwerk is gepubliceerd. Veilig opgeslagen en met niemand gedeeld.",
       "your-name": "Uw naam",
-      "your-name-d": "Zoals u wilt worden gecrediteerd."
+      "your-name-d": "Hoe u wilt worden gecrediteerd."
     },
     "s1p1": "Heb je een <lnk>geweldig kunstwerk</lnk> met gebruik van een van onze assets? Laat het zien op deze site!",
     "s1p2": "Nadat u uw weergave heeft ingediend, wordt deze ter goedkeuring naar ons verzonden. Als we het leuk vinden, wordt het een paar weken in de galerij weergegeven, en ook op de pagina's van de items die je hebt gebruikt om het te maken.",
@@ -36,17 +36,17 @@
     "s2p3": "Naaktheid of andere NSFW-inhoud kan niet worden geaccepteerd.",
     "s3": "Opmerking:",
     "s3p1": "We krijgen <strong>veel</strong> inzendingen, dus helaas kunnen we alleen kunstwerken van de hoogste kwaliteit accepteren om te voorkomen dat de galerij rommelig wordt.",
-    "s3p2": "We proberen niet weer een ArtStation te zijn, deze galerij is bedoeld om te laten zien wat je kunt doen met de activa van Poly Haven.",
-    "s3p3": "Als je feedback wilt vragen over je render voordat je deze indient, hebben we een zeer behulpzame community op<lnk> Meningsverschil</lnk> .",
-    "s3p4": "We laten u per e-mail weten of uw weergave wordt geaccepteerd of afgewezen. Dit kan een dag of twee duren, aangezien we de neiging hebben om inzendingen in bulk te beoordelen.",
+    "s3p2": "We proberen niet weer een ArtStation te zijn, deze galerij is bedoeld om te laten zien wat je kunt doen met de assets van Poly Haven.",
+    "s3p3": "Als je feedback wilt vragen over je render voordat je deze indient, hebben we een zeer behulpzame community op <lnk>Discord</lnk> .",
+    "s3p4": "We laten u per e-mail weten of uw render wordt geaccepteerd of afgewezen. Dit kan een dag of twee duren, aangezien we de neiging hebben om inzendingen in bulk te beoordelen.",
     "s3p5": "Hier volgen enkele veelvoorkomende redenen voor afwijzing:",
     "s3p5l1": "Moeiteloos renderen (bijv. eenvoudige verlichtingstests).",
     "s3p5l2": "Kunstwerk van lage kwaliteit.",
-    "s3p5l3": "Geen Poly Haven-middelen gebruikt.",
+    "s3p5l3": "Geen Poly Haven-assets gebruikt.",
     "s3p5l4": "Zeer gelijkaardige render van een andere reeds aanwezige artiest (bv. renders van het type \"auto op achterplaat\" met dezelfde achterplaat).",
     "s3p5l5": "Te veel inzendingen - doorgaans accepteren we maximaal 3 verschillende afbeeldingen per artiest per maand.",
     "s3p5l6": "Meerdere renders van hetzelfde project (verschillende camerahoeken of verlichtingsinstellingen) - <strong>dien alleen uw beste render voor elk project</strong> in en link vervolgens naar uw ArtStation-pagina waar mensen meer kunnen vinden.",
-    "title": "Dien uw weergave in"
+    "title": "Dien uw render in"
   },
   "title": "Render gallerij",
   "using": "met gebruik van"
