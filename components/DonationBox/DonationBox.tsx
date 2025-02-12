@@ -94,7 +94,7 @@ const DonationBox = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h3>Support Poly Haven:</h3>
+      <h3>Support Poly Haven!</h3>
       <div className={styles.tiers}>
         {Object.keys(tiers).map((cost) => (
           <div

@@ -44,13 +44,15 @@
 
     > * {
       display: block;
+      pointer-events: none; // Because of 0 line height, next line could make links hard to click
     }
 
     a {
+      pointer-events: all;
       color: inherit;
       box-shadow: none !important;
       text-decoration: underline;
-      text-decoration-color: rgba($c-text-light, 0.7);
+      text-decoration-color: rgba($c-text-light, 0.8);
 
       &:hover {
         color: $c-text-bright;
