@@ -19,6 +19,7 @@ import AuthorCredit from 'components/AssetPage/AuthorCredit'
 import Carousel from './Carousel/Carousel'
 import DisplayAd from 'components/Ads/DisplayAd'
 import Download from './Download/Download'
+import AfterDownload from './AfterDownload'
 import GLTFViewer from './WebGL/GLTFViewer'
 import Heart from 'components/UI/Icons/Heart'
 import IconButton from 'components/UI/Button/IconButton'
@@ -37,7 +38,7 @@ import ErrorBoundary from 'utils/ErrorBoundary'
 
 const PanoViewer = dynamic(() => import('./WebGL/PanoViewer'), { ssr: false })
 
-const AssetPage = ({ assetID, data, files, renders }) => {
+const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
@@ -259,6 +260,8 @@ const AssetPage = ({ assetID, data, files, renders }) => {
           />
 
           <div className={styles.infoItems}>
+            <AfterDownload assetType={data.type} postDownloadStats={postDownloadStats} />
+
             <InfoItem label={t('author', { count: authors.length })} flex>
               <div className={styles.authors}>
                 {authors.map((a) => (
@@ -352,7 +355,7 @@ const AssetPage = ({ assetID, data, files, renders }) => {
             <SponsorList assetID={assetID} sponsors={data.sponsors} patron={patron} />
             <div className={styles.spacer} />
 
-            <div ref={widthRef}>
+            <div ref={widthRef} style={{ marginTop: '1rem' }}>
               <TagsList
                 label={t('categories')}
                 list={data.categories}

@@ -257,6 +257,51 @@
   }
 }
 
+.afterDownload {
+  position: relative;
+  font-size: 0.9em;
+  margin: -1.5em -1.5em 1.5em;
+  padding: 1.5em;
+  background: rgba($c-red, 0.15);
+  @include transition(1s);
+
+  .prompt {
+    padding: 0 1em;
+    margin-top: 1.5em;
+    text-wrap: balance;
+
+    .promptHeader {
+      @include flex(row, true);
+      gap: 0.4em;
+      margin: 0.5em 0;
+
+      em {
+        display: block;
+        font-size: 2em;
+        font-style: normal;
+      }
+      h3,
+      strong {
+        // display: block;
+        display: flex;
+        font-size: 1.4em;
+        line-height: 1.2em;
+        margin: 0;
+      }
+    }
+    p {
+      margin: 0;
+      line-height: 1.25em;
+      margin-bottom: 1.5em;
+    }
+  }
+
+  hr {
+    margin: 3em -2em 2em;
+    border: 1px solid rgba($c-red, 0.5);
+  }
+}
+
 .sponsor {
   @include flex(column, true, true);
   text-align: center;

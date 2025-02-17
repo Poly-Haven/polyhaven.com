@@ -5,8 +5,6 @@ import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
 import Blender from 'components/UI/Icons/Blender'
 
-import { TbLockOpen } from 'react-icons/tb'
-import { IoMdUnlock } from 'react-icons/io'
 import { RiUserCommunityFill } from 'react-icons/ri'
 import { TbCalendarSearch } from 'react-icons/tb'
 import { TbCloudDown } from 'react-icons/tb'

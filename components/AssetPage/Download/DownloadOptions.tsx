@@ -32,6 +32,8 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
   }
 
   const trackDownload = async (e) => {
+    const localUserDownloadCount = localStorage.getItem(`userDownloadCount`) || '0'
+    localStorage.setItem(`userDownloadCount`, (parseInt(localUserDownloadCount) + 1).toString())
     const data = {
       uuid: localStorage.getItem(`uuid`) || tempUUID,
       asset_id: assetID,

@@ -6,7 +6,7 @@
   font-size: 1.1em;
   border: 1px solid rgba($c-red, 0.5);
   max-width: 23em;
-  margin: 1em;
+  margin: 1em 0;
   padding: 1em;
   background: $c-background-darkish;
   @include drop-shadow(0.5);
@@ -32,10 +32,10 @@
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   gap: 0.75em;
-  font-size: 0.85rem;
+  font-size: 0.77em;
   text-align: left;
   line-height: 1;
-  margin: 0.5em;
+  margin: 0.5em 0;
 
   .benefit {
     @include flex(row, true);
@@ -53,6 +53,7 @@
       box-shadow: none !important;
       text-decoration: underline;
       text-decoration-color: rgba($c-text-light, 0.8);
+      transition-duration: 0s; // Fix weird delay with font weight transition
 
       &:hover {
         color: $c-text-bright;

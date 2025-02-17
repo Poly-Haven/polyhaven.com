@@ -13,7 +13,7 @@ function handleErrors(response) {
   return response
 }
 
-const Page = ({ assetID, data, files, renders }) => {
+const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
   const pageUrl = `/a/${assetID}`
   if (!data) {
     return (
@@ -36,7 +36,13 @@ const Page = ({ assetID, data, files, renders }) => {
         image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630`}
       />
       <div>
-        <AssetPage assetID={assetID} data={data} files={files} renders={renders} />
+        <AssetPage
+          assetID={assetID}
+          data={data}
+          files={files}
+          renders={renders}
+          postDownloadStats={postDownloadStats}
+        />
       </div>
     </div>
   )
@@ -63,6 +69,11 @@ export async function getStaticProps(context) {
     .then((response) => response.json())
     .catch((e) => (error = e))
 
+  const postDownloadStats = await fetch(`${baseUrl}/stats/post_download`)
+    .then(handleErrors)
+    .then((response) => response.json())
+    .catch((e) => (error = e))
+
   if (error) {
     return {
       props: {
@@ -80,6 +91,7 @@ export async function getStaticProps(context) {
       data: info,
       files: files,
       renders: renders,
+      postDownloadStats: postDownloadStats,
     },
     revalidate: 60 * 30, // 30 minutes
   }

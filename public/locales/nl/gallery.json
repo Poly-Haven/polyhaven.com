@@ -29,7 +29,7 @@
     },
     "s1p1": "Heb je een <lnk>geweldig kunstwerk</lnk> met gebruik van een van onze assets? Laat het zien op deze site!",
     "s1p2": "Nadat u uw weergave heeft ingediend, wordt deze ter goedkeuring naar ons verzonden. Als we het leuk vinden, wordt het een paar weken in de galerij weergegeven, en ook op de pagina's van de items die je hebt gebruikt om het te maken.",
-    "s1p3": "Als we je weergave <em>erg</em> leuk vinden, zullen we deze permanent weergeven en delen op onze sociale media.",
+    "s1p3": "Als we je render <em>erg</em> leuk vinden, zullen we deze permanent weergeven en delen op onze sociale media.",
     "s2": "Regels:",
     "s2p1": "Het kunstwerk <strong>moet je eigen creatie</strong> zijn en je moet het publiekelijk mogen tonen.",
     "s2p2": "U moet ten minste één van <strong>Poly Haven's HDRI's/texturen/modellen</strong> hebben gebruikt bij het maken van uw kunstwerk.",
@@ -44,7 +44,7 @@
     "s3p5l2": "Kunstwerk van lage kwaliteit.",
     "s3p5l3": "Geen Poly Haven-assets gebruikt.",
     "s3p5l4": "Zeer gelijkaardige render van een andere reeds aanwezige artiest (bv. renders van het type \"auto op achterplaat\" met dezelfde achterplaat).",
-    "s3p5l5": "Te veel inzendingen - doorgaans accepteren we maximaal 3 verschillende afbeeldingen per artiest per maand.",
+    "s3p5l5": "Te veel inzendingen - normaal accepteren we maximaal 3 verschillende afbeeldingen per artiest per maand.",
     "s3p5l6": "Meerdere renders van hetzelfde project (verschillende camerahoeken of verlichtingsinstellingen) - <strong>dien alleen uw beste render voor elk project</strong> in en link vervolgens naar uw ArtStation-pagina waar mensen meer kunnen vinden.",
     "title": "Dien uw render in"
   },

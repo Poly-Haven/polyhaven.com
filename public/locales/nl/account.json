@@ -36,7 +36,7 @@
     "offline-access": {
       "p1": "Voer uw e-mailadres in om uzelf een uitnodiging voor onze cloudmap te sturen:",
       "p2": "Check je e-mail :)",
-      "p3": "Uitnodiging succesvol verzonden. Als u problemen ondervindt of het e-mailadres van uw account moet wijzigen,<lnk> Gelieve ons te contacteren</lnk> .",
+      "p3": "Uitnodiging succesvol verzonden. Als u problemen ondervindt of het e-mailadres van uw account moet wijzigen, <lnk>Gelieve ons te contacteren</lnk>.",
       "p4": "Zie <lnk>deze post</lnk> voor verdere instructies over het instellen van Nextcloud en het synchroniseren van assets met uw computer.",
       "title": "Offline toegang"
     },
@@ -50,17 +50,17 @@
       "p5": "Als een token eenmaal is uitgegeven, kan deze niet worden ingetrokken of naar een ander asset worden verplaatst.",
       "p6": "Elke maand automatisch een willekeurig asset sponsoren:",
       "p7": "Op de 15e van elke maand worden alle beschikbare tokens die je hebt uitgegeven aan willekeurige assets. Dit geeft je 15 dagen om je tokens handmatig uit te geven als je dat wilt.",
-      "p8": "Als u op de hoogte wilt worden gehouden wanneer een item automatisch voor u wordt gekozen, voert u hieronder uw e-mailadres in:",
+      "p8": "Als u op de hoogte wilt worden gehouden wanneer een item automatisch voor u wordt gekozen, voer dan alsjeblieft hieronder uw e-mailadres in:",
       "p9": "Om je af te melden voor meldingen, wis je je e-mailadres hierboven en klik je op de knop Opslaan.",
       "title": "Sponsor"
     },
     "stakeholder": {
       "p1": "Als belanghebbende van Poly Haven krijgt u diepere toegang tot onze interne communicatiekanalen om ons te helpen bespreken waar we aan moeten werken en onze reis te volgen.",
-      "p2": "Als we nog geen contact met u hebben opgenomen, alstublieft<lnk> neem contact op</lnk> zodat we je toegang kunnen geven tot deze kanalen en je kunnen voorstellen aan het team.",
+      "p2": "Als we nog geen contact met u hebben opgenomen, alstublieft <lnk>neem contact op</lnk> zodat we je toegang kunnen geven tot deze kanalen en je kunnen voorstellen aan de team.",
       "title": "Belanghebbende"
     }
   },
-  "support-amount": "Je steunt momenteel Poly Haven met een {{amount}} van $ per maand, bedankt!",
+  "support-amount": "Je steunt momenteel Poly Haven en betaalt ${{amount}} per maand, bedankt!",
   "support-amount-yearly": "Je steunt Poly Haven momenteel met ${{amount}} per jaar, bedankt!",
   "title": "Inloggen"
 }
