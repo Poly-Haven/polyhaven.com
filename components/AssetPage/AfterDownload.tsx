@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 
 import asset_type_names from 'constants/asset_type_names.json'
@@ -24,6 +24,147 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
     setVisible(show)
   }, [show])
 
+  const prompts = useMemo(() => {
+    return {
+      generic: [
+        {
+          icon: '🚀',
+          title: `Join the cult!`,
+          message: `This ${asset_type_names[
+            assetType
+          ].toLowerCase()} was crafted with love by a creator just like you. If you find value in our work, consider supporting our mission on Patreon.`,
+        },
+        {
+          icon: '❤️',
+          title: `Every ${asset_type_names[assetType].toLowerCase()} is a labor of love.`,
+          message: `Peek behind the curtain and support the creators who spend countless hours perfecting these ${asset_type_names[
+            assetType
+          ].toLowerCase()}s for you.`,
+        },
+        {
+          icon: '🌟',
+          title: `Keep the downloads coming!`,
+          message: `We're so happy you love our assets. If they've been a game-changer for you, consider supporting our work.`,
+        },
+        {
+          icon: '💀',
+          title: `We can't do this without you.`,
+          message: `More than 99.9% of users download this ${asset_type_names[
+            assetType
+          ].toLowerCase()} without supporting us. Join the 0.1% to keep Poly Haven alive.`,
+        },
+        {
+          icon: '💵',
+          title: 'Free to download, but not free to create.',
+          message: (
+            <span>
+              An average asset costs us{' '}
+              <Link
+                href="/finance-reports"
+                title={`Average monthly expenses / average assets published per month ($${Math.round(
+                  postDownloadStats.averageMonthlyExpenses
+                )} / ${postDownloadStats.averageAssetsPerMonth.toFixed(2)})`}
+              >
+                ${Math.round(postDownloadStats.averageMonthlyExpenses / postDownloadStats.averageAssetsPerMonth)}
+              </Link>{' '}
+              to make. Consider supporting our work to keep them free for everyone.
+            </span>
+          ),
+        },
+        {
+          icon: '🎉',
+          title: `Congratulations on your ${ordinalSuffix(parseInt(localUserDownloadCount) + 1)} download!`,
+          message: (
+            <span>
+              Poly Haven is a community-supported platform, donate $5 and cover the hosting fees for{' '}
+              <Link
+                href="/stats"
+                title={`MonthlyDownloads/MonthlyWebHostingFees = DownloadsPerDollar, then *5 for $5. I.e. (${
+                  postDownloadStats.numMonthlyDownloads
+                }/${postDownloadStats.averageMonthlyWebHostingFees.toFixed(2)})*5 = ${Math.round(
+                  (postDownloadStats.numMonthlyDownloads / postDownloadStats.averageMonthlyWebHostingFees) * 5
+                )} downloads per $5`}
+              >
+                {Math.round(
+                  (postDownloadStats.numMonthlyDownloads / postDownloadStats.averageMonthlyWebHostingFees) * 5 -
+                    parseInt(localUserDownloadCount) -
+                    1
+                )}
+              </Link>{' '}
+              more downloads!
+            </span>
+          ),
+        },
+        {
+          icon: '🔪',
+          title: `Stick 'em up!`,
+          message: `Alright, pal, hand over the... loose change? No? How about a small donation to keep this asset free for everyone?`,
+          min: 10,
+        },
+        {
+          icon: '🥺',
+          title: `Spare some change?`,
+          message: `We're not asking for your firstborn, just a few bucks. Pretty please?  With a cherry on top? (Okay, maybe not the cherry.)`,
+          min: 10,
+        },
+        {
+          icon: '😿',
+          title: `We're not kitten around`,
+          message: `Your generous donation is required. Or else... we'll just be really, really sad.`,
+          min: 10,
+        },
+        {
+          icon: '😤',
+          title: `Pay up, peasant!`,
+          message: `We're so desperate for donations, we're resorting to mildly threatening language. Think of the starving artists... who create ${asset_type_names[
+            assetType
+          ].toLowerCase()}s... and also eat sometimes.`,
+          min: 20,
+        },
+        {
+          icon: '😱',
+          title: `Oh lawd he comin`,
+          message: `You've downloaded ${
+            parseInt(localUserDownloadCount) + 1
+          } assets. Quite frankly we're impressed. But also a little scared. Maybe a donation would calm our nerves?`,
+          min: 50,
+        },
+        {
+          icon: '🌳',
+          title: `Assets don't grow on trees`,
+          message: `We wish they did, but alas, you've downloaded ${
+            parseInt(localUserDownloadCount) + 1
+          } of them and things are getting bare. Help us plant some new ones?`,
+          min: 100,
+        },
+        {
+          icon: '🌞',
+          title: `Get a life!`,
+          message: `You've downloaded ${
+            parseInt(localUserDownloadCount) + 1
+          } assets. We're not judging, but maybe it's time to step away and go outside? Or donate to keep them coming...`,
+          min: 200,
+        },
+        {
+          icon: '😟',
+          title: `We're worried about you`,
+          message: `You've downloaded ${
+            parseInt(localUserDownloadCount) + 1
+          } assets. That's... a lot. Are you okay? Do you need help? Maybe you'll feel better if you donate...`,
+          min: 500,
+        },
+        {
+          title: `That's enough now`,
+          message: `Seriously? ${
+            parseInt(localUserDownloadCount) + 1
+          } assets? We're cutting you off. No more downloads until you donate. Just kidding. But seriously, please donate.`,
+          icon: '🚫',
+          min: 1000,
+        },
+      ],
+    }
+  }, [localUserDownloadCount])
+
   useEffect(() => {
     let chosenPrompt = null
     while (chosenPrompt === null) {
@@ -33,146 +174,7 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
       }
     }
     setPrompt(chosenPrompt)
-  }, [])
-
-  const prompts = {
-    generic: [
-      {
-        icon: '🚀',
-        title: `Join the cult!`,
-        message: `This ${asset_type_names[
-          assetType
-        ].toLowerCase()} was crafted with love by a creator just like you. If you find value in our work, consider supporting our mission on Patreon.`,
-      },
-      {
-        icon: '❤️',
-        title: `Every ${asset_type_names[assetType].toLowerCase()} is a labor of love.`,
-        message: `Peek behind the curtain and support the creators who spend countless hours perfecting these ${asset_type_names[
-          assetType
-        ].toLowerCase()}s for you.`,
-      },
-      {
-        icon: '🌟',
-        title: `Keep the downloads coming!`,
-        message: `We're so happy you love our assets. If they've been a game-changer for you, consider supporting our work.`,
-      },
-      {
-        icon: '💀',
-        title: `We can't do this without you.`,
-        message: `More than 99.9% of users download this ${asset_type_names[
-          assetType
-        ].toLowerCase()} without supporting us. Join the 0.1% to keep Poly Haven alive.`,
-      },
-      {
-        icon: '💵',
-        title: 'Free to download, but not free to create.',
-        message: (
-          <span>
-            An average asset costs us{' '}
-            <Link
-              href="/finance-reports"
-              title={`Average monthly expenses / average assets published per month ($${Math.round(
-                postDownloadStats.averageMonthlyExpenses
-              )} / ${postDownloadStats.averageAssetsPerMonth.toFixed(2)})`}
-            >
-              ${Math.round(postDownloadStats.averageMonthlyExpenses / postDownloadStats.averageAssetsPerMonth)}
-            </Link>{' '}
-            to make. Consider supporting our work to keep them free for everyone.
-          </span>
-        ),
-      },
-      {
-        icon: '🎉',
-        title: `Congratulations on your ${ordinalSuffix(parseInt(localUserDownloadCount) + 1)} download!`,
-        message: (
-          <span>
-            Poly Haven is a community-supported platform, donate $5 and cover the hosting fees for{' '}
-            <Link
-              href="/stats"
-              title={`MonthlyDownloads/MonthlyWebHostingFees = DownloadsPerDollar, then *5 for $5. I.e. (${
-                postDownloadStats.numMonthlyDownloads
-              }/${postDownloadStats.averageMonthlyWebHostingFees.toFixed(2)})*5 = ${Math.round(
-                (postDownloadStats.numMonthlyDownloads / postDownloadStats.averageMonthlyWebHostingFees) * 5
-              )} downloads per $5`}
-            >
-              {Math.round(
-                (postDownloadStats.numMonthlyDownloads / postDownloadStats.averageMonthlyWebHostingFees) * 5 -
-                  parseInt(localUserDownloadCount) -
-                  1
-              )}
-            </Link>{' '}
-            more downloads!
-          </span>
-        ),
-      },
-      {
-        icon: '🔪',
-        title: `Stick 'em up!`,
-        message: `Alright, pal, hand over the... loose change? No? How about a small donation to keep this asset free for everyone?`,
-        min: 10,
-      },
-      {
-        icon: '🥺',
-        title: `Spare some change?`,
-        message: `We're not asking for your firstborn, just a few bucks. Pretty please?  With a cherry on top? (Okay, maybe not the cherry.)`,
-        min: 10,
-      },
-      {
-        icon: '😿',
-        title: `We're not kitten around`,
-        message: `Your generous donation is required. Or else... we'll just be really, really sad.`,
-        min: 10,
-      },
-      {
-        icon: '😤',
-        title: `Pay up, peasant!`,
-        message: `We're so desperate for donations, we're resorting to mildly threatening language. Think of the starving artists... who create ${asset_type_names[
-          assetType
-        ].toLowerCase()}s... and also eat sometimes.`,
-        min: 20,
-      },
-      {
-        icon: '😱',
-        title: `Oh lawd he comin`,
-        message: `You've downloaded ${
-          parseInt(localUserDownloadCount) + 1
-        } assets. Quite frankly we're impressed. But also a little scared. Maybe a donation would calm our nerves?`,
-        min: 50,
-      },
-      {
-        icon: '🌳',
-        title: `Assets don't grow on trees`,
-        message: `We wish they did, but alas, you've downloaded ${
-          parseInt(localUserDownloadCount) + 1
-        } of them and things are getting bare. Help us plant some new ones?`,
-        min: 100,
-      },
-      {
-        icon: '🌞',
-        title: `Get a life!`,
-        message: `You've downloaded ${
-          parseInt(localUserDownloadCount) + 1
-        } assets. We're not judging, but maybe it's time to step away and go outside? Or donate to keep them coming...`,
-        min: 200,
-      },
-      {
-        icon: '😟',
-        title: `We're worried about you`,
-        message: `You've downloaded ${
-          parseInt(localUserDownloadCount) + 1
-        } assets. That's... a lot. Are you okay? Do you need help? Maybe you'll feel better if you donate...`,
-        min: 500,
-      },
-      {
-        title: `That's enough now`,
-        message: `Seriously? ${
-          parseInt(localUserDownloadCount) + 1
-        } assets? We're cutting you off. No more downloads until you donate. Just kidding. But seriously, please donate.`,
-        icon: '🚫',
-        min: 1000,
-      },
-    ],
-  }
+  }, [prompts])
 
   // If less than 3 downloads total, don't show the popup.
   if (parseInt(localUserDownloadCount) < 2) {
