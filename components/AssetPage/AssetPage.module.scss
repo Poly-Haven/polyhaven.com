@@ -258,17 +258,18 @@
 }
 
 .afterDownload {
-  $bg: color-mix(in srgb, rgba($c-background-dark, 0.95), $c-red 10%);
+  $bg: color-mix(in srgb, rgba($c-background-dark, 0.5), $c-red 10%);
   position: fixed;
   right: $v-asset-sidebar-width;
   overflow-x: hidden;
   overflow-y: auto;
   @include dark_scrollbar();
-  padding-right: 1.5em;
+  padding: 0 1.5em 0.5em;
   width: $v-asset-sidebar-width;
   font-size: 0.9em;
-  box-shadow: 0 0 0 1.5em $bg;
   background: $bg;
+  backdrop-filter: blur(20px);
+  @include drop-shadow(0.3);
   @include transition(1s);
 
   .prompt {
