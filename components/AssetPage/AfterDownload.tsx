@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import Link from 'next/link'
 
 import asset_type_names from 'constants/asset_type_names.json'
@@ -12,6 +13,7 @@ import DonationBox from 'components/DonationBox/DonationBox'
 import styles from './AssetPage.module.scss'
 
 const AfterDownload = ({ show, assetType, postDownloadStats }) => {
+  const { user } = useUser()
   const [prompt, setPrompt] = useState({ title: '', message: '', icon: '' })
 
   const [localUserDownloadCount, setLocalUserDownloadCount] = useState('0')
@@ -176,8 +178,8 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
     setPrompt(chosenPrompt)
   }, [prompts])
 
-  // If less than 3 downloads total, don't show the popup.
-  if (parseInt(localUserDownloadCount) < 2) {
+  // If less than 3 downloads total, or user is logged in, don't show the popup.
+  if (parseInt(localUserDownloadCount) < 2 || user) {
     return null
   }
 
