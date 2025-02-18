@@ -75,6 +75,7 @@ export async function getStaticProps(context) {
     .catch((e) => (error = e))
 
   if (error) {
+    console.error(error)
     return {
       props: {
         ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'time'])),
