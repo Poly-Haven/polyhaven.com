@@ -258,19 +258,23 @@
 }
 
 .afterDownload {
-  $bg: color-mix(in srgb, rgba($c-background-dark, 0.5), $c-red 10%);
   position: fixed;
   right: $v-asset-sidebar-width;
+  padding: 0 1.5em 0.5em;
   overflow-x: hidden;
   overflow-y: auto;
+  max-height: calc(100% - 0.5em - #{$v-header-height});
   @include dark_scrollbar();
-  padding: 0 1.5em 0.5em;
   width: $v-asset-sidebar-width;
   font-size: 0.9em;
-  background: $bg;
+  background: color-mix(in srgb, rgba($c-background-dark, 0.5), $c-red 10%);
   backdrop-filter: blur(20px);
   @include drop-shadow(0.3);
   @include transition(1s);
+
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
 
   .prompt {
     padding: 0 1em;
