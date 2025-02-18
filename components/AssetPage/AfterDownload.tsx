@@ -5,12 +5,14 @@ import asset_type_names from 'constants/asset_type_names.json'
 import { randomArraySelection } from 'utils/arrayUtils'
 import { ordinalSuffix } from 'utils/stringUtils'
 
+import { MdClose } from 'react-icons/md'
+
 import DonationBox from 'components/DonationBox/DonationBox'
 
 import styles from './AssetPage.module.scss'
 
 const AfterDownload = ({ assetType, postDownloadStats }) => {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [prompt, setPrompt] = useState({ title: '', message: '', icon: '' })
   const [localUserDownloadCount, setLocalUserDownloadCount] = useState('0')
   useEffect(() => {
@@ -21,7 +23,7 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
     if (!visible) {
       setTimeout(() => {
         setVisible(true)
-      }, 2000)
+      }, 3000)
     }
   }, [visible])
 
@@ -49,13 +51,8 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
         title: `Join the cult!`,
         message: `This ${asset_type_names[
           assetType
-        ].toLowerCase()} was crafted with love by a creator just like you. If you find value in our work, consider supporting our creative mission on Patreon.`,
+        ].toLowerCase()} was crafted with love by a creator just like you. If you find value in our work, consider supporting our mission on Patreon.`,
         icon: '🚀',
-      },
-      {
-        title: `Made by artists, for artists.`,
-        message: `We're not just a website - we're a community of passionate creators. Help us keep this dream alive!`,
-        icon: '🎨',
       },
       {
         title: `Every ${asset_type_names[assetType].toLowerCase()} is a labor of love.`,
@@ -70,6 +67,28 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
           assetType
         ].toLowerCase()} without supporting us. Join the 0.1% to keep Poly Haven alive.`,
         icon: '💀',
+      },
+      {
+        title: `Stick 'em up!`,
+        message: `Alright, pal, hand over the... loose change? No? How about a small donation to keep this asset free for everyone?`,
+        icon: '🔪',
+      },
+      {
+        title: `Spare some change?`,
+        message: `We're not asking for your firstborn, just a few bucks. Pretty please?  With a cherry on top? (Okay, maybe not the cherry.)`,
+        icon: '🥺',
+      },
+      {
+        title: `We're not kitten around`,
+        message: `Your generous donation is required. Or else... we'll just be really, really sad.`,
+        icon: '😿',
+      },
+      {
+        title: `Pay up, peasant!`,
+        message: `We're so desperate for donations, we're resorting to mildly threatening language. Think of the starving artists... who create ${asset_type_names[
+          assetType
+        ].toLowerCase()}s... and also eat sometimes.`,
+        icon: '😤',
       },
       {
         title: `Congratulations on your ${ordinalSuffix(parseInt(localUserDownloadCount) + 1)} download!`,
@@ -94,20 +113,22 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
         ),
         icon: '🎉',
       },
-    ],
-    third: [
       {
-        title: `Three downloads and counting!`,
-        message: `We're so happy you love our assets <3 If they've been a game-changer for you, consider supporting our work.`,
+        title: `Keep the downloads coming!`,
+        message: `We're so happy you love our assets. If they've been a game-changer for you, consider supporting our work.`,
         icon: '🌟',
       },
     ],
   }
 
-  const shufflePrompt = () => {
+  const nextPrompt = () => {
+    // Pick the next prompt in the list
     let newPrompt = null
-    while (newPrompt === null || newPrompt.title === prompt.title) {
+    let promptIndex = prompts.generic.findIndex((p) => p.title === prompt.title)
+    if (promptIndex === -1) {
       newPrompt = randomArraySelection(prompts.generic)
+    } else {
+      newPrompt = prompts.generic[(promptIndex + 1) % prompts.generic.length]
     }
     setPrompt(newPrompt)
   }
@@ -117,10 +138,16 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
   }, [])
 
   return (
-    <div className={styles.afterDownload} style={visible ? {} : { top: '-100px' }}>
-      <div className={styles.prompt} onClick={() => setVisible(!visible)}>
+    <div className={`${styles.afterDownload} ${visible ? '' : styles.collapseAfterDownload}`}>
+      <MdClose
+        className={styles.close}
+        onClick={() => {
+          setVisible(false)
+        }}
+      />
+      <div className={styles.prompt}>
         <div className={styles.promptHeader}>
-          <em>{prompt.icon}</em>
+          <em onDoubleClick={nextPrompt}>{prompt.icon}</em>
           <h3>{prompt.title}</h3>
         </div>
         <p>{prompt.message}</p>

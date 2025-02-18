@@ -258,11 +258,16 @@
 }
 
 .afterDownload {
-  position: relative;
+  $bg: color-mix(in srgb, rgba($c-background-dark, 0.95), $c-red 10%);
+  position: fixed;
+  right: $v-asset-sidebar-width;
+  overflow-y: auto;
+  @include dark_scrollbar();
+  padding-right: 1.5em;
+  width: $v-asset-sidebar-width;
   font-size: 0.9em;
-  margin: -1.5em -1.5em 1.5em;
-  padding: 1.5em;
-  background: rgba($c-red, 0.15);
+  box-shadow: 0 0 0 1.5em $bg;
+  background: $bg;
   @include transition(1s);
 
   .prompt {
@@ -296,10 +301,22 @@
     }
   }
 
-  hr {
-    margin: 3em -2em 2em;
-    border: 1px solid rgba($c-red, 0.5);
+  .close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: $c-text-light;
+    @include transition();
+
+    &:hover {
+      transform: rotate(90deg);
+    }
   }
+}
+.collapseAfterDownload {
+  right: -3em;
 }
 
 .sponsor {

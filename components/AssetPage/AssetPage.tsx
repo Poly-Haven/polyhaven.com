@@ -248,6 +248,8 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
         <UserRenders assetID={assetID} />
       </Page>
 
+      <AfterDownload assetType={data.type} postDownloadStats={postDownloadStats} />
+
       <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : ''}`}>
         <div className={styles.info}>
           <Download
@@ -260,8 +262,6 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
           />
 
           <div className={styles.infoItems}>
-            <AfterDownload assetType={data.type} postDownloadStats={postDownloadStats} />
-
             <InfoItem label={t('author', { count: authors.length })} flex>
               <div className={styles.authors}>
                 {authors.map((a) => (
