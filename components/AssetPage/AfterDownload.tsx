@@ -13,6 +13,7 @@ import styles from './AssetPage.module.scss'
 
 const AfterDownload = ({ show, assetType, postDownloadStats }) => {
   const [prompt, setPrompt] = useState({ title: '', message: '', icon: '' })
+  // TEMP comment
 
   const [localUserDownloadCount, setLocalUserDownloadCount] = useState('0')
   useEffect(() => {
