@@ -26,7 +26,7 @@ import styles from './Download.module.scss'
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) => {
+const Download = ({ assetID, data, files, setPreview, patron, texelDensity, callback }) => {
   const { t } = useTranslation('asset')
   const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
@@ -217,6 +217,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
   }
 
   const trackDownload = async () => {
+    callback()
     const localUserDownloadCount = localStorage.getItem(`userDownloadCount`) || '0'
     localStorage.setItem(`userDownloadCount`, (parseInt(localUserDownloadCount) + 1).toString())
     const data = {
@@ -345,6 +346,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity }) =>
         selectMap={selectMap}
         type={data.type}
         setPreview={setPreview}
+        callback={callback}
       />
       <Tooltip id="dropdown" place="left" />
     </div>

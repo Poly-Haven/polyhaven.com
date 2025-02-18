@@ -11,21 +11,22 @@ import DonationBox from 'components/DonationBox/DonationBox'
 
 import styles from './AssetPage.module.scss'
 
-const AfterDownload = ({ assetType, postDownloadStats }) => {
-  const [visible, setVisible] = useState(false)
+const AfterDownload = ({ show, assetType, postDownloadStats }) => {
   const [prompt, setPrompt] = useState({ title: '', message: '', icon: '' })
+
   const [localUserDownloadCount, setLocalUserDownloadCount] = useState('0')
   useEffect(() => {
     setLocalUserDownloadCount(localStorage.getItem(`userDownloadCount`) || '0')
   }, [])
 
+  const [visible, setVisible] = useState(false)
   useEffect(() => {
-    if (!visible) {
-      setTimeout(() => {
-        setVisible(true)
-      }, 3000)
-    }
-  }, [visible])
+    setVisible(show)
+  }, [show])
+
+  useEffect(() => {
+    setPrompt(randomArraySelection(prompts.generic))
+  }, [])
 
   const prompts = {
     generic: [
@@ -105,7 +106,8 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
             >
               {Math.round(
                 (postDownloadStats.numMonthlyDownloads / postDownloadStats.averageMonthlyWebHostingFees) * 5 -
-                  parseInt(localUserDownloadCount)
+                  parseInt(localUserDownloadCount) -
+                  1
               )}
             </Link>{' '}
             more downloads!
@@ -121,6 +123,11 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
     ],
   }
 
+  // If less than 3 downloads total, don't show the popup.
+  if (parseInt(localUserDownloadCount) < 2) {
+    return null
+  }
+
   const nextPrompt = () => {
     // Pick the next prompt in the list
     let newPrompt = null
@@ -132,10 +139,6 @@ const AfterDownload = ({ assetType, postDownloadStats }) => {
     }
     setPrompt(newPrompt)
   }
-
-  useEffect(() => {
-    setPrompt(randomArraySelection(prompts.generic))
-  }, [])
 
   return (
     <div className={`${styles.afterDownload} ${visible ? '' : styles.collapseAfterDownload}`}>

@@ -17,7 +17,7 @@ import threeDFormats from 'constants/3D_formats.json'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview }) => {
+const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview, callback }) => {
   const { t } = useTranslation('asset')
   const [norMode, setNorMode] = useState('gl')
 
@@ -32,6 +32,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
   }
 
   const trackDownload = async (e) => {
+    callback()
     const localUserDownloadCount = localStorage.getItem(`userDownloadCount`) || '0'
     localStorage.setItem(`userDownloadCount`, (parseInt(localUserDownloadCount) + 1).toString())
     const data = {

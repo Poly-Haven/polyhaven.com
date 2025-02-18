@@ -261,6 +261,7 @@
   $bg: color-mix(in srgb, rgba($c-background-dark, 0.95), $c-red 10%);
   position: fixed;
   right: $v-asset-sidebar-width;
+  overflow-x: hidden;
   overflow-y: auto;
   @include dark_scrollbar();
   padding-right: 1.5em;
@@ -287,7 +288,6 @@
       }
       h3,
       strong {
-        // display: block;
         display: flex;
         font-size: 1.4em;
         line-height: 1.2em;
@@ -303,9 +303,10 @@
 
   .close {
     position: absolute;
-    top: 0.5em;
-    right: 0.5em;
+    top: 0.4em;
+    right: 0.4em;
     font-size: 1.5em;
+    padding: 0.1em;
     cursor: pointer;
     color: $c-text-light;
     @include transition();

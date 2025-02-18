@@ -54,6 +54,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const [showWebGL, setShowWebGL] = useState(false)
   const [showTilePreview, setShowTilePreview] = useState('')
   const [showDownloadGraph, setShowDownloadGraph] = useStoredState('asset_showDownloadGraph', false)
+  const [showAfterDownloadPopup, setShowAfterDownloadPopup] = useState(false)
   const [hideSidebar, setHideSidebar] = useState(true)
   const widthRef = useRef(null)
   const { width: sidebarWidth } = useDivSize(widthRef)
@@ -169,6 +170,10 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     setActiveImageSrc(src)
   }
 
+  const afterDownloadCallback = () => {
+    setShowAfterDownloadPopup(true)
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={`${styles.loading} ${!pageLoading ? styles.hidden : null}`}>
@@ -248,7 +253,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
         <UserRenders assetID={assetID} />
       </Page>
 
-      <AfterDownload assetType={data.type} postDownloadStats={postDownloadStats} />
+      <AfterDownload show={showAfterDownloadPopup} assetType={data.type} postDownloadStats={postDownloadStats} />
 
       <div className={`${styles.sidebar} ${hideSidebar ? styles.hiddenMobile : ''}`}>
         <div className={styles.info}>
@@ -259,6 +264,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
             setPreview={setPreviewImage}
             patron={patron}
             texelDensity={texelDensity}
+            callback={afterDownloadCallback}
           />
 
           <div className={styles.infoItems}>
