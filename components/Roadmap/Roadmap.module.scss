@@ -1,0 +1,148 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+.wrapper {
+  width: 100%;
+  min-height: 350px;
+  background:
+    linear-gradient(rgba($c-background-dark, 0.7), rgba($c-background-dark, 0.7)),
+    url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920&blur=30) no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  .wrapperInner {
+    @include flex(row, true, true);
+    gap: 1em;
+    margin: 0 1em;
+    position: relative;
+  }
+}
+
+.roadmapWrapper {
+  position: relative;
+  flex-grow: 1;
+  margin: 1em 3em;
+  @include flex(column, true, true);
+
+  // .topText {
+  //   margin-right: auto;
+  // }
+
+  .barWrapper {
+    width: 100%;
+    margin: 6em 0;
+
+    .barOuter {
+      position: relative;
+      border-radius: 3em;
+      padding: 4px;
+      border: 3px solid $c-text-light;
+      background-color: $c-background;
+
+      .barInner {
+        height: 32px;
+        background: $c-text-light;
+        border-radius: 3em;
+        min-width: 32px;
+        width: 0%;
+        @include transition();
+      }
+
+      .milestones {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        .milestone {
+          position: absolute;
+          text-align: right;
+          @include flex(column-reverse);
+          margin: calc(32px / 2 - 6px);
+          cursor: default;
+          @include transition();
+
+          .milestoneText {
+            @include flex(column);
+            text-align: right;
+            margin: -2px 46px;
+            @include transition;
+
+            &:hover {
+              color: $c-text-bright;
+              $offset: 4px;
+              margin-bottom: $offset;
+              margin-top: $offset;
+              margin-right: calc(46px + $offset);
+
+              .target {
+                opacity: 0.5;
+              }
+
+              & ~ .dot {
+                transform: scale(1.25);
+                z-index: 100;
+              }
+            }
+          }
+
+          .dot {
+            // position: absolute;
+            // top: 0;
+            // right: 0;
+            margin-left: auto;
+            width: 12px;
+            height: 12px;
+            background: $c-text-light;
+            border-radius: 50%;
+            border: 4px solid $c-background;
+            @include transition;
+          }
+
+          .arrow {
+            position: relative;
+            margin: -12px 0;
+            margin-left: auto;
+            right: 26px;
+            width: 2px;
+            height: 40px;
+            background: $c-text-light;
+            border: 3px solid $c-background;
+            border-radius: 20px;
+            transform: rotate(45deg);
+          }
+        }
+
+        .icon {
+          margin: 0.3em 0 0.15em;
+          font-size: 1.25em;
+        }
+
+        .target {
+          opacity: 0;
+          font-size: 0.9em;
+          @include transition();
+        }
+
+        .flip {
+          flex-direction: column;
+          bottom: calc(100% - 32px - 8px);
+
+          .milestoneText {
+            flex-direction: column-reverse;
+            bottom: calc(100% - 32px - 8px);
+          }
+        }
+
+        .flip .arrow {
+          transform: rotate(-45deg);
+        }
+
+        .achieved {
+          .dot {
+            background: $c-green;
+          }
+        }
+      }
+    }
+  }
+}

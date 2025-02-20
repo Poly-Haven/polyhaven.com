@@ -8,6 +8,7 @@ import Grid from 'components/Library/Grid/Grid'
 import Page from 'components/Layout/Page/Page'
 import CollectionHeader from 'components/Library/Collections/CollectionHeader'
 import CatBanner from 'components/Library/CatBanner'
+import Roadmap from 'components/Roadmap/Roadmap'
 
 import styles from './Library.module.scss'
 
@@ -37,7 +38,7 @@ const Library = ({ assetType, collections, collection, categories, author, searc
     <div id={styles.library}>
       <Sidebar assetType={assetType} categories={categories} />
       <Page library>
-        {collection ? <CollectionHeader collection={collection} /> : null}
+        {collection ? <CollectionHeader collection={collection} /> : <Roadmap />}
         {banner ? <CatBanner assetType={assetType} collections={collections} /> : null}
         <Grid
           assetType={assetType}
