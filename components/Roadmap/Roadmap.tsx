@@ -106,7 +106,9 @@ const Roadmap = () => {
           <h2 className={styles.topText}>Poly Haven Roadmap</h2>
           <div className={styles.barWrapper}>
             <div className={styles.barOuter}>
-              <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }} />
+              <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
+                <div className={styles.barShine} />
+              </div>
               <div className={styles.milestones}>
                 {milestones.slice(1).map((m, i) => (
                   <div
