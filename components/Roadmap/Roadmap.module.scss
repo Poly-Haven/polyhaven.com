@@ -102,6 +102,16 @@
               margin-top: $offset;
               margin-right: calc(46px + $offset);
 
+              .comingSoon span {
+                margin-right: 5em;
+                opacity: 0;
+              }
+              .comingSoon::after {
+                transform: scaleX(1);
+                opacity: 1;
+                content: "Coming soon!";
+              }
+
               .target {
                 opacity: 0.5;
               }
@@ -137,6 +147,24 @@
             border: 3px solid $c-background;
             border-radius: 20px;
             transform: rotate(45deg);
+          }
+
+          .text {
+            position: relative;
+          }
+          .comingSoon span {
+            transform-origin: left;
+            @include transition;
+          }
+          .comingSoon::after {
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            white-space: nowrap;
+            transform-origin: right;
+            transform: scaleX(0);
+            content: "Coming soon!";
+            @include transition;
           }
         }
 

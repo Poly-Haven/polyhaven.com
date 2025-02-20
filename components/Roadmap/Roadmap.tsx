@@ -64,17 +64,17 @@ const Roadmap = () => {
     //   target: 2100,
     // },
     {
-      text: 'Drone HDRIs',
+      text: '???',
       icon: <TbDrone />,
       target: 2800,
     },
     {
-      text: 'Japanese Temple',
+      text: '???',
       icon: <TbTorii />,
       target: 3200,
     },
     {
-      text: 'Iceland Vault',
+      text: '???',
       icon: <TbVolcano />,
       target: 3600,
     },
@@ -118,7 +118,9 @@ const Roadmap = () => {
                   >
                     <div className={styles.milestoneText}>
                       <div className={styles.icon}>{m.icon}</div>
-                      <div className={styles.text}>{m.text}</div>
+                      <div className={`${styles.text} ${m.text === '???' ? styles.comingSoon : ''}`}>
+                        <span>{m.text}</span>
+                      </div>
                       <div className={styles.target}>{m.target} patrons</div>
                       {m.achieved ? <div className={styles.target}>Reached on {m.achieved}</div> : null}
                     </div>
