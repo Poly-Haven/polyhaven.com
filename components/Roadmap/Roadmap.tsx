@@ -4,6 +4,7 @@ import { GiWoodBeam } from 'react-icons/gi'
 import Blender from 'components/UI/Icons/Blender'
 
 import DonationBox from 'components/DonationBox/DonationBox'
+import RoadmapCorporateSponsors from './RoadmapCorporateSponsors'
 
 import styles from './Roadmap.module.scss'
 
@@ -134,6 +135,10 @@ const Roadmap = () => {
           <h3 className={styles.bottomText}>Join {currentPatrons} patrons, support the future of free assets</h3>
         </div>
         <DonationBox />
+      </div>
+      {/* TODO top & new patrons */}
+      <div>
+        <RoadmapCorporateSponsors />
       </div>
     </div>
   )
