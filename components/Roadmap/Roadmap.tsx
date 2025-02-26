@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import { IoMdLock } from 'react-icons/io'
 import { TbMoon, TbShirt, TbCamera, TbDrone, TbVolcano, TbTorii } from 'react-icons/tb'
 import { GiWoodBeam } from 'react-icons/gi'
@@ -5,10 +7,12 @@ import Blender from 'components/UI/Icons/Blender'
 
 import DonationBox from 'components/DonationBox/DonationBox'
 import RoadmapCorporateSponsors from './RoadmapCorporateSponsors'
+import LatestPatrons from 'components/Home/LatestPatrons'
 
 import styles from './Roadmap.module.scss'
 
 const Roadmap = () => {
+  const { t } = useTranslation('home')
   const milestones = [
     // TODO get from API
     {
@@ -102,6 +106,11 @@ const Roadmap = () => {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.newestPatrons}>
+        <h4>{t('s4')}</h4>
+        <LatestPatrons />
+        <div className={styles.fade} />
+      </div>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
           <h2 className={styles.topText}>Poly Haven Roadmap</h2>
@@ -136,7 +145,6 @@ const Roadmap = () => {
         </div>
         <DonationBox />
       </div>
-      {/* TODO top & new patrons */}
       <div>
         <RoadmapCorporateSponsors />
       </div>

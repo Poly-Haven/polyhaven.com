@@ -103,7 +103,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
+      ...(await serverSideTranslations(context.locale, ['common', 'home', 'library', 'categories', 'time'])),
       assetType: assetType,
       categories: params,
       collections: collectionNames,

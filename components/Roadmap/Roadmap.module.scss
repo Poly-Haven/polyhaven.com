@@ -22,12 +22,15 @@
 .roadmapWrapper {
   position: relative;
   flex-grow: 1;
-  margin: 1em 3em;
+  margin: 0 3em;
   @include flex(column, true, true);
 
-  // .topText {
-  //   margin-right: auto;
-  // }
+  .topText {
+    margin-bottom: 0;
+  }
+  .bottomText {
+    margin-top: 0;
+  }
 
   .barWrapper {
     width: 100%;
@@ -206,16 +209,24 @@
 .sponsors {
   @include flex(row, true, true);
   gap: 1em;
-  margin: 1.5em;
+  margin: 2.5em 1.5em;
   flex-wrap: wrap;
 
   p {
     @include white_link;
   }
 
+  .sponsor {
+    @include transition();
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
   .diamondSponsor {
-    max-width: min(340px, 100%);
-    max-height: 128px;
+    @extend .sponsor;
+    max-width: min(300px, 100%);
+    max-height: 100px;
     margin: 0 1em;
     img {
       margin: 0;
@@ -223,7 +234,29 @@
   }
 
   .goldSponsor {
-    max-width: min(192px, 100%);
-    max-height: 66px;
+    @extend .sponsor;
+    max-width: min(160px, 100%);
+    max-height: 65px;
+  }
+}
+
+.newestPatrons {
+  position: relative;
+  @include flex(row, true);
+  padding: 0 2em;
+  margin: 0 0 1rem;
+  width: calc(100% - 4rem);
+  overflow-x: hidden;
+  white-space: nowrap;
+  background: rgba(black, 0.1);
+
+  h4 {
+    font-weight: normal;
+  }
+
+  .fade {
+    @include absolute_cover();
+    left: 90%;
+    background: linear-gradient(to right, transparent, $c-background-dark);
   }
 }
