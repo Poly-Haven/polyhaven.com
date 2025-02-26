@@ -19,74 +19,112 @@ const Roadmap = () => {
       text: 'Dummy milestone to make math easier',
       icon: <IoMdLock />,
       target: 1,
-      achieved: '2020-01-01',
+      achieved: '2000-01-01',
+      link: '',
+    },
+    {
+      text: `HDRI Haven Launch`,
+      icon: <TbMoon />,
+      target: 0,
+      achieved: '2017-10-03',
+      link: 'https://x.com/GregZaal/status/915220428112711682',
+    },
+    {
+      text: `Texture Haven Launch`,
+      icon: <TbMoon />,
+      target: 520,
+      achieved: '2018-06-19',
+      link: 'https://www.patreon.com/posts/texture-haven-19562868',
+    },
+    {
+      text: `3D Model Haven Launch`,
+      icon: <TbMoon />,
+      target: 740,
+      achieved: '2020-03-31',
+      link: 'https://www.patreon.com/posts/3d-model-haven-30626137',
+    },
+    {
+      text: `Poly Haven Launch`,
+      icon: <TbMoon />,
+      target: 900,
+      achieved: '2021-06-15',
+      link: 'https://www.patreon.com/posts/polyhaven-com-is-52567161',
+    },
+    {
+      text: `The Smuggler's Cove`,
+      icon: <TbMoon />,
+      target: 1000,
+      achieved: '2022-01-13',
+      link: 'https://www.indiegogo.com/projects/the-smuggler-s-cove-a-17th-century-asset-pack#/updates/all',
+    },
+    {
+      text: 'A Verdant Trail',
+      icon: <TbMoon />,
+      target: 1300,
+      achieved: '2024-02-05',
+      link: 'https://polyhaven.com/collections/verdant_trail',
+    },
+    {
+      text: 'Namaqualand',
+      icon: <TbMoon />,
+      target: 1400,
+      achieved: '2024-10-08',
+      link: 'https://polyhaven.com/collections/namaqualand',
     },
     {
       text: 'Moon Vault',
       icon: <TbMoon />,
       target: 1600,
-      achieved: '2024-02-01',
+      achieved: '2025-02-01',
+      link: '',
     },
-    // {
-    //   text: 'Remove 1/4 Ads',
-    //   icon: <IoMdLock />,
-    //   target: 1750,
-    //   achieved: false,
-    // },
     {
       text: 'Fabric Vault',
       icon: <TbShirt />,
       target: 1750,
+      link: '',
     },
-    // {
-    //   text: 'Remove 2/4 Ads',
-    //   icon: <IoMdLock />,
-    //   target: 1850,
-    // },
     {
       text: 'Remove Ads',
       icon: <IoMdLock />,
       target: 2000,
+      link: '',
     },
     {
       text: 'Studio HDRIs',
       icon: <TbCamera />,
       target: 2200,
+      link: '',
     },
-    // {
-    //   text: 'Remove 3/4 Ads',
-    //   icon: <IoMdLock />,
-    //   target: 2000,
-    // },
     {
       text: 'Wood Vault',
       icon: <GiWoodBeam />,
       target: 2500,
+      link: '',
     },
-    // {
-    //   text: 'Remove All Ads',
-    //   icon: <IoMdLock />,
-    //   target: 2100,
-    // },
     {
       text: '???',
       icon: <TbDrone />,
       target: 2800,
+      link: '',
     },
     {
       text: '???',
       icon: <TbTorii />,
       target: 3200,
+      link: '',
     },
     {
       text: '???',
       icon: <TbVolcano />,
       target: 3600,
+      link: '',
     },
     {
       text: 'Free the Add-on',
       icon: <Blender />,
       target: 3700,
+      link: '',
     },
   ]
 
@@ -123,16 +161,21 @@ const Roadmap = () => {
                 {milestones.slice(1).map((m, i) => (
                   <div
                     key={i}
-                    className={`${styles.milestone} ${m.achieved ? styles.achieved : ''} ${i % 2 ? styles.flip : ''}`}
-                    style={{ right: `${100 - (m.target / 3700) * 100}%` }}
+                    className={`${styles.milestone} ${
+                      m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
+                    } ${i % 2 ? styles.flip : ''}`}
+                    style={{ right: i !== 0 ? `${100 - (m.target / 3700) * 100}%` : `calc(100% - 30px)` }}
                   >
                     <div className={styles.milestoneText}>
                       <div className={styles.icon}>{m.icon}</div>
                       <div className={`${styles.text} ${m.text === '???' ? styles.comingSoon : ''}`}>
                         <span>{m.text}</span>
                       </div>
-                      <div className={styles.target}>{m.target} patrons</div>
-                      {m.achieved ? <div className={styles.target}>Reached on {m.achieved}</div> : null}
+                      {m.achieved ? (
+                        <div className={styles.target}>{m.achieved}</div>
+                      ) : (
+                        <div className={styles.target}>{m.target} patrons</div>
+                      )}
                     </div>
                     <div className={styles.arrow} />
                     <div className={styles.dot} />
