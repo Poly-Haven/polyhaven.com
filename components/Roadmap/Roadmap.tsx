@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next'
 
-import { IoMdLock } from 'react-icons/io'
-import { TbMoon, TbShirt, TbCamera, TbDrone, TbVolcano, TbTorii } from 'react-icons/tb'
+import { TbMoon, TbShirt, TbCamera, TbDrone, TbVolcano, TbTorii, TbCactus } from 'react-icons/tb'
 import { GiWoodBeam } from 'react-icons/gi'
 import Blender from 'components/UI/Icons/Blender'
 
@@ -17,7 +16,7 @@ const Roadmap = () => {
     // TODO get from API
     {
       text: 'Dummy milestone to make math easier',
-      icon: <IoMdLock />,
+      icon: <TbMoon />,
       target: 1,
       achieved: '2000-01-01',
       link: '',
@@ -81,37 +80,37 @@ const Roadmap = () => {
     {
       text: 'Fabric Vault',
       icon: <TbShirt />,
-      target: 1750,
-      link: '',
-    },
-    {
-      text: 'Remove Ads',
-      icon: <IoMdLock />,
-      target: 2000,
+      target: 1800,
       link: '',
     },
     {
       text: 'Studio HDRIs',
       icon: <TbCamera />,
-      target: 2200,
+      target: 2050,
       link: '',
     },
     {
       text: 'Wood Vault',
       icon: <GiWoodBeam />,
-      target: 2500,
+      target: 2350,
       link: '',
     },
     {
       text: '???',
       icon: <TbDrone />,
-      target: 2800,
+      target: 2650,
+      link: '',
+    },
+    {
+      text: '???',
+      icon: <TbCactus />,
+      target: 3000,
       link: '',
     },
     {
       text: '???',
       icon: <TbTorii />,
-      target: 3200,
+      target: 3300,
       link: '',
     },
     {
@@ -123,24 +122,25 @@ const Roadmap = () => {
     {
       text: 'Free the Add-on',
       icon: <Blender />,
-      target: 3700,
+      target: 3750,
       link: '',
     },
   ]
 
-  const currentPatrons = 1615 // TODO get from API
+  const currentPatrons = 1639 // TODO get from API
   let highestAchievedGoal = 0 // Index of the highest achieved goal
   for (const m of milestones) {
     if (m.achieved) {
       highestAchievedGoal = milestones.indexOf(m)
     }
   }
-  const step = 380
+  const maxTarget = milestones[milestones.length - 1].target
+  const step = 80
   const progressBarPosition =
     Math.max(
       Math.min(currentPatrons, milestones[highestAchievedGoal + 1].target - step),
       milestones[highestAchievedGoal].target
-    ) / 3700
+    ) / maxTarget
 
   return (
     <div className={styles.wrapper}>
@@ -164,7 +164,7 @@ const Roadmap = () => {
                     className={`${styles.milestone} ${
                       m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
                     } ${i % 2 ? styles.flip : ''}`}
-                    style={{ right: i !== 0 ? `${100 - (m.target / 3700) * 100}%` : `calc(100% - 30px)` }}
+                    style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
                   >
                     <div className={styles.milestoneText}>
                       <div className={styles.icon}>{m.icon}</div>
