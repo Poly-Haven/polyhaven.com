@@ -95,38 +95,41 @@
           cursor: default;
           @include transition();
 
-          .milestoneText {
-            @include flex(column);
-            text-align: right;
-            margin: -2px 46px;
-            @include transition;
-
-            &:hover {
+          & ~ *:hover {
+            .milestoneText {
               color: $c-text-bright;
               $offset: 4px;
               margin-bottom: $offset;
               margin-top: $offset;
               margin-right: calc(46px + $offset);
-
-              .comingSoon span {
-                margin-right: 5em;
-                opacity: 0;
-              }
-              .comingSoon::after {
-                transform: scaleX(1);
-                opacity: 1;
-                content: "Coming soon!";
-              }
-
-              .target {
-                opacity: 0.5;
-              }
-
-              & ~ .dot {
-                transform: scale(1.25);
-                z-index: 100;
-              }
             }
+
+            .comingSoon span {
+              margin-right: 5em;
+              opacity: 0;
+            }
+            .comingSoon::after {
+              transform: scaleX(1);
+              opacity: 1;
+              content: "Coming soon!";
+            }
+
+            .target {
+              opacity: 0.5;
+            }
+
+            .dot {
+              transform: scale(1.25);
+              z-index: 100;
+            }
+          }
+
+          .milestoneText {
+            @include flex(column);
+            text-align: right;
+            margin: -2px;
+            margin-right: 46px;
+            @include transition;
           }
 
           .dot {
