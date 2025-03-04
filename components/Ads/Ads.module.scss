@@ -55,12 +55,12 @@ img.placeholder {
 
 .assetPage {
   width: calc(336px - 1em - 4px - 4px);
-  height: calc(280px - 1em - 4px - 4px);
+  height: calc(280px - 1em - 1em - 4px - 4px);
   flex-direction: column;
   text-align: center;
 }
 
 .grid {
-  width: calc(728px - 1em - 4px - 4px);
-  height: calc(90px - 1em - 4px - 4px);
+  width: calc(728px - 1em - 1em - 4px - 4px);
+  height: calc(90px - 1em - 1em - 4px - 4px);
 }
