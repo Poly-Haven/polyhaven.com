@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next'
 import { useState, useEffect, useRef } from 'react'
 import useStoredState from 'hooks/useStoredState'
 
@@ -8,27 +7,11 @@ import styles from './Ads.module.scss'
 import Button from 'components/UI/Button/Button'
 
 const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
-  const { t } = useTranslation('common')
   const [isServer, setIsServer] = useState(true)
-  const [isLoaded, setIsLoaded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [windowWidth, setWindowWidth] = useState(1100)
   const [hideNoMoreAds, setHideNoMoreAds] = useStoredState('hide_nomoreads', false)
   const adRef = useRef(null)
-
-  const isProduction = process.env.NODE_ENV === 'production'
-
-  useEffect(() => {
-    if (!isLoaded && isProduction && !isServer && adRef.current && localStorage.getItem(`hideAds`) !== 'yes') {
-      try {
-        // @ts-ignore - adsbygoogle not detected as a prop of window
-        ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-        setIsLoaded(true)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-  }, [adRef.current, isServer])
 
   useEffect(() => {
     function handleResize() {
