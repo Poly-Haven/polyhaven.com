@@ -35,7 +35,7 @@ export const getServerSideProps = async ({ res }) => {
           priority: '1.0',
           img: [
             `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=630`,
-            `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=720`,
+            `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=760`,
           ],
         }
       }

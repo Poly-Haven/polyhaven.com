@@ -1,3 +1,67 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
 img.placeholder {
   display: block;
+}
+
+.noAds {
+  @include flex(row, true, true);
+  position: relative;
+  background: rgba($c-red, 0.1);
+  border: 4px dashed $c-red;
+  padding: 1em;
+  gap: 1em;
+
+  span {
+    font-size: 1.5em;
+    margin-right: 0.1em;
+  }
+
+  h2 {
+    @include flex(row, true, true);
+    font-size: 1.25em;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1.1em;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 0;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.25em;
+    font-size: 1.5em;
+    cursor: pointer;
+    line-height: 0;
+    @include transition;
+
+    svg {
+      @include transition;
+    }
+
+    &:hover svg {
+      // For some reason rotating .close itself causes reflow, so we rotate the svg instead
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.assetPage {
+  width: calc(336px - 1em - 4px - 4px);
+  height: calc(280px - 1em - 4px - 4px);
+  flex-direction: column;
+  text-align: center;
+}
+
+.grid {
+  width: calc(728px - 1em - 4px - 4px);
+  height: calc(90px - 1em - 4px - 4px);
 }

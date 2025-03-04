@@ -412,7 +412,7 @@ const Grid = (props) => {
             </div>
           </div>
           <div className={styles.adGridTop}>
-            <DisplayAd id="9488083725" x={728} y={90} />
+            <DisplayAd id="grid" x={728} y={90} />
           </div>
         </div>
         {showAdvanced ? (
@@ -503,10 +503,6 @@ const Grid = (props) => {
                       showText={showText}
                     />
                   </LazyLoad>
-                  {(sortedKeys.indexOf(asset) === adBreak - 1 && sortedKeys.length >= adBreak) ||
-                  sortedKeys.indexOf(asset) === sortedKeys.length - 1 ? (
-                    <DisplayAd id="4927930335" x={970} y={250} key="libraryContentAd" />
-                  ) : null}
                 </>
               )
             })}

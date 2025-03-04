@@ -1,9 +1,11 @@
 import { useTranslation } from 'next-i18next'
 import { useState, useEffect, useRef } from 'react'
+import useStoredState from 'hooks/useStoredState'
 
-import Button from 'components/UI/Button/Button'
+import { MdClose } from 'react-icons/md'
 
 import styles from './Ads.module.scss'
+import Button from 'components/UI/Button/Button'
 
 const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const { t } = useTranslation('common')
@@ -11,6 +13,7 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [windowWidth, setWindowWidth] = useState(1100)
+  const [hideNoMoreAds, setHideNoMoreAds] = useStoredState('hide_nomoreads', false)
   const adRef = useRef(null)
 
   const isProduction = process.env.NODE_ENV === 'production'
@@ -46,49 +49,32 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
     }
   }, [windowWidth])
 
-  const jsxRemoveAds = showRemoveBtn ? (
-    <Button
-      text={<>{t('remove-ads')} ($1)</>}
-      href="/account"
-      style={{
-        margin: '4px 0',
-        padding: '0.2em 0',
-        width: `${x}px`,
-      }}
-    />
-  ) : null
-
   useEffect(() => {
     setIsServer(false)
   }, [])
 
   // return null // TESTING for adblock/patrons
 
-  if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile) {
+  if (isServer || localStorage.getItem(`hideAds`) === 'yes' || isMobile || hideNoMoreAds) {
     return null
   }
 
-  if (!isProduction || localStorage.getItem(`dummyAds`)) {
-    return (
-      <>
-        <img src={`https://picsum.photos/${x}/${y}`} className={styles.placeholder} />
-        {jsxRemoveAds}
-      </>
-    )
-  }
-
   return (
-    <>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'inline-block', width: `${x}px`, height: `${y}px` }}
-        data-ad-client="ca-pub-2284751191864068"
-        data-ad-slot={id}
-        ref={adRef}
-      ></ins>
-      {jsxRemoveAds}
-    </>
+    <div className={`${styles.noAds} ${styles[id]}`} ref={adRef}>
+      <h2>
+        <span>🎉</span>No more ads!
+      </h2>
+      <p>
+        Thanks to <a href="https://www.patreon.com/polyhaven">your support</a>, we've just removed all ads from Poly
+        Haven.
+      </p>
+      <div style={{ whiteSpace: 'nowrap', margin: '0 1em' }}>
+        <Button text="Read more" href="https://www.patreon.com/posts/123051545" color="red" />
+      </div>
+      <div className={styles.close} onClick={() => setHideNoMoreAds(true)}>
+        <MdClose />
+      </div>
+    </div>
   )
 }
 
