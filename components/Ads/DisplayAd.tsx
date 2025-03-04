@@ -65,13 +65,15 @@ const DisplayAd = ({ id, x, y, showRemoveBtn }) => {
         <span>🎉</span>No more ads!
       </h2>
       <p>
-        Thanks to <a href="https://www.patreon.com/polyhaven">your support</a>, we've just removed all ads from Poly
-        Haven.
+        This used to be an ad.
+        <br />
+        <a href="https://www.patreon.com/posts/123051545">Thanks to your support</a>, we've just removed all ads from
+        Poly Haven.
       </p>
       <div style={{ whiteSpace: 'nowrap', margin: '0 1em' }}>
-        <Button text="Read more" href="https://www.patreon.com/posts/123051545" color="red" />
+        <Button text="Support Us" href="https://www.patreon.com/polyhaven" color="red" />
       </div>
-      <div className={styles.close} onClick={() => setHideNoMoreAds(true)}>
+      <div className={styles.close} onClick={() => setHideNoMoreAds(true)} title="Permanently hide this message">
         <MdClose />
       </div>
     </div>
