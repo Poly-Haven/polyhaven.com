@@ -16,56 +16,48 @@ const Roadmap = () => {
     // TODO get from API
     {
       text: 'Dummy milestone to make math easier',
-      icon: <TbMoon />,
       target: 1,
       achieved: '2000-01-01',
       link: '',
     },
     {
       text: `HDRI Haven Launch`,
-      icon: <TbMoon />,
       target: 0,
       achieved: '2017-10-03',
       link: 'https://x.com/GregZaal/status/915220428112711682',
     },
     {
       text: `Texture Haven Launch`,
-      icon: <TbMoon />,
       target: 520,
       achieved: '2018-06-19',
       link: 'https://www.patreon.com/posts/texture-haven-19562868',
     },
     {
       text: `3D Model Haven Launch`,
-      icon: <TbMoon />,
       target: 740,
       achieved: '2020-03-31',
       link: 'https://www.patreon.com/posts/3d-model-haven-30626137',
     },
     {
       text: `Poly Haven Launch`,
-      icon: <TbMoon />,
       target: 900,
       achieved: '2021-06-15',
       link: 'https://www.patreon.com/posts/polyhaven-com-is-52567161',
     },
     {
       text: `The Smuggler's Cove`,
-      icon: <TbMoon />,
       target: 1000,
       achieved: '2022-01-13',
       link: 'https://www.indiegogo.com/projects/the-smuggler-s-cove-a-17th-century-asset-pack#/updates/all',
     },
     {
       text: 'A Verdant Trail',
-      icon: <TbMoon />,
       target: 1300,
       achieved: '2024-02-05',
       link: 'https://polyhaven.com/collections/verdant_trail',
     },
     {
       text: 'Namaqualand',
-      icon: <TbMoon />,
       target: 1400,
       achieved: '2024-10-08',
       link: 'https://polyhaven.com/collections/namaqualand',
@@ -179,7 +171,7 @@ const Roadmap = () => {
                     }}
                   >
                     <div className={styles.milestoneText}>
-                      <div className={styles.icon}>{m.icon}</div>
+                      {m.icon ? <div className={styles.icon}>{m.icon}</div> : null}
                       <div className={`${styles.text} ${m.text === '???' ? styles.comingSoon : ''}`}>
                         <span>{m.text}</span>
                       </div>
