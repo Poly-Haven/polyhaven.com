@@ -127,7 +127,7 @@ const Roadmap = () => {
     },
   ]
 
-  const currentPatrons = 1639 // TODO get from API
+  const currentPatrons = 1689 // TODO get from API
   let highestAchievedGoal = 0 // Index of the highest achieved goal
   for (const m of milestones) {
     if (m.achieved) {
@@ -144,11 +144,11 @@ const Roadmap = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.newestPatrons}>
+      {/* <div className={styles.newestPatrons}>
         <h4>{t('s4')}</h4>
         <LatestPatrons />
         <div className={styles.fade} />
-      </div>
+      </div> */}
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
           <h2 className={styles.topText}>Poly Haven Roadmap</h2>
@@ -165,6 +165,15 @@ const Roadmap = () => {
                       m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
                     } ${i % 2 ? styles.flip : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
+                    onMouseEnter={(e) => e.currentTarget.classList.add(styles.hover)}
+                    onMouseLeave={(e) => {
+                      const target = e.currentTarget
+                      setTimeout(() => {
+                        if (!target.matches(':hover')) {
+                          target.classList.remove(styles.hover)
+                        }
+                      }, 200)
+                    }}
                   >
                     <div className={styles.milestoneText}>
                       <div className={styles.icon}>{m.icon}</div>
@@ -188,9 +197,9 @@ const Roadmap = () => {
         </div>
         <DonationBox />
       </div>
-      <div>
+      {/* <div>
         <RoadmapCorporateSponsors />
-      </div>
+      </div> */}
     </div>
   )
 }

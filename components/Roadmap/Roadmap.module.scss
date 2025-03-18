@@ -87,41 +87,18 @@
         position: absolute;
         top: 0;
         width: 100%;
+
         .milestone {
           position: absolute;
           text-align: right;
           @include flex(column-reverse);
           margin: calc(32px / 2 - 6px);
-          cursor: default;
+          pointer-events: none;
           @include transition();
 
-          & ~ *:hover {
-            .milestoneText {
-              color: $c-text-bright;
-              $offset: 4px;
-              margin-bottom: $offset;
-              margin-top: $offset;
-              margin-right: calc(46px + $offset);
-            }
-
-            .comingSoon span {
-              margin-right: 5em;
-              opacity: 0;
-            }
-            .comingSoon::after {
-              transform: scaleX(1);
-              opacity: 1;
-              content: "Coming soon!";
-            }
-
-            .target {
-              opacity: 0.5;
-            }
-
-            .dot {
-              transform: scale(1.25);
-              z-index: 100;
-            }
+          & > * {
+            cursor: pointer;
+            pointer-events: all;
           }
 
           .milestoneText {
@@ -133,7 +110,9 @@
           }
 
           .dot {
-            margin-left: auto;
+            position: absolute;
+            top: 0;
+            right: 0;
             width: 12px;
             height: 12px;
             background: $c-text-light;
@@ -144,8 +123,9 @@
 
           .arrow {
             position: relative;
-            margin: -12px 0;
             margin-left: auto;
+            margin-top: 8px;
+            margin-bottom: -12px;
             right: 26px;
             width: 2px;
             height: 40px;
@@ -174,6 +154,36 @@
           }
         }
 
+        .hover {
+          .milestoneText {
+            color: $c-text-bright;
+            $offset: 4px;
+            margin-bottom: $offset;
+            margin-top: $offset;
+            margin-right: calc(46px + $offset);
+          }
+
+          .comingSoon span {
+            margin-right: 5em;
+            opacity: 0;
+          }
+          .comingSoon::after {
+            transform: scaleX(1);
+            opacity: 1;
+            content: "Coming soon!";
+          }
+
+          .target {
+            opacity: 0.5;
+          }
+
+          & ~ .dot {
+            transform: scale(1.25);
+            background-color: white;
+            z-index: 100;
+          }
+        }
+
         .icon {
           margin: 0.3em 0 0.15em;
           font-size: 1.25em;
@@ -193,6 +203,16 @@
             flex-direction: column-reverse;
             bottom: calc(100% - 32px - 8px);
           }
+
+          .dot {
+            top: initial;
+            bottom: 0;
+          }
+
+          .arrow {
+            margin-top: -12px;
+            margin-bottom: 8px;
+          }
         }
 
         .flip .arrow {
@@ -210,7 +230,8 @@
           }
           .text,
           .arrow,
-          .icon {
+          .icon,
+          .target {
             display: none;
           }
         }
@@ -228,7 +249,8 @@
           }
           .text,
           .arrow,
-          .icon {
+          .icon,
+          .target {
             display: initial;
           }
         }
