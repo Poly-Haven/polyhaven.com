@@ -12,6 +12,7 @@ import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/UI/Avatar/Staff'
 import Gallery from 'components/Gallery/Gallery'
 import Loader from 'components/UI/Loader/Loader'
+import Roadmap from 'components/Roadmap/Roadmap'
 
 import styles from './Home.module.scss'
 
@@ -23,6 +24,8 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <Slider />
+
+      <Roadmap />
 
       <div className={styles.sectionWrapper}>
         <div className={styles.assetTypeBanner}>
