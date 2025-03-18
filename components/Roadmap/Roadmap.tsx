@@ -155,7 +155,7 @@ const Roadmap = () => {
                     key={i}
                     className={`${styles.milestone} ${
                       m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
-                    } ${i % 2 ? styles.flip : ''}`}
+                    } ${i % 2 ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
                     onMouseEnter={(e) => e.currentTarget.classList.add(styles.hover)}
                     onMouseLeave={(e) => {

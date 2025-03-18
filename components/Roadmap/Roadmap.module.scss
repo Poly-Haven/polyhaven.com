@@ -196,7 +196,8 @@
 
         .hover.achieved {
           .dot {
-            transform: scale(2);
+            transform: scale(1.5);
+            opacity: 1;
           }
         }
 
@@ -243,10 +244,6 @@
             border: 2px solid $c-background;
             margin-top: 4.5px;
             margin-bottom: 4.5px;
-
-            // &:hover {
-            //   transform: scale(2);
-            // }
           }
           .text,
           .arrow,
@@ -275,6 +272,20 @@
           .icon,
           .target {
             display: initial;
+          }
+        }
+
+        .first {
+          transform: scaleX(-1) translateX(-100%);
+          margin-right: calc((32px / 2 - 6px) * 2);
+
+          .milestoneText {
+            transform: scaleX(-1);
+            text-align: left;
+
+            .text {
+              white-space: nowrap;
+            }
           }
         }
       }
