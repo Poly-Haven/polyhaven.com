@@ -161,6 +161,12 @@
             margin-bottom: $offset;
             margin-top: $offset;
             margin-right: calc(46px + $offset);
+
+            .text,
+            .icon,
+            .target {
+              display: initial;
+            }
           }
 
           .comingSoon span {
@@ -177,10 +183,20 @@
             opacity: 0.5;
           }
 
-          & ~ .dot {
+          .dot {
             transform: scale(1.25);
             background-color: white;
             z-index: 100;
+          }
+
+          .arrow {
+            display: initial !important;
+          }
+        }
+
+        .hover.achieved {
+          .dot {
+            transform: scale(2);
           }
         }
 
@@ -227,6 +243,10 @@
             border: 2px solid $c-background;
             margin-top: 4.5px;
             margin-bottom: 4.5px;
+
+            // &:hover {
+            //   transform: scale(2);
+            // }
           }
           .text,
           .arrow,
@@ -234,10 +254,13 @@
           .target {
             display: none;
           }
+
+          .arrow {
+            right: 22px;
+          }
         }
 
         .lastAchieved {
-          @extend .achieved;
           .dot {
             opacity: 1;
             background: $c-green;

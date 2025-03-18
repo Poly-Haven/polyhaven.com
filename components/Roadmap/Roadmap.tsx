@@ -168,11 +168,14 @@ const Roadmap = () => {
                     onMouseEnter={(e) => e.currentTarget.classList.add(styles.hover)}
                     onMouseLeave={(e) => {
                       const target = e.currentTarget
-                      setTimeout(() => {
-                        if (!target.matches(':hover')) {
-                          target.classList.remove(styles.hover)
-                        }
-                      }, 200)
+                      setTimeout(
+                        () => {
+                          if (!target.matches(':hover')) {
+                            target.classList.remove(styles.hover)
+                          }
+                        },
+                        i < highestAchievedGoal - 1 ? 500 : 200
+                      )
                     }}
                   >
                     <div className={styles.milestoneText}>
