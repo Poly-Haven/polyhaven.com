@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { TbMoon, TbShirt, TbCamera, TbDrone, TbVolcano, TbTorii, TbCactus } from 'react-icons/tb'
@@ -18,10 +19,10 @@ const Roadmap = () => {
       text: 'Dummy milestone to make math easier',
       target: 1,
       achieved: '2000-01-01',
-      link: '',
+      link: '#',
     },
     {
-      text: `HDRI Haven Launch`,
+      text: `HDRI Haven goes free`,
       target: 0,
       achieved: '2017-10-03',
       link: 'https://x.com/GregZaal/status/915220428112711682',
@@ -67,55 +68,55 @@ const Roadmap = () => {
       icon: <TbMoon />,
       target: 1600,
       achieved: '2025-02-01',
-      link: '',
+      link: '#',
     },
     {
       text: 'Fabric Vault',
       icon: <TbShirt />,
       target: 1800,
-      link: '',
+      link: '#',
     },
     {
       text: 'Studio HDRIs',
       icon: <TbCamera />,
       target: 2050,
-      link: '',
+      link: '#',
     },
     {
       text: 'Wood Vault',
       icon: <GiWoodBeam />,
       target: 2350,
-      link: '',
+      link: '#',
     },
     {
       text: '???',
       icon: <TbDrone />,
       target: 2650,
-      link: '',
+      link: '#',
     },
     {
       text: '???',
       icon: <TbCactus />,
       target: 3000,
-      link: '',
+      link: '#',
     },
     {
       text: '???',
       icon: <TbTorii />,
       target: 3300,
-      link: '',
+      link: '#',
     },
     {
       text: '???',
       icon: <TbVolcano />,
       target: 3600,
-      link: '',
+      link: '#',
     },
     {
       text: 'Free the Add-on',
       icon: <Blender />,
       target: 3750,
-      link: '',
+      link: '#',
     },
   ]
 
@@ -151,8 +152,9 @@ const Roadmap = () => {
               </div>
               <div className={styles.milestones}>
                 {milestones.slice(1).map((m, i) => (
-                  <div
+                  <Link
                     key={i}
+                    href={m.link}
                     className={`${styles.milestone} ${
                       m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
                     } ${i % 2 ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
@@ -183,7 +185,7 @@ const Roadmap = () => {
                     </div>
                     <div className={styles.arrow} />
                     <div className={styles.dot} />
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

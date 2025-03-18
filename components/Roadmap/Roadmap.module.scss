@@ -88,6 +88,10 @@
         top: 0;
         width: 100%;
 
+        a {
+          color: $c-text-light;
+        }
+
         .milestone {
           position: absolute;
           text-align: right;
