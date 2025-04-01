@@ -5,10 +5,8 @@ import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
 import Blender from 'components/UI/Icons/Blender'
 
-import { RiUserCommunityFill } from 'react-icons/ri'
-import { TbCalendarSearch } from 'react-icons/tb'
-import { TbCloudDown } from 'react-icons/tb'
-import { IoTicket } from 'react-icons/io5'
+import { TbCalendarSearch, TbCloudDown } from 'react-icons/tb'
+import { IoTicket, IoLockOpen } from 'react-icons/io5'
 
 import styles from './DonationBox.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
@@ -32,19 +30,19 @@ const benefits = [
   {
     text: (
       <span>
-        Join our exclusive <Link href="https://www.patreon.com/polyhaven">supporter community</Link>.
-      </span>
-    ),
-    icon: <RiUserCommunityFill />,
-    cost: 1,
-  },
-  {
-    text: (
-      <span>
         <Link href="https://www.patreon.com/posts/how-to-get-early-14640360">Early access</Link> to upcoming assets.
       </span>
     ),
     icon: <TbCalendarSearch />,
+    cost: 3,
+  },
+  {
+    text: (
+      <span>
+        Instant access to all assets in <Link href="/vaults">the Vaults</Link>.
+      </span>
+    ),
+    icon: <IoLockOpen />,
     cost: 3,
   },
   {
