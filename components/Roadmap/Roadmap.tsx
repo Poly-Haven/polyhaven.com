@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
-import { TbMoon, TbShirt, TbCamera, TbDrone, TbVolcano, TbTorii, TbCactus } from 'react-icons/tb'
-import { GiWoodBeam } from 'react-icons/gi'
+import { TbMoon, TbShirt, TbCamera, TbDrone, TbTorii } from 'react-icons/tb'
+import { GiWoodBeam, GiMetalBar, GiGalaxy } from 'react-icons/gi'
 import Blender from 'components/UI/Icons/Blender'
 
 import DonationBox from 'components/DonationBox/DonationBox'
@@ -14,7 +14,7 @@ import styles from './Roadmap.module.scss'
 const Roadmap = () => {
   const { t } = useTranslation('home')
   const milestones = [
-    // TODO get from API
+    // TODO get from API, but for testing use this: C:\tmp\patreon goal target distribution.blend
     {
       text: 'Dummy milestone to make math easier',
       target: 1,
@@ -64,63 +64,68 @@ const Roadmap = () => {
       link: 'https://polyhaven.com/collections/namaqualand',
     },
     {
+      text: 'Ads Removed',
+      target: 1550,
+      achieved: '2025-03-03',
+      link: 'https://www.patreon.com/posts/dev-log-23-big-123051545',
+    },
+    {
       text: 'Moon Vault',
       icon: <TbMoon />,
-      target: 1600,
-      achieved: '2025-02-01',
+      target: 1900,
       link: '#',
     },
     {
       text: 'Fabric Vault',
       icon: <TbShirt />,
-      target: 1800,
+      target: 2300,
       link: '#',
     },
     {
       text: 'Studio HDRIs',
       icon: <TbCamera />,
-      target: 2050,
+      target: 2650,
       link: '#',
     },
     {
       text: 'Wood Vault',
       icon: <GiWoodBeam />,
-      target: 2350,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <TbDrone />,
-      target: 2650,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <TbCactus />,
       target: 3000,
       link: '#',
     },
     {
       text: '???',
-      icon: <TbTorii />,
-      target: 3300,
+      icon: <TbDrone />,
+      target: 3375,
       link: '#',
     },
     {
       text: '???',
-      icon: <TbVolcano />,
-      target: 3600,
+      icon: <GiMetalBar />,
+      target: 3700,
+      link: '#',
+    },
+    {
+      text: '???',
+      icon: <TbTorii />,
+      target: 4000,
+      link: '#',
+    },
+    {
+      text: '???',
+      icon: <GiGalaxy />,
+      target: 4250,
       link: '#',
     },
     {
       text: 'Free the Add-on',
       icon: <Blender />,
-      target: 3750,
+      target: 4500,
       link: '#',
     },
   ]
 
-  const currentPatrons = 1689 // TODO get from API
+  const currentPatrons = 1740 // TODO get from API
   let highestAchievedGoal = 0 // Index of the highest achieved goal
   for (const m of milestones) {
     if (m.achieved) {
