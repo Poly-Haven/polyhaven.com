@@ -208,6 +208,11 @@
         .icon {
           margin: 0.3em 0 0.15em;
           font-size: 1.25em;
+
+          img {
+            color: $c-text-light;
+            width: 1em;
+          }
         }
 
         .target {

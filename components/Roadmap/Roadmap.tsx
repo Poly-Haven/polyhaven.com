@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import apiSWR from 'utils/apiSWR'
 
 import { TbMoon, TbShirt, TbCamera, TbDrone, TbTorii } from 'react-icons/tb'
 import { GiWoodBeam, GiMetalBar, GiGalaxy } from 'react-icons/gi'
@@ -8,124 +9,37 @@ import Blender from 'components/UI/Icons/Blender'
 import DonationBox from 'components/DonationBox/DonationBox'
 import RoadmapCorporateSponsors from './RoadmapCorporateSponsors'
 import LatestPatrons from 'components/Home/LatestPatrons'
+import Spinner from 'components/UI/Spinner/Spinner'
 
 import styles from './Roadmap.module.scss'
 
 const Roadmap = () => {
   const { t } = useTranslation('home')
-  const milestones = [
-    // TODO get from API, but for testing use this: C:\tmp\patreon goal target distribution.blend
+
+  let milestones = [
     {
       text: 'Dummy milestone to make math easier',
       target: 1,
       achieved: '2000-01-01',
       link: '#',
-    },
-    {
-      text: `HDRI Haven goes free`,
-      target: 0,
-      achieved: '2017-10-03',
-      link: 'https://x.com/GregZaal/status/915220428112711682',
-    },
-    {
-      text: `Texture Haven Launch`,
-      target: 520,
-      achieved: '2018-06-19',
-      link: 'https://www.patreon.com/posts/texture-haven-19562868',
-    },
-    {
-      text: `3D Model Haven Launch`,
-      target: 740,
-      achieved: '2020-03-31',
-      link: 'https://www.patreon.com/posts/3d-model-haven-30626137',
-    },
-    {
-      text: `Poly Haven Launch`,
-      target: 900,
-      achieved: '2021-06-15',
-      link: 'https://www.patreon.com/posts/polyhaven-com-is-52567161',
-    },
-    {
-      text: `The Smuggler's Cove`,
-      target: 1000,
-      achieved: '2022-01-13',
-      link: 'https://www.indiegogo.com/projects/the-smuggler-s-cove-a-17th-century-asset-pack#/updates/all',
-    },
-    {
-      text: 'A Verdant Trail',
-      target: 1300,
-      achieved: '2024-02-05',
-      link: 'https://polyhaven.com/collections/verdant_trail',
-    },
-    {
-      text: 'Namaqualand',
-      target: 1400,
-      achieved: '2024-10-08',
-      link: 'https://polyhaven.com/collections/namaqualand',
-    },
-    {
-      text: 'Ads Removed',
-      target: 1550,
-      achieved: '2025-03-03',
-      link: 'https://www.patreon.com/posts/dev-log-23-big-123051545',
-    },
-    {
-      text: 'Moon Vault',
-      icon: <TbMoon />,
-      target: 1900,
-      link: '#',
-    },
-    {
-      text: 'Fabric Vault',
-      icon: <TbShirt />,
-      target: 2300,
-      link: '#',
-    },
-    {
-      text: 'Studio HDRIs',
-      icon: <TbCamera />,
-      target: 2650,
-      link: '#',
-    },
-    {
-      text: 'Wood Vault',
-      icon: <GiWoodBeam />,
-      target: 3000,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <TbDrone />,
-      target: 3375,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <GiMetalBar />,
-      target: 3700,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <TbTorii />,
-      target: 4000,
-      link: '#',
-    },
-    {
-      text: '???',
-      icon: <GiGalaxy />,
-      target: 4250,
-      link: '#',
-    },
-    {
-      text: 'Free the Add-on',
-      icon: <Blender />,
-      target: 4500,
-      link: '#',
+      img: null,
     },
   ]
+  const { data, error } = apiSWR('/milestones', { revalidateOnFocus: true })
+  if (error) {
+    return null
+  } else if (!data) {
+    return (
+      <div className={styles.wrapper}>
+        <Spinner />
+      </div>
+    )
+  }
+  // Append data
+  for (const m of data.milestones) {
+    milestones.push(m)
+  }
 
-  const currentPatrons = 1740 // TODO get from API
   let highestAchievedGoal = 0 // Index of the highest achieved goal
   for (const m of milestones) {
     if (m.achieved) {
@@ -136,7 +50,7 @@ const Roadmap = () => {
   const step = 80
   const progressBarPosition =
     Math.max(
-      Math.min(currentPatrons, milestones[highestAchievedGoal + 1].target - step),
+      Math.min(data.numPatrons, milestones[highestAchievedGoal + 1].target - step),
       milestones[highestAchievedGoal].target
     ) / maxTarget
 
@@ -178,7 +92,11 @@ const Roadmap = () => {
                     }}
                   >
                     <div className={styles.milestoneText}>
-                      {m.icon ? <div className={styles.icon}>{m.icon}</div> : null}
+                      {m.img ? (
+                        <div className={styles.icon}>
+                          <img src={m.img} style={{ color: 'red' }} />
+                        </div>
+                      ) : null}
                       <div className={`${styles.text} ${m.text === '???' ? styles.comingSoon : ''}`}>
                         <span>{m.text}</span>
                       </div>
@@ -195,7 +113,7 @@ const Roadmap = () => {
               </div>
             </div>
           </div>
-          <h3 className={styles.bottomText}>Join {currentPatrons} patrons, support the future of free assets</h3>
+          <h3 className={styles.bottomText}>Join {data.numPatrons} patrons, support the future of free assets</h3>
         </div>
         <DonationBox />
       </div>
