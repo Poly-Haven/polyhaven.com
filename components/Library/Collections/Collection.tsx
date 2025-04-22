@@ -47,7 +47,7 @@ const Collection = ({ collectionId, data }) => {
               <>
                 {Object.keys(data.scene).map((software, i) => (
                   <Button
-                    text="Scene File"
+                    text={software === 'unreal' ? 'Unreal Project' : 'Scene File'}
                     href={data.scene[software]}
                     icon={softwareIcons[software]}
                     style={buttonStyle}

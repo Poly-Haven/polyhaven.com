@@ -7,11 +7,11 @@ const Map = dynamic(() => import('../components/Map/Map'), {
   ssr: false,
 })
 
-const MapPage = ({ data }) => {
+const MapPage = ({ coords }) => {
   return (
     <Page>
       <Head title="Map" description="World map of locations where we've captured HDRIs." url="/map" />
-      <Map hdris={data} />
+      <Map hdris={coords} />
     </Page>
   )
 }
@@ -30,16 +30,17 @@ export const getStaticProps = async (ctx) => {
     .then((response) => response.json())
     .catch((e) => console.log(e))
 
+  const coords = {}
   for (const [slug, info] of Object.entries(data)) {
-    if (!info['coords'] || slug.endsWith('_puresky')) {
-      delete data[slug]
+    if (info['coords'] && !slug.endsWith('_puresky')) {
+      coords[slug] = info['coords']
     }
   }
 
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale, ['common'])),
-      data,
+      coords,
     },
     revalidate: 60 * 30, // 30 minutes
   }

@@ -72,7 +72,6 @@ const Page = () => {
         </p>
         <p>{t('account:login.p2')}</p>
         <ul>
-          <li>{t('account:login.li1')}</li>
           <li>{t('account:login.li2')}</li>
           <li>{t('account:login.li3')}</li>
           <li>{t('account:login.li4')}</li>

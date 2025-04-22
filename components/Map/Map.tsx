@@ -15,18 +15,16 @@ const Map = ({ hdris }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {Object.keys(hdris).map((slug) => (
-        <Marker key={slug} position={hdris[slug].coords}>
+        <Marker key={slug} position={hdris[slug]}>
           <Popup>
             <Link href={`/a/${slug}`}>
-
               <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200`} width="200" />
-
             </Link>
           </Popup>
         </Marker>
       ))}
     </MapContainer>
-  );
+  )
 }
 
 export default Map

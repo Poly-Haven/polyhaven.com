@@ -8,7 +8,7 @@
 }
 
 .collectionsList {
-  @include flex(row, true, true);
+  @include flex(row, false, true);
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 1em;
@@ -59,7 +59,7 @@
   }
 
   .row {
-    @include flex(row);
+    @include flex(row, true);
     justify-content: space-between;
     width: 100%;
   }

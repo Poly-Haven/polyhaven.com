@@ -13,28 +13,6 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
   }
   const fullUrl = 'https://polyhaven.com' + url
 
-  // Totally secure cheat code to toggle ads for internal testing ¯\_(ツ)_/¯
-  if (typeof window !== 'undefined') {
-    ;(window as any).allyourbasearebelongtous = function () {
-      if (localStorage.getItem('hideAds') === 'yes') {
-        localStorage.removeItem('hideAds')
-        window.location.reload()
-      } else {
-        localStorage.setItem('hideAds', 'yes')
-        window.location.reload()
-      }
-    }
-    ;(window as any).poweroverwhelming = function () {
-      if (localStorage.getItem('dummyAds') === 'yes') {
-        localStorage.removeItem('dummyAds')
-        window.location.reload()
-      } else {
-        localStorage.setItem('dummyAds', 'yes')
-        window.location.reload()
-      }
-    }
-  }
-
   return (
     <Head>
       <title>{title === 'Poly Haven' ? title : `${title} • Poly Haven`}</title>

@@ -12,11 +12,6 @@ import 'styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
   const consentGranted = () => {
-    // @ts-ignore - gtag not detected as a prop of window, since it's declared in _document.tsx
-    window.gtag('consent', 'update', {
-      ad_storage: 'granted',
-      analytics_storage: 'granted',
-    })
     if (!localStorage.getItem(`uuid`)) {
       localStorage.setItem(`uuid`, uuid())
     }

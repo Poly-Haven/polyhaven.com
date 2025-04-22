@@ -13,22 +13,6 @@ const PrivacyPage = () => {
       <div dir="ltr" style={{ textAlign: 'left' }}>
         <h1>Privacy Policy</h1>
 
-        <h2>Third Party Cookies</h2>
-        <p>
-          Third party vendors, including Google, use cookies to serve ads based on your prior visits to our website or
-          other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on
-          your visit to our site and/or other sites on the Internet.
-        </p>
-        <p>
-          Click here to read{' '}
-          <a href="https://policies.google.com/technologies/partner-sites">Google's Privacy Policy</a>.
-        </p>
-        <p>
-          If you are not comfortable with this, you can opt out of personalized advertising in your{' '}
-          <a href="https://www.google.com/settings/ads">Ads Settings</a>, or use an ad-blocker such as{' '}
-          <a href="https://github.com/gorhill/uBlock">uBlock Origin</a>.
-        </p>
-
         <h2>UUID</h2>
         <p>
           When you first visit this site and accept the Cookie popup, we store a unique random identifier in your
