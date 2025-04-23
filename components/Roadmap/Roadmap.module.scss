@@ -19,6 +19,79 @@
   }
 }
 
+.wrapperMini {
+  width: 100%;
+
+  .wrapperInner {
+    margin: 0;
+  }
+
+  .topText {
+    font-size: 1.1rem;
+  }
+  .bottomText {
+    font-size: 1rem;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 1.5em;
+  }
+
+  .roadmapWrapper {
+    margin: 0;
+
+    .barWrapper {
+      margin: 1em 0;
+
+      .barOuter {
+        padding: 2px;
+        border: 2px solid $c-accent;
+
+        .barInner {
+          height: 24px;
+          min-width: 24px;
+        }
+
+        .barShine {
+          height: 24px;
+        }
+
+        .milestones {
+          .milestone {
+            margin: calc(24px / 2 - 4px);
+
+            .milestoneText {
+              margin: 4px;
+              margin-right: 32px;
+              white-space: nowrap;
+            }
+            .dot {
+              width: 8px;
+              height: 8px;
+              border: 2px solid $c-background;
+            }
+            .arrow {
+              right: 18px;
+              width: 2px;
+              height: 24px;
+              border: 2px solid $c-background;
+            }
+            .text,
+            .arrow,
+            .icon,
+            .target {
+              display: none;
+            }
+          }
+          .achieved,
+          .lastAchieved {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 .roadmapWrapper {
   position: relative;
   flex-grow: 1;
@@ -123,6 +196,11 @@
             border-radius: 50%;
             border: 4px solid $c-background;
             @include transition;
+          }
+
+          .dotImg {
+            margin: -2px;
+            filter: brightness(1.1);
           }
 
           .arrow {

@@ -9,6 +9,7 @@ import { ordinalSuffix } from 'utils/stringUtils'
 import { MdClose } from 'react-icons/md'
 
 import DonationBox from 'components/DonationBox/DonationBox'
+import Roadmap from 'components/Roadmap/Roadmap'
 
 import styles from './AssetPage.module.scss'
 
@@ -211,6 +212,7 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
         <p>{prompt.message}</p>
       </div>
       <DonationBox />
+      <Roadmap mini />
     </div>
   )
 }

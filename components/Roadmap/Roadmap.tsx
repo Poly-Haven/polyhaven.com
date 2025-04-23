@@ -2,18 +2,12 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
 
-import { TbMoon, TbShirt, TbCamera, TbDrone, TbTorii } from 'react-icons/tb'
-import { GiWoodBeam, GiMetalBar, GiGalaxy } from 'react-icons/gi'
-import Blender from 'components/UI/Icons/Blender'
-
 import DonationBox from 'components/DonationBox/DonationBox'
-import RoadmapCorporateSponsors from './RoadmapCorporateSponsors'
-import LatestPatrons from 'components/Home/LatestPatrons'
 import Spinner from 'components/UI/Spinner/Spinner'
 
 import styles from './Roadmap.module.scss'
 
-const Roadmap = () => {
+const Roadmap = ({ mini }) => {
   const { t } = useTranslation('home')
 
   let milestones = [
@@ -55,12 +49,7 @@ const Roadmap = () => {
     ) / maxTarget
 
   return (
-    <div className={styles.wrapper}>
-      {/* <div className={styles.newestPatrons}>
-        <h4>{t('s4')}</h4>
-        <LatestPatrons />
-        <div className={styles.fade} />
-      </div> */}
+    <div className={mini ? styles.wrapperMini : styles.wrapper}>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
           <h2 className={styles.topText}>Poly Haven Roadmap</h2>
@@ -76,7 +65,7 @@ const Roadmap = () => {
                     href={m.link}
                     className={`${styles.milestone} ${
                       m.achieved ? (highestAchievedGoal === i + 1 ? styles.lastAchieved : styles.achieved) : ''
-                    } ${i % 2 ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
+                    } ${i % 2 && !mini ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
                     onMouseEnter={(e) => e.currentTarget.classList.add(styles.hover)}
                     onMouseLeave={(e) => {
@@ -91,23 +80,34 @@ const Roadmap = () => {
                       )
                     }}
                   >
-                    <div className={styles.milestoneText}>
-                      {m.img ? (
-                        <div className={styles.icon}>
-                          <img src={m.img} style={{ color: 'red' }} />
+                    {!mini && (
+                      <div className={styles.milestoneText}>
+                        {m.img && (
+                          <div className={styles.icon}>
+                            <img src={m.img} />
+                          </div>
+                        )}
+                        <div className={`${styles.text} ${m.text === '???' && styles.comingSoon}`}>
+                          <span>{m.text}</span>
                         </div>
-                      ) : null}
-                      <div className={`${styles.text} ${m.text === '???' ? styles.comingSoon : ''}`}>
-                        <span>{m.text}</span>
+                        <div className={styles.target}>{m.achieved || `${m.target} patrons`}</div>
                       </div>
-                      {m.achieved ? (
-                        <div className={styles.target}>{m.achieved}</div>
-                      ) : (
-                        <div className={styles.target}>{m.target} patrons</div>
-                      )}
-                    </div>
-                    <div className={styles.arrow} />
-                    <div className={styles.dot} />
+                    )}
+                    {!mini && <div className={styles.arrow} />}
+                    {mini && m.img ? (
+                      <div
+                        className={styles.dotImg}
+                        title={
+                          m.text.replace('???', 'Coming soon!') +
+                          '\n' +
+                          (m.achieved || `${data.numPatrons} / ${m.target} patrons`)
+                        }
+                      >
+                        <img src={m.img} />
+                      </div>
+                    ) : (
+                      <div className={styles.dot} />
+                    )}
                   </Link>
                 ))}
               </div>
@@ -115,13 +115,14 @@ const Roadmap = () => {
           </div>
           <h3 className={styles.bottomText}>Join {data.numPatrons} patrons, support the future of free assets</h3>
         </div>
-        <DonationBox />
+        {!mini && <DonationBox />}
       </div>
-      {/* <div>
-        <RoadmapCorporateSponsors />
-      </div> */}
     </div>
   )
+}
+
+Roadmap.defaultProps = {
+  mini: false,
 }
 
 export default Roadmap
