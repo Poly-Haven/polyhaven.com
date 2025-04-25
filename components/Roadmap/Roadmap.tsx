@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
 
 import DonationBox from 'components/DonationBox/DonationBox'
-import Spinner from 'components/UI/Spinner/Spinner'
+import Loader from 'components/UI/Loader/Loader'
 
 import styles from './Roadmap.module.scss'
 
@@ -19,19 +19,17 @@ const Roadmap = ({ mini }) => {
       img: null,
     },
   ]
+  let numPatrons = 0
+
+  // Fetch data from API
   const { data, error } = apiSWR('/milestones', { revalidateOnFocus: true })
-  if (error) {
-    return null
-  } else if (!data) {
-    return (
-      <div className={styles.wrapper}>
-        <Spinner />
-      </div>
-    )
-  }
+
   // Append data
-  for (const m of data.milestones) {
-    milestones.push(m)
+  if (!error && data) {
+    numPatrons = data.numPatrons
+    for (const m of data.milestones) {
+      milestones.push(m)
+    }
   }
 
   let highestAchievedGoal = 0 // Index of the highest achieved goal
@@ -43,10 +41,12 @@ const Roadmap = ({ mini }) => {
   const maxTarget = milestones[milestones.length - 1].target
   const step = 80
   const progressBarPosition =
-    Math.max(
-      Math.min(data.numPatrons, milestones[highestAchievedGoal + 1].target - step),
-      milestones[highestAchievedGoal].target
-    ) / maxTarget
+    milestones.length <= 1
+      ? 0
+      : Math.max(
+          Math.min(numPatrons, milestones[highestAchievedGoal + 1].target - step),
+          milestones[highestAchievedGoal].target
+        ) / maxTarget
 
   return (
     <div className={mini ? styles.wrapperMini : styles.wrapper}>
@@ -58,6 +58,11 @@ const Roadmap = ({ mini }) => {
               <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
                 <div className={styles.barShine} />
               </div>
+              {milestones.length <= 1 && (
+                <div className={styles.loader}>
+                  <Loader />
+                </div>
+              )}
               <div className={styles.milestones}>
                 {milestones.slice(1).map((m, i) => (
                   <Link
@@ -100,7 +105,7 @@ const Roadmap = ({ mini }) => {
                         title={
                           m.text.replace('???', 'Coming soon!') +
                           '\n' +
-                          (m.achieved || `${data.numPatrons} / ${m.target} patrons`)
+                          (m.achieved || `${numPatrons} / ${m.target} patrons`)
                         }
                       >
                         <img src={m.img} />
@@ -113,7 +118,7 @@ const Roadmap = ({ mini }) => {
               </div>
             </div>
           </div>
-          <h3 className={styles.bottomText}>Join {data.numPatrons} patrons, support the future of free assets</h3>
+          <h3 className={styles.bottomText}>Join {numPatrons} patrons, support the future of free assets</h3>
         </div>
         {!mini && <DonationBox />}
       </div>

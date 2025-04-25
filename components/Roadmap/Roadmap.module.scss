@@ -55,6 +55,12 @@
           height: 24px;
         }
 
+        .loader {
+          left: 2em;
+          height: 24px;
+          padding: 2px;
+        }
+
         .milestones {
           .milestone {
             margin: calc(24px / 2 - 4px);
@@ -154,6 +160,15 @@
         100% {
           transform: translateX(100%);
         }
+      }
+
+      .loader {
+        @include center;
+        position: absolute;
+        top: 0;
+        left: 2em;
+        height: 32px;
+        padding: 4px;
       }
 
       .milestones {
