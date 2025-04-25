@@ -1,0 +1,8 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "Roadmap": false,
+      "tmp*": false
+    }
+  }
+}
