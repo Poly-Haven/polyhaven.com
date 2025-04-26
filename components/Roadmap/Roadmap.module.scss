@@ -80,12 +80,6 @@
         .milestones {
           .milestone {
             margin: calc(24px / 2 - 4px);
-
-            .milestoneText {
-              margin: 4px;
-              margin-right: 32px;
-              white-space: nowrap;
-            }
             .dot {
               width: 8px;
               height: 8px;
@@ -112,6 +106,34 @@
       }
     }
   }
+
+  .activeMilestoneText {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: $c-text-bright;
+
+    .text {
+      font-weight: bold;
+      font-size: 1.25em;
+
+      span {
+        box-shadow: 0 1px 0 $c-text-light;
+        @include transition();
+
+        &:hover {
+          box-shadow: 0 3px 0 $c-text-bright;
+        }
+      }
+    }
+  }
+  .comingSoon {
+    font-style: italic;
+    opacity: 0.75;
+
+    .text span {
+      box-shadow: none;
+    }
+  }
 }
 
 .roadmapWrapper {
@@ -125,6 +147,25 @@
   }
   .bottomText {
     margin-top: 0;
+    margin-bottom: 1.5em;
+
+    h3 {
+      font-size: 1.3em;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: $c-text-bright;
+      box-shadow: 0 1px 0 $c-text-light;
+      @include transition();
+
+      &:hover {
+        box-shadow: 0 3px 0 $c-text-bright;
+      }
+    }
   }
 
   .barWrapper {
@@ -216,6 +257,7 @@
           @include flex(column-reverse);
           margin: calc(32px / 2 - 6px);
           pointer-events: none;
+          opacity: 0.5;
           @include transition();
 
           & > * {
@@ -246,6 +288,11 @@
           .dotImg {
             margin: -2px 0;
             filter: brightness(1.1);
+            opacity: 0.5;
+            @include transition;
+          }
+          .activeDot {
+            opacity: 1;
           }
 
           .arrow {
@@ -264,6 +311,13 @@
 
           .text {
             position: relative;
+
+            sup {
+              font-size: 0;
+              top: -0.3em;
+              margin-left: -0.1em;
+              @include transition;
+            }
           }
           .comingSoon span {
             transform-origin: left;
@@ -276,12 +330,16 @@
             white-space: nowrap;
             transform-origin: right;
             transform: scaleX(0);
-            content: "Coming soon!";
+            content: "To be announced...";
+            font-style: italic;
             @include transition;
           }
         }
 
+        .active,
         .hover {
+          opacity: 1;
+
           .milestoneText {
             color: $c-text-bright;
             $offset: 4px;
@@ -289,11 +347,22 @@
             margin-top: $offset;
             margin-right: calc(46px + $offset);
 
+            .text sup {
+              font-size: 0.9em;
+            }
+            .text span {
+              box-shadow: 0 1px 0 rgba($c-text-light, 0.75);
+              @include transition;
+            }
+
             .text,
             .icon,
             .target {
               display: initial;
             }
+          }
+          &:hover .milestoneText .text span {
+            box-shadow: 0 3px 0 $c-text-bright;
           }
 
           .comingSoon span {
@@ -303,7 +372,6 @@
           .comingSoon::after {
             transform: scaleX(1);
             opacity: 1;
-            content: "Coming soon!";
           }
 
           .target {
@@ -321,10 +389,14 @@
           }
         }
 
+        .active.achieved,
         .hover.achieved {
           .dot {
             transform: scale(1.5);
             opacity: 1;
+          }
+          .milestoneText .text span {
+            box-shadow: none !important;
           }
         }
 
@@ -398,6 +470,9 @@
             width: 12px;
             height: 12px;
             border: 4px solid $c-background;
+          }
+          .milestoneText .text span {
+            box-shadow: none !important;
           }
           .text,
           .arrow,

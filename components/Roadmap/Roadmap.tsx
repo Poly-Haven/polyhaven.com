@@ -3,11 +3,12 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
 
+import { GoLinkExternal } from 'react-icons/go'
+
 import DonationBox from 'components/DonationBox/DonationBox'
 import Loader from 'components/UI/Loader/Loader'
 
 import styles from './Roadmap.module.scss'
-import { set } from 'date-fns'
 
 const Roadmap = ({ mini }) => {
   const { t } = useTranslation('home')
@@ -70,10 +71,11 @@ const Roadmap = ({ mini }) => {
 
   // Hover effect for the milestones
   const handleMouseEnter = (e, milestoneIndex) => {
-    e.currentTarget.classList.add(styles.hover)
     if (milestoneIndex > highestAchievedGoalIndex) {
       setActiveMilestoneIndex(milestoneIndex)
       setNumPatronsToGo(milestones[milestoneIndex].target - numPatrons)
+    } else {
+      e.currentTarget.classList.add(styles.hover)
     }
   }
   const handleMouseLeave = (e, milestoneIndex) => {
@@ -114,7 +116,7 @@ const Roadmap = ({ mini }) => {
                   <Link
                     key={i}
                     href={m.link}
-                    className={`${styles.milestone} ${
+                    className={`${styles.milestone} ${activeMilestoneIndex === i + 1 ? styles.active : ''} ${
                       m.achieved ? (highestAchievedGoalIndex === i + 1 ? styles.lastAchieved : styles.achieved) : ''
                     } ${i % 2 && !mini ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
@@ -129,14 +131,19 @@ const Roadmap = ({ mini }) => {
                           </div>
                         )}
                         <div className={`${styles.text} ${m.text === '???' && styles.comingSoon}`}>
-                          <span>{m.text}</span>
+                          <span>
+                            {m.text}{' '}
+                            <sup>
+                              <GoLinkExternal />
+                            </sup>
+                          </span>
                         </div>
                         <div className={styles.target}>{m.achieved || `${m.target} patrons`}</div>
                       </div>
                     )}
                     {!mini && <div className={styles.arrow} />}
                     {mini && m.img ? (
-                      <div className={styles.dotImg}>
+                      <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
                         <img src={m.img} />
                       </div>
                     ) : (
@@ -148,26 +155,29 @@ const Roadmap = ({ mini }) => {
             </div>
           </div>
           {mini && activeMilestoneIndex && milestones[activeMilestoneIndex] ? (
-            <div className={styles.milestoneText}>
-              {milestones[activeMilestoneIndex].img && (
-                <div className={styles.icon}>
-                  <img src={milestones[activeMilestoneIndex].img} />
-                </div>
-              )}
-              <div className={`${styles.text} ${milestones[activeMilestoneIndex].text === '???' && styles.comingSoon}`}>
-                <span>{milestones[activeMilestoneIndex].text}</span>
+            <Link
+              href={milestones[activeMilestoneIndex].link}
+              className={`${styles.activeMilestoneText} ${
+                milestones[activeMilestoneIndex].text === '???' && styles.comingSoon
+              }`}
+            >
+              <div className={styles.text}>
+                <span>{milestones[activeMilestoneIndex].text.replace('???', 'To be announced')}</span>
               </div>
               <div className={styles.target}>
+                {numPatrons} /{' '}
                 {milestones[activeMilestoneIndex].achieved || `${milestones[activeMilestoneIndex].target} patrons`}
               </div>
-            </div>
+            </Link>
           ) : (
             numPatrons > 0 && (
-              <h3 className={styles.bottomText}>
-                {numPatronsToGo > 0 && `${Math.max(0, numPatronsToGo)} to go! `}
-                <Link href="https://www.patreon.com/polyhaven/overview">Join {numPatrons} patrons</Link>, support the
-                future of free assets
-              </h3>
+              <div className={styles.bottomText}>
+                <h3>{numPatronsToGo} patrons to go!</h3>
+                <p>
+                  <Link href="https://www.patreon.com/polyhaven/overview">Join {numPatrons} other patrons</Link>,
+                  support the future of free assets.
+                </p>
+              </div>
             )
           )}
         </div>
