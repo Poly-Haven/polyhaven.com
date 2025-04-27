@@ -207,6 +207,7 @@ const AboutPage = () => {
         <a href="https://developers.google.com/fonts/docs/material_icons">Material Design</a>,{' '}
         <a href="https://primer.style/octicons/">Octicons</a>,{' '}
         <a href="https://github.com/tabler/tabler-icons">Tabler Icons</a>,{' '}
+        <a href="https://iconduck.com/sets/iconur-line-icon-set">Iconur Line Icon Set</a>,{' '}
         <a href="https://simpleicons.org/">Simple Icons</a>, and <a href="https://ionic.io/ionicons">Ionicons</a>.
       </p>
     </div>

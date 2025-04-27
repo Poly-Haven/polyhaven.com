@@ -10,8 +10,8 @@ import Loader from 'components/UI/Loader/Loader'
 
 import styles from './Roadmap.module.scss'
 
-const Milestone = ({ milestone, active }) => {
-  const Comp = active ? Link : 'div'
+const Milestone = ({ milestone, active, achieved }) => {
+  const Comp = active || achieved ? Link : 'div'
 
   return (
     <Comp href={milestone.link} className={styles.milestoneText}>
@@ -59,6 +59,7 @@ const Roadmap = ({ mini }) => {
         setNumPatrons(data.numPatrons)
       }
       const allMilestones = [milestones[0], ...data.milestones]
+      // allMilestones[9].achieved = '2023-10-01' // DEBUG
       setMilestones(allMilestones)
 
       let highestAchieved = 0
@@ -105,14 +106,11 @@ const Roadmap = ({ mini }) => {
   }
   const handleMouseLeave = (e, milestoneIndex) => {
     const target = e.currentTarget
-    setTimeout(
-      () => {
-        if (!target.matches(':hover')) {
-          target.classList.remove(styles.hover)
-        }
-      },
-      milestoneIndex < highestAchievedGoalIndex - 1 ? 500 : 200
-    )
+    setTimeout(() => {
+      if (!target.matches(':hover')) {
+        target.classList.remove(styles.hover)
+      }
+    }, 500)
   }
 
   return (
@@ -148,7 +146,13 @@ const Roadmap = ({ mini }) => {
                     onMouseEnter={(e) => handleMouseEnter(e, i + 1)}
                     onMouseLeave={(e) => handleMouseLeave(e, i + 1)}
                   >
-                    {!mini && <Milestone milestone={m} active={activeMilestoneIndex === i + 1} />}
+                    {!mini && (
+                      <Milestone
+                        milestone={m}
+                        active={activeMilestoneIndex === i + 1}
+                        achieved={i + 1 <= highestAchievedGoalIndex}
+                      />
+                    )}
                     {!mini && <div className={styles.arrow} />}
                     {mini && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
