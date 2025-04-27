@@ -260,6 +260,10 @@
           opacity: 0.5;
           @include transition();
 
+          &:hover {
+            opacity: 1;
+          }
+
           & > * {
             cursor: pointer;
             pointer-events: all;
@@ -336,8 +340,7 @@
           }
         }
 
-        .active,
-        .hover {
+        .active {
           opacity: 1;
 
           .milestoneText {
@@ -354,15 +357,15 @@
               box-shadow: 0 1px 0 rgba($c-text-light, 0.75);
               @include transition;
             }
+            &:hover .text span {
+              box-shadow: 0 3px 0 $c-text-bright;
+            }
 
             .text,
             .icon,
             .target {
               display: initial;
             }
-          }
-          &:hover .milestoneText .text span {
-            box-shadow: 0 3px 0 $c-text-bright;
           }
 
           .comingSoon span {
@@ -389,8 +392,7 @@
           }
         }
 
-        .active.achieved,
-        .hover.achieved {
+        .active.achieved {
           .dot {
             transform: scale(1.5);
             opacity: 1;

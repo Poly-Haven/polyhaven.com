@@ -10,6 +10,29 @@ import Loader from 'components/UI/Loader/Loader'
 
 import styles from './Roadmap.module.scss'
 
+const Milestone = ({ milestone, active }) => {
+  const Comp = active ? Link : 'div'
+
+  return (
+    <Comp href={milestone.link} className={styles.milestoneText}>
+      {milestone.img && (
+        <div className={styles.icon}>
+          <img src={milestone.img} />
+        </div>
+      )}
+      <div className={`${styles.text} ${milestone.text === '???' && styles.comingSoon}`}>
+        <span>
+          {milestone.text}{' '}
+          <sup>
+            <GoLinkExternal />
+          </sup>
+        </span>
+      </div>
+      <div className={styles.target}>{milestone.achieved || `${milestone.target} patrons`}</div>
+    </Comp>
+  )
+}
+
 const Roadmap = ({ mini }) => {
   const { t } = useTranslation('home')
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0)
@@ -69,25 +92,11 @@ const Roadmap = ({ mini }) => {
       : 0
   const targetBarPosition = activeMilestoneIndex > 1 ? milestones[activeMilestoneIndex].target / maxTarget : 0
 
-  // Hover effect for the milestones
-  const handleMouseEnter = (e, milestoneIndex) => {
+  const handleClick = (e, milestoneIndex) => {
     if (milestoneIndex > highestAchievedGoalIndex) {
       setActiveMilestoneIndex(milestoneIndex)
       setNumPatronsToGo(milestones[milestoneIndex].target - numPatrons)
-    } else {
-      e.currentTarget.classList.add(styles.hover)
     }
-  }
-  const handleMouseLeave = (e, milestoneIndex) => {
-    const target = e.currentTarget
-    setTimeout(
-      () => {
-        if (!target.matches(':hover')) {
-          target.classList.remove(styles.hover)
-        }
-      },
-      milestoneIndex < highestAchievedGoalIndex - 1 ? 500 : 200
-    )
   }
 
   return (
@@ -113,34 +122,15 @@ const Roadmap = ({ mini }) => {
               )}
               <div className={styles.milestones}>
                 {milestones.slice(1).map((m, i) => (
-                  <Link
+                  <div
                     key={i}
-                    href={m.link}
                     className={`${styles.milestone} ${activeMilestoneIndex === i + 1 ? styles.active : ''} ${
                       m.achieved ? (highestAchievedGoalIndex === i + 1 ? styles.lastAchieved : styles.achieved) : ''
                     } ${i % 2 && !mini ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
-                    onMouseEnter={(e) => handleMouseEnter(e, i + 1)}
-                    onMouseLeave={(e) => handleMouseLeave(e, i + 1)}
+                    onClick={(e) => handleClick(e, i + 1)}
                   >
-                    {!mini && (
-                      <div className={styles.milestoneText}>
-                        {m.img && (
-                          <div className={styles.icon}>
-                            <img src={m.img} />
-                          </div>
-                        )}
-                        <div className={`${styles.text} ${m.text === '???' && styles.comingSoon}`}>
-                          <span>
-                            {m.text}{' '}
-                            <sup>
-                              <GoLinkExternal />
-                            </sup>
-                          </span>
-                        </div>
-                        <div className={styles.target}>{m.achieved || `${m.target} patrons`}</div>
-                      </div>
-                    )}
+                    {!mini && <Milestone milestone={m} active={activeMilestoneIndex === i + 1} />}
                     {!mini && <div className={styles.arrow} />}
                     {mini && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
@@ -149,7 +139,7 @@ const Roadmap = ({ mini }) => {
                     ) : (
                       <div className={styles.dot} />
                     )}
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
