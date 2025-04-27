@@ -270,10 +270,11 @@
           }
 
           .milestoneText {
+            position: relative;
+            right: 48px;
             @include flex(column);
             text-align: right;
             margin: -2px;
-            margin-right: 46px;
             @include transition;
           }
 
@@ -340,15 +341,17 @@
           }
         }
 
-        .active {
+        .active,
+        .hover {
           opacity: 1;
 
           .milestoneText {
-            color: $c-text-bright;
             $offset: 4px;
+            position: relative;
+            right: calc(48px + $offset);
+            color: $c-text-bright;
             margin-bottom: $offset;
             margin-top: $offset;
-            margin-right: calc(46px + $offset);
 
             .text sup {
               font-size: 0.9em;
@@ -379,20 +382,25 @@
 
           .target {
             opacity: 0.5;
+            width: auto;
+            height: auto;
           }
 
           .dot {
             transform: scale(1.25);
             background-color: white;
             z-index: 100;
+            pointer-events: none;
           }
 
           .arrow {
             display: initial !important;
+            pointer-events: none;
           }
         }
 
-        .active.achieved {
+        .active.achieved,
+        .hover.achieved {
           .dot {
             transform: scale(1.5);
             opacity: 1;
@@ -414,8 +422,9 @@
 
         .target {
           opacity: 0;
+          width: 0;
+          height: 0;
           font-size: 0.9em;
-          @include transition();
         }
 
         .flip {

@@ -98,6 +98,22 @@ const Roadmap = ({ mini }) => {
       setNumPatronsToGo(milestones[milestoneIndex].target - numPatrons)
     }
   }
+  const handleMouseEnter = (e, milestoneIndex) => {
+    if (milestoneIndex <= highestAchievedGoalIndex) {
+      e.currentTarget.classList.add(styles.hover)
+    }
+  }
+  const handleMouseLeave = (e, milestoneIndex) => {
+    const target = e.currentTarget
+    setTimeout(
+      () => {
+        if (!target.matches(':hover')) {
+          target.classList.remove(styles.hover)
+        }
+      },
+      milestoneIndex < highestAchievedGoalIndex - 1 ? 500 : 200
+    )
+  }
 
   return (
     <div className={mini ? styles.wrapperMini : styles.wrapper}>
@@ -129,6 +145,8 @@ const Roadmap = ({ mini }) => {
                     } ${i % 2 && !mini ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
                     onClick={(e) => handleClick(e, i + 1)}
+                    onMouseEnter={(e) => handleMouseEnter(e, i + 1)}
+                    onMouseLeave={(e) => handleMouseLeave(e, i + 1)}
                   >
                     {!mini && <Milestone milestone={m} active={activeMilestoneIndex === i + 1} />}
                     {!mini && <div className={styles.arrow} />}
