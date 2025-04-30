@@ -15,8 +15,18 @@ const Vault = ({ vault, numPatrons }) => {
   const progressBarPosition = Math.min(1, numPatrons / vault.milestone.target)
   return (
     <div className={styles.vaultWrapper}>
-      <div className={styles.vault}>
-        <div className={styles.gradient} />
+      <div
+        className={styles.vault}
+        style={
+          vault.img
+            ? {
+                backgroundImage: `url("${vault.img}")`,
+              }
+            : {}
+        }
+      >
+        <div className={styles.gradientL} />
+        <div className={styles.gradientR} />
         <div className={styles.left}>
           <h2>{vault.name}</h2>
           <p>{vault.description}</p>

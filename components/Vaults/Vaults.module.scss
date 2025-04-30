@@ -16,24 +16,30 @@
   .vault {
     @include flex(row, true);
     position: relative;
-    min-height: 40vh;
+    min-height: 60vh;
     padding: 1.5em 3em;
     color: $c-text-bright;
-    background: url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920) no-repeat center center !important;
-    background-attachment: fixed !important;
-    background-size: cover !important;
+    background: url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920) no-repeat center center;
+    background-size: cover;
 
     & > * {
       position: relative; // Ensure gradient appears behind elements
     }
 
-    .gradient {
+    .gradientL {
       @include absolute_cover;
-      background: linear-gradient(70deg, $c-background 0%, transparent 50%, $c-background 100%);
-      opacity: 0.75;
+      background: linear-gradient(195deg, transparent 50%, $c-background-darker 100%);
+      opacity: 0.7;
+    }
+
+    .gradientR {
+      @include absolute_cover;
+      background: linear-gradient(165deg, transparent 65%, $c-background-darker 100%);
+      opacity: 0.6;
     }
 
     .left {
+      margin-top: auto;
       text-align: left;
       flex-grow: 1;
     }
@@ -50,7 +56,7 @@
     }
 
     .right {
-      // margin-top: auto;
+      margin-top: auto;
 
       .barWrapper {
         width: calc(100% - 1rem);
