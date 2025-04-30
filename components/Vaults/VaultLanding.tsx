@@ -5,6 +5,7 @@ import apiSWR from 'utils/apiSWR'
 import Button from 'components/UI/Button/Button'
 import DonationBox from 'components/DonationBox/DonationBox'
 import Loader from 'components/UI/Loader/Loader'
+import HeartLock from 'components/UI/Icons/HeartLock'
 
 import { IoMdUnlock } from 'react-icons/io'
 import { MdArrowForward } from 'react-icons/md'
@@ -95,13 +96,14 @@ const VaultLanding = ({ vaults }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <h1>The Vaults</h1>
+        <h1>
+          <HeartLock />
+          Poly Haven Vaults
+        </h1>
         <p>
-          <strong>Support the future of free assets and unlock The Vaults.</strong>
-        </p>
-        <p>
-          Assets are available in Early Access to Patreon supporters, but will be released freely when their goal is
-          met.
+          <strong>Donate to support the future of free assets and unlock The Vaults.</strong>
+          <br />
+          Available in Early Access to Patreon supporters, released freely when their goal is met.
         </p>
       </div>
 

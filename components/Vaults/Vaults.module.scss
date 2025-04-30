@@ -6,7 +6,28 @@
   text-align: center;
 
   .header {
+    @include flex(row, true, true);
     margin: 2em 1em;
+
+    h1 {
+      font-size: 2.5em;
+
+      svg {
+        position: relative;
+        display: inline-block;
+        width: 1em;
+        margin-right: 0.3em;
+        vertical-align: middle;
+      }
+    }
+
+    p {
+      text-align: left;
+      line-height: 1.5em;
+      border-left: 1px solid rgba($c-text-light, 0.5);
+      padding-left: 2em;
+      margin-left: 2em;
+    }
   }
 }
 
