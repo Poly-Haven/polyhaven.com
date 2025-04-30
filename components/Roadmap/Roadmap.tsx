@@ -17,12 +17,12 @@ const Milestone = ({ milestone, active, achieved }) => {
     <Comp href={milestone.link} className={styles.milestoneText}>
       {milestone.img && (
         <div className={styles.icon}>
-          <img src={milestone.img} />
+          <img src={milestone.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : milestone.img} />
         </div>
       )}
       <div className={`${styles.text} ${milestone.text === '???' && styles.comingSoon}`}>
         <span>
-          {milestone.text}{' '}
+          {milestone.text.replace('???', '')}{' '}
           <sup>
             <GoLinkExternal />
           </sup>
@@ -156,7 +156,7 @@ const Roadmap = ({ mini }) => {
                     {!mini && <div className={styles.arrow} />}
                     {mini && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
-                        <img src={m.img} />
+                        <img src={m.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : m.img} />
                       </div>
                     ) : (
                       <div className={styles.dot} />

@@ -85,12 +85,6 @@
               height: 8px;
               border: 2px solid $c-background;
             }
-            .arrow {
-              right: 18px;
-              width: 2px;
-              height: 24px;
-              border: 2px solid $c-background;
-            }
             .text,
             .arrow,
             .icon,
@@ -311,7 +305,7 @@
             margin-top: 8px;
             margin-bottom: -12px;
             right: 26px;
-            width: 2px;
+            width: 1.5px;
             height: 40px;
             background: $c-text-light;
             border: 3px solid $c-background;
