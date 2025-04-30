@@ -1,8 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import Link from 'next/link'
 
-import Heart from 'components/UI/Icons/Heart'
-import Button from 'components/UI/Button/Button'
 import Collection from './Collection'
 
 import styles from './Collections.module.scss'

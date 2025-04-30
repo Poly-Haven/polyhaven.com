@@ -1,9 +1,71 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
 
+import Button from 'components/UI/Button/Button'
 import DonationBox from 'components/DonationBox/DonationBox'
+import Loader from 'components/UI/Loader/Loader'
+
+import { IoMdUnlock } from 'react-icons/io'
+import { MdArrowForward } from 'react-icons/md'
 
 import styles from './Vaults.module.scss'
+
+const Vault = ({ vault, numPatrons }) => {
+  const progressBarPosition = Math.min(1, numPatrons / vault.milestone.target)
+  return (
+    <div className={styles.vaultWrapper}>
+      <div className={styles.vault}>
+        <div className={styles.gradient} />
+        <div className={styles.left}>
+          <h2>{vault.name}</h2>
+          <p>{vault.description}</p>
+          {vault.about && <Button text="About the Project" href={vault.about} />}
+        </div>
+
+        <div className={styles.right}>
+          <div className={styles.row}>
+            <Button text="Browse Assets" href={`/vaults/${vault.id}`} />
+            <Button
+              text="Access Now"
+              href="https://www.patreon.com/checkout/polyhaven"
+              icon={<IoMdUnlock />}
+              color="red"
+            />
+          </div>
+
+          <div className={styles.barWrapper}>
+            <div className={styles.barOuter}>
+              <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
+                <div className={styles.barShine} />
+                {numPatrons > 0 ? (
+                  <div className={styles.barText}>
+                    {Math.max(0, vault.milestone.target - numPatrons)} patrons to go!
+                  </div>
+                ) : (
+                  <div className={styles.barText}>
+                    <Loader />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.assetList}>
+        {vault.assets.map((slug) => (
+          <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
+            <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90 `} />
+          </Link>
+        ))}
+        <Link href={`/vaults/${vault.id}`} className={styles.arrow}>
+          <MdArrowForward />
+        </Link>
+      </div>
+    </div>
+  )
+}
 
 const VaultLanding = ({ vaults }) => {
   const [numPatrons, setNumPatrons] = useState(0)
@@ -22,13 +84,20 @@ const VaultLanding = ({ vaults }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1>The Vaults</h1>
-      <p>Support the future of free assets and unlock The Vaults</p>
+      <div className={styles.header}>
+        <h1>The Vaults</h1>
+        <p>
+          <strong>Support the future of free assets and unlock The Vaults.</strong>
+        </p>
+        <p>
+          Assets are available in Early Access to Patreon supporters, but will be released freely when their goal is
+          met.
+        </p>
+      </div>
+
       <div className={styles.vaultsList}>
         {Object.keys(vaults).map((vaultId) => (
-          <p>
-            {vaultId} ({numPatrons} / {vaults[vaultId].milestone.target})
-          </p>
+          <Vault key={vaultId} vault={vaults[vaultId]} numPatrons={numPatrons} />
         ))}
       </div>
 
