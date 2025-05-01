@@ -200,7 +200,7 @@
 
 .textSection {
   width: calc(100% - 2rem);
-  max-width: 1024px;
+  max-width: 800px;
   padding: 1rem;
   margin: auto;
   text-align: left;
@@ -213,7 +213,6 @@
   h1,
   h2 {
     margin: 1em 0 0.3em;
-    text-wrap: balance;
   }
 
   p {
@@ -237,6 +236,15 @@
   hr {
     border: none;
     border-top: 1px solid $c-background-light;
+  }
+}
+.infoSection {
+  @extend .textSection;
+  max-width: 1200px;
+
+  h2,
+  p {
+    text-wrap: balance;
   }
 }
 

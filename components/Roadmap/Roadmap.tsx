@@ -117,7 +117,7 @@ const Roadmap = ({ mini, vaults }) => {
     <div className={mini ? styles.wrapperMini : styles.wrapper}>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
-          <h2 className={styles.topText}>Poly Haven Roadmap</h2>
+          <h2 className={styles.topText}>{vaults ? "What's Next?" : 'Poly Haven Roadmap'}</h2>
           <div className={styles.barWrapper}>
             <div className={styles.barOuter}>
               <div className={styles.barTarget} style={{ width: `calc(${targetBarPosition * 100}% - 4px)` }} />

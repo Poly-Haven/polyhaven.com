@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
 
 import VaultBanner from './VaultBanner'
@@ -23,6 +24,8 @@ const VaultLanding = ({ vaults }) => {
     numAssets += vaults[vaultId].assets.length
   }
 
+  const nextVault = Object.values(vaults)[0]
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -43,23 +46,30 @@ const VaultLanding = ({ vaults }) => {
         ))}
       </div>
 
-      <div className={styles.textSection} style={{ maxWidth: '1200px' }}>
+      <div className={styles.infoSection}>
         <div className={styles.row}>
           <div>
             <h1>How it Works:</h1>
             <p>
-              Poly Haven creates free and public domain 3D assets, but to fund our work we have locked away some of our
-              content behind a temporary paywall: The Vaults.
+              Poly Haven creates free and public domain 3D assets. To help fund our work, we have locked some new
+              collections of assets behind a temporary paywall: The Vaults.
             </p>
             <p>
-              Each vault has a specific funding goal, defined by a target number of{' '}
-              <a href="https://www.patreon.com/polyhaven">Patreon</a> members. Once this goal is reached, the vault is
+              Each Vault has a specific funding goal, defined by a target number of{' '}
+              <a href="https://www.patreon.com/polyhaven">Patreon</a> members. Once this goal is reached, the Vault is
               released freely for everyone.
             </p>
-            <p>Until then, support us on Patreon to access the content inside all the vaults.</p>
             <p>
-              Not only do you get immediate access to all {numAssets} vaulted assets, but you also help bring those
-              assets freely to everyone in the future.
+              For example, the next Vault, <Link href={`/vaults/${nextVault['id']}`}>{nextVault['name']}</Link>,
+              contains {nextVault['assets'].length} assets and will be unlocked once we reach {nextVault['target']}{' '}
+              total patrons ({nextVault['target'] - numPatrons} to go!).
+            </p>
+            <p>
+              Until then, support us on Patreon to access the content inside <strong>all</strong> the Vaults.
+            </p>
+            <p>
+              Not only do you get <strong>immediate access to all {numAssets} vaulted assets</strong>, but you also help
+              release them for free to the public more quickly.
             </p>
           </div>
 
@@ -78,48 +88,81 @@ const VaultLanding = ({ vaults }) => {
         <h1>FAQ</h1>
         <h2>What is a Vault?</h2>
         <p>
-          A vault is a collection of assets that are temporarily locked away until we reach a funding goal. Once the
-          goal is reached, the vault is released freely for everyone.
+          A Vault is a collection of assets that are temporarily locked away until we reach a funding goal. Once the
+          goal is reached, the Vault is released freely for everyone.
         </p>
+        <hr />
+
+        <h2>Are all your future assets going to be locked in a Vault?</h2>
+        <p>No! We are still publishing new assets in addition to the Vaults - about one new asset every week day.</p>
+        <p>The Vaults are in addition to our regular free content, not a replacement.</p>
+        <p>
+          Similarly, all of our community projects and donated assets will always be immediately free to the public.
+          Only large collections that require significant investment to create ourselves may be locked in a Vault.
+        </p>
+        <p>And remember, every asset (even those in the Vaults) will eventually be free for everyone.</p>
         <hr />
 
         <h2>How do I access the Vaults?</h2>
         <p>
-          To access the vaults, you need to support us on Patreon with at least $3 per month. Once you become a patron,
-          you will receive access to all the assets inside the vaults. Simply <a href="/account">log in</a> with your
-          Patreon account, and the assets will become accessible to you.
+          To access the Vaults, you need to support us on <a href="https://www.patreon.com/polyhaven">Patreon</a> with
+          at least $3 per month. Once you become a patron, you will receive access to all the assets inside all of the
+          Vaults.
+        </p>
+        <p>
+          Simply <a href="/account">log in</a> with your Patreon account, and you will be able to download the assets.
         </p>
         <hr />
 
         <h2>Why are the Vaults locked?</h2>
         <p>
-          The vaults are locked to help fund our work. Poly Haven is a small team of artists and developers who create
-          free and public domain 3D assets. We rely on the support of our patrons to keep creating new content.
+          The Vaults are locked to help fund our work. Poly Haven is a small team of artists and developers who create
+          free and public domain 3D assets. We rely on the support of our patrons to maintain this website and keep
+          creating new content.
         </p>
         <p>
-          We do not want to lock away our content, but we need to fund our work. The vaults are a temporary solution to
-          help us reach our funding goals and provide free content to everyone.
+          We do not want to lock away our content, but we need to fund our work. The Vaults help us reach our funding
+          goals and ultimately provide more free content to everyone.
         </p>
         <hr />
 
         <h2>What happens when a Vault is released?</h2>
         <p>
-          When a vault is released, all the assets inside the vault are made freely available to everyone. This means
+          When a Vault is released, all the assets inside the Vault are made freely available to everyone. This means
           that anyone can download and use the assets without any restrictions.
         </p>
-        <p>Once a vault is released, it will remain free and public domain forever.</p>
+        <p>Once a Vault is released, it will remain free and public domain forever.</p>
         <p>
-          We will anounce the release on Patreon, as well as social media. The vault page will be removed, and the
+          We will anounce the release on Patreon, as well as social media. The Vault page will be removed, and the
           assets will become available for free download.
+        </p>
+        <p>
+          Some Vaults may turn into a <Link href="/collections">collection</Link>, while others simply merge into the
+          main library.
         </p>
         <hr />
 
         <h2>What if we don't reach the funding goals?</h2>
+        <p>The Vaults will remain locked until the target number of patrons is reached.</p>
         <p>
-          The vaults will remain locked until the target number of patrons is reached. If a vault remains locked for a
-          very long time, we will evaluate the situation and consider alternative ways to release the assets. Our goal
-          is to make all assets freely available eventually, but we rely on the support of our community to make this
-          possible. Your contributions help us continue creating high-quality, free content for everyone.
+          If a Vault remains locked for a very long time, we will evaluate the situation and consider the feasibility of
+          adjusting the goal.
+        </p>
+        <p>
+          Our aim is to make all assets freely available eventually, but we rely on the support of our community to make
+          this possible. Your contributions help us continue creating free high-quality content for everyone.
+        </p>
+        <hr />
+
+        <h2>What is the license of the Vaulted assets?</h2>
+        <p>
+          Like the rest of our library, all assets in the Vaults are <Link href="/license">CC0</Link>.
+        </p>
+        <hr />
+
+        <p>
+          <br />
+          Got a different question? <Link href="/about-contact">Contact us</Link>.
         </p>
       </div>
     </div>
