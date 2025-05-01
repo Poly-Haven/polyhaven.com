@@ -27,7 +27,6 @@ import Switch from 'components/UI/Switch/Switch'
 import DonationBox from 'components/DonationBox/DonationBox'
 
 import styles from './Grid.module.scss'
-import btnStyles from 'components/UI/Button/Button.module.scss'
 
 const Grid = (props) => {
   const { t: tc } = useTranslation('common')
@@ -75,7 +74,7 @@ const Grid = (props) => {
   }, [])
 
   // Once we've scrolled past the banner, stick the options bar at the top
-  const [noSticky, setNoSticky] = useState(props.collection || props.banner ? true : false)
+  const [noSticky, setNoSticky] = useState(props.collection || props.vault || props.banner ? true : false)
   const topOfPageRef = useRef(null)
   useEffect(() => {
     const handleScroll = () => {
@@ -87,13 +86,13 @@ const Grid = (props) => {
       }
     }
     handleScroll() // Check on load
-    if (props.collection || props.banner) {
+    if (props.collection || props.vault || props.banner) {
       window.addEventListener('scroll', handleScroll)
       return () => window.removeEventListener('scroll', handleScroll)
     } else {
       setNoSticky(false)
     }
-  }, [props.collection, props.banner])
+  }, [props.collection, props.vault, props.banner])
 
   // Work around stale state issues
   const numResults = useRef(null)
@@ -269,7 +268,7 @@ const Grid = (props) => {
     sortedKeys = sortedKeys.filter((k) => Object.keys(data[k].authors).includes(props.author))
   }
 
-  if (blurUpcoming) {
+  if (blurUpcoming && !props.vault) {
     if (width <= 810 || eaPref === 'none') {
       sortedKeys = sortedKeys.filter((k, i) => {
         return data[k].date_published <= Math.floor(Date.now() / 1000)
@@ -283,7 +282,9 @@ const Grid = (props) => {
 
   let title = tc(asset_type_name)
   if (props.collection) {
-    title = props.collection.name
+    title = ''
+  } else if (props.vault) {
+    title = ''
   } else {
     if (props.categories.length) {
       title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
@@ -498,7 +499,7 @@ const Grid = (props) => {
                       asset={data[asset]}
                       assetID={asset}
                       onClick={setHeaderPath}
-                      blurUpcoming={blurUpcoming && eaPref !== 'all'}
+                      blurUpcoming={blurUpcoming && eaPref !== 'all' && !props.vault}
                       thumbSize={thumbSize}
                       showText={showText}
                     />

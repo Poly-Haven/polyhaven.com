@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next'
 import React, { useState, useEffect, useRef } from 'react'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
-import { formatNumber } from 'utils/stringUtils'
+import { titleCase, formatNumber } from 'utils/stringUtils'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -87,6 +88,14 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const largestDimension = data.dimensions ? Math.max(...data.dimensions) : 0
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
   const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
+
+  let vault = null
+  for (const cat of data.categories) {
+    if (cat.startsWith('vault: ')) {
+      vault = cat.split(': ')[1]
+      break
+    }
+  }
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -373,7 +382,17 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               />
             </div>
             <InfoItem label={t('released')}>
-              {ageValue} {ageLabel}
+              {vault ? (
+                <span style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>
+                  When the{' '}
+                  <Link href={`/vaults/${vault}`} prefetch={false}>
+                    {titleCase(vault)} Vault
+                  </Link>{' '}
+                  is unlocked
+                </span>
+              ) : (
+                `${ageValue} ${ageLabel}`
+              )}
             </InfoItem>
           </div>
         </div>

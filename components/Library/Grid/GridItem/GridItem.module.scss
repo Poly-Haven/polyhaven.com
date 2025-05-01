@@ -42,6 +42,11 @@
       height: 3rem;
       font-size: 0.8em;
     }
+    .vault {
+      width: 3rem;
+      height: 3rem;
+      font-size: 0.8em;
+    }
 
     .indicators {
       opacity: 1;
@@ -118,11 +123,15 @@
     color: white;
     padding-bottom: 0.2em;
     margin: 0;
-    text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow:
+      1px 1px 1px rgb(0, 0, 0),
+      1px 1px 3px rgba(0, 0, 0, 0.5);
     white-space: nowrap;
   }
   p {
-    text-shadow: 1px 1px 1px rgb(0, 0, 0), 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow:
+      1px 1px 1px rgb(0, 0, 0),
+      1px 1px 3px rgba(0, 0, 0, 0.5);
     opacity: 0.8;
     margin: 0;
     line-height: 1;
@@ -171,6 +180,13 @@
 .soon {
   background: $c-blue;
   color: rgba($c-blue, 0);
+  font-size: 0;
+  line-height: 1em;
+  text-align: center;
+}
+.vault {
+  background: $c-red;
+  color: rgba($c-red, 0);
   font-size: 0;
   line-height: 1em;
   text-align: center;

@@ -1,82 +1,11 @@
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
 
-import Button from 'components/UI/Button/Button'
+import VaultBanner from './VaultBanner'
 import DonationBox from 'components/DonationBox/DonationBox'
-import Loader from 'components/UI/Loader/Loader'
 import HeartLock from 'components/UI/Icons/HeartLock'
 
-import { IoMdUnlock } from 'react-icons/io'
-import { MdArrowForward } from 'react-icons/md'
-
 import styles from './Vaults.module.scss'
-
-const Vault = ({ vault, numPatrons }) => {
-  const progressBarPosition = Math.min(1, numPatrons / vault.milestone.target)
-  return (
-    <div className={styles.vaultWrapper}>
-      <div
-        className={styles.vault}
-        style={
-          vault.img
-            ? {
-                backgroundImage: `url("${vault.img}")`,
-              }
-            : {}
-        }
-      >
-        <div className={styles.gradientL} />
-        <div className={styles.gradientR} />
-        <div className={styles.left}>
-          <h2>{vault.name}</h2>
-          <p>{vault.description}</p>
-          {vault.about && <Button text="About the Project" href={vault.about} />}
-        </div>
-
-        <div className={styles.right}>
-          <div className={styles.row}>
-            <Button text="Browse Assets" href={`/vaults/${vault.id}`} />
-            <Button
-              text="Access Now"
-              href="https://www.patreon.com/checkout/polyhaven"
-              icon={<IoMdUnlock />}
-              color="red"
-            />
-          </div>
-
-          <div className={styles.barWrapper}>
-            <div className={styles.barOuter}>
-              <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
-                <div className={styles.barShine} />
-                {numPatrons > 0 ? (
-                  <div className={styles.barText}>
-                    {Math.max(0, vault.milestone.target - numPatrons)} patrons to go!
-                  </div>
-                ) : (
-                  <div className={styles.barText}>
-                    <Loader />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.assetList}>
-        {vault.assets.map((slug) => (
-          <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
-            <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90 `} />
-          </Link>
-        ))}
-        <Link href={`/vaults/${vault.id}`} className={styles.arrow}>
-          <MdArrowForward />
-        </Link>
-      </div>
-    </div>
-  )
-}
 
 const VaultLanding = ({ vaults }) => {
   const [numPatrons, setNumPatrons] = useState(0)
@@ -109,7 +38,7 @@ const VaultLanding = ({ vaults }) => {
 
       <div className={styles.vaultsList}>
         {Object.keys(vaults).map((vaultId) => (
-          <Vault key={vaultId} vault={vaults[vaultId]} numPatrons={numPatrons} />
+          <VaultBanner key={vaultId} vault={vaults[vaultId]} numPatrons={numPatrons} />
         ))}
       </div>
 

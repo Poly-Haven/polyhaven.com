@@ -2,12 +2,14 @@ import { useTranslation } from 'next-i18next'
 import { useRef } from 'react'
 import Link from 'next/link'
 import { timeago } from 'utils/dateUtils'
+import { titleCase } from 'utils/stringUtils'
 
 import { MdCollections } from 'react-icons/md'
 import { TbBone, TbDrone, TbPyramid, TbAspectRatio, TbTool } from 'react-icons/tb'
 
 import { daysOld } from 'utils/dateUtils'
 import IconPatreon from 'components/UI/Icons/Patreon'
+import HeartLock from 'components/UI/Icons/HeartLock'
 import NodeTree from 'components/UI/Icons/NodeTree'
 import SimpleAuthorCredit from 'components/Library/Grid/SimpleAuthorCredit'
 
@@ -44,8 +46,27 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
+  let vault = null
+  for (const cat of asset.categories) {
+    if (cat.startsWith('vault: ')) {
+      vault = cat.split(': ')[1]
+      break
+    }
+  }
+
   let badge
-  if (daysOld(asset.date_published) < 0) {
+  if (vault) {
+    badge = {
+      text: (
+        <>
+          <HeartLock color2="white" />
+          {titleCase(vault) + ' Vault'}
+        </>
+      ),
+      style: styles.vault,
+      tooltip: t('Available to $3+ Patrons, released freely goal is met.'),
+    }
+  } else if (daysOld(asset.date_published) < 0) {
     badge = {
       text: (
         <>
@@ -54,7 +75,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
         </>
       ),
       style: styles.soon,
-      tooltip: t('$3+ Patrons can log in to download early'),
+      tooltip: t('$3+ Patrons can log in to download early.'),
     }
   } else if (daysOld(asset.date_published) < 7) {
     badge = {
@@ -132,7 +153,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
       </div>
       <div className={styles.text}>
         <h3>{asset.name}</h3>
-        <p>{timeago(asset.date_published * 1000, tt)}</p>
+        {!vault && <p>{timeago(asset.date_published * 1000, tt)}</p>}
       </div>
       {badge ? (
         <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>

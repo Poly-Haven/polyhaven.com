@@ -9,17 +9,16 @@ const LibraryPage = (props) => {
   return (
     <>
       <Head
-        title={props.collection.name}
-        url={`/collections/${props.collection.id}/${props.assetType}/${props.categories.join('/')}`}
-        description={props.collection.description}
+        title={props.vault.name + ' Vault'}
+        url={`/vaults/${props.vault.id}/${props.assetType}/${props.categories.join('/')}`}
+        description={props.vault.description}
         assetType={asset_types[props.assetType]}
-        image={`https://cdn.polyhaven.com/collections/${props.collection.id}.png?width=580`}
+        image={`https://cdn.polyhaven.com/vaults/${props.vault.id}.png?width=580`}
       />
       <Library
         assetType={props.assetType}
         categories={props.categories}
-        collections={{}}
-        collection={props.collection}
+        vault={props.vault}
         author={props.author}
         search={props.search}
         strictSearch={props.strictSearch}
@@ -37,8 +36,8 @@ function handleErrors(response) {
 }
 
 export async function getServerSideProps(context) {
-  const params = context.params.collection
-  const collectionID = params.shift()
+  const params = context.params.vault
+  const vaultID = params.shift()
   const author = context.query.a
   const search = context.query.s
   const strictSearch = context.query.strict
@@ -47,12 +46,12 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   let error = null
 
-  const collections = await fetch(`${baseUrl}/collections`)
+  const vaults = await fetch(`${baseUrl}/vaults`)
     .then(handleErrors)
     .then((response) => response.json())
     .catch((e) => (error = e))
 
-  if (!Object.keys(collections).includes(collectionID)) {
+  if (!Object.keys(vaults).includes(vaultID)) {
     return {
       notFound: true,
       props: {
@@ -66,15 +65,14 @@ export async function getServerSideProps(context) {
     sort = 'hot'
   }
 
-  const collectionData = collections[collectionID]
-  collectionData.id = collectionID
+  const vaultData = vaults[vaultID]
 
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: 'all',
-      collection: collectionData,
-      categories: [`collection: ${collectionID}`, ...params],
+      vault: vaultData,
+      categories: [`vault: ${vaultID}`, ...params],
       author: author ? author : '',
       search: search ? search : '',
       strictSearch: strictSearch ? true : false,

@@ -17,7 +17,7 @@
         display: inline-block;
         width: 1em;
         margin-right: 0.3em;
-        vertical-align: middle;
+        vertical-align: baseline;
       }
     }
 
@@ -31,9 +31,13 @@
   }
 }
 
-.vaultWrapper {
-  margin: 2em 0;
+.vaultsList {
+  @include flex(column);
+  gap: 2em;
+  background: $c-background-dark;
+}
 
+.vaultWrapper {
   .vault {
     @include flex(row, true);
     position: relative;
