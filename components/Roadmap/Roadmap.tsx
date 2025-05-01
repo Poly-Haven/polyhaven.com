@@ -33,7 +33,7 @@ const Milestone = ({ milestone, active, achieved }) => {
   )
 }
 
-const Roadmap = ({ mini }) => {
+const Roadmap = ({ mini, vaults }) => {
   const { t } = useTranslation('home')
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0)
   const [highestAchievedGoalIndex, setHighestAchievedGoalIndex] = useState(0)
@@ -193,7 +193,7 @@ const Roadmap = ({ mini }) => {
             )
           )}
         </div>
-        {!mini && <DonationBox />}
+        {!mini && !vaults && <DonationBox />}
       </div>
     </div>
   )
@@ -201,6 +201,7 @@ const Roadmap = ({ mini }) => {
 
 Roadmap.defaultProps = {
   mini: false,
+  vaults: false,
 }
 
 export default Roadmap

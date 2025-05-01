@@ -4,6 +4,7 @@ import apiSWR from 'utils/apiSWR'
 import VaultBanner from './VaultBanner'
 import DonationBox from 'components/DonationBox/DonationBox'
 import HeartLock from 'components/UI/Icons/HeartLock'
+import Roadmap from 'components/Roadmap/Roadmap'
 
 import styles from './Vaults.module.scss'
 
@@ -42,7 +43,7 @@ const VaultLanding = ({ vaults }) => {
         ))}
       </div>
 
-      <div className={styles.textSection}>
+      <div className={styles.textSection} style={{ maxWidth: '1200px' }}>
         <div className={styles.row}>
           <div>
             <h1>How it Works:</h1>
@@ -63,11 +64,15 @@ const VaultLanding = ({ vaults }) => {
           </div>
 
           <div>
-            <h2>Donate $3+ per month to unlock {numAssets} assets and support our work.</h2>
+            <h2 style={{ textAlign: 'center' }}>
+              Donate $3+ per month to unlock {numAssets} assets and support our work.
+            </h2>
             <DonationBox />
           </div>
         </div>
       </div>
+
+      <Roadmap vaults />
 
       <div className={styles.textSection} style={{ marginBottom: '5em' }}>
         <h1>FAQ</h1>
