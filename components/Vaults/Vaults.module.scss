@@ -198,6 +198,47 @@
   }
 }
 
+.textSection {
+  width: calc(100% - 2rem);
+  max-width: 1024px;
+  padding: 1rem;
+  margin: auto;
+  text-align: left;
+
+  .row {
+    @include flex(row, true, true);
+    gap: 2em;
+  }
+
+  h1,
+  h2 {
+    margin: 1em 0 0.3em;
+  }
+
+  p {
+    margin: 0.7em 0;
+    text-wrap: pretty;
+  }
+
+  q {
+    display: block;
+    padding-left: 1rem;
+    border-left: 2px solid $c-accent;
+    font-style: italic;
+    opacity: 0.75;
+    font-weight: bold;
+  }
+
+  strong {
+    color: white;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $c-background-light;
+  }
+}
+
 .row {
   @include flex(row, true, true);
   gap: 0.5em;
