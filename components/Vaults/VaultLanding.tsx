@@ -110,19 +110,28 @@ const VaultLanding = ({ vaults }) => {
           Vaults.
         </p>
         <p>
-          Simply <a href="/account">log in</a> with your Patreon account, and you will be able to download the assets.
+          On this website, simply <a href="/account">log in</a> with your Patreon account, and you will be able to
+          download the assets.
+        </p>
+        <p>
+          In <Link href="/plugins/blender">our Blender add-on</Link>, the vaulted assets will automatically be
+          downloaded when you click "Fetch Assets".
         </p>
         <hr />
 
-        <h2>Why are the Vaults locked?</h2>
+        <h2>Is this like a crowdfunding project or Patreon goal?</h2>
         <p>
-          The Vaults are locked to help fund our work. Poly Haven is a small team of artists and developers who create
-          free and public domain 3D assets. We rely on the support of our patrons to maintain this website and keep
-          creating new content.
+          In a way, yes. In the past, we tried both Patreon goals and crowdfunding campaigns, with the promise that once
+          we reached the funding goal we would start working on the project.
         </p>
         <p>
-          We do not want to lock away our content, but we need to fund our work. The Vaults help us reach our funding
-          goals and ultimately provide more free content to everyone.
+          This is similar, except we work on the project up front before the funding goal is reached, trusting that our
+          community will support us and cover the funds later over time.
+        </p>
+        <p>
+          While we have to pay for the development costs up front, this way we can work on more projects sooner, and
+          reward our supporters with early access before the funding goal is met. Nobody can be disappointed by
+          unfulfilled promises, and we can release the assets for free as soon as the goal is met.
         </p>
         <hr />
 
@@ -145,8 +154,8 @@ const VaultLanding = ({ vaults }) => {
         <h2>What if we don't reach the funding goals?</h2>
         <p>The Vaults will remain locked until the target number of patrons is reached.</p>
         <p>
-          If a Vault remains locked for a very long time, we will evaluate the situation and consider the feasibility of
-          adjusting the goal.
+          If a Vault remains locked for a such a long time that we are ready to upload another Vault, we will consider
+          adjusting the goals to avoid having too many locked Vaults at once.
         </p>
         <p>
           Our aim is to make all assets freely available eventually, but we rely on the support of our community to make
