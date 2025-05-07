@@ -10,6 +10,7 @@
     margin: 2em 1em;
 
     h1 {
+      line-height: 1em;
       font-size: 2.5em;
 
       svg {
@@ -27,6 +28,27 @@
       border-left: 1px solid rgba($c-text-light, 0.5);
       padding-left: 2em;
       margin-left: 2em;
+    }
+
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+
+      p {
+        text-align: center;
+        border: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+
+        svg {
+          vertical-align: middle;
+        }
+      }
     }
   }
 }
@@ -148,6 +170,10 @@
         }
       }
     }
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -167,6 +193,18 @@
     &:hover {
       filter: brightness(1.2);
       @include transition;
+    }
+
+    @media screen and (max-width: 1000px) {
+      img {
+        height: 60px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      img {
+        height: 45px;
+      }
     }
   }
 
@@ -208,6 +246,15 @@
   .row {
     @include flex(row, true, true);
     gap: 2em;
+
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .donationBox {
+    @include flex(column, true, true);
   }
 
   h1,
@@ -251,4 +298,7 @@
 .row {
   @include flex(row, true, true);
   gap: 0.5em;
+}
+.spacer {
+  flex-grow: 1;
 }

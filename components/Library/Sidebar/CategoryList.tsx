@@ -40,7 +40,9 @@ const CategoryList = (props) => {
   }
 
   const wholeList = props.level === -1 ? tlc[props.assetType] : Object.keys(data)
-  const list = wholeList.filter((cat) => data[cat] > 1).filter((cat) => !cat.startsWith('collection: '))
+  const list = wholeList
+    .filter((cat) => data[cat] > 1)
+    .filter((cat) => !cat.startsWith('collection: ') && !cat.startsWith('vault: '))
 
   return (
     <div className={`${level > 0 ? styles.subCat : ''}`}>

@@ -11,6 +11,10 @@
   // background-attachment: fixed;
   background-size: cover;
 
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+
   .wrapperInner {
     @include flex(row, true, true);
     gap: 1em;
@@ -21,6 +25,10 @@
 
 .wrapperMini {
   width: 100%;
+
+  @media screen and (max-width: 340px) {
+    display: none;
+  }
 
   .wrapperInner {
     margin: 0;
@@ -539,4 +547,8 @@
     left: 90%;
     background: linear-gradient(to right, transparent, $c-background-dark);
   }
+}
+
+.center {
+  @include center;
 }

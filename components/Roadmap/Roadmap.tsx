@@ -1,7 +1,8 @@
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
+import useDivSize from 'hooks/useDivSize'
 
 import { GoLinkExternal } from 'react-icons/go'
 
@@ -35,6 +36,8 @@ const Milestone = ({ milestone, active, achieved }) => {
 
 const Roadmap = ({ mini, vaults }) => {
   const { t } = useTranslation('home')
+  const widthRef = useRef(null)
+  const { width: divWidth } = useDivSize(widthRef)
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0)
   const [highestAchievedGoalIndex, setHighestAchievedGoalIndex] = useState(0)
   const [numPatrons, setNumPatrons] = useState(0)
@@ -114,7 +117,7 @@ const Roadmap = ({ mini, vaults }) => {
   }
 
   return (
-    <div className={mini ? styles.wrapperMini : styles.wrapper}>
+    <div className={mini ? styles.wrapperMini : styles.wrapper} ref={widthRef}>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
           <h2 className={styles.topText}>{vaults ? "What's Next?" : 'Poly Haven Roadmap'}</h2>
@@ -193,8 +196,13 @@ const Roadmap = ({ mini, vaults }) => {
             )
           )}
         </div>
-        {!mini && !vaults && <DonationBox />}
+        {!mini && !vaults && divWidth > 1100 && <DonationBox />}
       </div>
+      {!mini && !vaults && divWidth <= 1100 && (
+        <div className={styles.center}>
+          <DonationBox />
+        </div>
+      )}
     </div>
   )
 }

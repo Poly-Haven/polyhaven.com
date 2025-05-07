@@ -6,6 +6,9 @@ import VaultBanner from './VaultBanner'
 import DonationBox from 'components/DonationBox/DonationBox'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import Roadmap from 'components/Roadmap/Roadmap'
+import Button from 'components/UI/Button/Button'
+
+import { IoMdUnlock } from 'react-icons/io'
 
 import styles from './Vaults.module.scss'
 
@@ -73,7 +76,7 @@ const VaultLanding = ({ vaults }) => {
             </p>
           </div>
 
-          <div>
+          <div className={styles.donationBox}>
             <h2 style={{ textAlign: 'center' }}>
               Donate $3+ per month to unlock {numAssets} assets and support our work.
             </h2>
@@ -169,10 +172,18 @@ const VaultLanding = ({ vaults }) => {
         </p>
         <hr />
 
-        <p>
-          <br />
-          Got a different question? <Link href="/about-contact">Contact us</Link>.
-        </p>
+        <div className={styles.row}>
+          <p>
+            Got a different question? <Link href="/about-contact">Contact us</Link>.
+          </p>
+          <div className={styles.spacer} />
+          <Button
+            text="Access the Vaults Now"
+            href="https://www.patreon.com/checkout/polyhaven"
+            icon={<IoMdUnlock />}
+            color="red"
+          />
+        </div>
       </div>
     </div>
   )
