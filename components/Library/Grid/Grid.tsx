@@ -14,6 +14,7 @@ import { titleCase } from 'utils/stringUtils'
 import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
 import { assetTypeName } from 'utils/assetTypeName'
 import { getPatronInfo } from 'utils/patronInfo'
+import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
 
@@ -51,6 +52,11 @@ const Grid = (props) => {
   const [showText, setShowText] = useStoredState('lib_adv_showText', false)
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
 
+  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
+  useEffect(() => {
+    setEarlyAccessValid(persistentEarlyAccess)
+  }, [])
+
   const { width, height } = useDivSize(optionsRef, [showAdvanced, delay])
 
   useEffect(() => {
@@ -58,6 +64,9 @@ const Grid = (props) => {
     if (uuid) {
       getPatronInfo(uuid).then((resdata) => {
         setPatron(resdata)
+        if (resdata && resdata['rewards'] && resdata['rewards'].includes('Early Access')) {
+          localStorage.setItem('ea_validity', Date.now().toString())
+        }
       })
     } else {
       if (user) {
@@ -213,6 +222,7 @@ const Grid = (props) => {
   }
 
   let blurUpcoming = !(patron['rewards'] && patron['rewards'].includes('Early Access'))
+  if (earlyAccessValid) blurUpcoming = false
 
   let data = {}
   let urlParams = `?t=${props.assetType}&future=true`

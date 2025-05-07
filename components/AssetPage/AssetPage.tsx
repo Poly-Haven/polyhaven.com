@@ -43,7 +43,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
-  const { user, isLoading: userIsLoading } = useUser()
+  const { user } = useUser()
   const [uuid, setUuid] = useState(null)
   const [patron, setPatron] = useState({})
   const [pageLoading, setPageLoading] = useState(false)
@@ -129,6 +129,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     if (uuid) {
       getPatronInfo(uuid).then((resdata) => {
         setPatron(resdata)
+        if (resdata && resdata['rewards'] && resdata['rewards'].includes('Early Access')) {
+          localStorage.setItem('ea_validity', Date.now().toString())
+        }
       })
     } else {
       if (user) {

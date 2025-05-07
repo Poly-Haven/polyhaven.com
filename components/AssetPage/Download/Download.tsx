@@ -20,6 +20,7 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
 import threeDFormats from 'constants/3D_formats.json'
+import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
 
 import styles from './Download.module.scss'
 
@@ -35,6 +36,11 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
   const [tempUUID, setTempUUID] = useState(uuid()) // Used if storage consent not given.
+
+  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
+  useEffect(() => {
+    setEarlyAccessValid(persistentEarlyAccess)
+  }, [])
 
   const isHDRI = data.type === 0
 
@@ -75,7 +81,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     )
   }
 
-  if (data.date_published * 1000 > Date.now()) {
+  if (data.date_published * 1000 > Date.now() && !earlyAccessValid) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
       return (
         <div className={styles.downloadBtnWrapper}>
