@@ -6,6 +6,7 @@ import { SiYoutube } from 'react-icons/si'
 import { SiMastodon } from 'react-icons/si'
 import { SiBluesky } from 'react-icons/si'
 import { SiX } from 'react-icons/si'
+import { SiRss } from 'react-icons/si'
 
 import styles from './SocialIcons.module.scss'
 
@@ -36,6 +37,9 @@ const SocialIcons = () => {
       </a>
       <a href="https://www.youtube.com/c/PolyHaven">
         <SiYoutube />
+      </a>
+      <a href="https://api.polyhaven.com/rss">
+        <SiRss />
       </a>
     </div>
   )
