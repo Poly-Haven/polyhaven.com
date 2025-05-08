@@ -97,7 +97,9 @@ const VaultLanding = ({ vaults }) => {
         <hr />
 
         <h2>Are all your future assets going to be locked in a Vault?</h2>
-        <p>No! We are still publishing new assets in addition to the Vaults - about one new asset every week day.</p>
+        <p>
+          No! We are still publishing new free assets in addition to the Vaults - about one new asset every week day.
+        </p>
         <p>The Vaults are in addition to our regular free content, not a replacement.</p>
         <p>
           Similarly, all of our community projects and donated assets will always be immediately free to the public.
@@ -108,9 +110,8 @@ const VaultLanding = ({ vaults }) => {
 
         <h2>How do I access the Vaults?</h2>
         <p>
-          To access the Vaults, you need to support us on <a href="https://www.patreon.com/polyhaven">Patreon</a> with
-          at least $3 per month. Once you become a patron, you will receive access to all the assets inside all of the
-          Vaults.
+          You need to support us on <a href="https://www.patreon.com/polyhaven">Patreon</a> with at least $3 per month.
+          Once you become a patron, you will receive access to all the assets inside all of the Vaults.
         </p>
         <p>
           On this website, simply <a href="/account">log in</a> with your Patreon account, and you will be able to
@@ -140,8 +141,8 @@ const VaultLanding = ({ vaults }) => {
 
         <h2>What happens when a Vault is released?</h2>
         <p>
-          When a Vault is released, all the assets inside the Vault are made freely available to everyone. This means
-          that anyone can download and use the assets without any restrictions.
+          All the assets inside the Vault are made freely available to everyone as soon as the goal is reached. This
+          means that anyone can download and use the assets without any restrictions.
         </p>
         <p>Once a Vault is released, it will remain free and public domain forever.</p>
         <p>
