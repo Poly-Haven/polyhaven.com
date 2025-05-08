@@ -12,6 +12,7 @@ import useStoredState from 'hooks/useStoredState'
 import NavItem from './NavItem'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
 import Heart from 'components/UI/Icons/Heart'
+import HeartLock from 'components/UI/Icons/HeartLock'
 import Blender from 'components/UI/Icons/Blender'
 
 import styles from './Nav.module.scss'
@@ -93,6 +94,15 @@ const Nav = () => {
               </span>
             }
             link="/collections"
+          />
+          <NavItem
+            text={
+              <span className={styles.assetType}>
+                <HeartLock />
+                Vaults
+              </span>
+            }
+            link="/vaults"
           />
         </NavItem>
         <NavItem
