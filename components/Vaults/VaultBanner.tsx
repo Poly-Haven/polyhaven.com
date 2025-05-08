@@ -15,13 +15,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
     <div className={styles.vaultWrapper}>
       <div
         className={styles.vault}
-        style={
-          vault.img
-            ? {
-                backgroundImage: `url("${vault.img}")`,
-              }
-            : {}
-        }
+        style={{
+          backgroundImage: `url("https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true")`,
+        }}
       >
         <div className={styles.gradientL} />
         <div className={styles.gradientR} />
