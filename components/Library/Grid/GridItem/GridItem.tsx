@@ -64,7 +64,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
         </>
       ),
       style: styles.vault,
-      tooltip: t('Available to $3+ Patrons, released freely goal is met.'),
+      tooltip: t('Available to $3+ Patrons, released freely when goal is met.'),
     }
   } else if (daysOld(asset.date_published) < 0) {
     badge = {
