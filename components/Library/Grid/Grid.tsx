@@ -488,7 +488,7 @@ const Grid = (props) => {
       {sortedKeys.length ? (
         <>
           <div className={styles.grid}>
-            {news ? (
+            {news && !props.vault && !props.collection ? (
               <NewsCard
                 newsKey={news.key}
                 topText={news.text_top}
