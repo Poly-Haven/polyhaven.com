@@ -30,7 +30,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         <div className={styles.right}>
           <div className={styles.row}>
             {libraryPage && vault.about && <Button text="About the Project" href={vault.about} />}
-            {!libraryPage && <Button text="Browse Assets" href={`/vaults/${vault.id}`} />}
+            {!libraryPage && (
+              <Button text={`Browse ${vault.assets.length} ${vault.type || 'Assets'}`} href={`/vaults/${vault.id}`} />
+            )}
             <Button
               text="Access Now"
               href="https://www.patreon.com/checkout/polyhaven"
