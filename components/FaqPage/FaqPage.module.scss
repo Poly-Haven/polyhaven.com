@@ -1,11 +1,23 @@
+@import "constants/mixins";
 @import "constants/colors";
 
 .faq {
-  border-top: 1px solid $c-background-light;
+  border-bottom: 1px solid $c-background-light;
   padding: 1em;
+  padding-bottom: 2em;
+  @include transition(3s);
 
   h2 {
     margin-top: 0.5rem;
+
+    a {
+      color: $c-text-bright;
+      @include transition;
+
+      &:hover {
+        color: $c-accent;
+      }
+    }
 
     svg {
       opacity: 0.35;
@@ -20,6 +32,13 @@
   }
 }
 
+.main {
+  border-bottom: none;
+  h2 {
+    font-size: 2em;
+  }
+}
+
 .anchor {
   position: relative;
   top: -5em;
@@ -28,4 +47,5 @@
 .highlight {
   background-color: rgba($c-yellow, 0.2);
   box-shadow: -0.5em 0 0 0 $c-yellow;
+  @include transition(0.1s);
 }
