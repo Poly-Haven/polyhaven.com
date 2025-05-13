@@ -41,7 +41,7 @@ const CategoryList = (props) => {
 
   const wholeList = props.level === -1 ? tlc[props.assetType] : Object.keys(data)
   const list = wholeList
-    .filter((cat) => data[cat] > 1)
+    .filter((cat) => wholeList.length < 7 || data[cat] > 1) // Remove categories with < 2 assets, unless there are few categories
     .filter((cat) => !cat.startsWith('collection: ') && !cat.startsWith('vault: '))
 
   return (
