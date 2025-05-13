@@ -183,7 +183,7 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
             <XAxis dataKey="day" />
             <YAxis
               scale={dataTypes[dataType].scale}
-              domain={[dataTypes[dataType].scale === 'log' ? 1 : 0, 'auto']}
+              domain={[dataType === 'assetsPublished' ? 'auto' : dataTypes[dataType].scale === 'log' ? 1 : 0, 'auto']}
               allowDataOverflow
             />
             <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
