@@ -102,6 +102,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
               ) : null}
             </div>
           ) : null}
+          {/(reference|context)/i.test(i) ? <div className={styles.label}>Reference</div> : null}
         </div>
       ))}
       {assetType !== 0 && slug !== 'decorative_book_set_01'
