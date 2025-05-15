@@ -95,11 +95,16 @@ const VaultLanding = ({ vaults }) => {
               Not only do you get <strong>immediate access to all {numAssets} vaulted assets</strong>, but you also help
               release them for free to the public more quickly.
             </p>
+            <p>
+              All funding goes towards creating more assets - see our{' '}
+              <Link href="/finance-reports">finance reports</Link>.
+            </p>
           </FaqItem>
 
           <div className={styles.donationBox}>
             <h2 style={{ textAlign: 'center' }}>
-              Donate $3+ per month to unlock {numAssets} assets and support our work.
+              Donate <span className={styles.green}>$3+</span> per month to unlock {numAssets} assets and support our
+              work.
             </h2>
             <DonationBox />
           </div>
