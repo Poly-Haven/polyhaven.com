@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
@@ -12,11 +12,20 @@ import styles from './Vaults.module.scss'
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const videoRef = useRef(null)
   const containerRef = useRef(null)
+  const [videoOffset, setVideoOffset] = useState(0)
 
   useEffect(() => {
     const video = videoRef.current
     const container = containerRef.current
     if (!video || !container) return
+
+    const updateVideoOffset = () => {
+      if (video && container) {
+        const containerWidth = container.offsetWidth
+        const offset = (containerWidth - video.offsetWidth) / 2
+        setVideoOffset(offset)
+      }
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,9 +38,31 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
       { threshold: 0 }
     )
 
+    const handleScroll = () => {
+      if (video && container) {
+        const rect = container.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        const visibleHeight = Math.max(0, Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0))
+        const visibilityPercentage = visibleHeight / rect.height
+
+        // Set playback rate based on visibility percentage
+        const playbackRate = Math.max(0, Math.min(1, visibilityPercentage * 1.5))
+        video.playbackRate = playbackRate
+      }
+    }
+
     observer.observe(container)
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', updateVideoOffset)
+    video.addEventListener('loadedmetadata', updateVideoOffset)
+
+    updateVideoOffset() // Initial call to set the video offset
+
     return () => {
       observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateVideoOffset)
+      video.removeEventListener('loadedmetadata', updateVideoOffset)
     }
   }, [])
 
@@ -46,6 +77,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
           playsInline
           preload="auto"
           controls={false}
+          style={{ left: `${videoOffset}px`, position: 'relative' }}
           poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
         >
           <source src={`https://u.polyhaven.org/npu/fabric_1080p.mp4`} type="video/mp4" />
