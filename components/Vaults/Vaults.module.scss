@@ -60,14 +60,15 @@
 }
 
 .vaultWrapper {
+  position: relative;
+  overflow: hidden;
+
   .vault {
     @include flex(row, true);
     position: relative;
     min-height: 60vh;
     padding: 1.5em 3em;
     color: $c-text-bright;
-    background: url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920) no-repeat center center;
-    background-size: cover;
 
     & > * {
       position: relative; // Ensure gradient appears behind elements
@@ -292,6 +293,18 @@
   h2,
   p {
     text-wrap: balance;
+  }
+}
+
+.video {
+  position: absolute;
+  width: 100%;
+
+  video {
+    min-width: 100%;
+    min-height: calc(60vh + 3em);
+    object-fit: cover;
+    object-position: center;
   }
 }
 

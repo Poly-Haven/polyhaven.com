@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
@@ -10,15 +10,48 @@ import { MdArrowForward } from 'react-icons/md'
 import styles from './Vaults.module.scss'
 
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
+  const videoRef = useRef(null)
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    const container = containerRef.current
+    if (!video || !container) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play()
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0 }
+    )
+
+    observer.observe(container)
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   const progressBarPosition = Math.min(1, numPatrons / vault.target)
   return (
     <div className={styles.vaultWrapper}>
-      <div
-        className={styles.vault}
-        style={{
-          backgroundImage: `url("https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true")`,
-        }}
-      >
+      <div className={styles.video}>
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          preload="auto"
+          controls={false}
+          poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
+        >
+          <source src={`https://u.polyhaven.org/npu/fabric_1080p.mp4`} type="video/mp4" />
+        </video>
+      </div>
+      <div ref={containerRef} className={styles.vault}>
         <div className={styles.gradientL} />
         <div className={styles.gradientR} />
         <div className={styles.left}>
