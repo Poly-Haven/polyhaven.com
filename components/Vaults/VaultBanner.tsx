@@ -13,6 +13,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const videoRef = useRef(null)
   const containerRef = useRef(null)
   const [videoOffset, setVideoOffset] = useState(0)
+  const [blurAmount, setBlurAmount] = useState(0)
 
   useEffect(() => {
     const video = videoRef.current
@@ -48,6 +49,11 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         // Set playback rate based on visibility percentage
         const playbackRate = Math.max(0, Math.min(1, visibilityPercentage * 1.5))
         video.playbackRate = playbackRate
+
+        // Set blur amount inversely proportional to playback rate
+        const maxBlur = 33 // Maximum blur amount in pixels
+        const blur = Math.max(0, maxBlur - playbackRate * 2 * maxBlur)
+        setBlurAmount(blur)
       }
     }
 
@@ -77,7 +83,11 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
           playsInline
           preload="auto"
           controls={false}
-          style={{ left: `${videoOffset}px`, position: 'relative' }}
+          style={{
+            left: `${videoOffset}px`,
+            position: 'relative',
+            filter: `blur(${blurAmount}px)`,
+          }}
           poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
         >
           <source src={`https://u.polyhaven.org/npu/fabric_1080p.mp4`} type="video/mp4" />
