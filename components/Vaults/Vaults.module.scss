@@ -69,6 +69,9 @@
     min-height: 60vh;
     padding: 1.5em 3em;
     color: $c-text-bright;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 
     & > * {
       position: relative; // Ensure gradient appears behind elements

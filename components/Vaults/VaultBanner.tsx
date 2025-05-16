@@ -16,6 +16,8 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const [blurAmount, setBlurAmount] = useState(0)
 
   useEffect(() => {
+    if (!vault.video) return
+
     const video = videoRef.current
     const container = containerRef.current
     if (!video || !container) return
@@ -75,25 +77,37 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const progressBarPosition = Math.min(1, numPatrons / vault.target)
   return (
     <div className={styles.vaultWrapper}>
-      <div className={styles.video}>
-        <video
-          ref={videoRef}
-          loop
-          muted
-          playsInline
-          preload="auto"
-          controls={false}
-          style={{
-            left: `${videoOffset}px`,
-            position: 'relative',
-            filter: `blur(${blurAmount}px)`,
-          }}
-          poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
-        >
-          <source src={`https://u.polyhaven.org/npu/fabric_1080p.mp4`} type="video/mp4" />
-        </video>
-      </div>
-      <div ref={containerRef} className={styles.vault}>
+      {vault.video && (
+        <div className={styles.video}>
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            preload="auto"
+            controls={false}
+            style={{
+              left: `${videoOffset}px`,
+              position: 'relative',
+              filter: `blur(${blurAmount}px)`,
+            }}
+            poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
+          >
+            <source src={vault.video} type="video/mp4" />
+          </video>
+        </div>
+      )}
+      <div
+        ref={containerRef}
+        className={styles.vault}
+        style={
+          vault.video
+            ? {}
+            : {
+                backgroundImage: `url("https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true")`,
+              }
+        }
+      >
         <div className={styles.gradientL} />
         <div className={styles.gradientR} />
         <div className={styles.left}>
