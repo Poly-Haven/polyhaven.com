@@ -49,7 +49,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         const visibilityPercentage = visibleHeight / rect.height
 
         // Set playback rate based on visibility percentage
-        const playbackRate = Math.max(0, Math.min(1, visibilityPercentage * 1.5))
+        const playbackRate = Math.max(0.1, Math.min(1, visibilityPercentage * 1.5))
         video.playbackRate = playbackRate
 
         // Set blur amount inversely proportional to playback rate
