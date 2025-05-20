@@ -27,7 +27,7 @@ export default async function handler(req: NextRequest) {
 
     // Image size
     const width = mode === 'light' ? 832 : 960
-    const height = 350
+    const height = 280
 
     // Get roadmap data
     const url = `https://api.polyhaven.com/milestones`
@@ -103,8 +103,8 @@ export default async function handler(req: NextRequest) {
             color: c.text,
           }}
         >
-          <h1>Poly Haven Roadmap</h1>
-          <div id="barWrapper" style={{ width: '100%', display: 'flex', margin: '55px 0' }}>
+          <h1 style={{ marginTop: 0 }}>Poly Haven Roadmap</h1>
+          <div id="barWrapper" style={{ width: '100%', display: 'flex', margin: `35px 0` }}>
             <div
               id="barOuter"
               style={{
