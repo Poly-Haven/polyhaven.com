@@ -1,4 +1,5 @@
 import { ImageResponse } from '@vercel/og'
+import { NextRequest } from 'next/server'
 
 export const config = {
   runtime: 'experimental-edge',
@@ -19,11 +20,14 @@ type RoadmapData = {
   numPatrons: number
 }
 
-export default async function handler() {
+export default async function handler(req: NextRequest) {
   try {
+    const { searchParams } = new URL(req.url)
+    const mode = searchParams.get('m') || 'dark'
+
     // Image size
-    const width = 1000
-    const height = 366
+    const width = mode === 'light' ? 832 : 960
+    const height = 350
 
     // Get roadmap data
     const url = `https://api.polyhaven.com/milestones`
@@ -71,6 +75,19 @@ export default async function handler() {
 
     const numPatronsToGo = milestones[highestAchievedGoalIndex + 1].target - numPatrons
 
+    const c = {
+      background: '#333333',
+      text: 'white',
+      faded: 'rgb(130, 130, 130)',
+      accent: 'rgb(190, 111, 255)',
+      target: 'rgba(190, 111, 255, 0.2)',
+    }
+    if (mode === 'light') {
+      c.background = 'white'
+      c.text = '#333333'
+      c.faded = 'rgb(150, 150, 150)'
+    }
+
     return new ImageResponse(
       (
         <div
@@ -82,12 +99,12 @@ export default async function handler() {
             padding: '10px',
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgb(45, 45, 45)',
-            color: 'white',
+            backgroundColor: c.background,
+            color: c.text,
           }}
         >
           <h1>Poly Haven Roadmap</h1>
-          <div id="barWrapper" style={{ width: '100%', display: 'flex', margin: '60px 0' }}>
+          <div id="barWrapper" style={{ width: '100%', display: 'flex', margin: '55px 0' }}>
             <div
               id="barOuter"
               style={{
@@ -96,7 +113,7 @@ export default async function handler() {
                 width: '100%',
                 height: `${32 + 4 + 4 + 3 + 3}px`,
                 padding: '4px',
-                border: '3px solid rgb(190, 111, 255)',
+                border: `3px solid ${c.accent}`,
                 borderRadius: '40px',
               }}
             >
@@ -108,10 +125,10 @@ export default async function handler() {
                   top: '4px',
                   left: '4px',
                   height: '32px',
-                  border: '2px solid rgb(190, 111, 255)',
+                  border: `2px solid ${c.accent}`,
                   boxSizing: 'border-box',
                   borderRadius: '40px',
-                  backgroundColor: 'rgba(190, 111, 255, 0.2)',
+                  backgroundColor: c.target,
                   opacity: 0.5,
                 }}
               />
@@ -124,7 +141,7 @@ export default async function handler() {
                   left: '4px',
                   height: '32px',
                   borderRadius: '40px',
-                  backgroundColor: 'rgb(190, 111, 255)',
+                  backgroundColor: c.accent,
                 }}
               />
               <div
@@ -143,7 +160,6 @@ export default async function handler() {
                         flexDirection: i % 2 ? 'column' : 'column-reverse',
                         right: `${100 - (m.target / maxTarget) * 100}%`,
                         margin: `${32 / 2 - 9}px`,
-                        opacity: i === 0 || m.text === 'Free the Add-on' ? 1 : 0.33,
                       }}
                     >
                       <div
@@ -151,9 +167,9 @@ export default async function handler() {
                         style={{
                           position: 'relative',
                           right: '52px',
-                          top: i % 2 ? '-50px' : 0,
+                          top: i % 2 ? '-54px' : 0,
                           textAlign: 'right',
-                          color: 'white',
+                          color: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
                           display: m.text === '???' ? 'none' : 'block',
                         }}
                       >
@@ -164,13 +180,13 @@ export default async function handler() {
                         style={{
                           position: 'relative',
                           marginLeft: 'auto',
-                          marginTop: i % 2 ? '-58px' : '-5px',
-                          marginBottom: i % 2 ? '8px' : '-12px',
-                          right: '26px',
+                          marginTop: i % 2 ? '-64px' : '0px',
+                          marginBottom: i % 2 ? '8px' : '-10px',
+                          right: '30px',
                           width: '8px',
-                          height: '60px',
-                          background: 'rgb(180, 180, 180)',
-                          border: '3px solid rgb(45, 45, 45)',
+                          height: '58px',
+                          background: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
+                          border: `3px solid ${c.background}`,
                           borderRadius: '20px',
                           transform: i % 2 ? 'rotate(-45deg)' : 'rotate(45deg)',
                           display: m.text === '???' ? 'none' : 'block',
@@ -184,8 +200,8 @@ export default async function handler() {
                           right: 0,
                           width: '18px',
                           height: '18px',
-                          backgroundColor: 'white',
-                          border: '4px solid rgb(45, 45, 45)',
+                          backgroundColor: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
+                          border: `4px solid ${c.background}`,
                           borderRadius: '50%',
                         }}
                       />
