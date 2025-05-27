@@ -150,7 +150,7 @@ export default async function handler(req: NextRequest) {
               >
                 {milestones
                   .slice(1)
-                  .filter((m) => !m.achieved)
+                  .filter((m, i) => !m.achieved || highestAchievedGoalIndex === i + 1)
                   .map((m, i) => (
                     <div
                       key={i}
@@ -169,7 +169,7 @@ export default async function handler(req: NextRequest) {
                           right: '52px',
                           top: i % 2 ? '-54px' : 0,
                           textAlign: 'right',
-                          color: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
+                          color: i === 1 || m.text === 'Free the Add-on' ? c.text : c.faded,
                           display: m.text === '???' ? 'none' : 'block',
                         }}
                       >
@@ -185,7 +185,7 @@ export default async function handler(req: NextRequest) {
                           right: '30px',
                           width: '8px',
                           height: '58px',
-                          background: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
+                          background: i === 1 || m.text === 'Free the Add-on' ? c.text : c.faded,
                           border: `3px solid ${c.background}`,
                           borderRadius: '20px',
                           transform: i % 2 ? 'rotate(-45deg)' : 'rotate(45deg)',
@@ -200,7 +200,7 @@ export default async function handler(req: NextRequest) {
                           right: 0,
                           width: '18px',
                           height: '18px',
-                          backgroundColor: i === 0 || m.text === 'Free the Add-on' ? c.text : c.faded,
+                          backgroundColor: i === 1 || m.text === 'Free the Add-on' ? c.text : c.faded,
                           border: `4px solid ${c.background}`,
                           borderRadius: '50%',
                         }}
