@@ -67,7 +67,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
     window.addEventListener('resize', updateVideoOffset)
     video.addEventListener('loadedmetadata', updateVideoOffset)
 
-    updateVideoOffset() // Initial call to set the video offset
+    // Initial call on page load
+    updateVideoOffset()
+    handleScroll()
 
     return () => {
       observer.disconnect()
