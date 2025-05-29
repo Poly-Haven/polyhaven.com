@@ -66,7 +66,8 @@
   .vault {
     @include flex(row, true);
     position: relative;
-    min-height: 60vh;
+    height: 60vh;
+    max-height: calc(720px - 3em);
     padding: 1.5em 3em;
     color: $c-text-bright;
     background-repeat: no-repeat;
@@ -305,7 +306,7 @@
 
   video {
     min-width: 100%;
-    min-height: calc(60vh + 3em);
+    max-height: calc(60vh + 3em);
     object-fit: cover;
   }
 }

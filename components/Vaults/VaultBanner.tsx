@@ -12,7 +12,7 @@ import styles from './Vaults.module.scss'
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const videoRef = useRef(null)
   const containerRef = useRef(null)
-  const [videoOffset, setVideoOffset] = useState(0)
+  const [videoOffset, setVideoOffset] = useState([0, 0])
   const [blurAmount, setBlurAmount] = useState(0)
 
   // List of vaults that look bad with gradients
@@ -27,9 +27,10 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
 
     const updateVideoOffset = () => {
       if (video && container) {
-        const containerWidth = container.offsetWidth
-        const offset = (containerWidth - video.offsetWidth) / 2
-        setVideoOffset(offset)
+        setVideoOffset([
+          (container.offsetWidth - video.offsetWidth) / 2,
+          (container.offsetHeight - video.offsetHeight) / 2,
+        ])
       }
     }
 
@@ -92,7 +93,8 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
             preload="auto"
             controls={false}
             style={{
-              left: `${videoOffset}px`,
+              left: `${videoOffset[0]}px`,
+              top: `${videoOffset[1]}px`,
               position: 'relative',
               filter: `blur(${blurAmount}px)`,
             }}
