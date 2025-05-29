@@ -60,6 +60,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
       gltf: 2,
       fbx: 3,
       usd: 4,
+      mtlx: 5,
       'ANYTHING ELSE': 10,
     })
     return files

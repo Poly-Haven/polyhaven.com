@@ -14,6 +14,7 @@ import Loader from 'components/UI/Loader/Loader'
 import IconBlender from 'components/UI/Icons/Blender'
 import IconGltf from 'components/UI/Icons/glTF'
 import IconUSD from 'components/UI/Icons/USD'
+import IconMaterialX from 'components/UI/Icons/MaterialX'
 import IconFile from 'components/UI/Icons/File'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
 
@@ -179,13 +180,18 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
           tooltip: `Autodesk FBX, ${t('formats.most-software')}`,
           icon: <IconFile text="F" />,
         },
+        mtlx: {
+          label: 'MaterialX',
+          tooltip: `MaterialX, ${t('formats.some-software')}<br/>${t('formats.incl-tex')}`,
+          icon: <IconMaterialX />,
+        },
         zip: {
           label: 'ZIP',
           tooltip: t('formats.zip'),
           icon: <GoFileZip />,
         },
       }
-  const optionalFormats = ['gltf', 'fbx', 'usd']
+  const optionalFormats = ['gltf', 'fbx', 'usd', 'mtlx']
   for (const f of optionalFormats) {
     if (!Object.keys(files).includes(f)) {
       delete fmtOptions[f]
