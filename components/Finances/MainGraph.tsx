@@ -131,7 +131,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
           >
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis tickFormatter={(v) => `${getCurrency(v, currency, {}, false, true)}`} />
             <Brush dataKey="name" height={30} stroke="#666666" fill="#2d2d2d" startIndex={graphData.length - 12} />
             <Tooltip
               // @ts-ignore complaints about missing active, payload, labelts

@@ -168,23 +168,77 @@ export function catColor(t) {
   return colorSet[Math.abs(stringHash(t) % colorSet.length)]
 }
 
-export function getCurrency(v, c, rates) {
-  const defaultRates = {
-    ZAR: 1,
-    USD: 1,
-    EUR: 1,
+/**
+ * Converts a value from one currency to another and formats it for display
+ *
+ * @param {number} amount - The monetary amount to convert
+ * @param {string} targetCurrency - The target currency code (e.g., 'USD', 'EUR', 'ZAR')
+ * @param {Object} exchangeRates - Object containing exchange rates with currency codes as keys
+ * @param {boolean} [showCents=true] - Whether to display cents/decimal places
+ * @param {boolean} [compactFormat=false] - Whether to use compact notation for large numbers (e.g., "15K", "1.2M")
+ * @returns {string} Formatted currency string with appropriate symbol
+ *
+ * @example
+ * // Convert 100 ZAR to USD with custom rates (shows cents by default)
+ * const rates = { ZAR: 18.5, USD: 1, EUR: 0.85 };
+ * getCurrency(100, 'USD', rates); // Returns "$5.41"
+ *
+ * @example
+ * // Convert to ZAR without cents
+ * getCurrency(100, 'ZAR', rates, false); // Returns "R1,850"
+ *
+ * @example
+ * // Convert to ZAR with cents (default behavior)
+ * getCurrency(100, 'ZAR', rates, true); // Returns "R1,850.00"
+ *
+ * @example
+ * // Convert large amount with compact formatting
+ * getCurrency(1850000, 'USD', rates, true, true); // Returns "$100K"
+ *
+ * @example
+ * // Convert very large amount with compact formatting
+ * getCurrency(18500000, 'ZAR', rates, false, true); // Returns "R18.5M"
+ */
+export function getCurrency(amount, targetCurrency, exchangeRates, showCents = true, compactFormat = false) {
+  // Default exchange rates - fallback values if rates are not provided
+  const defaultExchangeRates = {
+    ZAR: 1, // South African Rand
+    USD: 1, // US Dollar
+    EUR: 1, // Euro
   }
-  for (const k of Object.keys(defaultRates)) {
-    rates[k] = rates[k] || defaultRates[k]
+
+  // Ensure all required exchange rates are available, using defaults as fallback
+  for (const currencyCode of Object.keys(defaultExchangeRates)) {
+    exchangeRates[currencyCode] = exchangeRates[currencyCode] || defaultExchangeRates[currencyCode]
   }
-  v = v / rates[c]
-  const formatter = new Intl.NumberFormat('en-US', {
+
+  // Convert the amount using the exchange rate for the target currency
+  const convertedAmount = amount / exchangeRates[targetCurrency]
+
+  // Create a currency formatter using Intl.NumberFormat
+  // Note: ZAR is handled specially since it uses 'R' symbol instead of standard currency symbol
+  const formatOptions: Intl.NumberFormatOptions = {
     style: 'currency',
-    currency: c !== 'ZAR' ? c : 'USD',
-  })
-  if (c === 'ZAR') {
-    return formatter.format(Math.abs(v)).replace('$', 'R')
+    currency: targetCurrency !== 'ZAR' ? targetCurrency : 'USD',
+    minimumFractionDigits: showCents ? 2 : 0,
+    maximumFractionDigits: showCents ? 2 : 0,
+  }
+
+  // Add compact notation for large numbers if requested
+  if (compactFormat) {
+    formatOptions.notation = 'compact'
+    formatOptions.compactDisplay = 'short'
+  }
+
+  const currencyFormatter = new Intl.NumberFormat('en-US', formatOptions)
+
+  // Format the absolute value to avoid negative currency display issues
+  const formattedAmount = currencyFormatter.format(Math.abs(convertedAmount))
+
+  // Special handling for South African Rand - replace '$' with 'R'
+  if (targetCurrency === 'ZAR') {
+    return formattedAmount.replace('$', 'R')
   } else {
-    return formatter.format(Math.abs(v))
+    return formattedAmount
   }
 }
