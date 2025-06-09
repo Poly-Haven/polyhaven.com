@@ -39,7 +39,7 @@ const benefits = [
   {
     text: (
       <span>
-        Instant access to all assets in <Link href="/vaults">the Vaults</Link>.
+        Instant access to all content in <Link href="/vaults">the Vaults</Link>.
       </span>
     ),
     icon: <IoLockOpen />,
