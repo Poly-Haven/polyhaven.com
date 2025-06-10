@@ -128,7 +128,7 @@ const DonationBox = () => {
           />
         ))}
       </div>
-      <Button text="Donate monthly" href={tiers[selectedTier]} color="red" icon={<Heart />} />
+      <Button text={t('common:donation-box.donate-monthly')} href={tiers[selectedTier]} color="red" icon={<Heart />} />
     </div>
   )
 }
