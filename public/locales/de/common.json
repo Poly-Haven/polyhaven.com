@@ -8,11 +8,22 @@
   "HDRIs": "HDRIs",
   "Models": "Modelle",
   "Textures": "Texturen",
+  "about-project": "Über das Projekt",
+  "access-now": "Jetzt zugreifen",
   "also-supported-by": "Auch unterstützt von:",
+  "browse-n": "durchsuchen {{number}}",
   "corporate-sponsor_one": "Unternehmenssponsor",
   "corporate-sponsor_other": "Unternehmenssponsoren",
   "corporate-sponsors": "Unternehmenssponsoren",
   "display-name": "Anzeigename",
+  "donation-box": {
+    "b1": "Helfen Sie uns, <lnk>kostenlose Assets</lnk> für alle zu schaffen!",
+    "b2": "<lnk>Frühzeitiger Zugang</lnk> zu kommenden Assets.",
+    "b3": "Sofortiger Zugriff auf alle Inhalte in <lnk>den Vaults</lnk>.",
+    "b4": "Unser Blender Asset Browser <lnk>Add-on</lnk>.",
+    "b5": "Massendownload und Offline-Zugriff mit <lnk>unserer Cloud</lnk>.",
+    "b6": "<lnk>Sponsern Sie ein Objekt</lnk> mit Ihrem Namen und Link."
+  },
   "email-address": "E-Mail Adresse",
   "footer": {
     "join-ranks": "Schließ dich an, unterstütze Poly Haven auf Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Ungültiger Name oder URL",
   "loading": "Lade ...",
   "missing-invalid": "Fehlerhaft oder ungültig",
+  "n-patrons-to-go": "{{number}} Schirmherren zum Mitnehmen!",
   "nav": {
     "about-contact": "Über uns/Kontakt",
     "add-on": "Add-on",
     "api": "API",
     "blog": "Blog",
+    "collections": "Sammlungen",
     "contribute": "Unterstützen",
     "faq": "FAQ",
     "finances": "Finanzberichte",
@@ -56,6 +69,7 @@
   "please-wait": "Bitte warten ...",
   "remove-ads": "Werbung entfernen",
   "required": "Erforderlich",
+  "support-polyhaven": "Unterstützen Sie Poly Haven!",
   "tagline": "Die öffentliche Bibliothek für 3D Assets",
   "visible": "sichtbar"
 }

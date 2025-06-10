@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "Model",
   "Textures": "Tekstur",
+  "about-project": "Tentang Proyek",
+  "access-now": "Akses Sekarang",
   "also-supported-by": "Juga didukung oleh:",
+  "browse-n": "Jelajahi {{number}}",
   "corporate-sponsor_one": "Sponsor Perusahaan",
   "corporate-sponsor_other": "Sponsor Perusahaan",
   "corporate-sponsors": "Sponsor Perusahaan",
   "display-name": "Nama tampilan",
+  "donation-box": {
+    "b1": "Bantu kami membuat <lnk>aset gratis</lnk> untuk semua orang!",
+    "b2": "<lnk>Akses awal</lnk> ke aset yang akan datang.",
+    "b3": "Akses instan ke semua konten di <lnk>Vaults.</lnk>",
+    "b4": "<lnk>Add-on</lnk> peramban aset Blender kami.",
+    "b5": "Unduh massal & akses offline dengan <lnk>cloud kami</lnk>.",
+    "b6": "<lnk>Sponsori aset</lnk> dengan nama & tautan Anda."
+  },
   "email-address": "Alamat email",
   "footer": {
     "join-ranks": "Gabung peringkat, dukung Poly Haven di Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Nama atau url tidak sah",
   "loading": "Memuat...",
   "missing-invalid": "Tidak ada atau tidak sah",
+  "n-patrons-to-go": "{{number}} pelanggan untuk pergi!",
   "nav": {
     "about-contact": "Tentang/Kontak",
     "add-on": "Pengaya",
     "api": "API",
     "blog": "Blog",
+    "collections": "Koleksi",
     "contribute": "Kontribusi",
     "faq": "FAQ",
     "finances": "Laporan Keuangan",
@@ -56,6 +69,7 @@
   "please-wait": "Mohon tunggu...",
   "remove-ads": "Hapus Iklan",
   "required": "Diperlukan",
+  "support-polyhaven": "Dukung Poly Haven!",
   "tagline": "Perpustakaan Aset 3D Publik",
   "visible": "Terlihat"
 }

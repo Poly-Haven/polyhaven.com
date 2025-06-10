@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "모델",
   "Textures": "텍스처",
+  "about-project": "프로젝트 소개",
+  "access-now": "지금 액세스",
   "also-supported-by": "또한 지원 대상:",
+  "browse-n": "찾아보기 {{number}}",
   "corporate-sponsor_one": "후원 기업",
   "corporate-sponsor_other": "후원 기업",
   "corporate-sponsors": "후원 기업",
   "display-name": "표시되는 이름",
+  "donation-box": {
+    "b1": "모두를 위한 <lnk>무료 에셋을</lnk> 만들 수 있도록 도와주세요!",
+    "b2": "출시 예정 에셋에 <lnk>미리 액세스하세요</lnk>.",
+    "b3": "<lnk>볼트에</lnk> 있는 모든 콘텐츠에 즉시 액세스하세요.",
+    "b4": "블렌더 에셋 브라우저 <lnk>애드온입니다</lnk>.",
+    "b5": "<lnk>클라우드를</lnk> 통한 대량 다운로드 및 오프라인 액세스.",
+    "b6": "이름과 링크가 포함된 <lnk>에셋을 후원하세요</lnk>."
+  },
   "email-address": "이메일 주소",
   "footer": {
     "join-ranks": "Patreon에서 Poly Haven을 후원하고 후원등급을 받아보세요",
@@ -29,11 +40,13 @@
   "invalid-name-url": "잘못된 이름 또는 URL",
   "loading": "로드 중...",
   "missing-invalid": "누락되었거나 유효하지 않음",
+  "n-patrons-to-go": "{{number}} 후원자 여러분!",
   "nav": {
     "about-contact": "정보/연락처",
     "add-on": "애드온",
     "api": "API",
     "blog": "블로그",
+    "collections": "컬렉션",
     "contribute": "기여하기",
     "faq": "FAQ",
     "finances": "재무 보고서",
@@ -56,6 +69,7 @@
   "please-wait": "기다리세요...",
   "remove-ads": "광고 제거",
   "required": "필수",
+  "support-polyhaven": "폴리 헤이븐을 응원하세요!",
   "tagline": "공개 3D 에셋 라이브러리",
   "visible": "보입니다."
 }

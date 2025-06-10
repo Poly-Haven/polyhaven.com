@@ -8,11 +8,22 @@
   "HDRIs": "HDRI'lar",
   "Models": "Modeller",
   "Textures": "Dokular",
+  "about-project": "Proje Hakkında",
+  "access-now": "Şimdi Erişin",
   "also-supported-by": "Ayrıca destekçiler:",
+  "browse-n": "Gözat {{number}}",
   "corporate-sponsor_one": "Kurumsal Sponsor",
   "corporate-sponsor_other": "Kurumsal Sponsorlar",
   "corporate-sponsors": "Kurumsal Sponsorlar",
   "display-name": "Ekran adı",
+  "donation-box": {
+    "b1": "Herkes için <lnk>ücretsiz varlıklar</lnk> yapmamıza yardım edin!",
+    "b2": "Gelecek varlıklara <lnk>erken erişim</lnk>.",
+    "b3": "<lnk>Kasalardaki</lnk> tüm içeriğe anında erişim.",
+    "b4": "Blender varlık tarayıcı <lnk>eklentimiz</lnk>.",
+    "b5": "<lnk>Bulutumuzla</lnk> toplu indirme ve çevrimdışı erişim.",
+    "b6": "Adınız ve bağlantınızla <lnk>bir varlığa sponsor</lnk> olun."
+  },
   "email-address": "E-posta adresi",
   "footer": {
     "join-ranks": "Bize katılın, Poly Haven'ı Patreon'da destekleyin",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Geçersiz ad veya url",
   "loading": "Yükleniyor...",
   "missing-invalid": "Eksik veya geçersiz",
+  "n-patrons-to-go": "{{number}} Patronlar gidiyor!",
   "nav": {
     "about-contact": "Hakkında/İletişim",
     "add-on": "Eklenti",
     "api": "API",
     "blog": "Blog",
+    "collections": "Koleksiyonlar",
     "contribute": "Katkıda bulunmak için",
     "faq": "SSS",
     "finances": "Finans Raporları",
@@ -56,6 +69,7 @@
   "please-wait": "Lütfen bekleyin...",
   "remove-ads": "reklamları kaldır",
   "required": "Gerekli",
+  "support-polyhaven": "Poly Haven'ı Destekleyin!",
   "tagline": "Herkese Açık 3D Öğe Kitaplığı",
   "visible": "Görünür"
 }

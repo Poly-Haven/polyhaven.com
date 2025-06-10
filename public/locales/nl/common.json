@@ -8,11 +8,22 @@
   "HDRIs": "HDRI's",
   "Models": "Modellen",
   "Textures": "Texturen",
+  "about-project": "Over het project",
+  "access-now": "Toegang Nu",
   "also-supported-by": "Ook ondersteund door:",
+  "browse-n": "Blader door {{number}}",
   "corporate-sponsor_one": "Bedrijfssponsor",
   "corporate-sponsor_other": "Bedrijfssponsors",
   "corporate-sponsors": "Bedrijfssponsors",
   "display-name": "Weergavenaam",
+  "donation-box": {
+    "b1": "Help ons <lnk>gratis assets</lnk> te maken voor iedereen!",
+    "b2": "<lnk>Vroege toegang</lnk> tot nieuwe middelen.",
+    "b3": "Directe toegang tot alle content in <lnk>de Vaults</lnk>.",
+    "b4": "Onze Blender asset browser <lnk>add-on</lnk>.",
+    "b5": "Bulkdownload & offline toegang met <lnk>onze cloud</lnk>.",
+    "b6": "<lnk>Sponsor een object</lnk> met je naam & link."
+  },
   "email-address": "E-mailadres",
   "footer": {
     "join-ranks": "Sluit je aan bij de gelederen, steun Poly Haven op Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Ongeldige naam of URL",
   "loading": "Bezig met laden...",
   "missing-invalid": "Ontbreekt of ongeldig",
+  "n-patrons-to-go": "{{number}} patroons te gaan!",
   "nav": {
     "about-contact": "Over/Contact",
     "add-on": "Add-on",
     "api": "API",
     "blog": "Blog",
+    "collections": "Collecties",
     "contribute": "Bijdrage leveren",
     "faq": "FAQ",
     "finances": "Financiële rapporten",
@@ -56,6 +69,7 @@
   "please-wait": "Deze site is aan het laden, heel even wachten a.u.b.",
   "remove-ads": "Verwijder advertenties",
   "required": "Verplicht",
+  "support-polyhaven": "Steun Poly Haven!",
   "tagline": "De openbare 3D-asset bibliotheek",
   "visible": "Zichtbaar"
 }

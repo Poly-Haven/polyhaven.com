@@ -8,11 +8,22 @@
   "HDRIs": "HDRIs",
   "Models": "דגמים",
   "Textures": "טקסטורות",
+  "about-project": "אודות הפרויקט",
+  "access-now": "גישה עכשיו",
   "also-supported-by": "נתמך גם על ידי:",
+  "browse-n": "עיין ב {{number}}",
   "corporate-sponsor_one": "חסות תאגידית",
   "corporate-sponsor_other": "נותני חסות תאגידים",
   "corporate-sponsors": "נותני חסות תאגידים",
   "display-name": "שם תצוגה",
+  "donation-box": {
+    "b1": "עזרו לנו ליצור<lnk> נכסים חופשיים</lnk> לכולם!",
+    "b2": "<lnk>גישה מוקדמת</lnk> לנכסים עתידיים.",
+    "b3": "גישה מיידית לכל התוכן ב<lnk> הכספות</lnk> .",
+    "b4": "דפדפן הנכסים של בלנדר שלנו<lnk> תוסף</lnk> .",
+    "b5": "הורדה בכמות גדולה וגישה לא מקוונת עם<lnk> הענן שלנו</lnk> .",
+    "b6": "<lnk>חסות לנכס</lnk> עם שמך וקישור."
+  },
   "email-address": "כתובת אימייל",
   "footer": {
     "join-ranks": "הצטרפו לשורות, תמכו בפולי הייבן ב-Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "שם או כתובת אתר לא חוקיים",
   "loading": "טְעִינָה...",
   "missing-invalid": "חסר או לא חוקי",
+  "n-patrons-to-go": "נותרו {{number}} לקוחות!",
   "nav": {
     "about-contact": "אודות/צור קשר",
     "add-on": "תוסף",
     "api": "ממשק API",
     "blog": "בלוג",
+    "collections": "אוספים",
     "contribute": "לִתְרוֹם",
     "faq": "שאלות נפוצות",
     "finances": "דוחות כספים",
@@ -56,6 +69,7 @@
   "please-wait": "אנא המתן...",
   "remove-ads": "הסר מודעות",
   "required": "דָרוּשׁ",
+  "support-polyhaven": "תמכו בפולי הייבן!",
   "tagline": "ספריית נכסי התלת-ממד הציבורית",
   "visible": "נִרְאֶה"
 }

@@ -8,11 +8,22 @@
   "HDRIs": "HDRIs",
   "Models": "مدل سه بعدی",
   "Textures": "بافت ها",
+  "about-project": "درباره پروژه",
+  "access-now": "اکنون دسترسی پیدا کنید",
   "also-supported-by": "همچنین حمایت شده توسط:",
+  "browse-n": "مرور {{number}}",
   "corporate-sponsor_one": "حامی شرکتی",
   "corporate-sponsor_other": "حامیان شرکتی",
   "corporate-sponsors": "حامیان شرکتی",
   "display-name": "نام نمایشی",
+  "donation-box": {
+    "b1": "به ما کمک کنید تا بسازیم<lnk> دارایی‌های آزاد</lnk> برای همه!",
+    "b2": "<lnk>دسترسی زودهنگام</lnk> به دارایی‌های آتی.",
+    "b3": "دسترسی سریع به تمام محتوا در<lnk> خزانه‌ها</lnk> .",
+    "b4": "مرورگر فایل‌های بلندر ما<lnk> افزونه</lnk> .",
+    "b5": "دانلود انبوه و دسترسی آفلاین با<lnk> ابر ما</lnk> .",
+    "b6": "<lnk>حمایت مالی از یک دارایی</lnk> با نام و لینک شما"
+  },
   "email-address": "آدرس ایمیل",
   "footer": {
     "join-ranks": "به صفوف بپیوندید و از Poly Haven در Patreon حمایت کنید",
@@ -29,11 +40,13 @@
   "invalid-name-url": "نام یا آدرس اینترنتی نامعتبر است",
   "loading": "بارگذاری...",
   "missing-invalid": "گمشده یا نامعتبراست",
+  "n-patrons-to-go": "{{number}} مشتری برای رفتن!",
   "nav": {
     "about-contact": "درباره/تماس",
     "add-on": "افزودنی",
     "api": "رابط برنامه نویسی کاربردی",
     "blog": "وبلاگ",
+    "collections": "مجموعه‌ها",
     "contribute": "مشارکت",
     "faq": "سوالات متداول",
     "finances": "گزارش های مالی",
@@ -56,6 +69,7 @@
   "please-wait": "لطفا صبر کنید...",
   "remove-ads": "حذف تبلیغات",
   "required": "ضروری",
+  "support-polyhaven": "از پلی هاون حمایت کنید!",
   "tagline": "کتابخانه دارایی سه بعدی عمومی",
   "visible": "قابل دیدن"
 }

@@ -8,11 +8,22 @@
   "HDRIs": "HDRIs",
   "Models": "النماذج ثلاثية الابعاد",
   "Textures": "القوام",
+  "about-project": "نبذة عن المشروع",
+  "access-now": "ادخل الآن",
   "also-supported-by": ":أيضا مدعوم من قبل",
+  "browse-n": "تصفح {{number}}",
   "corporate-sponsor_one": "راعي الشركة",
   "corporate-sponsor_other": "الشركات الراعية",
   "corporate-sponsors": "الرعاة من الشركات",
   "display-name": "اسم العرض",
+  "donation-box": {
+    "b1": "ساعدنا في توفير <lnk>أصول مجانية</lnk> للجميع!",
+    "b2": "<lnk>الوصول المبكر</lnk> إلى الأصول القادمة.",
+    "b3": "وصول فوري إلى جميع المحتويات في <lnk>الخزائن</lnk>.",
+    "b4": "<lnk>إضافة</lnk> متصفح أصول بلندر <lnk>الإضافية</lnk>.",
+    "b5": "التنزيل بالجملة والوصول دون اتصال بالإنترنت من خلال <lnk>سحابتنا السحابية</lnk>.",
+    "b6": "<lnk>قم برعاية أحد الأصول</lnk> باسمك ورابطك."
+  },
   "email-address": "عنوان البريد الالكترونى",
   "footer": {
     "join-ranks": "انضم إلى الرتب، وادعم Poly Haven على Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "اسم أو عنوان غير صالح",
   "loading": "جار التحميل...",
   "missing-invalid": "مفقود أو غير صالح",
+  "n-patrons-to-go": "{{number}} الرعاة للذهاب!",
   "nav": {
     "about-contact": "حول / تواصل",
     "add-on": "اضافه",
     "api": "API",
     "blog": "المقالات",
+    "collections": "المجموعات",
     "contribute": "تبرع",
     "faq": "التعليمات",
     "finances": "التقارير المالية",
@@ -56,6 +69,7 @@
   "please-wait": "أرجو الإنتظار...",
   "remove-ads": "إزالة الإعلانات",
   "required": "مطلوب",
+  "support-polyhaven": "ادعم بولي هافن!",
   "tagline": "مكتبة الأصول ثلاثية الأبعاد العامة",
   "visible": "مرئي"
 }

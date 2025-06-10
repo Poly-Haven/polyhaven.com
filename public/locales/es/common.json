@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "Modelos",
   "Textures": "Texturas",
+  "about-project": "Sobre el proyecto",
+  "access-now": "Acceder ahora",
   "also-supported-by": "También apoyado por:",
+  "browse-n": "Visite {{number}}",
   "corporate-sponsor_one": "Patrocinador Corporativo",
   "corporate-sponsor_other": "Patrocinadores Corporativos",
   "corporate-sponsors": "Patrocinadores Corporativos",
   "display-name": "Nombre para mostrar",
+  "donation-box": {
+    "b1": "¡Ayúdenos a crear <lnk>activos gratuitos</lnk> para todos!",
+    "b2": "<lnk>Acceso anticipado</lnk> a los próximos activos.",
+    "b3": "Acceso instantáneo a todos los contenidos de <lnk>las Bóvedas</lnk>.",
+    "b4": "Nuestro <lnk>complemento</lnk> para el navegador de activos de Blender.",
+    "b5": "Descarga masiva y acceso sin conexión con <lnk>nuestra nube</lnk>.",
+    "b6": "<lnk>Patrocine un activo</lnk> con su nombre y enlace."
+  },
   "email-address": "Dirección de correo electrónico",
   "footer": {
     "join-ranks": "Únete a las filas, apoya a Poly Haven en Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Nombre o URL no válido",
   "loading": "Cargando...",
   "missing-invalid": "Algo falta o no es válido",
+  "n-patrons-to-go": "{{number}} Patrones para llevar.",
   "nav": {
     "about-contact": "Acerca de/Contacto",
     "add-on": "Complemento",
     "api": "API",
     "blog": "Blog",
+    "collections": "Colecciones",
     "contribute": "Contribuir",
     "faq": "Preguntas frecuentes",
     "finances": "Reportes Financieros",
@@ -56,6 +69,7 @@
   "please-wait": "Espera por favor...",
   "remove-ads": "Quitar anuncios",
   "required": "Requerido",
+  "support-polyhaven": "Apoya a Poly Haven",
   "tagline": "La biblioteca pública de contenido 3D",
   "visible": "Visible"
 }

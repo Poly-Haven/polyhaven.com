@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "モデル",
   "Textures": "テクスチャ",
+  "about-project": "プロジェクトについて",
+  "access-now": "今すぐアクセス",
   "also-supported-by": "また、以下によってサポートされています：",
+  "browse-n": "ブラウズ{{number}}",
   "corporate-sponsor_one": "コーポレートスポンサー",
   "corporate-sponsor_other": "企業スポンサー",
   "corporate-sponsors": "企業スポンサー",
   "display-name": "表示名",
+  "donation-box": {
+    "b1": "すべての人のための<lnk>フリーアセット</lnk>作りにご協力ください！",
+    "b2": "今後のアセットへの<lnk>早期アクセス</lnk>。",
+    "b3": "<lnk>保管庫の</lnk>すべてのコンテンツに即座にアクセスできます。",
+    "b4": "私たちのBlender<lnk>アセットブラウザアドオン</lnk>。",
+    "b5": "<lnk>クラウドで</lnk>一括ダウンロード＆オフラインアクセス。",
+    "b6": "あなたの名前とリンクを<lnk>アセットにスポンサーして</lnk>ください。"
+  },
   "email-address": "メールアドレス",
   "footer": {
     "join-ranks": "参加して、Patreon で Poly Haven をサポートしてください。",
@@ -29,11 +40,13 @@
   "invalid-name-url": "名前またはURLが無効です",
   "loading": "読み込んでいます...",
   "missing-invalid": "欠落または無効",
+  "n-patrons-to-go": "{{number}} パトロンが行く！",
   "nav": {
     "about-contact": "会社概要/お問い合わせ",
     "add-on": "アドオン",
     "api": "API",
     "blog": "ブログ",
+    "collections": "コレクション",
     "contribute": "資する",
     "faq": "よくある質問",
     "finances": "財務報告書",
@@ -56,6 +69,7 @@
   "please-wait": "お待ちください...",
   "remove-ads": "広告を非表示",
   "required": "必須",
+  "support-polyhaven": "ポリヘブンを支援する",
   "tagline": "パブリック3Dアセットライブラリ",
   "visible": "表示される"
 }

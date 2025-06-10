@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "Modeli",
   "Textures": "Teksture",
+  "about-project": "O projektu",
+  "access-now": "Pristupite sada",
   "also-supported-by": "Također podržava:",
+  "browse-n": "Pregledaj {{number}}",
   "corporate-sponsor_one": "Korporativni sponzor",
   "corporate-sponsor_other": "Korporativni sponzori",
   "corporate-sponsors": "Korporativni sponzori",
   "display-name": "Ime za prikaz",
+  "donation-box": {
+    "b1": "Pomozite nam da napravimo<lnk> besplatna imovina</lnk> za sve!",
+    "b2": "<lnk>Rani pristup</lnk> na buduću imovinu.",
+    "b3": "Trenutni pristup svim sadržajima u<lnk> Trezori</lnk> .",
+    "b4": "Naš preglednik resursa u Blenderu<lnk> dodatak</lnk> .",
+    "b5": "Skupno preuzimanje i pristup izvan mreže s<lnk> naš oblak</lnk> .",
+    "b6": "<lnk>Sponzorirajte imovinu</lnk> s vašim imenom i linkom."
+  },
   "email-address": "Email adresa",
   "footer": {
     "join-ranks": "Pridružite se redovima, podržite Poly Haven na Patreonu",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Nevažeći naziv ili url",
   "loading": "Učitavanje...",
   "missing-invalid": "Nedostaje ili nije važeća",
+  "n-patrons-to-go": "Preostalo je još {{number}} posjetitelja!",
   "nav": {
     "about-contact": "O nama/Kontakt",
     "add-on": "Dodatak",
     "api": "API",
     "blog": "Blog",
+    "collections": "Zbirke",
     "contribute": "Doprinesite",
     "faq": "Česta pitanja",
     "finances": "Financijska izvješća",
@@ -56,6 +69,7 @@
   "please-wait": "Molimo pričekajte...",
   "remove-ads": "Ukloni reklame",
   "required": "Obavezno",
+  "support-polyhaven": "Podržite Poly Haven!",
   "tagline": "Javna biblioteka 3D sredstava",
   "visible": "Vidljivo"
 }

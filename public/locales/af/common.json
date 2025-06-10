@@ -8,11 +8,22 @@
   "HDRIs": "HDRI's",
   "Models": "Modelle",
   "Textures": "Teksture",
+  "about-project": "Oor die Projek",
+  "access-now": "Toegang Nou",
   "also-supported-by": "Ook geondersteun deur:",
+  "browse-n": "Blaai deur {{number}}",
   "corporate-sponsor_one": "Korporatiewe Borg",
   "corporate-sponsor_other": "Korporatiewe borge",
   "corporate-sponsors": "Korporatiewe borge",
   "display-name": "Vertoon naam",
+  "donation-box": {
+    "b1": "Help ons maak<lnk> gratis bates</lnk> vir almal!",
+    "b2": "<lnk>Vroeë toegang</lnk> tot komende bates.",
+    "b3": "Onmiddellike toegang tot alle inhoud in<lnk> die Kluise</lnk> .",
+    "b4": "Ons Blender-bateblaaier<lnk> byvoeging</lnk> .",
+    "b5": "Grootmaat aflaai en vanlyn toegang met<lnk> ons wolk</lnk> .",
+    "b6": "<lnk>Borg 'n bate</lnk> met jou naam en skakel."
+  },
   "email-address": "E-pos adres",
   "footer": {
     "join-ranks": "Sluit aan, ondersteun Poly Haven op Patreon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Ongeldige naam of URL",
   "loading": "Laai tans...",
   "missing-invalid": "Ontbreek of ongeldig",
+  "n-patrons-to-go": "{{number}} klante om te gaan!",
   "nav": {
     "about-contact": "Oor/Kontak",
     "add-on": "Byvoeging",
     "api": "API",
     "blog": "webjoernaal",
+    "collections": "Versamelings",
     "contribute": "Dra by",
     "faq": "Gereelde vrae",
     "finances": "Finansiële verslae",
@@ -56,6 +69,7 @@
   "please-wait": "Wag asseblief...",
   "remove-ads": "Verwyder advertensies",
   "required": "Vereis",
+  "support-polyhaven": "Ondersteun Poly Haven!",
   "tagline": "Die Openbare 3D Batebiblioteek",
   "visible": "Sigbaar"
 }

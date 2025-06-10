@@ -8,11 +8,22 @@
   "HDRIs": "HDRI",
   "Models": "模型",
   "Textures": "贴图",
+  "about-project": "关于项目",
+  "access-now": "立即访问",
   "also-supported-by": "还由他们支持：",
+  "browse-n": "浏览{{number}}",
   "corporate-sponsor_one": "企业赞助商",
   "corporate-sponsor_other": "企业赞助商",
   "corporate-sponsors": "企业赞助商",
   "display-name": "显示名字",
+  "donation-box": {
+    "b1": "帮助我们为每个人提供<lnk>免费资产</lnk>！",
+    "b2": "<lnk>提前访问</lnk>即将推出的资产。",
+    "b3": "即时访问<lnk>保险库</lnk>中的所有内容。",
+    "b4": "我们的 Blender 资产浏览器<lnk>插件</lnk>",
+    "b5": "使用<lnk>我们的云</lnk>服务批量下载和离线访问。",
+    "b6": "以您的名字和链接<lnk>赞助一项资产</lnk>。"
+  },
   "email-address": "电子邮箱地址",
   "footer": {
     "join-ranks": "加入赞助商的行列，在Patreon上支持我们",
@@ -29,11 +40,13 @@
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
   "missing-invalid": "丢失或无效",
+  "n-patrons-to-go": "{{number}} 赞助人要走了！",
   "nav": {
     "about-contact": "关于/联系方式",
     "add-on": "Blender插件",
     "api": "API",
     "blog": "博客",
+    "collections": "收藏品",
     "contribute": "支援",
     "faq": "常见问题",
     "finances": "财务报告",
@@ -56,6 +69,7 @@
   "please-wait": "请稍等...",
   "remove-ads": "移除广告",
   "required": "必需的",
+  "support-polyhaven": "支持保利天堂！",
   "tagline": "公共3D资源库",
   "visible": "可见"
 }

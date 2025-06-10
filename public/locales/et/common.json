@@ -8,11 +8,22 @@
   "HDRIs": "HDRId",
   "Models": "Mudelid",
   "Textures": "Tekstuurid",
+  "about-project": "Projektist",
+  "access-now": "Juurdepääs nüüd",
   "also-supported-by": "Toetavad ka:",
+  "browse-n": "Sirvi {{number}}",
   "corporate-sponsor_one": "Ettevõtte sponsor",
   "corporate-sponsor_other": "Ettevõtete sponsorid",
   "corporate-sponsors": "Ettevõtte sponsorid",
   "display-name": "Kuva nimi",
+  "donation-box": {
+    "b1": "Aita meil teha <lnk>tasuta vara</lnk> kõigile!",
+    "b2": "<lnk>Varajane juurdepääs</lnk> eelseisvatele varadele.",
+    "b3": "Kohene juurdepääs kogu <lnk>Vaultsi</lnk> sisule.",
+    "b4": "Meie Blenderi varade brauseri <lnk>lisandmoodul</lnk>.",
+    "b5": "Massiline allalaadimine ja offline-juurdepääs <lnk>meie pilve</lnk> abil.",
+    "b6": "<lnk>Sponsoreeri vara</lnk> oma nime ja lingiga."
+  },
   "email-address": "E-posti aadress",
   "footer": {
     "join-ranks": "Liituge, toetage Poly Haven'i Patreoonil",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Vale nimi või url",
   "loading": "Laadimine...",
   "missing-invalid": "Puuduv või kehtetu",
+  "n-patrons-to-go": "{{number}} patroonid lähevad!",
   "nav": {
     "about-contact": "Teave/Kontakt",
     "add-on": "Lisa",
     "api": "API",
     "blog": "Blogi",
+    "collections": "Kollektsioonid",
     "contribute": "Panustage",
     "faq": "KKK",
     "finances": "Finantsaruanded",
@@ -56,6 +69,7 @@
   "please-wait": "Palun oodake...",
   "remove-ads": "Eemalda reklaamid",
   "required": "Nõutav",
+  "support-polyhaven": "Toetage Poly Haven'i!",
   "tagline": "Avalik 3D varade kogumik",
   "visible": "Nähtav"
 }

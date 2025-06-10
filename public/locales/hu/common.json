@@ -8,11 +8,22 @@
   "HDRIs": "HDRI-k",
   "Models": "Modellek",
   "Textures": "Textúrák",
+  "about-project": "A projektről",
+  "access-now": "Hozzáférés most",
   "also-supported-by": "Támogatja még:",
+  "browse-n": "Böngésszen a  oldalon. {{number}}",
   "corporate-sponsor_one": "Vállalati szponzor",
   "corporate-sponsor_other": "Vállalati szponzorok",
   "corporate-sponsors": "Vállalati szponzorok",
   "display-name": "Megjelenítendő név",
+  "donation-box": {
+    "b1": "Segíts nekünk, hogy mindenki számára <lnk>ingyenes eszközöket</lnk> készítsünk!",
+    "b2": "<lnk>Korai hozzáférés</lnk> a hamarosan megjelenő eszközökhöz.",
+    "b3": "Azonnali hozzáférés <lnk>a Vaults</lnk> összes tartalmához.",
+    "b4": "A Blender eszközböngésző <lnk>kiegészítőnk</lnk>.",
+    "b5": "Tömeges letöltés és offline hozzáférés <lnk>a felhőnkkel</lnk>.",
+    "b6": "<lnk>Szponzoráljon egy eszközt</lnk> nevével és linkjével."
+  },
   "email-address": "Email cím",
   "footer": {
     "join-ranks": "Csatlakozz, és támogasd a Poly Havent a Patreonon",
@@ -29,11 +40,13 @@
   "invalid-name-url": "Érvénytelen név vagy URL",
   "loading": "Betöltés...",
   "missing-invalid": "Hiányzik vagy érvénytelen",
+  "n-patrons-to-go": "{{number}} patrónusok indulnak!",
   "nav": {
     "about-contact": "Névjegy/Kapcsolat",
     "add-on": "Kiegészítő",
     "api": "API",
     "blog": "Blog",
+    "collections": "Gyűjtemények",
     "contribute": "Hozzájárul",
     "faq": "GYIK",
     "finances": "Pénzügyi jelentések",
@@ -56,6 +69,7 @@
   "please-wait": "Kérlek várj...",
   "remove-ads": "Hirdetések eltávolítása",
   "required": "Kívánt",
+  "support-polyhaven": "Támogassa a Poly Haven-t!",
   "tagline": "A nyilvános 3D eszköztár",
   "visible": "Látható"
 }
