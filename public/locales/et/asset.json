@@ -20,6 +20,13 @@
   "download": "Lae alla",
   "downloads": "Allalaadimised",
   "downloads-pd": "päeva kohta ",
+  "early-access": {
+    "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
+    "donate-access": "Anneta 3 dollarit, et seda nüüd alla laadida, koos {{numEaAssets, number}} teiste varajase juurdepääsu varadega.",
+    "get-access": "Hangi varajane juurdepääs",
+    "release-date": "See vara vabastatakse:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Varsti tulemas!"
+  },
   "formats": {
     "exr": "Tõeline 32-bitine kanalite kaupa, kadudeta pakitud.",
     "hdr": "Tavaliselt väiksem ja laialdasemalt toetatud kui EXR, kuid väga harva võivad olla vähem täpsemad värvid.",
@@ -43,6 +50,15 @@
   "tags": "Sildid",
   "tall": "pikk",
   "user-renders": "Kasutaja renderid:",
+  "vaulted": {
+    "about": "kohta",
+    "access-now": "Juurdepääs nüüd",
+    "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
+    "donate-access": "Annetage 3 dollarit Patreonis, et seda alla laadida, koos {{totalVaultedAssets, number}} teiste varade võlvitud varadega.",
+    "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}} </vaultLink>.",
+    "patrons-needed": "Kui saame {{remaining, number}} rohkem toetajaid, avaldatakse see kõigile tasuta.",
+    "title": "Võlvitud vara"
+  },
   "wide": "lai",
   "zip-choose": "Valige ZIP-i sisu:"
 }

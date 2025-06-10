@@ -20,6 +20,13 @@
   "download": "Preuzmi",
   "downloads": "Preuzimanja",
   "downloads-pd": "dnevno",
+  "early-access": {
+    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "donate-access": "Donirajte 3 USD da biste ga odmah preuzeli, zajedno s {{numEaAssets, number}} drugim resursima za rani pristup.",
+    "get-access": "Ostvarite rani pristup",
+    "release-date": "Ova imovina bit će objavljena:<br/> <strong>{{scheduleText}}</strong>",
+    "title": "Uskoro!"
+  },
   "formats": {
     "exr": "Pravih 32 bita po kanalu, komprimirano bez gubitaka.",
     "hdr": "Obično je manji i ima veću podršku od EXR-a, ali vrlo rijetko može imati manje precizne boje.",
@@ -43,6 +50,15 @@
   "tags": "Oznake",
   "tall": "visok",
   "user-renders": "Korisnički prikazi:",
+  "vaulted": {
+    "about": "Oko",
+    "access-now": "Pristupite sada",
+    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "donate-access": "Donirajte 3 dolara na Patreonu kako biste ga preuzeli, zajedno s {{totalVaultedAssets, number}} drugim trezorskim datotekama.",
+    "locked-in": "Ova imovina je zaključana u<vaultLink> trezor {{vault}}</vaultLink> .",
+    "patrons-needed": "Kada dobijemo još {{remaining, number}} korisnika, bit će besplatno dostupno svima.",
+    "title": "Trezorska imovina"
+  },
   "wide": "širok",
   "zip-choose": "Odaberite ZIP sadržaj:"
 }

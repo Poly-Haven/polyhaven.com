@@ -13,6 +13,22 @@
   "no-files-d": "Try refresh, otherwise please report this to us.",
   "coming-soon": "Coming Soon!",
   "coming-soon-d": "{{tier}} Patrons log in to download early",
+  "vaulted": {
+    "title": "Vaulted Asset",
+    "locked-in": "This asset is locked in the <vaultLink>{{vault}} vault</vaultLink>.",
+    "donate-access": "Donate $3 on Patreon to download it, along with {{totalVaultedAssets, number}} other vaulted assets.",
+    "patrons-needed": "When we get {{remaining, number}} more patrons, it will be released for free for everyone.",
+    "about": "About",
+    "access-now": "Access Now",
+    "already-patron": "Already a patron? <loginLink>Log in</loginLink>."
+  },
+  "early-access": {
+    "title": "Coming Soon!",
+    "release-date": "This asset will be released:<br/><strong>{{scheduleText}}</strong>",
+    "donate-access": "Donate $3 to download it now, along with {{numEaAssets, number}} other early-access assets.",
+    "get-access": "Get Early Access",
+    "already-patron": "Already a patron? <loginLink>Log in</loginLink>."
+  },
   "formats": {
     "hdr": "Usually smaller and more widely supported than EXR, but may very rarely have less accurate colors.",
     "exr": "True 32-bit per channel, losslessly compressed.",

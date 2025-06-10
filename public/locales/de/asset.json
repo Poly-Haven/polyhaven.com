@@ -20,6 +20,13 @@
   "download": "Herunterladen",
   "downloads": "Downloads",
   "downloads-pd": "pro Tag",
+  "early-access": {
+    "already-patron": "Sind Sie bereits ein Gönner? <loginLink>Loggen Sie sich ein</loginLink>.",
+    "donate-access": "Mit einer Spende von 3 Dollar können Sie es jetzt zusammen mit {{numEaAssets, number}} herunterladen.",
+    "get-access": "Frühzeitigen Zugang erhalten",
+    "release-date": "Dieser Vermögenswert wird freigegeben:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Demnächst erhältlich!"
+  },
   "formats": {
     "exr": "Echte 32-Bit pro Kanal, verlustfrei komprimiert.",
     "hdr": "In der Regel kleiner und besser unterstützt als EXR, kann aber in seltenen Fällen weniger genaue Farben aufweisen.",
@@ -43,6 +50,15 @@
   "tags": "Schlagwörter",
   "tall": "hoch",
   "user-renders": "Benutzer-Renderings:",
+  "vaulted": {
+    "about": "Über",
+    "access-now": "Jetzt zugreifen",
+    "already-patron": "Sind Sie bereits ein Gönner? <loginLink>Loggen Sie sich ein</loginLink>.",
+    "donate-access": "Spenden Sie $3 auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Vaulted Assets herunterzuladen.",
+    "locked-in": "Dieser Vermögenswert ist im <vaultLink>Tresor von{{vault}} </vaultLink> eingeschlossen.",
+    "patrons-needed": "Sobald wir {{remaining, number}} mehr Gönner haben, wird es für alle kostenlos veröffentlicht.",
+    "title": "Gewölbte Anlage"
+  },
   "wide": "breit",
   "zip-choose": "Wähle den ZIP-Inhalt:"
 }

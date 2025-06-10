@@ -20,6 +20,13 @@
   "download": "İndir",
   "downloads": "İndirilenler",
   "downloads-pd": "günlük",
+  "early-access": {
+    "already-patron": "Zaten bir kullanıcı mısınız? <loginLink>Giriş</loginLink> yapın.",
+    "donate-access": "{{numEaAssets, number}} diğer erken erişim varlıklarıyla birlikte şimdi indirmek için 3 dolar bağış yapın.",
+    "get-access": "Erken Erişim Sağlayın",
+    "release-date": "Bu varlık serbest bırakılacaktır:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Çok Yakında!"
+  },
   "formats": {
     "exr": "Kanal başına gerçek 32 bit, kayıpsız sıkıştırılmış.",
     "hdr": "Genellikle EXR'dan daha küçüktür ve yaygın olarak desteklenir, ancak daha az doğru renklere nadiren sahip olabilir.",
@@ -43,6 +50,15 @@
   "tags": "Etiketler",
   "tall": "uzun boylu",
   "user-renders": "Kullanıcı Çalışmaları:",
+  "vaulted": {
+    "about": "Hakkında",
+    "access-now": "Şimdi Erişin",
+    "already-patron": "Zaten bir kullanıcı mısınız? <loginLink>Giriş</loginLink> yapın.",
+    "donate-access": "Patreon'da 3 dolar bağışlayarak {{totalVaultedAssets, number}} diğer tonozlu varlıklarla birlikte indirin.",
+    "locked-in": "Bu varlık <vaultLink>{{vault}} kasasında</vaultLink> kilitli tutulmaktadır.",
+    "patrons-needed": "{{remaining, number}} daha fazla kullanıcıya ulaştığımızda, herkes için ücretsiz olarak yayınlanacaktır.",
+    "title": "Tonozlu Varlık"
+  },
   "wide": "geniş",
   "zip-choose": "ZIP içeriğini seçin:"
 }

@@ -20,6 +20,13 @@
   "download": "Unduh",
   "downloads": "Unduhan",
   "downloads-pd": "per hari",
+  "early-access": {
+    "already-patron": "Sudah menjadi pelindung? <loginLink>Masuk</loginLink>.",
+    "donate-access": "Donasikan $3 untuk mengunduhnya sekarang, bersama dengan {{numEaAssets, number}} aset akses awal lainnya.",
+    "get-access": "Dapatkan Akses Awal",
+    "release-date": "Aset ini akan dilepaskan:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Coming Soon!"
+  },
   "formats": {
     "exr": "Benar 32-bit per saluran, dikompresi tanpa kehilangan.",
     "hdr": "Biasanya lebih kecil dan lebih banyak didukung daripada EXR, tetapi mungkin sangat jarang memiliki warna yang kurang akurat.",
@@ -43,6 +50,15 @@
   "tags": "Tag",
   "tall": "tinggi",
   "user-renders": "Render Pengguna:",
+  "vaulted": {
+    "about": "Tentang",
+    "access-now": "Akses Sekarang",
+    "already-patron": "Sudah menjadi pelindung? <loginLink>Masuk</loginLink>.",
+    "donate-access": "Donasikan $3 di Patreon untuk mengunduhnya, bersama dengan {{totalVaultedAssets, number}} aset-aset berkubah lainnya.",
+    "locked-in": "Aset ini terkunci di brankas <vaultLink>{{vault}}.</vaultLink>",
+    "patrons-needed": "Ketika kami mendapatkan lebih banyak pelanggan, {{remaining, number}} akan dirilis secara gratis untuk semua orang.",
+    "title": "Aset Berkubah"
+  },
   "wide": "lebar",
   "zip-choose": "Pilih konten ZIP:"
 }

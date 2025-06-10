@@ -20,6 +20,13 @@
   "download": "הורד",
   "downloads": "הורדות",
   "downloads-pd": "ליום",
+  "early-access": {
+    "already-patron": "כבר פטרון?<loginLink> התחברות</loginLink> .",
+    "donate-access": "תרמו 3 דולר כדי להוריד אותו עכשיו, יחד עם {{numEaAssets, number}} נכסים נוספים בגישה מוקדמת.",
+    "get-access": "קבל גישה מוקדמת",
+    "release-date": "נכס זה ישוחרר:<br/> <strong>{{scheduleText}}</strong>",
+    "title": "בקרוב!"
+  },
   "formats": {
     "exr": "32 ביט אמיתי לכל ערוץ, דחיסה ללא אובדן מידע.",
     "hdr": "בדרך כלל, הוא קטן יותר ונתמך יותר מ-EXR, אך לעתים רחוקות מאוד יש לו צבעים פחות מדויקים.",
@@ -43,6 +50,15 @@
   "tags": "תגים",
   "tall": "גָבוֹהַ",
   "user-renders": "עיבודי משתמש:",
+  "vaulted": {
+    "about": "אוֹדוֹת",
+    "access-now": "גישה עכשיו",
+    "already-patron": "כבר פטרון?<loginLink> התחברות</loginLink> .",
+    "donate-access": "תרמו 3 דולר בפטריאון כדי להוריד אותו, יחד עם {{totalVaultedAssets, number}} נכסים אחרים המאוחסנים בכספת.",
+    "locked-in": "נכס זה נעול ב-<vaultLink> כספת {{vault}}</vaultLink> .",
+    "patrons-needed": "כאשר נקבל עוד {{remaining, number}} פטרונים, הוא יופץ בחינם לכולם.",
+    "title": "נכס מאובטח"
+  },
   "wide": "רָחָב",
   "zip-choose": "בחר תוכן ZIP:"
 }

@@ -20,6 +20,13 @@
   "download": "دانلود",
   "downloads": "دانلودها",
   "downloads-pd": "در هر روز",
+  "early-access": {
+    "already-patron": "قبلاً حامی بوده‌اید؟<loginLink> ورود</loginLink> .",
+    "donate-access": "برای دانلود آن به همراه {{numEaAssets, number}} فایل دسترسی زودهنگام دیگر، ۳ دلار اهدا کنید.",
+    "get-access": "دسترسی زودهنگام دریافت کنید",
+    "release-date": "این دارایی آزاد خواهد شد:<br/> <strong>{{scheduleText}}</strong>",
+    "title": "به زودی!"
+  },
   "formats": {
     "exr": "32 بیت واقعی در هر کانال، بدون کاهش کیفیت, فشرده سازی شده است.",
     "hdr": "معمولاً کم حجم تر و به طور گسترده‌تر از فرمت EXR پشتیبانی می‌شود، اما ممکن است به ندرت رنگ‌های دقیق‌تری داشته باشد.",
@@ -43,6 +50,15 @@
   "tags": "برچسب ها",
   "tall": "وسعت",
   "user-renders": "خروجیهایی که کاربران گرفته اند:",
+  "vaulted": {
+    "about": "درباره",
+    "access-now": "اکنون دسترسی پیدا کنید",
+    "already-patron": "قبلاً حامی بوده‌اید؟<loginLink> ورود</loginLink> .",
+    "donate-access": "برای دانلود آن، به همراه {{totalVaultedAssets, number}} دارایی‌های ذخیره شده دیگر، ۳ دلار به Patreon اهدا کنید.",
+    "locked-in": "این دارایی قفل شده است<vaultLink> {{vault}} خزانه</vaultLink> .",
+    "patrons-needed": "وقتی {{remaining, number}} مشتری بیشتر داشته باشیم، به صورت رایگان برای همه منتشر خواهد شد.",
+    "title": "دارایی خزانه‌داری شده"
+  },
   "wide": "وسعت",
   "zip-choose": "محتویات فایل ZIP را انتخاب کنید:"
 }

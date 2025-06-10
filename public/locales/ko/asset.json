@@ -20,6 +20,13 @@
   "download": "다운로드",
   "downloads": "다운로드",
   "downloads-pd": "하루에",
+  "early-access": {
+    "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
+    "donate-access": "3달러를 기부하면 {{numEaAssets, number}} 다른 얼리 액세스 에셋과 함께 지금 다운로드할 수 있습니다.",
+    "get-access": "얼리 액세스 받기",
+    "release-date": "이 자산이 공개됩니다:<br/><strong>{{scheduleText}}</strong>",
+    "title": "곧 출시됩니다!"
+  },
   "formats": {
     "exr": "채널당 True 32비트, 무손실 압축",
     "hdr": "일반적으로 EXR보다 파일 용량이 작고 널리 지원되지만 매우 드물게 색상이 덜 정확할 수 있습니다.",
@@ -43,6 +50,15 @@
   "tags": "태그",
   "tall": "tall",
   "user-renders": "사용자 렌더링:",
+  "vaulted": {
+    "about": "정보",
+    "access-now": "지금 액세스",
+    "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
+    "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 볼트에 보관된 에셋과 함께 다운로드할 수 있습니다.",
+    "locked-in": "이 자산은 <vaultLink>{{vault}} 보관소에 잠겨 있습니다.</vaultLink>",
+    "patrons-needed": "{{remaining, number}} 더 많은 후원자가 확보되면 모든 사람에게 무료로 공개할 예정입니다.",
+    "title": "보관 자산"
+  },
   "wide": "너비",
   "zip-choose": "ZIP 콘텐츠 선택:"
 }

@@ -20,6 +20,13 @@
   "download": "Télécharger",
   "downloads": "Téléchargements",
   "downloads-pd": "par jour",
+  "early-access": {
+    "already-patron": "Vous êtes déjà mécène ? <loginLink>Se connecter</loginLink>.",
+    "donate-access": "Faites un don de 3 $ pour le télécharger dès maintenant, ainsi que {{numEaAssets, number}} autres ressources en accès anticipé.",
+    "get-access": "Accès anticipé",
+    "release-date": "Cet actif sera libéré :<br/><strong>{{scheduleText}}</strong>",
+    "title": "Bientôt disponible !"
+  },
   "formats": {
     "exr": "Véritable 32 bits par canal, compressé sans perte.",
     "hdr": "Généralement plus petit et plus largement pris en charge que EXR, mais peut très rarement avoir des couleurs moins précises.",
@@ -43,6 +50,15 @@
   "tags": "Mots clés",
   "tall": "grand",
   "user-renders": "Rendus d'utilisateurs :",
+  "vaulted": {
+    "about": "A propos de",
+    "access-now": "Accéder maintenant",
+    "already-patron": "Vous êtes déjà mécène ? <loginLink>Connectez-vous</loginLink>.",
+    "donate-access": "Faites un don de 3 $ sur Patreon pour le télécharger, ainsi que {{totalVaultedAssets, number}} autres ressources protégées.",
+    "locked-in": "Cet actif est enfermé dans le <vaultLink>coffre-fort de{{vault}} </vaultLink>.",
+    "patrons-needed": "Lorsque nous aurons obtenu {{remaining, number}} plus de mécènes, il sera publié gratuitement pour tout le monde.",
+    "title": "Actif voûté"
+  },
   "wide": "large",
   "zip-choose": "Choisissez le contenu du ZIP :"
 }

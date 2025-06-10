@@ -20,6 +20,13 @@
   "download": "Scarica",
   "downloads": "Download",
   "downloads-pd": "al giorno",
+  "early-access": {
+    "already-patron": "Sei già un mecenate? Effettua <loginLink>il login</loginLink>.",
+    "donate-access": "Donate 3 dollari per scaricarlo subito, insieme a {{numEaAssets, number}} altre risorse in accesso anticipato.",
+    "get-access": "Accesso anticipato",
+    "release-date": "Questa risorsa verrà rilasciata:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Prossimamente!"
+  },
   "formats": {
     "exr": "Vero 32 bit per canale, compresso senza perdite.",
     "hdr": "Di solito più piccolo e più ampiamente supportato di EXR, ma molto raramente può avere colori meno accurati.",
@@ -43,6 +50,15 @@
   "tags": "Tag",
   "tall": "alto",
   "user-renders": "Rendering utente:",
+  "vaulted": {
+    "about": "Circa",
+    "access-now": "Accedi ora",
+    "already-patron": "Sei già un mecenate? Effettua <loginLink>il login</loginLink>.",
+    "donate-access": "Donate 3 dollari su Patreon per scaricarlo, insieme a {{totalVaultedAssets, number}} altre risorse custodite.",
+    "locked-in": "Questo bene è chiuso nel <vaultLink>caveau</vaultLink> di <vaultLink>{{vault}}.</vaultLink>",
+    "patrons-needed": "Quando avremo {{remaining, number}} più mecenati, verrà rilasciato gratuitamente per tutti.",
+    "title": "Attività a volta"
+  },
   "wide": "largo",
   "zip-choose": "Scegli il contenuto ZIP:"
 }

@@ -20,6 +20,13 @@
   "download": "Pobierz",
   "downloads": "Liczba pobrań",
   "downloads-pd": "dziś",
+  "early-access": {
+    "already-patron": "Jesteś już patronem? <loginLink>Zaloguj się</loginLink>.",
+    "donate-access": "Przekaż darowiznę w wysokości 3 USD, aby pobrać go teraz wraz z {{numEaAssets, number}} innymi zasobami wczesnego dostępu.",
+    "get-access": "Uzyskaj wczesny dostęp",
+    "release-date": "Ten zasób zostanie zwolniony:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Już wkrótce!"
+  },
   "formats": {
     "exr": "32-bity na kanał, bezstratnie skompresowane.",
     "hdr": "Zwykle mniejsze i szerzej obsługiwane niż format EXR, ale czasem mogą posiadać mniej dokładną kolorystykę.",
@@ -43,6 +50,15 @@
   "tags": "Tagi",
   "tall": "wysoki",
   "user-renders": "Projekty Użytkowników:",
+  "vaulted": {
+    "about": "O",
+    "access-now": "Dostęp teraz",
+    "already-patron": "Jesteś już patronem? <loginLink>Zaloguj się</loginLink>.",
+    "donate-access": "Przekaż 3 dolary na Patreon, aby pobrać go wraz z {{totalVaultedAssets, number}} innymi zasobami skarbca.",
+    "locked-in": "Ten zasób jest zamknięty w <vaultLink>skarbcu{{vault}} </vaultLink>.",
+    "patrons-needed": "Gdy zdobędziemy {{remaining, number}} więcej patronów, zostanie on udostępniony za darmo dla wszystkich.",
+    "title": "Sklepienie aktywów"
+  },
   "wide": "szerokość",
   "zip-choose": "Wybierz zawartość pliku ZIP:"
 }

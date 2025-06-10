@@ -20,6 +20,13 @@
   "download": "تحميل",
   "downloads": "التنزيلات",
   "downloads-pd": "في اليوم الواحد",
+  "early-access": {
+    "already-patron": "هل أنت راعٍ بالفعل؟ سجّل <loginLink>الدخول</loginLink>",
+    "donate-access": "تبرع بـ 3 دولارات لتحميلها الآن، بالإضافة إلى {{numEaAssets, number}} أصول أخرى يمكن الوصول إليها مبكراً.",
+    "get-access": "احصل على وصول مبكر",
+    "release-date": "سيتم تحرير هذا الأصل:<br/><strong>{{scheduleText}}</strong>",
+    "title": "قريباً!"
+  },
   "formats": {
     "exr": "32-bit حقيقي لكل قناة، مضغوط بدون خسارة.",
     "hdr": "عادةً ما تكون أصغر وأكثر دعمًا على نطاق واسع من EXR، ولكن نادراً ما يكون لها ألوان أقل دقة.",
@@ -43,6 +50,15 @@
   "tags": "العلامات",
   "tall": "الارتفاع",
   "user-renders": "تصيير المستخدم:",
+  "vaulted": {
+    "about": "نبذة عن",
+    "access-now": "ادخل الآن",
+    "already-patron": "هل أنت راعٍ بالفعل؟ سجّل <loginLink>الدخول</loginLink>",
+    "donate-access": "تبرع بـ 3 دولارات على Patreon لتحميله، بالإضافة إلى {{totalVaultedAssets, number}} أصول أخرى مسجلة.",
+    "locked-in": "هذا الأصل محفوظ في <vaultLink>خزنة{{vault}} </vaultLink>.",
+    "patrons-needed": "عندما نحصل على {{remaining, number}} المزيد من الرعاة، سيتم إصداره مجاناً للجميع.",
+    "title": "الأصول المقبّبة"
+  },
   "wide": "واسع",
   "zip-choose": "اختر محتويات ال ZIP:"
 }

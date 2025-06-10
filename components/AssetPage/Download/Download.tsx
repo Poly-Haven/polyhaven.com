@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslation, Trans } from 'next-i18next'
 import { useState, useEffect, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -14,6 +14,7 @@ import Button from 'components/UI/Button/Button'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
+import Spinner from 'components/UI/Spinner/Spinner'
 import IconBlender from 'components/UI/Icons/Blender'
 import IconGltf from 'components/UI/Icons/glTF'
 import IconUSD from 'components/UI/Icons/USD'
@@ -132,26 +133,43 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       return (
         <div className={styles.unreleased}>
           <h3>
-            <HeartLock /> Vaulted Asset
+            <HeartLock /> {t('asset:vaulted.title')}
           </h3>
           <p>
-            This asset is locked in the <Link href={`/vaults/${vault}`}>{vault} vault</Link>.
+            <Trans
+              i18nKey="asset:vaulted.locked-in"
+              t={t}
+              values={{ vault }}
+              components={{ vaultLink: <Link href={`/vaults/${vault}`} /> }}
+            />
           </p>
-          <p>
-            <strong>
-              Donate $3 on Patreon to download it, along with{' '}
-              {totalVaultedAssets ? totalVaultedAssets - 1 : <Loader inline />} other vaulted assets.
-            </strong>
-          </p>
-          <p>
-            When we get {targetPatrons && currentPatrons ? targetPatrons - currentPatrons : <Loader inline />} more
-            patrons, it will be released for free for everyone.
-          </p>
+          {targetPatrons && currentPatrons ? (
+            <>
+              <p>
+                <strong>
+                  <Trans
+                    i18nKey="asset:vaulted.donate-access"
+                    t={t}
+                    values={{ totalVaultedAssets: totalVaultedAssets ? totalVaultedAssets - 1 : null }}
+                  />
+                </strong>
+              </p>
+              <p>
+                <Trans
+                  i18nKey="asset:vaulted.patrons-needed"
+                  t={t}
+                  values={{ remaining: targetPatrons && currentPatrons ? targetPatrons - currentPatrons : null }}
+                />
+              </p>
+            </>
+          ) : (
+            <Spinner />
+          )}
 
           <div className={styles.buttonRow}>
-            <Button text="About" href="/vaults" icon={<MdInfo />} color="hollowRed" />
+            <Button text={t('asset:vaulted.about')} href="/vaults" icon={<MdInfo />} color="hollowRed" />
             <Button
-              text="Access Now"
+              text={t('asset:vaulted.access-now')}
               href="https://www.patreon.com/checkout/polyhaven"
               icon={<IoMdUnlock />}
               color="red"
@@ -159,7 +177,11 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
           </div>
 
           <p style={{ marginTop: '-0.8em', opacity: 0.75, fontSize: '0.8em' }}>
-            Already a patron? <Link href={`/account?returnTo=${router.asPath}`}>Log in</Link>.
+            <Trans
+              i18nKey="asset:vaulted.already-patron"
+              t={t}
+              components={{ loginLink: <Link href={`/account?returnTo=${router.asPath}`} /> }}
+            />
           </p>
         </div>
       )
@@ -172,27 +194,41 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       return (
         <div className={styles.unreleased}>
           <h3>
-            <Heart color="#F96854" /> Coming Soon!
+            <Heart color="#F96854" /> {t('asset:early-access.title')}
           </h3>
           <p>
-            This asset will be released:
-            <br />
-            <strong>{scheduleText}</strong>
+            <Trans
+              i18nKey="asset:early-access.release-date"
+              t={t}
+              values={{ scheduleText }}
+              components={{ strong: <strong /> }}
+            />
           </p>
-          <p>
-            Donate $3 to download it now, along with {numEaAssets ? numEaAssets - 1 : <Loader inline />} other
-            early-access assets.
-          </p>
+          {numEaAssets ? (
+            <p>
+              <Trans
+                i18nKey="asset:early-access.donate-access"
+                t={t}
+                values={{ numEaAssets: numEaAssets ? numEaAssets - 1 : null }}
+              />
+            </p>
+          ) : (
+            <Spinner />
+          )}
 
           <Button
-            text="Get Early Access"
+            text={t('asset:early-access.get-access')}
             href="https://www.patreon.com/checkout/polyhaven"
             icon={<IoMdUnlock />}
             color="red"
           />
 
           <p style={{ marginTop: '-0.8em', opacity: 0.75, fontSize: '0.8em' }}>
-            Already a patron? <Link href={`/account?returnTo=${router.asPath}`}>Log in</Link>.
+            <Trans
+              i18nKey="asset:early-access.already-patron"
+              t={t}
+              components={{ loginLink: <Link href={`/account?returnTo=${router.asPath}`} /> }}
+            />
           </p>
         </div>
       )

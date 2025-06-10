@@ -20,6 +20,13 @@
   "download": "Letöltés",
   "downloads": "Letöltések",
   "downloads-pd": "naponta",
+  "early-access": {
+    "already-patron": "Már támogatója vagy? <loginLink>Jelentkezzen be</loginLink>.",
+    "donate-access": "Adományozz 3 dollárt, hogy letölthesd most, a {{numEaAssets, number}} egyéb korai hozzáférésű eszközökkel együtt.",
+    "get-access": "Korai hozzáférés",
+    "release-date": "Ez az eszköz felszabadul:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Hamarosan!"
+  },
   "formats": {
     "exr": "Valódi 32 bites csatornánként, veszteségmentesen tömörítve.",
     "hdr": "Általában kisebb és szélesebb körben támogatott, mint az EXR, de nagyon ritkán kevésbé pontos színekkel rendelkezik.",
@@ -43,6 +50,15 @@
   "tags": "Címkék",
   "tall": "magas",
   "user-renders": "Felhasználói renderek:",
+  "vaulted": {
+    "about": "A  oldalról",
+    "access-now": "Hozzáférés most",
+    "already-patron": "Már támogatója vagy? <loginLink>Jelentkezzen be</loginLink>.",
+    "donate-access": "Adományozz 3 dollárt a Patreonon, hogy letölthesd, valamint a {{totalVaultedAssets, number}} más páncélozott eszközöket.",
+    "locked-in": "Ez az eszköz a <vaultLink>{{vault}} páncélteremben</vaultLink> van elzárva.",
+    "patrons-needed": "Ha több támogatót kapunk a {{remaining, number}} címen, akkor mindenki számára ingyenesen elérhetővé válik.",
+    "title": "Boltozatos eszköz"
+  },
   "wide": "széles",
   "zip-choose": "Válassza ki a ZIP tartalmát:"
 }

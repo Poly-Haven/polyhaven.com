@@ -20,6 +20,13 @@
   "download": "Aflaai",
   "downloads": "Aflaaie",
   "downloads-pd": "per dag",
+  "early-access": {
+    "already-patron": "Reeds 'n beskermheer?<loginLink> Teken aan</loginLink> .",
+    "donate-access": "Skenk $3 om dit nou af te laai, saam met {{numEaAssets, number}} ander vroeëtoegang-bates.",
+    "get-access": "Kry vroeë toegang",
+    "release-date": "Hierdie bate sal vrygestel word:<br/> <strong>{{scheduleText}}</strong>",
+    "title": "Kom binnekort!"
+  },
   "formats": {
     "exr": "Ware 32-bit per kanaal, verliesloos gestoor.",
     "hdr": "Gewoonlik kleiner en meer wyd ondersteun as EXR, maar kan baie selde minder akkurate kleur hê.",
@@ -43,6 +50,15 @@
   "tags": "Merkers",
   "tall": "lank",
   "user-renders": "Gebruikers Kunswerke:",
+  "vaulted": {
+    "about": "Oor",
+    "access-now": "Toegang Nou",
+    "already-patron": "Reeds 'n beskermheer?<loginLink> Teken aan</loginLink> .",
+    "donate-access": "Skenk $3 op Patreon om dit af te laai, saam met {{totalVaultedAssets, number}} ander gebergde bates.",
+    "locked-in": "Hierdie bate is vasgesluit in die<vaultLink> {{vault}} kluis</vaultLink> .",
+    "patrons-needed": "Wanneer ons {{remaining, number}} meer klante kry, sal dit gratis vir almal vrygestel word.",
+    "title": "Gekluiste Bate"
+  },
   "wide": "wyd",
   "zip-choose": "Kies ZIP-inhoud:"
 }

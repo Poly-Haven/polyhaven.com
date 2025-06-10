@@ -20,6 +20,13 @@
   "download": "Descargar",
   "downloads": "Más descargados",
   "downloads-pd": "por día",
+  "early-access": {
+    "already-patron": "¿Ya eres mecenas? <loginLink>Conéctese</loginLink>.",
+    "donate-access": "Dona 3 $ para descargarlo ahora, junto con {{numEaAssets, number}} otros recursos de acceso anticipado.",
+    "get-access": "Acceso anticipado",
+    "release-date": "Este activo será liberado:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Próximamente"
+  },
   "formats": {
     "exr": "Verdaderos 32 bits por canal, comprimidos sin pérdidas.",
     "hdr": "Por lo general, es más pequeño y más compatible que EXR, pero muy rara vez puede tener colores menos precisos.",
@@ -43,6 +50,15 @@
   "tags": "Etiquetas",
   "tall": "alto",
   "user-renders": "Renders del usuario:",
+  "vaulted": {
+    "about": "Acerca de",
+    "access-now": "Acceder ahora",
+    "already-patron": "¿Ya eres mecenas? <loginLink>Conéctese</loginLink>.",
+    "donate-access": "Dona 3 $ en Patreon para descargarlo, junto con {{totalVaultedAssets, number}} otros activos de bóveda.",
+    "locked-in": "Este activo está guardado en la <vaultLink>cámara acorazada de{{vault}} </vaultLink>.",
+    "patrons-needed": "Cuando consigamos {{remaining, number}} más mecenas, se publicará gratuitamente para todo el mundo.",
+    "title": "Activo abovedado"
+  },
   "wide": "ancho",
   "zip-choose": "Elija contenido ZIP:"
 }

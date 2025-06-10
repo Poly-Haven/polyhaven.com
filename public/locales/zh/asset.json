@@ -20,6 +20,13 @@
   "download": "下载",
   "downloads": "下载量",
   "downloads-pd": "次/天",
+  "early-access": {
+    "already-patron": "已经是赞助人？<loginLink>登录</loginLink>。",
+    "donate-access": "捐赠 3 美元即可下载，同时还可下载{{numEaAssets, number}} 其他早期访问资产。",
+    "get-access": "提前访问",
+    "release-date": "该资产将被释放：<br/><strong>{{scheduleText}}</strong>",
+    "title": "即将推出"
+  },
   "formats": {
     "exr": "每通道真32位，无损压缩。",
     "hdr": "通常比EXR更小，支持更广泛，但少数情况下颜色不太准确。",
@@ -43,6 +50,15 @@
   "tags": "标签",
   "tall": "高",
   "user-renders": "用户渲染作品：",
+  "vaulted": {
+    "about": "关于",
+    "access-now": "立即访问",
+    "already-patron": "已经是赞助人？<loginLink>登录</loginLink>。",
+    "donate-access": "在 Patreon 上捐赠 3 美元就能下载它，以及{{totalVaultedAssets, number}} 其他金库资产。",
+    "locked-in": "这笔资产被锁在<vaultLink>{{vault}} 的保险库</vaultLink>中。",
+    "patrons-needed": "当我们获得{{remaining, number}} 更多赞助时，将向所有人免费发布。",
+    "title": "拱顶资产"
+  },
   "wide": "宽度",
   "zip-choose": "选择 ZIP 内容："
 }

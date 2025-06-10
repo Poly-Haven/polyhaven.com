@@ -20,6 +20,13 @@
   "download": "Завантажити",
   "downloads": "Завантажили",
   "downloads-pd": "на день",
+  "early-access": {
+    "already-patron": "Вже є меценатом? <loginLink>Заходьте</loginLink>.",
+    "donate-access": "Пожертвуйте $3, щоб завантажити його зараз, разом з іншими ресурсами раннього доступу {{numEaAssets, number}}.",
+    "get-access": "Отримайте ранній доступ",
+    "release-date": "Цей актив буде звільнений:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Вже скоро!"
+  },
   "formats": {
     "exr": "Справжні 32 біти на канал, стиснуті без втрат.",
     "hdr": "Зазвичай менший і підтримується ширше, ніж EXR, але дуже рідко може мати менш точні кольори.",
@@ -43,6 +50,15 @@
   "tags": "Теги",
   "tall": "великий",
   "user-renders": "Рендери користувачів:",
+  "vaulted": {
+    "about": "Про",
+    "access-now": "Отримати доступ зараз",
+    "already-patron": "Вже є меценатом? <loginLink>Заходьте</loginLink>.",
+    "donate-access": "Пожертвуйте $3 на Patreon, щоб завантажити його, а також {{totalVaultedAssets, number}} та інші ресурси сховища.",
+    "locked-in": "Цей ресурс зберігається у сховищі <vaultLink>{{vault}}.</vaultLink>",
+    "patrons-needed": "Коли ми отримаємо {{remaining, number}} більше меценатів, він буде випущений безкоштовно для всіх.",
+    "title": "Сховище активів"
+  },
   "wide": "широкий",
   "zip-choose": "Оберіть що додати до ZIP:"
 }
