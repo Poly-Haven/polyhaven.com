@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation, Trans } from 'next-i18next'
 import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
@@ -10,6 +11,7 @@ import { MdArrowForward } from 'react-icons/md'
 import styles from './Vaults.module.scss'
 
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
+  const { t } = useTranslation('common')
   const videoRef = useRef(null)
   const containerRef = useRef(null)
   const [videoOffset, setVideoOffset] = useState([0, 0])
@@ -117,17 +119,20 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         <div className={styles.left}>
           <h2>{vault.name}</h2>
           <p>{vault.description}</p>
-          {!libraryPage && vault.about && <Button text="About the Project" href={vault.about} />}
+          {!libraryPage && vault.about && <Button text={t('common:about-project')} href={vault.about} />}
         </div>
 
         <div className={styles.right}>
           <div className={styles.row}>
-            {libraryPage && vault.about && <Button text="About the Project" href={vault.about} />}
+            {libraryPage && vault.about && <Button text={t('common:about-project')} href={vault.about} />}
             {!libraryPage && (
-              <Button text={`Browse ${vault.assets.length} ${vault.type || 'Assets'}`} href={`/vaults/${vault.id}`} />
+              <Button
+                text={`${t('common:browse-n', { number: vault.assets.length })} ${t(vault.type) || t('common:Assets')}`}
+                href={`/vaults/${vault.id}`}
+              />
             )}
             <Button
-              text="Access Now"
+              text={t('common:access-now')}
               href="https://www.patreon.com/checkout/polyhaven"
               icon={<IoMdUnlock />}
               color="red"
@@ -139,7 +144,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
                 <div className={styles.barShine} />
                 {numPatrons > 0 ? (
-                  <div className={styles.barText}>{Math.max(0, vault.target - numPatrons)} patrons to go!</div>
+                  <div className={styles.barText}>
+                    {t('common:n-patrons-to-go', { number: Math.max(0, vault.target - numPatrons) })}
+                  </div>
                 ) : (
                   <div className={styles.barText}>
                     <Loader />

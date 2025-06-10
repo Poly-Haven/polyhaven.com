@@ -26,6 +26,11 @@
   "required": "Required",
   "optional": "Optional",
   "loading": "Loading...",
+  "support-polyhaven": "Support Poly Haven!",
+  "about-project": "About the Project",
+  "browse-n": "Browse {{number}}",
+  "access-now": "Access Now",
+  "n-patrons-to-go": "{{number}} patrons to go!",
   "goal": {
     "to-go": "${{dollars}} to go",
     "current": "Current goal:",
@@ -57,5 +62,13 @@
   "footer": {
     "thanks": "Thanks to our <lnk>Patrons</lnk> for making Poly Haven possible",
     "join-ranks": "Join the ranks, support Poly Haven on Patreon"
+  },
+  "donation-box": {
+    "b1": "Help us make <lnk>free assets</lnk> for everyone!",
+    "b2": "<lnk>Early access</lnk> to upcoming assets.",
+    "b3": "Instant access to all content in <lnk>the Vaults</lnk>.",
+    "b4": "Our Blender asset browser <lnk>add-on</lnk>.",
+    "b5": "Bulk download & offline access with <lnk>our cloud</lnk>.",
+    "b6": "<lnk>Sponsor an asset</lnk> with your name & link."
   }
 }

@@ -28,7 +28,7 @@
     }
 
     p {
-      text-align: left;
+      text-align: initial;
       line-height: 1.5em;
       border-left: 1px solid rgba($c-text-light, 0.5);
       padding-left: 2em;
@@ -99,7 +99,7 @@
 
     .left {
       margin-top: auto;
-      text-align: left;
+      text-align: initial;
       flex-grow: 1;
     }
 
@@ -120,6 +120,7 @@
       .barWrapper {
         width: calc(100% - 1rem);
         margin: 0.5rem;
+        direction: ltr;
 
         .barOuter {
           position: relative;
@@ -253,7 +254,7 @@
   max-width: 800px;
   padding: 1rem;
   margin: auto;
-  text-align: left;
+  text-align: initial;
 
   .row {
     @include flex(row, true, true);

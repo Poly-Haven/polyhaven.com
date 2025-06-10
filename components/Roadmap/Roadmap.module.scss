@@ -10,6 +10,7 @@
     url(https://cdn.polyhaven.com/site_images/home/window_rend.jpg?width=1920&blur=50) no-repeat center center;
   // background-attachment: fixed;
   background-size: cover;
+  direction: ltr;
 
   @media screen and (max-width: 600px) {
     display: none;

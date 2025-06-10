@@ -30,14 +30,14 @@ const Benefit = ({ text, icon, bold, excluded, cost }) => {
 }
 
 const DonationBox = () => {
+  const { t } = useTranslation('common')
   const [selectedTier, setSelectedTier] = useState(5)
-  const { t } = useTranslation('asset')
 
   const benefits = [
     {
       text: (
         <span>
-          Help us make <Link href="/all">free assets</Link> for everyone!
+          <Trans i18nKey="common:donation-box.b1" t={t} components={{ lnk: <Link href={`/all`} /> }} />
         </span>
       ),
       icon: <Heart />,
@@ -46,7 +46,11 @@ const DonationBox = () => {
     {
       text: (
         <span>
-          <Link href="https://www.patreon.com/posts/how-to-get-early-14640360">Early access</Link> to upcoming assets.
+          <Trans
+            i18nKey="common:donation-box.b2"
+            t={t}
+            components={{ lnk: <Link href={`https://www.patreon.com/posts/how-to-get-early-14640360`} /> }}
+          />
         </span>
       ),
       icon: <TbCalendarSearch />,
@@ -55,7 +59,7 @@ const DonationBox = () => {
     {
       text: (
         <span>
-          Instant access to all content in <Link href="/vaults">the Vaults</Link>.
+          <Trans i18nKey="common:donation-box.b3" t={t} components={{ lnk: <Link href={`/vaults`} /> }} />
         </span>
       ),
       icon: <IoLockOpen />,
@@ -64,7 +68,7 @@ const DonationBox = () => {
     {
       text: (
         <span>
-          Our Blender asset browser <Link href="/plugins/blender">add-on</Link>.
+          <Trans i18nKey="common:donation-box.b4" t={t} components={{ lnk: <Link href={`/plugins/blender`} /> }} />
         </span>
       ),
       icon: <Blender />,
@@ -73,7 +77,11 @@ const DonationBox = () => {
     {
       text: (
         <span>
-          Bulk download & offline access with <Link href="https://www.patreon.com/posts/14640286">our cloud</Link>.
+          <Trans
+            i18nKey="common:donation-box.b5"
+            t={t}
+            components={{ lnk: <Link href={`https://www.patreon.com/posts/14640286`} /> }}
+          />
         </span>
       ),
       icon: <TbCloudDown />,
@@ -82,7 +90,11 @@ const DonationBox = () => {
     {
       text: (
         <span>
-          <Link href="https://www.patreon.com/posts/53488947">Sponsor an asset</Link> with your name & link.
+          <Trans
+            i18nKey="common:donation-box.b6"
+            t={t}
+            components={{ lnk: <Link href={`https://www.patreon.com/posts/53488947`} /> }}
+          />
         </span>
       ),
       icon: <IoTicket />,
@@ -92,7 +104,7 @@ const DonationBox = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h3>Support Poly Haven!</h3>
+      <h3>{t('common:support-polyhaven')}</h3>
       <div className={styles.tiers}>
         {Object.keys(tiers).map((cost) => (
           <div
