@@ -33,6 +33,15 @@
       border-left: 1px solid rgba($c-text-light, 0.5);
       padding-left: 2em;
       margin-left: 2em;
+
+      [dir="rtl"] & {
+        border-left: none;
+        border-right: 1px solid rgba($c-text-light, 0.5);
+        padding-left: 0;
+        padding-right: 2em;
+        margin-left: 0;
+        margin-right: 2em;
+      }
     }
 
     @media screen and (max-width: 1200px) {
@@ -79,6 +88,10 @@
     background-position: center center;
     background-size: cover;
 
+    [dir="rtl"] & {
+      flex-direction: row-reverse;
+    }
+
     & > * {
       position: relative; // Ensure gradient appears behind elements
     }
@@ -99,7 +112,7 @@
 
     .left {
       margin-top: auto;
-      text-align: initial;
+      text-align: left;
       flex-grow: 1;
     }
 
@@ -112,6 +125,13 @@
     p {
       font-size: 1.33em;
       text-shadow: 1px 1px 2px black;
+    }
+
+    h2,
+    p {
+      [dir="rtl"] & {
+        direction: ltr;
+      }
     }
 
     .right {

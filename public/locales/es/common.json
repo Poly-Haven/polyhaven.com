@@ -22,7 +22,8 @@
     "b3": "Acceso instantáneo a todos los contenidos de <lnk>las Bóvedas</lnk>.",
     "b4": "Nuestro <lnk>complemento</lnk> para el navegador de activos de Blender.",
     "b5": "Descarga masiva y acceso sin conexión con <lnk>nuestra nube</lnk>.",
-    "b6": "<lnk>Patrocine un activo</lnk> con su nombre y enlace."
+    "b6": "<lnk>Patrocine un activo</lnk> con su nombre y enlace.",
+    "donate-monthly": "Donaciones mensuales"
   },
   "email-address": "Dirección de correo electrónico",
   "footer": {

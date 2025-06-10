@@ -22,7 +22,8 @@
     "b3": "Accesso immediato a tutti i contenuti <lnk>dei Vault</lnk>.",
     "b4": "Il nostro <lnk>componente aggiuntivo</lnk> del browser delle risorse di Blender.",
     "b5": "Download massivo e accesso offline con il <lnk>nostro cloud</lnk>.",
-    "b6": "<lnk>Sponsorizzate una risorsa</lnk> con il vostro nome e il vostro link."
+    "b6": "<lnk>Sponsorizzate una risorsa</lnk> con il vostro nome e il vostro link.",
+    "donate-monthly": "Donazione mensile"
   },
   "email-address": "Indirizzo e-mail",
   "footer": {

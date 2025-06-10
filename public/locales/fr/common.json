@@ -22,7 +22,8 @@
     "b3": "Accès instantané à l'ensemble du contenu des <lnk>coffres</lnk>.",
     "b4": "Notre navigateur de ressources <lnk>pour</lnk> Blender.",
     "b5": "Téléchargement en masse et accès hors ligne avec <lnk>notre nuage</lnk>.",
-    "b6": "<lnk>Sponsorisez un actif</lnk> avec votre nom et votre lien."
+    "b6": "<lnk>Sponsorisez un actif</lnk> avec votre nom et votre lien.",
+    "donate-monthly": "Don mensuel"
   },
   "email-address": "Adresse e-mail",
   "footer": {

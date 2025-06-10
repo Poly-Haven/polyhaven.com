@@ -22,7 +22,8 @@
     "b3": "Sofortiger Zugriff auf alle Inhalte in <lnk>den Vaults</lnk>.",
     "b4": "Unser Blender Asset Browser <lnk>Add-on</lnk>.",
     "b5": "Massendownload und Offline-Zugriff mit <lnk>unserer Cloud</lnk>.",
-    "b6": "<lnk>Sponsern Sie ein Objekt</lnk> mit Ihrem Namen und Link."
+    "b6": "<lnk>Sponsern Sie ein Objekt</lnk> mit Ihrem Namen und Link.",
+    "donate-monthly": "Monatlich spenden"
   },
   "email-address": "E-Mail Adresse",
   "footer": {

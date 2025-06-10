@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation, Trans } from 'next-i18next'
 import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
 import useQuery from 'hooks/useQuery'
@@ -15,6 +16,7 @@ import { IoMdUnlock } from 'react-icons/io'
 import styles from './Vaults.module.scss'
 
 const VaultLanding = ({ vaults }) => {
+  const { t } = useTranslation(['common', 'vaults'])
   const [numPatrons, setNumPatrons] = useState(0)
   const { data, error } = apiSWR('/milestones', { revalidateOnFocus: true })
 
@@ -54,14 +56,14 @@ const VaultLanding = ({ vaults }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <h1>
+        <h1 dir="ltr">
           <HeartLock />
           Poly Haven Vaults
         </h1>
         <p>
-          <strong>Donate to support the future of free assets and unlock The Vaults.</strong>
+          <strong>{t('vaults:tagline-1')}</strong>
           <br />
-          Available in Early Access to Patreon supporters, released freely when their goal is met.
+          {t('vaults:tagline-2')}
         </p>
       </div>
 
@@ -73,38 +75,56 @@ const VaultLanding = ({ vaults }) => {
 
       <div className={styles.infoSection}>
         <div className={styles.row}>
-          <FaqItem question="How it Works:" qID="how-it-works" activeQ={clicked} main>
+          <FaqItem question={t('vaults:how-it-works')} qID="how-it-works" activeQ={clicked} main>
+            <p>{t('vaults:how-it-works-p1')}</p>
             <p>
-              Poly Haven creates free and public domain 3D assets. To help fund our work, we have locked some new
-              collections of assets behind a temporary paywall: The Vaults.
+              <Trans
+                i18nKey="vaults:how-it-works-p2"
+                t={t}
+                components={{ patreonLink: <a href="https://www.patreon.com/polyhaven" /> }}
+              />
             </p>
             <p>
-              Each Vault has a specific funding goal, defined by a target number of{' '}
-              <a href="https://www.patreon.com/polyhaven">Patreon</a> members. Once this goal is reached, the Vault is
-              released freely for everyone.
+              <Trans
+                i18nKey="vaults:how-it-works-p3"
+                t={t}
+                values={{
+                  vaultName: nextVault['name'],
+                  assetsCount: nextVault['assets'].length,
+                  target: nextVault['target'],
+                  remaining: nextVault['target'] - numPatrons,
+                }}
+                components={{ vaultLink: <Link href={`/vaults/${nextVault['id']}`} /> }}
+              />
             </p>
             <p>
-              For example, the next Vault, <Link href={`/vaults/${nextVault['id']}`}>{nextVault['name']}</Link>,
-              contains {nextVault['assets'].length} assets and will be unlocked once we reach {nextVault['target']}{' '}
-              total patrons ({nextVault['target'] - numPatrons} to go!).
+              <Trans i18nKey="vaults:how-it-works-p4" t={t} components={{ strong: <strong /> }} />
             </p>
             <p>
-              Until then, support us on Patreon to access the content inside <strong>all</strong> the Vaults.
+              <Trans
+                i18nKey="vaults:how-it-works-p5"
+                t={t}
+                values={{ numAssets }}
+                components={{ strong: <strong /> }}
+              />
             </p>
             <p>
-              Not only do you get <strong>immediate access to all {numAssets} vaulted assets</strong>, but you also help
-              release them for free to the public more quickly.
-            </p>
-            <p>
-              All funding goes towards creating more assets - see our{' '}
-              <Link href="/finance-reports">finance reports</Link>.
+              <Trans
+                i18nKey="vaults:how-it-works-p6"
+                t={t}
+                components={{ financeLink: <Link href="/finance-reports" /> }}
+              />
             </p>
           </FaqItem>
 
           <div className={styles.donationBox}>
             <h2 style={{ textAlign: 'center' }}>
-              Donate <span className={styles.green}>$3+</span> per month to unlock {numAssets} assets and support our
-              work.
+              <Trans
+                i18nKey="vaults:donation-heading"
+                t={t}
+                values={{ numAssets }}
+                components={{ span: <span className={styles.green} /> }}
+              />
             </h2>
             <DonationBox />
           </div>
@@ -114,98 +134,80 @@ const VaultLanding = ({ vaults }) => {
       <Roadmap vaults />
 
       <div className={styles.textSection} style={{ marginBottom: '5em' }}>
-        <h1>FAQ</h1>
-        <FaqItem question="What is a Vault?" qID="what" activeQ={clicked}>
+        <h1>{t('vaults:faq')}</h1>
+        <FaqItem question={t('vaults:what-is-vault')} qID="what" activeQ={clicked}>
+          <p>{t('vaults:what-is-vault-answer')}</p>
+        </FaqItem>
+
+        <FaqItem question={t('vaults:all-future-locked')} qID="future" activeQ={clicked}>
+          <p>{t('vaults:all-future-locked-p1')}</p>
+          <p>{t('vaults:all-future-locked-p2')}</p>
+          <p>{t('vaults:all-future-locked-p3')}</p>
+          <p>{t('vaults:all-future-locked-p4')}</p>
+        </FaqItem>
+
+        <FaqItem question={t('vaults:how-to-access')} qID="how" activeQ={clicked}>
           <p>
-            A Vault is a collection of assets that are temporarily locked away until we reach a funding goal. Once the
-            goal is reached, the Vault is released freely for everyone.
+            <Trans
+              i18nKey="vaults:how-to-access-p1"
+              t={t}
+              components={{ patreonLink: <a href="https://www.patreon.com/polyhaven" /> }}
+            />
+          </p>
+          <p>
+            <Trans i18nKey="vaults:how-to-access-p2" t={t} components={{ loginLink: <a href="/account" /> }} />
+          </p>
+          <p>
+            <Trans
+              i18nKey="vaults:how-to-access-p3"
+              t={t}
+              components={{ blenderLink: <Link href="/plugins/blender" /> }}
+            />
           </p>
         </FaqItem>
 
-        <FaqItem question="Are all your future assets going to be locked in a Vault?" qID="future" activeQ={clicked}>
-          <p>
-            No! We are still publishing new free assets in addition to the Vaults - about one new asset every week day.
-          </p>
-          <p>The Vaults are in addition to our regular free content, not a replacement.</p>
-          <p>
-            Similarly, all of our community projects and donated assets will always be immediately free to the public.
-            Only large collections that require significant investment to create ourselves may be locked in a Vault.
-          </p>
-          <p>And remember, every asset (even those in the Vaults) will eventually be free for everyone.</p>
+        <FaqItem question={t('vaults:is-crowdfunding')} qID="crowdfunding" activeQ={clicked}>
+          <p>{t('vaults:is-crowdfunding-p1')}</p>
+          <p>{t('vaults:is-crowdfunding-p2')}</p>
+          <p>{t('vaults:is-crowdfunding-p3')}</p>
         </FaqItem>
 
-        <FaqItem question="How do I access the Vaults?" qID="how" activeQ={clicked}>
+        <FaqItem question={t('vaults:what-happens-release')} qID="release" activeQ={clicked}>
+          <p>{t('vaults:what-happens-release-p1')}</p>
+          <p>{t('vaults:what-happens-release-p2')}</p>
+          <p>{t('vaults:what-happens-release-p3')}</p>
           <p>
-            You need to support us on <a href="https://www.patreon.com/polyhaven">Patreon</a> with at least $3 per
-            month. Once you become a patron, you will receive access to all the assets inside all of the Vaults.
-          </p>
-          <p>
-            On this website, simply <a href="/account">log in</a> with your Patreon account, and you will be able to
-            download the assets.
-          </p>
-          <p>
-            In <Link href="/plugins/blender">our Blender add-on</Link>, the vaulted assets will automatically be
-            downloaded when you click "Fetch Assets".
+            <Trans
+              i18nKey="vaults:what-happens-release-p4"
+              t={t}
+              components={{ collectionLink: <Link href="/collections" /> }}
+            />
           </p>
         </FaqItem>
 
-        <FaqItem question="Is this like a crowdfunding project or Patreon goal?" qID="crowdfunding" activeQ={clicked}>
-          <p>
-            In a way, yes. In the past, we tried both Patreon goals and crowdfunding campaigns, with the promise that
-            once we reached the funding goal we would start working on the project.
-          </p>
-          <p>
-            This is similar, except we work on the project up front before the funding goal is reached, trusting that
-            our community will support us and cover the funds later over time.
-          </p>
-          <p>
-            While we have to pay for the development costs up front, this way we can work on more projects sooner, and
-            reward our supporters with early access before the funding goal is met. Nobody can be disappointed by
-            unfulfilled promises, and we can release the assets for free as soon as the goal is met.
-          </p>
+        <FaqItem question={t('vaults:what-if-no-goal')} qID="failure" activeQ={clicked}>
+          <p>{t('vaults:what-if-no-goal-p1')}</p>
+          <p>{t('vaults:what-if-no-goal-p2')}</p>
+          <p>{t('vaults:what-if-no-goal-p3')}</p>
         </FaqItem>
 
-        <FaqItem question="What happens when a Vault is released?" qID="release" activeQ={clicked}>
+        <FaqItem question={t('vaults:what-license')} qID="license" activeQ={clicked}>
           <p>
-            All the assets inside the Vault are made freely available to everyone as soon as the goal is reached. This
-            means that anyone can download and use the assets without any restrictions.
-          </p>
-          <p>Once a Vault is released, it will remain free and public domain forever.</p>
-          <p>
-            We will anounce the release on Patreon, as well as social media. The Vault page will be removed, and the
-            assets will become available for free download.
-          </p>
-          <p>
-            Some Vaults may turn into a <Link href="/collections">collection</Link>, while others simply merge into the
-            main library.
-          </p>
-        </FaqItem>
-
-        <FaqItem question="What if we don't reach the funding goals?" qID="failure" activeQ={clicked}>
-          <p>The Vaults will remain locked until the target number of patrons is reached.</p>
-          <p>
-            If a Vault remains locked for a such a long time that we are ready to upload another Vault, we will consider
-            adjusting the goals to avoid having too many locked Vaults at once.
-          </p>
-          <p>
-            Our aim is to make all assets freely available eventually, but we rely on the support of our community to
-            make this possible. Your contributions help us continue creating free high-quality content for everyone.
-          </p>
-        </FaqItem>
-
-        <FaqItem question="What is the license of the Vaulted assets?" qID="license" activeQ={clicked}>
-          <p>
-            Like the rest of our library, all assets in the Vaults are <Link href="/license">CC0</Link>.
+            <Trans i18nKey="vaults:what-license-answer" t={t} components={{ licenseLink: <Link href="/license" /> }} />
           </p>
         </FaqItem>
 
         <div className={styles.row}>
           <p>
-            Got a different question? <Link href="/about-contact">Contact us</Link>.
+            <Trans
+              i18nKey="vaults:different-question"
+              t={t}
+              components={{ contactLink: <Link href="/about-contact" /> }}
+            />
           </p>
           <div className={styles.spacer} />
           <Button
-            text="Access the Vaults Now"
+            text={t('vaults:access-vaults-now')}
             href="https://www.patreon.com/checkout/polyhaven"
             icon={<IoMdUnlock />}
             color="red"

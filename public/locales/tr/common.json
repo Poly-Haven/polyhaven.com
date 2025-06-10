@@ -22,7 +22,8 @@
     "b3": "<lnk>Kasalardaki</lnk> tüm içeriğe anında erişim.",
     "b4": "Blender varlık tarayıcı <lnk>eklentimiz</lnk>.",
     "b5": "<lnk>Bulutumuzla</lnk> toplu indirme ve çevrimdışı erişim.",
-    "b6": "Adınız ve bağlantınızla <lnk>bir varlığa sponsor</lnk> olun."
+    "b6": "Adınız ve bağlantınızla <lnk>bir varlığa sponsor</lnk> olun.",
+    "donate-monthly": "Aylık bağış yapın"
   },
   "email-address": "E-posta adresi",
   "footer": {

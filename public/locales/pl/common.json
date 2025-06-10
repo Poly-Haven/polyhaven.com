@@ -22,7 +22,8 @@
     "b3": "Natychmiastowy dostęp do całej zawartości <lnk>skarbca</lnk>.",
     "b4": "Nasz <lnk>dodatek do</lnk> przeglądarki zasobów Blendera.",
     "b5": "Pobieranie zbiorcze i dostęp offline dzięki <lnk>naszej chmurze</lnk>.",
-    "b6": "<lnk>Sponsoruj zasób</lnk>, podając swoje imię i nazwisko oraz link."
+    "b6": "<lnk>Sponsoruj zasób</lnk>, podając swoje imię i nazwisko oraz link.",
+    "donate-monthly": "Przekazuj darowizny co miesiąc"
   },
   "email-address": "Adres e-mail",
   "footer": {

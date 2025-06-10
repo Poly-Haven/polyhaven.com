@@ -22,7 +22,8 @@
     "b3": "Azonnali hozzáférés <lnk>a Vaults</lnk> összes tartalmához.",
     "b4": "A Blender eszközböngésző <lnk>kiegészítőnk</lnk>.",
     "b5": "Tömeges letöltés és offline hozzáférés <lnk>a felhőnkkel</lnk>.",
-    "b6": "<lnk>Szponzoráljon egy eszközt</lnk> nevével és linkjével."
+    "b6": "<lnk>Szponzoráljon egy eszközt</lnk> nevével és linkjével.",
+    "donate-monthly": "Havi adományozás"
   },
   "email-address": "Email cím",
   "footer": {

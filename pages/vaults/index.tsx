@@ -6,7 +6,7 @@ import Page from 'components/Layout/Page/Page'
 import VaultLanding from 'components/Vaults/VaultLanding'
 
 export default function CollectionsPage({ vaults }) {
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation(['common', 'vaults'])
   const firstVault = Object.keys(vaults)[0]
 
   return (
@@ -40,7 +40,7 @@ export async function getStaticProps({ locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common', 'vaults'])),
       vaults: vaults,
     },
     revalidate: 60 * 60 * 2, // 2 hours
