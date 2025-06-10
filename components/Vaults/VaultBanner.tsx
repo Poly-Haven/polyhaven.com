@@ -15,9 +15,6 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const [videoOffset, setVideoOffset] = useState([0, 0])
   const [blurAmount, setBlurAmount] = useState(0)
 
-  // List of vaults that look bad with gradients
-  const hideGradients = ['moon']
-
   useEffect(() => {
     if (!vault.video) return
 
@@ -115,12 +112,8 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               }
         }
       >
-        {!hideGradients.includes(vault.id) && (
-          <>
-            <div className={styles.gradientL} />
-            <div className={styles.gradientR} />
-          </>
-        )}
+        <div className={styles.gradientL} />
+        <div className={styles.gradientR} />
         <div className={styles.left}>
           <h2>{vault.name}</h2>
           <p>{vault.description}</p>
