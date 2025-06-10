@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation, Trans } from 'next-i18next'
 import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
@@ -17,63 +18,6 @@ const tiers = {
   10: 'https://www.patreon.com/checkout/polyhaven?rid=2011184',
 }
 
-const benefits = [
-  {
-    text: (
-      <span>
-        Help us make <Link href="/all">free assets</Link> for everyone!
-      </span>
-    ),
-    icon: <Heart />,
-    cost: 1,
-  },
-  {
-    text: (
-      <span>
-        <Link href="https://www.patreon.com/posts/how-to-get-early-14640360">Early access</Link> to upcoming assets.
-      </span>
-    ),
-    icon: <TbCalendarSearch />,
-    cost: 3,
-  },
-  {
-    text: (
-      <span>
-        Instant access to all content in <Link href="/vaults">the Vaults</Link>.
-      </span>
-    ),
-    icon: <IoLockOpen />,
-    cost: 3,
-  },
-  {
-    text: (
-      <span>
-        Our Blender asset browser <Link href="/plugins/blender">add-on</Link>.
-      </span>
-    ),
-    icon: <Blender />,
-    cost: 5,
-  },
-  {
-    text: (
-      <span>
-        Bulk download & offline access with <Link href="https://www.patreon.com/posts/14640286">our cloud</Link>.
-      </span>
-    ),
-    icon: <TbCloudDown />,
-    cost: 5,
-  },
-  {
-    text: (
-      <span>
-        <Link href="https://www.patreon.com/posts/53488947">Sponsor an asset</Link> with your name & link.
-      </span>
-    ),
-    icon: <IoTicket />,
-    cost: 10,
-  },
-]
-
 const Benefit = ({ text, icon, bold, excluded, cost }) => {
   return (
     <div
@@ -87,6 +31,64 @@ const Benefit = ({ text, icon, bold, excluded, cost }) => {
 
 const DonationBox = () => {
   const [selectedTier, setSelectedTier] = useState(5)
+  const { t } = useTranslation('asset')
+
+  const benefits = [
+    {
+      text: (
+        <span>
+          Help us make <Link href="/all">free assets</Link> for everyone!
+        </span>
+      ),
+      icon: <Heart />,
+      cost: 1,
+    },
+    {
+      text: (
+        <span>
+          <Link href="https://www.patreon.com/posts/how-to-get-early-14640360">Early access</Link> to upcoming assets.
+        </span>
+      ),
+      icon: <TbCalendarSearch />,
+      cost: 3,
+    },
+    {
+      text: (
+        <span>
+          Instant access to all content in <Link href="/vaults">the Vaults</Link>.
+        </span>
+      ),
+      icon: <IoLockOpen />,
+      cost: 3,
+    },
+    {
+      text: (
+        <span>
+          Our Blender asset browser <Link href="/plugins/blender">add-on</Link>.
+        </span>
+      ),
+      icon: <Blender />,
+      cost: 5,
+    },
+    {
+      text: (
+        <span>
+          Bulk download & offline access with <Link href="https://www.patreon.com/posts/14640286">our cloud</Link>.
+        </span>
+      ),
+      icon: <TbCloudDown />,
+      cost: 5,
+    },
+    {
+      text: (
+        <span>
+          <Link href="https://www.patreon.com/posts/53488947">Sponsor an asset</Link> with your name & link.
+        </span>
+      ),
+      icon: <IoTicket />,
+      cost: 10,
+    },
+  ]
 
   return (
     <div className={styles.wrapper}>
