@@ -8,6 +8,8 @@ import Loader from 'components/UI/Loader/Loader'
 import { IoMdUnlock } from 'react-icons/io'
 import { MdArrowForward } from 'react-icons/md'
 
+import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
+
 import styles from './Vaults.module.scss'
 
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
@@ -16,6 +18,11 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const containerRef = useRef(null)
   const [videoOffset, setVideoOffset] = useState([0, 0])
   const [blurAmount, setBlurAmount] = useState(0)
+
+  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
+  useEffect(() => {
+    setEarlyAccessValid(persistentEarlyAccess)
+  }, [])
 
   useEffect(() => {
     if (!vault.video) return
@@ -123,7 +130,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         </div>
 
         <div className={styles.right}>
-          <div className={styles.row}>
+          <div className={styles.row} style={{ justifyContent: 'right' }}>
             {libraryPage && vault.about && <Button text={t('common:about-project')} href={vault.about} />}
             {!libraryPage && (
               <Button
@@ -131,12 +138,14 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
                 href={`/vaults/${vault.id}`}
               />
             )}
-            <Button
-              text={t('common:access-now')}
-              href="https://www.patreon.com/checkout/polyhaven"
-              icon={<IoMdUnlock />}
-              color="red"
-            />
+            {!earlyAccessValid && (
+              <Button
+                text={t('common:access-now')}
+                href="https://www.patreon.com/checkout/polyhaven"
+                icon={<IoMdUnlock />}
+                color="red"
+              />
+            )}
           </div>
 
           <div className={styles.barWrapper}>

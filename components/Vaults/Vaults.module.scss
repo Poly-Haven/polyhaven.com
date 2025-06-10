@@ -139,6 +139,7 @@
 
       .barWrapper {
         width: calc(100% - 1rem);
+        min-width: 300px;
         margin: 0.5rem;
         direction: ltr;
 
