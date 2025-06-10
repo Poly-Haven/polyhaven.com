@@ -274,8 +274,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
             patron={patron}
             texelDensity={texelDensity}
             callback={afterDownloadCallback}
+            vault={vault}
+            scheduleText={`${ageValue} ${ageLabel}`}
           />
-
           <div className={styles.infoItems}>
             <InfoItem label={t('author', { count: authors.length })} flex>
               <div className={styles.authors}>

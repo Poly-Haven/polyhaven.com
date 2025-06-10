@@ -4,10 +4,13 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { filesize } from 'filesize'
 import { v4 as uuid } from 'uuid'
+import apiSWR from 'utils/apiSWR'
 
-import { MdFileDownload, MdMenu, MdArrowBack } from 'react-icons/md'
+import { MdFileDownload, MdMenu, MdArrowBack, MdInfo } from 'react-icons/md'
 import { GoFileZip } from 'react-icons/go'
+import { IoMdUnlock } from 'react-icons/io'
 
+import Button from 'components/UI/Button/Button'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import DownloadOptions from './DownloadOptions'
 import Loader from 'components/UI/Loader/Loader'
@@ -16,6 +19,8 @@ import IconGltf from 'components/UI/Icons/glTF'
 import IconUSD from 'components/UI/Icons/USD'
 import IconMaterialX from 'components/UI/Icons/MaterialX'
 import IconFile from 'components/UI/Icons/File'
+import HeartLock from 'components/UI/Icons/HeartLock'
+import Heart from 'components/UI/Icons/Heart'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
@@ -28,7 +33,7 @@ import styles from './Download.module.scss'
 // Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
 
-const Download = ({ assetID, data, files, setPreview, patron, texelDensity, callback }) => {
+const Download = ({ assetID, data, files, setPreview, patron, texelDensity, callback, vault, scheduleText }) => {
   const { t } = useTranslation('asset')
   const router = useRouter()
   const [busyDownloading, setBusyDownloading] = useState(false)
@@ -36,7 +41,46 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   const [zipList, dispatch] = useReducer(reducer, { files: [] })
   const [prefRes, setRes] = useState('4k')
   const [prefFmt, setFmt] = useState('exr')
-  const [tempUUID, setTempUUID] = useState(uuid()) // Used if storage consent not given.
+  const [tempUUID, setTempUUID] = useState(uuid())
+  const [isClient, setIsClient] = useState(false)
+
+  const [currentPatrons, setCurrentPatrons] = useState(0)
+  const [targetPatrons, setTargetPatrons] = useState(0)
+  const [totalVaultedAssets, setTotalVaultedAssets] = useState(0)
+  const [numEaAssets, setNumEaAssets] = useState(0)
+
+  // Set client flag after hydration
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (vault || data.date_published * 1000 > Date.now()) {
+    const { data: milestones, error: milestonesError } = apiSWR('/milestones', { revalidateOnFocus: false })
+    useEffect(() => {
+      if (milestones && !milestonesError) {
+        setCurrentPatrons(milestones.numPatrons)
+        setNumEaAssets(milestones.numEaAssets)
+      }
+    }, [milestones, milestonesError])
+  }
+
+  if (vault) {
+    const { data: vaults, error: vaultsError } = apiSWR('/vaults', { revalidateOnFocus: false })
+    useEffect(() => {
+      if (vaults && !vaultsError) {
+        if (vaults[vault]) {
+          setTargetPatrons(vaults[vault].target)
+        }
+        let totalAssets = 0
+        for (const v of Object.values(vaults)) {
+          if (v['assets']) {
+            totalAssets += v['assets'].length
+          }
+        }
+        setTotalVaultedAssets(totalAssets)
+      }
+    }, [vaults, vaultsError])
+  }
 
   const [earlyAccessValid, setEarlyAccessValid] = useState(false)
   useEffect(() => {
@@ -82,17 +126,74 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     )
   }
 
-  if (data.date_published * 1000 > Date.now() && !earlyAccessValid) {
+  // Asset is vaulted, user is not a patron
+  if (isClient && vault && !earlyAccessValid) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
       return (
-        <div className={styles.downloadBtnWrapper}>
-          <div className={styles.downloadBtn}>
-            <Link href={`/account?returnTo=${router.asPath}`} className={styles.error}>
-              Coming Soon!
-              <br />
-              <em>$3+ Patrons log in to download early</em>
-            </Link>
+        <div className={styles.unreleased}>
+          <h3>
+            <HeartLock /> Vaulted Asset
+          </h3>
+          <p>
+            This asset is locked in the <Link href={`/vaults/${vault}`}>{vault} vault</Link>.
+          </p>
+          <p>
+            <strong>
+              Donate $3 on Patreon to download it, along with{' '}
+              {totalVaultedAssets ? totalVaultedAssets - 1 : <Loader inline />} other vaulted assets.
+            </strong>
+          </p>
+          <p>
+            When we get {targetPatrons && currentPatrons ? targetPatrons - currentPatrons : <Loader inline />} more
+            patrons, it will be released for free for everyone.
+          </p>
+
+          <div className={styles.buttonRow}>
+            <Button text="About" href="/vaults" icon={<MdInfo />} color="hollowRed" />
+            <Button
+              text="Access Now"
+              href="https://www.patreon.com/checkout/polyhaven"
+              icon={<IoMdUnlock />}
+              color="red"
+            />
           </div>
+
+          <p style={{ marginTop: '-0.8em', opacity: 0.75, fontSize: '0.8em' }}>
+            Already a patron? <Link href={`/account?returnTo=${router.asPath}`}>Log in</Link>.
+          </p>
+        </div>
+      )
+    }
+  }
+
+  // Asset is not released yet, user is not a patron
+  if (isClient && data.date_published * 1000 > Date.now() && !earlyAccessValid) {
+    if (!patron.rewards || !patron.rewards.includes('Early Access')) {
+      return (
+        <div className={styles.unreleased}>
+          <h3>
+            <Heart color="#F96854" /> Coming Soon!
+          </h3>
+          <p>
+            This asset will be released:
+            <br />
+            <strong>{scheduleText}</strong>
+          </p>
+          <p>
+            Donate $3 to download it now, along with {numEaAssets ? numEaAssets - 1 : <Loader inline />} other
+            early-access assets.
+          </p>
+
+          <Button
+            text="Get Early Access"
+            href="https://www.patreon.com/checkout/polyhaven"
+            icon={<IoMdUnlock />}
+            color="red"
+          />
+
+          <p style={{ marginTop: '-0.8em', opacity: 0.75, fontSize: '0.8em' }}>
+            Already a patron? <Link href={`/account?returnTo=${router.asPath}`}>Log in</Link>.
+          </p>
         </div>
       )
     }
@@ -363,6 +464,10 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       <Tooltip id="dropdown" place="left" />
     </div>
   )
+}
+
+Download.defaultProps = {
+  vault: null,
 }
 
 export default Download

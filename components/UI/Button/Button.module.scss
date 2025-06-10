@@ -72,8 +72,8 @@
 
 .hollowRed {
   color: $c-text-light;
-  background: none;
-  box-shadow: inset 0px 0px 0px 1px $c-red;
+  background: rgba($c-red, 0.05);
+  box-shadow: inset 0px 0px 0px 1px rgba($c-red, 0.5);
 
   &:hover {
     color: white;

@@ -144,3 +144,35 @@
     background: linear-gradient(to right, transparent 0%, $c-background-dark 50%);
   }
 }
+
+.unreleased {
+  @include flex(column, true, true);
+  gap: 0.75em;
+  border: 1px solid rgba($c-red, 0.5);
+  margin: 1em;
+  padding: 1em;
+  background: $c-background-darkish;
+  text-align: center;
+  @include drop-shadow(0.5);
+
+  h3 {
+    @include flex(row, true, true);
+    font-size: 1.4em;
+    gap: 0.3em;
+    margin: 0;
+
+    svg {
+      width: 1.25em;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95em;
+  }
+}
+
+.buttonRow {
+  @include flex(row, true, true);
+  margin: 0 -0.5em;
+}
