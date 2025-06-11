@@ -40,7 +40,7 @@ const Milestone = ({ milestone, active, achieved }) => {
   )
 }
 
-const Roadmap = ({ mini, vaults }) => {
+const Roadmap = ({ mini, vaults, addon }) => {
   const { t } = useTranslation(['common'])
   const widthRef = useRef(null)
   const { width: divWidth } = useDivSize(widthRef)
@@ -80,7 +80,7 @@ const Roadmap = ({ mini, vaults }) => {
       setHighestAchievedGoalIndex(highestAchieved)
       if (activeMilestoneIndex === 0) {
         // Default to the next milestone, but don't set if the active milestone has been changed
-        setActiveMilestoneIndex(highestAchieved + 1)
+        setActiveMilestoneIndex(addon ? allMilestones.length - 1 : highestAchieved + 1)
         setNumPatronsToGo(allMilestones[highestAchieved + 1].target - data.numPatrons)
       }
     }
@@ -223,6 +223,7 @@ const Roadmap = ({ mini, vaults }) => {
 Roadmap.defaultProps = {
   mini: false,
   vaults: false,
+  addon: false,
 }
 
 export default Roadmap

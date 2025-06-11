@@ -5,7 +5,7 @@ import InfoBox from 'components/UI/InfoBox/InfoBox'
 import Button from 'components/UI/Button/Button'
 import Patreon from 'components/UI/Icons/Patreon'
 import BlenderMarket from 'components/UI/Icons/BlenderMarket'
-import Heart from 'components/UI/Icons/Heart'
+import Roadmap from 'components/Roadmap/Roadmap'
 
 import { MdApps, MdOutlineInstallDesktop } from 'react-icons/md'
 import { RiVipCrownLine } from 'react-icons/ri'
@@ -35,9 +35,12 @@ const CallToAction = () => {
         </div>
       </a>
       <p className={styles.callToAction}>or</p>
-      <a href="https://blendermarket.com/products/poly-haven-asset-browser?ref=3841" className={styles.purchaseOption}>
+      <a
+        href="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
+        className={styles.purchaseOption}
+      >
         <BlenderMarket />
-        <h3>Blender Market</h3>
+        <h3>Superhive</h3>
         <p>
           <strong>$30</strong>
         </p>
@@ -109,27 +112,38 @@ const Blender = ({ numAssets }) => {
         Sorry, your browser doesn't support embedded videos.
       </video>
       <hr />
-      <InfoBox type="info" header="This is a paid product">
-        <p>
-          While all our assets are 100% free and <Link href="/license">CC0</Link>, we are exploring the idea of funding
-          our work by selling tools like this to make it easier for you to use our free assets.
-        </p>
-        <p>
-          So far the sales of this add-on alone have allowed us to hire new artists and set up a studio to capture more
-          assets, work on R&D of entire new asset types, and travel around the world to capture free content for
-          everyone.
-        </p>
-        <p>
-          Thanks for your support! <Heart color="#F96854" />
-        </p>
+      <InfoBox type="info" header="This is a paid product, for now." side={<Roadmap mini addon />}>
+        <div>
+          <p>
+            While all our assets are 100% free to download, it <Link href="/finance-reports">costs us</Link> a lot to
+            create them. By selling this add-on, we've been able to grow Poly Haven, creating over 1000 new assets and
+            improving the quality of our work.
+          </p>
+          <p>
+            <strong>
+              However, we don't want to sell this add-on forever, we want to focus on free content and open access.
+            </strong>
+          </p>
+          <p>
+            Support us on Patreon to help unlock this add-on for the entire community. Once we reach 5000 patrons, it
+            will be released for free to everyone. Until then, it's available only through Patreon, or by purchasing it
+            on Superhive.
+          </p>
+
+          <p>
+            <a href="https://blog.polyhaven.com/liberating-our-blender-add-on/" target="_blank">
+              Read more about liberating this add-on.
+            </a>
+          </p>
+        </div>
       </InfoBox>
       <p className={styles.callToAction}>Choose your path...</p>
 
       <CallToAction />
 
       <p>
-        Whether you get it on the Blender Market or Patreon, the add-on is identical. Both versions have the same
-        features and perks, including...
+        Whether you get it on the Superhive or Patreon, the add-on is identical. Both versions have the same features
+        and perks, including...
       </p>
       <div className={styles.row}>
         <div className={styles.primaryFeature}>

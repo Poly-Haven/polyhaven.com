@@ -3,10 +3,17 @@
 @import "constants/mixins";
 
 .wrapper {
+  @include flex(row, true, true);
+  gap: 2em;
   background: rgba($c-blue, 0.3);
   border: 1px solid $c-blue;
-  padding: 1em;
+  padding: 1em 1.5em;
   @include drop-shadow;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .header {
     font-weight: bold;
@@ -20,14 +27,22 @@
     }
   }
 
-  a {
-    color: $c-blue;
-    box-shadow: 0 1px 0 $c-blue;
-    @include transition();
+  p {
+    text-align: justify;
 
-    &:hover {
-      color: $c-blue-light;
-      box-shadow: 0 3px 0 $c-blue;
+    a {
+      color: $c-blue;
+      box-shadow: 0 1px 0 $c-blue;
+      @include transition();
+
+      &:hover {
+        color: $c-blue-light;
+        box-shadow: 0 3px 0 $c-blue;
+      }
     }
+  }
+
+  .side {
+    min-width: 354px;
   }
 }
