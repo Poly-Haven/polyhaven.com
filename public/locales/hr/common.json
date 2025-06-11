@@ -70,6 +70,13 @@
   "please-wait": "Molimo pričekajte...",
   "remove-ads": "Ukloni reklame",
   "required": "Obavezno",
+  "roadmap": {
+    "join-support": "<patreonLink>Pridružite se {{numPatrons}} drugim korisnicima</patreonLink> , podržati budućnost besplatne imovine.",
+    "target-patrons": "{{target}} posjetitelja",
+    "title": "Plan puta Poly Havena",
+    "to-be-announced": "Bit će objavljeno",
+    "whats-next": "Što je sljedeće?"
+  },
   "support-polyhaven": "Podržite Poly Haven!",
   "tagline": "Javna biblioteka 3D sredstava",
   "visible": "Vidljivo"

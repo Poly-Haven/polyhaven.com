@@ -70,6 +70,13 @@
   "please-wait": "אנא המתן...",
   "remove-ads": "הסר מודעות",
   "required": "דָרוּשׁ",
+  "roadmap": {
+    "join-support": "<patreonLink>הצטרפו ל {{numPatrons}} פטרונים אחרים</patreonLink> , תומכים בעתידם של נכסים חינמיים.",
+    "target-patrons": "פטרונים של {{target}}",
+    "title": "מפת הדרכים של פולי הייבן",
+    "to-be-announced": "יפורסמו בהמשך",
+    "whats-next": "מה הלאה?"
+  },
   "support-polyhaven": "תמכו בפולי הייבן!",
   "tagline": "ספריית נכסי התלת-ממד הציבורית",
   "visible": "נִרְאֶה"

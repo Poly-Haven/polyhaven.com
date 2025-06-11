@@ -70,6 +70,13 @@
   "please-wait": "Espera por favor...",
   "remove-ads": "Quitar anuncios",
   "required": "Requerido",
+  "roadmap": {
+    "join-support": "<patreonLink>Únete a {{numPatrons}} otros mecenas</patreonLink>, apoya el futuro de los activos libres.",
+    "target-patrons": "{{target}} patronos",
+    "title": "Hoja de ruta de Poly Haven",
+    "to-be-announced": "Por anunciar",
+    "whats-next": "¿Y ahora qué?"
+  },
   "support-polyhaven": "Apoya a Poly Haven",
   "tagline": "La biblioteca pública de contenido 3D",
   "visible": "Visible"

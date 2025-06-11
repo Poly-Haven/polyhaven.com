@@ -70,6 +70,13 @@
   "please-wait": "Παρακαλώ περιμένετε...",
   "remove-ads": "Αφαίρεση διαφημίσεων",
   "required": "Απαιτούμενο",
+  "roadmap": {
+    "join-support": "<patreonLink>Γίνετε μέλος {{numPatrons}} άλλων υποστηρικτών</patreonLink>, στηρίξτε το μέλλον των ελεύθερων περιουσιακών στοιχείων.",
+    "target-patrons": "{{target}} προστάτες",
+    "title": "Οδικός χάρτης Poly Haven",
+    "to-be-announced": "Θα ανακοινωθεί",
+    "whats-next": "Τι ακολουθεί;"
+  },
   "support-polyhaven": "Υποστηρίξτε το Poly Haven!",
   "tagline": "Η δημόσια βιβλιοθήκη 3D στοιχείων ενεργητικού",
   "visible": "Ορατό"

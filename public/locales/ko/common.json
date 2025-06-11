@@ -70,6 +70,13 @@
   "please-wait": "기다리세요...",
   "remove-ads": "광고 제거",
   "required": "필수",
+  "roadmap": {
+    "join-support": "<patreonLink> {{numPatrons}} 다른 후원자들과 함께</patreonLink> 무료 자산의 미래를 응원하세요.",
+    "target-patrons": "{{target}} 후원자",
+    "title": "폴리 헤이븐 로드맵",
+    "to-be-announced": "발표 예정",
+    "whats-next": "다음 단계는 무엇인가요?"
+  },
   "support-polyhaven": "폴리 헤이븐을 응원하세요!",
   "tagline": "공개 3D 에셋 라이브러리",
   "visible": "보입니다."

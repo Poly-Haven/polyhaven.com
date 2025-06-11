@@ -70,6 +70,13 @@
   "please-wait": "Будь ласка, зачекайте...",
   "remove-ads": "Убрати рекламу",
   "required": "Вимагається",
+  "roadmap": {
+    "join-support": "<patreonLink>Приєднуйтесь до {{numPatrons}} та інших меценатів</patreonLink>, підтримайте майбутнє вільних активів.",
+    "target-patrons": "{{target}} меценати",
+    "title": "Дорожня карта Полі Хейвен",
+    "to-be-announced": "Буде оголошено додатково",
+    "whats-next": "Що далі?"
+  },
   "support-polyhaven": "Підтримайте Полігон!",
   "tagline": "Загальнодоступна бібліотека 3D ассетів",
   "visible": "Видно"

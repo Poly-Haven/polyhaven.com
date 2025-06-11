@@ -70,6 +70,13 @@
   "please-wait": "Bitte warten ...",
   "remove-ads": "Werbung entfernen",
   "required": "Erforderlich",
+  "roadmap": {
+    "join-support": "<patreonLink>Schließen Sie sich {{numPatrons}} anderen Gönnern an</patreonLink> und unterstützen Sie die Zukunft der freien Assets.",
+    "target-patrons": "{{target}} Gönner",
+    "title": "Poly Haven Straßenkarte",
+    "to-be-announced": "Wird noch bekannt gegeben",
+    "whats-next": "Was kommt als Nächstes?"
+  },
   "support-polyhaven": "Unterstützen Sie Poly Haven!",
   "tagline": "Die öffentliche Bibliothek für 3D Assets",
   "visible": "sichtbar"

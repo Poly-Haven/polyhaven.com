@@ -70,6 +70,13 @@
   "please-wait": "Lütfen bekleyin...",
   "remove-ads": "reklamları kaldır",
   "required": "Gerekli",
+  "roadmap": {
+    "join-support": "<patreonLink>Diğer {{numPatrons}} kullanıcılarına katılın</patreonLink>, ücretsiz varlıkların geleceğini destekleyin.",
+    "target-patrons": "{{target}} Patronlar",
+    "title": "Poly Haven Yol Haritası",
+    "to-be-announced": "Duyurulacak",
+    "whats-next": "Sırada ne var?"
+  },
   "support-polyhaven": "Poly Haven'ı Destekleyin!",
   "tagline": "Herkese Açık 3D Öğe Kitaplığı",
   "visible": "Görünür"

@@ -70,6 +70,13 @@
   "please-wait": "Пожалуйста не бросайте меня...",
   "remove-ads": "Убрать рекламу",
   "required": "Необходимо",
+  "roadmap": {
+    "join-support": "<patreonLink>Присоединяйтесь к {{numPatrons}} других меценатов</patreonLink>, поддержите будущее свободных ресурсов.",
+    "target-patrons": "{{target}} меценаты",
+    "title": "Карта дорог Поли-Хейвен",
+    "to-be-announced": "Будет объявлено",
+    "whats-next": "Что дальше?"
+  },
   "support-polyhaven": "Поддержите Poly Haven!",
   "tagline": "Публичная библиотека 3D-ассетов",
   "visible": "Отображается"

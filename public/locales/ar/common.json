@@ -70,6 +70,13 @@
   "please-wait": "أرجو الإنتظار...",
   "remove-ads": "إزالة الإعلانات",
   "required": "مطلوب",
+  "roadmap": {
+    "join-support": "<patreonLink>انضم إلى {{numPatrons}} رعاة</patreonLink> آخرين، وادعم مستقبل الأصول المجانية.",
+    "target-patrons": "{{target}} الرعاة",
+    "title": "خريطة طريق بولي هافن",
+    "to-be-announced": "سيتم الإعلان عنه لاحقاً",
+    "whats-next": "ما التالي؟"
+  },
   "support-polyhaven": "ادعم بولي هافن!",
   "tagline": "مكتبة الأصول ثلاثية الأبعاد العامة",
   "visible": "مرئي"

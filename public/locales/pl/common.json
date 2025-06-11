@@ -70,6 +70,13 @@
   "please-wait": "Proszę czekać...",
   "remove-ads": "Usuń reklamy",
   "required": "Wymagane",
+  "roadmap": {
+    "join-support": "<patreonLink>Dołącz do {{numPatrons}} innych patronów</patreonLink>, wspieraj przyszłość wolnych zasobów.",
+    "target-patrons": "{{target}} patroni",
+    "title": "Mapa drogowa Poly Haven",
+    "to-be-announced": "Do ogłoszenia",
+    "whats-next": "Co dalej?"
+  },
   "support-polyhaven": "Wesprzyj Poly Haven!",
   "tagline": "Publiczna Biblioteka Zasobów 3D",
   "visible": "Widoczny"

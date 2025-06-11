@@ -70,6 +70,13 @@
   "please-wait": "Deze site is aan het laden, heel even wachten a.u.b.",
   "remove-ads": "Verwijder advertenties",
   "required": "Verplicht",
+  "roadmap": {
+    "join-support": "<patreonLink>Sluit je aan bij {{numPatrons}} andere mecenassen</patreonLink>, steun de toekomst van vrije activa.",
+    "target-patrons": "{{target}} begunstigers",
+    "title": "Poly Haven Routekaart",
+    "to-be-announced": "Wordt aangekondigd",
+    "whats-next": "Wat is de volgende stap?"
+  },
   "support-polyhaven": "Steun Poly Haven!",
   "tagline": "De openbare 3D-asset bibliotheek",
   "visible": "Zichtbaar"

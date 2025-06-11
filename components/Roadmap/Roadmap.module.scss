@@ -344,7 +344,7 @@
             white-space: nowrap;
             transform-origin: right;
             transform: scaleX(0);
-            content: "To be announced...";
+            content: attr(data-soon);
             font-style: italic;
             @include transition;
           }

@@ -70,6 +70,13 @@
   "please-wait": "Wag asseblief...",
   "remove-ads": "Verwyder advertensies",
   "required": "Vereis",
+  "roadmap": {
+    "join-support": "<patreonLink>Sluit aan by {{numPatrons}} ander beskermhere</patreonLink> , ondersteun die toekoms van gratis bates.",
+    "target-patrons": "{{target}} klante",
+    "title": "Poly Haven Padkaart",
+    "to-be-announced": "Word nog aangekondig",
+    "whats-next": "Wat is volgende?"
+  },
   "support-polyhaven": "Ondersteun Poly Haven!",
   "tagline": "Die Openbare 3D Batebiblioteek",
   "visible": "Sigbaar"

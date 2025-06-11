@@ -70,6 +70,13 @@
   "please-wait": "Palun oodake...",
   "remove-ads": "Eemalda reklaamid",
   "required": "Nõutav",
+  "roadmap": {
+    "join-support": "<patreonLink>Liitu {{numPatrons}} teiste patroonidega</patreonLink>, toetage vaba vara tulevikku.",
+    "target-patrons": "{{target}} patroonid",
+    "title": "Poly Haven teekaart",
+    "to-be-announced": "Kuulutatakse välja",
+    "whats-next": "Mis saab edasi?"
+  },
   "support-polyhaven": "Toetage Poly Haven'i!",
   "tagline": "Avalik 3D varade kogumik",
   "visible": "Nähtav"

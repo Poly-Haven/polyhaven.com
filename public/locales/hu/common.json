@@ -70,6 +70,13 @@
   "please-wait": "Kérlek várj...",
   "remove-ads": "Hirdetések eltávolítása",
   "required": "Kívánt",
+  "roadmap": {
+    "join-support": "<patreonLink>Csatlakozzon a {{numPatrons}} oldalhoz</patreonLink>, támogassa a szabad eszközök jövőjét.",
+    "target-patrons": "{{target}} védnökök",
+    "title": "Poly Haven útiterv",
+    "to-be-announced": "Bejelentésre kerül",
+    "whats-next": "Mi a következő lépés?"
+  },
   "support-polyhaven": "Támogassa a Poly Haven-t!",
   "tagline": "A nyilvános 3D eszköztár",
   "visible": "Látható"

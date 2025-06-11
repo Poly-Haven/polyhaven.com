@@ -70,6 +70,13 @@
   "please-wait": "Молимо сачекајте...",
   "remove-ads": "Уклони огласе",
   "required": "Потребно",
+  "roadmap": {
+    "join-support": "<patreonLink>Придружите се {{numPatrons}} другим покровитељима</patreonLink> , подржавају будућност бесплатних средстава.",
+    "target-patrons": "{{target}} покровитеља",
+    "title": "Мапа пута Поли Хејвена",
+    "to-be-announced": "Биће објављено",
+    "whats-next": "Шта је следеће?"
+  },
   "support-polyhaven": "Подржите Поли Хејвен!",
   "tagline": "Јавна Библиотека 3D Средстава",
   "visible": "Видљиво"

@@ -70,6 +70,13 @@
   "please-wait": "Por favor, espere...",
   "remove-ads": "Remover anúncios",
   "required": "Obrigatório",
+  "roadmap": {
+    "join-support": "<patreonLink>Junte-se a {{numPatrons}} outros usuários</patreonLink> e apoie o futuro dos ativos gratuitos.",
+    "target-patrons": "{{target}} patronos",
+    "title": "Mapa rodoviário de Poly Haven",
+    "to-be-announced": "A ser anunciado",
+    "whats-next": "O que vem a seguir?"
+  },
   "support-polyhaven": "Apoie a Poly Haven!",
   "tagline": "A Biblioteca Pública de Assets 3D",
   "visible": "Visível"

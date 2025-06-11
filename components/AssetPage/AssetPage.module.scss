@@ -280,6 +280,7 @@
     padding: 0 1em;
     margin-top: 1.5em;
     text-wrap: balance;
+    direction: ltr;
 
     .promptHeader {
       @include flex(row, true);

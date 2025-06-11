@@ -37,6 +37,13 @@
     "complete": "Complete!",
     "reached": "We reached our last goal! Something new should appear here soon :)"
   },
+  "roadmap": {
+    "whats-next": "What's Next?",
+    "title": "Poly Haven Roadmap",
+    "to-be-announced": "To be announced",
+    "target-patrons": "{{target}} patrons",
+    "join-support": "<patreonLink>Join {{numPatrons}} other patrons</patreonLink>, support the future of free assets."
+  },
   "nav": {
     "home": "Home",
     "add-on": "Add-on",

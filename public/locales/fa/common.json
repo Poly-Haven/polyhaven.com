@@ -70,6 +70,13 @@
   "please-wait": "لطفا صبر کنید...",
   "remove-ads": "حذف تبلیغات",
   "required": "ضروری",
+  "roadmap": {
+    "join-support": "<patreonLink>به {{numPatrons}} دیگر کاربران بپیوندید</patreonLink> ، از آینده دارایی‌های آزاد حمایت کنید.",
+    "target-patrons": "{{target}} مشتریان",
+    "title": "نقشه راه پلی هاون",
+    "to-be-announced": "اعلام خواهد شد",
+    "whats-next": "قدم بعدی چیست؟"
+  },
   "support-polyhaven": "از پلی هاون حمایت کنید!",
   "tagline": "کتابخانه دارایی سه بعدی عمومی",
   "visible": "قابل دیدن"

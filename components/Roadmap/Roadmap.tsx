@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
+import { useTranslation, Trans } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
 import useDivSize from 'hooks/useDivSize'
 
@@ -12,6 +12,7 @@ import Loader from 'components/UI/Loader/Loader'
 import styles from './Roadmap.module.scss'
 
 const Milestone = ({ milestone, active, achieved }) => {
+  const { t } = useTranslation(['common'])
   const Comp = active || achieved ? Link : 'div'
 
   return (
@@ -21,7 +22,10 @@ const Milestone = ({ milestone, active, achieved }) => {
           <img src={milestone.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : milestone.img} />
         </div>
       )}
-      <div className={`${styles.text} ${milestone.text === '???' && styles.comingSoon}`}>
+      <div
+        className={`${styles.text} ${milestone.text === '???' && styles.comingSoon}`}
+        data-soon={t('common:roadmap.to-be-announced')}
+      >
         <span>
           {milestone.text.replace('???', '')}{' '}
           <sup>
@@ -29,13 +33,15 @@ const Milestone = ({ milestone, active, achieved }) => {
           </sup>
         </span>
       </div>
-      <div className={styles.target}>{milestone.achieved || `${milestone.target} patrons`}</div>
+      <div className={styles.target}>
+        {milestone.achieved || t('common:roadmap.target-patrons', { target: milestone.target })}
+      </div>
     </Comp>
   )
 }
 
 const Roadmap = ({ mini, vaults }) => {
-  const { t } = useTranslation('home')
+  const { t } = useTranslation(['common'])
   const widthRef = useRef(null)
   const { width: divWidth } = useDivSize(widthRef)
   const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(0)
@@ -120,7 +126,7 @@ const Roadmap = ({ mini, vaults }) => {
     <div className={mini ? styles.wrapperMini : styles.wrapper} ref={widthRef}>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
-          <h2 className={styles.topText}>{vaults ? "What's Next?" : 'Poly Haven Roadmap'}</h2>
+          <h2 className={styles.topText}>{vaults ? t('common:roadmap.whats-next') : t('common:roadmap.title')}</h2>
           <div className={styles.barWrapper}>
             <div className={styles.barOuter}>
               <div className={styles.barTarget} style={{ width: `calc(${targetBarPosition * 100}% - 4px)` }} />
@@ -128,7 +134,9 @@ const Roadmap = ({ mini, vaults }) => {
                 <div className={styles.barShine} />
                 {mini && numPatrons && (
                   <div className={styles.barText}>
-                    {Math.max(0, milestones[activeMilestoneIndex].target - numPatrons)} patrons to go!
+                    {t('common:n-patrons-to-go', {
+                      number: Math.max(0, milestones[activeMilestoneIndex].target - numPatrons),
+                    })}
                   </div>
                 )}
               </div>
@@ -177,20 +185,25 @@ const Roadmap = ({ mini, vaults }) => {
               }`}
             >
               <div className={styles.text}>
-                <span>{milestones[activeMilestoneIndex].text.replace('???', 'To be announced')}</span>
+                <span>{milestones[activeMilestoneIndex].text.replace('???', t('common:roadmap.to-be-announced'))}</span>
               </div>
               <div className={styles.target}>
                 {numPatrons} /{' '}
-                {milestones[activeMilestoneIndex].achieved || `${milestones[activeMilestoneIndex].target} patrons`}
+                {milestones[activeMilestoneIndex].achieved ||
+                  t('common:roadmap.target-patrons', { target: milestones[activeMilestoneIndex].target })}
               </div>
             </Link>
           ) : (
             numPatrons > 0 && (
               <div className={styles.bottomText}>
-                <h3>{numPatronsToGo} patrons to go!</h3>
+                <h3>{t('common:n-patrons-to-go', { number: numPatronsToGo })}</h3>
                 <p>
-                  <Link href="https://www.patreon.com/polyhaven/overview">Join {numPatrons} other patrons</Link>,
-                  support the future of free assets.
+                  <Trans
+                    i18nKey="common:roadmap.join-support"
+                    t={t}
+                    values={{ numPatrons }}
+                    components={{ patreonLink: <Link href="https://www.patreon.com/polyhaven/overview" /> }}
+                  />
                 </p>
               </div>
             )

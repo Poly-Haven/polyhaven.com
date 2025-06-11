@@ -70,6 +70,13 @@
   "please-wait": "Mohon tunggu...",
   "remove-ads": "Hapus Iklan",
   "required": "Diperlukan",
+  "roadmap": {
+    "join-support": "<patreonLink>Bergabunglah dengan {{numPatrons}} pelanggan lainnya</patreonLink>, dukung masa depan aset gratis.",
+    "target-patrons": "{{target}} pelanggan",
+    "title": "Peta Jalan Poly Haven",
+    "to-be-announced": "Akan diumumkan",
+    "whats-next": "Apa Selanjutnya?"
+  },
   "support-polyhaven": "Dukung Poly Haven!",
   "tagline": "Perpustakaan Aset 3D Publik",
   "visible": "Terlihat"

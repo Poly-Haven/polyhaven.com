@@ -70,6 +70,13 @@
   "please-wait": "ကျေးဇူးပြုပြီးခဏစောင့်ပါ...",
   "remove-ads": "ကြော်ငြာများ ဖယ်ရှားရန်",
   "required": "လိုအပ်သည်။",
+  "roadmap": {
+    "join-support": "<patreonLink>အခြားနာယက {{numPatrons}} ဦးနှင့် ပူးပေါင်းပါ။</patreonLink> အခမဲ့ပိုင်ဆိုင်မှုများ၏အနာဂတ်ကိုပံ့ပိုးပါ။",
+    "target-patrons": "နာယက {{target}}",
+    "title": "Poly Haven လမ်းပြမြေပုံ",
+    "to-be-announced": "ကြေငြာရန်",
+    "whats-next": "နောက်တစ်ခုက ဘာလဲ။"
+  },
   "support-polyhaven": "Poly Haven ကိုပံ့ပိုးပါ။",
   "tagline": "အများသူငှာ 3D ပိုင်ဆိုင်မှုစာကြည့်တိုက်",
   "visible": "မြင်သာသည်။"

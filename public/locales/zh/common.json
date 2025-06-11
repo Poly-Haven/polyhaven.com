@@ -70,6 +70,13 @@
   "please-wait": "请稍等...",
   "remove-ads": "移除广告",
   "required": "必需的",
+  "roadmap": {
+    "join-support": "<patreonLink>加入{{numPatrons}} 其他读者的行列</patreonLink>，支持免费资产的未来。",
+    "target-patrons": "{{target}} 顾客",
+    "title": "保利海文路线图",
+    "to-be-announced": "待定",
+    "whats-next": "下一步是什么？"
+  },
   "support-polyhaven": "支持保利天堂！",
   "tagline": "公共3D资源库",
   "visible": "可见"
