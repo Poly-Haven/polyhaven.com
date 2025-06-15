@@ -220,7 +220,7 @@ export default async function handler(req: NextRequest) {
         width: width,
         height: height,
         headers: {
-          'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+          'Cache-Control': 'public, max-age=3600, s-maxage=3600, CDN-Cache-Control=3600, Vercel-CDN-Cache-Control=3600',
         },
       }
     )
