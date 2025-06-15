@@ -219,6 +219,9 @@ export default async function handler(req: NextRequest) {
       {
         width: width,
         height: height,
+        headers: {
+          'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+        },
       }
     )
   } catch (e: any) {
