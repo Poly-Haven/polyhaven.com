@@ -55,33 +55,36 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     setIsClient(true)
   }, [])
 
-  if (vault || data.date_published * 1000 > Date.now()) {
-    const { data: milestones, error: milestonesError } = apiSWR('/milestones', { revalidateOnFocus: false })
-    useEffect(() => {
-      if (milestones && !milestonesError) {
-        setCurrentPatrons(milestones.numPatrons)
-        setNumEaAssets(milestones.numEaAssets)
-      }
-    }, [milestones, milestonesError])
-  }
+  // Only fetch milestones when needed
+  const { data: milestones, error: milestonesError } = apiSWR(
+    vault || data.date_published * 1000 > Date.now() ? '/milestones' : null,
+    { revalidateOnFocus: false }
+  )
 
-  if (vault) {
-    const { data: vaults, error: vaultsError } = apiSWR('/vaults', { revalidateOnFocus: false })
-    useEffect(() => {
-      if (vaults && !vaultsError) {
-        if (vaults[vault]) {
-          setTargetPatrons(vaults[vault].target)
-        }
-        let totalAssets = 0
-        for (const v of Object.values(vaults)) {
-          if (v['assets']) {
-            totalAssets += v['assets'].length
-          }
-        }
-        setTotalVaultedAssets(totalAssets)
+  // Only fetch vaults when needed
+  const { data: vaults, error: vaultsError } = apiSWR(vault ? '/vaults' : null, { revalidateOnFocus: false })
+
+  useEffect(() => {
+    if (milestones && !milestonesError) {
+      setCurrentPatrons(milestones.numPatrons)
+      setNumEaAssets(milestones.numEaAssets)
+    }
+  }, [milestones, milestonesError])
+
+  useEffect(() => {
+    if (vaults && !vaultsError) {
+      if (vaults[vault]) {
+        setTargetPatrons(vaults[vault].target)
       }
-    }, [vaults, vaultsError])
-  }
+      let totalAssets = 0
+      for (const v of Object.values(vaults)) {
+        if (v['assets']) {
+          totalAssets += v['assets'].length
+        }
+      }
+      setTotalVaultedAssets(totalAssets)
+    }
+  }, [vaults, vaultsError, vault])
 
   const [earlyAccessValid, setEarlyAccessValid] = useState(false)
   useEffect(() => {
