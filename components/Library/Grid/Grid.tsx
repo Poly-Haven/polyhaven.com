@@ -210,13 +210,21 @@ const Grid = (props) => {
   const setHeaderPath = () => {
     let path = ''
     let link = ''
-    if (props.assetType !== 'all') {
-      link += `/${props.assetType}`
-      path += `<a href=${encodeURI(link)}>${tc(asset_type_name)}</a> /`
-    }
-    for (const c of props.categories) {
-      link += `/${c}`
-      path += ` <a href=${encodeURI(link)}>${tcat(c)}</a> /`
+    if (props.collection) {
+      link = `/collections/${props.collection.id}`
+      path = `<a href=${encodeURI(link)}>${props.collection.name}</a> /`
+    } else if (props.vault) {
+      link = `/vaults/${props.vault.id}`
+      path = `<a href=${encodeURI(link)}>${props.vault.name}</a> /`
+    } else {
+      if (props.assetType !== 'all') {
+        link += `/${props.assetType}`
+        path += `<a href=${encodeURI(link)}>${tc(asset_type_name)}</a> /`
+      }
+      for (const c of props.categories) {
+        link += `/${c}`
+        path += ` <a href=${encodeURI(link)}>${tcat(c)}</a> /`
+      }
     }
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
