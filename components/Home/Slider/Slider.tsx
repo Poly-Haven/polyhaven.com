@@ -156,6 +156,7 @@ const Slider = () => {
       aspect_ratio: `${width}:${height}`,
       width: width * window.devicePixelRatio,
       height: height * window.devicePixelRatio,
+      quality: 95,
     }
     const urlParamsStr = Object.entries(urlParams)
       .map(([k, v]) => `${k}=${v}`)

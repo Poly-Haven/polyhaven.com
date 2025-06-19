@@ -171,7 +171,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         <div className={styles.assetList}>
           {vault.assets.map((slug) => (
             <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90 `} />
+              <img
+                src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90&quality=95&sharpen=true`}
+              />
             </Link>
           ))}
           <Link href={`/vaults/${vault.id}`} className={styles.arrow}>

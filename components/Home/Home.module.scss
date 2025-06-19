@@ -146,13 +146,14 @@
 }
 .windowBannerRend {
   @extend .windowBanner;
-  background: url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920) no-repeat center center !important;
+  background: url(https://cdn.polyhaven.com/site_images/home/nama_col.png?width=1920&quality=95) no-repeat center center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
 }
 .windowBannerClay {
   @extend .windowBanner;
-  background: url(https://cdn.polyhaven.com/site_images/home/nama_clay.png?width=1920) no-repeat center center !important;
+  background: url(https://cdn.polyhaven.com/site_images/home/nama_clay.png?width=1920&quality=95) no-repeat center
+    center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
 }

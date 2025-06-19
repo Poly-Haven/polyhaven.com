@@ -38,7 +38,7 @@ const CollectionHeader = ({ collection }) => {
     unreal: <Unreal />,
   }
 
-  const backgroundImage = `https://cdn.polyhaven.com/collections/${collection.id}.png?width=${imageWidth}`
+  const backgroundImage = `https://cdn.polyhaven.com/collections/${collection.id}.png?width=${imageWidth}&quality=95`
 
   return (
     <div

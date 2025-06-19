@@ -24,7 +24,7 @@ const Collection = ({ collectionId, data }) => {
       <div className={styles.collectionInner}>
         <Link href={collectionLink}>
           <img
-            src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=578&aspect_ratio=16:9`}
+            src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=578&aspect_ratio=16:9&quality=95`}
             alt={`${data.name}`}
           />
         </Link>

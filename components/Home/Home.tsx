@@ -32,9 +32,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
             <Link href="/hdris">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300&quality=95" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300&quality=95"
                   className={styles.hover}
                 />
               </div>
@@ -48,9 +48,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
             <Link href="/textures">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300&quality=95" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300&quality=95"
                   className={styles.hover}
                 />
               </div>
@@ -64,9 +64,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
             <Link href="/models">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300&quality=95" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300&quality=95"
                   className={styles.hover}
                 />
               </div>
