@@ -104,7 +104,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               position: 'relative',
               filter: `blur(${blurAmount}px)`,
             }}
-            poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true`}
+            poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&quality=95&sharpen=true`}
           >
             <source src={vault.video} type="video/mp4" />
           </video>
@@ -117,7 +117,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
           vault.video
             ? {}
             : {
-                backgroundImage: `url("https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&sharpen=true")`,
+                backgroundImage: `url("https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&quality=95&sharpen=true")`,
               }
         }
       >

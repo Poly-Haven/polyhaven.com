@@ -184,36 +184,40 @@
   flex-wrap: wrap;
   position: relative;
   min-height: 45vh;
-  background: url(https://cdn.polyhaven.com/site_images/home/sectionBrowse.jpg?width=1920) no-repeat center center !important;
+  background: url(https://cdn.polyhaven.com/site_images/home/sectionBrowse.jpg?width=1920&quality=95) no-repeat center
+    center !important;
   background-attachment: fixed !important;
   background-size: cover !important;
   pointer-events: none;
 
   .hoverBrowseAll {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseAll.jpg?width=1920) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseAll.jpg?width=1920&quality=95) no-repeat
+      center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseHDRIs {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseHDRIs.jpg?width=1920) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseHDRIs.jpg?width=1920&quality=95) no-repeat
+      center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseTextures {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseTextures.jpg?width=1920) no-repeat center
-      center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseTextures.jpg?width=1920&quality=95) no-repeat
+      center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);
   }
   .hoverBrowseModels {
     @include absolute_cover;
-    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseModels.jpg?width=1920) no-repeat center center;
+    background: url(https://cdn.polyhaven.com/site_images/home/hoverBrowseModels.jpg?width=1920&quality=95) no-repeat
+      center center;
     background-attachment: fixed;
     background-size: cover;
     @include visibility-hide(1s);

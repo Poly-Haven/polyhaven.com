@@ -4,7 +4,7 @@ import { placeholderAvatar } from 'utils/placeholderAvatar'
 const Avatar = ({ id, size }) => {
   return (
     <img
-      src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}`}
+      src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}&quality=95`}
       width={size}
       height={size}
       onError={(e) => {

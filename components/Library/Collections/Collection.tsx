@@ -63,7 +63,7 @@ const Collection = ({ collectionId, data }) => {
         <div className={styles.assetList}>
           {data.assets.map((slug) => (
             <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=64 `} />
+              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=64&quality=95`} />
             </Link>
           ))}
           <Link href={collectionLink} className={styles.arrow}>

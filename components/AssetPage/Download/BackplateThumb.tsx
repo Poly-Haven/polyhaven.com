@@ -13,7 +13,7 @@ const BackplateThumb = ({ assetID, bp, fileName, preview, trackDownload }) => {
   return (
     <div className={styles.thumbnail}>
       <img
-        src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?width=152`}
+        src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?width=152&quality=95`}
         data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
         onClick={preview}
       />

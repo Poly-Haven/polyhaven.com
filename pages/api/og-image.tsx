@@ -98,7 +98,7 @@ export default async function handler(req: NextRequest) {
           {sortedKeys.map((key) => (
             <img
               key={key}
-              src={`https://cdn.polyhaven.com/asset_img/thumbs/${key}.png?width=371&height=278`}
+              src={`https://cdn.polyhaven.com/asset_img/thumbs/${key}.png?width=371&height=278&quality=95`}
               style={{
                 margin: '10px',
                 width: `${thumbWidth}px}`,

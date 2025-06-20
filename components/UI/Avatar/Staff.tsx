@@ -10,7 +10,7 @@ const Staff = ({ id, name, role, country, mode }) => {
   return (
     <div className={styles.staffAvatar}>
       <Link href={`/all?a=${id}`}>
-        <img src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}`} width={size} height={size} />
+        <img src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}&quality=95`} width={size} height={size} />
       </Link>
       <div className={`${styles.staffInfo} ${mode === 'compact' ? styles.staffInfoCompact : null}`}>
         <span lang="en" dir="ltr">

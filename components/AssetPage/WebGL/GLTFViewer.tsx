@@ -203,7 +203,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
                   key={k}
                   icon={
                     <img
-                      src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1`}
+                      src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1&quality=95`}
                     />
                   }
                   active={showEnvironment && envPreset === p}

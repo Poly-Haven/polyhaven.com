@@ -18,7 +18,7 @@ const Map = ({ hdris }) => {
         <Marker key={slug} position={hdris[slug]}>
           <Popup>
             <Link href={`/a/${slug}`}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200`} width="200" />
+              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200&quality=95`} width="200" />
             </Link>
           </Popup>
         </Marker>

@@ -180,7 +180,7 @@ const Home = () => {
       <div className={`${styles.sectionWrapper}`}>
         <div className={`${styles.section} ${styles.testimonials}`}>
           <div className={styles.testimonial}>
-            <img src={`https://cdn.polyhaven.com/people/Tudor Bodeanu.jpg?width=80`} />
+            <img src={`https://cdn.polyhaven.com/people/Tudor Bodeanu.jpg?width=80&quality=95`} />
             <p>
               "In today's fast paced content creation environment, Poly Haven is a free library of quality content with
               no strings attached to get your project off the ground!"
@@ -189,7 +189,7 @@ const Home = () => {
             </p>
           </div>
           <div className={styles.testimonial}>
-            <img src={`https://cdn.polyhaven.com/people/Fenner Rockliffe.jpg?width=80`} />
+            <img src={`https://cdn.polyhaven.com/people/Fenner Rockliffe.jpg?width=80&quality=95`} />
             <p>
               "Any time I'm looking for an awesome HDRI, Material, or high quality model the first place I always look
               is on polyhaven.com. I've used it a ton for my Blender projects and it's definitely a site every VFX

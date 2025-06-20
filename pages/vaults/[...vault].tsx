@@ -13,7 +13,7 @@ const LibraryPage = (props) => {
         url={`/vaults/${props.vault.id}/${props.assetType}/${props.categories.join('/')}`}
         description={props.vault.description}
         assetType={asset_types[props.assetType]}
-        image={`https://cdn.polyhaven.com/vaults/${props.vault.id}.png?width=580`}
+        image={`https://cdn.polyhaven.com/vaults/${props.vault.id}.png?width=580&quality=95`}
       />
       <Library
         assetType={props.assetType}

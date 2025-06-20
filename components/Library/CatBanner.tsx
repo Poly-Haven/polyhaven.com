@@ -58,9 +58,9 @@ const CatBanner = ({ assetType, collections }) => {
             ))
           : Object.keys(top_level_categories[assetType]).map((category, i) => {
               const imgUrl = {
-                hdris: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?aspect_ratio=1:1&height=180`,
-                textures: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?aspect_ratio=1:1&height=180`,
-                models: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?height=180&width=180`,
+                hdris: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?aspect_ratio=1:1&height=180&quality=95`,
+                textures: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?aspect_ratio=1:1&height=180&quality=95`,
+                models: `https://cdn.polyhaven.com/asset_img/primary/${top_level_categories[assetType][category]}.png?height=180&width=180&quality=95`,
               }
               return (
                 <Link

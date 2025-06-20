@@ -51,10 +51,13 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
         <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />
       </div>
       <Link href={link} className={styles.img} target="_blank">
-
         {(pause || isMobile) && pausedImg ? (
           <img
-            src={['.png', '.jpg'].includes(pausedImg.slice(-4).toLowerCase()) ? `${pausedImg}?width=384` : pausedImg}
+            src={
+              ['.png', '.jpg'].includes(pausedImg.slice(-4).toLowerCase())
+                ? `${pausedImg}?width=384&quality=95`
+                : pausedImg
+            }
           />
         ) : img.endsWith('mp4') ? (
           <video
@@ -70,15 +73,14 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
             Sorry, your browser doesn't support embedded videos.
           </video>
         ) : (
-          <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384` : img} />
+          <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384&quality=95` : img} />
         )}
-
       </Link>
       <Link href={link} className={styles.bottomText}>
         {bottomText}
       </Link>
     </div>
-  );
+  )
 }
 
 export default NewsCard

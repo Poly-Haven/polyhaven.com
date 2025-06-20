@@ -11,7 +11,7 @@ export default function HomePage() {
         title="Poly Haven"
         description="The Public 3D Asset Library"
         url="/"
-        image="https://cdn.polyhaven.com/site_images/home/window_rend.jpg?width=630"
+        image="https://cdn.polyhaven.com/site_images/home/window_rend.jpg?width=630&quality=95"
       />
       <Home />
     </Page>

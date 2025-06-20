@@ -33,7 +33,7 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
         assetType={data.type}
         author={Object.keys(data.authors).join(', ')}
         keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
-        image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630`}
+        image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630&quality=95`}
       />
       <div>
         <AssetPage

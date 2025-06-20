@@ -49,7 +49,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [activeImage, setActiveImage] = useState(
-    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760`
+    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760&quality=95`
   )
   const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
   const [showWebGL, setShowWebGL] = useState(false)
@@ -155,7 +155,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     }
     setActiveImageSrc(src)
     if (src.startsWith('https://cdn.polyhaven.com/')) {
-      src += '?height=760'
+      src += '?height=760&quality=95'
     }
     setActiveImage(src)
     setShowTilePreview('')

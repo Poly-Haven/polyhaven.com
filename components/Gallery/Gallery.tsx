@@ -101,19 +101,17 @@ const Gallery = ({ data, assetPage }) => {
         {data.map((d, k) => (
           <div key={k} className={styles.thumbnail} data-info={JSON.stringify(d)} onClick={viewImage}>
             <LazyLoad offset={500}>
-              <img src={`https://cdn.polyhaven.com/gallery/${d.file_name}?width=${imgWidth}`} alt={d.name} />
+              <img src={`https://cdn.polyhaven.com/gallery/${d.file_name}?width=${imgWidth}&quality=95`} alt={d.name} />
             </LazyLoad>
           </div>
         ))}
         {!assetPage && (
-          (<Link href="/gallery-submit" prefetch={false}>
-
+          <Link href="/gallery-submit" prefetch={false}>
             <div className={styles.add}>
               <strong>+</strong>
               <p>{t('submit.title')}</p>
             </div>
-
-          </Link>)
+          </Link>
         )}
       </Masonry>
       {lightboxData && (
@@ -121,7 +119,7 @@ const Gallery = ({ data, assetPage }) => {
           <div className={styles.lightbox}>
             <div className={styles.imageWrapper}>
               <Spinner className={styles.spinner} />
-              <img src={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}`} />
+              <img src={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}&quality=95`} />
             </div>
             <p>
               {lightboxData.artwork_name && <em>{lightboxData.artwork_name}</em>}
@@ -148,7 +146,7 @@ const Gallery = ({ data, assetPage }) => {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 Gallery.defaultProps = {

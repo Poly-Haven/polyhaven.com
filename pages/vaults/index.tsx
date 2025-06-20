@@ -15,7 +15,7 @@ export default function CollectionsPage({ vaults }) {
         title="The Vaults"
         description="Support the future of free assets and unlock The Vaults"
         url="/vaults"
-        image={`https://cdn.polyhaven.com/vaults/${firstVault}.png?width=580`}
+        image={`https://cdn.polyhaven.com/vaults/${firstVault}.png?width=580&quality=95`}
       />
       <VaultLanding vaults={vaults} />
     </Page>

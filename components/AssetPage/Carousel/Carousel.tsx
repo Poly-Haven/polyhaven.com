@@ -73,7 +73,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
           onClick={clickImage}
           className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}
         >
-          <img src={images[i] + '?height=110'} />
+          <img src={images[i] + '?height=110&quality=95'} />
           {Object.keys(image_info).includes(i) ? (
             <div className={styles.credit}>
               <p>
@@ -119,7 +119,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
                   <img
                     src={`https://cdn.polyhaven.com/asset_img/map_previews/${slug}/${urlBaseName(
                       maps[m]
-                    )}?height=50&width=50`}
+                    )}?height=50&width=50&quality=95`}
                   />
                 </div>
               ))}

@@ -14,7 +14,7 @@ export default function CollectionsPage({ collections }) {
         title={t('collections:title')}
         description={t('collections:description')}
         url="/collections"
-        image="https://cdn.polyhaven.com/collections/the-shed.png?width=630"
+        image="https://cdn.polyhaven.com/collections/the-shed.png?width=630&quality=95"
       />
       <Collections collections={collections} />
     </Page>
