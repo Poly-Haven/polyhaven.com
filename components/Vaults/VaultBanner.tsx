@@ -78,7 +78,14 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
     updateVideoOffset()
     handleScroll()
 
+    // After 1 second, call again just in case the video metadata wasn't loaded yet
+    const initialTimeout = setTimeout(() => {
+      updateVideoOffset()
+      handleScroll()
+    }, 1000)
+
     return () => {
+      clearTimeout(initialTimeout)
       observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', updateVideoOffset)
