@@ -55,7 +55,7 @@
     "access-now": "Accedi ora",
     "already-patron": "Sei già un mecenate? Effettua <loginLink>il login</loginLink>.",
     "donate-access": "Donate 3 dollari su Patreon per scaricarlo, insieme a {{totalVaultedAssets, number}} altre risorse custodite.",
-    "locked-in": "Questo bene è chiuso nel <vaultLink>caveau</vaultLink> di <vaultLink>{{vault}}.</vaultLink>",
+    "locked-in": "Questa risorsa è chiusa nel <vaultLink>caveau</vaultLink> di <vaultLink>{{vault}}.</vaultLink>",
     "patrons-needed": "Quando avremo {{remaining, number}} più mecenati, verrà rilasciato gratuitamente per tutti.",
     "title": "Attività a volta"
   },

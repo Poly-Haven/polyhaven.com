@@ -19,7 +19,7 @@
   "donation-box": {
     "b1": "Aita meil teha <lnk>tasuta vara</lnk> kõigile!",
     "b2": "<lnk>Varajane juurdepääs</lnk> eelseisvatele varadele.",
-    "b3": "Kohene juurdepääs kogu <lnk>Vaultsi</lnk> sisule.",
+    "b3": "Kohene juurdepääs kogu <lnk>Vault’si</lnk> sisule.",
     "b4": "Meie Blenderi varade brauseri <lnk>lisandmoodul</lnk>.",
     "b5": "Massiline allalaadimine ja offline-juurdepääs <lnk>meie pilve</lnk> abil.",
     "b6": "<lnk>Sponsoreeri vara</lnk> oma nime ja lingiga.",
@@ -73,9 +73,9 @@
   "roadmap": {
     "join-support": "<patreonLink>Liitu {{numPatrons}} teiste patroonidega</patreonLink>, toetage vaba vara tulevikku.",
     "target-patrons": "{{target}} patroonid",
-    "title": "Poly Haven teekaart",
+    "title": "Poly Haven’i tegevuskava",
     "to-be-announced": "Kuulutatakse välja",
-    "whats-next": "Mis saab edasi?"
+    "whats-next": "Mis järgmiseks?"
   },
   "support-polyhaven": "Toetage Poly Haven'i!",
   "tagline": "Avalik 3D varade kogumik",

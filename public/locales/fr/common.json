@@ -17,13 +17,13 @@
   "corporate-sponsors": "Commanditaires corporatifs",
   "display-name": "Nom affiché",
   "donation-box": {
-    "b1": "Aidez-nous à mettre des <lnk>actifs gratuits</lnk> à la disposition de tous !",
-    "b2": "<lnk>Accès anticipé</lnk> aux actifs à venir.",
-    "b3": "Accès instantané à l'ensemble du contenu des <lnk>coffres</lnk>.",
-    "b4": "Notre navigateur de ressources <lnk>pour</lnk> Blender.",
-    "b5": "Téléchargement en masse et accès hors ligne avec <lnk>notre nuage</lnk>.",
-    "b6": "<lnk>Sponsorisez un actif</lnk> avec votre nom et votre lien.",
-    "donate-monthly": "Don mensuel"
+    "b1": "Aidez-nous à concevoir des <lnk>ressources gratuites et libres de droits</lnk> pour tous!",
+    "b2": "<lnk>Accès anticipé</lnk> aux ressources à venir.",
+    "b3": "Accès instantané à l'ensemble du contenu dans <lnk>les Voûtes</lnk>.",
+    "b4": "Notre <lnk>module complémentaire</lnk> de navigation de ressources Blender.",
+    "b5": "Téléchargement en lot et accès hors ligne avec <lnk>notre nuage</lnk>.",
+    "b6": "<lnk>Sponsorisez une ressource</lnk> avec votre nom et lien.",
+    "donate-monthly": "Faire un don mensuel"
   },
   "email-address": "Adresse e-mail",
   "footer": {
@@ -34,17 +34,17 @@
     "complete": "Complet!",
     "current": "Objectif actuel :",
     "reached": "Nous avons atteint notre dernier objectif! Quelque chose de nouveau devrait bientôt apparaître ici :)",
-    "to-go": "{{dollars}}$ à amasser"
+    "to-go": "{{dollars}} $ à amasser"
   },
   "hidden": "Caché",
   "invalid-email": "Adresse e-mail invalide",
   "invalid-name-url": "Nom ou URL invalide",
   "loading": "Chargement...",
   "missing-invalid": "Manquant ou invalide",
-  "n-patrons-to-go": "{{number}} Les patrons à l'honneur !",
+  "n-patrons-to-go": "{{number}} mécènes pour atteindre l'objectif!",
   "nav": {
     "about-contact": "À propos/Contact",
-    "add-on": "Supplémentaire",
+    "add-on": "Module complémentaire",
     "api": "API",
     "blog": "Blog",
     "collections": "Collections",
@@ -71,13 +71,13 @@
   "remove-ads": "Supprimer les pubs",
   "required": "Requis",
   "roadmap": {
-    "join-support": "<patreonLink>Rejoignez {{numPatrons}} d'autres mécènes</patreonLink>, soutenez l'avenir des actifs libres.",
-    "target-patrons": "{{target}} patrons",
+    "join-support": "<patreonLink>Rejoignez {{numPatrons}} autres mécènes</patreonLink>, soutenez l'avenir des ressources gratuites et libres de droits.",
+    "target-patrons": "{{target}} mécènes",
     "title": "Feuille de route de Poly Haven",
-    "to-be-announced": "A annoncer",
-    "whats-next": "Quelle est la prochaine étape ?"
+    "to-be-announced": "À venir",
+    "whats-next": "Quelle est la suite?"
   },
-  "support-polyhaven": "Soutenez Poly Haven !",
+  "support-polyhaven": "Soutenez Poly Haven!",
   "tagline": "La bibliothèque publique de ressources 3D",
   "visible": "Visible"
 }

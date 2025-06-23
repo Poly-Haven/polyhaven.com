@@ -22,9 +22,9 @@
   "downloads-pd": "päeva kohta ",
   "early-access": {
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
-    "donate-access": "Anneta 3 dollarit, et seda nüüd alla laadida, koos {{numEaAssets, number}} teiste varajase juurdepääsu varadega.",
+    "donate-access": "Anneta 3 dollarit, et see nüüd alla laadida, koos {{numEaAssets, number}} teiste varajase juurdepääsu varadega.",
     "get-access": "Hangi varajane juurdepääs",
-    "release-date": "See vara vabastatakse:<br/><strong>{{scheduleText}}</strong>",
+    "release-date": "See vara avaldatakse:<br/><strong>{{scheduleText}}</strong>",
     "title": "Varsti tulemas!"
   },
   "formats": {
@@ -51,10 +51,10 @@
   "tall": "pikk",
   "user-renders": "Kasutaja renderid:",
   "vaulted": {
-    "about": "kohta",
-    "access-now": "Juurdepääs nüüd",
+    "about": "Info",
+    "access-now": "Juurdepääs kohe",
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
-    "donate-access": "Annetage 3 dollarit Patreonis, et seda alla laadida, koos {{totalVaultedAssets, number}} teiste varade võlvitud varadega.",
+    "donate-access": "Annetage 3 dollarit Patreonis, et see alla laadida, koos {{totalVaultedAssets, number}} teiste võlvitud varadega.",
     "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}} </vaultLink>.",
     "patrons-needed": "Kui saame {{remaining, number}} rohkem toetajaid, avaldatakse see kõigile tasuta.",
     "title": "Võlvitud vara"

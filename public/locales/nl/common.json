@@ -9,7 +9,7 @@
   "Models": "Modellen",
   "Textures": "Texturen",
   "about-project": "Over het project",
-  "access-now": "Toegang Nu",
+  "access-now": "Krijg nu toegang",
   "also-supported-by": "Ook ondersteund door:",
   "browse-n": "Blader door {{number}}",
   "corporate-sponsor_one": "Bedrijfssponsor",
@@ -18,11 +18,11 @@
   "display-name": "Weergavenaam",
   "donation-box": {
     "b1": "Help ons <lnk>gratis assets</lnk> te maken voor iedereen!",
-    "b2": "<lnk>Vroege toegang</lnk> tot nieuwe middelen.",
-    "b3": "Directe toegang tot alle content in <lnk>de Vaults</lnk>.",
+    "b2": "<lnk>Vroege toegang</lnk> tot nieuwe assets.",
+    "b3": "Directe toegang tot alle content in <lnk>de kluizen</lnk>.",
     "b4": "Onze Blender asset browser <lnk>add-on</lnk>.",
     "b5": "Bulkdownload & offline toegang met <lnk>onze cloud</lnk>.",
-    "b6": "<lnk>Sponsor een object</lnk> met je naam & link.",
+    "b6": "<lnk>Sponsor een asset</lnk> met je naam & link.",
     "donate-monthly": "Maandelijks doneren"
   },
   "email-address": "E-mailadres",
@@ -41,7 +41,7 @@
   "invalid-name-url": "Ongeldige naam of URL",
   "loading": "Bezig met laden...",
   "missing-invalid": "Ontbreekt of ongeldig",
-  "n-patrons-to-go": "{{number}} patroons te gaan!",
+  "n-patrons-to-go": "{{number}} patrons te gaan!",
   "nav": {
     "about-contact": "Over/Contact",
     "add-on": "Add-on",
@@ -71,11 +71,11 @@
   "remove-ads": "Verwijder advertenties",
   "required": "Verplicht",
   "roadmap": {
-    "join-support": "<patreonLink>Sluit je aan bij {{numPatrons}} andere mecenassen</patreonLink>, steun de toekomst van vrije activa.",
-    "target-patrons": "{{target}} begunstigers",
+    "join-support": "<patreonLink>Sluit je aan bij {{numPatrons}} andere patrons</patreonLink>, steun de toekomst van vrije assets.",
+    "target-patrons": "{{target}} patrons",
     "title": "Poly Haven Routekaart",
-    "to-be-announced": "Wordt aangekondigd",
-    "whats-next": "Wat is de volgende stap?"
+    "to-be-announced": "Wordt aangekondigd...",
+    "whats-next": "Wat is hierna?"
   },
   "support-polyhaven": "Steun Poly Haven!",
   "tagline": "De openbare 3D-asset bibliotheek",

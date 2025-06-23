@@ -23,9 +23,9 @@
   "early-access": {
     "already-patron": "すでにパトロンですか？<loginLink>ログイン</loginLink>",
     "donate-access": "3ドルの寄付で、{{numEaAssets, number}} その他のアーリーアクセス・アセットとともに、今すぐダウンロードできる。",
-    "get-access": "アーリーアクセス",
+    "get-access": "早期アクセスを取得",
     "release-date": "この資産は放出される：<br/><strong>{{scheduleText}}</strong>",
-    "title": "もうすぐだ！"
+    "title": "近日公開！"
   },
   "formats": {
     "exr": "各チャンネル32ビット、ロスレス圧縮。",
@@ -55,9 +55,9 @@
     "access-now": "今すぐアクセス",
     "already-patron": "すでにパトロンですか？<loginLink>ログイン</loginLink>",
     "donate-access": "Patreonで3ドル寄付すると、{{totalVaultedAssets, number}} 他の保管資産とともにダウンロードできる。",
-    "locked-in": "この資産は<vaultLink>{{vault}} </vaultLink> 。",
-    "patrons-needed": "{{remaining, number}} パトロンが増えれば、誰でも無料で使えるようになります。",
-    "title": "吹き抜けの資産"
+    "locked-in": "このアセットは <vaultLink>{{vault}} ボールト</vaultLink> にロックされています。",
+    "patrons-needed": "あと {{remaining, number}} 人のパトロンが集まったら、誰でも無料で利用できるようになります。",
+    "title": "保管された資産"
   },
   "wide": "幅",
   "zip-choose": "ZIPコンテンツを選択してください："

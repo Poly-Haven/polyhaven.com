@@ -21,10 +21,10 @@
   "downloads": "Завантажили",
   "downloads-pd": "на день",
   "early-access": {
-    "already-patron": "Вже є меценатом? <loginLink>Заходьте</loginLink>.",
-    "donate-access": "Пожертвуйте $3, щоб завантажити його зараз, разом з іншими ресурсами раннього доступу {{numEaAssets, number}}.",
+    "already-patron": "Вже є патроном? <loginLink>Заходьте</loginLink>.",
+    "donate-access": "Пожертвуйте $3, щоб завантажити його зараз, разом з іншими ассетами раннього доступу {{numEaAssets, number}}.",
     "get-access": "Отримайте ранній доступ",
-    "release-date": "Цей актив буде звільнений:<br/><strong>{{scheduleText}}</strong>",
+    "release-date": "Цей асет буде опублікований:<br/><strong>{{scheduleText}}</strong>",
     "title": "Вже скоро!"
   },
   "formats": {
@@ -51,13 +51,13 @@
   "tall": "великий",
   "user-renders": "Рендери користувачів:",
   "vaulted": {
-    "about": "Про",
+    "about": "Детальніше",
     "access-now": "Отримати доступ зараз",
-    "already-patron": "Вже є меценатом? <loginLink>Заходьте</loginLink>.",
-    "donate-access": "Пожертвуйте $3 на Patreon, щоб завантажити його, а також {{totalVaultedAssets, number}} та інші ресурси сховища.",
-    "locked-in": "Цей ресурс зберігається у сховищі <vaultLink>{{vault}}.</vaultLink>",
-    "patrons-needed": "Коли ми отримаємо {{remaining, number}} більше меценатів, він буде випущений безкоштовно для всіх.",
-    "title": "Сховище активів"
+    "already-patron": "Вже є патроном? <loginLink>Заходьте</loginLink>.",
+    "donate-access": "Пожертвуйте $3 на Patreon, щоб завантажити його, а також {{totalVaultedAssets, number}} та інші ассети зі сховища.",
+    "locked-in": "Цей ассет зберігається у сховищі <vaultLink>{{vault}}.</vaultLink>",
+    "patrons-needed": "Коли ми отримаємо {{remaining, number}} більше патронів, він буде випущений безкоштовно для всіх.",
+    "title": "Сховище ассетів"
   },
   "wide": "широкий",
   "zip-choose": "Оберіть що додати до ZIP:"

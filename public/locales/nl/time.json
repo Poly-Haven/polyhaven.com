@@ -9,7 +9,7 @@
     "week_one": "{{count}} week vanaf nu",
     "week_other": "{{count}} weken vanaf nu",
     "year_one": "{{count}} jaar vanaf nu",
-    "year_other": "{{count}} jaren vanaf nu"
+    "year_other": "{{count}} jaar vanaf nu"
   },
   "new": "Nieuw",
   "past": {
@@ -22,7 +22,7 @@
     "week_one": "{{count}} week geleden",
     "week_other": "{{count}} weken geleden",
     "year_one": "{{count}} jaar geleden",
-    "year_other": "{{count}} jaren geleden"
+    "year_other": "{{count}} jaar geleden"
   },
   "today": "Vandaag"
 }

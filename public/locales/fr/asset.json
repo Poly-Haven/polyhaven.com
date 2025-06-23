@@ -3,11 +3,11 @@
   "author-donated": "Cette ressource a été donné gratuitement à Poly Haven par son auteur :)",
   "author_one": "Auteur",
   "author_other": "Auteurs",
-  "backplates": "Plaques arrière",
+  "backplates": "Plaques d'arrière-plan",
   "backplates-description": "Les images ci-dessous sont des photos séparées que vous pouvez utiliser comme images d'arrière-plan en haute résolution dans votre rendu.<br />En fonction de la résolution du rendu et des paramètres de l'appareil photo, il peut arriver qu'une HDRI (même très grande) n'ait pas assez de pixels pour apparaître nette en arrière-plan de votre rendu. Dans ce cas, vous pouvez utiliser l'une de ces plaques d'arrière-plan en arrière-plan et utiliser une HDRI de résolution inférieure uniquement pour l'éclairage et les reflets.",
   "categories": "Catégories",
   "cloud-sync": "Accès hors ligne",
-  "cloud-sync-d": "Soutenez-nous avec 5$ par mois et recevez un accès à notre système cloud, vous permettant de synchroniser l'intégralité de notre bibliothèque sur votre disque dur.",
+  "cloud-sync-d": "Soutenez-nous avec 5 $ par mois et recevez un accès à notre système cloud, vous permettant de synchroniser l'intégralité de notre bibliothèque sur votre disque dur.",
   "coming-soon": "À venir!",
   "coming-soon-d": "Contributeurs au rang {{tier}}, connectez-vous pour télécharger plus tôt",
   "credits": {
@@ -21,11 +21,11 @@
   "downloads": "Téléchargements",
   "downloads-pd": "par jour",
   "early-access": {
-    "already-patron": "Vous êtes déjà mécène ? <loginLink>Se connecter</loginLink>.",
-    "donate-access": "Faites un don de 3 $ pour le télécharger dès maintenant, ainsi que {{numEaAssets, number}} autres ressources en accès anticipé.",
-    "get-access": "Accès anticipé",
-    "release-date": "Cet actif sera libéré :<br/><strong>{{scheduleText}}</strong>",
-    "title": "Bientôt disponible !"
+    "already-patron": "Vous êtes déjà mécène? <loginLink>Se connecter</loginLink>.",
+    "donate-access": "Faites un don de 3 $ pour la télécharger maintenant, ainsi que {{numEaAssets, number}} autres ressources en accès anticipé.",
+    "get-access": "Obtenir l'accès anticipé",
+    "release-date": "Cette ressource sera publiée :<br/><strong>{{scheduleText}}</strong>",
+    "title": "À venir!"
   },
   "formats": {
     "exr": "Véritable 32 bits par canal, compressé sans perte.",
@@ -42,22 +42,22 @@
   "no-files-d": "Essayez d'actualiser, sinon veuillez nous le signaler.",
   "no-renders": "Aucun pour le moment,<lnk> ajoutez le vôtre</lnk>.",
   "nor-standard": "Norme de carte normale :",
-  "released": "Libéré",
+  "released": "Publié",
   "similar-assets": "Ressources similaires",
   "sponsored-by": "Sponsorisé par :",
   "sponsored-by-d": "Soutenez Poly Haven sur Patreon pour ajouter votre nom ici.",
   "sponsored-by-none": "Personne pour le moment :(",
   "tags": "Mots clés",
-  "tall": "grand",
+  "tall": "de hauteur",
   "user-renders": "Rendus d'utilisateurs :",
   "vaulted": {
-    "about": "A propos de",
+    "about": "À propos",
     "access-now": "Accéder maintenant",
-    "already-patron": "Vous êtes déjà mécène ? <loginLink>Connectez-vous</loginLink>.",
-    "donate-access": "Faites un don de 3 $ sur Patreon pour le télécharger, ainsi que {{totalVaultedAssets, number}} autres ressources protégées.",
-    "locked-in": "Cet actif est enfermé dans le <vaultLink>coffre-fort de{{vault}} </vaultLink>.",
-    "patrons-needed": "Lorsque nous aurons obtenu {{remaining, number}} plus de mécènes, il sera publié gratuitement pour tout le monde.",
-    "title": "Actif voûté"
+    "already-patron": "Vous êtes déjà mécène? <loginLink>Se connecter</loginLink>.",
+    "donate-access": "Faites un don de 3 $ sur Patreon pour le télécharger, ainsi que {{totalVaultedAssets, number}} autres ressources en voûte.",
+    "locked-in": "Cette ressource est verrouillée dans la <vaultLink>voûte {{vault}}</vaultLink>.",
+    "patrons-needed": "Lorsque nous aurons obtenu {{remaining, number}} mécènes de plus, elle sera publiée gratuitement pour tout le monde.",
+    "title": "Ressource en voûte"
   },
   "wide": "large",
   "zip-choose": "Choisissez le contenu du ZIP :"

@@ -18,7 +18,7 @@
   "display-name": "Anzeigename",
   "donation-box": {
     "b1": "Helfen Sie uns, <lnk>kostenlose Assets</lnk> für alle zu schaffen!",
-    "b2": "<lnk>Frühzeitiger Zugang</lnk> zu kommenden Assets.",
+    "b2": "<lnk>Vorabzugang</lnk> zu kommenden Assets.",
     "b3": "Sofortiger Zugriff auf alle Inhalte in <lnk>den Vaults</lnk>.",
     "b4": "Unser Blender Asset Browser <lnk>Add-on</lnk>.",
     "b5": "Massendownload und Offline-Zugriff mit <lnk>unserer Cloud</lnk>.",
@@ -73,7 +73,7 @@
   "roadmap": {
     "join-support": "<patreonLink>Schließen Sie sich {{numPatrons}} anderen Gönnern an</patreonLink> und unterstützen Sie die Zukunft der freien Assets.",
     "target-patrons": "{{target}} Gönner",
-    "title": "Poly Haven Straßenkarte",
+    "title": "Poly Haven Roadmap",
     "to-be-announced": "Wird noch bekannt gegeben",
     "whats-next": "Was kommt als Nächstes?"
   },

@@ -21,10 +21,10 @@
   "downloads": "Downloads",
   "downloads-pd": "per dag",
   "early-access": {
-    "already-patron": "Ben je al beschermheer? <loginLink>Aanmelden</loginLink>.",
-    "donate-access": "Doneer $3 om het nu te downloaden, samen met {{numEaAssets, number}} andere early-access onderdelen.",
-    "get-access": "Vroege toegang krijgen",
-    "release-date": "Dit actief zal worden vrijgegeven:<br/><strong>{{scheduleText}}</strong>",
+    "already-patron": "Ben je al patron? <loginLink>Aanmelden</loginLink>.",
+    "donate-access": "Doneer $3 om het nu te downloaden, samen met {{numEaAssets, number}} andere Vroege Toegang assets.",
+    "get-access": "Krijg vroege toegang",
+    "release-date": "Dit asset zal worden vrijgegeven over:<br/><strong>{{scheduleText}}</strong>",
     "title": "Binnenkort verkrijgbaar!"
   },
   "formats": {
@@ -52,12 +52,12 @@
   "user-renders": "Gebruiker renders:",
   "vaulted": {
     "about": "Over",
-    "access-now": "Toegang Nu",
-    "already-patron": "Ben je al beschermheer? <loginLink>Aanmelden</loginLink>.",
-    "donate-access": "Doneer $3 op Patreon om het te downloaden, samen met {{totalVaultedAssets, number}} andere vaulted assets.",
-    "locked-in": "Deze activa zijn opgesloten in de <vaultLink>kluis op{{vault}} </vaultLink>.",
-    "patrons-needed": "Als we {{remaining, number}} meer begunstigers hebben, zal het voor iedereen gratis worden uitgebracht.",
-    "title": "Gewelfde activa"
+    "access-now": "Krijg nu toegang",
+    "already-patron": "Ben je al een patron? <loginLink>Aanmelden</loginLink>.",
+    "donate-access": "Doneer $3 op Patreon om het te downloaden, samen met {{totalVaultedAssets, number}} andere opgesloten assets.",
+    "locked-in": "Deze asset i opgesloten in de <vaultLink>kluis{{vault}} </vaultLink>.",
+    "patrons-needed": "Als we {{remaining, number}} meer patrons hebben, zal het voor iedereen gratis worden uitgebracht.",
+    "title": "Opgesloten Asset"
   },
   "wide": "breed",
   "zip-choose": "Kies ZIP-inhoud:"

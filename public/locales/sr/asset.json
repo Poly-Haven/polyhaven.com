@@ -42,7 +42,7 @@
   "no-files-d": "Покушајте да освежите, у супротном пријавите нам ово.",
   "no-renders": "Нико још, <lnk>додајте своје</lnk>.",
   "nor-standard": "Стандардна Нормална Мапа:",
-  "released": "Ослобођен",
+  "released": "Доступно",
   "similar-assets": "Слична Sредства",
   "sponsored-by": "Спонзорисано од:",
   "sponsored-by-d": "Подржите Poly Haven на Patreon-у, да би сте додали своје име овде.",
@@ -51,13 +51,13 @@
   "tall": "висок",
   "user-renders": "Кориснички Рендери:",
   "vaulted": {
-    "about": "О нама",
+    "about": "Детаљније",
     "access-now": "Приступите сада",
     "already-patron": "Већ сте покровитељ?<loginLink> Пријавите се</loginLink> .",
-    "donate-access": "Донирајте 3 долара на Patreon-у да бисте га преузели, заједно са {{totalVaultedAssets, number}} другим трезорским ресурсима.",
-    "locked-in": "Ова имовина је закључана у<vaultLink> трезор {{vault}}</vaultLink> .",
-    "patrons-needed": "Када добијемо још {{remaining, number}} покровитеља, биће објављено бесплатно за све.",
-    "title": "Трезорисана имовина"
+    "donate-access": "Донирајте 3 долара на Patreon-у да бисте га преузели, заједно са {{totalVaultedAssets, number}} другим складиштеним материјалима.",
+    "locked-in": "Овај материјал је закључан у <vaultLink> складишту {{vault}}</vaultLink> .",
+    "patrons-needed": "Када добијемо још {{remaining, number}} покровитеља, бесплатно ће бито доступно за све.",
+    "title": "Складиштени материјал"
   },
   "wide": "широк",
   "zip-choose": "Изаберите ZIP садржај:"

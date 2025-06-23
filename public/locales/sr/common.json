@@ -71,9 +71,9 @@
   "remove-ads": "Уклони огласе",
   "required": "Потребно",
   "roadmap": {
-    "join-support": "<patreonLink>Придружите се {{numPatrons}} другим покровитељима</patreonLink> , подржавају будућност бесплатних средстава.",
+    "join-support": "<patreonLink>Придружите се броју од {{numPatrons}} других покровитеља</patreonLink> , подржи будућност бесплатних материјала.",
     "target-patrons": "{{target}} покровитеља",
-    "title": "Мапа пута Поли Хејвена",
+    "title": "Мапа пута Poly Haven-a",
     "to-be-announced": "Биће објављено",
     "whats-next": "Шта је следеће?"
   },

@@ -41,7 +41,7 @@
   "invalid-name-url": "名前またはURLが無効です",
   "loading": "読み込んでいます...",
   "missing-invalid": "欠落または無効",
-  "n-patrons-to-go": "{{number}} パトロンが行く！",
+  "n-patrons-to-go": "あと{{number}}人のパトロンが必要です！",
   "nav": {
     "about-contact": "会社概要/お問い合わせ",
     "add-on": "アドオン",
@@ -73,11 +73,11 @@
   "roadmap": {
     "join-support": "<patreonLink> {{numPatrons}} 他のパトロンと一緒に</patreonLink>、フリーアセットの未来を応援しましょう。",
     "target-patrons": "{{target}} 後援者",
-    "title": "ポリヘブン 地図",
+    "title": "ポリヘブンロードマップ",
     "to-be-announced": "発表予定",
-    "whats-next": "次はどうする？"
+    "whats-next": "次は何でしょうか?"
   },
-  "support-polyhaven": "ポリヘブンを支援する",
+  "support-polyhaven": "ポリヘブンを支援する！",
   "tagline": "パブリック3Dアセットライブラリ",
   "visible": "表示される"
 }
