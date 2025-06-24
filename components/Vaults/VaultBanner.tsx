@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import Button from 'components/UI/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
@@ -18,6 +19,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const containerRef = useRef(null)
   const [videoOffset, setVideoOffset] = useState([0, 0])
   const [blurAmount, setBlurAmount] = useState(0)
+  const { patron } = useUserPatron()
 
   const [earlyAccessValid, setEarlyAccessValid] = useState(false)
   useEffect(() => {
@@ -145,7 +147,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
                 href={`/vaults/${vault.id}`}
               />
             )}
-            {!earlyAccessValid && (
+            {!earlyAccessValid && (!patron.rewards || !patron.rewards.includes('Early Access')) && (
               <Button
                 text={t('common:access-now')}
                 href="https://www.patreon.com/checkout/polyhaven"

@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-i18next'
 import React, { useState, useEffect, useRef } from 'react'
-import { useUser } from '@auth0/nextjs-auth0/client'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
@@ -10,8 +9,8 @@ import { titleCase, formatNumber } from 'utils/stringUtils'
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
-import { getPatronInfo } from 'utils/patronInfo'
 import useStoredState from 'hooks/useStoredState'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from 'react-icons/md'
 
@@ -43,9 +42,8 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
-  const { user } = useUser()
+  const { patron } = useUserPatron()
   const [uuid, setUuid] = useState(null)
-  const [patron, setPatron] = useState({})
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [activeImage, setActiveImage] = useState(
@@ -123,22 +121,6 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
       document.getElementById('header-title').innerHTML = ''
     }
   }, [assetID])
-
-  useEffect(() => {
-    // Handle user loading
-    if (uuid) {
-      getPatronInfo(uuid).then((resdata) => {
-        setPatron(resdata)
-        if (resdata && resdata['rewards'] && resdata['rewards'].includes('Early Access')) {
-          localStorage.setItem('ea_validity', Date.now().toString())
-        }
-      })
-    } else {
-      if (user) {
-        setUuid(user.sub.split('|').pop())
-      }
-    }
-  }, [user, uuid])
 
   const clickSimilar = () => {
     setPageLoading(true)

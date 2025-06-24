@@ -2,7 +2,6 @@ import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useUser } from '@auth0/nextjs-auth0/client'
 import LazyLoad from 'react-lazy-load'
 import debounce from 'lodash.debounce'
 import { MdSearch, MdClose } from 'react-icons/md'
@@ -13,10 +12,10 @@ import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
 import { assetTypeName } from 'utils/assetTypeName'
-import { getPatronInfo } from 'utils/patronInfo'
 import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
@@ -34,9 +33,7 @@ const Grid = (props) => {
   const { t: tcat } = useTranslation('categories')
   const { t } = useTranslation('library')
   const optionsRef = useRef(null)
-  const { user } = useUser()
-  const [uuid, setUuid] = useState(null)
-  const [patron, setPatron] = useState({})
+  const { patron } = useUserPatron()
   const [news, setNews] = useState(null)
   const [delay, setDelay] = useState(false)
   const { locale } = useRouter()
@@ -58,22 +55,6 @@ const Grid = (props) => {
   }, [])
 
   const { width, height } = useDivSize(optionsRef, [showAdvanced, delay])
-
-  useEffect(() => {
-    // Handle user loading
-    if (uuid) {
-      getPatronInfo(uuid).then((resdata) => {
-        setPatron(resdata)
-        if (resdata && resdata['rewards'] && resdata['rewards'].includes('Early Access')) {
-          localStorage.setItem('ea_validity', Date.now().toString())
-        }
-      })
-    } else {
-      if (user) {
-        setUuid(user.sub.split('|').pop())
-      }
-    }
-  }, [user, uuid])
 
   useEffect(() => {
     // Delay useDivSize to ensure the options bar is not covering anything.

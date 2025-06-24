@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { useUser } from '@auth0/nextjs-auth0/client'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation, Trans } from 'next-i18next'
-import { getPatronInfo } from 'utils/patronInfo'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import Button from 'components/UI/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
@@ -33,24 +32,10 @@ const rewardInfo = (r, uuid, patron) => {
 }
 
 const Page = () => {
-  const { user, isLoading } = useUser()
-  const [uuid, setUuid] = useState(null)
-  const [patron, setPatron] = useState({})
+  const { user, isLoading, uuid, patron } = useUserPatron()
   const router = useRouter()
   const returnTo = router.query.returnTo
   const { t } = useTranslation(['common', 'account'])
-
-  useEffect(() => {
-    if (uuid) {
-      getPatronInfo(uuid).then((resdata) => {
-        setPatron(resdata)
-      })
-    } else {
-      if (user) {
-        setUuid(user.sub.split('|').pop())
-      }
-    }
-  }, [user, uuid])
 
   if (isLoading)
     return (
