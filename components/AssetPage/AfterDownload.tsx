@@ -5,7 +5,7 @@ import Link from 'next/link'
 import asset_type_names from 'constants/asset_type_names.json'
 import { randomArraySelection } from 'utils/arrayUtils'
 import { ordinalSuffix } from 'utils/stringUtils'
-import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import { MdClose } from 'react-icons/md'
 
@@ -16,12 +16,8 @@ import styles from './AssetPage.module.scss'
 
 const AfterDownload = ({ show, assetType, postDownloadStats }) => {
   const { user } = useUser()
+  const { earlyAccess } = useUserPatron()
   const [prompt, setPrompt] = useState({ title: '', message: '', icon: '' })
-
-  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
-  useEffect(() => {
-    setEarlyAccessValid(persistentEarlyAccess)
-  }, [])
 
   const [localUserDownloadCount, setLocalUserDownloadCount] = useState('0')
   useEffect(() => {
@@ -186,7 +182,7 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
   }, [prompts])
 
   // If less than 3 downloads total, or user is logged in, don't show the popup.
-  if (earlyAccessValid || parseInt(localUserDownloadCount) < 2 || user) {
+  if (earlyAccess || parseInt(localUserDownloadCount) < 2 || user) {
     return null
   }
 

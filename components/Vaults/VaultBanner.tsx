@@ -9,8 +9,6 @@ import Loader from 'components/UI/Loader/Loader'
 import { IoMdUnlock } from 'react-icons/io'
 import { MdArrowForward } from 'react-icons/md'
 
-import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
-
 import styles from './Vaults.module.scss'
 
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
@@ -19,12 +17,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
   const containerRef = useRef(null)
   const [videoOffset, setVideoOffset] = useState([0, 0])
   const [blurAmount, setBlurAmount] = useState(0)
-  const { patron } = useUserPatron()
-
-  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
-  useEffect(() => {
-    setEarlyAccessValid(persistentEarlyAccess)
-  }, [])
+  const { earlyAccess } = useUserPatron()
 
   useEffect(() => {
     if (!vault.video) return
@@ -147,7 +140,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
                 href={`/vaults/${vault.id}`}
               />
             )}
-            {!earlyAccessValid && (!patron.rewards || !patron.rewards.includes('Early Access')) && (
+            {!earlyAccess && (
               <Button
                 text={t('common:access-now')}
                 href="https://www.patreon.com/checkout/polyhaven"

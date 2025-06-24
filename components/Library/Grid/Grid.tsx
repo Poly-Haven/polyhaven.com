@@ -12,7 +12,6 @@ import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
 import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
 import { assetTypeName } from 'utils/assetTypeName'
-import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
 import { useUserPatron } from 'contexts/UserPatronContext'
@@ -33,7 +32,7 @@ const Grid = (props) => {
   const { t: tcat } = useTranslation('categories')
   const { t } = useTranslation('library')
   const optionsRef = useRef(null)
-  const { patron } = useUserPatron()
+  const { earlyAccess } = useUserPatron()
   const [news, setNews] = useState(null)
   const [delay, setDelay] = useState(false)
   const { locale } = useRouter()
@@ -48,11 +47,6 @@ const Grid = (props) => {
   const [thumbSize, setThumbSize] = useStoredState('lib_adv_thumbSize', 'medium')
   const [showText, setShowText] = useStoredState('lib_adv_showText', false)
   // const [altThumbs, setAltThumbs] = useStoredState('lib_adv_altThumbs', true)  // TODO
-
-  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
-  useEffect(() => {
-    setEarlyAccessValid(persistentEarlyAccess)
-  }, [])
 
   const { width, height } = useDivSize(optionsRef, [showAdvanced, delay])
 
@@ -210,8 +204,7 @@ const Grid = (props) => {
     document.getElementById('header-frompath').innerHTML = path.trim()
   }
 
-  let blurUpcoming = !(patron['rewards'] && patron['rewards'].includes('Early Access'))
-  if (earlyAccessValid) blurUpcoming = false
+  const blurUpcoming = !earlyAccess
 
   let data = {}
   let urlParams = `?t=${props.assetType}&future=true`

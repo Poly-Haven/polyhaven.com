@@ -27,7 +27,7 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
 import threeDFormats from 'constants/3D_formats.json'
-import { persistentEarlyAccess } from 'utils/persistentEarlyAccess'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import styles from './Download.module.scss'
 
@@ -37,6 +37,7 @@ declare const startDownload
 const Download = ({ assetID, data, files, setPreview, patron, texelDensity, callback, vault, scheduleText }) => {
   const { t } = useTranslation('asset')
   const router = useRouter()
+  const { earlyAccess } = useUserPatron()
   const [busyDownloading, setBusyDownloading] = useState(false)
   const [dlOptions, setDlOptions] = useState(false)
   const [zipList, dispatch] = useReducer(reducer, { files: [] })
@@ -86,11 +87,6 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     }
   }, [vaults, vaultsError, vault])
 
-  const [earlyAccessValid, setEarlyAccessValid] = useState(false)
-  useEffect(() => {
-    setEarlyAccessValid(persistentEarlyAccess)
-  }, [])
-
   const isHDRI = data.type === 0
 
   function reducer(state, action) {
@@ -131,7 +127,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   }
 
   // Asset is vaulted, user is not a patron
-  if (isClient && vault && !earlyAccessValid) {
+  if (vault && !earlyAccess) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
       return (
         <div className={styles.unreleased}>
@@ -192,7 +188,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   }
 
   // Asset is not released yet, user is not a patron
-  if (isClient && data.date_published * 1000 > Date.now() && !earlyAccessValid) {
+  if (isClient && data.date_published * 1000 > Date.now() && !earlyAccess) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
       return (
         <div className={styles.unreleased}>
