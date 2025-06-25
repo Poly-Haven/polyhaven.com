@@ -8,26 +8,26 @@
   "HDRIs": "HDRIs",
   "Models": "Modelos",
   "Textures": "Texturas",
-  "about-project": "Sobre o projeto",
-  "access-now": "Acesse agora",
+  "about-project": "Sobre o Projeto",
+  "access-now": "Acesse Agora",
   "also-supported-by": "Também apoiado por:",
-  "browse-n": "Navegar {{number}}",
+  "browse-n": "Explorar {{number}}",
   "corporate-sponsor_one": "Patrocinador Corporativo",
   "corporate-sponsor_other": "Patrocinadores Corporativos",
   "corporate-sponsors": "Patrocinadores Corporativos",
   "display-name": "Nome de exibição",
   "donation-box": {
-    "b1": "Ajude-nos a criar <lnk>ativos gratuitos</lnk> para todos!",
-    "b2": "<lnk>Acesso antecipado</lnk> aos próximos ativos.",
-    "b3": "Acesso instantâneo a todo o conteúdo do <lnk>Vaults</lnk>.",
-    "b4": "Nosso <lnk>complemento</lnk> de navegador de ativos do Blender.",
+    "b1": "Ajude-nos a criar <lnk>assets gratuitos</lnk> para todos!",
+    "b2": "<lnk>Acesso antecipado</lnk> aos próximos assets a serem lançados.",
+    "b3": "Acesso instantâneo a todos os conteúdos dos <lnk>Cofres</lnk>.",
+    "b4": "Nossa <lnk>extensão</lnk> para o navegador de assets do Blender.",
     "b5": "Download em massa e acesso off-line com <lnk>nossa nuvem</lnk>.",
-    "b6": "<lnk>Patrocine um ativo</lnk> com seu nome e link.",
-    "donate-monthly": "Doação mensal"
+    "b6": "<lnk>Patrocine um assets</lnk> com seu nome e link.",
+    "donate-monthly": "Doe mensalmente"
   },
   "email-address": "Endereço de email",
   "footer": {
-    "join-ranks": "Junte-se às fileiras, apoie a Poly Haven no Patreon",
+    "join-ranks": "Faça parte da equipe, apoie Poly Haven no Patreon",
     "thanks": "Obrigado aos nossos <lnk>Patronos</lnk> por tornar a Poly Haven possível"
   },
   "goal": {
@@ -41,10 +41,10 @@
   "invalid-name-url": "Nome ou url inválidos",
   "loading": "Carregando...",
   "missing-invalid": "Ausente ou inválido",
-  "n-patrons-to-go": "{{number}} patronos para ir!",
+  "n-patrons-to-go": "Faltam {{number}} apoiadores!",
   "nav": {
     "about-contact": "Sobre/Contato",
-    "add-on": "Complemento",
+    "add-on": "Extensão",
     "api": "API",
     "blog": "Blog",
     "collections": "Coleções",
@@ -71,13 +71,13 @@
   "remove-ads": "Remover anúncios",
   "required": "Obrigatório",
   "roadmap": {
-    "join-support": "<patreonLink>Junte-se a {{numPatrons}} outros usuários</patreonLink> e apoie o futuro dos ativos gratuitos.",
-    "target-patrons": "{{target}} patronos",
-    "title": "Mapa rodoviário de Poly Haven",
+    "join-support": "<patreonLink>Junte-se a {{numPatrons}} outros usuários</patreonLink>, apoie o futuro dos assets gratuitos.",
+    "target-patrons": "{{target}} apoiadores",
+    "title": "Plano de ação de Poly Haven",
     "to-be-announced": "A ser anunciado",
     "whats-next": "O que vem a seguir?"
   },
-  "support-polyhaven": "Apoie a Poly Haven!",
+  "support-polyhaven": "Apoie Poly Haven!",
   "tagline": "A Biblioteca Pública de Assets 3D",
   "visible": "Visível"
 }

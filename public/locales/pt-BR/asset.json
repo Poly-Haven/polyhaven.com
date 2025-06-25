@@ -3,8 +3,8 @@
   "author-donated": "Este asset foi doado gratuitamente à Poly Haven pelo autor :)",
   "author_one": "Autor",
   "author_other": "Autores",
-  "backplates": "Placas traseiras",
-  "backplates-description": "As imagens abaixo são fotos separadas que você pode usar como imagens de fundo de alta resolução em sua renderização.<br />Dependendo da resolução da renderização e das configurações da câmera, às vezes um HDRI (mesmo que seja muito grande) pode não ter pixels suficientes para parecer nítido no plano de fundo da renderização. Nesses casos, você pode usar uma dessas placas traseiras no plano de fundo e usar um HDRI de resolução mais baixa apenas para iluminação e reflexos.",
+  "backplates": "Planos de fundo",
+  "backplates-description": "As imagens abaixo são fotos separadas que você pode usar como planos de fundo de alta resolução em sua renderização.<br />Dependendo da resolução da renderização e das configurações da câmera, às vezes um HDRI (mesmo que seja de altíssima resolução) pode não ter pixels suficientes para parecer nítido no plano de fundo da renderização. Nesses casos, você pode usar uma dessas fotos no plano de fundo e usar um HDRI de resolução mais baixa apenas para iluminação e reflexos.",
   "categories": "Categorias",
   "cloud-sync": "Acesso Off-line",
   "cloud-sync-d": "Apoie-nos com $5 por mês e receba acesso ao nosso sistema em nuvem, permitindo que você sincronize toda a nossa biblioteca com o seu disco rígido.",
@@ -21,11 +21,11 @@
   "downloads": "Downloads",
   "downloads-pd": "por dia",
   "early-access": {
-    "already-patron": "Já é um usuário? <loginLink>Faça o login</loginLink>.",
-    "donate-access": "Faça uma doação de US$ 3 para baixá-lo agora, juntamente com {{numEaAssets, number}} outros ativos de acesso antecipado.",
-    "get-access": "Obter acesso antecipado",
-    "release-date": "Esse ativo será liberado:<br/><strong>{{scheduleText}}</strong>",
-    "title": "Em breve!"
+    "already-patron": "Já é um apoiador? <loginLink>Faça o login</loginLink>.",
+    "donate-access": "Faça uma doação de US$ 3 para baixá-lo agora, juntamente com {{numEaAssets, number}} outros assets de acesso antecipado.",
+    "get-access": "Obter Acesso Antecipado",
+    "release-date": "Esse assets será liberado:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Em Breve!"
   },
   "formats": {
     "exr": "32-bit por canal verdadeiro, compactado sem perdas.",
@@ -42,22 +42,22 @@
   "no-files-d": "Tente atualizar, caso contrário, por favor informe-nos.",
   "no-renders": "Nenhum ainda, <lnk>adicione o seu</lnk>.",
   "nor-standard": "Padrão do Mapa Normal:",
-  "released": "Liberado",
+  "released": "Lançado",
   "similar-assets": "Assets Semelhantes",
   "sponsored-by": "Patrocinado por:",
   "sponsored-by-d": "Apoie a Poly Haven no Patreon para adicionar seu nome aqui.",
   "sponsored-by-none": "Ninguém ainda :(",
   "tags": "Tags",
-  "tall": "alto",
+  "tall": "altura",
   "user-renders": "Renderizações dos Usuários:",
   "vaulted": {
     "about": "Sobre",
-    "access-now": "Acesse agora",
-    "already-patron": "Já é um usuário? <loginLink>Faça o login</loginLink>.",
-    "donate-access": "Faça uma doação de US$ 3 no Patreon para fazer o download, juntamente com {{totalVaultedAssets, number}} outros ativos abrigados.",
-    "locked-in": "Esse ativo está trancado no <vaultLink>cofre do site{{vault}} </vaultLink>.",
-    "patrons-needed": "Quando tivermos mais {{remaining, number}} usuários, ele será liberado gratuitamente para todos.",
-    "title": "Ativo abobadado"
+    "access-now": "Acesse Agora",
+    "already-patron": "Já é um apoiador? <loginLink>Faça o login</loginLink>.",
+    "donate-access": "Faça uma doação de US$ 3 no Patreon para fazer o download, juntamente com {{totalVaultedAssets, number}} outros assets dos Cofres.",
+    "locked-in": "Esse asset está trancado no <vaultLink>Cofre{{vault}} </vaultLink>.",
+    "patrons-needed": "Quando chegarmos a {{remaining, number}} apoiadores, o asset será liberado gratuitamente para todos.",
+    "title": "Asset do Cofre"
   },
   "wide": "largura",
   "zip-choose": "Escolha o conteúdo do ZIP:"
