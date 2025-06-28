@@ -71,7 +71,7 @@ const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, to
           </div>
         ))}
       </div>
-      <Tooltip id={tooltipID} place={tooltipSide} />
+      {expand && <Tooltip id={tooltipID} place={tooltipSide} />}
     </div>
   )
 }
