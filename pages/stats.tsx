@@ -55,6 +55,7 @@ export async function getStaticProps(context) {
     `${baseUrl}/stats/cfmonth`,
     `${baseUrl}/stats/cfdaily?date_from=${oneYearAgo}&date_to=${today}`,
     `${baseUrl}/stats/searches`,
+    `${baseUrl}/stats/patron_count`,
   ]
 
   const fetchData = async (url) => {
@@ -81,6 +82,7 @@ export async function getStaticProps(context) {
     traffic,
     cfdaily,
     searches,
+    patronCounts,
   ] = await Promise.all(fetchUrls.map(fetchData))
 
   // Assets per month graph
@@ -201,6 +203,7 @@ export async function getStaticProps(context) {
         cfdaily,
         searches,
         assetDates,
+        patronCounts,
       },
     },
     revalidate: 24 * 60 * 60, // 1 day

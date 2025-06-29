@@ -8,6 +8,7 @@ import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
 import TrafficGraph from './TrafficGraph'
+import PatronCounts from './PatronCounts'
 import SearchPop from './SearchPop'
 import StatBlock from './StatBlock/StatBlock'
 
@@ -137,6 +138,16 @@ const Stats = ({ datasets }) => {
           <StatBlock head={`${(datasets.monthlyDownloads / 1000000).toFixed(1)}M`} text="Downloads" />
           <StatBlock head={`${Math.round(datasets.traffic.terabytes)}TB`} text="Bandwidth" />
           <StatBlock head={`${(datasets.traffic.users / 1000000).toFixed(1)}M`} text="Users" />
+        </div>
+      </ErrorBoundary>
+
+      <div className={styles.spacer} />
+
+      <ErrorBoundary>
+        <div className={styles.row}>
+          <div className={styles.half}>
+            <PatronCounts data={datasets.patronCounts} />
+          </div>
         </div>
       </ErrorBoundary>
 
