@@ -63,6 +63,42 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
     }
   }
 
+  // Replace null values with interpolated values
+  for (let i = 0; i < graphData.length; i++) {
+    if (graphData[i].patrons === null) {
+      // Find previous and next non-null values
+      let prevValue = null
+      let nextValue = null
+      let prevIndex = i - 1
+      let nextIndex = i + 1
+
+      while (prevIndex >= 0 && graphData[prevIndex].patrons === null) {
+        prevIndex--
+      }
+      if (prevIndex >= 0) {
+        prevValue = graphData[prevIndex].patrons
+      }
+
+      while (nextIndex < graphData.length && graphData[nextIndex].patrons === null) {
+        nextIndex++
+      }
+      if (nextIndex < graphData.length) {
+        nextValue = graphData[nextIndex].patrons
+      }
+
+      // Interpolate value
+      if (prevValue !== null && nextValue !== null) {
+        const totalDays = nextIndex - prevIndex
+        const currentDay = i - prevIndex
+        graphData[i].patrons = Math.round(prevValue + ((nextValue - prevValue) * currentDay) / totalDays)
+      } else if (prevValue !== null) {
+        graphData[i].patrons = prevValue
+      } else if (nextValue !== null) {
+        graphData[i].patrons = nextValue
+      }
+    }
+  }
+
   const notes = {
     '2017-10-03': 'HDRI Haven Launch',
     '2018-06-19': 'Texture Haven Launch',
