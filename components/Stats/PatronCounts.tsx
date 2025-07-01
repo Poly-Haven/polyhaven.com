@@ -45,6 +45,7 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
 
   // Create complete date range with null values for missing dates
   let graphData = []
+  let ticks = []
   if (rawData.length > 0) {
     const startDate = new Date(rawData[0].timestamp)
     const endDate = new Date(rawData[rawData.length - 1].timestamp)
@@ -52,6 +53,9 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
 
     for (let d = new Date(startDate); d <= endDate; d.setUTCDate(d.getUTCDate() + 1)) {
       const dateStr = d.toISOString().split('T')[0]
+      if (dateStr.endsWith('-01')) {
+        ticks.push(dateStr)
+      }
       graphData.push({
         date: dateStr,
         patrons: dataMap.get(dateStr) || null,
@@ -82,12 +86,13 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis
               dataKey="date"
+              ticks={ticks}
               tickFormatter={(value) => {
                 const date = new Date(value + 'T00:00:00Z')
-                return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit', timeZone: 'UTC' })
+                return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
               }}
             />
-            <YAxis domain={['dataMin - 1', 'dataMax']} allowDataOverflow />
+            <YAxis domain={['dataMin - 1', 'dataMax + 15']} allowDataOverflow />
             <Brush dataKey="date" height={30} stroke="#666666" fill="#2d2d2d" startIndex={graphData.length - 365} />
 
             <Tooltip
