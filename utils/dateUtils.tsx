@@ -1,3 +1,9 @@
+const ONE_DAY_MS = 24 * 60 * 60 * 1000
+const FUTURE_ASSET_BOOST = 10000000
+const TODAY_ASSET_BOOST = 10000
+const AGE_EXPONENT = 1.7
+const SCALE_FACTOR = 1e6
+
 export function daysOld(epoch) {
   return (Date.now() - epoch * 1000) / 1000 / 60 / 60 / 24
 }
@@ -51,31 +57,26 @@ export function timeDiff(d1, d2, morePrecise = false) {
 }
 
 export function weightedDownloadsPerDay(download_count, epoch, name) {
-  const oneDay = 24 * 60 * 60 * 1000
   const now = Date.now()
-  epoch = epoch * 1000
-  if (now < epoch) {
-    // Force upcoming assets to the top
-    download_count = download_count || 0 // asset.download_count may be undefined
-    download_count += 10000000
-  } else if (now - oneDay < epoch) {
-    // Force assets from today to rank very high
-    download_count = download_count || 0
-    download_count += 10000
+  const epochMs = epoch * 1000
+
+  // Ensure download_count is a number
+  download_count = download_count || 0
+
+  // Apply boosts for future or today's assets
+  if (now < epochMs) {
+    download_count += FUTURE_ASSET_BOOST
+  } else if (now - epochMs < ONE_DAY_MS) {
+    download_count += TODAY_ASSET_BOOST
   }
 
-  // Calculate age in days to avoid extremely small values
-  const ageInDays = Math.max(1, (now - epoch) / oneDay)
-  const weightedValue = download_count / Math.pow(ageInDays, 1.7)
+  // Calculate age in days (minimum 1 day)
+  const ageInDays = Math.max(1, (now - epochMs) / ONE_DAY_MS)
 
-  // Scale up the result to avoid floating point precision issues
-  const scaledValue = Math.round(weightedValue * 1e6) / 1e6
+  // Calculate weighted value and scale in one operation
+  const weightedValue = download_count / Math.pow(ageInDays, AGE_EXPONENT)
 
-  const print = ['Wood Table Worn', 'Wood Chips', 'Romantic Veneer']
-  if (print.includes(name)) {
-    console.log(name, now < epoch, epoch, scaledValue)
-  }
-  return scaledValue
+  return Math.round(weightedValue * SCALE_FACTOR) / SCALE_FACTOR
 }
 
 export function downloadsPerDay(download_count, epoch) {
