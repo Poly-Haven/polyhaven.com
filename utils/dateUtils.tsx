@@ -63,7 +63,19 @@ export function weightedDownloadsPerDay(download_count, epoch, name) {
     download_count = download_count || 0
     download_count += 10000
   }
-  return download_count / Math.pow(Math.abs(now - epoch) + 1, 1.7)
+
+  // Calculate age in days to avoid extremely small values
+  const ageInDays = Math.max(1, (now - epoch) / oneDay)
+  const weightedValue = download_count / Math.pow(ageInDays, 1.7)
+
+  // Scale up the result to avoid floating point precision issues
+  const scaledValue = Math.round(weightedValue * 1e6) / 1e6
+
+  const print = ['Wood Table Worn', 'Wood Chips', 'Romantic Veneer']
+  if (print.includes(name)) {
+    console.log(name, now < epoch, epoch, scaledValue)
+  }
+  return scaledValue
 }
 
 export function downloadsPerDay(download_count, epoch) {
