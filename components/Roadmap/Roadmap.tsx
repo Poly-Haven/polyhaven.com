@@ -58,6 +58,8 @@ const Roadmap = ({ mini, vaults, addon }) => {
     },
   ])
 
+  const isMobile = divWidth <= 600
+
   // Fetch data from API
   const { data, error } = apiSWR('/milestones', { revalidateOnFocus: true })
 
@@ -123,7 +125,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
   }
 
   return (
-    <div className={mini ? styles.wrapperMini : styles.wrapper} ref={widthRef}>
+    <div className={mini || isMobile ? styles.wrapperMini : styles.wrapper} ref={widthRef}>
       <div className={styles.wrapperInner}>
         <div className={styles.roadmapWrapper}>
           <h2 className={styles.topText}>{vaults ? t('common:roadmap.whats-next') : t('common:roadmap.title')}</h2>
@@ -132,7 +134,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
               <div className={styles.barTarget} style={{ width: `calc(${targetBarPosition * 100}% - 4px)` }} />
               <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
                 <div className={styles.barShine} />
-                {mini && numPatrons && (
+                {(mini || isMobile) && numPatrons && (
                   <div className={styles.barText}>
                     {t('common:n-patrons-to-go', {
                       number: Math.max(0, milestones[activeMilestoneIndex].target - numPatrons),
@@ -151,21 +153,21 @@ const Roadmap = ({ mini, vaults, addon }) => {
                     key={i}
                     className={`${styles.milestone} ${activeMilestoneIndex === i + 1 ? styles.active : ''} ${
                       m.achieved ? (highestAchievedGoalIndex === i + 1 ? styles.lastAchieved : styles.achieved) : ''
-                    } ${i % 2 && !mini ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
+                    } ${i % 2 && !(mini || isMobile) ? styles.flip : ''} ${i === 0 ? styles.first : ''}`}
                     style={{ right: i !== 0 ? `${100 - (m.target / maxTarget) * 100}%` : `calc(100% - 30px)` }}
                     onClick={(e) => handleClick(e, i + 1)}
                     onMouseEnter={(e) => handleMouseEnter(e, i + 1)}
                     onMouseLeave={(e) => handleMouseLeave(e, i + 1)}
                   >
-                    {!mini && (
+                    {!(mini || isMobile) && (
                       <Milestone
                         milestone={m}
                         active={activeMilestoneIndex === i + 1}
                         achieved={i + 1 <= highestAchievedGoalIndex}
                       />
                     )}
-                    {!mini && <div className={styles.arrow} />}
-                    {mini && m.img ? (
+                    {!(mini || isMobile) && <div className={styles.arrow} />}
+                    {(mini || isMobile) && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
                         <img src={m.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : m.img} />
                       </div>
@@ -177,7 +179,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
               </div>
             </div>
           </div>
-          {mini && activeMilestoneIndex && milestones[activeMilestoneIndex] ? (
+          {(mini || isMobile) && activeMilestoneIndex && milestones[activeMilestoneIndex] ? (
             <Link
               href={milestones[activeMilestoneIndex].link}
               className={`${styles.activeMilestoneText} ${
@@ -209,9 +211,9 @@ const Roadmap = ({ mini, vaults, addon }) => {
             )
           )}
         </div>
-        {!mini && !vaults && divWidth > 1100 && <DonationBox />}
+        {!(mini || isMobile) && !vaults && divWidth > 1100 && <DonationBox />}
       </div>
-      {!mini && !vaults && divWidth <= 1100 && (
+      {!(mini || isMobile) && !vaults && divWidth <= 1100 && (
         <div className={styles.center}>
           <DonationBox />
         </div>
