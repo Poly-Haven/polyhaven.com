@@ -37,6 +37,7 @@ export async function getStaticProps(context) {
   const today = new Date().toISOString().split('T')[0]
   const aMonthAgo = new Date(Date.now() - 30 * msPerDay).toISOString().split('T')[0]
   const threeMonthsAgo = new Date(Date.now() - (91 + 6) * msPerDay).toISOString().split('T')[0]
+  const theStart = '2021-06-01' // Start of polyhaven.com
   const oneYearAgo = new Date(Date.now() - 365 * msPerDay).toISOString().split('T')[0]
 
   const threeMonthsAgoBaseUrl = `${baseUrl}/stats/downloads?type=TYPE&date_from=${threeMonthsAgo}&date_to=${today}`
