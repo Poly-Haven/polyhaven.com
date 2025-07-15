@@ -21,7 +21,7 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
 
   return (
     <div className={styles.barWrapper}>
-      <p>
+      <p title={getCurrency(total, currency, rates, true, false)}>
         {label}: {getCurrency(total, currency, rates, true, true)}
       </p>
       <div className={styles.barContainer}>
