@@ -282,7 +282,7 @@ const Grid = (props) => {
       title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
     }
     if (props.author) {
-      title += ` (${t('by-author', { author: props.author })})`
+      title += ` (${t('library:by-author', { author: props.author })})`
     }
   }
   const fSize = Math.floor(title.length / 17.5) // Rough detection of line length used to reduce font size.
@@ -298,33 +298,33 @@ const Grid = (props) => {
 
   const sortOptions = {
     hot: {
-      label: t('sort.hot'),
-      tooltip: t('sort.hot-d'),
+      label: t('library:sort.hot'),
+      tooltip: t('library:sort.hot-d'),
       icon: <MdWhatshot />,
     },
     top: {
-      label: t('sort.top'),
-      tooltip: t('sort.top-d'),
+      label: t('library:sort.top'),
+      tooltip: t('library:sort.top-d'),
       icon: <MdStar />,
     },
     downloads: {
-      label: t('sort.downloads'),
-      tooltip: t('sort.downloads-d'),
+      label: t('library:sort.downloads'),
+      tooltip: t('library:sort.downloads-d'),
       icon: <MdDownload />,
     },
     latest: {
-      label: t('sort.latest'),
-      tooltip: t('sort.latest-d'),
+      label: t('library:sort.latest'),
+      tooltip: t('library:sort.latest-d'),
       icon: <MdEvent />,
     },
     name: {
-      label: t('sort.name'),
-      tooltip: t('sort.name-d'),
+      label: t('library:sort.name'),
+      tooltip: t('library:sort.name-d'),
       icon: <MdSortByAlpha />,
     },
     random: {
-      label: t('sort.random'),
-      tooltip: t('sort.random-d'),
+      label: t('library:sort.random'),
+      tooltip: t('library:sort.random-d'),
       icon: <MdShuffle />,
     },
   }
@@ -373,7 +373,7 @@ const Grid = (props) => {
             <div className={styles.gridTitle}>
               <h1 className={styles['s' + fSize]}>{title}</h1>
               {props.author ? (
-                <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('Clear author')} />
+                <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('library:Clear author')} />
               ) : null}
             </div>
             <div className={styles.options}>
@@ -386,11 +386,11 @@ const Grid = (props) => {
                 </div>
               </div>
               <div className={styles.menuSelection}>
-                <Disabled disabled={Boolean(props.search)} tooltip={t('sort.relevance')} tooltipSide={'bottom'}>
-                  <Dropdown value={props.sort} options={sortOptions} label={t('sort-by')} onChange={setSort} />
+                <Disabled disabled={Boolean(props.search)} tooltip={t('library:sort.relevance')} tooltipSide={'bottom'}>
+                  <Dropdown value={props.sort} options={sortOptions} label={t('library:sort-by')} onChange={setSort} />
                 </Disabled>
               </div>
-              <div className={styles.search} data-tip={locale !== 'en' ? t('search-en') : null}>
+              <div className={styles.search} data-tip={locale !== 'en' ? t('library:search-en') : null}>
                 <MdSearch className={styles.searchIcon} />
                 <form onSubmit={submitSearch}>
                   <input type="text" placeholder="Search..." value={searchInputFieldText} onChange={setSearch} />
@@ -399,7 +399,7 @@ const Grid = (props) => {
               </div>
               {
                 <p className={styles.numResults}>
-                  {sortedKeys.length} {t('results')}
+                  {sortedKeys.length} {t('library:results')}
                 </p>
               }
             </div>
@@ -410,23 +410,23 @@ const Grid = (props) => {
         </div>
         {showAdvanced ? (
           <div className={styles.advOptions}>
-            <Disabled disabled={!blurUpcoming} tooltip={t('adv.upcoming-patron')}>
+            <Disabled disabled={!blurUpcoming} tooltip={t('library:adv.upcoming-patron')}>
               <div className={styles.advOpt}>
                 <Dropdown
-                  label={t('adv.upcoming')}
+                  label={t('library:adv.upcoming')}
                   value={eaPref}
                   options={{
                     none: {
-                      label: t('adv.upcoming-1'),
-                      tooltip: t('adv.upcoming-1d'),
+                      label: t('library:adv.upcoming-1'),
+                      tooltip: t('library:adv.upcoming-1d'),
                     },
                     some: {
-                      label: t('adv.upcoming-2'),
-                      tooltip: t('adv.upcoming-2d'),
+                      label: t('library:adv.upcoming-2'),
+                      tooltip: t('library:adv.upcoming-2d'),
                     },
                     all: {
-                      label: t('adv.upcoming-3'),
-                      tooltip: t('adv.upcoming-3d'),
+                      label: t('library:adv.upcoming-3'),
+                      tooltip: t('library:adv.upcoming-3d'),
                     },
                   }}
                   onChange={setEAPref}
@@ -435,27 +435,27 @@ const Grid = (props) => {
             </Disabled>
             <div className={styles.advOpt}>
               <Dropdown
-                label={t('adv.thumb-size')}
+                label={t('library:adv.thumb-size')}
                 value={thumbSize}
                 options={{
                   small: {
-                    label: t('adv.thumb-size-1'),
+                    label: t('library:adv.thumb-size-1'),
                   },
                   medium: {
-                    label: t('adv.thumb-size-2'),
+                    label: t('library:adv.thumb-size-2'),
                   },
                   large: {
-                    label: t('adv.thumb-size-3'),
+                    label: t('library:adv.thumb-size-3'),
                   },
                   huge: {
-                    label: t('adv.thumb-size-4'),
+                    label: t('library:adv.thumb-size-4'),
                   },
                 }}
                 onChange={setThumbSize}
               />
             </div>
             <div className={styles.advOpt}>
-              {t('adv.show-names')}
+              {t('library:adv.show-names')}
               <Switch on={showText} onClick={() => setShowText(!showText)} />
             </div>
           </div>
@@ -503,7 +503,7 @@ const Grid = (props) => {
           <div className={styles.noResults}>
             <h3 className="red-links">
               <Trans
-                i18nKey="no-results-fund"
+                i18nKey="library:no-results-fund"
                 t={t}
                 components={{
                   em: <em />,
@@ -517,10 +517,10 @@ const Grid = (props) => {
         </>
       ) : publicData ? (
         <div className={styles.noResults}>
-          {props.search ? <p>{t('no-results')} :(</p> : null}
+          {props.search ? <p>{t('library:no-results')} :(</p> : null}
           <h3 className="red-links">
             <Trans
-              i18nKey="no-results-fund"
+              i18nKey="library:no-results-fund"
               t={t}
               components={{
                 em: <em />,
