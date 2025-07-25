@@ -1,0 +1,108 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3em;
+
+  input {
+    flex-grow: 1;
+    font-size: 1em;
+    border: 1px solid $c-background-light;
+    padding: 0.4em;
+    margin: 1em 2em 2em;
+    width: 300px;
+    max-width: calc(100% - 4em);
+    @include rounded();
+  }
+
+  input[type="text"] {
+    text-align: center;
+    background-color: $c-background-lightish;
+    color: $c-text-light;
+  }
+
+  hr {
+    opacity: 0.3;
+    margin: 1.5em 0;
+  }
+}
+
+.assetList {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.slug {
+  @include flex(row, true);
+  color: $c-text-light;
+  gap: 0.5em;
+  background: rgba($c-accent, 0.2);
+  border: 1px solid rgba($c-accent, 0.3);
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: relative;
+  @include transition();
+
+  &:hover {
+    color: $c-text-bright;
+    background: rgba($c-accent, 0.5);
+    border: 1px solid rgba($c-accent, 0.5);
+    @include transition();
+  }
+}
+
+.match {
+  box-shadow: 0 0 0 1.2em $c-accent;
+  animation: pulse 0.4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 1.2em $c-accent;
+  }
+  50% {
+    box-shadow: 0 0 0 0.7em rgba($c-accent, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 1.2em $c-accent;
+  }
+}
+
+.hdris {
+  background: rgba($c-blue, 0.2);
+  border: 1px solid rgba($c-blue, 0.3);
+
+  &:hover {
+    background: rgba($c-blue, 0.5);
+    border: 1px solid rgba($c-blue, 0.5);
+  }
+}
+.textures {
+  background: rgba($c-orange, 0.2);
+  border: 1px solid rgba($c-orange, 0.3);
+
+  &:hover {
+    background: rgba($c-orange, 0.5);
+    border: 1px solid rgba($c-orange, 0.5);
+  }
+}
+.models {
+  background: rgba($c-green, 0.2);
+  border: 1px solid rgba($c-green, 0.3);
+
+  &:hover {
+    background: rgba($c-green, 0.5);
+    border: 1px solid rgba($c-green, 0.5);
+  }
+}
+
+.thumb {
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  @include transition();
+}
