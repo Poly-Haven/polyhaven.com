@@ -103,6 +103,7 @@
 .thumb {
   position: relative;
   flex-shrink: 0;
+  line-height: 0;
   cursor: pointer;
   @include transition();
 }
