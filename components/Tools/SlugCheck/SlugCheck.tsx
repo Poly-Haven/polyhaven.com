@@ -42,7 +42,7 @@ const SlugCheck = () => {
   const query = useQuery()
 
   useEffect(() => {
-    if (query.s) setSearch(query.s as string)
+    if (query && query.s) setSearch(query.s as string)
   }, [query])
 
   let { data: assets, error: assetsError } = apiSWR(`/assets?future=true`, { revalidateOnFocus: true })
