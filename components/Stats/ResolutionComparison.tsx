@@ -22,10 +22,13 @@ const ResolutionComparison = ({ data, type }) => {
 
   let graphData = []
   for (const [res, count] of Object.entries(data)) {
-    graphData.push({
-      res: res,
-      value: count,
-    })
+    if ((count as number) > 0.01) {
+      // Only include significant resolutions
+      graphData.push({
+        res: res,
+        value: count,
+      })
+    }
   }
 
   return (
