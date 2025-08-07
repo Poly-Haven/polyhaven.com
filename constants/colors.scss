@@ -41,4 +41,11 @@ $c-red-light: lighten($c-red, 5%);
 $c-red-muddy: color-mix(in srgb, $c-background-dark, $c-red 13%);
 
 $c-yellow: rgb(242, 191, 56);
+$c-yellow-light: lighten($c-yellow, 8%);
+$c-yellow-lighter: lighten($c-yellow, 16%);
+$c-yellow-dark: darken($c-yellow, 8%);
+
 $c-pink: rgb(225, 45, 91);
+$c-pink-light: lighten($c-pink, 8%);
+$c-pink-lighter: lighten($c-pink, 16%);
+$c-pink-dark: darken($c-pink, 8%);

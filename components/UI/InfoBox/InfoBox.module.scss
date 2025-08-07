@@ -16,6 +16,7 @@
   }
 
   .header {
+    font-size: 1.2em;
     font-weight: bold;
     color: white;
     margin-top: 0;
@@ -44,5 +45,32 @@
 
   .side {
     min-width: 354px;
+  }
+}
+
+.download {
+  background: rgba($c-yellow, 0.1);
+  border: 1px solid $c-yellow;
+  gap: 0;
+  margin: 2em;
+  width: auto;
+
+  p {
+    text-align: left;
+    a {
+      color: $c-yellow;
+      box-shadow: 0 1px 0 $c-yellow;
+
+      &:hover {
+        color: $c-yellow-light;
+        box-shadow: 0 3px 0 $c-yellow;
+      }
+    }
+  }
+
+  .side {
+    min-width: auto;
+    flex-grow: 1;
+    text-align: right;
   }
 }

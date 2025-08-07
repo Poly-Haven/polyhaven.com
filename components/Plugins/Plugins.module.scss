@@ -97,6 +97,25 @@
   }
 }
 
+.ownedPurchaseOption {
+  @extend .recommendedPurchaseOption;
+  box-shadow: 0 0 0 0.4em $c-yellow;
+
+  &::after {
+    content: "You have this!";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: -1px;
+    padding: 0.3em;
+    text-align: center;
+    background-color: rgba($c-yellow, 0.7);
+    color: $c-text-bright;
+    font-style: italic;
+  }
+}
+
 .primaryFeature {
   margin: 2em 0.5em 0;
   text-align: center;

@@ -36,6 +36,13 @@
     background: $c-red-light;
   }
 }
+.pink {
+  background: $c-pink;
+
+  &:hover {
+    background: $c-pink-light;
+  }
+}
 .blue {
   background: $c-blue;
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useUserPatron } from 'contexts/UserPatronContext'
 
 import InfoBox from 'components/UI/InfoBox/InfoBox'
 import Button from 'components/UI/Button/Button'
@@ -7,18 +8,24 @@ import Patreon from 'components/UI/Icons/Patreon'
 import BlenderMarket from 'components/UI/Icons/BlenderMarket'
 import Roadmap from 'components/Roadmap/Roadmap'
 
-import { MdApps, MdOutlineInstallDesktop } from 'react-icons/md'
+import { MdApps, MdOutlineInstallDesktop, MdInfo, MdDownload, MdOpenInNew } from 'react-icons/md'
 import { RiVipCrownLine } from 'react-icons/ri'
 
 import styles from './Plugins.module.scss'
 import buttonStyles from 'components/UI/Button/Button.module.scss'
 
-const CallToAction = () => {
+const CallToAction = ({ hasAccess }) => {
   return (
     <div className={styles.row}>
       <a
-        href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111"
-        className={`${styles.purchaseOption} ${styles.recommendedPurchaseOption}`}
+        href={
+          hasAccess
+            ? 'https://www.patreon.com/posts/70974704'
+            : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111'
+        }
+        className={`${styles.purchaseOption} ${
+          hasAccess ? styles.ownedPurchaseOption : styles.recommendedPurchaseOption
+        }`}
       >
         <Patreon />
         <h3>Patreon</h3>
@@ -30,9 +37,15 @@ const CallToAction = () => {
           <br />
           Cancel any time
         </p>
-        <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
-          <div className={buttonStyles.inner}>Sign up</div>
-        </div>
+        {hasAccess ? (
+          <div className={`${buttonStyles.button} ${buttonStyles.pink}`}>
+            <div className={buttonStyles.inner}>Download</div>
+          </div>
+        ) : (
+          <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
+            <div className={buttonStyles.inner}>Sign up</div>
+          </div>
+        )}
       </a>
       <p className={styles.callToAction}>or</p>
       <a
@@ -93,9 +106,40 @@ const Feature = ({ title, image, hover, children }) => {
 }
 
 const Blender = ({ numAssets }) => {
+  const { patron } = useUserPatron()
+
+  const hasAccess = patron.rewards && patron.rewards.includes('Offline Access')
+
   return (
     <div className={styles.wrapper}>
       <h1>Poly Haven Asset Browser for Blender</h1>
+
+      {hasAccess && (
+        <InfoBox
+          type="download"
+          header="Download"
+          icon={<MdDownload />}
+          side={
+            <Button
+              text="Download on Patreon"
+              href="https://www.patreon.com/posts/70974704"
+              color="pink"
+              icon={<MdOpenInNew />}
+            />
+          }
+        >
+          <div>
+            <p>
+              <strong>Thanks for your support!</strong>
+            </p>
+            <p>
+              Looking for the download link? It's available at the bottom of{' '}
+              <a href="https://www.patreon.com/posts/70974704">this post</a> on Patreon.
+            </p>
+          </div>
+        </InfoBox>
+      )}
+
       <p className={styles.subtitle}>
         We made an add-on for Blender that pulls all our assets into the asset browser, making it easy for you to drag
         and drop HDRIs, materials and 3D models into your scene without having to visit the website.
@@ -112,7 +156,7 @@ const Blender = ({ numAssets }) => {
         Sorry, your browser doesn't support embedded videos.
       </video>
       <hr />
-      <InfoBox type="info" header="This is a paid product, for now." side={<Roadmap mini addon />}>
+      <InfoBox type="info" header="This is a paid product, for now." icon={<MdInfo />} side={<Roadmap mini addon />}>
         <div>
           <p>
             While all our assets are 100% free to download, it <Link href="/finance-reports">costs us</Link> a lot to
@@ -139,7 +183,7 @@ const Blender = ({ numAssets }) => {
       </InfoBox>
       <p className={styles.callToAction}>Choose your path...</p>
 
-      <CallToAction />
+      <CallToAction hasAccess={hasAccess} />
 
       <p>
         Whether you get it on the Superhive or Patreon, the add-on is identical. Both versions have the same features
@@ -218,7 +262,7 @@ const Blender = ({ numAssets }) => {
 
       <div className={styles.spacer} />
       <p className={styles.callToAction}>Get it now:</p>
-      <CallToAction />
+      <CallToAction hasAccess={hasAccess} />
       <div className={styles.spacer} />
 
       <div style={{ textAlign: 'center' }}>

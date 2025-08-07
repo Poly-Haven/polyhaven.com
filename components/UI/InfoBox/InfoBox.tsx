@@ -1,13 +1,11 @@
 import styles from './InfoBox.module.scss'
 
-import { MdInfo } from 'react-icons/md'
-
-const InfoBox = ({ type, header, side, children }) => {
+const InfoBox = ({ type, header, icon, side, children }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles[type]}`}>
       <div>
         <p className={styles.header}>
-          <MdInfo />
+          {icon}
           {header}
         </p>
         {children}
