@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   LineChart,
   Line,
@@ -11,6 +12,11 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+import { MdShowChart } from 'react-icons/md'
+import { TbChartLine } from 'react-icons/tb'
+
+import Switch from 'components/UI/Switch/Switch'
+
 import styles from './Stats.module.scss'
 
 interface PatronData {
@@ -20,6 +26,7 @@ interface PatronData {
 }
 
 const PatronCounts = ({ data }: { data: PatronData }) => {
+  const [startFromZero, setStartFromZero] = useState(false)
   let rawData = []
 
   // Transform nested monthly data into flat timeline
@@ -112,9 +119,20 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
   return (
     <div className={styles.graphSection}>
       <div className={styles.graphHeader}>
+        <div className={styles.largeSpacer} />
         <p>
           <a href="https://www.patreon.com/polyhaven/overview">Patreon</a> supporters over time:
         </p>
+        <div className={styles.largeSpacer} />
+        <Switch
+          on={startFromZero}
+          onClick={(_) => {
+            setStartFromZero(!startFromZero)
+          }}
+          labelOff={<MdShowChart />}
+          labelOn={<TbChartLine />}
+          title="Auto-scale Y-axis, or start from zero"
+        />
       </div>
       <div className={styles.bigGraph}>
         <ResponsiveContainer>
@@ -128,7 +146,7 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
                 return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
               }}
             />
-            <YAxis domain={['dataMin - 1', 'dataMax + 15']} allowDataOverflow />
+            <YAxis domain={[startFromZero ? 0 : 'dataMin - 1', 'dataMax + 15']} allowDataOverflow />
             <Brush dataKey="date" height={30} stroke="#666666" fill="#2d2d2d" startIndex={graphData.length - 365} />
 
             <Tooltip

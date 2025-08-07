@@ -28,6 +28,9 @@
   width: 1.5em;
   height: 1.5em;
 }
+.largeSpacer {
+  flex: 1 0 0;
+}
 
 .row {
   @include flex(row);
