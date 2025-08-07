@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "след {{count}} ден",
+    "day_other": "След {{count}} дни",
+    "hour_one": "След {{count}} час",
+    "hour_other": "след {{count}} часа",
+    "month_one": "след {{count}} месец",
+    "month_other": "след {{count}} месеца",
+    "week_one": "{{count}} седмица от сега",
+    "week_other": "{{count}} седмици от сега",
+    "year_one": "след {{count}} година",
+    "year_other": "след {{count}} години"
+  },
+  "new": "Нов",
+  "past": {
+    "day_one": "{{count}} ден назад",
+    "day_other": "{{count}} дни назад",
+    "hour_one": "{{count}} час назад",
+    "hour_other": "{{count}} часа назад",
+    "month_one": "{{count}} месец назад",
+    "month_other": "{{count}} месеца назад",
+    "week_one": "{{count}} седмица назад",
+    "week_other": "{{count}} седмици назад",
+    "year_one": "{{count}} година назад",
+    "year_other": "{{count}} години назад"
+  },
+  "today": "Днес"
+}
