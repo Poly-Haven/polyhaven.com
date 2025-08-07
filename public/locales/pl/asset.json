@@ -24,7 +24,7 @@
     "already-patron": "Jesteś już patronem? <loginLink>Zaloguj się</loginLink>.",
     "donate-access": "Przekaż darowiznę w wysokości 3 USD, aby pobrać go teraz wraz z {{numEaAssets, number}} innymi zasobami wczesnego dostępu.",
     "get-access": "Uzyskaj wczesny dostęp",
-    "release-date": "Ten zasób zostanie zwolniony:<br/><strong>{{scheduleText}}</strong>",
+    "release-date": "Ten zasób zostanie opubliczniony:<br/><strong>{{scheduleText}}</strong>",
     "title": "Już wkrótce!"
   },
   "formats": {
@@ -42,22 +42,22 @@
   "no-files-d": "Spróbuj odświeżyć stronę, w przeciwnym razie zgłoś się do nas.",
   "no-renders": "Narazie nic, <lnk>dodaj własne</lnk> .",
   "nor-standard": "Standard Mapowania Normalnych:",
-  "released": "Zwolniony",
+  "released": "Opublikowano",
   "similar-assets": "Podobne Zasoby",
   "sponsored-by": "Sponsorowane przez:",
   "sponsored-by-d": "Wesprzyj Poly Haven na Patreon, aby umieścić tutaj swoje imię.",
   "sponsored-by-none": "Nikogo (jeszcze) :(",
   "tags": "Tagi",
-  "tall": "wysoki",
+  "tall": "wysokości",
   "user-renders": "Projekty Użytkowników:",
   "vaulted": {
-    "about": "O",
-    "access-now": "Dostęp teraz",
+    "about": "Więcej informacji",
+    "access-now": "Uzyskaj dostęp teraz",
     "already-patron": "Jesteś już patronem? <loginLink>Zaloguj się</loginLink>.",
-    "donate-access": "Przekaż 3 dolary na Patreon, aby pobrać go wraz z {{totalVaultedAssets, number}} innymi zasobami skarbca.",
-    "locked-in": "Ten zasób jest zamknięty w <vaultLink>skarbcu{{vault}} </vaultLink>.",
+    "donate-access": "Przekaż $3 na Patreonie, aby go pobrać oraz uzyskać dostęp do całej reszty {{totalVaultedAssets, number}} zasobów ze skarbców.",
+    "locked-in": "Ten zasób jest zamknięty w <vaultLink>skarbcu {{vault}}</vaultLink>.",
     "patrons-needed": "Gdy zdobędziemy {{remaining, number}} więcej patronów, zostanie on udostępniony za darmo dla wszystkich.",
-    "title": "Sklepienie aktywów"
+    "title": "Zasób ze skarbca"
   },
   "wide": "szerokość",
   "zip-choose": "Wybierz zawartość pliku ZIP:"

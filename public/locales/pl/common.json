@@ -9,7 +9,7 @@
   "Models": "Modele",
   "Textures": "Tekstury",
   "about-project": "O projekcie",
-  "access-now": "Dostęp teraz",
+  "access-now": "Uzyskaj dostęp teraz",
   "also-supported-by": "Jesteśmy wspierani również przez:",
   "browse-n": "Przeglądaj {{number}}",
   "corporate-sponsor_one": "Sponsor korporacyjny",
@@ -17,13 +17,13 @@
   "corporate-sponsors": "Sponsorzy Korporacyjni",
   "display-name": "Wyświetlana nazwa",
   "donation-box": {
-    "b1": "Pomóż nam stworzyć <lnk>darmowe zasoby</lnk> dla każdego!",
+    "b1": "Pomóż nam tworzyć <lnk>darmowe zasoby</lnk> dla każdego!",
     "b2": "<lnk>Wczesny dostęp</lnk> do nadchodzących zasobów.",
-    "b3": "Natychmiastowy dostęp do całej zawartości <lnk>skarbca</lnk>.",
-    "b4": "Nasz <lnk>dodatek do</lnk> przeglądarki zasobów Blendera.",
-    "b5": "Pobieranie zbiorcze i dostęp offline dzięki <lnk>naszej chmurze</lnk>.",
+    "b3": "Natychmiastowy dostęp do zawartości <lnk>skarbców</lnk>.",
+    "b4": "Nasz <lnk>dodatek</lnk> do przeglądarki zasobów Blendera.",
+    "b5": "Masowe pobieranie i dostęp offline dzięki <lnk>naszej chmurze</lnk>.",
     "b6": "<lnk>Sponsoruj zasób</lnk>, podając swoje imię i nazwisko oraz link.",
-    "donate-monthly": "Przekazuj darowizny co miesiąc"
+    "donate-monthly": "Wspieraj co miesiąc"
   },
   "email-address": "Adres e-mail",
   "footer": {
@@ -41,7 +41,7 @@
   "invalid-name-url": "Nieprawidłowa nazwa lub adres URL",
   "loading": "Ładowanie...",
   "missing-invalid": "Brakujące lub nieprawidłowe dane",
-  "n-patrons-to-go": "{{number}} Patroni do dzieła!",
+  "n-patrons-to-go": "{{number}} patronów do celu!",
   "nav": {
     "about-contact": "O Nas/Kontakt",
     "add-on": "Dodatek",
@@ -71,10 +71,10 @@
   "remove-ads": "Usuń reklamy",
   "required": "Wymagane",
   "roadmap": {
-    "join-support": "<patreonLink>Dołącz do {{numPatrons}} innych patronów</patreonLink>, wspieraj przyszłość wolnych zasobów.",
-    "target-patrons": "{{target}} patroni",
-    "title": "Mapa drogowa Poly Haven",
-    "to-be-announced": "Do ogłoszenia",
+    "join-support": "<patreonLink>Dołącz do {{numPatrons}} innych patronów</patreonLink>, wspieraj przyszłość darmowych zasobów.",
+    "target-patrons": "{{target}} patronów",
+    "title": "Plan działania Poly Haven",
+    "to-be-announced": "Zostanie ogłoszone wkrótce",
     "whats-next": "Co dalej?"
   },
   "support-polyhaven": "Wesprzyj Poly Haven!",
