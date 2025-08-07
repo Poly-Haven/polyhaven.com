@@ -51,6 +51,7 @@ const AssetsPerMonth = ({ data }: { data: DataSet }) => {
     '2021-06': `polyhaven.com launch.`,
     '2024-02': `Verdant Trail collection published.`,
     '2024-10': `Namaqualand collection published.`,
+    '2025-06': `Moon vault released.`,
   }
 
   return (
