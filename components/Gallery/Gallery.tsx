@@ -121,9 +121,9 @@ const Gallery = ({ data, assetPage }) => {
               <Spinner className={styles.spinner} />
               <img src={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}&quality=95`} />
             </div>
-            <p>
+            <div className={styles.imageCredit}>
               {lightboxData.artwork_name && <em>{lightboxData.artwork_name}</em>}
-              {t('by')}
+              <span style={{ opacity: 0.5 }}>{t('by')}</span>
               {lightboxData.author_link && isURL(lightboxData.author_link, { require_protocol: true }) ? (
                 <a target="_blank" rel="noopener" href={lightboxData.author_link}>
                   {lightboxData.author}
@@ -131,16 +131,16 @@ const Gallery = ({ data, assetPage }) => {
               ) : (
                 <span>{lightboxData.author}</span>
               )}
-              {t('using')}
-              {lightboxData.assets_used.slice(0, 3).map((a, key) => (
-                <Link key={key} href={`/a/${a}`}>
-                  {a}
-                </Link>
-              ))}
-              {lightboxData.assets_used.length > 3 ? (
-                <span title={lightboxData.assets_used.join(', ')}>...</span>
-              ) : null}
-            </p>
+              <div className={styles.spacer} />
+              <div className={styles.assetsUsed}>
+                <p>Assets used:</p>
+                {lightboxData.assets_used.map((a, key) => (
+                  <Link key={key} href={`/a/${a}`}>
+                    <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a}.png?height=50&width=200`} />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
           <MdClose />
         </div>

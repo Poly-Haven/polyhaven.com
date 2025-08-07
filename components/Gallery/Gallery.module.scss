@@ -78,10 +78,6 @@
   z-index: 401;
   background: rgba($c-background-darker, 0.9);
 
-  .lightbox {
-    @include center;
-  }
-
   .imageWrapper {
     @include center;
     position: relative;
@@ -99,10 +95,12 @@
     }
   }
 
-  p {
-    @include flex(row);
+  .imageCredit {
+    @include flex(row, true);
+    flex-wrap: wrap;
     font-size: 1.1em;
-    gap: 0.5ch;
+    gap: 1ch;
+    margin: 0 1em;
   }
 
   svg {
@@ -119,4 +117,19 @@
       transform: rotate(90deg);
     }
   }
+
+  .assetsUsed {
+    @include flex(row, true, true);
+    flex-wrap: wrap;
+    line-height: 0;
+
+    img {
+      padding: 0.5em;
+      filter: drop-shadow(2px 2px 3px rgba(black, 0.5));
+    }
+  }
+}
+
+.spacer {
+  flex-grow: 1;
 }
