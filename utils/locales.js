@@ -12,6 +12,10 @@ module.exports = {
     flag: 'SA',
     rtl: true,
   },
+  bg: {
+    name: 'Български',
+    flag: 'BG',
+  },
   my: {
     name: 'ဗမာစကာ',
     flag: 'MM',
