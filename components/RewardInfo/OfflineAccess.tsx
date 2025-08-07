@@ -9,6 +9,7 @@ import LinkText from 'components/LinkText/LinkText'
 import Loader from 'components/UI/Loader/Loader'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
+import Button from 'components/UI/Button/Button'
 
 import styles from './RewardInfo.module.scss'
 
@@ -44,6 +45,10 @@ const OfflineAccess = ({ uuid, patron }) => {
 
   return (
     <div>
+      <h1>Blender Add-on</h1>
+      <p>Download our Blender add-on from the attachments at the bottom of this post on Patreon:</p>
+      <Button text="Download Add-on" href="https://www.patreon.com/posts/70974704" />
+
       <h1>{t('account:rewards.offline-access.title')}</h1>
 
       {!patron.invite_sent ? (
