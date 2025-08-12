@@ -1,28 +1,28 @@
 {
   "future": {
     "day_one": "след {{count}} ден",
-    "day_other": "След {{count}} дни",
-    "hour_one": "След {{count}} час",
+    "day_other": "след {{count}} дни",
+    "hour_one": "след {{count}} час",
     "hour_other": "след {{count}} часа",
     "month_one": "след {{count}} месец",
     "month_other": "след {{count}} месеца",
-    "week_one": "{{count}} седмица от сега",
-    "week_other": "{{count}} седмици от сега",
+    "week_one": "след {{count}} седмица",
+    "week_other": "след {{count}} седмици",
     "year_one": "след {{count}} година",
     "year_other": "след {{count}} години"
   },
   "new": "Нов",
   "past": {
-    "day_one": "{{count}} ден назад",
-    "day_other": "{{count}} дни назад",
-    "hour_one": "{{count}} час назад",
-    "hour_other": "{{count}} часа назад",
-    "month_one": "{{count}} месец назад",
-    "month_other": "{{count}} месеца назад",
-    "week_one": "{{count}} седмица назад",
-    "week_other": "{{count}} седмици назад",
-    "year_one": "{{count}} година назад",
-    "year_other": "{{count}} години назад"
+    "day_one": "преди {{count}} ден",
+    "day_other": "преди {{count}} дни",
+    "hour_one": "преди {{count}} час",
+    "hour_other": "преди {{count}} часа",
+    "month_one": "преди {{count}} месец",
+    "month_other": "преди {{count}} месеца",
+    "week_one": "след {{count}} седмица",
+    "week_other": "преди {{count}} седмици",
+    "year_one": "преди {{count}} година",
+    "year_other": "преди {{count}} години"
   },
   "today": "Днес"
 }
