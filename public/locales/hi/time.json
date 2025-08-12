@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "अब से {{count}} दिन",
+    "day_other": "अब से {{count}} दिन",
+    "hour_one": "अब से {{count}} घंटे बाद",
+    "hour_other": "अब से {{count}} घंटे बाद",
+    "month_one": "अब से {{count}} महीने",
+    "month_other": "अब से {{count}} महीने",
+    "week_one": "अब से {{count}} सप्ताह",
+    "week_other": "अब से {{count}} सप्ताह",
+    "year_one": "अब से {{count}} वर्ष",
+    "year_other": "अब से {{count}} वर्ष बाद"
+  },
+  "new": "नया",
+  "past": {
+    "day_one": "{{count}} दिन पहले",
+    "day_other": "{{count}} दिन पहले",
+    "hour_one": "{{count}} घंटे पहले",
+    "hour_other": "{{count}} घंटे पहले",
+    "month_one": "{{count}} महीने पहले",
+    "month_other": "{{count}} महीने पहले",
+    "week_one": "{{count}} सप्ताह पहले",
+    "week_other": "{{count}} सप्ताह पहले",
+    "year_one": "{{count}} साल पहले",
+    "year_other": "{{count}} साल पहले"
+  },
+  "today": "आज"
+}

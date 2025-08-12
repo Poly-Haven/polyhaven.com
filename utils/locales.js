@@ -62,6 +62,10 @@ module.exports = {
     flag: 'IL',
     rtl: true,
   },
+  hi: {
+    name: 'हिन्दी',
+    flag: 'IN',
+  },
   it: {
     name: 'Italiano',
     flag: 'IT',
