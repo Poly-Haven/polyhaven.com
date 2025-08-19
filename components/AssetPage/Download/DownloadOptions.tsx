@@ -69,7 +69,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
   return (
     <div className={styles.wrapper}>
       <div id="download_options" className={`${styles.optionsWrapper} ${!open ? styles.optionsHidden : null}`}>
-        {fmt === 'zip' ? <div className={styles.optionsHeader}>{t('zip-choose')}</div> : null}
+        {fmt === 'zip' ? <div className={styles.optionsHeader}>{t('asset:zip-choose')}</div> : null}
         {type === 0
           ? null
           : sortFiles(files).map((m, i) =>
@@ -92,7 +92,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             )}
         {type === 0 || fmt === 'zip' ? null : (
           <div className={styles.optionRow}>
-            <p style={{ textAlign: 'right' }}>{t('nor-standard')}</p>
+            <p style={{ textAlign: 'right' }}>{t('asset:nor-standard')}</p>
             <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / 3ds Max.">
               <Switch on={norMode === 'gl'} onClick={toggleNormalStyle} labelOn="GL" labelOff="DX" />
             </div>
@@ -100,7 +100,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         )}
         {type === 0 && files['tonemapped'] ? (
           <>
-            <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.tm')}>
+            <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('asset:formats.tm')}>
               <a
                 href={files['tonemapped'].url}
                 className={styles.format}
@@ -114,7 +114,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             </div>
           </>
         ) : null}
-        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('formats.thumb-d')}>
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('asset:formats.thumb-d')}>
           <a
             href={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?format=png`}
             className={styles.format}
@@ -124,7 +124,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             onClick={trackDownload}
           >
             <MdImage />
-            {t('formats.thumb')}
+            {t('asset:formats.thumb')}
           </a>
         </div>
         {type === 0 && files['colorchart'] ? (
@@ -144,10 +144,10 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
             </div>
           </>
         ) : null}
-        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('cloud-sync-d')}>
+        <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('asset:cloud-sync-d')}>
           <a href="https://www.patreon.com/polyhaven/overview" className={styles.format} target="_blank">
             <IconPatreon />
-            {t('cloud-sync')} <GoLinkExternal style={{ marginLeft: '0.5em' }} />
+            {t('asset:cloud-sync')} <GoLinkExternal style={{ marginLeft: '0.5em' }} />
           </a>
         </div>
         {type === 0 && files['backplates'] ? (
