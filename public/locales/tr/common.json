@@ -27,7 +27,8 @@
     "donate-once": "Bir kez bağış yapın",
     "monthly": "Aylık",
     "once": "Bir kez",
-    "one-time-benefits": "Tek seferlik bağışlar herhangi bir Patreon avantajı içermez. Avantajlardan yararlanmak istiyorsanız, aylık abone olmayı düşünün."
+    "one-time-benefits-p1": "Tek seferlik bağışlar herhangi bir Patreon avantajı içermez veya Kasa ilerlemesine sayılmaz.",
+    "one-time-benefits-p2": "Bunun yerine aylık bağış yapmayı düşünün."
   },
   "email-address": "E-posta adresi",
   "footer": {

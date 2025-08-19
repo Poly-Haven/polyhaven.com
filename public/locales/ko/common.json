@@ -27,7 +27,8 @@
     "donate-once": "한 번 기부하기",
     "monthly": "월간",
     "once": "한 번",
-    "one-time-benefits": "일회성 기부에는 Patreon 혜택이 포함되지 않습니다. 혜택을 받고 싶다면 매월 구독하는 것을 고려하세요."
+    "one-time-benefits-p1": "일회성 기부에는 Patreon 혜택이 포함되지 않으며, Vault 진행률에 포함되지 않습니다.",
+    "one-time-benefits-p2": "대신 매월 기부하는 것을 고려해 보세요."
   },
   "email-address": "이메일 주소",
   "footer": {

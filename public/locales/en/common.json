@@ -81,6 +81,7 @@
     "monthly": "Monthly",
     "donate-once": "Donate once",
     "once": "Once",
-    "one-time-benefits": "One time donations do not include any Patreon benefits. If you would like to receive benefits, consider subscribing monthly."
+    "one-time-benefits-p1": "One time donations do not include any Patreon benefits, or count towards Vault progress.",
+    "one-time-benefits-p2": "Consider donating monthly instead."
   }
 }

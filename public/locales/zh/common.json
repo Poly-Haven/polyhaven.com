@@ -27,7 +27,8 @@
     "donate-once": "捐赠一次",
     "monthly": "每月",
     "once": "一次",
-    "one-time-benefits": "一次性捐赠不包括任何 Patreon 优惠。如果您想获得优惠，请考虑按月订阅。"
+    "one-time-benefits-p1": "一次性捐款不包括任何 Patreon 优惠，也不计入苍穹进度。",
+    "one-time-benefits-p2": "考虑每月捐款。"
   },
   "email-address": "电子邮箱地址",
   "footer": {

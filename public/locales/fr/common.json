@@ -27,7 +27,8 @@
     "donate-once": "Faire un don unique",
     "monthly": "Mensuel",
     "once": "Une fois",
-    "one-time-benefits": "Les dons uniques ne donnent droit à aucun avantage Patreon. Si vous souhaitez bénéficier de ces avantages, pensez à vous abonner mensuellement."
+    "one-time-benefits-p1": "Les dons uniques n'incluent pas les avantages Patreon et ne comptent pas pour la progression de Vault.",
+    "one-time-benefits-p2": "Envisagez plutôt de faire un don mensuel."
   },
   "email-address": "Adresse e-mail",
   "footer": {

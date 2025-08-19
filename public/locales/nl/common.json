@@ -27,7 +27,8 @@
     "donate-once": "Eenmalig doneren",
     "monthly": "Maandelijks",
     "once": "Eenmaal",
-    "one-time-benefits": "Eenmalige donaties omvatten geen Patreon-voordelen. Als je voordelen wilt ontvangen, overweeg dan om je maandelijks te abonneren."
+    "one-time-benefits-p1": "Eenmalige donaties omvatten geen Patreon-voordelen en tellen niet mee voor de voortgang van Vault.",
+    "one-time-benefits-p2": "Overweeg in plaats daarvan om maandelijks te doneren."
   },
   "email-address": "E-mailadres",
   "footer": {

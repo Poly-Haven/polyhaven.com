@@ -27,7 +27,8 @@
     "donate-once": "Einmal spenden",
     "monthly": "Monatlich",
     "once": "Sobald",
-    "one-time-benefits": "Einmalige Spenden beinhalten keine Patreon-Vorteile. Wenn Sie Vorteile erhalten möchten, sollten Sie ein monatliches Abonnement in Betracht ziehen."
+    "one-time-benefits-p1": "Einmalige Spenden beinhalten keine Patreon-Vorteile und zählen nicht für den Fortschritt des Tresors.",
+    "one-time-benefits-p2": "Ziehen Sie stattdessen eine monatliche Spende in Betracht."
   },
   "email-address": "E-Mail Adresse",
   "footer": {

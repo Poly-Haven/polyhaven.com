@@ -27,7 +27,8 @@
     "donate-once": "Przekaż darowiznę raz",
     "monthly": "Miesięcznie",
     "once": "Raz",
-    "one-time-benefits": "Jednorazowe darowizny nie obejmują żadnych korzyści Patreon. Jeśli chcesz otrzymywać korzyści, rozważ miesięczną subskrypcję."
+    "one-time-benefits-p1": "Jednorazowe darowizny nie obejmują żadnych korzyści Patreon ani nie liczą się do postępu Vault.",
+    "one-time-benefits-p2": "Zamiast tego rozważ comiesięczne przekazywanie darowizn."
   },
   "email-address": "Adres e-mail",
   "footer": {

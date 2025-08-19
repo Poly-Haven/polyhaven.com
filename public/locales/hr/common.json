@@ -27,7 +27,8 @@
     "donate-once": "Donirajte jednom",
     "monthly": "Mjesečno",
     "once": "Jednom",
-    "one-time-benefits": "Jednokratne donacije ne uključuju nikakve pogodnosti Patreona. Ako želite primati pogodnosti, razmislite o mjesečnoj pretplati."
+    "one-time-benefits-p1": "Jednokratne donacije ne uključuju nikakve Patreon pogodnosti niti se računaju u napredak u Vaultu.",
+    "one-time-benefits-p2": "Razmislite o mjesečnom doniranju."
   },
   "email-address": "Email adresa",
   "footer": {

@@ -27,7 +27,8 @@
     "donate-once": "Donare una volta",
     "monthly": "Mensile",
     "once": "Una volta",
-    "one-time-benefits": "Le donazioni una tantum non includono alcun beneficio di Patreon. Se si desidera ricevere dei vantaggi, si consideri la possibilità di abbonarsi mensilmente."
+    "one-time-benefits-p1": "Le donazioni una tantum non includono i vantaggi di Patreon e non contano per i progressi del Vault.",
+    "one-time-benefits-p2": "Considerate invece una donazione mensile."
   },
   "email-address": "Indirizzo e-mail",
   "footer": {

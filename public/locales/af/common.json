@@ -27,7 +27,8 @@
     "donate-once": "Skenk een keer",
     "monthly": "Maandeliks",
     "once": "Eens",
-    "one-time-benefits": "Eenmalige skenkings sluit geen Patreon-voordele in nie. As jy voordele wil ontvang, oorweeg dit om maandeliks in te teken."
+    "one-time-benefits-p1": "Eenmalige skenkings sluit geen Patreon-voordele in nie, en tel ook nie vir Vault-vordering nie.",
+    "one-time-benefits-p2": "Oorweeg dit eerder om maandeliks te skenk."
   },
   "email-address": "E-pos adres",
   "footer": {

@@ -27,7 +27,8 @@
     "donate-once": "Donasi sekali",
     "monthly": "Bulanan",
     "once": "Sekali",
-    "one-time-benefits": "Donasi satu kali tidak termasuk manfaat Patreon. Jika Anda ingin menerima manfaat, pertimbangkan untuk berlangganan bulanan."
+    "one-time-benefits-p1": "Donasi satu kali tidak termasuk manfaat Patreon, atau dihitung sebagai kemajuan Vault.",
+    "one-time-benefits-p2": "Sebagai gantinya, pertimbangkan untuk menyumbang bulanan."
   },
   "email-address": "Alamat email",
   "footer": {

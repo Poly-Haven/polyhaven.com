@@ -133,7 +133,10 @@ const DonationBox = () => {
             ))}
       </div>
       {oneTimeDonation ? (
-        <p>{t('common:donation-box.one-time-benefits')}</p>
+        <div style={{ fontSize: '0.93em' }}>
+          <p>{t('common:donation-box.one-time-benefits-p1')}</p>
+          <p>{t('common:donation-box.one-time-benefits-p2')}</p>
+        </div>
       ) : (
         <div className={styles.benefits}>
           {benefits.map((benefit, i) => (

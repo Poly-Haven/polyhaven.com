@@ -27,7 +27,8 @@
     "donate-once": "Adományozzon egyszer",
     "monthly": "Havi",
     "once": "Egyszer",
-    "one-time-benefits": "Az egyszeri adományok nem tartalmaznak semmilyen Patreon-előnyt. Ha szeretnél előnyöket kapni, fontold meg a havi előfizetést."
+    "one-time-benefits-p1": "Az egyszeri adományok nem tartalmaznak semmilyen Patreon-előnyt, és nem számítanak bele a Vault előrehaladásába.",
+    "one-time-benefits-p2": "Fontolja meg, hogy inkább havonta adományoz."
   },
   "email-address": "Email cím",
   "footer": {
