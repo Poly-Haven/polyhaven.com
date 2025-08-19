@@ -23,7 +23,9 @@
     "b4": "A Blender eszközböngésző <lnk>kiegészítőnk</lnk>.",
     "b5": "Tömeges letöltés és offline hozzáférés <lnk>a felhőnkkel</lnk>.",
     "b6": "<lnk>Szponzoráljon egy eszközt</lnk> nevével és linkjével.",
-    "donate-monthly": "Havi adományozás"
+    "donate-monthly": "Havi adományozás",
+    "donate-once": "Adományozzon egyszer",
+    "one-time-benefits": "Az egyszeri adományok nem tartalmaznak semmilyen Patreon-előnyt. Ha szeretnél előnyöket kapni, fontold meg a havi előfizetést."
   },
   "email-address": "Email cím",
   "footer": {

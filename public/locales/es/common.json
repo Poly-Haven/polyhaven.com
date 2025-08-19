@@ -23,7 +23,9 @@
     "b4": "Nuestro <lnk>complemento</lnk> para el navegador de activos de Blender.",
     "b5": "Descarga masiva y acceso sin conexión con <lnk>nuestra nube</lnk>.",
     "b6": "<lnk>Patrocine un activo</lnk> con su nombre y enlace.",
-    "donate-monthly": "Donaciones mensuales"
+    "donate-monthly": "Donaciones mensuales",
+    "donate-once": "Donar una vez",
+    "one-time-benefits": "Las donaciones únicas no incluyen ningún beneficio de Patreon. Si desea recibir beneficios, considere suscribirse mensualmente."
   },
   "email-address": "Dirección de correo electrónico",
   "footer": {

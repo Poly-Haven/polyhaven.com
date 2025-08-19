@@ -18,6 +18,8 @@ const tiers = {
   10: 'https://www.patreon.com/checkout/polyhaven?rid=2011184',
 }
 
+const oneTimeTiers = [25, 50, 100]
+
 const Benefit = ({ text, icon, bold, excluded, cost }) => {
   return (
     <div
@@ -32,6 +34,8 @@ const Benefit = ({ text, icon, bold, excluded, cost }) => {
 const DonationBox = () => {
   const { t } = useTranslation('common')
   const [selectedTier, setSelectedTier] = useState(5)
+  const [oneTimeDonation, setOneTimeDonation] = useState(true)
+  const [oneTimeAmount, setOneTimeAmount] = useState(50)
 
   const benefits = [
     {
@@ -106,29 +110,63 @@ const DonationBox = () => {
     <div className={styles.wrapper}>
       <h3>{t('common:support-polyhaven')}</h3>
       <div className={styles.tiers}>
-        {Object.keys(tiers).map((cost) => (
-          <div
-            key={cost}
-            onClick={() => setSelectedTier(Number(cost))}
-            className={`${btnStyles.button} ${btnStyles[selectedTier === Number(cost) ? 'red' : 'hollowRed']}`}
-          >
-            <div className={btnStyles.inner}>${cost}</div>
+        {oneTimeDonation
+          ? oneTimeTiers.map((amount) => (
+              <div
+                key={amount}
+                onClick={() => setOneTimeAmount(Number(amount))}
+                className={`${btnStyles.button} ${btnStyles[oneTimeAmount === Number(amount) ? 'red' : 'hollowRed']}`}
+              >
+                <div className={btnStyles.inner}>${amount}</div>
+              </div>
+            ))
+          : Object.keys(tiers).map((cost) => (
+              <div
+                key={cost}
+                onClick={() => setSelectedTier(Number(cost))}
+                className={`${btnStyles.button} ${btnStyles[selectedTier === Number(cost) ? 'red' : 'hollowRed']}`}
+              >
+                <div className={btnStyles.inner}>${cost}</div>
+              </div>
+            ))}
+      </div>
+      {oneTimeDonation ? (
+        <p>{t('common:donation-box.one-time-benefits')}</p>
+      ) : (
+        <div className={styles.benefits}>
+          {benefits.map((benefit, i) => (
+            <Benefit
+              key={i}
+              text={benefit.text}
+              icon={benefit.icon}
+              bold={selectedTier === benefit.cost}
+              excluded={selectedTier < benefit.cost}
+              cost={benefit.cost}
+            />
+          ))}
+        </div>
+      )}
+      {oneTimeDonation ? (
+        <div className={styles.inputRow}>
+          <div className={styles.inputContainer}>
+            <span className={styles.dollarSign}>$</span>
+            <input type="number" value={oneTimeAmount} onChange={(e) => setOneTimeAmount(Number(e.target.value))} />
           </div>
-        ))}
-      </div>
-      <div className={styles.benefits}>
-        {benefits.map((benefit, i) => (
-          <Benefit
-            key={i}
-            text={benefit.text}
-            icon={benefit.icon}
-            bold={selectedTier === benefit.cost}
-            excluded={selectedTier < benefit.cost}
-            cost={benefit.cost}
+          <Button
+            text={t('common:donation-box.donate-once')}
+            href={`https://paypal.me/polyhaven/${oneTimeAmount}`}
+            color="red"
+            icon={<Heart />}
           />
-        ))}
-      </div>
-      <Button text={t('common:donation-box.donate-monthly')} href={tiers[selectedTier]} color="red" icon={<Heart />} />
+        </div>
+      ) : (
+        <Button
+          text={t('common:donation-box.donate-monthly')}
+          href={tiers[selectedTier]}
+          color="red"
+          icon={<Heart />}
+        />
+      )}
     </div>
   )
 }

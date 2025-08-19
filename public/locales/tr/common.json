@@ -23,7 +23,9 @@
     "b4": "Blender varlık tarayıcı <lnk>eklentimiz</lnk>.",
     "b5": "<lnk>Bulutumuzla</lnk> toplu indirme ve çevrimdışı erişim.",
     "b6": "Adınız ve bağlantınızla <lnk>bir varlığa sponsor</lnk> olun.",
-    "donate-monthly": "Aylık bağış yapın"
+    "donate-monthly": "Aylık bağış yapın",
+    "donate-once": "Bir kez bağış yapın",
+    "one-time-benefits": "Tek seferlik bağışlar herhangi bir Patreon avantajı içermez. Avantajlardan yararlanmak istiyorsanız, aylık abone olmayı düşünün."
   },
   "email-address": "E-posta adresi",
   "footer": {

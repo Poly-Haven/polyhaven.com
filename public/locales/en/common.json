@@ -77,6 +77,8 @@
     "b4": "Our Blender asset browser <lnk>add-on</lnk>.",
     "b5": "Bulk download & offline access with <lnk>our cloud</lnk>.",
     "b6": "<lnk>Sponsor an asset</lnk> with your name & link.",
-    "donate-monthly": "Donate monthly"
+    "donate-monthly": "Donate monthly",
+    "donate-once": "Donate once",
+    "one-time-benefits": "One time donations do not include any Patreon benefits. If you would like to receive benefits, consider subscribing monthly."
   }
 }

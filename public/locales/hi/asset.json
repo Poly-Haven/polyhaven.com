@@ -54,7 +54,7 @@
     "about": "के बारे में",
     "access-now": "अभी एक्सेस करें",
     "already-patron": "पहले से ही संरक्षक हैं?<loginLink> लॉग इन करें</loginLink> .",
-    "donate-access": "इसे डाउनलोड करने के लिए पैट्रियन पर 3 डॉलर का दान करें, साथ ही अन्य वॉल्टेड संपत्तियों के {{totalVaultedAssets, number}} भी दान करें।",
+    "donate-access": "इसे डाउनलोड करने और साथ ही अन्य वाल्टेड {{totalVaultedAssets, number}}संपत्तियों केलिये  पैट्रियन पर $3 का दान करें  ।",
     "locked-in": "यह परिसंपत्ति लॉक है<vaultLink> {{vault}} तिजोरी</vaultLink> .",
     "patrons-needed": "जब हमें {{remaining, number}} और संरक्षक मिल जाएंगे, तो इसे सभी के लिए निःशुल्क जारी कर दिया जाएगा।",
     "title": "तिजोरी में रखी गई संपत्ति"

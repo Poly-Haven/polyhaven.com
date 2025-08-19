@@ -23,7 +23,9 @@
     "b4": "Meie Blenderi varade brauseri <lnk>lisandmoodul</lnk>.",
     "b5": "Massiline allalaadimine ja offline-juurdepääs <lnk>meie pilve</lnk> abil.",
     "b6": "<lnk>Sponsoreeri vara</lnk> oma nime ja lingiga.",
-    "donate-monthly": "Annetada igakuiselt"
+    "donate-monthly": "Annetada igakuiselt",
+    "donate-once": "Annetada üks kord",
+    "one-time-benefits": "Ühekordsed annetused ei sisalda Patreoni soodustusi. Kui soovid kasu saada, siis kaalu igakuist tellimist."
   },
   "email-address": "E-posti aadress",
   "footer": {

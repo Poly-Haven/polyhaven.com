@@ -81,3 +81,56 @@
     flex-shrink: 0;
   }
 }
+
+.inputRow {
+  @include flex(row);
+
+  .inputContainer {
+    position: relative;
+    margin: 0.5em;
+  }
+
+  .dollarSign {
+    position: absolute;
+    left: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $c-text-light;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  input {
+    width: 3em;
+    height: 100%;
+    padding: 0 0.5em 0 1.3em;
+    margin-top: -1px; // Align with button
+    font-size: 1em;
+    border: 1px solid rgba($c-text-light, 0.3);
+    background: $c-background-darkish;
+    color: $c-text-light;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      border-color: $c-red;
+    }
+
+    // Hide number input arrows
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    // Firefox
+    &[type="number"] {
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+  }
+
+  .buttonContainer {
+    flex-shrink: 0;
+  }
+}

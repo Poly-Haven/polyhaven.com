@@ -23,7 +23,9 @@
     "b4": "我们的 Blender 资产浏览器<lnk>插件</lnk>",
     "b5": "使用<lnk>我们的云</lnk>服务批量下载和离线访问。",
     "b6": "以您的名字和链接<lnk>赞助一项资产</lnk>。",
-    "donate-monthly": "每月捐款"
+    "donate-monthly": "每月捐款",
+    "donate-once": "捐赠一次",
+    "one-time-benefits": "一次性捐赠不包括任何 Patreon 优惠。如果您想获得优惠，请考虑按月订阅。"
   },
   "email-address": "电子邮箱地址",
   "footer": {

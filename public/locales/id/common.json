@@ -23,7 +23,9 @@
     "b4": "<lnk>Add-on</lnk> peramban aset Blender kami.",
     "b5": "Unduh massal & akses offline dengan <lnk>cloud kami</lnk>.",
     "b6": "<lnk>Sponsori aset</lnk> dengan nama & tautan Anda.",
-    "donate-monthly": "Donasi bulanan"
+    "donate-monthly": "Donasi bulanan",
+    "donate-once": "Donasi sekali",
+    "one-time-benefits": "Donasi satu kali tidak termasuk manfaat Patreon. Jika Anda ingin menerima manfaat, pertimbangkan untuk berlangganan bulanan."
   },
   "email-address": "Alamat email",
   "footer": {

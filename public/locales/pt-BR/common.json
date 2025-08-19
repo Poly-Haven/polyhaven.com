@@ -23,7 +23,9 @@
     "b4": "Nossa <lnk>extensão</lnk> para o navegador de assets do Blender.",
     "b5": "Download em massa e acesso off-line com <lnk>nossa nuvem</lnk>.",
     "b6": "<lnk>Patrocine um assets</lnk> com seu nome e link.",
-    "donate-monthly": "Doe mensalmente"
+    "donate-monthly": "Doe mensalmente",
+    "donate-once": "Doe uma vez",
+    "one-time-benefits": "As doações únicas não incluem nenhum benefício do Patreon. Se você quiser receber benefícios, considere a possibilidade de fazer uma assinatura mensal."
   },
   "email-address": "Endereço de email",
   "footer": {

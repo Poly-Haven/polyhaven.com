@@ -23,7 +23,9 @@
     "b4": "Nasz <lnk>dodatek</lnk> do przeglądarki zasobów Blendera.",
     "b5": "Masowe pobieranie i dostęp offline dzięki <lnk>naszej chmurze</lnk>.",
     "b6": "<lnk>Sponsoruj zasób</lnk>, podając swoje imię i nazwisko oraz link.",
-    "donate-monthly": "Wspieraj co miesiąc"
+    "donate-monthly": "Wspieraj co miesiąc",
+    "donate-once": "Przekaż darowiznę raz",
+    "one-time-benefits": "Jednorazowe darowizny nie obejmują żadnych korzyści Patreon. Jeśli chcesz otrzymywać korzyści, rozważ miesięczną subskrypcję."
   },
   "email-address": "Adres e-mail",
   "footer": {

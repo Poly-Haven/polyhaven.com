@@ -23,7 +23,9 @@
     "b4": "Ons Blender-bateblaaier<lnk> byvoeging</lnk> .",
     "b5": "Grootmaat aflaai en vanlyn toegang met<lnk> ons wolk</lnk> .",
     "b6": "<lnk>Borg 'n bate</lnk> met jou naam en skakel.",
-    "donate-monthly": "Skenk maandeliks"
+    "donate-monthly": "Skenk maandeliks",
+    "donate-once": "Skenk een keer",
+    "one-time-benefits": "Eenmalige skenkings sluit geen Patreon-voordele in nie. As jy voordele wil ontvang, oorweeg dit om maandeliks in te teken."
   },
   "email-address": "E-pos adres",
   "footer": {

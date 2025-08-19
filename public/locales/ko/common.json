@@ -23,7 +23,9 @@
     "b4": "블렌더 에셋 브라우저 <lnk>애드온입니다</lnk>.",
     "b5": "<lnk>클라우드를</lnk> 통한 대량 다운로드 및 오프라인 액세스.",
     "b6": "이름과 링크가 포함된 <lnk>에셋을 후원하세요</lnk>.",
-    "donate-monthly": "매월 기부하기"
+    "donate-monthly": "매월 기부하기",
+    "donate-once": "한 번 기부하기",
+    "one-time-benefits": "일회성 기부에는 Patreon 혜택이 포함되지 않습니다. 혜택을 받고 싶다면 매월 구독하는 것을 고려하세요."
   },
   "email-address": "이메일 주소",
   "footer": {

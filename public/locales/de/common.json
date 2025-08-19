@@ -23,7 +23,9 @@
     "b4": "Unser Blender Asset Browser <lnk>Add-on</lnk>.",
     "b5": "Massendownload und Offline-Zugriff mit <lnk>unserer Cloud</lnk>.",
     "b6": "<lnk>Sponsern Sie ein Objekt</lnk> mit Ihrem Namen und Link.",
-    "donate-monthly": "Monatlich spenden"
+    "donate-monthly": "Monatlich spenden",
+    "donate-once": "Einmal spenden",
+    "one-time-benefits": "Einmalige Spenden beinhalten keine Patreon-Vorteile. Wenn Sie Vorteile erhalten möchten, sollten Sie ein monatliches Abonnement in Betracht ziehen."
   },
   "email-address": "E-Mail Adresse",
   "footer": {

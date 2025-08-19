@@ -23,7 +23,9 @@
     "b4": "Naš preglednik resursa u Blenderu<lnk> dodatak</lnk> .",
     "b5": "Skupno preuzimanje i pristup izvan mreže s<lnk> naš oblak</lnk> .",
     "b6": "<lnk>Sponzorirajte imovinu</lnk> s vašim imenom i linkom.",
-    "donate-monthly": "Mjesečne donacije"
+    "donate-monthly": "Mjesečne donacije",
+    "donate-once": "Donirajte jednom",
+    "one-time-benefits": "Jednokratne donacije ne uključuju nikakve pogodnosti Patreona. Ako želite primati pogodnosti, razmislite o mjesečnoj pretplati."
   },
   "email-address": "Email adresa",
   "footer": {
