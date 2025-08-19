@@ -34,7 +34,7 @@ const Benefit = ({ text, icon, bold, excluded, cost }) => {
 const DonationBox = () => {
   const { t } = useTranslation('common')
   const [selectedTier, setSelectedTier] = useState(5)
-  const [oneTimeDonation, setOneTimeDonation] = useState(true)
+  const [oneTimeDonation, setOneTimeDonation] = useState(false)
   const [oneTimeAmount, setOneTimeAmount] = useState(50)
 
   const benefits = [
@@ -106,6 +106,8 @@ const DonationBox = () => {
     },
   ]
 
+  const removeButtonMargin = { marginLeft: 0, marginRight: 0 }
+
   return (
     <div className={styles.wrapper}>
       <h3>{t('common:support-polyhaven')}</h3>
@@ -157,15 +159,31 @@ const DonationBox = () => {
             href={`https://paypal.me/polyhaven/${oneTimeAmount}`}
             color="red"
             icon={<Heart />}
+            style={removeButtonMargin}
           />
+          <div
+            onClick={() => setOneTimeDonation(!oneTimeDonation)}
+            className={`${btnStyles.button} ${btnStyles.hollowRed} ${styles.removeButtonMargin} ${styles.btnSmall}`}
+          >
+            <div className={btnStyles.inner}>{t('common:donation-box.monthly')}</div>
+          </div>
         </div>
       ) : (
-        <Button
-          text={t('common:donation-box.donate-monthly')}
-          href={tiers[selectedTier]}
-          color="red"
-          icon={<Heart />}
-        />
+        <div className={styles.inputRow}>
+          <Button
+            text={t('common:donation-box.donate-monthly')}
+            href={tiers[selectedTier]}
+            color="red"
+            icon={<Heart />}
+            style={removeButtonMargin}
+          />
+          <div
+            onClick={() => setOneTimeDonation(!oneTimeDonation)}
+            className={`${btnStyles.button} ${btnStyles.hollowRed} ${styles.removeButtonMargin} ${styles.btnSmall}`}
+          >
+            <div className={btnStyles.inner}>{t('common:donation-box.once')}</div>
+          </div>
+        </div>
       )}
     </div>
   )

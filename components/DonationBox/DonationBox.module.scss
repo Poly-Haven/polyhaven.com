@@ -88,6 +88,7 @@
   .inputContainer {
     position: relative;
     margin: 0.5em;
+    margin-right: 0;
   }
 
   .dollarSign {
@@ -107,6 +108,7 @@
     margin-top: -1px; // Align with button
     font-size: 1em;
     border: 1px solid rgba($c-text-light, 0.3);
+    border-right: none;
     background: $c-background-darkish;
     color: $c-text-light;
     text-align: center;
@@ -130,7 +132,15 @@
     }
   }
 
-  .buttonContainer {
-    flex-shrink: 0;
+  .removeButtonMargin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .btnSmall {
+    font-size: 0.85em;
+    line-height: 1.8em;
+    opacity: 0.8;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 }
