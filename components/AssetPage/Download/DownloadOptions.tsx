@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next'
-import { useState, useEffect } from 'react'
 import { filesize } from 'filesize'
 
 import { GoLinkExternal } from 'react-icons/go'
@@ -7,7 +6,6 @@ import { MdImage } from 'react-icons/md'
 
 import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
-import Switch from 'components/UI/Switch/Switch'
 import IconMacbeth from 'components/UI/Icons/Macbeth'
 import IconPatreon from 'components/UI/Icons/Patreon'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
@@ -19,17 +17,6 @@ import styles from './DownloadOptions.module.scss'
 
 const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview, callback }) => {
   const { t } = useTranslation('asset')
-  const [norMode, setNorMode] = useState('gl')
-
-  useEffect(() => {
-    setNorMode(localStorage.getItem(`assetPref_normalType`) || 'gl')
-  }, [])
-
-  const toggleNormalStyle = () => {
-    const v = norMode === 'gl' ? 'dx' : 'gl'
-    setNorMode(v)
-    localStorage.setItem(`assetPref_normalType`, v)
-  }
 
   const trackDownload = async (e) => {
     callback()
@@ -74,30 +61,18 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
           ? null
           : sortFiles(files).map((m, i) =>
               !threeDFormats.includes(m) || fmt === 'zip' ? (
-                m !== 'nor_dx' || norMode === 'dx' || fmt === 'zip' ? (
-                  m !== 'nor_gl' || norMode === 'gl' || fmt === 'zip' ? (
-                    <DownloadMap
-                      key={i}
-                      name={m}
-                      res={res}
-                      fmt={fmt}
-                      type={type}
-                      data={files[m][res]}
-                      trackDownload={trackDownload}
-                      selectMap={selectMap}
-                    />
-                  ) : null
-                ) : null
+                <DownloadMap
+                  key={i}
+                  name={m}
+                  res={res}
+                  fmt={fmt}
+                  type={type}
+                  data={files[m][res]}
+                  trackDownload={trackDownload}
+                  selectMap={selectMap}
+                />
               ) : null
             )}
-        {type === 0 || fmt === 'zip' ? null : (
-          <div className={styles.optionRow}>
-            <p style={{ textAlign: 'right' }}>{t('asset:nor-standard')}</p>
-            <div data-tip="OpenGL: Blender / Maya / Unity.<br />DirectX: Unreal / 3ds Max.">
-              <Switch on={norMode === 'gl'} onClick={toggleNormalStyle} labelOn="GL" labelOff="DX" />
-            </div>
-          </div>
-        )}
         {type === 0 && files['tonemapped'] ? (
           <>
             <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('asset:formats.tm')}>

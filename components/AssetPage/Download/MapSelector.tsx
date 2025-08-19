@@ -17,7 +17,6 @@ const MapSelector = ({ name, res, fmt, type, data, filesize, selectMap }) => {
     'Rough_exr',
     'Metal_exr',
     'nor_gl_exr',
-    'nor_dx_exr',
     'AO_jpg',
     'Bump_exr',
     'Alpha_png',

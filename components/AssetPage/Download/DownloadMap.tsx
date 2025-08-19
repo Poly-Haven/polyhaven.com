@@ -12,11 +12,7 @@ import styles from './DownloadOptions.module.scss'
 const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) => {
   let displayName = titleCase(name.replace(/_/g, ' '))
   if (name === 'nor_gl' || name === 'nor_dx') {
-    if (fmt !== 'zip') {
-      displayName = 'Normal'
-    } else {
-      displayName = `Normal (${name.substring(name.length - 2).toUpperCase()})`
-    }
+    displayName = `Normal (${name.substring(name.length - 2).toUpperCase()})`
   }
   if (name === 'AO') {
     displayName = 'AO'
