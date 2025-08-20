@@ -14,11 +14,9 @@ const UserRenders = ({ assetID }) => {
   const { t } = useTranslation('asset')
   const titleRowJsx = (
     <div className={styles.userRendersTitle}>
-      <h1>{t('user-renders')}</h1>
+      <h1>{t('asset:user-renders')}</h1>
       <Link href={`/gallery-submit?asset=${assetID}`} prefetch={false}>
-
-        <IconButton icon={<MdAdd />} label={t('add-yours')} />
-
+        <IconButton icon={<MdAdd />} label={t('asset:add-yours')} />
       </Link>
     </div>
   )
@@ -42,7 +40,11 @@ const UserRenders = ({ assetID }) => {
         <Gallery data={data} assetPage={true} />
       ) : (
         <p>
-          <Trans i18nKey="no-renders" t={t} components={{ lnk: <a href={`/gallery-submit?asset=${assetID}`} /> }} />
+          <Trans
+            i18nKey="asset:no-renders"
+            t={t}
+            components={{ lnk: <a href={`/gallery-submit?asset=${assetID}`} /> }}
+          />
         </p>
       )}
     </div>
