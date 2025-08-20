@@ -31,12 +31,12 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import SponsorList from './SponsorList/SponsorList'
 import TagsList from './TagsList'
 import TilePreview from './WebGL/TilePreview'
-import UserRenders from './UserRenders'
 
 import styles from './AssetPage.module.scss'
 import ErrorBoundary from 'utils/ErrorBoundary'
 
 const PanoViewer = dynamic(() => import('./WebGL/PanoViewer'), { ssr: false })
+const UserRenders = dynamic(() => import('./UserRenders'), { ssr: false })
 
 const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
@@ -55,7 +55,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const [showDownloadGraph, setShowDownloadGraph] = useStoredState('asset_showDownloadGraph', false)
   const [showAfterDownloadPopup, setShowAfterDownloadPopup] = useState(false)
   const [hideSidebar, setHideSidebar] = useState(true)
+  const [shouldLoadUserRenders, setShouldLoadUserRenders] = useState(false)
   const widthRef = useRef(null)
+  const userRendersRef = useRef(null)
   const { width: sidebarWidth } = useDivSize(widthRef)
 
   const authors = Object.keys(data.authors).sort()
@@ -121,6 +123,33 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
       document.getElementById('header-title').innerHTML = ''
     }
   }, [assetID])
+
+  // Intersection Observer for UserRenders lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadUserRenders) {
+            setShouldLoadUserRenders(true)
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+      }
+    )
+
+    const currentRef = userRendersRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+    }
+  }, [shouldLoadUserRenders])
 
   const clickSimilar = () => {
     setPageLoading(true)
@@ -241,7 +270,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
           <h2>{t('similar-assets')}</h2>
           <Similar slug={assetID} onClick={clickSimilar} />
         </div>
-        <UserRenders assetID={assetID} />
+        <div ref={userRendersRef}>
+          {shouldLoadUserRenders ? <UserRenders assetID={assetID} /> : <div style={{ minHeight: '200px' }} />}
+        </div>
       </Page>
 
       <AfterDownload show={showAfterDownloadPopup} assetType={data.type} postDownloadStats={postDownloadStats} />
