@@ -28,7 +28,7 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
     <div className="content">
       <Head
         title={`${data.name} ${assetTypeName(data.type, false)}`}
-        description={`Download this free ${assetTypeName(data.type, false)} from Poly Haven`}
+        description={data.description || `Download this free ${assetTypeName(data.type, false)} from Poly Haven`}
         url={pageUrl}
         assetType={data.type}
         author={Object.keys(data.authors).join(', ')}
