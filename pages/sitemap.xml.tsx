@@ -11,13 +11,18 @@ export const getServerSideProps = async ({ res }) => {
 
   const staticPages = [
     '', // Home
+    'collections',
     'about-contact',
     'contribute',
     'faq',
     'finance-reports',
     'license',
     'logo',
+    'map',
+    'our-api',
     'privacy',
+    'stats',
+    'vaults',
     'tools/ev-diff',
   ].map((page) => {
     return `${baseUrl}/${page}`
