@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "pages/api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "git": {
     "deploymentEnabled": {
       "Roadmap": false,
