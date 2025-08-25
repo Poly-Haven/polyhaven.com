@@ -11,7 +11,7 @@ const PluginPage = ({ numAssets }) => {
     <TextPage
       title="Blender Add-on"
       description="Get our assets directly in Blender's asset browser"
-      url="/about-contact"
+      url="/plugins/blender"
     >
       <Blender numAssets={numAssets} />
     </TextPage>
