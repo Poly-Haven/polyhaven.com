@@ -1,10 +1,6 @@
 import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
-export const config = {
-  runtime: 'edge',
-}
-
 // Define types for the roadmap data
 type Milestone = {
   text: string
