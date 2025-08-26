@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { useUserPatron } from 'contexts/UserPatronContext'
 
 import InfoBox from 'components/UI/InfoBox/InfoBox'
@@ -7,16 +5,7 @@ import Button from 'components/UI/Button/Button'
 import Patreon from 'components/UI/Icons/Patreon'
 import Fab from 'components/UI/Icons/Fab'
 
-import {
-  MdApps,
-  MdOutlineInstallDesktop,
-  MdInfo,
-  MdDownload,
-  MdOpenInNew,
-  MdCloudDownload,
-  MdDashboard,
-} from 'react-icons/md'
-import { RiVipCrownLine } from 'react-icons/ri'
+import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard } from 'react-icons/md'
 import { SiDiscord } from 'react-icons/si'
 
 import styles from './Plugins.module.scss'
@@ -78,36 +67,15 @@ const CallToAction = ({ hasAccess }) => {
   )
 }
 
-const Feature = ({ title, image, hover, children }) => {
-  const [flicker, setFlicker] = useState(false)
-  const [visible, setVisible] = useState(true)
-
-  // Flicker the hover image
-  useEffect(() => {
-    setInterval(() => {
-      setVisible((visible) => !visible)
-    }, 650)
-  }, [])
-
+const Feature = ({ title, image, children }) => {
   return (
-    <div
-      className={styles.feature}
-      onMouseEnter={(_) => {
-        setFlicker(true)
-        setVisible(true)
-      }}
-      onMouseLeave={(_) => {
-        setFlicker(false)
-        setVisible(false)
-      }}
-    >
+    <div className={styles.feature}>
       <div className={styles.featureText}>
         <h3>{title}</h3>
         {children}
       </div>
       <div className={styles.images}>
         <img src={image} />
-        <img src={hover} className={`${styles.hover} ${visible && flicker ? null : styles.hidden}`} />
       </div>
     </div>
   )
@@ -159,8 +127,9 @@ const Unreal = ({ numAssets }) => {
         disablePictureInPicture={true}
         disableRemotePlayback={true}
         muted={true}
+        poster="https://u.polyhaven.org/t5T/demo_web_uehdribrowser.jpg"
       >
-        <source src="https://u.polyhaven.org/ZL5/demo_video.mp4" type="video/mp4" />
+        <source src="https://u.polyhaven.org/JC6/demo_web_uehdribrowser.mp4" type="video/mp4" />
         Sorry, your browser doesn't support embedded videos.
       </video>
       <hr />
@@ -168,7 +137,7 @@ const Unreal = ({ numAssets }) => {
 
       <CallToAction hasAccess={hasAccess} />
 
-      <p>
+      <p style={{ textAlign: 'center' }}>
         Whether you get it on Fab or Patreon, the plugin is identical. Both versions have the same features and perks,
         including...
       </p>
@@ -192,55 +161,39 @@ const Unreal = ({ numAssets }) => {
 
       <div className={styles.spacer} />
       <h1>Features:</h1>
-      <Feature
-        title="Organized catalogs"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat1h.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat1.png"
-      >
+      <Feature title="Fast in-editor search" image="https://cdn.polyhaven.com/site_images/plugins/unreal/feat1.png">
         <p>
-          Assets are organized according to our categories and asset types, making it easy to filter through the lists
-          and quickly find what you need.
+          Search, filter, and browse HDRIs directly within the Unreal Engine editor using tags and categories, powered
+          by the Poly Haven API.
         </p>
-        <p>Our tags are also added automatically as well, meaning you can search for specific keywords too.</p>
+        <p>Find the perfect environment quickly without leaving your workflow.</p>
       </Feature>
       <Feature
-        title="Resolution switching"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat2h.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat2.png"
+        title="One-click Download, Import, Apply"
+        image="https://cdn.polyhaven.com/site_images/plugins/unreal/feat2h.png"
       >
         <p>
-          By default assets will be imported at 1K resolution for quick previews, but you can swap to higher resolutions
-          at any time. Most assets are available at least at 8K resolution.
+          Streamlined workflow with live preview and scene restore functionality. Preview HDRIs instantly, then download
+          and import the ones you want at full resolution.
         </p>
+        <p>Background downloads ensure you can keep working while HDRIs are being fetched and cached locally.</p>
+      </Feature>
+      <Feature title="Configurable resolution" image="https://cdn.polyhaven.com/site_images/plugins/unreal/feat3h.png">
         <p>
-          Switching to a new resolution will download the files from our server and keep them on your hard drive for
-          faster switching next time.
+          Start with low-resolution previews for quick iteration, then download the final HDRI at your preferred
+          resolution up to 8K. Local cache control means faster access to previously downloaded HDRIs.
         </p>
+        <p>Perfect for both rapid prototyping and final production work.</p>
       </Feature>
       <Feature
-        title="Auto texture scale"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat3h.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat3.png"
+        title="HDRI Backdrop integration"
+        image="https://cdn.polyhaven.com/site_images/plugins/unreal/feat4h.png"
       >
         <p>
-          No more eye-balling texture sizes. Simply click the "Fix Texture Scale" button and the add-on will compare the
-          known dimensions of our texture to your mesh surface area, calculate the exact scale multiplier and set this
-          on the mapping node to get things looking right.
+          Seamlessly works with Unreal's HDRI Backdrop system. The plugin can spawn or reuse existing backdrops and
+          automatically restore original cubemaps after previewing.
         </p>
-      </Feature>
-      <Feature
-        title="One-click displacement setup"
-        image="https://cdn.polyhaven.com/site_images/plugins/blender/feat4h.png"
-        hover="https://cdn.polyhaven.com/site_images/plugins/blender/feat4.png"
-      >
-        <p>
-          Almost all of our materials are designed to be used with real mesh displacement, using tessellation/adaptive
-          subdivision.
-        </p>
-        <p>
-          There are a few settings to change in Blender and modifiers to set up in order to get this working correctly.
-          Rather than doing that manually, there is a "Set up displacement" button in the material panel.
-        </p>
+        <p>Ideal for virtual production workflows and accurate lighting setups.</p>
       </Feature>
 
       <div className={styles.spacer} />
