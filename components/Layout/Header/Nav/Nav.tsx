@@ -14,6 +14,7 @@ import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
 import Heart from 'components/UI/Icons/Heart'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import Blender from 'components/UI/Icons/Blender'
+import Unreal from 'components/UI/Icons/Unreal'
 
 import styles from './Nav.module.scss'
 
@@ -105,14 +106,24 @@ const Nav = () => {
             link="/vaults"
           />
         </NavItem>
-        <NavItem
-          text={
-            <>
-              <Blender /> {t('common:nav.add-on')}
-            </>
-          }
-          link="/plugins/blender"
-        />
+        <NavItem text={t('common:nav.plugins')} link="/plugins">
+          <NavItem
+            text={
+              <>
+                <Blender /> Blender {t('common:nav.add-on')}
+              </>
+            }
+            link="/plugins/blender"
+          />
+          <NavItem
+            text={
+              <>
+                <Unreal /> UE HDRI Browser
+              </>
+            }
+            link="/plugins/unreal"
+          />
+        </NavItem>
         <NavItem
           text={
             <span className={styles.assetType}>
