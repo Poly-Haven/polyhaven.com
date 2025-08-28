@@ -1,6 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'components/Head/Head'
-import AssetStructuredData from 'components/Head/AssetStructuredData'
 
 import { assetTypeName } from 'utils/assetTypeName'
 
@@ -35,9 +34,7 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
         author={Object.keys(data.authors).join(', ')}
         keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
         image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630&quality=95`}
-      >
-        <AssetStructuredData assetID={assetID} data={data} files={files} />
-      </Head>
+      />
       <div>
         <AssetPage
           assetID={assetID}

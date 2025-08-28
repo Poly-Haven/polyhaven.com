@@ -2,7 +2,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 
 import Head from 'components/Head/Head'
-import CategoryStructuredData from 'components/Head/CategoryStructuredData'
 import Library from 'components/Library/Library'
 
 import typesAvailable from 'constants/asset_types.json'
@@ -48,9 +47,7 @@ const LibraryPage = (props) => {
         description={description}
         assetType={asset_types[props.assetType]}
         image={imageUrl}
-      >
-        <CategoryStructuredData assetType={props.assetType} categories={props.categories} />
-      </Head>
+      />
       <Library
         assetType={props.assetType}
         categories={props.categories}
