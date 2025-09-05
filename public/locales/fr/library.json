@@ -9,7 +9,7 @@
     "thumb-size-4": "Énorme",
     "turntables": "Tables tournantes au passage de la souris :",
     "turntables-preload": "Précharger les tables tournantes :",
-    "upcoming": "Spectacle à venir",
+    "upcoming": "Afficher ceux à venir",
     "upcoming-1": "Aucun",
     "upcoming-1d": "Cacher tout le contenu à venir",
     "upcoming-2": "Certaines, floues",
@@ -30,7 +30,7 @@
   "no-results-keyword": "Essayez d'utiliser un mot-clé différent",
   "non-square": "Cette ressource utilise des textures à rapport d'aspect non carré.",
   "results": "résultats",
-  "rigged": "Ce modèle est truqué et prêt à être animé.",
+  "rigged": "Ce modèle est « riggé » et prêt à être animé.",
   "search-en": "La recherche ne fonctionne qu'en anglais, désolé!",
   "sort": {
     "downloads": "Téléchargements",
