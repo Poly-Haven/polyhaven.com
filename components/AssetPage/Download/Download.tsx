@@ -31,8 +31,10 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import styles from './Download.module.scss'
 
-// Just to keep TS happy, this function exists in /public/download-js/download.js, which is loaded in _document.tsx
+// Just to keep TS happy, these functions/objects exist in /public/download-js/download.js, which is loaded in _document.tsx
 declare const startDownload
+declare const UAParser
+declare const downloadStatus
 
 const Download = ({ assetID, data, files, setPreview, patron, texelDensity, callback, vault, scheduleText }) => {
   const { t } = useTranslation('asset')
@@ -388,6 +390,39 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       })
   }
 
+  const waitForDownloadCompletion = async (downloadFn: () => Promise<void>) => {
+    // Check if we're using service worker for downloads
+    const ua = UAParser()
+    const inMemoryDownload =
+      !navigator.serviceWorker ||
+      (ua.browser.name == 'Edge' && ua.engine.name == 'EdgeHTML') ||
+      (ua.browser.name == 'Safari' && parseInt(ua.browser.version) < 16)
+
+    if (inMemoryDownload) {
+      // For in-memory downloads, the startDownload function already waits for completion
+      await downloadFn()
+    } else {
+      // For service worker downloads, monitor the download status
+      const initialActiveCount = downloadStatus.activeCount
+      await downloadFn()
+
+      // Wait for the download to start (activeCount to increase)
+      let attempts = 0
+      while (downloadStatus.activeCount <= initialActiveCount && attempts < 50) {
+        await new Promise((resolve) => setTimeout(resolve, 100))
+        attempts++
+      }
+
+      // Wait for the download to complete (activeCount to return to initial value or lower)
+      attempts = 0
+      while (downloadStatus.activeCount > initialActiveCount && attempts < 300) {
+        // 30 second timeout
+        await new Promise((resolve) => setTimeout(resolve, 100))
+        attempts++
+      }
+    }
+  }
+
   const downloadZip = async () => {
     if (busyDownloading) {
       return
@@ -435,16 +470,16 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
         }
       }
 
-      await startDownload(name, dlFiles)
+      // Wait for download completion by monitoring download status
+      await waitForDownloadCompletion(async () => {
+        await startDownload(name, dlFiles)
+      })
       await trackDownload()
     } catch (error) {
       console.error('Download failed:', error)
       setDownloadError(error.message || 'Download failed, unknown error. Please contact us if this continues.')
     } finally {
-      await new Promise((r) => setTimeout(r, 2000)).then((_) => {
-        // Purely for a visual indication that something is happening, and to prevent accidental double clicks.
-        setBusyDownloading(false)
-      })
+      setBusyDownloading(false)
     }
   }
 
