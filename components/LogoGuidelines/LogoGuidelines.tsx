@@ -49,7 +49,7 @@ const LogoGuidelines = () => {
       <div className={styles.buttonBox}>
         <Button
           text="Download Logo Kit"
-          href="https://u.polyhaven.org/1XR/Poly%20Haven%20Logo%20Kit.zip"
+          href="https://u.polyhaven.org/hK3/Poly%20Haven%20Logo%20Kit.zip"
           icon={<MdDownload />}
         />
       </div>
