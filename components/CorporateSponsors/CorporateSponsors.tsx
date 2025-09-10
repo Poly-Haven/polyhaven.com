@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import apiSWR from 'utils/apiSWR'
+
 import CorporateSponsorLogo from './CorporateSponsorLogo'
 import Spinner from 'components/UI/Spinner/Spinner'
-
-import apiSWR from 'utils/apiSWR'
 
 import { MdInfoOutline } from 'react-icons/md'
 
@@ -18,14 +18,14 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
       </div>
     )
 
-  const sortedKeys = Object.keys(data).sort((a, b) => data[a].name.localeCompare(data[b].name))
+  const sponsorKeys = Object.keys(data)
 
-  const diamondSponsors = sortedKeys.filter((s) => data[s].rank === 3)
-  const goldSponsors = sortedKeys.filter((s) => data[s].rank === 2)
+  const diamondSponsors = sponsorKeys.filter((s) => data[s].rank === 3)
+  const goldSponsors = sponsorKeys.filter((s) => data[s].rank === 2)
 
   let silverSponsors = []
   if (!home) {
-    silverSponsors = sortedKeys.filter((s) => data[s].rank === 1)
+    silverSponsors = sponsorKeys.filter((s) => data[s].rank === 1)
   }
 
   return (
@@ -33,11 +33,9 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
       <h2>
         {header}
         {!hideInfoBtn && (
-          (<Link href="/corporate">
-
+          <Link href="/corporate">
             <MdInfoOutline />
-
-          </Link>)
+          </Link>
         )}
       </h2>
       {diamondSponsors.length ? (
@@ -62,7 +60,7 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
         </div>
       ) : null}
     </div>
-  );
+  )
 }
 
 CorporateSponsors.defaultProps = {
