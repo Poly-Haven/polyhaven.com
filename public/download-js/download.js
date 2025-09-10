@@ -1,10 +1,16 @@
 const inMemoryDownload = (function () {
     const ua = UAParser();
-    return (
-        (!navigator.serviceWorker) ||
-        (ua.browser.name == 'Edge' && ua.engine.name == 'EdgeHTML') ||
-        (ua.browser.name == 'Safari')
-    );
+
+    // Test for actual service worker support and streaming
+    if (!navigator.serviceWorker) return true;
+
+    // Known problematic browsers
+    if (ua.browser.name == 'Edge' && ua.engine.name == 'EdgeHTML') return true;
+
+    // Safari versions before 16 have issues with streaming
+    if (ua.browser.name == 'Safari' && parseInt(ua.browser.version) < 16) return true;
+
+    return false;
 })();
 
 let downloadStatus = { activeCount: 0 };
