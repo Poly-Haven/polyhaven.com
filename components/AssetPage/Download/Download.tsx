@@ -45,6 +45,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   const [prefFmt, setFmt] = useState('exr')
   const [tempUUID, setTempUUID] = useState(uuid())
   const [isClient, setIsClient] = useState(false)
+  const [downloadError, setDownloadError] = useState(null)
 
   const [currentPatrons, setCurrentPatrons] = useState(0)
   const [targetPatrons, setTargetPatrons] = useState(0)
@@ -392,51 +393,59 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       return
     }
     setBusyDownloading(true)
-    let name = `${assetID}_${dlRes}`
-    let dlFiles = []
-    if (dlFmt !== 'zip') {
-      const fileInfo = files[dlFmt][dlRes][dlFmt]
-      name = urlBaseName(fileInfo.url)
-      dlFiles.push({
-        url: fileInfo.url,
-        size: fileInfo.size,
-        path: name,
-      })
-      if (fileInfo.include) {
-        for (const path of Object.keys(fileInfo.include)) {
-          dlFiles.push({
-            url: fileInfo.include[path].url,
-            size: fileInfo.include[path].size,
-            path: path,
-          })
-        }
-      }
-    } else {
-      for (const f of zipList.files) {
-        const basePath = threeDFormats.includes(f.fmt) ? '' : 'textures/'
-        const fileInfo = files[f.map][dlRes][f.fmt]
+    setDownloadError(null) // Clear any previous errors
+
+    try {
+      let name = `${assetID}_${dlRes}`
+      let dlFiles = []
+      if (dlFmt !== 'zip') {
+        const fileInfo = files[dlFmt][dlRes][dlFmt]
+        name = urlBaseName(fileInfo.url)
         dlFiles.push({
           url: fileInfo.url,
           size: fileInfo.size,
-          path: basePath + urlBaseName(fileInfo.url),
+          path: name,
         })
-        if (f.map === 'gltf') {
-          const binInfo = fileInfo.include[`${assetID}.bin`]
+        if (fileInfo.include) {
+          for (const path of Object.keys(fileInfo.include)) {
+            dlFiles.push({
+              url: fileInfo.include[path].url,
+              size: fileInfo.include[path].size,
+              path: path,
+            })
+          }
+        }
+      } else {
+        for (const f of zipList.files) {
+          const basePath = threeDFormats.includes(f.fmt) ? '' : 'textures/'
+          const fileInfo = files[f.map][dlRes][f.fmt]
           dlFiles.push({
-            url: binInfo.url,
-            size: binInfo.size,
-            path: basePath + urlBaseName(binInfo.url),
+            url: fileInfo.url,
+            size: fileInfo.size,
+            path: basePath + urlBaseName(fileInfo.url),
           })
+          if (f.map === 'gltf') {
+            const binInfo = fileInfo.include[`${assetID}.bin`]
+            dlFiles.push({
+              url: binInfo.url,
+              size: binInfo.size,
+              path: basePath + urlBaseName(binInfo.url),
+            })
+          }
         }
       }
-    }
-    startDownload(name, dlFiles)
 
-    await new Promise((r) => setTimeout(r, 2000)).then((_) => {
-      // Purely for a visual indication that something is happending, and to prevent accidental double clicks.
-      setBusyDownloading(false)
-    })
-    await trackDownload()
+      await startDownload(name, dlFiles)
+      await trackDownload()
+    } catch (error) {
+      console.error('Download failed:', error)
+      setDownloadError(error.message || 'Download failed, unknown error. Please contact us if this continues.')
+    } finally {
+      await new Promise((r) => setTimeout(r, 2000)).then((_) => {
+        // Purely for a visual indication that something is happening, and to prevent accidental double clicks.
+        setBusyDownloading(false)
+      })
+    }
   }
 
   return (
@@ -458,7 +467,14 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
           target="_blank"
           rel="noopener"
           className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
-          onClick={isHDRI ? trackDownload : downloadZip}
+          onClick={
+            isHDRI
+              ? (e) => {
+                  setDownloadError(null) // Clear any previous errors
+                  trackDownload()
+                }
+              : downloadZip
+          }
         >
           <MdFileDownload />
           <div>
@@ -473,6 +489,28 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
         </div>
       </div>
+
+      {downloadError && (
+        <div className={styles.downloadError}>
+          <p>{downloadError}</p>
+          <div className={styles.errorActions}>
+            <button
+              className={styles.retryButton}
+              onClick={() => {
+                setDownloadError(null)
+                if (!isHDRI) {
+                  downloadZip()
+                }
+              }}
+            >
+              Retry
+            </button>
+            <button className={styles.dismissError} onClick={() => setDownloadError(null)} aria-label="Dismiss error">
+              ×
+            </button>
+          </div>
+        </div>
+      )}
 
       {backplates.length > 0 ? (
         <div className={styles.backplatePreviews} onClick={toggleDlOptions}>

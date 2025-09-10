@@ -176,3 +176,61 @@
   @include flex(row, true, true);
   margin: 0 -0.5em;
 }
+
+.downloadError {
+  background: rgba($c-red, 0.1);
+  border: 1px solid rgba($c-red, 0.3);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 1rem 0 1rem;
+  position: relative;
+  color: $c-red-light;
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .errorActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .retryButton {
+    background: $c-red-light;
+    color: $c-text-bright;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      background: lighten($c-red-light, 8%);
+    }
+  }
+
+  .dismissError {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: $c-red-light;
+    cursor: pointer;
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    margin-left: auto;
+    @include transition();
+
+    &:hover {
+      background: rgba($c-red-light, 0.1);
+    }
+  }
+}

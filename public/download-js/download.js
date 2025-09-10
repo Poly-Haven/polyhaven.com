@@ -78,44 +78,49 @@ async function testDownload(name, files) {
 async function startDownload(name, files) {
     if (!inMemoryDownload) {
         console.log('using service worker for download...');
-        // prepare service worker
-        const swreg = await navigator.serviceWorker.register('/download-sw.js', { scope: '/__download__/' });
-        while (!swreg.active) {
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        console.log('service worker ready');
-        // prepare virtual URL
-        const url = window.location.origin
-            + '/__download__/'
-            + new Date().toISOString().slice(0, 19).replace(/[T\-:]/gi, '') + '/'
-            + name
-            + '.zip';
-        console.log('creating download ' + url);
-        console.log(JSON.stringify(files, null, 2));
-        // configure URL in service worker
-        await new Promise(function (resolve, reject) {
-            const channel = new MessageChannel();
-            channel.port1.addEventListener('message', (event) => {
-                if (event.data.result) {
-                    return resolve();
-                }
-                return reject(new Error('could not prepare download' + (event.data.message ? `: ${event.data.message}` : '')));
-            });
-            channel.port1.start();
-            if (!swreg.active) {
-                return reject(new Error('could not find active service worker'));
+        try {
+            // prepare service worker
+            const swreg = await navigator.serviceWorker.register('/download-sw.js', { scope: '/__download__/' });
+            while (!swreg.active) {
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
-            swreg.active.postMessage(
-                {
-                    command: 'create',
-                    data: { url, files },
-                },
-                [channel.port2]
-            );
-        });
-        // start download
-        console.log('starting download of ' + url + '...');
-        location.href = url;
+            console.log('service worker ready');
+            // prepare virtual URL
+            const url = window.location.origin
+                + '/__download__/'
+                + new Date().toISOString().slice(0, 19).replace(/[T\-:]/gi, '') + '/'
+                + name
+                + '.zip';
+            console.log('creating download ' + url);
+            console.log(JSON.stringify(files, null, 2));
+            // configure URL in service worker
+            await new Promise(function (resolve, reject) {
+                const channel = new MessageChannel();
+                channel.port1.addEventListener('message', (event) => {
+                    if (event.data.result) {
+                        return resolve();
+                    }
+                    return reject(new Error('could not prepare download' + (event.data.message ? `: ${event.data.message}` : '')));
+                });
+                channel.port1.start();
+                if (!swreg.active) {
+                    return reject(new Error('could not find active service worker'));
+                }
+                swreg.active.postMessage(
+                    {
+                        command: 'create',
+                        data: { url, files },
+                    },
+                    [channel.port2]
+                );
+            });
+            // start download
+            console.log('starting download of ' + url + '...');
+            location.href = url;
+        } catch (error) {
+            console.error('Service worker download failed:', error);
+            throw new Error(`Download failed: ${error.message || 'Unknown error, please try again or contact us.'}`);
+        }
     }
     else {
         console.log('using in memory assembly for download...');
@@ -143,11 +148,13 @@ async function startDownload(name, files) {
         } catch (error) {
             console.error(error);
             zip.error(error);
+            downloadStatus.activeCount -= 1;
+            throw new Error('Download failed. Please check your internet connection and try again.');
         }
         downloadStatus.activeCount -= 1;
         // propagate errors
         if (zip.outputError) {
-            throw zip.outputError;
+            throw new Error('ZIP creation failed: ' + (zip.outputError.message || 'Unknown error'));
         }
         // create blob
         let byteChunks = zip.outputBytes;
@@ -165,18 +172,23 @@ async function startDownload(name, files) {
         blob.lastModifiedDate = new Date();
         blob.name = name + '.zip';
         // start download
-        if (window.navigator.msSaveOrOpenBlob) {
-            console.log('starting download of blob...');
-            window.navigator.msSaveOrOpenBlob(blob, blob.name);
-        } else {
-            console.log('creating object URL...');
-            const url = URL.createObjectURL(blob);
-            console.log('starting download of ' + url + '...');
-            location.href = url;
-            setTimeout(() => {
-                console.log('revoking object URL...');
-                URL.revokeObjectURL(url);
-            }, 10000);
+        try {
+            if (window.navigator.msSaveOrOpenBlob) {
+                console.log('starting download of blob...');
+                window.navigator.msSaveOrOpenBlob(blob, blob.name);
+            } else {
+                console.log('creating object URL...');
+                const url = URL.createObjectURL(blob);
+                console.log('starting download of ' + url + '...');
+                location.href = url;
+                setTimeout(() => {
+                    console.log('revoking object URL...');
+                    URL.revokeObjectURL(url);
+                }, 10000);
+            }
+        } catch (error) {
+            console.error('Blob download failed:', error);
+            throw new Error('Download failed. Your browser may not support this download method.');
         }
     }
 }
