@@ -105,6 +105,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               top: `${videoOffset[1]}px`,
               position: 'relative',
               filter: `blur(${blurAmount}px)`,
+              objectPosition: vault.video_position || 'center',
             }}
             poster={`https://cdn.polyhaven.com/vaults/${vault.id}.png?width=1920&quality=95&sharpen=true`}
           >
@@ -123,8 +124,12 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               }
         }
       >
-        <div className={styles.gradientL} />
-        <div className={styles.gradientR} />
+        {vault.no_gradient ? null : (
+          <>
+            <div className={styles.gradientL} />
+            <div className={styles.gradientR} />
+          </>
+        )}
         <div className={styles.left}>
           <h2>{vault.name}</h2>
           <p>{vault.description}</p>
