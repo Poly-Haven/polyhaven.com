@@ -100,14 +100,14 @@
       @include absolute_cover;
       background: linear-gradient(195deg, transparent 50%, $c-background-darker 100%);
       opacity: 0.7;
-      @extend .noiseMask;
+      // @extend .noiseMask; // Uncomment to add noise texture
     }
 
     .gradientR {
       @include absolute_cover;
       background: linear-gradient(165deg, transparent 65%, $c-background-darker 100%);
       opacity: 0.6;
-      @extend .noiseMask;
+      // @extend .noiseMask; // Uncomment to add noise texture
     }
 
     .left {
