@@ -341,7 +341,7 @@
 }
 
 .renderCredit {
-  position: absolute;
+  position: absolute !important;
   bottom: 0;
   right: 0;
   padding: 0.2rem 0.4rem;
