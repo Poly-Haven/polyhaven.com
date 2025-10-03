@@ -111,6 +111,19 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
           >
             <source src={vault.video} type="video/mp4" />
           </video>
+
+          {vault.render_credit && (
+            <div className={styles.renderCredit}>
+              Render by{' '}
+              {vault.render_credit.link ? (
+                <a href={vault.render_credit.link} rel="noopener" target="_blank">
+                  {vault.render_credit.name}
+                </a>
+              ) : (
+                vault.render_credit.name
+              )}
+            </div>
+          )}
         </div>
       )}
       <div

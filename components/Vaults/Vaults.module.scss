@@ -340,6 +340,33 @@
   }
 }
 
+.renderCredit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.2rem 0.4rem;
+  border-top-left-radius: 0.3rem;
+  background: rgba($c-background-dark, 1);
+  font-size: 0.8rem;
+  opacity: 0.6;
+  z-index: 4;
+  @include transition;
+
+  &:hover {
+    opacity: 1;
+    @include transition;
+  }
+
+  @media screen and (max-width: 590px) {
+    display: none;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
 .row {
   @include flex(row, true, true);
   gap: 0.5em;
