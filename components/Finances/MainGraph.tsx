@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { getCurrency, catColor } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
@@ -13,7 +13,7 @@ import Switch from 'components/UI/Switch/Switch'
 
 import styles from './Finances.module.scss'
 
-const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, setMode }) => {
+const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
   const [stack, setStack] = useState(true)
 
   if (!data) return <Spinner />
@@ -127,6 +127,11 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
               right: 30,
               left: 0,
               bottom: 0,
+            }}
+            onClick={(data) => {
+              if (data && data.activeLabel) {
+                setMonth(data.activeLabel === monthState ? null : data.activeLabel)
+              }
             }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />

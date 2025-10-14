@@ -14,6 +14,7 @@ const Finances = () => {
   const [currency, setCurrency] = useState('USD')
   const [filter, setFilter] = useState([])
   const [mode, setMode] = useState('expense')
+  const [monthState, setMonth] = useState(null)
 
   let finances = null
   const { data, error } = apiSWR(`/finances`, { revalidateOnFocus: false })
@@ -66,6 +67,8 @@ const Finances = () => {
             setFilter={setFilter}
             mode={mode}
             setMode={setMode}
+            monthState={monthState}
+            setMonth={setMonth}
           />
         </div>
         <div className={styles.divider} />
@@ -78,6 +81,8 @@ const Finances = () => {
             setFilter={setFilter}
             mode={mode}
             setMode={setMode}
+            monthState={monthState}
+            setMonth={setMonth}
           />
         </div>
       </div>

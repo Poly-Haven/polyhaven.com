@@ -81,8 +81,7 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
   )
 }
 
-const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, setMode }) => {
-  const [monthState, setMonth] = useState(null)
+const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
   if (!data) return <Spinner />
 
   let mutableData = JSON.parse(JSON.stringify(data))

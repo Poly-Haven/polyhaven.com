@@ -137,7 +137,6 @@ export const categories = {
 }
 
 export function catColor(t) {
-  if (t === 'Ad Revenue') console.log(t)
   if (categories[t]) {
     return categories[t].color
   }
