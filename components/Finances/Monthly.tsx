@@ -235,7 +235,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
         ) : null}
         <li>
           Current Balance: {getCurrency(balance, currency, latestRates)}
-          <MdHelp data-tip="Actual balance of our combined accounts, ignoring interest earned." />
+          <MdHelp data-tip="Approximate balance of our combined accounts, ignoring interest earned." />
         </li>
         <li>
           Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
