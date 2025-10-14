@@ -13,7 +13,7 @@ import styles from './Finances.module.scss'
 const Finances = () => {
   const [currency, setCurrency] = useState('USD')
   const [filter, setFilter] = useState([])
-  const [mode, setMode] = useState('income')
+  const [mode, setMode] = useState('expense')
 
   let finances = null
   const { data, error } = apiSWR(`/finances`, { revalidateOnFocus: false })
