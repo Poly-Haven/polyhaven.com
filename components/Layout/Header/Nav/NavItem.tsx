@@ -2,12 +2,13 @@ import Link from 'next/link'
 
 import styles from './Nav.module.scss'
 
-const NavItem = ({ text, link, locale, compact, children }) => {
+const NavItem = ({ text, link, locale, compact, onMouseEnter, children }) => {
   return (
     <div
       className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''} ${
         children ? styles.navItemMenuFlag : ''
       }`}
+      onMouseEnter={onMouseEnter}
     >
       {link ? (
         locale ? (
@@ -24,7 +25,7 @@ const NavItem = ({ text, link, locale, compact, children }) => {
       )}
       {children ? <div className={styles.subNav}>{children}</div> : null}
     </div>
-  );
+  )
 }
 
 NavItem.defaultProps = {
@@ -32,6 +33,7 @@ NavItem.defaultProps = {
   link: null,
   locale: null,
   compact: false,
+  onMouseEnter: null,
 }
 
 export default NavItem

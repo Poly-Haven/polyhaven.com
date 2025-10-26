@@ -25,6 +25,7 @@ const Nav = () => {
   const [suggestedLocale, setSuggestedLocale] = useState()
   const [suggestLocale, setSuggestLocale] = useStoredState('suggestLocale', true)
   const [navHide, setToggle] = useState(true)
+  const [renderLocaleFlags, setRenderLocaleFlags] = useState(false)
 
   useEffect(() => {
     const fetchHeaders = async () => {
@@ -175,15 +176,22 @@ const Nav = () => {
             <MdClose title="Don't suggest a locale again" onClick={() => setSuggestLocale(false)} />
           </div>
         ) : null}
-        <NavItem compact={true} text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}>
-          {Object.keys(locales).map((l) => (
-            <NavItem
-              key={l}
-              text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />}
-              link={router.asPath}
-              locale={l}
-            />
-          ))}
+        <NavItem
+          compact={true}
+          text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}
+          onMouseEnter={() => setRenderLocaleFlags(true)}
+        >
+          {Object.keys(locales).map(
+            (l) =>
+              renderLocaleFlags && (
+                <NavItem
+                  key={l}
+                  text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />}
+                  link={router.asPath}
+                  locale={l}
+                />
+              )
+          )}
           <hr />
           <NavItem text="🤝 Help Translate!" link="/translate" />
         </NavItem>
