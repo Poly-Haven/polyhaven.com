@@ -1,6 +1,7 @@
 import { useTranslation, Trans } from 'next-i18next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import LazyLoad from 'react-lazy-load'
 
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
@@ -28,12 +29,16 @@ const footer = () => {
         <div className={styles.patronsScrollWrapper}>
           <div className={styles.patronsScroll}>
             <div className={styles.patronsSetA}>
-              <PatronList />
+              <LazyLoad offset={400}>
+                <PatronList />
+              </LazyLoad>
             </div>
           </div>
         </div>
       </div>
-      <CorporateSponsors header={t('also-supported-by')} />
+      <LazyLoad offset={400}>
+        <CorporateSponsors header={t('also-supported-by')} />
+      </LazyLoad>
       <div className={styles.buttonWrapper}>
         <Button text={t('footer.join-ranks')} href="https://www.patreon.com/polyhaven/overview" />
       </div>
