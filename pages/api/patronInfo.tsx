@@ -42,7 +42,7 @@ const Route = async (req, res) => {
     const now = Date.now()
     const lastCharge = Date.parse(returnData['last_charge_date'])
     const daysAgo = (now - lastCharge) / 1000 / 60 / 60 / 24
-    if (daysAgo <= 31) {
+    if (daysAgo <= 31 || (returnData['yearly_pledge'] && daysAgo <= 365)) {
       patronIsValid = true
     }
   }
