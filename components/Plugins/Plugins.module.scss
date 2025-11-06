@@ -50,11 +50,6 @@
   margin: 1em;
   color: $c-text-light;
 
-  &:hover {
-    background: $c-background-lighter;
-    @include transition;
-  }
-
   svg {
     width: calc(150px - 2em);
     height: calc(150px - 2em);

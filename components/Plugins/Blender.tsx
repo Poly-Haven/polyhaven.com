@@ -17,12 +17,7 @@ import buttonStyles from 'components/UI/Button/Button.module.scss'
 const CallToAction = ({ hasAccess }) => {
   return (
     <div className={styles.row}>
-      <a
-        href={
-          hasAccess
-            ? 'https://www.patreon.com/posts/70974704'
-            : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111'
-        }
+      <div
         className={`${styles.purchaseOption} ${
           hasAccess ? styles.ownedPurchaseOption : styles.recommendedPurchaseOption
         }`}
@@ -35,23 +30,23 @@ const CallToAction = ({ hasAccess }) => {
         <p>
           Includes other rewards
           <br />
-          Cancel any time
+          Helps unlock <Link href="/vaults">Vaults</Link>
         </p>
         {hasAccess ? (
-          <div className={`${buttonStyles.button} ${buttonStyles.pink}`}>
+          <a href="https://www.patreon.com/posts/70974704" className={`${buttonStyles.button} ${buttonStyles.pink}`}>
             <div className={buttonStyles.inner}>Download</div>
-          </div>
+          </a>
         ) : (
-          <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
+          <a
+            href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111"
+            className={`${buttonStyles.button} ${buttonStyles.accent}`}
+          >
             <div className={buttonStyles.inner}>Sign up</div>
-          </div>
+          </a>
         )}
-      </a>
+      </div>
       <p className={styles.callToAction}>or</p>
-      <a
-        href="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
-        className={styles.purchaseOption}
-      >
+      <div className={styles.purchaseOption}>
         <BlenderMarket />
         <h3>Superhive</h3>
         <p>
@@ -62,10 +57,13 @@ const CallToAction = ({ hasAccess }) => {
           <br />
           Free updates forever
         </p>
-        <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
+        <a
+          href="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
+          className={`${buttonStyles.button} ${buttonStyles.accent}`}
+        >
           <div className={buttonStyles.inner}>Purchase</div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   )
 }
