@@ -55,7 +55,7 @@ const CallToAction = ({ hasAccess }) => {
         <BlenderMarket />
         <h3>Superhive</h3>
         <p>
-          <strong>$39</strong>
+          <strong>$69</strong>
         </p>
         <p>
           Once-off purchase
