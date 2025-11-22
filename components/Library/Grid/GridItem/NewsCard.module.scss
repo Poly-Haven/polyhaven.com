@@ -6,6 +6,34 @@
   @include flex(column, true, true);
   background: $c-background-lightish;
   border: 1px solid $c-background-light;
+
+  a {
+    position: relative;
+
+    .flag {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: auto;
+      pointer-events: none;
+      z-index: 11;
+    }
+
+    .flagAnim {
+      animation: flagSpawn 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform-origin: 33% 33%;
+    }
+
+    .explosion {
+      position: absolute;
+      top: 0;
+      left: 0;
+      rotate: 133deg;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      z-index: 10;
+    }
+  }
 }
 
 .topText,
@@ -57,4 +85,19 @@
 
 .spacer {
   flex-grow: 1;
+}
+
+@keyframes flagSpawn {
+  0% {
+    top: 100vh;
+    left: 100vw;
+    transform: rotate(0deg) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    transform: rotate(1080deg) scale(1);
+    opacity: 1;
+  }
 }
