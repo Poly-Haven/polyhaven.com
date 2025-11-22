@@ -31,10 +31,6 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
     localStorage.setItem(keyHide, JSON.stringify(true))
   }
 
-  if (hide && !important) {
-    return null
-  }
-
   let flagImg = null
   const now = new Date().toISOString()
   for (const flag of flags || []) {
@@ -63,6 +59,10 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
       return () => clearTimeout(timer)
     }
   }, [flagImg, pause])
+
+  if (hide && !important) {
+    return null
+  }
 
   return (
     <div className={styles.wrapper}>
