@@ -30,7 +30,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "lodash.debounce": "^4.0.8",
     "markdown-to-jsx": "^7.2.1",
-    "next": "^13.4.7",
+    "next": "14.2.35",
     "next-build-id": "^3.0.0",
     "next-i18next": "^14.0.0",
     "prettier": "^2.8.8",
