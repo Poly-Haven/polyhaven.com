@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import Link from 'next/link'
 
@@ -6,11 +6,12 @@ import { MdPause, MdPlayArrow, MdClose } from 'react-icons/md'
 
 import styles from './NewsCard.module.scss'
 
-const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile }) => {
+const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile, important, flags }) => {
   const [pause, setPause] = useState(false)
   const keyPause = `newsPause__${newsKey}`
   const [hide, setHide] = useState(false)
   const keyHide = `newsHide__${newsKey}`
+  const explosionVideoRef = useRef(null)
 
   useEffect(() => {
     const storedPause = JSON.parse(localStorage.getItem(keyPause))
@@ -30,7 +31,36 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
     localStorage.setItem(keyHide, JSON.stringify(true))
   }
 
-  if (hide) {
+  let flagImg = null
+  const now = new Date().toISOString()
+  for (const flag of flags || []) {
+    if (flag.from <= now && flag.to >= now) {
+      flagImg = flag.img
+      break
+    }
+  }
+
+  // Trigger explosion when flag animation completes (after 2.5s)
+  useEffect(() => {
+    if (flagImg && explosionVideoRef.current) {
+      const timer = setTimeout(async () => {
+        const video = explosionVideoRef.current
+        if (video) {
+          try {
+            video.currentTime = 0 // Reset to beginning
+            video.style.opacity = '1' // Make visible
+            await video.play()
+          } catch (error) {
+            console.error('Failed to play explosion video:', error)
+          }
+        }
+      }, 2500) // Match the flagSpawn animation duration
+
+      return () => clearTimeout(timer)
+    }
+  }, [flagImg, pause])
+
+  if (hide && !important) {
     return null
   }
 
@@ -48,7 +78,7 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
             <MdPause className={styles.pause} onClick={togglePause} />
           )
         ) : null}
-        <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />
+        {!important && <MdClose className={styles.pause} onClick={hideNews} title="Dismiss this news card" />}
       </div>
       <Link href={link} className={styles.img} target="_blank">
         {(pause || isMobile) && pausedImg ? (
@@ -74,6 +104,28 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
           </video>
         ) : (
           <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384&quality=95` : img} />
+        )}
+        {flagImg && <img src={flagImg} className={`${styles.flag} ${!pause && !isMobile ? styles.flagAnim : ''}`} />}
+        {flagImg && !pause && !isMobile && (
+          <video
+            ref={explosionVideoRef}
+            width="400"
+            autoPlay={false}
+            loop={false}
+            disablePictureInPicture={true}
+            disableRemotePlayback={true}
+            muted={true}
+            className={styles.explosion}
+            style={{ opacity: 0, pointerEvents: 'none' }}
+            onEnded={() => {
+              // Hide the video when it finishes playing
+              if (explosionVideoRef.current) {
+                explosionVideoRef.current.style.opacity = '0'
+              }
+            }}
+          >
+            <source src={'https://u.polyhaven.org/HIm/explosion.webm'} type="video/webm" />
+          </video>
         )}
       </Link>
       <Link href={link} className={styles.bottomText}>

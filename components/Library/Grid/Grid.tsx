@@ -219,6 +219,13 @@ const Grid = (props) => {
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
   useEffect(() => {
     if (newsData && !news) {
+      // If any of the news items are marked as important, only show those (randomly select one if multiple),
+      // otherwise randomly select from all available news items.
+      const importantNews = newsData.filter((n) => n.important)
+      if (importantNews.length) {
+        setNews(randomArraySelection(importantNews))
+        return
+      }
       setNews(randomArraySelection(newsData))
     }
   }, [newsData])
@@ -481,6 +488,8 @@ const Grid = (props) => {
                 bottomText={news.text_bottom}
                 link={news.link}
                 isMobile={width <= 810}
+                important={news.important}
+                flags={news.flags}
               />
             ) : null}
             {sortedKeys.map((asset) => {
