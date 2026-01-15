@@ -31,10 +31,24 @@ const RelativeCat = ({ data, type, name }: { data: DataSet; type: string; name: 
     models: 'rgba(161, 208, 77, 0.2)',
   }
 
+  let maxX = 0
+  let maxY = 0
+  let minY = 999999999999
   const graphData = Object.entries(data[type]).map((x) => {
+    maxX = Math.max(maxX, x[1]['count'])
+    maxY = Math.max(maxY, x[1]['avg'])
+    minY = Math.min(minY, x[1]['avg'])
     // @ts-ignore ...x[1] Spread types may only be created from object types.
     return { ...x[1], cat: x[0], type: type }
   })
+
+  const arrayRange = (start, stop, step) => {
+    step = step || 1
+    return Array.from({ length: (stop - start) / step + 1 }, (value, index) => start + index * step)
+  }
+
+  const roundToNearestMultipleOfTen = (num) => Math.round(num / 10) * 10
+  const floorToNearestMultipleOfTen = (num) => Math.floor(num / 10) * 10
 
   return (
     <div className={styles.graphSection}>
@@ -45,7 +59,13 @@ const RelativeCat = ({ data, type, name }: { data: DataSet; type: string; name: 
         <ResponsiveContainer>
           <ScatterChart data={graphData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
-            <XAxis type="number" dataKey="count" name="Published assets" />
+            <XAxis
+              type="number"
+              dataKey="count"
+              name="Published assets"
+              scale="sqrt"
+              ticks={arrayRange(0, maxX, roundToNearestMultipleOfTen(Math.floor(maxX / 5)))}
+            />
             <YAxis type="number" dataKey="avg" name="Avg downloads/day" />
             <ZAxis dataKey="cat" name="Category" />
 

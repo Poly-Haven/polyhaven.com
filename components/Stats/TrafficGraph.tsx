@@ -24,7 +24,7 @@ interface AssetDates {
 }
 
 const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates }) => {
-  const [dataType, setdataType] = useState('uniques')
+  const [dataType, setdataType] = useState('bytes')
 
   let graphData = []
   let days = []
@@ -100,12 +100,12 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
   }
 
   const dataTypes = {
-    uniques: {
-      label: 'Unique Users',
-      tooltip: 'The number of users visiting the whole site.',
+    bytes: {
+      label: 'Bandwidth',
+      tooltip: 'The number of gigabytes downloaded from the site.',
       scale: 'linear',
-      color: 'rgb(190, 111, 255)',
-      formatter: (value) => Math.round(value),
+      color: 'rgb(243, 130, 55)',
+      formatter: (value) => `${Math.round(value / 1024 / 1024 / 1024)} GB`,
     },
     requests: {
       label: 'Requests',
@@ -120,13 +120,6 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       scale: 'linear',
       color: 'rgb(65, 187, 217)',
       formatter: (value) => Math.round(value),
-    },
-    bytes: {
-      label: 'Bandwidth',
-      tooltip: 'The number of gigabytes downloaded from the site.',
-      scale: 'linear',
-      color: 'rgb(243, 130, 55)',
-      formatter: (value) => `${Math.round(value / 1024 / 1024 / 1024)} GB`,
     },
     bytesPerUser: {
       label: 'Bandwidth per User',
@@ -149,6 +142,13 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       color: 'rgb(161, 208, 77)',
       formatter: (value) => Math.round(value),
     },
+    threats: {
+      label: 'Threats',
+      tooltip: '(Log scale) Requests that Cloudflare determines are coming from spam bots or malicious sources.',
+      scale: 'log',
+      color: 'rgb(249, 104, 84)',
+      formatter: (value) => Math.round(value),
+    },
     pageViews: {
       label: (
         <>
@@ -161,11 +161,16 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       color: 'rgb(242, 191, 56)',
       formatter: (value) => Math.round(value),
     },
-    threats: {
-      label: 'Threats',
-      tooltip: '(Log scale) Requests that Cloudflare determines are coming from spam bots or malicious sources.',
-      scale: 'log',
-      color: 'rgb(249, 104, 84)',
+    uniques: {
+      label: (
+        <>
+          Unique Users <MdWarning />
+        </>
+      ),
+      tooltip:
+        "The number of users visiting the whole site. As with page views, Cloudflare seems to get confused about this, so it's not very reliable.",
+      scale: 'linear',
+      color: 'rgb(190, 111, 255)',
       formatter: (value) => Math.round(value),
     },
   }
