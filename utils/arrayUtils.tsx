@@ -10,6 +10,34 @@ export function shuffleArray(array) {
   return array
 }
 
+export const randomWeightSelection = (items, weights) => {
+  if (!items || !weights || items.length === 0 || weights.length === 0) {
+    throw new Error('Items and weights arrays must be non-empty')
+  }
+
+  if (items.length !== weights.length) {
+    throw new Error('Items and weights arrays must have the same length')
+  }
+
+  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0)
+
+  if (totalWeight <= 0) {
+    throw new Error('Total weight must be greater than 0')
+  }
+
+  const random = Math.random() * totalWeight
+
+  let cumulativeWeight = 0
+  for (let i = 0; i < items.length; i++) {
+    cumulativeWeight += weights[i]
+    if (random < cumulativeWeight) {
+      return items[i]
+    }
+  }
+
+  return items[items.length - 1]
+}
+
 export function sortObjByValue(obj) {
   const sortedKeys = Object.keys(obj).sort(function (a, b) {
     return obj[b] - obj[a]

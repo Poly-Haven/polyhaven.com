@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
-import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
+import { randomWeightSelection } from 'utils/arrayUtils'
 
 import { MdPause, MdPlayArrow, MdClose } from 'react-icons/md'
 
@@ -142,14 +142,25 @@ const NewsCard = ({ isMobile }) => {
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
   useEffect(() => {
     if (newsData && !news) {
-      // If any of the news items are marked as important, only show those (randomly select one if multiple),
-      // otherwise randomly select from all available news items.
-      const importantNews = newsData.filter((n) => n.important)
-      if (importantNews.length) {
-        setNews(randomArraySelection(importantNews))
-        return
+      // Remove any items that are hidden
+      let availableNews = newsData.filter((n) => {
+        {
+          if (n.important) {
+            return true
+          }
+          const storedHide = JSON.parse(localStorage.getItem(`newsHide__${n.key}`))
+          return !(storedHide !== null ? storedHide : false)
+        }
+      })
+
+      // Build weights array
+      let weights = []
+      for (const n of availableNews) {
+        weights.push(n.weight || 1)
       }
-      setNews(randomArraySelection(newsData))
+      if (availableNews.length) {
+        setNews(randomWeightSelection(availableNews, weights))
+      }
     }
   }, [newsData])
 
