@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
-
 import Link from 'next/link'
+import apiSWR from 'utils/apiSWR'
+import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
 
 import { MdPause, MdPlayArrow, MdClose } from 'react-icons/md'
 
 import styles from './NewsCard.module.scss'
 
-const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile, important, flags }) => {
+const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile, important, flags }) => {
   const [pause, setPause] = useState(false)
   const keyPause = `newsPause__${newsKey}`
   const [hide, setHide] = useState(false)
@@ -132,6 +133,42 @@ const NewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile
         {bottomText}
       </Link>
     </div>
+  )
+}
+
+const NewsCard = ({ isMobile }) => {
+  const [news, setNews] = useState(null)
+
+  const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
+  useEffect(() => {
+    if (newsData && !news) {
+      // If any of the news items are marked as important, only show those (randomly select one if multiple),
+      // otherwise randomly select from all available news items.
+      const importantNews = newsData.filter((n) => n.important)
+      if (importantNews.length) {
+        setNews(randomArraySelection(importantNews))
+        return
+      }
+      setNews(randomArraySelection(newsData))
+    }
+  }, [newsData])
+
+  if (!news) {
+    return null
+  }
+
+  return (
+    <DisplayNewsCard
+      newsKey={news.key}
+      topText={news.text_top}
+      img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
+      pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null}
+      bottomText={news.text_bottom}
+      link={news.link}
+      isMobile={isMobile}
+      important={news.important}
+      flags={news.flags}
+    />
   )
 }
 

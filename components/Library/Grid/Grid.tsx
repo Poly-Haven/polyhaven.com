@@ -10,7 +10,7 @@ import { MdWhatshot, MdEvent, MdDownload, MdStar, MdSortByAlpha, MdShuffle, MdSe
 import useDivSize from 'hooks/useDivSize'
 import { weightedDownloadsPerDay, downloadsPerDay } from 'utils/dateUtils'
 import { titleCase } from 'utils/stringUtils'
-import { randomArraySelection, shuffleArray } from 'utils/arrayUtils'
+import { shuffleArray } from 'utils/arrayUtils'
 import { assetTypeName } from 'utils/assetTypeName'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
@@ -33,7 +33,6 @@ const Grid = (props) => {
   const { t } = useTranslation('library')
   const optionsRef = useRef(null)
   const { earlyAccess } = useUserPatron()
-  const [news, setNews] = useState(null)
   const [delay, setDelay] = useState(false)
   const { locale } = useRouter()
 
@@ -216,20 +215,6 @@ const Grid = (props) => {
     data = { ...data, ...publicData }
   }
 
-  const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
-  useEffect(() => {
-    if (newsData && !news) {
-      // If any of the news items are marked as important, only show those (randomly select one if multiple),
-      // otherwise randomly select from all available news items.
-      const importantNews = newsData.filter((n) => n.important)
-      if (importantNews.length) {
-        setNews(randomArraySelection(importantNews))
-        return
-      }
-      setNews(randomArraySelection(newsData))
-    }
-  }, [newsData])
-
   if (data) {
     sortedKeys = sortBy[props.sort](data)
   } else {
@@ -334,41 +319,6 @@ const Grid = (props) => {
       tooltip: t('library:sort.random-d'),
       icon: <MdShuffle />,
     },
-  }
-
-  const adBreakIndex = {
-    all: {
-      small: 12,
-      medium: 8,
-      large: 6,
-      huge: 4,
-    },
-    hdris: {
-      small: 12,
-      medium: 8,
-      large: 6,
-      huge: 4,
-    },
-    textures: {
-      small: 14,
-      medium: 10,
-      large: 8,
-      huge: 6,
-    },
-    models: {
-      small: 12,
-      medium: 8,
-      large: 6,
-      huge: 4,
-    },
-  }
-
-  let adBreak = adBreakIndex[props.assetType][thumbSize]
-  if (news) {
-    adBreak--
-    if (thumbSize === 'small' || (thumbSize === 'medium' && props.assetType === 'textures')) {
-      adBreak--
-    }
   }
 
   return (
@@ -477,21 +427,7 @@ const Grid = (props) => {
       {sortedKeys.length ? (
         <>
           <div className={styles.grid}>
-            {news && !props.vault && !props.collection ? (
-              <NewsCard
-                newsKey={news.key}
-                topText={news.text_top}
-                img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
-                pausedImg={
-                  news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null
-                }
-                bottomText={news.text_bottom}
-                link={news.link}
-                isMobile={width <= 810}
-                important={news.important}
-                flags={news.flags}
-              />
-            ) : null}
+            {!props.vault && !props.collection ? <NewsCard isMobile={width <= 810} /> : null}
             {sortedKeys.map((asset) => {
               return (
                 <>
