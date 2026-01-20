@@ -10,10 +10,8 @@ import Loader from 'components/UI/Loader/Loader'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
 import Button from 'components/UI/Button/Button'
-import CopyCode from 'components/UI/CopyCode/CopyCode'
 
 import styles from './RewardInfo.module.scss'
-import btnStyles from 'components/UI/Button/Button.module.scss'
 
 const OfflineAccess = ({ uuid, patron }) => {
   const [email, setEmail] = useState('')
@@ -48,35 +46,8 @@ const OfflineAccess = ({ uuid, patron }) => {
   return (
     <div>
       <h1>Blender Add-on</h1>
-      {/* TODO localize */}
-      <p>To download our Blender add-on, simply follow these steps:</p>
-      {patron.access_token ? (
-        <p>
-          <strong>Step 1:</strong> <s>Create your access token:</s> ✅
-        </p>
-      ) : (
-        <div className={styles.row}>
-          <p>
-            <strong>Step 1:</strong> Create your access token:
-          </p>
-          <div className={`${btnStyles.button} ${btnStyles.accent}`}>
-            <div className={btnStyles.inner}>Create Access Token</div>
-          </div>
-        </div>
-      )}
-      <p>
-        <strong>Step 2:</strong> In your Blender Preferences, add our Extension Repository and paste your access token.
-      </p>
-      {patron.access_token && (
-        <>
-          <p>
-            Extension Repository URL: <CopyCode text="https://api.polyhaven.com/v2/extensions" />
-          </p>
-          <p>
-            Your Authentication Access Token: <CopyCode display="Copy" text={patron.access_token} />
-          </p>
-        </>
-      )}
+      <p>Download our Blender add-on from the attachments at the bottom of this post on Patreon:</p>
+      <Button text="Download Add-on" href="https://www.patreon.com/posts/70974704" />
 
       <h1>{t('account:rewards.offline-access.title')}</h1>
 
