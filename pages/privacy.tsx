@@ -39,6 +39,32 @@ const PrivacyPage = () => {
           the <strong>Footer Credit</strong> visibility.
         </p>
 
+        <h2>Google Account Login (Firebase Authentication)</h2>
+        <p>
+          We allow users to create an account and log in using their Google account through Firebase Authentication.
+          When you choose to sign in with Google, we receive limited profile information provided by Google.
+        </p>
+        <p>
+          <strong>Data accessed:</strong> This includes your email address, display name, profile photo (if available),
+          and a unique Google account identifier.
+        </p>
+        <p>
+          <strong>How we use this data:</strong> This information is used solely to authenticate you, create and manage
+          your user account, and associate uploaded or shared files with your account.
+        </p>
+        <p>
+          <strong>Storage and retention:</strong> This data is stored securely within our Firebase project and is
+          retained only for as long as your account remains active.
+        </p>
+        <p>
+          <strong>Data sharing:</strong> We do not sell, rent, or share Google user data with third parties, except
+          where necessary to operate the service (for example, Firebase authentication and hosting infrastructure).
+        </p>
+        <p>
+          <strong>Data deletion:</strong> You may request deletion of your account and associated data at any time. Once
+          deleted, all Google account data associated with your account is permanently removed from our systems.
+        </p>
+
         <hr />
 
         <p>Other than what's mentioned above, Poly Haven does not store any user data or cookies.</p>
