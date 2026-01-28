@@ -22,31 +22,19 @@ const UserRenders = ({ assetID }) => {
   )
 
   const { data, error } = apiSWR(`/gallery?assetID=${assetID}`, { revalidateOnFocus: false })
-  if (error) {
+  if (error || !data) {
     return null
-  } else if (!data) {
-    return (
-      <div className={styles.userRenders}>
-        {titleRowJsx}
-        <Spinner />
-      </div>
-    )
+  }
+
+  if (data.length === 0) {
+    // Hide the whole section if there are no user renders - much of the spam we deal with comes from this empty section
+    return null
   }
 
   return (
     <div className={styles.userRenders}>
       {titleRowJsx}
-      {data.length ? (
-        <Gallery data={data} assetPage={true} />
-      ) : (
-        <p>
-          <Trans
-            i18nKey="asset:no-renders"
-            t={t}
-            components={{ lnk: <a href={`/gallery-submit?asset=${assetID}`} /> }}
-          />
-        </p>
-      )}
+      <Gallery data={data} assetPage={true} />
     </div>
   )
 }
