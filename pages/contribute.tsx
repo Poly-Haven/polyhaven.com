@@ -56,6 +56,14 @@ const Contribute = ({ authors }) => {
         </p>
 
         <p>
+          We strictly do not allow the use of any generative AI tools to be used in the process of creating your asset.{' '}
+          <a href="https://blog.polyhaven.com/ai-and-poly-haven/" target="_blank">
+            Here's why
+          </a>
+          .
+        </p>
+
+        <p>
           Once your asset is approved, you'll be signing a legal agreement to confirm all of this and providing proof of
           authorship.
         </p>
@@ -92,10 +100,7 @@ const Contribute = ({ authors }) => {
           </li>
           <li>
             If you'd like to make our lives easier and get your asset published more quickly, please check out our{' '}
-            <a href="https://docs.polyhaven.com/en/technical-standards/models">
-              technical standards document
-            </a>
-            .
+            <a href="https://docs.polyhaven.com/en/technical-standards/models">technical standards document</a>.
           </li>
         </ul>
 
