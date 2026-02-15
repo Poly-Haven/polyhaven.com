@@ -29,21 +29,47 @@ const Nav = () => {
 
   useEffect(() => {
     const fetchHeaders = async () => {
-      await fetch(`/api/reqHeaders`, { method: 'POST' })
-        .then((res) => res.json())
-        .then((resdata) => {
-          const reqLocales = resdata['accept-language'].split(',').map((l) => l.split(';')[0])
-          for (const locale of reqLocales) {
-            if (locales[locale]) {
-              // This is the first requested locale that we support
-              if (router.locale !== locale) {
-                console.log(`Suggesting locale "${locale}" based on request headers`)
-                setSuggestedLocale(locale)
-              }
-              break
+      const cachedHeaderKey = 'acceptLanguage'
+      let acceptLanguage = null
+
+      try {
+        acceptLanguage = localStorage.getItem(cachedHeaderKey)
+      } catch (error) {
+        console.warn('Unable to read cached accept-language header', error)
+      }
+
+      if (!acceptLanguage) {
+        try {
+          const response = await fetch('/api/reqHeaders', { method: 'POST' })
+          const resdata = await response.json()
+          acceptLanguage = resdata?.['accept-language']
+          if (acceptLanguage) {
+            try {
+              localStorage.setItem(cachedHeaderKey, acceptLanguage)
+            } catch (error) {
+              console.warn('Unable to cache accept-language header', error)
             }
           }
-        })
+        } catch (error) {
+          console.warn('Unable to fetch request headers', error)
+        }
+      }
+
+      if (!acceptLanguage) {
+        return
+      }
+
+      const reqLocales = acceptLanguage.split(',').map((l) => l.split(';')[0])
+      for (const locale of reqLocales) {
+        if (locales[locale]) {
+          // This is the first requested locale that we support
+          if (router.locale !== locale) {
+            console.log(`Suggesting locale "${locale}" based on request headers`)
+            setSuggestedLocale(locale)
+          }
+          break
+        }
+      }
     }
     if (suggestLocale) {
       fetchHeaders()
