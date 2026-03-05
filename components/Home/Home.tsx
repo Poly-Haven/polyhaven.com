@@ -41,8 +41,8 @@ const Home = () => {
             </Link>
             <div className={styles.text}>
               <h2>{tc('HDRIs')}</h2>
-              <p>{t('types-hdri')}</p>
-              <Button text={t('types-hdri-b')} href="/hdris" color="blue" />
+              <p>{t('home:types-hdri')}</p>
+              <Button text={t('home:types-hdri-b')} href="/hdris" color="blue" />
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
@@ -57,8 +57,8 @@ const Home = () => {
             </Link>
             <div className={styles.text}>
               <h2>{tc('Textures')}</h2>
-              <p>{t('types-tex')}</p>
-              <Button text={t('types-tex-b')} href="/textures" color="orange" />
+              <p>{t('home:types-tex')}</p>
+              <Button text={t('home:types-tex-b')} href="/textures" color="orange" />
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
@@ -73,8 +73,8 @@ const Home = () => {
             </Link>
             <div className={styles.text}>
               <h2>{tc('Models')}</h2>
-              <p>{t('types-mod')}</p>
-              <Button text={t('types-mod-b')} href="/models" color="green" />
+              <p>{t('home:types-mod')}</p>
+              <Button text={t('home:types-mod-b')} href="/models" color="green" />
             </div>
           </div>
         </div>
@@ -85,10 +85,10 @@ const Home = () => {
         <div className={styles.section}>
           <div className={styles.subSection}>
             <div className={styles.text}>
-              <h2>{t('s1t')}</h2>
+              <h2>{t('home:s1t')}</h2>
               <p>
                 <Trans
-                  i18nKey="s1p1"
+                  i18nKey="home:s1p1"
                   t={t}
                   components={{
                     lnk: <LinkText href="/license" />,
@@ -96,7 +96,7 @@ const Home = () => {
                   }}
                 />
               </p>
-              <p>{t('s1p2')}</p>
+              <p>{t('home:s1p2')}</p>
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.hideMobileHalf}`} />
@@ -108,18 +108,18 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.hideMobileHalf}`} />
           <div className={styles.subSection}>
             <div className={styles.text}>
-              <h2>{t('s2t')}</h2>
-              <p>{t('s2p1')}</p>
+              <h2>{t('home:s2t')}</h2>
+              <p>{t('home:s2p1')}</p>
               <p>
                 <Trans
-                  i18nKey="s2p2"
+                  i18nKey="home:s2p2"
                   t={t}
                   components={{
                     strong: <strong />,
                   }}
                 />
               </p>
-              <p>{t('s2p3')}</p>
+              <p>{t('home:s2p3')}</p>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ const Home = () => {
           <div className={styles.subSection}>
             <div>
               <h2>
-                {t('s3t')} <Heart color="#F96854" />
+                {t('home:s3t')} <Heart color="#F96854" />
               </h2>
               <p>
                 Thanks to your donations, we can work sustainably on growing our library of assets and improving our
@@ -139,17 +139,17 @@ const Home = () => {
             </div>
           </div>
           <div className={styles.subSection}>
-            <Button text={'🚀 ' + t('s3b1')} href="https://www.patreon.com/polyhaven/overview" />
-            <Button text={tc('nav.finances')} href="/finance-reports" color="hollow" />
+            <Button text={'🚀 ' + t('home:s3b1')} href="https://www.patreon.com/polyhaven/overview" />
+            <Button text={tc('home:nav.finances')} href="/finance-reports" color="hollow" />
           </div>
         </div>
         <div className={styles.newestPatrons}>
-          <h4>{t('s4')}</h4>
+          <h4>{t('home:s4')}</h4>
           <LatestPatrons />
           <div className={styles.fade} />
         </div>
         <div className={styles.newestPatrons} style={{ marginTop: '0' }}>
-          <h4>{t('s4p2')}</h4>
+          <h4>{t('home:s4p2')}</h4>
           <LatestPatrons mode="top" />
           <div className={styles.fade} />
         </div>
@@ -160,16 +160,16 @@ const Home = () => {
 
       <div className={`${styles.sectionWrapper} ${styles.sectionBrowse}`}>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseAll}`}>
-          <Button text={t('s5b1')} href="/all" />
+          <Button text={t('home:s5b1')} href="/all" />
         </div>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseHDRIs}`}>
-          <Button text={t('s5b2')} href="/hdris" color="blue" />
+          <Button text={t('home:s5b2')} href="/hdris" color="blue" />
         </div>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseTextures}`}>
-          <Button text={t('s5b3')} href="/textures" color="orange" />
+          <Button text={t('home:s5b3')} href="/textures" color="orange" />
         </div>
         <div className={`${styles.btnBrowse} ${styles.btnBrowseModels}`}>
-          <Button text={t('s5b4')} href="/models" color="green" />
+          <Button text={t('home:s5b4')} href="/models" color="green" />
         </div>
         <div className={styles.hoverBrowseAll} />
         <div className={styles.hoverBrowseHDRIs} />
@@ -205,12 +205,12 @@ const Home = () => {
         <div className={styles.section}>
           <div className={styles.subSection}>
             <div className={styles.text}>
-              <h2 style={{ textAlign: 'center' }}>{t('s6t')}</h2>
-              <p>{t('s6p1')}</p>
-              <p>{t('s6p2')}</p>
+              <h2 style={{ textAlign: 'center' }}>{t('home:s6t')}</h2>
+              <p>{t('home:s6p1')}</p>
+              <p>{t('home:s6p2')}</p>
               <p>
                 <Trans
-                  i18nKey="s6p3"
+                  i18nKey="home:s6p3"
                   t={t}
                   components={{
                     c1: <span className="text-blue" />,
@@ -222,7 +222,7 @@ const Home = () => {
               </p>
               <p>
                 <Trans
-                  i18nKey="s6p4"
+                  i18nKey="home:s6p4"
                   t={t}
                   components={{
                     lnk: <a href="https://www.patreon.com/polyhaven/overview" />,
@@ -303,14 +303,14 @@ const Home = () => {
       </div>
 
       <div className={styles.sectionWrapper} style={{ position: 'relative' }}>
-        <h1 style={{ paddingTop: '1rem' }}>{t('s7')}</h1>
+        <h1 style={{ paddingTop: '1rem' }}>{t('home:s7')}</h1>
         <div className={styles.gallery}>
           {galleryData ? <Gallery data={galleryData} assetPage={true} /> : <Loader />}
         </div>
         <div className={styles.moreGallery}>
           <div className={styles.spacer} />
           <div style={{ pointerEvents: 'initial' }}>
-            <Button text={t('s7b')} href="/gallery" />
+            <Button text={t('home:s7b')} href="/gallery" />
           </div>
         </div>
       </div>
@@ -318,17 +318,17 @@ const Home = () => {
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
           <div className={styles.subSection}>
-            <h2>{t('s8t')}</h2>
+            <h2>{t('home:s8t')}</h2>
             <p>
               <Trans
-                i18nKey="s8p1"
+                i18nKey="home:s8p1"
                 t={t}
                 components={{
                   strong: <strong />,
                 }}
               />
             </p>
-            <p>{t('s8p2')}</p>
+            <p>{t('home:s8p2')}</p>
           </div>
           <div className={styles.subSection}>
             <SocialIcons />
