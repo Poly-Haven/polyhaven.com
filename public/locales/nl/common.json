@@ -27,7 +27,7 @@
     "donate-once": "Eenmalig doneren",
     "monthly": "Maandelijks",
     "once": "Eenmaal",
-    "one-time-benefits-p1": "Eenmalige donaties hebben geen Patreon-voordelen en tellen niet mee voor de voortgang van Vault.",
+    "one-time-benefits-p1": "Eenmalige donaties hebben geen Patreon-voordelen en tellen niet mee voor de voortgang van de kluizen.",
     "one-time-benefits-p2": "Overweeg in plaats daarvan om maandelijks te doneren."
   },
   "email-address": "E-mailadres",
@@ -80,7 +80,7 @@
     "target-patrons": "{{target}} patrons",
     "title": "Poly Haven Routekaart",
     "to-be-announced": "Wordt aangekondigd...",
-    "whats-next": "Wat is hierna?"
+    "whats-next": "Wat komt hierna?"
   },
   "support-polyhaven": "Steun Poly Haven!",
   "tagline": "De openbare 3D-asset bibliotheek",

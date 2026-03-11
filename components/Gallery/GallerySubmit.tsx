@@ -301,12 +301,13 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               placeholder={t('submit.form.your-email-d')}
             />
           </GalleryFormItem>
-          <GalleryFormItem label={t('submit.form.link')} optional={true}>
+          <GalleryFormItem label={t('submit.form.link')}>
             <input
               type="text"
               value={link}
               onChange={(e) => setLink(e.target.value)}
               placeholder={t('submit.form.link-d')}
+              title={t('submit.form.link-d')}
             />
           </GalleryFormItem>
           <GalleryFormItem label={t('submit.form.software')} optional={true}>

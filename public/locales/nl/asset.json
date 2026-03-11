@@ -55,7 +55,7 @@
     "access-now": "Krijg nu toegang",
     "already-patron": "Ben je al een patron? <loginLink>Aanmelden</loginLink>.",
     "donate-access": "Doneer $3 op Patreon om het te downloaden, samen met {{totalVaultedAssets, number}} andere opgesloten assets.",
-    "locked-in": "Deze asset i opgesloten in de <vaultLink>kluis{{vault}} </vaultLink>.",
+    "locked-in": "Deze asset is opgesloten in de <vaultLink>{{vault}} kluis</vaultLink>.",
     "patrons-needed": "Als we {{remaining, number}} meer patrons hebben, zal het voor iedereen gratis worden uitgebracht.",
     "title": "Opgesloten Asset"
   },

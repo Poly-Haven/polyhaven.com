@@ -21,11 +21,11 @@
   "downloads": "Downloads",
   "downloads-pd": "pro Tag",
   "early-access": {
-    "already-patron": "Sind Sie bereits ein Gönner? <loginLink>Loggen Sie sich ein</loginLink>.",
-    "donate-access": "Mit einer Spende von 3 Dollar können Sie es jetzt zusammen mit {{numEaAssets, number}} herunterladen.",
+    "already-patron": "Bereits ein Unterstützer? <loginLink>Logge dich ein</loginLink>.",
+    "donate-access": "Spende 3 $ um es jetzt zusammen mit {{numEaAssets, number}} anderen Early-Access-Assets herunterladen.",
     "get-access": "Vorabzugang erhalten",
-    "release-date": "Dieser Vermögenswert wird freigegeben:<br/><strong>{{scheduleText}}</strong>",
-    "title": "Demnächst erhältlich!"
+    "release-date": "Dieses Asset wird freigegeben:<br/><strong>{{scheduleText}}</strong>",
+    "title": "Bald verfügbar!"
   },
   "formats": {
     "exr": "Echte 32-Bit pro Kanal, verlustfrei komprimiert.",
@@ -51,13 +51,13 @@
   "tall": "hoch",
   "user-renders": "Benutzer-Renderings:",
   "vaulted": {
-    "about": "Über",
+    "about": "Mehr",
     "access-now": "Jetzt zugreifen",
-    "already-patron": "Sind Sie bereits ein Gönner? <loginLink>Loggen Sie sich ein</loginLink>.",
-    "donate-access": "Spenden Sie $3 auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Vaulted Assets herunterzuladen.",
-    "locked-in": "Dieser Vermögenswert ist im <vaultLink>Tresor von{{vault}} </vaultLink> eingeschlossen.",
+    "already-patron": "Bereits ein Unterstützer? <loginLink>Logge dich ein</loginLink>.",
+    "donate-access": "Spende 3 $ auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Assets in Vaults herunterzuladen.",
+    "locked-in": "Dieses Asset ist im <vaultLink> {{vault}}-Vault</vaultLink> eingeschlossen.",
     "patrons-needed": "Sobald wir {{remaining, number}} mehr Gönner haben, wird es für alle kostenlos veröffentlicht.",
-    "title": "Gewölbte Anlage"
+    "title": "Asset eines Vaults"
   },
   "wide": "breit",
   "zip-choose": "Wähle den ZIP-Inhalt:"

@@ -77,7 +77,7 @@
   "required": "आवश्यक",
   "roadmap": {
     "join-support": "<patreonLink>{{numPatrons}} अन्य प्रायोजकों से जुड़ें</patreonLink> , निःशुल्क परिसंपत्तियों के भविष्य का समर्थन करें।",
-    "target-patrons": "{{target}} प्रायोजकों",
+    "target-patrons": "{{target}} Patreons",
     "title": "पॉली हेवन रोडमैप",
     "to-be-announced": "घोषित किए जाने हेतु",
     "whats-next": "आगे क्या होगा?"

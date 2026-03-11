@@ -9,26 +9,26 @@
   "Models": "Modelle",
   "Textures": "Texturen",
   "about-project": "Über das Projekt",
-  "access-now": "Jetzt zugreifen",
+  "access-now": "Jetzt Zugriff erhalten",
   "also-supported-by": "Auch unterstützt von:",
-  "browse-n": "durchsuchen {{number}}",
+  "browse-n": "Durchsuche {{number}}",
   "corporate-sponsor_one": "Unternehmenssponsor",
   "corporate-sponsor_other": "Unternehmenssponsoren",
   "corporate-sponsors": "Unternehmenssponsoren",
   "display-name": "Anzeigename",
   "donation-box": {
-    "b1": "Helfen Sie uns, <lnk>kostenlose Assets</lnk> für alle zu schaffen!",
+    "b1": "Hilf uns, <lnk>freie Assets</lnk> für alle zu schaffen!",
     "b2": "<lnk>Vorabzugang</lnk> zu kommenden Assets.",
     "b3": "Sofortiger Zugriff auf alle Inhalte in <lnk>den Vaults</lnk>.",
-    "b4": "Unser Blender Asset Browser <lnk>Add-on</lnk>.",
+    "b4": "Unser Blender Asset-Browser <lnk>Add-on</lnk>.",
     "b5": "Massendownload und Offline-Zugriff mit <lnk>unserer Cloud</lnk>.",
-    "b6": "<lnk>Sponsern Sie ein Objekt</lnk> mit Ihrem Namen und Link.",
+    "b6": "<lnk>Sponsere ein Asset</lnk> mit deinem Namen und Link.",
     "donate-monthly": "Monatlich spenden",
-    "donate-once": "Einmal spenden",
+    "donate-once": "Einmalig spenden",
     "monthly": "Monatlich",
-    "once": "Sobald",
-    "one-time-benefits-p1": "Einmalige Spenden beinhalten keine Patreon-Vorteile und zählen nicht für den Fortschritt des Tresors.",
-    "one-time-benefits-p2": "Ziehen Sie stattdessen eine monatliche Spende in Betracht."
+    "once": "Einmalig",
+    "one-time-benefits-p1": "Einmalige Spenden beinhalten keine Patreon-Vorteile und zählen nicht zum Fortschritt des Vaults.",
+    "one-time-benefits-p2": "Ziehe stattdessen eine monatliche Spende in Betracht."
   },
   "email-address": "E-Mail Adresse",
   "footer": {
@@ -39,7 +39,7 @@
     "complete": "Ziel erreicht!",
     "current": "Aktuelles Ziel:",
     "reached": "Wir haben unser letztes Ziel erreicht! Hier sollte bald etwas Neues erscheinen :)",
-    "to-go": "${{dollars}} bis zum Ziel"
+    "to-go": "{{dollars}} $ bis zum Ziel"
   },
   "hidden": "ausgeblendet",
   "invalid-email": "Ungültige E-Mail Adresse",
@@ -77,12 +77,12 @@
   "required": "Erforderlich",
   "roadmap": {
     "join-support": "<patreonLink>Schließen Sie sich {{numPatrons}} anderen Gönnern an</patreonLink> und unterstützen Sie die Zukunft der freien Assets.",
-    "target-patrons": "{{target}} Gönner",
+    "target-patrons": "{{target}} Unterstützer",
     "title": "Poly Haven Roadmap",
     "to-be-announced": "Wird noch bekannt gegeben",
     "whats-next": "Was kommt als Nächstes?"
   },
-  "support-polyhaven": "Unterstützen Sie Poly Haven!",
+  "support-polyhaven": "Unterstütze Poly Haven!",
   "tagline": "Die öffentliche Bibliothek für 3D Assets",
   "visible": "sichtbar"
 }
