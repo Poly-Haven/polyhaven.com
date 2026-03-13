@@ -140,7 +140,7 @@ const Home = () => {
           </div>
           <div className={styles.subSection}>
             <Button text={'🚀 ' + t('home:s3b1')} href="https://www.patreon.com/polyhaven/overview" />
-            <Button text={tc('home:nav.finances')} href="/finance-reports" color="hollow" />
+            <Button text={tc('nav.finances')} href="/finance-reports" color="hollow" />
           </div>
         </div>
         <div className={styles.newestPatrons}>
