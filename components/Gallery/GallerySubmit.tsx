@@ -72,10 +72,10 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
 
   // VALIDATE FIELDS ------------------------------------------------------------------------------
   const conditions = {
-    'Selected image': image !== null,
+    Image: image !== null,
     'Your name': author.trim().length > 0,
     Email: isEmail(email.trim()),
-    Link: link.trim().length == 0 || isURL(link.trim(), { require_protocol: true }),
+    Link: isURL(link.trim(), { require_protocol: true }),
     'Assets used': assetsUsed.length > 0,
   }
 
