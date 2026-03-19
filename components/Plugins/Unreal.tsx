@@ -207,7 +207,7 @@ const Unreal = ({ numAssets }) => {
           href="https://www.munduscreatus.be/hdri-browser-documentation/"
           icon={<MdInfo />}
         />
-        <Button text="Community Support" href="https://discord.gg/Dms7Mrs" color="hollow" icon={<SiDiscord />} />
+        <Button text="Community Support" href="https://discord.munduscreatus.be/" color="hollow" icon={<SiDiscord />} />
       </div>
     </div>
   )
