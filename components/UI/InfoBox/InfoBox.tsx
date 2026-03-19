@@ -1,6 +1,6 @@
 import styles from './InfoBox.module.scss'
 
-const InfoBox = ({ type, header, icon, side, children }) => {
+const InfoBox = ({ type, header, icon, side = null, children = null }) => {
   return (
     <div className={`${styles.wrapper} ${styles[type]}`}>
       <div>
@@ -10,7 +10,7 @@ const InfoBox = ({ type, header, icon, side, children }) => {
         </p>
         {children}
       </div>
-      <div className={styles.side}>{side}</div>
+      {side && <div className={styles.side}>{side}</div>}
     </div>
   )
 }

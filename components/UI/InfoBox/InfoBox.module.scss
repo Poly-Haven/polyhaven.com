@@ -19,7 +19,7 @@
     font-size: 1.2em;
     font-weight: bold;
     color: white;
-    margin-top: 0;
+    margin: 0;
     @include flex(row, true);
 
     svg {
@@ -73,4 +73,10 @@
     flex-grow: 1;
     text-align: right;
   }
+}
+
+.warning {
+  @extend .download;
+  background: rgba($c-red, 0.1);
+  border: 1px solid $c-red;
 }

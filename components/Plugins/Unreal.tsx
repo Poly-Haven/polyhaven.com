@@ -5,7 +5,7 @@ import Button from 'components/UI/Button/Button'
 import Patreon from 'components/UI/Icons/Patreon'
 import Fab from 'components/UI/Icons/Fab'
 
-import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard } from 'react-icons/md'
+import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard, MdWarning } from 'react-icons/md'
 import { SiDiscord } from 'react-icons/si'
 
 import styles from './Plugins.module.scss'
@@ -17,7 +17,7 @@ const CallToAction = ({ hasAccess }) => {
       <a
         href={
           hasAccess
-            ? 'https://www.patreon.com/posts/70974704'
+            ? 'https://www.patreon.com/posts/137467194?collection=328908'
             : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111'
         }
         className={`${styles.purchaseOption} ${
@@ -98,7 +98,7 @@ const Unreal = ({ numAssets }) => {
           side={
             <Button
               text="Download on Patreon"
-              href="https://www.patreon.com/posts/70974704"
+              href="https://www.patreon.com/posts/137467194?collection=328908"
               color="pink"
               icon={<MdOpenInNew />}
             />
@@ -110,7 +110,7 @@ const Unreal = ({ numAssets }) => {
             </p>
             <p>
               Looking for the download link? It's available at the bottom of{' '}
-              <a href="https://www.patreon.com/posts/70974704">this post</a> on Patreon.
+              <a href="https://www.patreon.com/posts/137467194?collection=328908">this post</a> on Patreon.
             </p>
           </div>
         </InfoBox>
@@ -132,6 +132,9 @@ const Unreal = ({ numAssets }) => {
         <source src="https://u.polyhaven.org/JC6/demo_web_uehdribrowser.mp4" type="video/mp4" />
         Sorry, your browser doesn't support embedded videos.
       </video>
+
+      <InfoBox type="warning" header="Supported Unreal Engine Versions: 5.3 - 5.6" icon={<MdWarning />} />
+
       <hr />
       <p className={styles.callToAction}>Choose your path...</p>
 
