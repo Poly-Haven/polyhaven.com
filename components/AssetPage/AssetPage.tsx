@@ -31,6 +31,7 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import SponsorList from './SponsorList/SponsorList'
 import TagsList from './TagsList'
 import TilePreview from './WebGL/TilePreview'
+import Button from 'components/UI/Button/Button'
 
 import styles from './AssetPage.module.scss'
 import ErrorBoundary from 'utils/ErrorBoundary'
@@ -309,6 +310,20 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
                 <div className={styles.infoText} lang="en" dir="ltr">
                   <Markdown>{data.info.replace(/\\n/g, '\n')}</Markdown>
                 </div>
+              </div>
+            ) : null}
+
+            {data.categories.includes('collection: project_lighthouse') ? (
+              <div className={styles.community} lang="en" dir="ltr">
+                <h3>Join Project Lighthouse</h3>
+                <p>
+                  This asset was made for Poly Haven's <strong>upcoming game</strong>. Want to help us?
+                </p>
+                <Button
+                  text="Join the Community Project"
+                  href="https://blog.polyhaven.com/project-lighthouse-challenge/"
+                  color="community"
+                />
               </div>
             ) : null}
 

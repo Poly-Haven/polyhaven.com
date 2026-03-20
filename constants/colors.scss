@@ -21,6 +21,12 @@ $c-accent-light: lighten($c-accent, 8%);
 $c-accent-lighter: lighten($c-accent, 16%);
 $c-accent-dark: darken($c-accent, 8%);
 
+$c-community: rgb(0, 222, 151);
+$c-community-light: lighten($c-community, 8%);
+$c-community-lighter: lighten($c-community, 16%);
+$c-community-lightish: lighten($c-community, 4%);
+$c-community-dark: darken($c-community, 8%);
+
 $c-blue: rgb(65, 187, 217);
 $c-blue-light: lighten($c-blue, 8%);
 $c-blue-lighter: lighten($c-blue, 16%);

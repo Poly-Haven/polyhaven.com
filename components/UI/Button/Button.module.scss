@@ -64,6 +64,15 @@
     background: $c-green-light;
   }
 }
+.community {
+  background: rgba($c-community, 0.3);
+  box-shadow: inset 0px 0px 0px 1px $c-community;
+
+  &:hover {
+    background: $c-community-light;
+    color: $c-text-dark;
+  }
+}
 
 .hollow {
   color: $c-text-light;
