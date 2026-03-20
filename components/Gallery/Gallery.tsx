@@ -15,6 +15,11 @@ import Spinner from 'components/UI/Spinner/Spinner'
 
 import styles from './Gallery.module.scss'
 
+const URL_VALIDATION_OPTIONS = {
+  require_protocol: true,
+  allow_underscores: true,
+}
+
 const Gallery = ({ data, assetPage }) => {
   const { t } = useTranslation('gallery')
   const [clicked, setClicked] = useState({})
@@ -124,7 +129,7 @@ const Gallery = ({ data, assetPage }) => {
             <div className={styles.imageCredit}>
               {lightboxData.artwork_name && <em>{lightboxData.artwork_name}</em>}
               <span style={{ opacity: 0.5 }}>{t('by')}</span>
-              {lightboxData.author_link && isURL(lightboxData.author_link, { require_protocol: true }) ? (
+              {lightboxData.author_link && isURL(lightboxData.author_link, URL_VALIDATION_OPTIONS) ? (
                 <a target="_blank" rel="noopener" href={lightboxData.author_link}>
                   {lightboxData.author}
                 </a>

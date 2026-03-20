@@ -19,6 +19,11 @@ import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 
+const URL_VALIDATION_OPTIONS = {
+  require_protocol: true,
+  allow_underscores: true,
+}
+
 const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const { t: t_c } = useTranslation('common')
   const { t } = useTranslation('gallery')
@@ -75,7 +80,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     Image: image !== null,
     'Your name': author.trim().length > 0,
     Email: isEmail(email.trim()),
-    Link: isURL(link.trim(), { require_protocol: true }),
+    Link: isURL(link.trim(), URL_VALIDATION_OPTIONS),
     'Assets used': assetsUsed.length > 0,
   }
 

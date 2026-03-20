@@ -13,6 +13,11 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import styles from './RewardInfo.module.scss'
 
+const URL_VALIDATION_OPTIONS = {
+  require_protocol: true,
+  allow_underscores: true,
+}
+
 const Sponsor = ({ uuid, patron }) => {
   const [currentData, setCurrentData] = useState({})
   const [autoSponsor, setAutoSponsor] = useState(false)
@@ -97,7 +102,7 @@ const Sponsor = ({ uuid, patron }) => {
           <input type="text" value={url} data-tip={t('common:optional')} onChange={updateUrl} />
         </form>
         <Disabled
-          disabled={(!isURL(url, { require_protocol: true }) && url.length) || !displayName.length}
+          disabled={(!isURL(url, URL_VALIDATION_OPTIONS) && url.length) || !displayName.length}
           tooltip={t('common:invalid-name-url')}
         >
           <div
