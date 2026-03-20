@@ -56,7 +56,7 @@
     "already-patron": "Bereits ein Unterstützer? <loginLink>Logge dich ein</loginLink>.",
     "donate-access": "Spende 3 $ auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Assets in Vaults herunterzuladen.",
     "locked-in": "Dieses Asset ist im <vaultLink> {{vault}}-Vault</vaultLink> eingeschlossen.",
-    "patrons-needed": "Sobald wir {{remaining, number}} mehr Gönner haben, wird es für alle kostenlos veröffentlicht.",
+    "patrons-needed": "Sobald wir {{remaining, number}} mehr Unterstützer haben, wird es für alle kostenlos veröffentlicht.",
     "title": "Asset eines Vaults"
   },
   "wide": "breit",

@@ -46,7 +46,7 @@
   "invalid-name-url": "Ungültiger Name oder URL",
   "loading": "Lade ...",
   "missing-invalid": "Fehlerhaft oder ungültig",
-  "n-patrons-to-go": "{{number}} Schirmherren zum Mitnehmen!",
+  "n-patrons-to-go": "Noch {{number}} Unterstützer!",
   "nav": {
     "about-contact": "Über uns/Kontakt",
     "add-on": "Add-on",
@@ -76,7 +76,7 @@
   "remove-ads": "Werbung entfernen",
   "required": "Erforderlich",
   "roadmap": {
-    "join-support": "<patreonLink>Schließen Sie sich {{numPatrons}} anderen Gönnern an</patreonLink> und unterstützen Sie die Zukunft der freien Assets.",
+    "join-support": "<patreonLink>Schließe dich {{numPatrons}} anderen Unterstützern an</patreonLink> und unterstütze  die Zukunft freier Assets.",
     "target-patrons": "{{target}} Unterstützer",
     "title": "Poly Haven Roadmap",
     "to-be-announced": "Wird noch bekannt gegeben",
