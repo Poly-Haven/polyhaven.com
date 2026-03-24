@@ -5,7 +5,7 @@ import Button from 'components/UI/Button/Button'
 import Patreon from 'components/UI/Icons/Patreon'
 import Fab from 'components/UI/Icons/Fab'
 
-import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard, MdWarning } from 'react-icons/md'
+import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard } from 'react-icons/md'
 import { SiDiscord } from 'react-icons/si'
 
 import styles from './Plugins.module.scss'
@@ -133,7 +133,7 @@ const Unreal = ({ numAssets }) => {
         Sorry, your browser doesn't support embedded videos.
       </video>
 
-      <InfoBox type="warning" header="Supported Unreal Engine Versions: 5.3 - 5.6" icon={<MdWarning />} />
+      <InfoBox type="info" header="Supported Unreal Engine Versions: 5.3 - 5.7" icon={<MdInfo />} />
 
       <hr />
       <p className={styles.callToAction}>Choose your path...</p>

@@ -80,3 +80,9 @@
   background: rgba($c-red, 0.1);
   border: 1px solid $c-red;
 }
+
+.info {
+  @extend .download;
+  background: rgba($c-blue, 0.1);
+  border: 1px solid $c-blue;
+}
