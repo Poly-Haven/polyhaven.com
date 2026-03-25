@@ -1,0 +1,204 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+$c-gradient-middle: rgb(255, 253, 242);
+$c-gradient-sides: rgb(206, 255, 239);
+
+.pageBackground {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url("https://cdn.polyhaven.com/site_images/news_cards/lighthouse01.png?width=100&quality=100&blur=10")
+    no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsl(0, 0%, 0%);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+}
+
+.pageWrapper {
+  text-align: center;
+  position: relative;
+
+  hr {
+    border: none;
+    border-top: 1px solid rgba(white, 0.1);
+  }
+}
+
+.banner {
+  width: 100%;
+  height: 57vh;
+  min-height: calc(100vh - 53px - 5em);
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .logo {
+    position: relative;
+    height: 8rem;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+    z-index: 4;
+  }
+
+  h1 {
+    position: relative;
+    font-size: 3rem;
+    white-space: nowrap;
+    margin: 2rem 1rem 0.5rem;
+    z-index: 4;
+  }
+
+  p {
+    position: relative;
+    margin: 0;
+    white-space: nowrap;
+    z-index: 4;
+  }
+}
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:nth-last-child(odd) {
+    background: rgba($c-background-light, 0.2);
+  }
+}
+.section {
+  @include flex(row, true, true);
+  width: calc(100% - 2rem);
+  padding: 2rem 1rem;
+  max-width: 1300px;
+
+  h2 {
+    font-size: 2rem;
+
+    svg {
+      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .subSection {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sectionHalfMobile {
+    flex-direction: column;
+
+    .subSection {
+      width: calc(100% - 2rem);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hideMobileHalf {
+    display: none;
+  }
+}
+
+.text {
+  position: relative; // Needed to keep above .assetTypeBannerHover
+  max-width: 600px;
+  margin: auto;
+
+  h2 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  li {
+    text-align: left;
+  }
+
+  strong {
+    font-style: italic;
+    color: $c-community-lightish;
+    text-shadow:
+      0 0 0.5em rgba($c-community, 0.3),
+      0 0 1em rgba($c-community, 0.3),
+      0 0 2em rgba($c-community, 0.3);
+  }
+}
+
+.textLeft {
+  @extend .text;
+  text-align: left;
+}
+
+.gameplayVideos {
+  @include flex(row);
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+
+  video {
+    max-width: 100%;
+  }
+}
+
+.row {
+  @include flex(row, false, true);
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  p {
+    max-width: 400px;
+    text-align: left;
+  }
+}
+
+.imgGrid {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
