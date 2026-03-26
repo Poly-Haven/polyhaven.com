@@ -103,7 +103,7 @@ $c-gradient-sides: rgb(206, 255, 239);
   justify-content: center;
 
   &:nth-last-child(odd) {
-    background: rgba($c-background-light, 0.2);
+    background: rgba($c-background-light, 0.25);
   }
 }
 .section {
@@ -156,6 +156,7 @@ $c-gradient-sides: rgb(206, 255, 239);
 
   li {
     text-align: left;
+    margin: 0.5rem 0;
   }
 
   strong {

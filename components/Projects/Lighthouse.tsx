@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
 
 import styles from './Lighthouse.module.scss'
@@ -32,10 +33,10 @@ const Lighthouse = () => {
           <div className={styles.section}>
             <div className={styles.subSection}>
               <div className={styles.imgGrid}>
-                <img src="https://loremflickr.com/284/160" />
-                <img src="https://loremflickr.com/284/160" />
-                <img src="https://loremflickr.com/284/160" />
-                <img src="https://loremflickr.com/284/160" />
+                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp1.png?width=284&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp4.png?width=284&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp3.png?width=284&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp2.png?width=284&quality=95" />
               </div>
             </div>
             <div className={styles.subSection}>
@@ -46,9 +47,9 @@ const Lighthouse = () => {
                 </p>
 
                 <ol>
-                  <li>Improve the quality and usability of free assets on polyhaven.com for game developers.</li>
+                  <li>Create more free assets on polyhaven.com for game developers.</li>
                   <li>Demonstrate the value and potential of our work in a real production.</li>
-                  <li>Explore the idea of selling games as a way to fund our work creating free assets.</li>
+                  <li>Explore the idea of selling games as a way to fund free assets for everyone.</li>
                 </ol>
                 <p>And we need your help to pull it off!</p>
               </div>
@@ -58,6 +59,12 @@ const Lighthouse = () => {
 
         <div className={styles.sectionWrapper}>
           <div className={styles.section} style={{ maxWidth: '100%' }}>
+            <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
+              <div className={styles.imgGrid}>
+                <img src="https://loremflickr.com/250/398" />
+                <img src="https://loremflickr.com/250/398" />
+              </div>
+            </div>
             <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
               <div className={styles.text}>
                 <h2>Join the Project</h2>
@@ -71,15 +78,13 @@ const Lighthouse = () => {
                 </p>
                 <p>
                   Your work will not only become part of our game, but will also be published on Poly Haven freely under
-                  the CC0 license, building a lasting library of free content for everyone.
+                  the <Link href="/license">CC0 license</Link>, building a lasting library of free content for everyone.
                 </p>
                 <Button text="Learn more" href="https://blog.polyhaven.com/project-lighthouse-challenge/" />
               </div>
             </div>
             <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
               <div className={styles.imgGrid}>
-                <img src="https://loremflickr.com/250/398" />
-                <img src="https://loremflickr.com/250/398" />
                 <img src="https://loremflickr.com/250/398" />
                 <img src="https://loremflickr.com/250/398" />
               </div>
@@ -116,13 +121,13 @@ const Lighthouse = () => {
               </p>
               <div className={styles.gameplayVideos}>
                 <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/iGp/Alpha_Gameplay_short_01_web.mp4" type="video/mp4" />
+                  <source src="https://u.polyhaven.org/SFI/Alpha_Gameplay_short_01_web.mp4" type="video/mp4" />
                 </video>
                 <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/9vv/Alpha_Gameplay_short_02_web.mp4" type="video/mp4" />
+                  <source src="https://u.polyhaven.org/Mie/Alpha_Gameplay_short_02_web.mp4" type="video/mp4" />
                 </video>
                 <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/zlP/Alpha_Gameplay_short_03_web.mp4" type="video/mp4" />
+                  <source src="https://u.polyhaven.org/K6j/Alpha_Gameplay_short_03_web.mp4" type="video/mp4" />
                 </video>
               </div>
               <hr />
