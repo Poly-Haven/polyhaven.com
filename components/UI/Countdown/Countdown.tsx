@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { add, differenceInMilliseconds, intervalToDuration } from 'date-fns'
 
@@ -178,10 +178,6 @@ const formatIntervalValue = (interval: CountdownIntervalKey, value: number): str
     return Math.floor(safeValue).toString()
   }
 
-  if (safeValue < 10) {
-    return safeValue.toFixed(1)
-  }
-
   return Math.floor(safeValue).toString()
 }
 
@@ -201,10 +197,48 @@ const formatIntervalLabel = (interval: CountdownIntervalKey, value: number): str
   return INTERVAL_LABELS[interval]
 }
 
-const Countdown = ({ targetDate, maxInterval }: CountdownProps) => {
-  const [currentTimestamp, setCurrentTimestamp] = useState(() => Date.now())
+const CountdownValue = ({ value }: { value: string }) => {
+  const [shown, setShown] = useState(value)
+  const [phase, setPhase] = useState<'out' | 'in' | null>(null)
+  const pendingRef = useRef(value)
+  const shownRef = useRef(value)
 
   useEffect(() => {
+    pendingRef.current = value
+    if (phase === null && value !== shownRef.current) {
+      setPhase('out')
+    }
+  }, [value, phase])
+
+  const handleAnimationEnd = () => {
+    if (phase === 'out') {
+      shownRef.current = pendingRef.current
+      setShown(pendingRef.current)
+      setPhase('in')
+    } else if (phase === 'in') {
+      if (pendingRef.current !== shownRef.current) {
+        setPhase('out')
+      } else {
+        setPhase(null)
+      }
+    }
+  }
+
+  return (
+    <span
+      className={phase === 'out' ? styles.slideOut : phase === 'in' ? styles.slideIn : undefined}
+      onAnimationEnd={handleAnimationEnd}
+    >
+      {shown}
+    </span>
+  )
+}
+
+const Countdown = ({ targetDate, maxInterval }: CountdownProps) => {
+  const [currentTimestamp, setCurrentTimestamp] = useState<number | null>(null)
+
+  useEffect(() => {
+    setCurrentTimestamp(Date.now())
     const timer = window.setInterval(() => {
       setCurrentTimestamp(Date.now())
     }, 100)
@@ -215,6 +249,7 @@ const Countdown = ({ targetDate, maxInterval }: CountdownProps) => {
   }, [])
 
   const displayData = useMemo(() => {
+    if (currentTimestamp === null) return []
     const currentDate = new Date(currentTimestamp)
     const target = normalizeTimeInput(targetDate)
     const targetReached = target.valueOf() <= currentDate.valueOf()
@@ -234,7 +269,9 @@ const Countdown = ({ targetDate, maxInterval }: CountdownProps) => {
     <div className={styles.wrapper}>
       {displayData.map(({ interval, value, label }) => (
         <div key={interval} className={styles.block}>
-          <div className={styles.value}>{formatIntervalValue(interval, value)}</div>
+          <div className={styles.value}>
+            <CountdownValue value={formatIntervalValue(interval, value)} />
+          </div>
           <div className={styles.label}>{label}</div>
         </div>
       ))}

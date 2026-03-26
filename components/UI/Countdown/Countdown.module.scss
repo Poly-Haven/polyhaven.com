@@ -14,6 +14,7 @@
   background: rgba($c-community, 0.3);
   border: 1px solid rgba($c-community-light, 0.3);
   @include drop-shadow(0.5);
+  overflow: hidden;
 }
 
 .value {
@@ -39,4 +40,36 @@
   text-transform: uppercase;
   color: $c-text-bright;
   opacity: 0.86;
+}
+
+@keyframes slideOutTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slideOut {
+  display: block;
+  animation: slideOutTop 0.1s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.slideIn {
+  display: block;
+  animation: slideInBottom 0.13s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
