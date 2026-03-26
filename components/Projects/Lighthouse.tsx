@@ -1,9 +1,20 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
+import Lightbox from 'components/Lightbox/Lightbox'
 
 import styles from './Lighthouse.module.scss'
 
 const Lighthouse = () => {
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+
+  const gameplayConceptImages = [
+    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp1.png',
+    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp4.png',
+    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp3.png',
+    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp2.png',
+  ]
+
   return (
     <>
       <div className={styles.pageBackground} />
@@ -33,10 +44,15 @@ const Lighthouse = () => {
           <div className={styles.section}>
             <div className={styles.subSection}>
               <div className={styles.imgGrid}>
-                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp1.png?width=284&quality=95" />
-                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp4.png?width=284&quality=95" />
-                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp3.png?width=284&quality=95" />
-                <img src="https://cdn.polyhaven.com/site_images/projects/lighthouse/gp2.png?width=284&quality=95" />
+                {gameplayConceptImages.map((imageUrl) => (
+                  <img
+                    key={imageUrl}
+                    className={styles.clickableImage}
+                    src={`${imageUrl}?width=284&quality=95`}
+                    alt="Project Lighthouse concept art"
+                    onClick={() => setLightboxImage(`${imageUrl}?width=1600&quality=95`)}
+                  />
+                ))}
               </div>
             </div>
             <div className={styles.subSection}>
@@ -152,6 +168,14 @@ const Lighthouse = () => {
             </div>
           </div>
         </div>
+
+        <Lightbox
+          isOpen={!!lightboxImage}
+          imageSrc={lightboxImage || ''}
+          imageAlt="Project Lighthouse concept art"
+          onClose={() => setLightboxImage(null)}
+          caption="Early visual concepts, WIP"
+        />
       </div>
     </>
   )

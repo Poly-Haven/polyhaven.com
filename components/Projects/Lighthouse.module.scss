@@ -203,3 +203,7 @@ $c-gradient-sides: rgb(206, 255, 239);
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.clickableImage {
+  cursor: pointer;
+}
