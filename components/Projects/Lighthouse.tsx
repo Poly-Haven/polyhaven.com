@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
 import Lightbox from 'components/Lightbox/Lightbox'
@@ -7,6 +7,21 @@ import styles from './Lighthouse.module.scss'
 
 const Lighthouse = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+
+  const updateImageTilt = (e: MouseEvent<HTMLImageElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const relativeX = (e.clientX - rect.left) / rect.width - 0.5
+    const relativeY = (e.clientY - rect.top) / rect.height - 0.5
+    const maxTilt = 7
+
+    e.currentTarget.style.setProperty('--tilt-x', `${(-relativeY * maxTilt * 3).toFixed(2)}deg`)
+    e.currentTarget.style.setProperty('--tilt-y', `${(relativeX * maxTilt * 3).toFixed(2)}deg`)
+  }
+
+  const resetImageTilt = (e: MouseEvent<HTMLImageElement>) => {
+    e.currentTarget.style.setProperty('--tilt-x', '0deg')
+    e.currentTarget.style.setProperty('--tilt-y', '0deg')
+  }
 
   const gameplayConceptImages = [
     'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp1.png',
@@ -50,6 +65,8 @@ const Lighthouse = () => {
                     className={styles.clickableImage}
                     src={`${imageUrl}?width=284&quality=95`}
                     alt="Project Lighthouse concept art"
+                    onMouseMove={updateImageTilt}
+                    onMouseLeave={resetImageTilt}
                     onClick={() => setLightboxImage(`${imageUrl}?width=1600&quality=95`)}
                   />
                 ))}

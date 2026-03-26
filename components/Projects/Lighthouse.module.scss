@@ -205,5 +205,18 @@ $c-gradient-sides: rgb(206, 255, 239);
 }
 
 .clickableImage {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
   cursor: pointer;
+  @include transition(0.5s);
+  transform-origin: center center;
+  will-change: transform;
+
+  &:hover {
+    transform: perspective(900px) translateY(-0.2rem) translateZ(1.4rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
+      scale(1.01);
+    filter: saturate(1.08) brightness(1.06);
+    box-shadow: 0 0.8rem 3.5rem -1.5rem rgba(black, 0.7);
+    @include transition(0.1s);
+  }
 }
