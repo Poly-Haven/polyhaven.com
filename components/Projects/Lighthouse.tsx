@@ -1,12 +1,16 @@
 import { MouseEvent, useState } from 'react'
 import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
+import Countdown from 'components/UI/Countdown/Countdown'
 import Lightbox from 'components/Lightbox/Lightbox'
 
 import styles from './Lighthouse.module.scss'
 
 const Lighthouse = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const submissionDeadline = '2026-05-01T23:59:59.999Z'
+  const currentTime = new Date().toISOString()
+  const isBeforeDeadline = currentTime < submissionDeadline
 
   const updateImageTilt = (e: MouseEvent<HTMLImageElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -125,24 +129,26 @@ const Lighthouse = () => {
           </div>
         </div>
 
-        <div className={styles.sectionWrapper}>
-          <div className={styles.section}>
-            <div className={styles.subSection}>
-              <em>- countdown -</em>
-              <div className={styles.row}>
-                <p style={{ textAlign: 'center' }}>
-                  Until the submission deadline, rewards and sponsored prizes are available for all contributors to help
-                  encourage quality contributions.
-                </p>
-                <p style={{ textAlign: 'center' }}>
-                  After this, we'll still be busy with the game for some time, so you are welcome to continue to
-                  contribute, but prizes will no longer be available.
-                </p>
+        {isBeforeDeadline && (
+          <div className={styles.sectionWrapper}>
+            <div className={styles.section}>
+              <div className={styles.subSection}>
+                <Countdown targetDate={submissionDeadline} maxInterval="weeks" />
+                <div className={styles.row}>
+                  <p style={{ textAlign: 'center' }}>
+                    Until the submission deadline, rewards and sponsored prizes are available for all contributors to
+                    help encourage quality contributions.
+                  </p>
+                  <p style={{ textAlign: 'center' }}>
+                    After this, we'll still be busy with the game for some time, so you are welcome to continue to
+                    contribute, but prizes will no longer be available.
+                  </p>
+                </div>
+                <em>- prize list -</em>
               </div>
-              <em>- prize list -</em>
             </div>
           </div>
-        </div>
+        )}
 
         <div className={styles.sectionWrapper}>
           <div className={styles.section} style={{ maxWidth: '100%' }}>

@@ -1,0 +1,42 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.wrapper {
+  @include flex(row, true, true);
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.block {
+  @include flex(column, true, true);
+  width: 6rem;
+  background: rgba($c-community, 0.3);
+  border: 1px solid rgba($c-community-light, 0.3);
+  @include drop-shadow(0.5);
+}
+
+.value {
+  font-size: 2.5rem;
+  padding: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: $c-text-bright;
+  font-variant-numeric: tabular-nums;
+  text-shadow:
+    0 0 0.5em rgba($c-community, 0.5),
+    0 0 1em rgba($c-community, 0.5),
+    0 0 2em rgba($c-community, 0.5);
+}
+
+.label {
+  width: 6rem;
+  padding: 0.3rem 0;
+  background: rgba($c-community-light, 0.3);
+  margin-top: 0.28rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $c-text-bright;
+  opacity: 0.86;
+}
