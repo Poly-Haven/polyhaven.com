@@ -133,9 +133,9 @@ const Unreal = ({ numAssets }) => {
         Sorry, your browser doesn't support embedded videos.
       </video>
 
-      <InfoBox type="info" header="Supported Unreal Engine Versions: 5.3 - 5.7" icon={<MdInfo />} />
-
       <hr />
+
+      <InfoBox type="info" header="Supported Unreal Engine Versions: 5.3 - 5.7" icon={<MdInfo />} />
       <p className={styles.callToAction}>Choose your path...</p>
 
       <CallToAction hasAccess={hasAccess} />
