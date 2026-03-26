@@ -8,10 +8,7 @@ import LazyLoad from 'react-lazy-load'
 
 import useDivSize from 'hooks/useDivSize'
 import useQuery from 'hooks/useQuery'
-
-import { MdClose } from 'react-icons/md'
-
-import Spinner from 'components/UI/Spinner/Spinner'
+import Lightbox from 'components/Lightbox/Lightbox'
 
 import styles from './Gallery.module.scss'
 
@@ -22,7 +19,7 @@ const URL_VALIDATION_OPTIONS = {
 
 const Gallery = ({ data, assetPage }) => {
   const { t } = useTranslation('gallery')
-  const [clicked, setClicked] = useState({})
+  const [didInitFromQuery, setDidInitFromQuery] = useState(false)
   const [lightboxData, setLightboxData] = useState(null)
   const widthRef = useRef(null)
   const { width } = useDivSize(widthRef)
@@ -30,18 +27,18 @@ const Gallery = ({ data, assetPage }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (query && query.render) {
-      if (Object.keys(clicked).length === 0) {
-        // We only want to do this the first time the page loads
-        for (const r of data) {
-          if (r.id === query.render) {
-            setLightboxData(r)
-            break
-          }
+    if (query && query.render && !didInitFromQuery) {
+      // We only want to do this the first time the page loads
+      for (const r of data) {
+        if (r.id === query.render) {
+          setLightboxData(r)
+          break
         }
       }
+
+      setDidInitFromQuery(true)
     }
-  }, [query])
+  }, [query, didInitFromQuery, data])
 
   const imgWidth = 460
 
@@ -53,35 +50,31 @@ const Gallery = ({ data, assetPage }) => {
   }
 
   const viewImage = async (e) => {
-    const data = JSON.parse(e.currentTarget.dataset.info)
-    setLightboxData(data)
-
-    if (!Object.keys(clicked).includes(data.id)) {
-      await fetch(`/api/galleryClick`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: data.id }),
-      })
-        .then((res) => res.json())
-        .then((resdata) => {
-          console.log('Tracked click:', resdata)
-        })
-    }
-
-    let c = clicked
-    c[data.id] = true
-    setClicked(c)
+    const imageData = JSON.parse(e.currentTarget.dataset.info)
+    setLightboxData(imageData)
 
     router.push(
       {
         pathname: router.pathname,
-        query: { ...router.query, render: data.id },
+        query: { ...router.query, render: imageData.id },
       },
       undefined,
       { shallow: true }
     )
+  }
+
+  const trackImageClick = async (id) => {
+    await fetch(`/api/galleryClick`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((resdata) => {
+        console.log('Tracked click:', resdata)
+      })
   }
 
   const closeLightbox = (e) => {
@@ -120,14 +113,14 @@ const Gallery = ({ data, assetPage }) => {
         )}
       </Masonry>
       {lightboxData && (
-        <div className={styles.lightboxWrapper} onClick={closeLightbox}>
-          <div className={styles.lightbox}>
-            <div className={styles.imageWrapper}>
-              <Spinner className={styles.spinner} />
-              <img src={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}&quality=95`} />
-            </div>
-            <div className={styles.imageCredit}>
-              {lightboxData.artwork_name && <em>{lightboxData.artwork_name}</em>}
+        <Lightbox
+          isOpen={!!lightboxData}
+          imageSrc={`https://cdn.polyhaven.com/gallery/${lightboxData.file_name}?width=${width}&quality=95`}
+          imageAlt={lightboxData.name || ''}
+          onClose={closeLightbox}
+          caption={lightboxData.artwork_name || null}
+          detailsLeft={
+            <>
               <span style={{ opacity: 0.5 }}>{t('by')}</span>
               {lightboxData.author_link && isURL(lightboxData.author_link, URL_VALIDATION_OPTIONS) ? (
                 <a target="_blank" rel="noopener" href={lightboxData.author_link}>
@@ -136,19 +129,23 @@ const Gallery = ({ data, assetPage }) => {
               ) : (
                 <span>{lightboxData.author}</span>
               )}
-              <div className={styles.spacer} />
-              <div className={styles.assetsUsed}>
-                <p>Assets used:</p>
-                {lightboxData.assets_used.map((a, key) => (
-                  <Link key={key} href={`/a/${a}`}>
-                    <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a}.png?height=50&width=200`} />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-          <MdClose />
-        </div>
+            </>
+          }
+          detailsRight={
+            <>
+              <p>Assets used:</p>
+              {lightboxData.assets_used.map((a, key) => (
+                <Link key={key} href={`/a/${a}`}>
+                  <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a}.png?height=50&width=200`} />
+                </Link>
+              ))}
+            </>
+          }
+          enableClickTracking
+          trackingKey={String(lightboxData.id || '')}
+          onTrackClick={trackImageClick}
+          ignoreLinkClicks
+        />
       )}
     </div>
   )
