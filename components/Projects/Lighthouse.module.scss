@@ -225,13 +225,29 @@ $c-gradient-sides: rgb(206, 255, 239);
 }
 
 .assetGallery {
+  max-height: 30em;
+  margin: -3rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.assetGalleryInner {
+  animation: scrollUp var(--scroll-duration, 10s) linear infinite;
+}
+
+.assetGalleryPage {
   @include flex(row, true, true);
   flex-wrap: wrap;
   gap: 1rem;
-  max-height: 26em;
-  margin: -2rem 0;
-  // overflow-y: scroll;
-  @include dark_scrollbar;
+}
+
+@keyframes scrollUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--scroll-height));
+  }
 }
 
 .prizeList {

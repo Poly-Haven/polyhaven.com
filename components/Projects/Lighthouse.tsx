@@ -1,6 +1,7 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
+import useDivSize from 'hooks/useDivSize'
 
 import Button from 'components/UI/Button/Button'
 import Countdown from 'components/UI/Countdown/Countdown'
@@ -9,6 +10,26 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import PrizeCard from './PrizeCard'
 
 import styles from './Lighthouse.module.scss'
+
+const AssetCard = ({
+  slug,
+  onMouseMove,
+  onMouseLeave,
+}: {
+  slug: string
+  onMouseMove: (e: MouseEvent<HTMLImageElement>) => void
+  onMouseLeave: (e: MouseEvent<HTMLImageElement>) => void
+}) => (
+  <a className={styles.assetCard} href={`https://polyhaven.com/a/${slug}`} target="_blank" rel="noopener noreferrer">
+    <img
+      src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200&height=200&quality=95`}
+      alt={slug}
+      className={styles.clickableImage}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    />
+  </a>
+)
 
 const Lighthouse = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
@@ -55,6 +76,8 @@ const Lighthouse = () => {
   const { data: assets, error: errorAssets } = apiSWR(`/assets?t=all&future=true&c=collection: project_lighthouse`, {
     revalidateOnFocus: false,
   })
+  const assetGalleryRef = useRef(null)
+  const { height: assetGalleryHeight } = useDivSize(assetGalleryRef, [assets])
 
   return (
     <>
@@ -150,17 +173,33 @@ const Lighthouse = () => {
             <div className={styles.subSection}>
               {assets && (
                 <div className={styles.assetGallery}>
-                  {Object.entries(assets).map(([slug, asset]: [string, any]) => (
-                    <div key={slug} className={styles.assetCard}>
-                      <img
-                        src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=${200}&height=${200}&quality=95`}
-                        alt={asset.name}
-                        className={styles.clickableImage}
-                        onMouseMove={updateImageTilt}
-                        onMouseLeave={resetImageTilt}
-                      />
+                  <div
+                    className={styles.assetGalleryInner}
+                    style={
+                      (assetGalleryHeight
+                        ? {
+                            '--scroll-height': `-${assetGalleryHeight}px`,
+                            '--scroll-duration': `${(assetGalleryHeight / 50).toFixed(2)}s`,
+                          }
+                        : { animationPlayState: 'paused' }) as React.CSSProperties
+                    }
+                  >
+                    <div ref={assetGalleryRef} className={styles.assetGalleryPage}>
+                      {Object.keys(assets).map((slug) => (
+                        <AssetCard key={slug} slug={slug} onMouseMove={updateImageTilt} onMouseLeave={resetImageTilt} />
+                      ))}
                     </div>
-                  ))}
+                    <div className={styles.assetGalleryPage} aria-hidden="true">
+                      {Object.keys(assets).map((slug) => (
+                        <AssetCard
+                          key={`${slug}-dup`}
+                          slug={slug}
+                          onMouseMove={updateImageTilt}
+                          onMouseLeave={resetImageTilt}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
               {errorAssets && (
