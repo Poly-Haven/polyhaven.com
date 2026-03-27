@@ -264,6 +264,9 @@ const Lighthouse = () => {
                 Explore an atmospheric lighthouse island, solve puzzles with otherworldly technology, and uncover why
                 it's not so easy for you to leave.
               </p>
+              <p className={styles.warningText} style={{ marginBottom: '-1em' }}>
+                Early development prototype:
+              </p>
               <div className={styles.gameplayVideos}>
                 <video autoPlay loop muted playsInline controls={true}>
                   <source src="https://u.polyhaven.org/SFI/Alpha_Gameplay_short_01_web.mp4" type="video/mp4" />

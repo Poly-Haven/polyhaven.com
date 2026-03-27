@@ -255,3 +255,8 @@ $c-gradient-sides: rgb(206, 255, 239);
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.warningText {
+  color: $c-yellow;
+  font-style: italic;
+}
