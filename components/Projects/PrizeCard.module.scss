@@ -1,0 +1,50 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+$img-height: 64px;
+
+.prize {
+  display: block;
+  border: 1px solid white; // Color will be overridden.
+  @include rounded;
+  padding: 0.4rem;
+  max-height: $img-height;
+  @include flex(row, true, true);
+  @include transition(0.5s);
+  transform-origin: center center;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-0.2rem);
+    filter: saturate(1.08) brightness(1.06);
+    box-shadow: 0 0.8rem 3.5rem -1.5rem rgba(black, 0.7);
+    @include transition(0.1s);
+  }
+
+  img {
+    height: $img-height;
+    flex: 0 0 auto;
+  }
+}
+
+.text {
+  @include flex(column, false, true);
+  text-align: left;
+  gap: 0.3rem;
+  min-width: 0;
+  padding: 0.5rem 0.7rem;
+  color: $c-text-bright;
+  flex: 1 1 auto;
+  font-size: 0.9em;
+
+  * {
+    margin: 0;
+  }
+
+  h4 {
+  }
+
+  p {
+    opacity: 0.65;
+  }
+}

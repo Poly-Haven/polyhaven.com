@@ -29,18 +29,17 @@ export async function getStaticProps({ locale }) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   let error = null
 
-  const allAssets = await fetch(`${baseUrl}/assets?t=all`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-  const lighthouseAssets = Object.fromEntries(
-    Object.entries(allAssets).filter(([_, asset]) => asset['categories'].includes('collection:project_lighthouse'))
-  )
+  // const allAssets = await fetch(`${baseUrl}/assets?t=all`)
+  //   .then(handleErrors)
+  //   .then((response) => response.json())
+  //   .catch((e) => (error = e))
+  // const lighthouseAssets = Object.fromEntries(
+  //   Object.entries(allAssets).filter(([_, asset]) => asset['categories'].includes('collection: project_lighthouse'))
+  // )
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'time'])),
-      assets: lighthouseAssets,
     },
   }
 }

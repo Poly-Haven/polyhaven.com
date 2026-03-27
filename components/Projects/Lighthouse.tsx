@@ -1,8 +1,12 @@
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import Link from 'next/link'
+import apiSWR from 'utils/apiSWR'
+
 import Button from 'components/UI/Button/Button'
 import Countdown from 'components/UI/Countdown/Countdown'
 import Lightbox from 'components/Lightbox/Lightbox'
+import Spinner from 'components/UI/Spinner/Spinner'
+import PrizeCard from './PrizeCard'
 
 import styles from './Lighthouse.module.scss'
 
@@ -33,6 +37,20 @@ const Lighthouse = () => {
     'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp3.png',
     'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp2.png',
   ]
+
+  const { data: allPrizes, error: errorPrizes } = apiSWR(`/community_prizes`, { revalidateOnFocus: false })
+  const [prizes, setPrizes] = useState<any[]>([])
+  useEffect(() => {
+    if (allPrizes?.['project_lighthouse']) {
+      const lighthousePrizes = Object.entries(allPrizes['project_lighthouse'])
+        .map(([key, prize]) => ({ key, ...(prize as object) }))
+        .sort(
+          (a: any, b: any) =>
+            parseFloat((b.value.match(/[\d.]+/) || ['0'])[0]) - parseFloat((a.value.match(/[\d.]+/) || ['0'])[0])
+        )
+      setPrizes(lighthousePrizes)
+    }
+  }, [allPrizes])
 
   return (
     <>
@@ -131,7 +149,7 @@ const Lighthouse = () => {
 
         {isBeforeDeadline && (
           <div className={styles.sectionWrapper}>
-            <div className={styles.section}>
+            <div className={styles.section} style={{ maxWidth: '100%' }}>
               <div className={styles.subSection}>
                 <Countdown targetDate={submissionDeadline} maxInterval="weeks" />
                 <div className={styles.row}>
@@ -144,7 +162,31 @@ const Lighthouse = () => {
                     contribute, but prizes will no longer be available.
                   </p>
                 </div>
-                <em>- prize list -</em>
+                <h3>$10,000+ of sponsored prizes available:</h3>
+                <div className={styles.prizeList}>
+                  {prizes?.map((prize) => (
+                    <PrizeCard
+                      key={prize.key}
+                      link={prize.link}
+                      title={prize.name}
+                      image={prize.thumbnail}
+                      description={prize.description}
+                      copiesAvailable={prize.copies}
+                      value={prize.value}
+                      color={prize.color}
+                    />
+                  ))}
+                  {!prizes.length && !errorPrizes && (
+                    <div style={{ textAlign: 'center', width: '100%' }}>
+                      <Spinner />
+                    </div>
+                  )}
+                  {errorPrizes && (
+                    <div style={{ color: 'red', textAlign: 'center', width: '100%' }}>
+                      Error loading prizes: {errorPrizes.message}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
