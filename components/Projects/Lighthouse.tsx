@@ -77,7 +77,9 @@ const Lighthouse = () => {
   const { data: assets, error: errorAssets } = apiSWR(`/assets?t=all&future=true&c=collection: project_lighthouse`, {
     revalidateOnFocus: false,
   })
-  const assetGalleryRef = useRef(null)
+  const assetGalleryParentRef = useRef<HTMLDivElement>(null)
+  const assetGalleryRef = useRef<HTMLDivElement>(null)
+  const { height: assetGalleryParentHeight } = useDivSize(assetGalleryParentRef, [assets])
   const { height: assetGalleryHeight } = useDivSize(assetGalleryRef, [assets])
 
   return (
@@ -106,20 +108,20 @@ const Lighthouse = () => {
         </div>
 
         <div className={styles.sectionWrapper}>
-          <div className={styles.section}>
+          <div className={`${styles.section} ${styles.sectionHalfMobile}`}>
             <div className={styles.subSection}>
-              <iframe
-                width={650}
-                height={650 * (9 / 16)}
-                src="https://www.youtube.com/embed/1sKLwMzcis0"
-                title="Project Lighthouse Announcement Trailer"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <div className={styles.videoEmbed}>
+                <iframe
+                  src="https://www.youtube.com/embed/1sKLwMzcis0"
+                  title="Project Lighthouse Announcement Trailer"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             </div>
             <div className={styles.subSection}>
-              <div className={styles.text} style={{ textAlign: 'left' }}>
+              <div className={styles.textLeft}>
                 <p>
                   Poly Haven is developing its first-ever video game, <strong>Project Lighthouse</strong>, designed with
                   three goals in mind:
@@ -136,9 +138,9 @@ const Lighthouse = () => {
           </div>
         </div>
 
-        <div className={styles.sectionWrapper}>
-          <div className={styles.section} style={{ maxWidth: '100%' }}>
-            <div className={styles.subSection}>
+        <div className={styles.sectionWrapper} ref={assetGalleryParentRef}>
+          <div className={`${styles.section} ${styles.sectionHalfMobile} ${styles.sectionFullWidth}`}>
+            <div className={`${styles.subSection} ${styles.gameplayConcepts}`}>
               <div className={styles.imgGrid}>
                 {gameplayConceptImages.map((imageUrl) => (
                   <img
@@ -172,8 +174,17 @@ const Lighthouse = () => {
               </div>
             </div>
             <div className={styles.subSection}>
-              {assets && (
-                <div className={styles.assetGallery}>
+              {assets && Object.keys(assets).length > 0 && (
+                <div
+                  className={styles.assetGallery}
+                  style={
+                    (assetGalleryParentHeight
+                      ? {
+                          '--asset-gallery-max-height': `${assetGalleryParentHeight}px`,
+                        }
+                      : undefined) as React.CSSProperties | undefined
+                  }
+                >
                   <div
                     className={styles.assetGalleryInner}
                     style={
@@ -214,7 +225,7 @@ const Lighthouse = () => {
 
         {isBeforeDeadline && (
           <div className={styles.sectionWrapper}>
-            <div className={styles.section} style={{ maxWidth: '100%' }}>
+            <div className={`${styles.section} ${styles.sectionFullWidth}`}>
               <div className={styles.subSection}>
                 <Countdown targetDate={submissionDeadline} maxInterval="weeks" />
                 <div className={styles.row}>
@@ -258,7 +269,7 @@ const Lighthouse = () => {
         )}
 
         <div className={styles.sectionWrapper}>
-          <div className={styles.section} style={{ maxWidth: '100%' }}>
+          <div className={`${styles.section} ${styles.sectionFullWidth}`}>
             <div className={styles.subSection}>
               <h2>About the Game</h2>
               <p>
@@ -303,7 +314,7 @@ const Lighthouse = () => {
         </div>
 
         <div className={styles.sectionWrapper}>
-          <div className={styles.section} style={{ maxWidth: '100%' }}>
+          <div className={`${styles.section} ${styles.sectionFullWidth}`}>
             <div className={styles.subSection}>
               <h2>Timeline</h2>
               <LighthouseTimeline />

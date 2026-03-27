@@ -218,6 +218,37 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .desktopEvents {
+    .connector,
+    .content {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      @include transition();
+    }
+
+    .event:hover,
+    .event:focus-within {
+      .connector,
+      .content {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+    }
+
+    .alwaysVisible {
+      .connector,
+      .content {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 760px) {
   .barSection {
     padding: 0;

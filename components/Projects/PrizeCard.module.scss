@@ -45,3 +45,34 @@ $img-height: 64px;
     opacity: 0.65;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .prize {
+    flex-direction: column;
+    flex: 1 1 auto;
+    max-height: none;
+    max-width: 120px;
+    padding: 0.2rem;
+
+    img {
+      max-width: 120px;
+      height: auto;
+    }
+  }
+
+  .text {
+    font-size: 0.8em;
+    text-align: center;
+    padding: 0;
+    padding-top: 0.25rem;
+
+    h4 {
+      font-weight: normal;
+      color: $c-text-light;
+    }
+
+    p {
+      display: none;
+    }
+  }
+}

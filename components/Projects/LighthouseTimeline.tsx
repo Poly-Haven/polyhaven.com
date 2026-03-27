@@ -77,6 +77,7 @@ const LighthouseTimeline = () => {
   const lastCompletedIndex = events.reduce((highestIndex, event, index) => (event.completed ? index : highestIndex), -1)
   const nextEventIndex = Math.min(lastCompletedIndex + 1, events.length - 1)
   const allCompleted = lastCompletedIndex === events.length - 1
+  const previousEventIndex = allCompleted ? Math.max(lastCompletedIndex - 1, -1) : Math.max(nextEventIndex - 1, -1)
 
   const getPosition = (timestamp: number) => ((timestamp - start) / span) * 100
 
@@ -111,15 +112,20 @@ const LighthouseTimeline = () => {
               {events.map((event, index) => {
                 const isCompleted = !!event.completed
                 const isCurrent = !allCompleted && index === nextEventIndex
+                const isAlwaysVisible =
+                  index === 0 ||
+                  index === events.length - 1 ||
+                  index === nextEventIndex ||
+                  (previousEventIndex >= 0 && index === previousEventIndex)
 
                 return (
                   <div
                     key={`${event.date}-${event.text}`}
                     className={`${styles.event} ${index % 2 === 0 ? styles.above : styles.below} ${
                       isCompleted ? styles.completed : ''
-                    } ${isCurrent ? styles.current : ''} ${index === 0 ? styles.edgeStart : ''} ${
-                      index === events.length - 1 ? styles.edgeEnd : ''
-                    }`}
+                    } ${isCurrent ? styles.current : ''} ${isAlwaysVisible ? styles.alwaysVisible : ''} ${
+                      index === 0 ? styles.edgeStart : ''
+                    } ${index === events.length - 1 ? styles.edgeEnd : ''}`}
                     style={{
                       left:
                         index === 0
