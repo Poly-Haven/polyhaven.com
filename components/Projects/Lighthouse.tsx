@@ -80,19 +80,15 @@ const Lighthouse = () => {
         <div className={styles.sectionWrapper}>
           <div className={styles.section}>
             <div className={styles.subSection}>
-              <div className={styles.imgGrid}>
-                {gameplayConceptImages.map((imageUrl) => (
-                  <img
-                    key={imageUrl}
-                    className={styles.clickableImage}
-                    src={`${imageUrl}?width=284&quality=95`}
-                    alt="Project Lighthouse concept art"
-                    onMouseMove={updateImageTilt}
-                    onMouseLeave={resetImageTilt}
-                    onClick={() => setLightboxImage(`${imageUrl}?width=1600&quality=95`)}
-                  />
-                ))}
-              </div>
+              <iframe
+                width={650}
+                height={650 * (9 / 16)}
+                src="https://www.youtube.com/embed/1sKLwMzcis0"
+                title="Project Lighthouse Announcement Trailer"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
             <div className={styles.subSection}>
               <div className={styles.text} style={{ textAlign: 'left' }}>
@@ -114,18 +110,27 @@ const Lighthouse = () => {
 
         <div className={styles.sectionWrapper}>
           <div className={styles.section} style={{ maxWidth: '100%' }}>
-            <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
+            <div className={styles.subSection}>
               <div className={styles.imgGrid}>
-                <img src="https://loremflickr.com/250/398" />
-                <img src="https://loremflickr.com/250/398" />
+                {gameplayConceptImages.map((imageUrl) => (
+                  <img
+                    key={imageUrl}
+                    className={styles.clickableImage}
+                    src={`${imageUrl}?width=284&quality=95`}
+                    alt="Project Lighthouse concept art"
+                    onMouseMove={updateImageTilt}
+                    onMouseLeave={resetImageTilt}
+                    onClick={() => setLightboxImage(`${imageUrl}?width=1600&quality=95`)}
+                  />
+                ))}
               </div>
             </div>
-            <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
+            <div className={styles.subSection}>
               <div className={styles.text}>
                 <h2>Join the Project</h2>
                 <p>
-                  We are inviting 3D artists of all skill levels to collaborate and work alongside us to create a
-                  library of themed props that will be integrated directly into the game.
+                  We invite 3D artists of all skill levels to collaborate and work alongside us to create a library of
+                  themed props that will be integrated directly into the game.
                 </p>
                 <p>
                   This is your chance to be a part of a greater project and leave your mark - help us shape the
@@ -138,7 +143,7 @@ const Lighthouse = () => {
                 <Button text="Learn more" href="https://blog.polyhaven.com/project-lighthouse-challenge/" />
               </div>
             </div>
-            <div className={styles.subSection} style={{ flexBasis: 'auto' }}>
+            <div className={styles.subSection}>
               <div className={styles.imgGrid}>
                 <img src="https://loremflickr.com/250/398" />
                 <img src="https://loremflickr.com/250/398" />

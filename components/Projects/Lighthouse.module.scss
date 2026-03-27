@@ -109,7 +109,7 @@ $c-gradient-sides: rgb(206, 255, 239);
 .section {
   @include flex(row, true, true);
   width: calc(100% - 2rem);
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
   max-width: 1300px;
 
   h2 {
@@ -148,6 +148,7 @@ $c-gradient-sides: rgb(206, 255, 239);
   position: relative; // Needed to keep above .assetTypeBannerHover
   max-width: 600px;
   margin: auto;
+  padding: 1.5rem;
 
   h2 {
     margin-top: 1rem;
@@ -202,6 +203,7 @@ $c-gradient-sides: rgb(206, 255, 239);
   @include flex(row, true, true);
   flex-wrap: wrap;
   gap: 1rem;
+  // max-width: 33%;
 }
 
 .clickableImage {
