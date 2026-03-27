@@ -52,6 +52,10 @@ const Lighthouse = () => {
     }
   }, [allPrizes])
 
+  const { data: assets, error: errorAssets } = apiSWR(`/assets?t=all&future=true&c=collection: project_lighthouse`, {
+    revalidateOnFocus: false,
+  })
+
   return (
     <>
       <div className={styles.pageBackground} />
@@ -144,10 +148,26 @@ const Lighthouse = () => {
               </div>
             </div>
             <div className={styles.subSection}>
-              <div className={styles.imgGrid}>
-                <img src="https://loremflickr.com/250/398" />
-                <img src="https://loremflickr.com/250/398" />
-              </div>
+              {assets && (
+                <div className={styles.assetGallery}>
+                  {Object.entries(assets).map(([slug, asset]: [string, any]) => (
+                    <div key={slug} className={styles.assetCard}>
+                      <img
+                        src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=${200}&height=${200}&quality=95`}
+                        alt={asset.name}
+                        className={styles.clickableImage}
+                        onMouseMove={updateImageTilt}
+                        onMouseLeave={resetImageTilt}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+              {errorAssets && (
+                <div style={{ color: 'red', textAlign: 'center', width: '100%' }}>
+                  Error loading assets: {errorAssets.message}
+                </div>
+              )}
             </div>
           </div>
         </div>
