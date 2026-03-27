@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import styles from './Nav.module.scss'
 
-const NavItem = ({ text, link, locale, compact, onMouseEnter, children }) => {
+const NavItem = ({ text, link = null, locale = null, compact = false, onMouseEnter = null, children = null }) => {
   return (
     <div
       className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''} ${
@@ -26,14 +26,6 @@ const NavItem = ({ text, link, locale, compact, onMouseEnter, children }) => {
       {children ? <div className={styles.subNav}>{children}</div> : null}
     </div>
   )
-}
-
-NavItem.defaultProps = {
-  children: null,
-  link: null,
-  locale: null,
-  compact: false,
-  onMouseEnter: null,
 }
 
 export default NavItem
