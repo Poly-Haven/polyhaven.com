@@ -77,10 +77,22 @@ const Lighthouse = () => {
   const { data: assets, error: errorAssets } = apiSWR(`/assets?t=all&future=true&c=collection: project_lighthouse`, {
     revalidateOnFocus: false,
   })
+  const [assetGalleryMeasureTick, setAssetGalleryMeasureTick] = useState(0)
+
+  useEffect(() => {
+    if (!assets || Object.keys(assets).length === 0) return
+
+    const interval = window.setInterval(() => {
+      setAssetGalleryMeasureTick((tick) => tick + 1)
+    }, 2000)
+
+    return () => window.clearInterval(interval)
+  }, [assets])
+
   const assetGalleryParentRef = useRef<HTMLDivElement>(null)
   const assetGalleryRef = useRef<HTMLDivElement>(null)
-  const { height: assetGalleryParentHeight } = useDivSize(assetGalleryParentRef, [assets])
-  const { height: assetGalleryHeight } = useDivSize(assetGalleryRef, [assets])
+  const { height: assetGalleryParentHeight } = useDivSize(assetGalleryParentRef, [assets, assetGalleryMeasureTick])
+  const { height: assetGalleryHeight } = useDivSize(assetGalleryRef, [assets, assetGalleryMeasureTick])
 
   return (
     <>
