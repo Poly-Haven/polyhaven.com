@@ -233,7 +233,7 @@ const Lighthouse = () => {
                       key={prize.key}
                       link={prize.link}
                       title={prize.name}
-                      image={prize.thumbnail}
+                      image={`https://cdn.polyhaven.com/site_images/projects/lighthouse/prizes/${prize.key}.png?height=64&quality=95`}
                       description={prize.description}
                       copiesAvailable={prize.copies}
                       value={prize.value}
