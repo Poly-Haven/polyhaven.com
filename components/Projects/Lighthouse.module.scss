@@ -101,6 +101,7 @@ $c-gradient-sides: rgb(206, 255, 239);
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   &:nth-last-child(odd) {
     background: rgba($c-background-light, 0.25);
@@ -217,10 +218,20 @@ $c-gradient-sides: rgb(206, 255, 239);
   &:hover {
     transform: perspective(900px) translateY(-0.2rem) translateZ(1.4rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
       scale(1.01);
-    filter: saturate(1.08) brightness(1.06);
-    box-shadow: 0 0.8rem 3.5rem -1.5rem rgba(black, 0.7);
+    filter: saturate(1.08) brightness(1.06) drop-shadow(0 2rem 1.5rem rgba(black, 0.15));
+    // box-shadow: 0 0.8rem 3.5rem -1.5rem rgba(black, 0.7);
     @include transition(0.1s);
   }
+}
+
+.assetGallery {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 26em;
+  margin: -2rem 0;
+  // overflow-y: scroll;
+  @include dark_scrollbar;
 }
 
 .prizeList {
