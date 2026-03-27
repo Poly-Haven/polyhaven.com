@@ -80,6 +80,13 @@ const Nav = () => {
     setToggle(!navHide)
   }
 
+  // Project lighthouse, remove after deadline
+  const submissionDeadline = '2026-05-01T23:59:59.999Z'
+  const currentTime = new Date().toISOString()
+  const isBeforeDeadline = currentTime < submissionDeadline
+  const showLighthouseNav =
+    isBeforeDeadline && router.asPath !== '/project/lighthouse' && !router.asPath.startsWith('/a/')
+
   return (
     <>
       <div
@@ -88,6 +95,7 @@ const Nav = () => {
           setToggle(true)
         }}
       >
+        {showLighthouseNav && <NavItem text="Join Project Lighthouse" link="/project/lighthouse" lighthouse />}
         <NavItem text={t('common:Assets')} link="/all">
           <NavItem
             text={

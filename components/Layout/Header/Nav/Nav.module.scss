@@ -155,6 +155,26 @@ $mobileBreakpoint: 890px;
   }
 }
 
+.lighthouseNavItem .navItem {
+  font-weight: 600;
+  font-style: italic;
+  color: $c-community-lightish;
+  text-shadow:
+    0 0 0.5em rgba($c-community, 0.3),
+    0 0 1em rgba($c-community, 0.3),
+    0 0 2em rgba($c-community, 0.3);
+
+  &:hover {
+    color: $c-text-bright;
+    background: $c-community;
+    @include text-shadow();
+  }
+
+  @media screen and (max-width: 1125px) {
+    display: none;
+  }
+}
+
 .menuToggle {
   display: none;
   place-items: center;

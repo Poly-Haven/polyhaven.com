@@ -2,12 +2,20 @@ import Link from 'next/link'
 
 import styles from './Nav.module.scss'
 
-const NavItem = ({ text, link = null, locale = null, compact = false, onMouseEnter = null, children = null }) => {
+const NavItem = ({
+  text,
+  link = null,
+  locale = null,
+  compact = false,
+  onMouseEnter = null,
+  children = null,
+  lighthouse = false,
+}) => {
   return (
     <div
       className={`${styles.navItemWrapper} ${compact ? styles.compactNavItemWrapper : ''} ${
         children ? styles.navItemMenuFlag : ''
-      }`}
+      } ${lighthouse ? styles.lighthouseNavItem : ''}`}
       onMouseEnter={onMouseEnter}
     >
       {link ? (
