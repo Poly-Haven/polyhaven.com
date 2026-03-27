@@ -8,6 +8,7 @@ import Countdown from 'components/UI/Countdown/Countdown'
 import Lightbox from 'components/Lightbox/Lightbox'
 import Spinner from 'components/UI/Spinner/Spinner'
 import PrizeCard from './PrizeCard'
+import LighthouseTimeline from './LighthouseTimeline'
 
 import styles from './Lighthouse.module.scss'
 
@@ -297,6 +298,19 @@ const Lighthouse = () => {
                 </p>
               </div>
               <Button text="Learn more" href="https://blog.polyhaven.com/project-lighthouse-challenge/" />
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.sectionWrapper}>
+          <div className={styles.section} style={{ maxWidth: '100%' }}>
+            <div className={styles.subSection}>
+              <h2>Timeline</h2>
+              <LighthouseTimeline />
+              <p className={styles.warningText}>
+                It's our first time making a game, this might not be completely accurate, please be gentle.
+              </p>
+              <Button text="Follow our dev logs" href="https://www.patreon.com/collection/1666420" />
             </div>
           </div>
         </div>
