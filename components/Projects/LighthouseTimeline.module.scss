@@ -1,2 +1,277 @@
 @import "constants/colors";
 @import "constants/mixins";
+
+.timeline {
+  width: 85vw;
+  margin: auto;
+  direction: ltr;
+}
+
+.barSection {
+  position: relative;
+  width: 100%;
+  padding: 7rem 0 7.5rem;
+}
+
+.barTrack {
+  position: relative;
+  width: 100%;
+  padding: 4px;
+  border: 3px solid $c-community;
+  border-radius: 999px;
+  background: rgba($c-background, 0.75);
+  box-sizing: border-box;
+}
+
+.barInnerArea {
+  position: relative;
+  height: 32px;
+}
+
+.barFill {
+  position: relative;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 999px;
+  background: $c-community;
+  overflow: hidden;
+  @include transition();
+}
+
+.barShine {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  animation: slide 3s infinite;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(128, 186, 232, 0) 99%,
+    rgba(125, 185, 232, 0) 100%
+  );
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  25% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.desktopEvents {
+  position: absolute;
+  inset: 0;
+}
+
+.event {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  opacity: 0.72;
+  @include transition();
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.connector {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  background: rgba($c-text-light, 0.7);
+  transform: translateX(-50%);
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 4px solid $c-background;
+  background: rgba($c-text-light, 0.85);
+  transform: translate(-50%, -50%);
+  @include transition();
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  width: min(13rem, 16vw);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.contentLink {
+  display: block;
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: rgba($c-text-light, 0.35);
+}
+
+.above {
+  .connector {
+    bottom: 2px;
+    height: 3.75rem;
+  }
+
+  .content {
+    bottom: 4.5rem;
+  }
+}
+
+.below {
+  .connector {
+    top: 2px;
+    height: 3.75rem;
+  }
+
+  .content {
+    top: 4.5rem;
+  }
+}
+
+.date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: $c-text-bright;
+  margin-bottom: 0.35rem;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.completed {
+  opacity: 0.85;
+
+  .dot {
+    background: white;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.current {
+  opacity: 1;
+
+  .dot {
+    background: $c-community;
+    box-shadow: 0 0 0 8px rgba($c-community, 0.14);
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .date,
+  .text {
+    color: $c-text-bright;
+  }
+}
+
+.edgeStart {
+  .content {
+    left: 0;
+    transform: none;
+    text-align: left;
+  }
+}
+
+.edgeEnd {
+  .content {
+    left: auto;
+    right: 0;
+    transform: none;
+    text-align: right;
+  }
+}
+
+.mobileEvents {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .barSection {
+    padding-top: 6rem;
+    padding-bottom: 6.5rem;
+  }
+
+  .content {
+    width: min(10rem, 20vw);
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .barSection {
+    padding: 0;
+  }
+
+  .desktopEvents {
+    display: none;
+  }
+
+  .mobileEvents {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+  .mobileEvent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    align-items: start;
+    opacity: 0.72;
+    @include transition();
+  }
+
+  .mobileDot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 4px solid $c-background;
+    background: rgba($c-text-light, 0.85);
+    margin-top: 0.25rem;
+    @include transition();
+  }
+
+  .mobileContent {
+    text-align: left;
+  }
+
+  .mobileEvent.completed {
+    opacity: 0.85;
+
+    .mobileDot {
+      background: white;
+      transform: scale(1.05);
+    }
+  }
+
+  .mobileEvent.current {
+    opacity: 1;
+
+    .mobileDot {
+      background: $c-community;
+      box-shadow: 0 0 0 8px rgba($c-community, 0.14);
+      transform: scale(1.15);
+    }
+  }
+}
