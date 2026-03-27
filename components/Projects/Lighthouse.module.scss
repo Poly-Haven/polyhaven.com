@@ -291,7 +291,7 @@ $c-gradient-sides: rgb(206, 255, 239);
 
 @media screen and (max-width: 800px) {
   .banner {
-    min-height: calc(100vh - 53px - 2rem);
+    min-height: calc(100vh - 53px - 6rem);
 
     h1 {
       font-size: clamp(2rem, 8vw, 3rem);
