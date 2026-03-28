@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { memo, useMemo } from 'react'
 import apiSWR from 'utils/apiSWR'
 
 import Spinner from 'components/UI/Spinner/Spinner'
@@ -43,17 +43,17 @@ const TimelineEventContent = ({ event }: { event: TimelineEvent }) => {
 }
 
 const LighthouseTimeline = () => {
-  const [events, setEvents] = useState<TimelineEvent[]>([])
   const { data, error } = apiSWR(`/timelines/project_lighthouse`, { revalidateOnFocus: false })
 
-  useEffect(() => {
-    if (!data) return
-    setEvents(
-      Object.keys(data)
-        .map((key) => ({ date: key, ...data[key], timestamp: parseTimelineDate(key) }))
-        .sort((a, b) => a.timestamp - b.timestamp)
-    )
-  }, [data])
+  const events = useMemo(
+    () =>
+      !data
+        ? []
+        : Object.keys(data)
+            .map((key) => ({ date: key, ...data[key], timestamp: parseTimelineDate(key) }))
+            .sort((a, b) => a.timestamp - b.timestamp),
+    [data]
+  )
 
   if (error) return <div className={styles.timeline}>Error loading timeline</div>
   if (!data || events.length === 0) {
@@ -167,4 +167,4 @@ const LighthouseTimeline = () => {
   )
 }
 
-export default LighthouseTimeline
+export default memo(LighthouseTimeline)
