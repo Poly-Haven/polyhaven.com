@@ -1,3 +1,8 @@
+import { useState, useEffect } from 'react'
+import apiSWR from 'utils/apiSWR'
+
+import Spinner from 'components/UI/Spinner/Spinner'
+
 import styles from './LighthouseTimeline.module.scss'
 
 type TimelineEvent = {
@@ -6,6 +11,7 @@ type TimelineEvent = {
   completed?: boolean
   dateLabel?: string
   link?: string
+  timestamp?: number
 }
 
 const parseTimelineDate = (date: string) => new Date(`${date}T00:00:00Z`).getTime()
@@ -37,37 +43,26 @@ const TimelineEventContent = ({ event }: { event: TimelineEvent }) => {
 }
 
 const LighthouseTimeline = () => {
-  const timelineEvents: TimelineEvent[] = [
-    {
-      date: '2024-10-01',
-      text: 'Splatterdash experiment',
-      completed: true,
-      link: 'https://www.patreon.com/posts/we-made-little-115610140',
-    },
-    { date: '2025-01-01', text: 'Preproduction', completed: true },
-    {
-      date: '2025-06-01',
-      text: 'Production begins',
-      completed: true,
-      link: 'https://www.patreon.com/posts/136544678?collection=1666420',
-    },
-    {
-      date: '2025-11-26',
-      text: 'Community Project begins',
-      completed: true,
-      link: 'https://blog.polyhaven.com/project-lighthouse-challenge/',
-    },
-    { date: '2026-02-10', text: 'Submissions opened', completed: true, link: 'https://community.polyhaven.com' },
-    { date: '2026-05-01', text: 'Submission deadline' },
-    { date: '2026-06-01', text: 'Prizes distributed', dateLabel: 'June 2026' },
-    { date: '2026-12-01', text: 'Closed beta', dateLabel: 'Late 2026' },
-    { date: '2027-03-01', text: 'Game released!', dateLabel: 'Early 2027' },
-  ]
+  const [events, setEvents] = useState<TimelineEvent[]>([])
+  const { data, error } = apiSWR(`/timelines/project_lighthouse`, { revalidateOnFocus: false })
 
-  const events = timelineEvents.map((event) => ({
-    ...event,
-    timestamp: parseTimelineDate(event.date),
-  }))
+  useEffect(() => {
+    if (!data) return
+    setEvents(
+      Object.keys(data)
+        .map((key) => ({ date: key, ...data[key], timestamp: parseTimelineDate(key) }))
+        .sort((a, b) => a.timestamp - b.timestamp)
+    )
+  }, [data])
+
+  if (error) return <div className={styles.timeline}>Error loading timeline</div>
+  if (!data || events.length === 0) {
+    return (
+      <div className={styles.timeline}>
+        <Spinner />
+      </div>
+    )
+  }
 
   const start = events[0].timestamp
   const end = events[events.length - 1].timestamp
