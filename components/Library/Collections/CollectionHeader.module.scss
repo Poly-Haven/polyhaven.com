@@ -72,4 +72,19 @@
       }
     }
   }
+
+  .countdown {
+    font-size: 0.7em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    p {
+      color: $c-text-bright;
+      font-size: 1.5em;
+      margin: -0.5em 0;
+      text-align: center;
+      @include text-shadow(1);
+    }
+  }
 }

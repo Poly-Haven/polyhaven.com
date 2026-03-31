@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import useDivSize from 'hooks/useDivSize'
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
+import Countdown from 'components/UI/Countdown/Countdown'
 import Blender from 'components/UI/Icons/Blender'
 import Unreal from 'components/UI/Icons/Unreal'
 
@@ -38,6 +39,12 @@ const CollectionHeader = ({ collection }) => {
     unreal: <Unreal />,
   }
 
+  let isBeforeDeadline = false
+  if (collection.submission_deadline) {
+    const currentTime = new Date().toISOString()
+    isBeforeDeadline = currentTime < collection.submission_deadline
+  }
+
   const backgroundImage = `https://cdn.polyhaven.com/collections/${collection.id}.png?width=${imageWidth}&quality=95`
 
   return (
@@ -69,16 +76,29 @@ const CollectionHeader = ({ collection }) => {
         <h1>Collection: {collection.name}</h1>
         <p>{collection.description}</p>
       </div>
+
+      {isBeforeDeadline && (
+        <div className={styles.countdown}>
+          <p>Submissions are open!</p>
+          <Countdown targetDate={collection.submission_deadline} maxInterval="weeks" />
+        </div>
+      )}
       <div className={styles.buttons}>
-        <Button href={collection.project_link} text="About the Project" icon={<MdInfo />} />
-        {Object.keys(collection.scene).map((software, i) => (
-          <Button
-            text={`Download the ${Object.keys(collection.scene).length > 1 ? `${titleCase(software)} ` : ''}Scene`}
-            href={collection.scene[software]}
-            icon={softwareIcons[software]}
-            key={i}
-          />
-        ))}
+        <Button
+          href={collection.project_link}
+          text={isBeforeDeadline ? 'Join the Challenge!' : 'About the Project'}
+          icon={isBeforeDeadline ? '🚀' : <MdInfo />}
+          color={isBeforeDeadline ? 'community' : 'accent'}
+        />
+        {collection.scene &&
+          Object.keys(collection.scene).map((software, i) => (
+            <Button
+              text={`Download the ${Object.keys(collection.scene).length > 1 ? `${titleCase(software)} ` : ''}Scene`}
+              href={collection.scene[software]}
+              icon={softwareIcons[software]}
+              key={i}
+            />
+          ))}
       </div>
     </div>
   )

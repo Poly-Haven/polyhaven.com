@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
+import Countdown from 'components/UI/Countdown/Countdown'
 import Blender from 'components/UI/Icons/Blender'
 import Unreal from 'components/UI/Icons/Unreal'
 
@@ -15,6 +16,12 @@ const Collection = ({ collectionId, data }) => {
     unreal: <Unreal />,
   }
 
+  let isBeforeDeadline = false
+  if (data.submission_deadline) {
+    const currentTime = new Date().toISOString()
+    isBeforeDeadline = currentTime < data.submission_deadline
+  }
+
   const collectionLink = `/collections/${collectionId}`
 
   const buttonStyle = { whiteSpace: 'nowrap', margin: 0, padding: '0.5em 0.8em', width: 'calc(100% - 2em - 2px)' }
@@ -22,12 +29,19 @@ const Collection = ({ collectionId, data }) => {
   return (
     <div className={styles.collection}>
       <div className={styles.collectionInner}>
-        <Link href={collectionLink}>
+        <Link href={isBeforeDeadline ? data.project_link : collectionLink} className={styles.imageWrapper}>
           <img
             src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=578&aspect_ratio=16:9&quality=95`}
             alt={`${data.name}`}
           />
+          {isBeforeDeadline && (
+            <div className={styles.countdown}>
+              <p>Submissions are open!</p>
+              <Countdown targetDate={data.submission_deadline} maxInterval="weeks" />
+            </div>
+          )}
         </Link>
+
         {data.community && (
           <div className={styles.banner}>
             <div className={styles.bannerInner}>
@@ -42,6 +56,15 @@ const Collection = ({ collectionId, data }) => {
             <p>{data.description}</p>
           </div>
           <div className={styles.buttonCol}>
+            {isBeforeDeadline && (
+              <Button
+                text="Join the Challenge!"
+                href={data.project_link}
+                color="community"
+                icon="🚀"
+                style={buttonStyle}
+              />
+            )}
             <Button text="View Assets" href={collectionLink} style={buttonStyle} />
             {data.scene && (
               <>
