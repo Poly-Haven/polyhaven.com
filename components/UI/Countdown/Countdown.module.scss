@@ -3,14 +3,14 @@
 
 .wrapper {
   @include flex(row, true, true);
-  gap: 0.65rem;
+  gap: 0.65em;
   flex-wrap: wrap;
-  margin: 1rem;
+  margin: 1em;
 }
 
 .block {
   @include flex(column, true, true);
-  width: 6rem;
+  width: 6em;
   background: rgba($c-community, 0.3);
   border: 1px solid rgba($c-community-light, 0.3);
   @include drop-shadow(0.5);
@@ -18,8 +18,8 @@
 }
 
 .value {
-  font-size: 2.5rem;
-  padding: 1rem;
+  font-size: 2.5em;
+  padding: 0.4em;
   font-weight: 700;
   line-height: 1;
   color: $c-text-bright;
@@ -31,11 +31,11 @@
 }
 
 .label {
-  width: 6rem;
-  padding: 0.3rem 0;
+  width: 6.6666em;
+  padding: 0.3em 0;
   background: rgba($c-community-light, 0.3);
-  margin-top: 0.28rem;
-  font-size: 0.9rem;
+  margin-top: 0.28em;
+  font-size: 0.9em;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: $c-text-bright;
