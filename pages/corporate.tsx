@@ -1,52 +1,22 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
-import Markdown from 'markdown-to-jsx'
 import CSS from 'csstype'
 import { subMonths, startOfMonth, endOfMonth, differenceInYears } from 'date-fns'
 
-import { IoTicket } from 'react-icons/io5'
-import { MdCloudDownload, MdCropFree, MdLink, MdChat, MdInfo } from 'react-icons/md'
+import { MdCloudDownload, MdCropFree, MdLink, MdInfo } from 'react-icons/md'
 
 import { timeago, fixTzOffset, isoDay } from 'utils/dateUtils'
 
 import InfoBlock from 'components/Layout/InfoBlock/InfoBlock'
-import TierBlock from 'components/CorporateSponsors/TierBlock/TierBlock'
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import StatBlock from 'components/Stats/StatBlock/StatBlock'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
+import Button from 'components/UI/Button/Button'
 
 const Corporate = (props) => {
   const { t: tt } = useTranslation('time')
-
-  const commonRewards = [
-    {
-      icon: <MdLink />,
-      color: '#ffa726',
-      text: <>Your logo can link to your website or product page.</>,
-    },
-    {
-      icon: <IoTicket />,
-      color: '#be6fff',
-      text: (
-        <>
-          Monthly asset sponsorships.{' '}
-          <MdInfo data-tip="Every month you may choose an asset to sponsor permanently.<br />Your logo &amp; link will be shown on the asset page near the download buttons.<br />You can also choose to have the asset selected randomly for you each month." />
-        </>
-      ),
-    },
-    {
-      icon: <MdChat />,
-      color: '#9ccc65',
-      text: <>Access our private internal communication channels and help us discuss what to work on.</>,
-    },
-    {
-      icon: <MdCloudDownload />,
-      color: '#b3e5fc',
-      text: <>Nextcloud library access for your team.</>,
-    },
-  ]
 
   const styleRow: CSS.Properties = {
     display: 'flex',
@@ -55,47 +25,121 @@ const Corporate = (props) => {
     flexWrap: 'wrap',
   }
 
+  const ctaStyle: CSS.Properties = {
+    textAlign: 'center',
+    margin: '3em auto 1em',
+    maxWidth: '42rem',
+  }
+
   return (
     <TextPage
-      title="Corporate Sponsorships"
-      description="Does your organization want to support our vision and associate themselves with our project in the public eye?"
+      title="Commercial Licensing & Partnerships"
+      description="Guidance for companies integrating Poly Haven, licensing asset snapshots, or funding new work."
       url="/corporate"
     >
       <div dir="ltr" style={{ textAlign: 'left' }}>
-        <h1>Corporate Sponsorships</h1>
+        <h1>Commercial Licensing & Partnerships</h1>
 
         <p>
-          Does your organization want to support our vision and associate themselves with our project in the public eye?
+          Poly Haven assets are free to use under CC0. This page is for companies that want to build products on top of
+          our library, license a fixed asset snapshot, or fund new work directly.
         </p>
         <p>
-          Show your logo prominently in various locations on our site, gain access to our private communication channels
-          to help us discuss what to work on, and have your whole team join our cloud library for easier integration
-          with your workflow.
+          Most teams can use our assets without contacting us. If you need structured API access, bulk delivery,
+          commercial guarantees, or a direct partnership around new asset creation, the options below are designed for
+          that.
         </p>
+
+        <section>
+          <h2>How companies work with Poly Haven</h2>
+          <p>There are three common ways companies engage with us:</p>
+          <ul>
+            <li>
+              <strong>Building a product or workflow on top of our live data:</strong> API / Integration License.
+            </li>
+            <li>
+              <strong>Need a full copy of the library with no API dependency:</strong> Bulk Asset License.
+            </li>
+            <li>
+              <strong>Want to fund new captures, scans, or infrastructure:</strong> Sponsored Projects.
+            </li>
+          </ul>
+          <p>
+            If you&apos;re unsure which option fits your use case, <Link href="/about-contact">contact us</Link> with a
+            short description of your product or requirements.
+          </p>
+        </section>
 
         <div style={styleRow}>
-          <InfoBlock title="Display Your Logo" image={<MdCropFree />} imageStyle={{ color: '#ef5350' }}>
-            <p>Show your logo prominently in various locations on our site. Your logo links to your website.</p>
+          <InfoBlock title="API & Integration Licensing" image={<MdLink />} imageStyle={{ color: '#ffa726' }}>
+            <p>
+              For companies building products, plugins, AI tools, or SaaS workflows on top of Poly Haven&apos;s live
+              asset data.
+            </p>
+            <p>
+              Our standard commercial model is a 5% revenue share with a minimum annual fee, which keeps access simple
+              for smaller teams while scaling with commercial use.
+            </p>
+            <p>
+              Larger companies can move to an enterprise agreement for higher usage, internal approvals, and closer
+              coordination around long-term integrations.
+            </p>
           </InfoBlock>
-          <InfoBlock title="Talk To Us" image={<MdChat />} imageStyle={{ color: '#9ccc65' }}>
-            <p>Gain access to our private communication channels to help us decide what to work on.</p>
-          </InfoBlock>
-          <InfoBlock title="Cloud Library" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
-            <p>Have your whole studio join our cloud library for easier integration with your workflow.</p>
+          <InfoBlock title="Bulk Asset Licensing" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
+            <p>
+              This is for teams that need a fixed snapshot of Poly Haven assets delivered directly, without depending on
+              our API or infrastructure.
+            </p>
+            <p>
+              It is a good fit for embedded asset libraries, internal mirrors, AI datasets, and products that need a
+              stable, reproducible asset set.
+            </p>
+            <p>
+              Redistribution rights, provenance guarantees, and other commercial assurances can be added when needed.
+            </p>
           </InfoBlock>
         </div>
 
         <div style={styleRow}>
+          <InfoBlock title="Sponsored Projects" image={<MdCropFree />} imageStyle={{ color: '#ef5350' }}>
+            <p>
+              Sponsored projects fund real work: HDRI trips, texture collections, scanning equipment, processing
+              hardware, and site infrastructure.
+            </p>
+            <p>
+              This is not just brand placement. Companies fund a specific outcome that benefits both their team and the
+              wider community.
+            </p>
+            <p>
+              Sponsorship benefits still scale with contribution size, from acknowledgements and logo placement through
+              to deeper collaboration.
+            </p>
+          </InfoBlock>
+          <InfoBlock title="Why Companies Work With Us" image={<MdInfo />} imageStyle={{ color: '#9ccc65' }}>
+            <p>Even though the assets are free, companies often pay for the operational layer around them:</p>
+            <ul>
+              <li>Structured API access, metadata, and integration support.</li>
+              <li>Reliability, updates, and a stable relationship for production use.</li>
+              <li>Provenance clarity and commercial assurances where required.</li>
+              <li>Bulk delivery for internal mirrors, datasets, and embedded libraries.</li>
+              <li>Supporting the continued creation of new public-domain assets.</li>
+            </ul>
+          </InfoBlock>
+        </div>
+
+        <CorporateSponsors header="Our Current Sponsors:" hideInfoBtn />
+
+        <div style={styleRow}>
           <InfoBlock title="About Poly Haven">
             <p>
-              Our goal is to provide high quality assets to 3D creators, released as public domain for absolute freedom
-              and usability in both commercial and private applications.
+              Poly Haven provides high quality assets to 3D creators, released as public domain so they can be used
+              freely in both commercial and private work.
             </p>
             <p>There are no costs, restrictions, or registrations required to download or use our assets.</p>
             <p>
               We have been operating independently for over {differenceInYears(new Date(), new Date('2017-10-03'))}{' '}
-              years and have seen consistent growth in all capacities. Our work has already been used in a number of AAA
-              studios, scientific research, and has been included by default in several 3D applications.
+              years with steady growth. Our work is already used by AAA studios, scientific research teams, and several
+              3D applications that include Poly Haven assets by default.
             </p>
           </InfoBlock>
           <InfoBlock title="Audience Stats">
@@ -122,112 +166,15 @@ const Corporate = (props) => {
           </InfoBlock>
         </div>
 
-        <table></table>
-
-        <div style={styleRow}>
-          <TierBlock
-            title="Silver"
-            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_silver.png" />}
-            price="100"
-            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Silver"
-            features={[
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    <strong>Small white silhouette logo</strong> in the footer of every page.
-                  </>
-                ),
-              },
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    <strong>Small white silhouette logo</strong> on the <Link href="/about-contact">About Page</Link>.
-                  </>
-                ),
-              },
-              ...commonRewards,
-            ]}
-          />
-          <TierBlock
-            title="Gold"
-            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_gold.png" />}
-            price="300"
-            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Gold"
-            features={[
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    <strong>Larger white silhouette logo</strong> on the <Link href="/">Home Page</Link>.
-                  </>
-                ),
-              },
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    Your logo is also shown in the Footer of every page, and on the{' '}
-                    <Link href="/about-contact">About Page</Link>.
-                  </>
-                ),
-              },
-              ...commonRewards,
-            ]}
-          />
-          <TierBlock
-            title="Diamond"
-            image={<img src="https://cdn.polyhaven.com/site_images/icons/corp_diamond.svg" />}
-            price="900"
-            link="https://polyhaven.gumroad.com/l/ph-corporate?tier=Diamond"
-            features={[
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    <strong>Full color logo</strong> on the <Link href="/">Home Page</Link>.
-                  </>
-                ),
-              },
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    Your logo is <strong>larger</strong> and shown <strong>above</strong> lower tier sponsors.
-                  </>
-                ),
-              },
-              {
-                icon: <MdCropFree />,
-                color: '#ef5350',
-                text: (
-                  <>
-                    Your logo is also shown in the Footer of every page, and on the{' '}
-                    <Link href="/about-contact">About Page</Link>.
-                  </>
-                ),
-              },
-              ...commonRewards,
-            ]}
-          />
+        <div style={ctaStyle}>
+          <h2>Talk To Us About Your Use Case</h2>
+          <p>
+            If you need API licensing, a bulk asset delivery, or a sponsored project, send us a short description of
+            your product, workflow, or requirements.
+          </p>
+          <Button text="Contact Poly Haven" href="/about-contact" color="accent" />
         </div>
 
-        <CorporateSponsors header="Our Current Sponsors:" hideInfoBtn />
-
-        <hr />
-
-        <h1>More Details</h1>
-
-        <div lang="en">
-          <Markdown>{props.details.replace(/\\n/g, '\n')}</Markdown>
-        </div>
         <Tooltip />
       </div>
     </TextPage>
@@ -242,13 +189,6 @@ export async function getStaticProps(context) {
   const patrons = await fetch(`${baseUrl}/patrons`)
     .then((response) => response.json())
     .catch((e) => (error = e))
-
-  // Slots available
-  const corporate = await fetch(`${baseUrl}/corporate`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-  const diamondSponsors = Object.keys(corporate).filter((s) => corporate[s].rank === 3)
-  const goldSponsors = Object.keys(corporate).filter((s) => corporate[s].rank === 2)
 
   // Asset downloads
   const now = new Date()
@@ -270,11 +210,6 @@ export async function getStaticProps(context) {
     .then((response) => response.json())
     .catch((e) => (error = e))
 
-  // Text
-  const details = await fetch(`${baseUrl}/text/corporate_details`)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-
   if (error) {
     return {
       props: { ...(await serverSideTranslations(context.locale, ['common', 'time'])) },
@@ -287,9 +222,6 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(context.locale, ['common', 'time'])),
       updated: now.valueOf(),
       numPatrons: patrons.length,
-      numDiamond: diamondSponsors.length,
-      numGold: goldSponsors.length,
-      details: details.content,
       monthlyDownloads,
       traffic,
     },
