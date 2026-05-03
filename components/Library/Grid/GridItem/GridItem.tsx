@@ -43,6 +43,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
     },
   }
   const size = Object.values(sizes)[asset.type][thumbSize]
+  const quality = 87
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
@@ -132,7 +133,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
     creditedAuthors = Object.keys(asset.authors)
   }
 
-  const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}&quality=95`
+  const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}&quality=${quality}`
   return (
     <Link
       href="/a/[id]"

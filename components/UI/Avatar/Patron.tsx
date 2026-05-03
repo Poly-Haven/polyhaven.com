@@ -9,7 +9,7 @@ const Avatar = ({ name, size, timestamp }) => {
   const { t } = useTranslation('time')
   return (
     <div className={styles.patron}>
-      <img src={avatar} width={size} height={size} />
+      <img src={avatar} width={size} height={size} alt={name} />
       <p>
         <strong>{name}</strong>
         <br />

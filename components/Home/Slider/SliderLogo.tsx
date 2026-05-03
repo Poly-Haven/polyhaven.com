@@ -65,7 +65,7 @@ const SliderLogo = ({ containerWidth, containerHeight }) => {
         top: posY,
       }}
     >
-      <img src="/Logo 256.png" className={styles.logo} style={{ marginBottom: '-0.35em' }} />
+      <img src="/Logo 256.png" className={styles.logo} style={{ marginBottom: '-0.35em' }} alt="Poly Haven logo" />
       <h1>Poly Haven</h1>
       <p>{t('tagline')}</p>
     </div>

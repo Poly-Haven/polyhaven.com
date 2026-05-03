@@ -58,8 +58,10 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const [hideSidebar, setHideSidebar] = useState(true)
   const [shouldLoadUserRenders, setShouldLoadUserRenders] = useState(false)
   const widthRef = useRef(null)
+  const previewRef = useRef(null)
   const userRendersRef = useRef(null)
   const { width: sidebarWidth } = useDivSize(widthRef)
+  const { width: previewWidth } = useDivSize(previewRef)
 
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1
@@ -125,6 +127,11 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     }
   }, [assetID])
 
+  useEffect(() => {
+    if (!previewWidth) return
+    setActiveImage(`${activeImageSrc}?height=${Math.round(previewWidth / 2)}&quality=95`)
+  }, [previewWidth])
+
   // Intersection Observer for UserRenders lazy loading
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -158,6 +165,8 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     setShowTilePreview('')
   }
 
+  const previewHeight = previewWidth ? Math.round(previewWidth / 2) : 760
+
   const setPreviewImage = (src) => {
     if (!activeImage.startsWith(src)) {
       setImageLoading(true)
@@ -167,7 +176,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     }
     setActiveImageSrc(src)
     if (src.startsWith('https://cdn.polyhaven.com/')) {
-      src += '?height=760&quality=95'
+      src += `?height=${previewHeight}&quality=95`
     }
     setActiveImage(src)
     setShowTilePreview('')
@@ -211,7 +220,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
           </div>
         </div>
 
-        <div className={styles.previewWrapper}>
+        <div className={styles.previewWrapper} ref={previewRef}>
           <div className={`${styles.activePreview}${showWebGL ? ' ' + styles.activePreviewGLTF : ''}`}>
             <img id="activePreview" onLoad={imageLoaded} src={activeImage} alt={data.description} />
             {data.sketchfab_id ? (

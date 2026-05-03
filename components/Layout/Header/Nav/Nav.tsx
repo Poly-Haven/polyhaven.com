@@ -89,7 +89,7 @@ const Nav = () => {
 
   return (
     <>
-      <div
+      <nav
         className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`}
         onClick={() => {
           setToggle(true)
@@ -185,13 +185,13 @@ const Nav = () => {
         </NavItem>
 
         {user ? (
-          <NavItem text={<MdAccountCircle />} link="/account">
+          <NavItem text={<MdAccountCircle />} link="/account" ariaLabel={t('common:nav.account')}>
             <NavItem text={t('common:nav.logout')} link="/api/auth/logout" />
           </NavItem>
         ) : (
-          <NavItem text={<IoMdLogIn />} link={`/account?returnTo=${router.asPath}`} />
+          <NavItem text={<IoMdLogIn />} link={`/account?returnTo=${router.asPath}`} ariaLabel={t('common:nav.login')} />
         )}
-      </div>
+      </nav>
 
       <div style={{ height: '100%', display: 'flex' }}>
         {suggestedLocale && suggestLocale ? (

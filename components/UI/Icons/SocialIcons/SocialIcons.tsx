@@ -13,32 +13,32 @@ import styles from './SocialIcons.module.scss'
 const SocialIcons = () => {
   return (
     <div className={styles.communityIcons}>
-      <a href="https://discord.gg/Dms7Mrs">
+      <a href="https://discord.gg/Dms7Mrs" aria-label="Discord">
         <SiDiscord />
       </a>
-      <a href="https://www.patreon.com/polyhaven/overview">
+      <a href="https://www.patreon.com/polyhaven/overview" aria-label="Patreon">
         <SiPatreon />
       </a>
-      <a rel="me" href="https://masto.ai/@polyhaven">
+      <a rel="me" href="https://masto.ai/@polyhaven" aria-label="Mastodon">
         <SiMastodon />
       </a>
-      <a rel="me" href="https://bsky.app/profile/polyhaven.com">
+      <a rel="me" href="https://bsky.app/profile/polyhaven.com" aria-label="Bluesky">
         <SiBluesky />
       </a>
       <br />
-      <a href="https://www.facebook.com/polyhaven">
+      <a href="https://www.facebook.com/polyhaven" aria-label="Facebook">
         <SiFacebook />
       </a>
-      <a href="https://x.com/polyhaven">
+      <a href="https://x.com/polyhaven" aria-label="X">
         <SiX />
       </a>
-      <a href="https://www.instagram.com/polyhaven">
+      <a href="https://www.instagram.com/polyhaven" aria-label="Instagram">
         <SiInstagram />
       </a>
-      <a href="https://www.youtube.com/c/PolyHaven">
+      <a href="https://www.youtube.com/c/PolyHaven" aria-label="YouTube">
         <SiYoutube />
       </a>
-      <a href="https://api.polyhaven.com/rss">
+      <a href="https://api.polyhaven.com/rss" aria-label="RSS feed">
         <SiRss />
       </a>
     </div>

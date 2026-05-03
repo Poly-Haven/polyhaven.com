@@ -156,7 +156,7 @@ const Slider = () => {
       aspect_ratio: `${width}:${height}`,
       width: width * window.devicePixelRatio,
       height: height * window.devicePixelRatio,
-      quality: 95,
+      quality: 87,
     }
     const urlParamsStr = Object.entries(urlParams)
       .map(([k, v]) => `${k}=${v}`)
@@ -231,7 +231,7 @@ const Slider = () => {
         <SliderLogoDynamic containerWidth={width} containerHeight={height} />
       ) : (
         <>
-          <img src="/Logo 256.png" className={styles.logo} />
+          <img src="/Logo 256.png" className={styles.logo} alt="Poly Haven logo" />
           <h1>Poly Haven</h1>
           <p>{t('tagline')}</p>
         </>

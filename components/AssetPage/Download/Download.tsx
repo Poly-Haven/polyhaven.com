@@ -498,7 +498,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
         />
 
         <a
-          href={isHDRI ? files['hdri'][dlRes][dlFmt].url : null}
+          href={isHDRI ? files['hdri'][dlRes][dlFmt].url : '#'}
           target="_blank"
           rel="noopener"
           className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
@@ -508,7 +508,10 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
                   setDownloadError(null) // Clear any previous errors
                   trackDownload()
                 }
-              : downloadZip
+              : (e) => {
+                  e.preventDefault()
+                  downloadZip()
+                }
           }
         >
           <MdFileDownload />
