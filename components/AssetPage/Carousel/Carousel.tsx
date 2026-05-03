@@ -73,7 +73,7 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
           onClick={clickImage}
           className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}
         >
-          <img src={images[i] + '?height=110&quality=95'} height={110} alt={i} />
+          <img src={images[i] + '?height=110&quality=95'} alt={i} />
           {Object.keys(image_info).includes(i) ? (
             <div className={styles.credit}>
               <p>
