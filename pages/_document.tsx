@@ -12,9 +12,9 @@ export default class CustomDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
 
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap&font-display=swap" rel="stylesheet" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" media="print" onLoad="this.media='all'" />
 
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
@@ -25,9 +25,9 @@ export default class CustomDocument extends Document {
           <meta property="commit_hash" content={process.env.CONFIG_BUILD_ID} />
 
           {/* Download service worker */}
-          <script src="/download-js/ua-parser.min.js"></script>
-          <script src="/download-js/zip.js"></script>
-          <script src="/download-js/download.js"></script>
+          <script defer src="/download-js/ua-parser.min.js"></script>
+          <script defer src="/download-js/zip.js"></script>
+          <script defer src="/download-js/download.js"></script>
         </Head>
 
         <body>

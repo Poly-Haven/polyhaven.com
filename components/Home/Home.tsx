@@ -1,4 +1,5 @@
 import { useTranslation, Trans } from 'next-i18next'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import LinkText from 'components/LinkText/LinkText'
 import apiSWR from 'utils/apiSWR'
@@ -10,9 +11,10 @@ import LatestPatrons from './LatestPatrons'
 import SocialIcons from 'components/UI/Icons/SocialIcons/SocialIcons'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import Staff from 'components/UI/Avatar/Staff'
-import Gallery from 'components/Gallery/Gallery'
 import Loader from 'components/UI/Loader/Loader'
-import Roadmap from 'components/Roadmap/Roadmap'
+
+const Gallery = dynamic(() => import('components/Gallery/Gallery'), { ssr: false })
+const Roadmap = dynamic(() => import('components/Roadmap/Roadmap'), { ssr: false })
 
 import styles from './Home.module.scss'
 
@@ -30,12 +32,13 @@ const Home = () => {
       <div className={styles.sectionWrapper}>
         <div className={styles.assetTypeBanner}>
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
-            <Link href="/hdris">
+            <Link href="/hdris" aria-label="HDRIs">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=150&quality=85" alt="HDRIs" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300&quality=95"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=150&quality=85"
                   className={styles.hover}
+                  alt=""
                 />
               </div>
             </Link>
@@ -46,12 +49,13 @@ const Home = () => {
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
-            <Link href="/textures">
+            <Link href="/textures" aria-label="Textures">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=150&quality=85" alt="Textures" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300&quality=95"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=150&quality=85"
                   className={styles.hover}
+                  alt=""
                 />
               </div>
             </Link>
@@ -62,12 +66,13 @@ const Home = () => {
             </div>
           </div>
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
-            <Link href="/models">
+            <Link href="/models" aria-label="Models">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300&quality=95" />
+                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=150&quality=85" alt="Models" />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300&quality=95"
+                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=150&quality=85"
                   className={styles.hover}
+                  alt=""
                 />
               </div>
             </Link>
@@ -286,7 +291,7 @@ const Home = () => {
         <div className={styles.moreGallery}>
           <div className={styles.spacer} />
           <div style={{ pointerEvents: 'initial' }}>
-            <Button text={t('home:s7b')} href="/gallery" />
+            <Button text={t('home:s7b')} href="/gallery" ariaLabel={t('home:s7b_aria')} />
           </div>
         </div>
       </div>

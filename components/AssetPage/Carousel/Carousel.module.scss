@@ -17,6 +17,7 @@
   cursor: pointer;
   min-width: 50px;
   max-width: 250px;
+  height: calc(110px + 0.4em + 2px);
 
   &:hover {
     filter: brightness(1.1);
@@ -30,6 +31,7 @@
 
   img {
     max-width: 100%;
+    max-height: 110px;
     position: relative;
   }
 

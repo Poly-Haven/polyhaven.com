@@ -16,7 +16,7 @@ const footer = () => {
   const router = useRouter()
 
   return (
-    <div id={styles.footer} dir={['ar', 'fa', 'he'].includes(router.locale) ? 'rtl' : 'ltr'}>
+    <footer id={styles.footer} dir={['ar', 'fa', 'he'].includes(router.locale) ? 'rtl' : 'ltr'}>
       <h2>
         <Trans
           i18nKey="common:footer.thanks"
@@ -47,7 +47,7 @@ const footer = () => {
         <div className={styles.links}>
           <Link href="/">
             <div className={styles.logoWrapper}>
-              <img src="/Logo 256.png" className={styles.logo} />
+              <img src="/Logo 256.png" className={styles.logo} width={140} height={140} alt="Poly Haven logo" />
               <h1>Poly Haven</h1>
               <p>{t('common:tagline')}</p>
             </div>
@@ -112,7 +112,7 @@ const footer = () => {
           <SocialIcons />
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

@@ -10,6 +10,7 @@ const NavItem = ({
   onMouseEnter = null,
   children = null,
   lighthouse = false,
+  ariaLabel = null,
 }) => {
   return (
     <div
@@ -20,11 +21,11 @@ const NavItem = ({
     >
       {link ? (
         locale ? (
-          <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem}>
+          <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem} aria-label={ariaLabel}>
             {text}
           </a>
         ) : (
-          <Link href={link} className={styles.navItem}>
+          <Link href={link} className={styles.navItem} aria-label={ariaLabel}>
             {text}
           </Link>
         )

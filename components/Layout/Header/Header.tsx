@@ -6,10 +6,10 @@ import styles from './Header.module.scss'
 
 const header = () => {
   return (
-    <div className={styles.header} id="mainheader">
+    <header className={styles.header} id="mainheader">
       <Link href="/" className={styles.logo}>
         <div className={styles.logo_image}>
-          <img src="/Logo 256.png" />
+          <img src="/Logo 256.png" alt="Poly Haven logo" />
         </div>
         Poly Haven
       </Link>
@@ -21,7 +21,7 @@ const header = () => {
       <div style={{ display: 'none' }} id="header-frompath" />
       <div className={styles.spacer} />
       <Nav />
-    </div>
+    </header>
   )
 }
 

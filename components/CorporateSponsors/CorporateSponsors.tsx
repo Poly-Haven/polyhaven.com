@@ -33,7 +33,7 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
       <h2>
         {header}
         {!hideInfoBtn && (
-          <Link href="/corporate">
+          <Link href="/corporate" aria-label="Corporate sponsors info">
             <MdInfoOutline />
           </Link>
         )}

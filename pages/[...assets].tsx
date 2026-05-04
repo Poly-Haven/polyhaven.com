@@ -12,9 +12,18 @@ import { titleCase } from 'utils/stringUtils'
 const LibraryPage = (props) => {
   const { t } = useTranslation('common')
 
-  let title = t(assetTypeName(props.assetType))
+  const typeDisplayName = {
+    hdris: 'HDRIs',
+    textures: 'PBR Textures',
+    models: '3D Models',
+    all: 'Assets',
+  }
+  const typeName = typeDisplayName[props.assetType] || t(assetTypeName(props.assetType))
+  let title: string
   if (props.categories.length) {
-    title += ': ' + titleCase(props.categories.join(' > '))
+    title = `${titleCase(props.categories[props.categories.length - 1])} ${typeName}`
+  } else {
+    title = typeName
   }
 
   let imageUrl = `https://polyhaven.com/api/og-image?type=${props.assetType}`

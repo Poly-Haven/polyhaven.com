@@ -16,10 +16,10 @@ const Milestone = ({ milestone, active, achieved }) => {
   const Comp = active || achieved ? Link : 'div'
 
   return (
-    <Comp href={milestone.link} className={styles.milestoneText}>
+    <Comp href={milestone.link} className={styles.milestoneText} aria-label={milestone.text !== '???' ? milestone.text : undefined}>
       {milestone.img && (
         <div className={styles.icon}>
-          <img src={milestone.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : milestone.img} />
+          <img src={milestone.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : milestone.img} alt={milestone.text} />
         </div>
       )}
       <div
@@ -169,7 +169,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
                     {!(mini || isMobile) && <div className={styles.arrow} />}
                     {(mini || isMobile) && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
-                        <img src={m.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : m.img} />
+                        <img src={m.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : m.img} alt={m.text} />
                       </div>
                     ) : (
                       <div className={styles.dot} />
