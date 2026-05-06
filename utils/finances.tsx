@@ -17,6 +17,10 @@ export const categories = {
     description: 'Sponsorships from companies (check logos at the bottom of the site).',
     color: `#03A9F4`,
   },
+  'API Licensing': {
+    description: 'Revenue from companies licensing our API to access our asset library programmatically.',
+    color: `#03A9F4`,
+  },
   'Donation from Founder': {
     description: 'Money contributed to Poly Haven by either Greg or Rob.',
     color: `#FFEB3B`,
