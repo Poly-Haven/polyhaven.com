@@ -159,6 +159,12 @@ const AfterDownload = ({ show, assetType, postDownloadStats }) => {
           min: 500,
         },
         {
+          title: `Please support us`,
+          message: `We ran out of ideas for stuff to put here...`,
+          icon: '🤷',
+          min: 750,
+        },
+        {
           title: `That's enough now`,
           message: `Seriously? ${
             parseInt(localUserDownloadCount) + 1
