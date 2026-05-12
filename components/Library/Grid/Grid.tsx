@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -430,8 +431,8 @@ const Grid = (props) => {
             {!props.vault && !props.collection ? <NewsCard isMobile={width <= 810} /> : null}
             {sortedKeys.map((asset) => {
               return (
-                <>
-                  <LazyLoad offset={500} key={asset}>
+                <React.Fragment key={asset}>
+                  <LazyLoad offset={500}>
                     <GridItem
                       asset={data[asset]}
                       assetID={asset}
@@ -441,7 +442,7 @@ const Grid = (props) => {
                       showText={showText}
                     />
                   </LazyLoad>
-                </>
+                </React.Fragment>
               )
             })}
           </div>
