@@ -423,7 +423,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
                   is unlocked
                 </span>
               ) : (
-                `${ageValue} ${ageLabel}`
+                <span
+                  title={new Date(data.date_published * 1000).toLocaleDateString()}
+                >{`${ageValue} ${ageLabel}`}</span>
               )}
             </InfoItem>
           </div>
