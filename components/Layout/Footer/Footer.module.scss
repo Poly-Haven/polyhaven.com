@@ -9,14 +9,14 @@
     text-align: center;
 
     a {
-    color: white;
-    box-shadow: 0 1px 0 $c-text-light;
-    @include transition;
+      color: white;
+      box-shadow: 0 1px 0 $c-text-light;
+      @include transition;
 
-    &:hover {
-      box-shadow: 0 3px 0 $c-accent;
+      &:hover {
+        box-shadow: 0 3px 0 $c-accent;
+      }
     }
-  }
   }
 }
 
@@ -26,8 +26,8 @@
 
 .patrons {
   padding: 0 2em 1em;
-  font-size: 0.85em;
-  line-height: 1.4em;
+  font-size: 12px;
+  line-height: 1.3em;
   text-align: center;
 
   @media screen and (max-width: 590px) {
@@ -36,7 +36,7 @@
   }
 
   p {
-    padding: 0 0.4em;
+    padding: 0 0.3em;
     display: inline-block;
     margin: 0;
   }
