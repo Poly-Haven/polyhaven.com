@@ -50,7 +50,7 @@ const Finances = () => {
         </p>
         <p>
           Any excess earnings that we haven't spent yet are saved for future costs, such as travel, hardware, and
-          short-term contracts to create specific assets. As a rule, we also aim to keep at least 2 months worth of
+          short-term contracts to create specific assets. As a rule, we also aim to keep at least 3 months worth of
           salaries and operating costs as savings in case of a rainy day.
         </p>
         <p>
