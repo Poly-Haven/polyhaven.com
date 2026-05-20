@@ -231,6 +231,8 @@ export function getCurrency(amount, targetCurrency, exchangeRates, showCents = t
   if (compactFormat) {
     formatOptions.notation = 'compact'
     formatOptions.compactDisplay = 'short'
+    formatOptions.minimumFractionDigits = 0
+    formatOptions.maximumFractionDigits = 1
   }
 
   const currencyFormatter = new Intl.NumberFormat('en-US', formatOptions)
