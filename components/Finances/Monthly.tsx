@@ -21,7 +21,10 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
 
   return (
     <div className={styles.barWrapper}>
-      <p title={getCurrency(total, currency, rates, true, false)}>
+      <p
+        title={getCurrency(total, currency, rates, true, false)}
+        onClick={(e) => navigator.clipboard.writeText(e.currentTarget.title)}
+      >
         {label}: {getCurrency(total, currency, rates, true, true)}
       </p>
       <div className={styles.barContainer}>
@@ -80,6 +83,8 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
     </div>
   )
 }
+
+const hiddenIncomeKeys = ['Savings Interest']
 
 const operatingCostTypes = [
   'Founder Salaries',
@@ -179,7 +184,10 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
     setMonth(months[months.indexOf(month) + 1])
   }
 
-  const totalIncome: any = Object.values(mutableData[month].income).reduce((a: number, b: number) => a + b, 0)
+  const filteredIncome = Object.fromEntries(
+    Object.entries(mutableData[month].income).filter(([k]) => !hiddenIncomeKeys.includes(k))
+  )
+  const totalIncome: any = Object.values(filteredIncome).reduce((a: number, b: number) => a + b, 0)
   const totalExpense: any = Object.values(mutableData[month].expense).reduce((a: number, b: number) => a + b, 0)
   const barMax = Math.max(totalIncome, totalExpense)
 
@@ -202,7 +210,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
       </div>
       <Bar
         label="Income"
-        data={sortObjByValue(mutableData[month].income)}
+        data={sortObjByValue(filteredIncome)}
         total={totalIncome}
         max={barMax}
         currency={currency}
@@ -233,7 +241,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
         ) : null}
         <li>
           Current Balance: {getCurrency(balance, currency, latestRates)}
-          <MdHelp data-tip="Approximate balance of our combined accounts, ignoring interest earned." />
+          <MdHelp data-tip="Approximate balance of our combined accounts." />
         </li>
         <li>
           Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
