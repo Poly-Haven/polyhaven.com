@@ -85,20 +85,23 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
     return { areas: sortedAreas, colors, graphData }
   }, [data, mode, filter, currency, startingBalance])
 
-  const defaultStartIndex = Math.max(0, graphData.length - 12)
-  const brushRangeRef = useRef({ startIndex: defaultStartIndex, endIndex: graphData.length - 1 })
-  const [brushRange, setBrushRange] = useState({ startIndex: defaultStartIndex, endIndex: graphData.length - 1 })
+  const brushRangeRef = useRef({ startDate: '', endDate: '' })
+  const [brushDateRange, setBrushDateRange] = useState({ startDate: '', endDate: '' })
+  const brushInitializedRef = useRef(false)
 
-  // Reset brush position when the data length changes (e.g. switching between balance and income/expense modes)
+  // Initialize brush date range once when data first becomes available
   useEffect(() => {
-    const newDefault = { startIndex: Math.max(0, graphData.length - 12), endIndex: graphData.length - 1 }
-    brushRangeRef.current = newDefault
-    setBrushRange(newDefault)
+    if (!graphData.length || brushInitializedRef.current) return
+    brushInitializedRef.current = true
+    const startDate = graphData[Math.max(0, graphData.length - 12)]?.name ?? ''
+    const endDate = graphData[graphData.length - 1]?.name ?? ''
+    brushRangeRef.current = { startDate, endDate }
+    setBrushDateRange({ startDate, endDate })
   }, [graphData.length])
 
   useEffect(() => {
     const handlePointerUp = () => {
-      setBrushRange({ ...brushRangeRef.current })
+      setBrushDateRange({ ...brushRangeRef.current })
     }
     window.addEventListener('mouseup', handlePointerUp)
     window.addEventListener('touchend', handlePointerUp)
@@ -109,6 +112,24 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
   }, [])
 
   if (!data) return <Spinner />
+
+  const findDateIndex = (date: string, fallback: number) => {
+    if (!date || !graphData.length) return fallback
+    const idx = graphData.findIndex((d) => d.name === date)
+    if (idx >= 0) return idx
+    // Find nearest date - entries are sorted 'YYYY-MM' strings
+    const ceilIdx = graphData.findIndex((d) => d.name > date)
+    if (ceilIdx === -1) return graphData.length - 1
+    if (ceilIdx === 0) return 0
+    const toMonths = (s: string) => parseInt(s.slice(0, 4)) * 12 + parseInt(s.slice(5, 7))
+    const floorIdx = ceilIdx - 1
+    const target = toMonths(date)
+    return target - toMonths(graphData[floorIdx].name) <= toMonths(graphData[ceilIdx].name) - target
+      ? floorIdx
+      : ceilIdx
+  }
+  const brushStartIndex = findDateIndex(brushDateRange.startDate, Math.max(0, graphData.length - 12))
+  const brushEndIndex = findDateIndex(brushDateRange.endDate, graphData.length - 1)
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -172,10 +193,13 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
               height={30}
               stroke="#666666"
               fill="#2d2d2d"
-              startIndex={brushRange.startIndex}
-              endIndex={brushRange.endIndex}
+              startIndex={brushStartIndex}
+              endIndex={brushEndIndex}
               onChange={({ startIndex, endIndex }) => {
-                brushRangeRef.current = { startIndex, endIndex }
+                brushRangeRef.current = {
+                  startDate: graphData[startIndex]?.name ?? '',
+                  endDate: graphData[endIndex]?.name ?? '',
+                }
               }}
             />
             <Tooltip
