@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { getCurrency, catColor } from 'utils/finances'
+import { getCurrency, catColor, operatingCostTypes, calcEmergencyFund } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils'
 
@@ -38,7 +38,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
       }
     } else if (mode === 'balance') {
       let balance = startingBalance / Object.values(data)[0]['rates'][currency]
-      graphData.push({ name: '2020-10', Balance: balance })
+      graphData.push({ name: '2020-10', Balance: balance, 'Usable Funds': balance })
       for (const [month, v] of Object.entries(data)) {
         v['rates']['ZAR'] = 1
         for (const k of Object.keys(v['income'])) {
@@ -47,7 +47,12 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
         for (const k of Object.keys(v['expense'])) {
           balance -= v['expense'][k] / v['rates'][currency]
         }
-        graphData.push({ name: month, Balance: balance })
+        const emergencyFundZAR = calcEmergencyFund(data, month)
+        graphData.push({
+          name: month,
+          Balance: balance,
+          'Usable Funds': balance - emergencyFundZAR / v['rates'][currency],
+        })
         areas['Balance'] = (areas['Balance'] || 0) + balance
         colors['Balance'] = catColor('Balance')
       }
@@ -120,9 +125,10 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
           <p className={styles.tooltipHeader}>{label}</p>
           {payload
             .filter((v) => v.value)
-            .map((v, i) => (
-              <p key={i} style={{ color: v.color }}>{`${v.name}: ${getCurrency(v.value, currency, {})}`}</p>
-            ))}
+            .map((v, i) => {
+              const name = v.name === 'Usable Funds' && v.value < 0 ? 'Savings Deficit' : v.name
+              return <p key={i} style={{ color: v.color }}>{`${name}: ${getCurrency(v.value, currency, {})}`}</p>
+            })}
         </div>
       )
     }
@@ -169,7 +175,7 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
           >
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="name" />
-            <YAxis tickFormatter={(v) => `${getCurrency(v, currency, {}, false, true)}`} />
+            <YAxis domain={[0, 'auto']} tickFormatter={(v) => `${getCurrency(v, currency, {}, false, true)}`} />
             <Brush
               dataKey="name"
               height={30}
@@ -205,6 +211,19 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
                 strokeWidth={mode === 'balance' || stack ? 0 : 3}
               />
             ))}
+            {mode === 'balance' && (
+              <Area
+                type="monotone"
+                dataKey="Usable Funds"
+                stackId="usable-funds"
+                stroke="rgba(255,255,255,0.35)"
+                strokeDasharray="5 5"
+                strokeWidth={2}
+                fill="rgba(0,0,0,0)"
+                fillOpacity={0}
+                animationDuration={500}
+              />
+            )}
           </AreaChart>
         </ResponsiveContainer>
       </div>

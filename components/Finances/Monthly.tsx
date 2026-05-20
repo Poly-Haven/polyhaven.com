@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 
 import { sortObjByValue } from 'utils/arrayUtils'
-import { getCurrency, catColor, categories } from 'utils/finances'
+import { getCurrency, catColor, categories, operatingCostTypes, calcEmergencyFund } from 'utils/finances'
 
 import Spinner from 'components/UI/Spinner/Spinner'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
@@ -86,23 +86,6 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
 
 const hiddenIncomeKeys = ['Savings Interest']
 
-const operatingCostTypes = [
-  'Founder Salaries',
-  'Staff Salaries',
-  'Staff Overhead (Taxes)',
-  'Contractors',
-  'Taxes',
-  'Web Hosting',
-  'Software Licenses',
-  'Accounting Fees',
-  'Internet',
-  'Insurance',
-  'Bank Charges',
-  'Subscription Fees',
-  'Rent & Utilities',
-  'Catering & Events',
-]
-
 const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
   if (!data) return <Spinner />
 
@@ -120,24 +103,9 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
     }
   }
 
-  let operatingCostsList = []
-  for (const m of Object.keys(mutableData).slice(-12)) {
-    const d = mutableData[m]
-    let opCosts = 0
-    for (const k of Object.keys(d['expense'])) {
-      if (operatingCostTypes.includes(k)) {
-        opCosts += d['expense'][k]
-      }
-    }
-    operatingCostsList.push(opCosts)
-  }
-
-  const averageOperatingCosts = operatingCostsList.reduce((sum, v) => sum + v, 0) / operatingCostsList.length
-  const emergencyFundMonths = 3
-  const targetEmergencyFund = averageOperatingCosts * emergencyFundMonths
-  const savings = balance - targetEmergencyFund
-
   const latestMonth = Object.keys(mutableData).slice(-1).pop()
+  const emergencyFund = calcEmergencyFund(mutableData, latestMonth)
+  const savings = balance - emergencyFund
 
   let thisYear = {}
   thisYear['rates'] = Object.values(mutableData).slice(-1).pop()['rates']
@@ -244,9 +212,9 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
           <MdHelp data-tip="Approximate balance of our combined accounts." />
         </li>
         <li>
-          Target Emergency Savings: {getCurrency(targetEmergencyFund, currency, latestRates)}
+          Target Emergency Savings: {getCurrency(emergencyFund, currency, latestRates)}
           <MdHelp
-            data-tip={`Enough to cover our operating costs for ${emergencyFundMonths} months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
+            data-tip={`Enough to cover our operating costs for 3 months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
           />
         </li>
         {savings >= 0 ? (

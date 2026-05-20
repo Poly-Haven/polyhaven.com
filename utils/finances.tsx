@@ -144,6 +144,42 @@ export const categories = {
   },
 }
 
+export const operatingCostTypes = [
+  'Founder Salaries',
+  'Staff Salaries',
+  'Staff Overhead (Taxes)',
+  'Contractors',
+  'Taxes',
+  'Web Hosting',
+  'Software Licenses',
+  'Accounting Fees',
+  'Internet',
+  'Insurance',
+  'Bank Charges',
+  'Subscription Fees',
+  'Rent & Utilities',
+  'Catering & Events',
+]
+
+/**
+ * Returns the emergency fund threshold in ZAR: total operating costs
+ * over the 3 months preceding `month`.
+ */
+export function calcEmergencyFund(data: any, month: string): number {
+  const allMonths = Object.keys(data)
+  const monthIdx = allMonths.indexOf(month)
+  if (monthIdx <= 0) return 0
+  const prevMonths = allMonths.slice(Math.max(0, monthIdx - 3), monthIdx)
+  return prevMonths.reduce((sum, m) => {
+    return (
+      sum +
+      Object.keys(data[m]['expense'])
+        .filter((k) => operatingCostTypes.includes(k))
+        .reduce((s, k) => s + data[m]['expense'][k], 0)
+    )
+  }, 0)
+}
+
 export function catColor(t) {
   if (categories[t]) {
     return categories[t].color
