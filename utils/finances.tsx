@@ -62,6 +62,10 @@ export const categories = {
     description: 'Refund of excess tax paid.',
     color: `#607D8B`,
   },
+  'Savings Interest': {
+    description: 'Interest earned on savings and investment accounts.',
+    color: `#607D8B`,
+  },
   'Founder Salaries': {
     description: 'Salaries paid to Greg and Rob.',
     color: `#9C27B0`,
