@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { getCurrency, catColor, operatingCostTypes, calcEmergencyFund } from 'utils/finances'
+import { getCurrency, catColor, calcEmergencyFund } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils'
 
@@ -39,7 +39,8 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
     } else if (mode === 'balance') {
       let balance = startingBalance // ZAR
       const initialBalanceInCurrency = startingBalance / Object.values(data)[0]['rates'][currency]
-      graphData.push({ name: '2020-10', Balance: initialBalanceInCurrency, 'Usable Funds': initialBalanceInCurrency })
+      graphData.push({ name: '2020-10', Balance: initialBalanceInCurrency })
+      const allDataMonths = Object.keys(data)
       for (const [month, v] of Object.entries(data)) {
         v['rates']['ZAR'] = 1
         for (const k of Object.keys(v['income'])) {
@@ -50,10 +51,11 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
         }
         const emergencyFundZAR = calcEmergencyFund(data, month)
         const balanceInCurrency = balance / v['rates'][currency]
+        const monthIdx = allDataMonths.indexOf(month)
         graphData.push({
           name: month,
           Balance: balanceInCurrency,
-          'Usable Funds': balanceInCurrency - emergencyFundZAR / v['rates'][currency],
+          'Usable Funds': monthIdx >= 3 - 1 ? balanceInCurrency - emergencyFundZAR / v['rates'][currency] : null,
         })
         areas['Balance'] = (areas['Balance'] || 0) + balanceInCurrency
         colors['Balance'] = catColor('Balance')

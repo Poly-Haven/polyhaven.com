@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 
 import { sortObjByValue } from 'utils/arrayUtils'
-import { getCurrency, catColor, categories, operatingCostTypes, calcEmergencyFund } from 'utils/finances'
+import { getCurrency, catColor, categories, calcEmergencyFund } from 'utils/finances'
 
 import Spinner from 'components/UI/Spinner/Spinner'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
