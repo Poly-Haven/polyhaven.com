@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { getCurrency, catColor } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
@@ -16,69 +16,99 @@ import styles from './Finances.module.scss'
 const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
   const [stack, setStack] = useState(true)
 
+  const { areas, colors, graphData } = useMemo(() => {
+    if (!data) return { areas: {}, colors: {}, graphData: [] }
+
+    let areas = {}
+    let colors = {}
+    let graphData = []
+    if (['income', 'expense'].includes(mode)) {
+      for (const [month, v] of Object.entries(data)) {
+        let values = {}
+        for (const k of Object.keys(v[mode])) {
+          if (filter.length && !filter.includes(k)) continue
+          v['rates']['ZAR'] = 1
+          values[k] = v[mode][k] / v['rates'][currency]
+        }
+        graphData.push({
+          name: month,
+          ...values,
+        })
+        for (const cat of Object.keys(values)) {
+          areas[cat] = areas[cat] || 0
+          areas[cat] = areas[cat] + values[cat]
+          colors[cat] = catColor(cat)
+        }
+      }
+    } else if (mode === 'balance') {
+      let balance = startingBalance / Object.values(data)[0]['rates'][currency]
+      graphData.push({
+        name: '2020-10',
+        ...{ Balance: balance },
+      })
+      for (const [month, v] of Object.entries(data)) {
+        let values = {}
+        for (const k of Object.keys(v['income'])) {
+          v['rates']['ZAR'] = 1
+          const value = v['income'][k] / v['rates'][currency]
+          balance += value
+        }
+        for (const k of Object.keys(v['expense'])) {
+          v['rates']['ZAR'] = 1
+          const value = v['expense'][k] / v['rates'][currency]
+          balance -= value
+        }
+        values['Balance'] = balance
+        graphData.push({
+          name: month,
+          ...values,
+        })
+        for (const cat of Object.keys(values)) {
+          areas[cat] = areas[cat] || 0
+          areas[cat] = areas[cat] + values[cat]
+          colors[cat] = catColor(cat)
+        }
+      }
+    }
+
+    const sortedAreas = sortObjByValue(areas)
+
+    // Fill missing values
+    for (const month of graphData) {
+      for (const area of Object.keys(sortedAreas)) {
+        if (month[area] === undefined) {
+          month[area] = 0
+        }
+      }
+    }
+
+    return { areas: sortedAreas, colors, graphData }
+  }, [data, mode, filter, currency, startingBalance])
+
+  const defaultStartIndex = Math.max(0, graphData.length - 12)
+  const brushRangeRef = useRef({ startIndex: defaultStartIndex, endIndex: graphData.length - 1 })
+  const [brushRange, setBrushRange] = useState({ startIndex: defaultStartIndex, endIndex: graphData.length - 1 })
+
+  // Reset brush position when the data length changes (e.g. switching between balance and income/expense modes)
+  useEffect(() => {
+    const newDefault = { startIndex: Math.max(0, graphData.length - 12), endIndex: graphData.length - 1 }
+    brushRangeRef.current = newDefault
+    setBrushRange(newDefault)
+  }, [graphData.length])
+
+  useEffect(() => {
+    const handlePointerUp = () => {
+      setBrushRange({ ...brushRangeRef.current })
+    }
+    window.addEventListener('mouseup', handlePointerUp)
+    window.addEventListener('touchend', handlePointerUp)
+    return () => {
+      window.removeEventListener('mouseup', handlePointerUp)
+      window.removeEventListener('touchend', handlePointerUp)
+    }
+  }, [])
+
   if (!data) return <Spinner />
-
-  let areas = {}
-  let colors = {}
-  let graphData = []
-  if (['income', 'expense'].includes(mode)) {
-    for (const [month, v] of Object.entries(data)) {
-      let values = {}
-      for (const k of Object.keys(v[mode])) {
-        if (filter.length && !filter.includes(k)) continue
-        v['rates']['ZAR'] = 1
-        values[k] = v[mode][k] / v['rates'][currency]
-      }
-      graphData.push({
-        name: month,
-        ...values,
-      })
-      for (const cat of Object.keys(values)) {
-        areas[cat] = areas[cat] || 0
-        areas[cat] = areas[cat] + values[cat]
-        colors[cat] = catColor(cat)
-      }
-    }
-  } else if (mode === 'balance') {
-    let balance = startingBalance / Object.values(data)[0]['rates'][currency]
-    graphData.push({
-      name: '2020-10',
-      ...{ Balance: balance },
-    })
-    for (const [month, v] of Object.entries(data)) {
-      let values = {}
-      for (const k of Object.keys(v['income'])) {
-        v['rates']['ZAR'] = 1
-        const value = v['income'][k] / v['rates'][currency]
-        balance += value
-      }
-      for (const k of Object.keys(v['expense'])) {
-        v['rates']['ZAR'] = 1
-        const value = v['expense'][k] / v['rates'][currency]
-        balance -= value
-      }
-      values['Balance'] = balance
-      graphData.push({
-        name: month,
-        ...values,
-      })
-      for (const cat of Object.keys(values)) {
-        areas[cat] = areas[cat] || 0
-        areas[cat] = areas[cat] + values[cat]
-        colors[cat] = catColor(cat)
-      }
-    }
-  }
-  areas = sortObjByValue(areas)
-
-  // Fill missing values
-  for (const month of graphData) {
-    for (const area of Object.keys(areas)) {
-      if (month[area] === undefined) {
-        month[area] = 0
-      }
-    }
-  }
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -137,7 +167,17 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="name" />
             <YAxis tickFormatter={(v) => `${getCurrency(v, currency, {}, false, true)}`} />
-            <Brush dataKey="name" height={30} stroke="#666666" fill="#2d2d2d" startIndex={graphData.length - 12} />
+            <Brush
+              dataKey="name"
+              height={30}
+              stroke="#666666"
+              fill="#2d2d2d"
+              startIndex={brushRange.startIndex}
+              endIndex={brushRange.endIndex}
+              onChange={({ startIndex, endIndex }) => {
+                brushRangeRef.current = { startIndex, endIndex }
+              }}
+            />
             <Tooltip
               // @ts-ignore complaints about missing active, payload, labelts
               content={<CustomTooltip />}
