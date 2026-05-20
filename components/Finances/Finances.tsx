@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import apiSWR from 'utils/apiSWR'
+import { EMERGENCY_FUND_MONTHS } from 'utils/finances'
 
 import MainGraph from './MainGraph'
 import Monthly from './Monthly'
@@ -50,8 +51,8 @@ const Finances = () => {
         </p>
         <p>
           Any excess earnings that we haven't spent yet are saved for future costs, such as travel, hardware, and
-          short-term contracts to create specific assets. As a rule, we also aim to keep at least 3 months worth of
-          salaries and operating costs as savings in case of a rainy day.
+          short-term contracts to create specific assets. As a rule, we also aim to keep at least{' '}
+          {EMERGENCY_FUND_MONTHS} months worth of salaries and operating costs as savings in case of a rainy day.
         </p>
         <p>
           If you have any questions or concerns, <Link href="/about-contact">we'd be happy to chat</Link>.

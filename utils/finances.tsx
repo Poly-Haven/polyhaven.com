@@ -161,15 +161,17 @@ export const operatingCostTypes = [
   'Catering & Events',
 ]
 
+export const EMERGENCY_FUND_MONTHS = 3
+
 /**
- * Returns the emergency fund threshold in ZAR: total operating costs
- * over the 3 months preceding `month`.
+ * Returns the emergency fund threshold in ZAR: average monthly operating costs
+ * over the preceding months, multiplied by EMERGENCY_FUND_MONTHS.
  */
 export function calcEmergencyFund(data: any, month: string): number {
   const allMonths = Object.keys(data)
   const monthIdx = allMonths.indexOf(month)
   if (monthIdx <= 0) return 0
-  const prevMonths = allMonths.slice(Math.max(0, monthIdx - 3), monthIdx)
+  const prevMonths = allMonths.slice(Math.max(0, monthIdx - EMERGENCY_FUND_MONTHS), monthIdx)
   return prevMonths.reduce((sum, m) => {
     return (
       sum +

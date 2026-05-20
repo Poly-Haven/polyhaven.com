@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MdChevronLeft, MdChevronRight, MdHelp, MdExpand } from 'react-icons/md'
 
 import { sortObjByValue } from 'utils/arrayUtils'
-import { getCurrency, catColor, categories, calcEmergencyFund } from 'utils/finances'
+import { getCurrency, catColor, categories, calcEmergencyFund, EMERGENCY_FUND_MONTHS } from 'utils/finances'
 
 import Spinner from 'components/UI/Spinner/Spinner'
 import Tooltip from 'components/UI/Tooltip/Tooltip'
@@ -214,7 +214,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
         <li>
           Target Emergency Savings: {getCurrency(emergencyFund, currency, latestRates)}
           <MdHelp
-            data-tip={`Enough to cover our operating costs for 3 months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
+            data-tip={`Enough to cover our operating costs for ${EMERGENCY_FUND_MONTHS} months. This is less than typically recommended, but we think this acceptable considering how stable the Patreon income is.`}
           />
         </li>
         {savings >= 0 ? (

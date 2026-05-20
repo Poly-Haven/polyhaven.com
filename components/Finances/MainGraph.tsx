@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { getCurrency, catColor, calcEmergencyFund } from 'utils/finances'
+import { getCurrency, catColor, calcEmergencyFund, EMERGENCY_FUND_MONTHS } from 'utils/finances'
 import { sortObjByValue } from 'utils/arrayUtils'
 import { titleCase } from 'utils/stringUtils'
 
@@ -55,7 +55,8 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
         graphData.push({
           name: month,
           Balance: balanceInCurrency,
-          'Usable Funds': monthIdx >= 3 - 1 ? balanceInCurrency - emergencyFundZAR / v['rates'][currency] : null,
+          'Usable Funds':
+            monthIdx >= EMERGENCY_FUND_MONTHS - 1 ? balanceInCurrency - emergencyFundZAR / v['rates'][currency] : null,
         })
         areas['Balance'] = (areas['Balance'] || 0) + balanceInCurrency
         colors['Balance'] = catColor('Balance')
