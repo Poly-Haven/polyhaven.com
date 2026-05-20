@@ -37,23 +37,25 @@ const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, mon
         }
       }
     } else if (mode === 'balance') {
-      let balance = startingBalance / Object.values(data)[0]['rates'][currency]
-      graphData.push({ name: '2020-10', Balance: balance, 'Usable Funds': balance })
+      let balance = startingBalance // ZAR
+      const initialBalanceInCurrency = startingBalance / Object.values(data)[0]['rates'][currency]
+      graphData.push({ name: '2020-10', Balance: initialBalanceInCurrency, 'Usable Funds': initialBalanceInCurrency })
       for (const [month, v] of Object.entries(data)) {
         v['rates']['ZAR'] = 1
         for (const k of Object.keys(v['income'])) {
-          balance += v['income'][k] / v['rates'][currency]
+          balance += v['income'][k]
         }
         for (const k of Object.keys(v['expense'])) {
-          balance -= v['expense'][k] / v['rates'][currency]
+          balance -= v['expense'][k]
         }
         const emergencyFundZAR = calcEmergencyFund(data, month)
+        const balanceInCurrency = balance / v['rates'][currency]
         graphData.push({
           name: month,
-          Balance: balance,
-          'Usable Funds': balance - emergencyFundZAR / v['rates'][currency],
+          Balance: balanceInCurrency,
+          'Usable Funds': balanceInCurrency - emergencyFundZAR / v['rates'][currency],
         })
-        areas['Balance'] = (areas['Balance'] || 0) + balance
+        areas['Balance'] = (areas['Balance'] || 0) + balanceInCurrency
         colors['Balance'] = catColor('Balance')
       }
     }
