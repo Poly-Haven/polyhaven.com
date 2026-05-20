@@ -81,6 +81,23 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
   )
 }
 
+const operatingCostTypes = [
+  'Founder Salaries',
+  'Staff Salaries',
+  'Staff Overhead (Taxes)',
+  'Contractors',
+  'Taxes',
+  'Web Hosting',
+  'Software Licenses',
+  'Accounting Fees',
+  'Internet',
+  'Insurance',
+  'Bank Charges',
+  'Subscription Fees',
+  'Rent & Utilities',
+  'Catering & Events',
+]
+
 const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
   if (!data) return <Spinner />
 
@@ -99,22 +116,6 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
   }
 
   let operatingCostsList = []
-  const operatingCostTypes = [
-    'Founder Salaries',
-    'Staff Salaries',
-    'Staff Overhead (Taxes)',
-    'Contractors',
-    'Taxes',
-    'Web Hosting',
-    'Software Licenses',
-    'Accounting Fees',
-    'Internet',
-    'Insurance',
-    'Bank Charges',
-    'Subscription Fees',
-    'Rent & Utilities',
-    'Catering & Events',
-  ]
   for (const m of Object.keys(mutableData).slice(-12)) {
     const d = mutableData[m]
     let opCosts = 0
@@ -126,9 +127,7 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
     operatingCostsList.push(opCosts)
   }
 
-  const averageOperatingCosts = operatingCostsList.reduce(function (p, c, i) {
-    return p + (c - p) / (i + 1)
-  }, 0)
+  const averageOperatingCosts = operatingCostsList.reduce((sum, v) => sum + v, 0) / operatingCostsList.length
   const emergencyFundMonths = 3
   const targetEmergencyFund = averageOperatingCosts * emergencyFundMonths
   const savings = balance - targetEmergencyFund

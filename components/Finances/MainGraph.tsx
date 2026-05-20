@@ -13,7 +13,7 @@ import Switch from 'components/UI/Switch/Switch'
 
 import styles from './Finances.module.scss'
 
-const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, setMode, monthState, setMonth }) => {
+const MainGraph = ({ data, currency, startingBalance, filter, mode, setMode, monthState, setMonth }) => {
   const [stack, setStack] = useState(true)
 
   const { areas, colors, graphData } = useMemo(() => {
@@ -25,49 +25,31 @@ const MainGraph = ({ data, currency, startingBalance, filter, setFilter, mode, s
     if (['income', 'expense'].includes(mode)) {
       for (const [month, v] of Object.entries(data)) {
         let values = {}
+        v['rates']['ZAR'] = 1
         for (const k of Object.keys(v[mode])) {
           if (filter.length && !filter.includes(k)) continue
-          v['rates']['ZAR'] = 1
           values[k] = v[mode][k] / v['rates'][currency]
         }
-        graphData.push({
-          name: month,
-          ...values,
-        })
+        graphData.push({ name: month, ...values })
         for (const cat of Object.keys(values)) {
-          areas[cat] = areas[cat] || 0
-          areas[cat] = areas[cat] + values[cat]
+          areas[cat] = (areas[cat] || 0) + values[cat]
           colors[cat] = catColor(cat)
         }
       }
     } else if (mode === 'balance') {
       let balance = startingBalance / Object.values(data)[0]['rates'][currency]
-      graphData.push({
-        name: '2020-10',
-        ...{ Balance: balance },
-      })
+      graphData.push({ name: '2020-10', Balance: balance })
       for (const [month, v] of Object.entries(data)) {
-        let values = {}
+        v['rates']['ZAR'] = 1
         for (const k of Object.keys(v['income'])) {
-          v['rates']['ZAR'] = 1
-          const value = v['income'][k] / v['rates'][currency]
-          balance += value
+          balance += v['income'][k] / v['rates'][currency]
         }
         for (const k of Object.keys(v['expense'])) {
-          v['rates']['ZAR'] = 1
-          const value = v['expense'][k] / v['rates'][currency]
-          balance -= value
+          balance -= v['expense'][k] / v['rates'][currency]
         }
-        values['Balance'] = balance
-        graphData.push({
-          name: month,
-          ...values,
-        })
-        for (const cat of Object.keys(values)) {
-          areas[cat] = areas[cat] || 0
-          areas[cat] = areas[cat] + values[cat]
-          colors[cat] = catColor(cat)
-        }
+        graphData.push({ name: month, Balance: balance })
+        areas['Balance'] = (areas['Balance'] || 0) + balance
+        colors['Balance'] = catColor('Balance')
       }
     }
 

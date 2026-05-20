@@ -64,7 +64,6 @@ const Finances = () => {
             currency={currency}
             startingBalance={startingBalance}
             filter={filter}
-            setFilter={setFilter}
             mode={mode}
             setMode={setMode}
             monthState={monthState}
