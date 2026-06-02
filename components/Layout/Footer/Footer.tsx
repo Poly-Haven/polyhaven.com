@@ -63,11 +63,30 @@ const footer = () => {
               <Link prefetch={false} href="/about-contact">
                 {t('common:nav.about-contact')}
               </Link>
-              <Link prefetch={false} href="/gallery">
-                {t('common:nav.gallery')}
+              <Link prefetch={false} href="https://blog.polyhaven.com">
+                {t('common:nav.blog')}
               </Link>
               <Link prefetch={false} href="/map">
                 {t('common:nav.map')}
+              </Link>
+            </div>
+          </div>
+          <div className={styles.linkListWrapper}>
+            <div className={styles.linkList}>
+              <Link prefetch={false} href="/contribute">
+                {t('common:nav.contribute')}
+              </Link>
+              <Link prefetch={false} href="https://docs.polyhaven.com">
+                Wiki
+              </Link>
+              <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com">
+                {t('common:nav.source')}
+              </Link>
+              <Link prefetch={false} href="/stats">
+                {t('common:nav.stats')}
+              </Link>
+              <Link prefetch={false} href="https://status.polyhaven.org/">
+                {t('common:nav.status')}
               </Link>
             </div>
           </div>
@@ -79,33 +98,14 @@ const footer = () => {
               <Link prefetch={false} href="/privacy">
                 {t('common:nav.privacy')}
               </Link>
+              <Link prefetch={false} href="/our-api">
+                {t('common:nav.api')}
+              </Link>
               <Link prefetch={false} href="/logo">
                 {t('common:nav.logo')}
               </Link>
               <Link prefetch={false} href="/finance-reports">
                 {t('common:nav.finances')}
-              </Link>
-              <Link prefetch={false} href="/stats">
-                {t('common:nav.stats')}
-              </Link>
-            </div>
-          </div>
-          <div className={styles.linkListWrapper}>
-            <div className={styles.linkList}>
-              <Link prefetch={false} href="https://blog.polyhaven.com">
-                {t('common:nav.blog')}
-              </Link>
-              <Link prefetch={false} href="https://docs.polyhaven.com">
-                Wiki
-              </Link>
-              <Link prefetch={false} href="/contribute">
-                {t('common:nav.contribute')}
-              </Link>
-              <Link prefetch={false} href="/our-api">
-                {t('common:nav.api')}
-              </Link>
-              <Link prefetch={false} href="https://github.com/Poly-Haven/polyhaven.com">
-                {t('common:nav.source')}
               </Link>
             </div>
           </div>
