@@ -231,8 +231,6 @@ const Home = () => {
                   country="ZA"
                   mode="compact"
                 />
-              </div>
-              <div className={styles.avatarRow}>
                 <Staff
                   id="James Ray Cock"
                   name="James Ray Cock"
@@ -240,6 +238,10 @@ const Home = () => {
                   country="ZA"
                   mode="compact"
                 />
+              </div>
+              <div className={styles.avatarRow}>
+                <div className={styles.dummy} />
+                <div className={styles.dummy} />
                 <Staff
                   id="Dario Barresi"
                   name="Dario Barresi"
@@ -255,14 +257,30 @@ const Home = () => {
                   mode="compact"
                 />
                 <Staff
+                  id="Garreth Botha"
+                  name="Garreth Botha"
+                  role="Game Design"
+                  country="ZA"
+                  mode="compact"
+                  link="https://www.garrethbotha.com/"
+                />
+                <Staff
+                  id="Hayden Botha"
+                  name="Hayden Botha"
+                  role="Technical Art"
+                  country="ZA"
+                  mode="compact"
+                  link="https://www.artstation.com/fudds"
+                />
+              </div>
+              <div className={styles.avatarRow}>
+                <Staff
                   id="Dimitrios Savva"
                   name="Dimitrios Savva"
                   role={`${tc('common:Textures')}, ${tc('common:HDRIs')}`}
                   country="ZA"
                   mode="compact"
                 />
-              </div>
-              <div className={styles.avatarRow}>
                 <Staff id="Jarod Guest" name="Jarod Guest" role={`${tc('common:HDRIs')}`} country="ZA" mode="compact" />
                 <Staff id="Amal Kumar" name="Amal Kumar" role={`${t('common:Textures')}`} country="IN" mode="compact" />
                 <Staff

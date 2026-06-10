@@ -57,7 +57,22 @@ const AboutPage = () => {
           country="ZA"
           mode="full"
         />
-        <Staff id="Sergej Majboroda" name="Sergej Majboroda" role={`${t('common:HDRIs')}`} country="UA" mode="full" />
+        <Staff
+          id="Garreth Botha"
+          name="Garreth Botha"
+          role="Game Design"
+          country="ZA"
+          mode="full"
+          link="https://www.garrethbotha.com/"
+        />
+        <Staff
+          id="Hayden Botha"
+          name="Hayden Botha"
+          role="Technical Art"
+          country="ZA"
+          mode="full"
+          link="https://www.artstation.com/fudds"
+        />
         <Staff
           id="Dimitrios Savva"
           name="Dimitrios Savva"
