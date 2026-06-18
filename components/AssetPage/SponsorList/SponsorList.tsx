@@ -1,7 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { MdHelp } from 'react-icons/md'
 
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 import AddSponsor from './AddSponsor'
 import Sponsor from './Sponsor'
 
@@ -31,7 +30,6 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
       {patron.rewards && patron.rewards.includes('Sponsor') && !sponsors.includes(patron.uuid) && (
         <AddSponsor assetID={assetID} patron={patron} />
       )}
-      <Tooltip />
     </div>
   )
 }

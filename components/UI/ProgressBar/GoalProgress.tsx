@@ -1,7 +1,6 @@
 import { useTranslation, Trans } from 'next-i18next'
 
 import ProgressBar from 'components/UI/ProgressBar/ProgressBar'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import apiSWR from 'utils/apiSWR'
 
@@ -20,19 +19,16 @@ const GoalProgress = ({ mode }) => {
   if (!goal) {
     // goal is null if the last goal was reached
     return (
-      <>
-        <ProgressBar
-          progress1={100}
-          progress2={(data.corpFunds / data.totalFunds) * 100}
-          label={t('common:goal.complete')}
-          labelValue=""
-          mode={mode}
-          tooltipLabel={t('common:goal.reached')}
-          tooltip1={tooltipPatron}
-          tooltip2={tooltipCorp}
-        />
-        <Tooltip />
-      </>
+      <ProgressBar
+        progress1={100}
+        progress2={(data.corpFunds / data.totalFunds) * 100}
+        label={t('common:goal.complete')}
+        labelValue=""
+        mode={mode}
+        tooltipLabel={t('common:goal.reached')}
+        tooltip1={tooltipPatron}
+        tooltip2={tooltipCorp}
+      />
     )
   }
   const progress1 = (data.totalFunds / goal.target) * 100
@@ -46,19 +42,16 @@ const GoalProgress = ({ mode }) => {
   const description = `Goal Progress: $${data.totalFunds} of $${goal.target} per month<br/>${goal.description}`
 
   return (
-    <>
-      <ProgressBar
-        progress1={progress1}
-        progress2={progress2}
-        label={label}
-        labelValue={goal.title}
-        mode={mode}
-        tooltipLabel={description}
-        tooltip1={tooltipPatron}
-        tooltip2={tooltipCorp}
-      />
-      <Tooltip />
-    </>
+    <ProgressBar
+      progress1={progress1}
+      progress2={progress2}
+      label={label}
+      labelValue={goal.title}
+      mode={mode}
+      tooltipLabel={description}
+      tooltip1={tooltipPatron}
+      tooltip2={tooltipCorp}
+    />
   )
 }
 

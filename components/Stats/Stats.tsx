@@ -1,7 +1,6 @@
 import { timeDiff } from 'utils/dateUtils'
 import ErrorBoundary from 'utils/ErrorBoundary'
 
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 import LastThreeMonths from './LastThreeMonths'
 import RelativeCat from './RelativeCat'
 import RelativeType from './RelativeType'
@@ -150,8 +149,6 @@ const Stats = ({ datasets }) => {
           </div>
         </div>
       </ErrorBoundary>
-
-      <Tooltip />
     </div>
   )
 }

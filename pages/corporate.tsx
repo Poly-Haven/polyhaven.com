@@ -12,7 +12,6 @@ import InfoBlock from 'components/Layout/InfoBlock/InfoBlock'
 import TextPage from 'components/Layout/TextPage/TextPage'
 import CorporateSponsors from 'components/CorporateSponsors/CorporateSponsors'
 import StatBlock from 'components/Stats/StatBlock/StatBlock'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 import Button from 'components/UI/Button/Button'
 
 const Corporate = (props) => {
@@ -174,8 +173,6 @@ const Corporate = (props) => {
           </p>
           <Button text="Contact Poly Haven" href="/about-contact" color="accent" />
         </div>
-
-        <Tooltip />
       </div>
     </TextPage>
   )

@@ -8,7 +8,6 @@ import BackplateList from './BackplateList'
 import DownloadMap from './DownloadMap'
 import IconMacbeth from 'components/UI/Icons/Macbeth'
 import IconPatreon from 'components/UI/Icons/Patreon'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import { sortCaseInsensitive, sortByPreference } from 'utils/arrayUtils'
 import threeDFormats from 'constants/3D_formats.json'
@@ -134,7 +133,6 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
           />
         ) : null}
       </div>
-      <Tooltip />
     </div>
   )
 }

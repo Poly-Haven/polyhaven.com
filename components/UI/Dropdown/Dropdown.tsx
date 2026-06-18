@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useId } from 'react'
 
 import { MdExpandMore } from 'react-icons/md'
 
@@ -9,6 +9,10 @@ import styles from './Dropdown.module.scss'
 const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, tooltipID }) => {
   const [expand, setExpand] = useState(false)
   const ref = useRef(null)
+  // Unique per Dropdown instance so multiple dropdowns don't share a tooltip id
+  // (which would make their keyed hosts double-bind each other's option rows).
+  const generatedID = useId()
+  const ttID = tooltipID || generatedID
 
   const toggle = () => {
     setExpand(!expand)
@@ -59,7 +63,7 @@ const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, to
             key={i}
             data-value={k}
             data-tip={options[k].tooltip || null}
-            data-for={tooltipID}
+            data-for={ttID}
             className={`${styles.option} ${k === value ? styles.active : null}`}
             onClick={setValue}
           >
@@ -71,7 +75,7 @@ const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, to
           </div>
         ))}
       </div>
-      {expand && <Tooltip id={tooltipID} place={tooltipSide} />}
+      {expand && <Tooltip id={ttID} place={tooltipSide} />}
     </div>
   )
 }
@@ -81,7 +85,7 @@ Dropdown.defaultProps = {
   sub: null,
   small: false,
   tooltipSide: 'right',
-  tooltipID: 'dropdown',
+  tooltipID: null,
 }
 
 export default Dropdown

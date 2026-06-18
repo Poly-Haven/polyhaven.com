@@ -1,5 +1,4 @@
 import Button from 'components/UI/Button/Button'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import styles from './TierBlock.module.scss'
 
@@ -33,7 +32,6 @@ const TierBlock = ({ title, image, price, link, numExisting, limit, features }) 
       ) : (
         <Button text="Sign Up" href={link} style={{ margin: 0 }} />
       )}
-      <Tooltip />
     </div>
   )
 }

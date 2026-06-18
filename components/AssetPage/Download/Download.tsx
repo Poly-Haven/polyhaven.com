@@ -22,7 +22,6 @@ import IconMaterialX from 'components/UI/Icons/MaterialX'
 import IconFile from 'components/UI/Icons/File'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import Heart from 'components/UI/Icons/Heart'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
@@ -569,7 +568,6 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
         setPreview={setPreview}
         callback={callback}
       />
-      <Tooltip id="dropdown" place="left" />
     </div>
   )
 }

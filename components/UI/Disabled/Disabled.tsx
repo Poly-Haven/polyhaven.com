@@ -1,5 +1,3 @@
-import Tooltip from 'components/UI/Tooltip/Tooltip'
-
 import styles from './Disabled.module.scss'
 
 const Disabled = ({ disabled, tooltip, tooltipSide, style, children }) => {
@@ -7,9 +5,8 @@ const Disabled = ({ disabled, tooltip, tooltipSide, style, children }) => {
     return children
   }
   return (
-    <div className={styles.disabled} data-tip={tooltip} style={style}>
+    <div className={styles.disabled} data-tip={tooltip} data-place={tooltipSide} style={style}>
       <div className={styles.contents}>{children}</div>
-      <Tooltip place={tooltipSide} />
     </div>
   )
 }

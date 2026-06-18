@@ -5,7 +5,6 @@ import { sortObjByValue } from 'utils/arrayUtils'
 import { getCurrency, catColor, categories, calcEmergencyFund, EMERGENCY_FUND_MONTHS } from 'utils/finances'
 
 import Spinner from 'components/UI/Spinner/Spinner'
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import styles from './Finances.module.scss'
 
@@ -235,7 +234,6 @@ const Monthly = ({ data, currency, startingBalance, filter, setFilter, mode, set
           </li>
         )}
       </ul>
-      <Tooltip />
     </div>
   )
 }

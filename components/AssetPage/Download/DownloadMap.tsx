@@ -2,7 +2,6 @@ import { filesize } from 'filesize'
 
 import { MdFileDownload } from 'react-icons/md'
 
-import Tooltip from 'components/UI/Tooltip/Tooltip'
 import MapSelector from './MapSelector'
 
 import { titleCase } from 'utils/stringUtils'
@@ -49,7 +48,6 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) =
               {f}
             </a>
           ))}
-        <Tooltip />
       </div>
     )
   } else {
@@ -70,7 +68,6 @@ const DownloadMap = ({ name, res, fmt, type, data, trackDownload, selectMap }) =
               selectMap={selectMap}
             />
           ))}
-        <Tooltip />
       </div>
     )
   }
