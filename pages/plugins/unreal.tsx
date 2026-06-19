@@ -37,7 +37,7 @@ export async function getStaticProps({ locale }) {
       ...(await serverSideTranslations(locale, ['common'])),
       numAssets: numAssets,
     },
-    revalidate: 60 * 30, // 30 minutes
+    revalidate: 60 * 60 * 4, // 4 hour
   }
 }
 

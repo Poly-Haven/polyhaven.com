@@ -63,6 +63,6 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
       data: data,
     },
-    revalidate: 60 * 30, // 30 minutes
+    revalidate: 60 * 60 * 24, // 24 hours (fallback; updates happen on-demand via /api/revalidate)
   }
 }

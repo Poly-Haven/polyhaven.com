@@ -222,7 +222,7 @@ export async function getStaticProps(context) {
       monthlyDownloads,
       traffic,
     },
-    revalidate: 1800,
+    revalidate: 60 * 60 * 4, // 4 hours
   }
 }
 

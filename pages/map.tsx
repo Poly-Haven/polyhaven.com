@@ -42,7 +42,7 @@ export const getStaticProps = async (ctx) => {
       ...(await serverSideTranslations(ctx.locale, ['common'])),
       coords,
     },
-    revalidate: 60 * 30, // 30 minutes
+    revalidate: 60 * 60 * 4, // 4 hours
   }
 }
 

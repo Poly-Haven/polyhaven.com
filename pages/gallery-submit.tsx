@@ -35,6 +35,6 @@ export async function getStaticProps(context) {
       assets: sortedKeys,
       galleryApiUrl: process.env.NEXT_GALLERY_API_URL || 'https://gallery.polyhaven.com',
     },
-    revalidate: 60 * 30, // 30 minutes
+    revalidate: 60 * 60 * 4, // 4 hours
   }
 }
