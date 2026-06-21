@@ -16,7 +16,7 @@ const SocialIcons = () => {
       <a href="https://discord.gg/Dms7Mrs">
         <SiDiscord />
       </a>
-      <a href="https://www.patreon.com/polyhaven/overview">
+      <a href="https://www.patreon.com/polyhaven">
         <SiPatreon />
       </a>
       <a rel="me" href="https://masto.ai/@polyhaven">

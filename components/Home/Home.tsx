@@ -201,7 +201,7 @@ const Home = () => {
                   i18nKey="home:s6p4"
                   t={t}
                   components={{
-                    lnk: <a href="https://www.patreon.com/polyhaven/overview" />,
+                    lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" />,
                   }}
                 />
               </p>
