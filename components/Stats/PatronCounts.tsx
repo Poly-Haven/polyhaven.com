@@ -149,7 +149,7 @@ const PatronCounts = ({ data }: { data: PatronData }) => {
       <div className={styles.graphHeader}>
         <div className={styles.largeSpacer} />
         <p>
-          <a href="https://www.patreon.com/polyhaven/overview">Patreon</a> supporters over time:
+          <a href="https://www.patreon.com/polyhaven/join?cadence=12">Patreon</a> supporters over time:
         </p>
         <div className={styles.largeSpacer} />
         <Switch

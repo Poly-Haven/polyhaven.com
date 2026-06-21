@@ -175,7 +175,7 @@ const Nav = () => {
               <Heart color="#F96854" /> {t('common:nav.support-us')}
             </>
           }
-          link="https://www.patreon.com/polyhaven/overview"
+          link="https://www.patreon.com/polyhaven/join?cadence=12"
         />
         <NavItem text={t('common:nav.about-contact')} link="/about-contact">
           <NavItem text={t('common:nav.faq')} link={`https://docs.polyhaven.com/${router.locale}/faq`} />

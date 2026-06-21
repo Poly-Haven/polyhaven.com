@@ -23,7 +23,7 @@ module.exports = {
     return [
       {
         source: '/support-us',
-        destination: 'https://www.patreon.com/polyhaven/overview',
+        destination: 'https://www.patreon.com/polyhaven/join?cadence=12',
         permanent: true,
       },
       {

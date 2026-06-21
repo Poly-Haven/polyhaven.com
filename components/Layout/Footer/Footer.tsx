@@ -21,7 +21,7 @@ const footer = () => {
         <Trans
           i18nKey="common:footer.thanks"
           t={t}
-          components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
         />{' '}
         <Heart color="#F96854" />
       </h2>
@@ -40,7 +40,7 @@ const footer = () => {
         <CorporateSponsors header={t('also-supported-by')} />
       </LazyLoad>
       <div className={styles.buttonWrapper}>
-        <Button text={t('footer.join-ranks')} href="https://www.patreon.com/polyhaven/overview" />
+        <Button text={t('footer.join-ranks')} href="https://www.patreon.com/polyhaven/join?cadence=12" />
       </div>
       <div className={styles.linksWrapper}>
         <a id="social" />

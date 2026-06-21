@@ -52,7 +52,7 @@ const Page = () => {
           <Trans
             i18nKey="account:login.p1"
             t={t}
-            components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+            components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
           />
         </p>
         <p>{t('account:login.p2')}</p>

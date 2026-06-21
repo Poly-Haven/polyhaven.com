@@ -72,7 +72,11 @@ const LicensePage = (props) => {
       <p>{t('p11')}</p>
       <p>{t('p12')}</p>
       <p>
-        <Trans i18nKey="p13" t={t} components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }} />
+        <Trans
+          i18nKey="p13"
+          t={t}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
+        />
       </p>
       <div lang="en">
         <Markdown>{props.termsOfService.replace(/\\n/g, '\n')}</Markdown>

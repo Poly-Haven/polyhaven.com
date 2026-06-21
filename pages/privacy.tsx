@@ -30,8 +30,8 @@ const PrivacyPage = () => {
 
         <h2>Patron Names in Footer</h2>
         <p>
-          The user names of all active supporters on <a href="https://www.patreon.com/polyhaven/overview">Patreon</a>{' '}
-          are automatically shown in the footer of every page on this site.
+          The user names of all active supporters on <a href="https://www.patreon.com/polyhaven">Patreon</a> are
+          automatically shown in the footer of every page on this site.
         </p>
         <p>The 30 newest patrons are also shown on the home page.</p>
         <p>

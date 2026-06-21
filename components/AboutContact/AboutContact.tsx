@@ -123,7 +123,7 @@ const AboutPage = () => {
         <Trans
           i18nKey="about:how.p2"
           t={t}
-          components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
         />
       </p>
       <p>{t('about:how.p3')}</p>
@@ -169,7 +169,7 @@ const AboutPage = () => {
         <Trans
           i18nKey="about:help.s1p1"
           t={t}
-          components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
         />
       </p>
       <p>{t('about:help.s1p2')}</p>

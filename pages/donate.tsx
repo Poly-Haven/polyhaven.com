@@ -17,7 +17,7 @@ const Page = () => {
           t={t}
           components={{
             lnk1: <LinkText href="/finance-reports" />,
-            lnk2: <a href="https://www.patreon.com/polyhaven/overview" />,
+            lnk2: <a href="https://www.patreon.com/polyhaven/join?cadence=12" />,
           }}
         />
       </p>
@@ -27,7 +27,7 @@ const Page = () => {
         <Trans
           i18nKey="donate:d1p"
           t={t}
-          components={{ lnk: <a href="https://www.patreon.com/polyhaven/overview" /> }}
+          components={{ lnk: <a href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
         />
       </p>
       <h2>{t('donate:d2t')}</h2>

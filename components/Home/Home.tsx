@@ -139,7 +139,7 @@ const Home = () => {
             </div>
           </div>
           <div className={styles.subSection}>
-            <Button text={'🚀 ' + t('home:s3b1')} href="https://www.patreon.com/polyhaven/overview" />
+            <Button text={'🚀 ' + t('home:s3b1')} href="https://www.patreon.com/polyhaven/join?cadence=12" />
             <Button text={tc('nav.finances')} href="/finance-reports" color="hollow" />
           </div>
         </div>

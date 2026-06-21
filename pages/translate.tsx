@@ -75,7 +75,7 @@ const Page = () => {
         <ul style={{ marginBottom: '3em' }}>
           <li>
             Giving you access to our Nextcloud server to sync our assets to your hard drive - the same service our{' '}
-            <a href="https://www.patreon.com/polyhaven/overview">$5+ patrons</a> have access to.
+            <a href="https://www.patreon.com/polyhaven/join?cadence=12">$5+ patrons</a> have access to.
           </li>
           <li>Crediting you in the language list at the top of this page.</li>
         </ul>

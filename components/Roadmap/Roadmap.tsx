@@ -204,7 +204,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
                     i18nKey="common:roadmap.join-support"
                     t={t}
                     values={{ numPatrons }}
-                    components={{ patreonLink: <Link href="https://www.patreon.com/polyhaven/overview" /> }}
+                    components={{ patreonLink: <Link href="https://www.patreon.com/polyhaven/join?cadence=12" /> }}
                   />
                 </p>
               </div>
