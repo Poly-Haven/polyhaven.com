@@ -171,7 +171,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
             <Button text={t('asset:vaulted.about')} href="/vaults" icon={<MdInfo />} color="hollowRed" />
             <Button
               text={t('asset:vaulted.access-now')}
-              href="https://www.patreon.com/checkout/polyhaven"
+              href="https://www.patreon.com/polyhaven/join?cadence=12"
               icon={<IoMdUnlock />}
               color="red"
             />
@@ -219,7 +219,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
 
           <Button
             text={t('asset:early-access.get-access')}
-            href="https://www.patreon.com/checkout/polyhaven"
+            href="https://www.patreon.com/polyhaven/join?cadence=12"
             icon={<IoMdUnlock />}
             color="red"
           />

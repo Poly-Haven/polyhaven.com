@@ -148,7 +148,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
             {!earlyAccess && (
               <Button
                 text={t('common:access-now')}
-                href="https://www.patreon.com/checkout/polyhaven"
+                href="https://www.patreon.com/polyhaven/join?cadence=12"
                 icon={<IoMdUnlock />}
                 color="red"
               />

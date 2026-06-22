@@ -18,7 +18,7 @@ const CallToAction = ({ hasAccess }) => {
         href={
           hasAccess
             ? 'https://www.patreon.com/posts/137467194?collection=328908'
-            : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111'
+            : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111&cadence=12'
         }
         className={`${styles.purchaseOption} ${
           hasAccess ? styles.ownedPurchaseOption : styles.recommendedPurchaseOption

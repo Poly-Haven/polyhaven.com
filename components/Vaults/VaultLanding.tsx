@@ -208,7 +208,7 @@ const VaultLanding = ({ vaults }) => {
           <div className={styles.spacer} />
           <Button
             text={t('vaults:access-vaults-now')}
-            href="https://www.patreon.com/checkout/polyhaven"
+            href="https://www.patreon.com/polyhaven/join?cadence=12"
             icon={<IoMdUnlock />}
             color="red"
           />

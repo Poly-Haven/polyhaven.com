@@ -13,9 +13,9 @@ import styles from './DonationBox.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 
 const tiers = {
-  3: 'https://www.patreon.com/checkout/polyhaven?rid=6545091',
-  5: 'https://www.patreon.com/checkout/polyhaven?rid=6545111',
-  10: 'https://www.patreon.com/checkout/polyhaven?rid=2011184',
+  3: 'https://www.patreon.com/checkout/polyhaven?rid=6545091&cadence=12',
+  5: 'https://www.patreon.com/checkout/polyhaven?rid=6545111&cadence=12',
+  10: 'https://www.patreon.com/checkout/polyhaven?rid=2011184&cadence=12',
 }
 
 const oneTimeTiers = [25, 50, 100]

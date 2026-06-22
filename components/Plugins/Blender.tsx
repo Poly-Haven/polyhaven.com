@@ -38,7 +38,7 @@ const CallToAction = ({ hasAccess }) => {
           </a>
         ) : (
           <a
-            href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111"
+            href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111&cadence=12"
             className={`${buttonStyles.button} ${buttonStyles.accent}`}
           >
             <div className={buttonStyles.inner}>Sign up</div>
