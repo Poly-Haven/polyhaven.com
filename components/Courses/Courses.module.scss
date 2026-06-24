@@ -1,35 +1,283 @@
 @import "constants/colors";
-@import "constants/mixins";
 @import "constants/variables";
+@import "constants/mixins";
 
-.wrapper {
-  width: 1280px;
-  min-height: 100vh;
-  margin: 2rem auto;
+/* ---------- lecture page layout ---------- */
+.layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  padding: 1rem;
+  margin: 1rem auto 5rem;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
 
-.message {
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: sticky;
+  top: calc(#{$v-header-height} + 1rem);
+  max-height: calc(100vh - #{$v-header-height} - 2rem);
+  overflow-y: auto;
+  background: $c-background-dark;
+  border: 1px solid $c-background-light;
+  @include dark_scrollbar();
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+/* ---------- video + text (left column) ---------- */
+.player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: $c-background-darkest;
+  overflow: hidden;
+
+  iframe {
+    @include absolute_cover();
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.playerMessage {
+  @include absolute_cover();
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  min-height: 300px;
+  gap: 0.75rem;
   text-align: center;
   padding: 2rem;
+  color: $c-text-light;
+
+  p {
+    margin: 0;
+    max-width: 24rem;
+  }
 }
 
-.iframeContainer {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin: auto;
-  position: relative;
+.messageLink {
+  color: $c-accent;
+  font-weight: 700;
+}
 
-  .iframe {
-    border: 0;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25em 0.5em;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: $c-text-light;
+  background: rgba($c-accent, 0.15);
+  border: 1px solid rgba($c-accent, 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.description {
+  color: $c-text-light;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+}
+
+.help {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9em;
+  padding: 0.6rem 0.9rem;
+  color: $c-text-light;
+  background: rgba($c-community, 0.1);
+  border: 1px solid rgba($c-community, 0.3);
+
+  svg {
+    color: $c-community;
+    flex-shrink: 0;
+    font-size: 1.2em;
   }
+}
+
+/* ---------- sidebar nav ---------- */
+.navHeader {
+  padding: 0.75rem;
+  border-bottom: 1px solid $c-background-light;
+
+  strong {
+    color: $c-text-bright;
+    display: block;
+  }
+}
+
+.navProgress {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(white, 0.08);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: $c-community;
+  @include transition(0.3s);
+}
+
+.chapter {
+  border-bottom: 1px solid rgba(white, 0.04);
+}
+
+.chapterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem;
+  background: $c-background-dark;
+  color: $c-text-bright;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: $c-background-darkish;
+  }
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+    font-size: 1.2em;
+  }
+}
+
+.chapterTitle {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chapterCount {
+  font-size: 0.8em;
+  font-weight: 400;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.lecture {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  color: $c-text-light;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(white, 0.03);
+  @include transition();
+
+  &:hover {
+    background: $c-background-light;
+  }
+}
+
+.lectureActive {
+  background: rgba($c-accent, 0.22);
+  box-shadow: inset 3px 0 0 $c-accent;
+
+  &:hover {
+    background: rgba($c-accent, 0.28);
+  }
+}
+
+.thumb {
+  width: 124px;
+  height: 70px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: $c-background-darkest;
+  display: block;
+}
+
+.lectureMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.lectureTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lectureTag {
+  display: inline-flex;
+  padding: 0.1em 0.35em;
+  font-size: 0.7em;
+  font-weight: 700;
+  color: $c-text-light;
+  background: rgba($c-accent, 0.12);
+  border: 1px solid rgba($c-accent, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lectureName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.lectureDuration {
+  font-size: 0.78em;
+  opacity: 0.6;
+  margin-top: 0.2rem;
+}
+
+.check {
+  flex-shrink: 0;
+  color: $c-community;
+  font-size: 1.15em;
 }
