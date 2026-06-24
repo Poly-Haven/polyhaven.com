@@ -211,12 +211,13 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
     }
   }, [videoUrl, lecture.video_id])
 
-  // Auto-advance countdown after a video ends.
+  // Auto-advance countdown after a video ends. Dismissing the box cancels it
+  // (clears the pending timeout and the guard stops it re-arming).
   useEffect(() => {
-    if (!ended || advancing || !autoplay || !nextLecture) return
+    if (!ended || advancing || dismissed || !autoplay || !nextLecture) return
     const t = setTimeout(advance, AUTOPLAY_DELAY)
     return () => clearTimeout(t)
-  }, [ended, advancing, autoplay, nextLecture])
+  }, [ended, advancing, dismissed, autoplay, nextLecture])
 
   let message = null
   if (isLoading || loading) {
