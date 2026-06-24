@@ -47,3 +47,24 @@ export function addLocalCompleted(slug: string): void {
     /* non-fatal */
   }
 }
+
+// Auto-advance preference (persisted across sessions).
+const AUTOPLAY_KEY = 'phcourse:autoplay'
+
+export function getAutoplay(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    return localStorage.getItem(AUTOPLAY_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+export function setAutoplay(on: boolean): void {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem(AUTOPLAY_KEY, on ? '1' : '0')
+  } catch {
+    /* non-fatal */
+  }
+}
