@@ -8,38 +8,36 @@ import patreon_tiers from 'constants/patreon_tiers.json'
 // TODO: switch this to the dedicated courses reward once that tier is created.
 const REQUIRED_REWARD = 'Offline Access'
 
-// Bunny Stream video library that hosts the course videos (not secret — it's in
-// the public embed URL). The signing key lives in BUNNY_TOKEN_AUTH_KEY.
+// Bunny Stream video library that hosts the course videos.
 const BUNNY_LIBRARY_ID = '689507'
-
-// The single course video we serve while verifying the player. We deliberately
-// do NOT accept a client-supplied videoId: signing an arbitrary id would let any
-// qualifying patron mint a token for any video in the library. When the courses
-// platform grows, replace this with a server-side lessonId -> { videoId, reward }
-// map and gate per video.
-const COURSE_VIDEO_ID = '8b2ce2eb-b898-4110-93fd-f8f0fdfb76e5'
 
 // How long a signed embed URL stays valid, in seconds.
 const TOKEN_TTL_SECONDS = 60 * 60 * 4 // 4 hours
+
+const ID_PATTERN = /^[a-zA-Z0-9_-]+$/
 
 const Route = async (req, res) => {
   let data = req.body
   const session = await getSession(req, res)
   const user = session?.user
   if (data.uuid !== user.sub.split('|').pop()) {
-    res.status(403).json({
-      error: '403',
-      message: 'UIDs do not match.',
-    })
+    res.status(403).json({ error: '403', message: 'UIDs do not match.' })
     return
   }
 
   if (!process.env.BUNNY_TOKEN_AUTH_KEY) {
     console.error('BUNNY_TOKEN_AUTH_KEY is not configured')
-    res.status(500).json({
-      error: '500',
-      message: 'Video provider is not configured.',
-    })
+    res.status(500).json({ error: '500', message: 'Video provider is not configured.' })
+    return
+  }
+
+  // Which lecture is being requested. The client never supplies a raw video id —
+  // we resolve it server-side from the course data so this can't sign arbitrary
+  // videos in the library.
+  const courseId = data.course
+  const lectureSlug = data.lecture
+  if (!courseId || !lectureSlug || !ID_PATTERN.test(courseId) || !ID_PATTERN.test(lectureSlug)) {
+    res.status(400).json({ error: '400', message: 'Invalid course or lecture.' })
     return
   }
 
@@ -96,13 +94,29 @@ const Route = async (req, res) => {
     return
   }
 
+  // Resolve the lecture's Bunny video id from the course data (the allow-list).
+  const course = await fetch(`${baseUrl}/courses/${courseId}`)
+    .then((r) => (r.ok ? r.json() : null))
+    .catch(() => null)
+
+  let videoId = null
+  for (const chapter of course?.chapters || []) {
+    for (const lecture of chapter.lectures || []) {
+      if (lecture.slug === lectureSlug) videoId = lecture.video_id
+    }
+  }
+  if (!videoId) {
+    res.status(404).json({ error: '404', message: 'Lecture not found.' })
+    return
+  }
+
   // Sign a time-limited Bunny Stream embed URL.
   // token = SHA256_HEX(token_security_key + video_id + expires)
   // https://docs.bunny.net/docs/stream-embed-token-authentication
   const expires = Math.floor(Date.now() / 1000) + TOKEN_TTL_SECONDS
   const token = crypto
     .createHash('sha256')
-    .update(`${process.env.BUNNY_TOKEN_AUTH_KEY}${COURSE_VIDEO_ID}${expires}`)
+    .update(`${process.env.BUNNY_TOKEN_AUTH_KEY}${videoId}${expires}`)
     .digest('hex')
 
   const params = new URLSearchParams({
@@ -114,7 +128,7 @@ const Route = async (req, res) => {
     preload: 'true',
     responsive: 'true',
   })
-  const url = `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${COURSE_VIDEO_ID}?${params.toString()}`
+  const url = `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${videoId}?${params.toString()}`
 
   res.status(200).json({ error: null, url })
 }
