@@ -1,0 +1,35 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+.wrapper {
+  width: 1280px;
+  min-height: 100vh;
+  margin: 2rem auto;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 300px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.iframeContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: auto;
+  position: relative;
+
+  .iframe {
+    border: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
