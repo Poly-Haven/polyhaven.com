@@ -4,69 +4,14 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import InfoBox from 'components/UI/InfoBox/InfoBox'
 import Button from 'components/UI/Button/Button'
-import Patreon from 'components/UI/Icons/Patreon'
 import BlenderMarket from 'components/UI/Icons/BlenderMarket'
 import Roadmap from 'components/Roadmap/Roadmap'
+import CallToAction from './CallToAction'
 
 import { MdApps, MdOutlineInstallDesktop, MdInfo, MdDownload, MdOpenInNew } from 'react-icons/md'
 import { RiVipCrownLine } from 'react-icons/ri'
 
 import styles from './Plugins.module.scss'
-import buttonStyles from 'components/UI/Button/Button.module.scss'
-
-const CallToAction = ({ hasAccess }) => {
-  return (
-    <div className={styles.row}>
-      <div
-        className={`${styles.purchaseOption} ${
-          hasAccess ? styles.ownedPurchaseOption : styles.recommendedPurchaseOption
-        }`}
-      >
-        <Patreon />
-        <h3>Patreon</h3>
-        <p>
-          <strong>$5</strong>/month
-        </p>
-        <p>
-          Includes other rewards
-          <br />
-          Helps unlock <Link href="/vaults">Vaults</Link>
-        </p>
-        {hasAccess ? (
-          <a href="https://www.patreon.com/posts/70974704" className={`${buttonStyles.button} ${buttonStyles.pink}`}>
-            <div className={buttonStyles.inner}>Download</div>
-          </a>
-        ) : (
-          <a
-            href="https://www.patreon.com/join/polyhaven/checkout?rid=6545111&cadence=12"
-            className={`${buttonStyles.button} ${buttonStyles.accent}`}
-          >
-            <div className={buttonStyles.inner}>Sign up</div>
-          </a>
-        )}
-      </div>
-      <p className={styles.callToAction}>or</p>
-      <div className={styles.purchaseOption}>
-        <BlenderMarket />
-        <h3>Superhive</h3>
-        <p>
-          <strong>$69</strong>
-        </p>
-        <p>
-          Once-off purchase
-          <br />
-          Free updates forever
-        </p>
-        <a
-          href="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
-          className={`${buttonStyles.button} ${buttonStyles.accent}`}
-        >
-          <div className={buttonStyles.inner}>Purchase</div>
-        </a>
-      </div>
-    </div>
-  )
-}
 
 const Feature = ({ title, image, hover, children }) => {
   const [flicker, setFlicker] = useState(false)
@@ -107,6 +52,31 @@ const Blender = ({ numAssets }) => {
   const { patron } = useUserPatron()
 
   const hasAccess = patron.rewards && patron.rewards.includes('Offline Access')
+
+  const callToAction = (
+    <CallToAction
+      hasAccess={hasAccess}
+      patreonDescription={
+        <p>
+          Includes other rewards
+          <br />
+          Helps unlock <Link href="/vaults">Vaults</Link>
+        </p>
+      }
+      patreonDownloadUrl="https://www.patreon.com/posts/70974704"
+      secondaryUrl="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
+      secondaryIcon={<BlenderMarket />}
+      secondaryTitle="Superhive"
+      secondaryPrice="$69"
+      secondaryDescription={
+        <p>
+          Once-off purchase
+          <br />
+          Free updates forever
+        </p>
+      }
+    />
+  )
 
   return (
     <div className={styles.wrapper}>
@@ -181,7 +151,7 @@ const Blender = ({ numAssets }) => {
       </InfoBox>
       <p className={styles.callToAction}>Choose your path...</p>
 
-      <CallToAction hasAccess={hasAccess} />
+      {callToAction}
 
       <p>
         Whether you get it on the Superhive or Patreon, the add-on is identical. Both versions have the same features
@@ -260,7 +230,7 @@ const Blender = ({ numAssets }) => {
 
       <div className={styles.spacer} />
       <p className={styles.callToAction}>Get it now:</p>
-      <CallToAction hasAccess={hasAccess} />
+      {callToAction}
       <div className={styles.spacer} />
 
       <div style={{ textAlign: 'center' }}>

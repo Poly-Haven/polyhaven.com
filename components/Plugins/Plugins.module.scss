@@ -68,6 +68,17 @@
   p {
     text-align: center;
   }
+
+  .orText {
+    margin-top: -0.35em;
+    font-size: 0.9em;
+    opacity: 0.5;
+    filter: saturate(0);
+
+    a {
+      color: $c-text-bright;
+    }
+  }
 }
 .recommendedPurchaseOption {
   position: relative;

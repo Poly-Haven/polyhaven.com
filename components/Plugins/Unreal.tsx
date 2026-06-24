@@ -2,70 +2,13 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import InfoBox from 'components/UI/InfoBox/InfoBox'
 import Button from 'components/UI/Button/Button'
-import Patreon from 'components/UI/Icons/Patreon'
 import Fab from 'components/UI/Icons/Fab'
+import CallToAction from './CallToAction'
 
 import { MdApps, MdInfo, MdDownload, MdOpenInNew, MdCloudDownload, MdDashboard } from 'react-icons/md'
 import { SiDiscord } from 'react-icons/si'
 
 import styles from './Plugins.module.scss'
-import buttonStyles from 'components/UI/Button/Button.module.scss'
-
-const CallToAction = ({ hasAccess }) => {
-  return (
-    <div className={styles.row}>
-      <a
-        href={
-          hasAccess
-            ? 'https://www.patreon.com/posts/137467194?collection=328908'
-            : 'https://www.patreon.com/join/polyhaven/checkout?rid=6545111&cadence=12'
-        }
-        className={`${styles.purchaseOption} ${
-          hasAccess ? styles.ownedPurchaseOption : styles.recommendedPurchaseOption
-        }`}
-      >
-        <Patreon />
-        <h3>Patreon</h3>
-        <p>
-          <strong>$5</strong>/month
-        </p>
-        <p>
-          Cancel any time
-          <br />
-          All proceeds go to Poly Haven
-        </p>
-        {hasAccess ? (
-          <div className={`${buttonStyles.button} ${buttonStyles.pink}`}>
-            <div className={buttonStyles.inner}>Download</div>
-          </div>
-        ) : (
-          <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
-            <div className={buttonStyles.inner}>Sign up</div>
-          </div>
-        )}
-      </a>
-      <p className={styles.callToAction}>or</p>
-      <a href="https://fab.com/s/967e3c3f02e4" className={styles.purchaseOption}>
-        <Fab color="white" />
-        <h3>Fab</h3>
-        <p>
-          <strong>$30</strong>
-        </p>
-        <p>
-          Once-off purchase
-          <br />
-          <abbr title="Poly Haven receives 44% of the payment, Epic Games takes 12%, and the developer receives the rest.">
-            Revenue shared
-          </abbr>{' '}
-          with Poly Haven
-        </p>
-        <div className={`${buttonStyles.button} ${buttonStyles.accent}`}>
-          <div className={buttonStyles.inner}>Purchase</div>
-        </div>
-      </a>
-    </div>
-  )
-}
 
 const Feature = ({ title, image, children }) => {
   return (
@@ -85,6 +28,34 @@ const Unreal = ({ numAssets }) => {
   const { patron } = useUserPatron()
 
   const hasAccess = patron.rewards && patron.rewards.includes('Offline Access')
+
+  const callToAction = (
+    <CallToAction
+      hasAccess={hasAccess}
+      patreonDescription={
+        <p>
+          Cancel any time
+          <br />
+          All proceeds go to Poly Haven
+        </p>
+      }
+      patreonDownloadUrl="https://www.patreon.com/posts/137467194?collection=328908"
+      secondaryUrl="https://fab.com/s/967e3c3f02e4"
+      secondaryIcon={<Fab color="white" />}
+      secondaryTitle="Fab"
+      secondaryPrice="$30"
+      secondaryDescription={
+        <p>
+          Once-off purchase
+          <br />
+          <abbr title="Poly Haven receives 44% of the payment, Epic Games takes 12%, and the developer receives the rest.">
+            Revenue shared
+          </abbr>{' '}
+          with Poly Haven
+        </p>
+      }
+    />
+  )
 
   return (
     <div className={styles.wrapper}>
@@ -138,7 +109,7 @@ const Unreal = ({ numAssets }) => {
       <InfoBox type="info" header="Supported Unreal Engine Versions: 5.3 - 5.7" icon={<MdInfo />} />
       <p className={styles.callToAction}>Choose your path...</p>
 
-      <CallToAction hasAccess={hasAccess} />
+      {callToAction}
 
       <p style={{ textAlign: 'center' }}>
         Whether you get it on Fab or Patreon, the plugin is identical. Both versions have the same features and perks,
@@ -201,7 +172,7 @@ const Unreal = ({ numAssets }) => {
 
       <div className={styles.spacer} />
       <p className={styles.callToAction}>Get it now:</p>
-      <CallToAction hasAccess={hasAccess} />
+      {callToAction}
       <div className={styles.spacer} />
 
       <div style={{ textAlign: 'center' }}>
