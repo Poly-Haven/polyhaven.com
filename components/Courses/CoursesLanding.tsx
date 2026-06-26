@@ -5,24 +5,29 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 import CourseNav from './CourseNav'
 import Photogrammetry from './Photogrammetry'
 
-// Per-course bespoke overview bodies (hard-coded JSX, like the plugin pages).
+// Per-course bespoke overview bodies (hard-coded JSX, like the plugin pages). Each
+// bespoke body owns the whole page (its own hero, CTAs, curriculum, etc.).
 const overviews = {
   photogrammetry: Photogrammetry,
 }
 
-// Public course overview ("landing"). Data-functional placeholder — no styling yet.
 const CoursesLanding = ({ course }) => {
+  const Body = overviews[course.id]
+  if (Body) return <Body course={course} />
+
+  // Generic fallback for any course without a bespoke marketing page yet.
+  return <GenericOverview course={course} />
+}
+
+const GenericOverview = ({ course }) => {
   const { user } = useUserPatron()
   const router = useRouter()
-
-  const Body = overviews[course.id] || null
   const firstLecture = course.chapters?.[0]?.lectures?.[0]?.slug
 
   return (
     <div>
       <h1>{course.name}</h1>
-
-      {Body ? <Body /> : <p>{course.description}</p>}
+      <p>{course.description}</p>
 
       <p>
         {user ? (

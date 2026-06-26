@@ -435,6 +435,7 @@ $stack-width: $sidebar-width + 600px;
 
   .lecture {
     cursor: default;
+    align-items: center;
 
     &:hover {
       background: none;

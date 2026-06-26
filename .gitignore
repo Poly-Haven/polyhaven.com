@@ -38,3 +38,6 @@ pages/db_json*.json
 
 # transient course thumbnail downloads (uploaded to the CDN manually)
 /tmp_course_thumbnails
+
+# placeholder course marketing media (local dev only; final art uploaded to the CDN)
+/public/course_promo
