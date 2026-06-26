@@ -1,0 +1,75 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.milestone {
+  max-width: 720px;
+  margin: 3.5rem auto 0;
+  padding: 2.75rem 3em;
+  border: 1px solid rgba($c-pink, 0.3);
+  background: rgba($c-pink, 0.05);
+  text-align: center;
+
+  h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+    color: $c-pink;
+    margin: 0 0 1rem;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: $c-gray-light;
+    margin: 0 auto 1rem;
+
+    sup {
+      opacity: 0.7;
+    }
+  }
+
+  strong {
+    color: $c-text-bright;
+  }
+}
+
+.bar {
+  position: relative;
+  height: 1.4rem;
+  margin: 1.8rem 0 0.6rem;
+  background: rgba($c-background-darkest, 0.3);
+  border: 1px solid rgba($c-accent-light, 0.3);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  position: relative;
+  height: 100%;
+  min-width: 1.4rem;
+  background: linear-gradient(90deg, $c-accent, $c-pink);
+  border-radius: 999px;
+  overflow: hidden;
+  @include transition(0.6s);
+}
+
+.barMeta {
+  text-align: right;
+  font-size: 0.9rem;
+  color: $c-gray-light;
+
+  strong {
+    color: $c-text-bright;
+  }
+
+  svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.12em;
+    margin-right: 0.3em;
+  }
+}
+
+.toGo {
+  font-weight: 700;
+  color: $c-text-bright !important;
+  margin-bottom: 0.5em !important;
+}

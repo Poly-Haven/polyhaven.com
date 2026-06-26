@@ -41,3 +41,6 @@ pages/db_json*.json
 
 # placeholder course marketing media (local dev only; final art uploaded to the CDN)
 /public/course_promo
+
+# local-only course file-processing scripts (kept out of this public repo)
+/scripts/local
