@@ -447,8 +447,8 @@ const Photogrammetry = ({ course }) => {
           <h2>Made by humans at Poly Haven</h2>
 
           <p>
-            Since 2017, we've been capturing and publishing free CC0 textures, HDRIs and 3D models used by millions of
-            artists around the world.
+            For over 10 years, we've been capturing and publishing free HDRIs, textures, and 3D models used by millions
+            of artists around the world.
           </p>
           <p>
             This course teaches the same production workflow we use ourselves - built on real photography, practical
