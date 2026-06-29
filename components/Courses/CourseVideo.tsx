@@ -277,53 +277,55 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
   }
 
   return (
-    <div className={styles.player}>
-      {videoUrl && (
-        <iframe
-          ref={iframeRef}
-          src={videoUrl}
-          title={lecture.name}
-          loading="lazy"
-          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
-        ></iframe>
-      )}
+    <>
+      <div className={styles.player}>
+        {videoUrl && (
+          <iframe
+            ref={iframeRef}
+            src={videoUrl}
+            title={lecture.name}
+            loading="lazy"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+          ></iframe>
+        )}
 
-      {message && !starting && (
-        <>
-          <img src={thumbUrl} className={styles.loadingThumb} alt="" aria-hidden="true" />
-          <div className={styles.playerMessage}>{message}</div>
-        </>
-      )}
+        {message && !starting && (
+          <>
+            <img src={thumbUrl} className={styles.loadingThumb} alt="" aria-hidden="true" />
+            <div className={styles.playerMessage}>{message}</div>
+          </>
+        )}
 
-      {showNextBox && (
-        <div className={styles.endscreen}>
-          <div className={styles.nextBox}>
-            <button className={styles.nextClose} onClick={() => setDismissed(true)} aria-label="Dismiss">
-              <MdClose />
-            </button>
-            <div className={styles.nextText}>
-              <div className={styles.nextLabelRow}>
-                <span className={styles.endLabel}>Next up</span>
-                {boxSlug && <span className={styles.nextTag}>{boxSlug}</span>}
+        {showNextBox && (
+          <div className={styles.endscreen}>
+            <div className={styles.nextBox}>
+              <button className={styles.nextClose} onClick={() => setDismissed(true)} aria-label="Dismiss">
+                <MdClose />
+              </button>
+              <div className={styles.nextText}>
+                <div className={styles.nextLabelRow}>
+                  <span className={styles.endLabel}>Next up</span>
+                  {boxSlug && <span className={styles.nextTag}>{boxSlug}</span>}
+                </div>
+                <p className={styles.endTitle}>{boxName}</p>
               </div>
-              <p className={styles.endTitle}>{boxName}</p>
+              <div className={styles.nextControl}>{boxControl}</div>
             </div>
-            <div className={styles.nextControl}>{boxControl}</div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showEndDone && (
-        <div className={styles.endscreen}>
-          <div className={styles.endDone}>
-            <p className={styles.endTitle}>You&apos;ve reached the end</p>
-            <Link href={`/learn/${course.id}`} className={styles.messageLink}>
-              Back to overview
-            </Link>
+        {showEndDone && (
+          <div className={styles.endscreen}>
+            <div className={styles.endDone}>
+              <p className={styles.endTitle}>You&apos;ve reached the end</p>
+              <Link href={`/learn/${course.id}`} className={styles.messageLink}>
+                Back to overview
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   )
 }
 

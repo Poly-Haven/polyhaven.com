@@ -58,6 +58,8 @@ const LecturePage = ({ course, lecture }) => {
           />
         </aside>
       </div>
+
+      <h1 style={{ color: 'yellow' }}>TODO: Add info about course files, other Patreon rewards, links, etc.</h1>
     </Page>
   )
 }
