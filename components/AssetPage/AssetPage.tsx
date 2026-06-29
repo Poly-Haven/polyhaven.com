@@ -17,7 +17,6 @@ import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from 'react-ico
 import AssetDlGraph from 'components/Stats/AssetDlGraph'
 import AuthorCredit from 'components/AssetPage/AuthorCredit'
 import Carousel from './Carousel/Carousel'
-import DisplayAd from 'components/Ads/DisplayAd'
 import Download from './Download/Download'
 import AfterDownload from './AfterDownload'
 import GLTFViewer from './WebGL/GLTFViewer'
@@ -429,10 +428,6 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               )}
             </InfoItem>
           </div>
-        </div>
-
-        <div className={styles.sidebarAd}>
-          <DisplayAd id="assetPage" x={336} y={280} />
         </div>
       </div>
     </div>

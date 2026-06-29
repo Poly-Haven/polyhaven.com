@@ -20,7 +20,6 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
 import Spinner from 'components/UI/Spinner/Spinner'
-import DisplayAd from 'components/Ads/DisplayAd'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Switch from 'components/UI/Switch/Switch'
@@ -361,9 +360,6 @@ const Grid = (props) => {
                 </p>
               }
             </div>
-          </div>
-          <div className={styles.adGridTop}>
-            <DisplayAd id="grid" x={728} y={90} />
           </div>
         </div>
         {showAdvanced ? (
