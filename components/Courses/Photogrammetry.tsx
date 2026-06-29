@@ -358,8 +358,11 @@ const Photogrammetry = ({ course }) => {
           <span className={styles.accentBar} />
           <h2>Choose your path...</h2>
           <p>
-            Every asset on Poly Haven is free and always will be. This course is one of the ways we fund that - choose
-            the path that fits you.
+            At Poly Haven we make{' '}
+            <Link href="/all" target="_blank">
+              free high quality 3D assets
+            </Link>{' '}
+            for everyone. This course is one of the ways we fund that.
           </p>
         </div>
 
