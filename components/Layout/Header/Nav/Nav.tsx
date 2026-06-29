@@ -6,6 +6,7 @@ import locales from 'utils/locales'
 
 import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder, MdList } from 'react-icons/md'
 import { IoMdLogIn } from 'react-icons/io'
+import { PiStudentFill } from 'react-icons/pi'
 
 import useStoredState from 'hooks/useStoredState'
 
@@ -182,6 +183,15 @@ const Nav = () => {
             </span>
           }
           link="/vaults"
+        />
+        <NavItem
+          text={
+            <span className={styles.assetType}>
+              <PiStudentFill />
+              Learn
+            </span>
+          }
+          link="/learn"
         />
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
         <NavItem
