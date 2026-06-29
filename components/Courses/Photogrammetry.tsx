@@ -431,8 +431,10 @@ const Photogrammetry = ({ course }) => {
                   <ul className={styles.lectureList}>
                     {lectures.map((l) => (
                       <li key={l.slug}>
-                        <span className={styles.lectureName}>{l.name}</span>
-                        {l.duration ? <span className={styles.lectureDur}>{formatDuration(l.duration)}</span> : null}
+                        <Link href={`/learn/photogrammetry/${l.slug}`} className={styles.lectureLink}>
+                          <span className={styles.lectureName}>{l.name}</span>
+                          {l.duration ? <span className={styles.lectureDur}>{formatDuration(l.duration)}</span> : null}
+                        </Link>
                       </li>
                     ))}
                   </ul>

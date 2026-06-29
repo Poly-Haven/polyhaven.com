@@ -479,8 +479,8 @@ $stack: 900px;
 }
 
 .chapterBlock {
-  background: $c-background-light;
-  border: 1px solid $c-background-lighter;
+  background: $c-background;
+  border: 1px solid $c-background-lightish;
 }
 
 .chapterToggle {
@@ -542,15 +542,25 @@ $stack: 900px;
   border-top: 1px solid $c-background-lighter;
 
   li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.55rem 0;
     border-bottom: 1px solid rgba(white, 0.04);
 
     &:last-child {
       border-bottom: none;
     }
+  }
+}
+
+.lectureLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  box-shadow: none !important;
+
+  &:hover .lectureName {
+    color: $c-accent;
   }
 }
 
