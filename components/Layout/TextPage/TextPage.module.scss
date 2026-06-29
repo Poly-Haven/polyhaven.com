@@ -33,4 +33,16 @@
     border: none;
     border-top: 1px solid $c-background-light;
   }
+
+  section {
+    border-top: 1px solid $c-background-light;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    p {
+      margin: 0;
+    }
+  }
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import locales from 'utils/locales'
 
-import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder } from 'react-icons/md'
+import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder, MdList } from 'react-icons/md'
 import { IoMdLogIn } from 'react-icons/io'
 
 import useStoredState from 'hooks/useStoredState'
@@ -141,7 +141,14 @@ const Nav = () => {
             link="/vaults"
           />
         </NavItem>
-        <NavItem text={t('common:nav.plugins')} link="/plugins">
+        <NavItem
+          text={
+            <>
+              <Blender /> {t('common:nav.add-on')}
+            </>
+          }
+          link="/plugins/blender"
+        >
           <NavItem
             text={
               <>
@@ -157,6 +164,14 @@ const Nav = () => {
               </>
             }
             link="/plugins/unreal"
+          />
+          <NavItem
+            text={
+              <>
+                <MdList /> Other tools and plugins
+              </>
+            }
+            link="/tools"
           />
         </NavItem>
         <NavItem
