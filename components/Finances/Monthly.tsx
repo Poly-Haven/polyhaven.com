@@ -29,7 +29,8 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
       <div className={styles.barContainer}>
         <div className={expand ? styles.barList : styles.bar}>
           {Object.keys(data).map((c, i) => {
-            const percent = (data[c] / max) * 100
+            const percent = (data[c] / total) * 100 // Percent of this bar (income or expense)
+            const percentOfMax = (data[c] / max) * 100 // Percent of any bar, for width
             const percentStr = percent > 10 ? Math.round(percent) : percent.toFixed(1)
             const description = categories[c] && categories[c].description
             return (
@@ -58,7 +59,7 @@ const Bar = ({ label, data, total, max, currency, rates, filter, setFilter, mode
                   }
                 }}
                 style={{
-                  width: `${percent}%`,
+                  width: `${percentOfMax}%`,
                   background: !filter.length || filter.includes(c) ? catColor(c) : 'rgba(0,0,0,0.1)',
                 }}
               >
