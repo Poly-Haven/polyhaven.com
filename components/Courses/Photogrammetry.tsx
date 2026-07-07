@@ -39,42 +39,42 @@ const SUPERHIVE_URL = 'https://superhivemarket.com/products/poly-haven-photoscan
 const STAGES = [
   {
     n: 1,
-    kicker: 'Chapter 1 · Learn the fundamentals',
+    kicker: 'The fundamentals',
     title: 'Learn what makes a great scan',
     body: 'Understand what photoscanning really captures: real surface detail, not just colour. Learn why scanned materials look more believable than traditional textures or generated normals, and how photogrammetry fits into a modern 3D workflow.',
     media: { type: 'image', src: `${PROMO}/wall_scan.jpg` },
   },
   {
     n: 2,
-    kicker: 'Chapter 2 · Scout and capture',
+    kicker: 'Scout and capture',
     title: 'Learn to see the world like a scanning artist',
     body: 'A good scan starts long before the shutter clicks. Learn the gear, camera settings, lighting techniques, then develop the instinct to recognise which surfaces to capture and which are better left behind.',
     media: { type: 'image', src: `${PROMO}/capture_drone.jpg` },
   },
   {
     n: 3,
-    kicker: 'Chapter 3 · Create materials',
+    kicker: 'Create materials',
     title: 'Turn real surfaces into production-ready materials',
     body: 'Capture textures on location, develop the RAW files with accurate colour, then process them into seamless PBR materials complete with roughness, normal, displacement and ambient occlusion maps.',
     media: { type: 'video', src: `${PROMO}/chapter_03.mp4`, poster: `${PROMO}/wall_scan.jpg` },
   },
   {
     n: 4,
-    kicker: 'Chapter 4 · Environment art',
+    kicker: 'Environment art',
     title: 'Build a believable environment',
     body: 'Bring your scans to life inside Blender. Create materials, add displacement, blend surfaces together, weather the environment, decorate, and light the scene until it feels like a real place instead of a collection of assets.',
     media: { type: 'image', src: `${PROMO}/render_05.jpg` },
   },
   {
     n: 5,
-    kicker: 'Chapter 5 · Scan objects',
+    kicker: 'Scan objects',
     title: 'Turn everyday objects into game-ready assets',
     body: 'Learn the complete object scanning workflow using rocks, planks, barrels and more. Process them through RealityScan, retopology, UV mapping, baking and cleanup to create production-ready models.',
     media: { type: 'video', src: `${PROMO}/chapter_05.mp4`, poster: `${PROMO}/render_06.jpg` },
   },
   {
     n: 6,
-    kicker: 'Chapter 6 · Finish the scene',
+    kicker: 'Finish the scene',
     title: 'Bring everything together',
     body: 'Finish the environment using your own scans alongside the free Poly Haven library. Scatter vegetation, place props, add atmosphere and learn how individual assets become a convincing, finished scene.',
     media: { type: 'video', src: `${PROMO}/chapter_06.mp4`, poster: `${PROMO}/render_01.jpg` },
@@ -212,7 +212,7 @@ const Photogrammetry = ({ course }) => {
               <StageMedia media={stage.media} />
             </div>
             <div className={styles.stageText}>
-              <span className={styles.stageNum}>Stage {stage.n}</span>
+              <span className={styles.stageNum}>Chapter {stage.n}</span>
               <span className={styles.stageKicker}>{stage.kicker}</span>
               <h3>{stage.title}</h3>
               <p>{stage.body}</p>
