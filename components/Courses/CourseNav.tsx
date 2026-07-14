@@ -23,7 +23,11 @@ const chapterOf = (slug: string | null) => (slug ? slug.split('_')[0] : null)
 
 const Thumb = ({ courseId, lecture }) => (
   <div className={styles.thumb}>
-    <img src={`${THUMB_CDN}/${courseId}/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`} alt="" loading="lazy" />
+    <img
+      src={`${THUMB_CDN}/${courseId}/chapter_thumbs/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`}
+      alt=""
+      loading="lazy"
+    />
     <span className={styles.duration}>{formatDuration(lecture.duration)}</span>
   </div>
 )

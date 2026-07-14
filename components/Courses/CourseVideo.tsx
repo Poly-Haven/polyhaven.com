@@ -63,7 +63,7 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
     nextRef.current = nextLecture
   }, [nextLecture])
 
-  const thumbUrl = `${THUMB_CDN}/${course.id}/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`
+  const thumbUrl = `${THUMB_CDN}/${course.id}/chapter_thumbs/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`
 
   const advance = () => {
     const next = nextRef.current
