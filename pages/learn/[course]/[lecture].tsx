@@ -32,7 +32,7 @@ const LecturePage = ({ course, lecture }) => {
   return (
     <Page>
       <Head
-        title={`${lecture.name} — ${course.name}`}
+        title={`${lecture.name} • ${course.name}`}
         description={lecture.description}
         url={`/learn/${course.id}/${lecture.slug}`}
       />

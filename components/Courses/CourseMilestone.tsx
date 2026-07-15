@@ -59,7 +59,7 @@ const CourseMilestone = ({ patreonUrl }: { patreonUrl: string }) => {
       <div className={styles.barMeta}>
         <span>
           <Patreon color="#fff" />
-          <strong>{numPatrons != null ? fmt(numPatrons) : '—'}</strong> / {fmt(target)} patrons
+          <strong>{numPatrons != null ? fmt(numPatrons) : '?'}</strong> / {fmt(target)} patrons
         </span>
       </div>
       {toGo != null && <p className={styles.toGo}>Only {fmt(toGo)} to go!</p>}

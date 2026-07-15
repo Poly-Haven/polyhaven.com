@@ -174,7 +174,7 @@ $stack: 900px;
 .trailerWrapper {
   width: 100%;
   background: $c-background-darkish;
-  padding: 3.5rem 1.5rem;
+  padding: 3.5rem 0;
   scroll-margin-top: $v-header-height;
 
   @media screen and (max-width: $stack) {
@@ -420,6 +420,11 @@ $stack: 900px;
   gap: 0.4rem;
 }
 
+/*
+ * A link, but styled as plain text: `color` overrides the global accent-purple on <a>,
+ * and box-shadow is pre-empted in case this ever moves inside a p/li/h4/span (globals
+ * gives those an underline). The chip background carries the hover affordance instead.
+ */
 .softwareChip {
   padding: 0.15em 0.55em;
   background: $c-background-light;
@@ -428,6 +433,13 @@ $stack: 900px;
   font-weight: 600;
   color: $c-text-light;
   white-space: nowrap;
+  box-shadow: none;
+  @include transition();
+
+  &:hover {
+    background: $c-background-lighter;
+    color: $c-text-bright;
+  }
 }
 
 /* ----------------------------- skills ----------------------------- */
@@ -451,6 +463,18 @@ $stack: 900px;
 
   @media screen and (max-width: 540px) {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Quiet CTA that closes out the skills section - no background, smaller heading than
+   the full-bleed one at the end of the page, so it reads as part of the list above. */
+.inlineCta {
+  text-align: center;
+  margin-top: 3rem;
+
+  h2 {
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    margin: 0 0 1.2rem;
   }
 }
 

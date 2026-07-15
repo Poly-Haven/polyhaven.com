@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { MdPlayArrow, MdExpandMore, MdCheck, MdRocketLaunch } from 'react-icons/md'
 import { SiDiscord } from 'react-icons/si'
@@ -26,8 +26,7 @@ const DISCORD_URL = 'https://discord.gg/Dms7Mrs'
 const REQUIRED_REWARD = 'Offline Access'
 // TODO: real checkout link for the new $7/mo course tier (rid unknown until it's created).
 const PATREON_JOIN_URL = 'https://www.patreon.com/polyhaven'
-// TODO: confirm the Superhive product URL once the listing is published.
-const SUPERHIVE_URL = 'https://superhivemarket.com/products/poly-haven-photoscan-course'
+const SUPERHIVE_URL = 'https://superhivemarket.com/products/polyhaven-production-photogrammetry?ref=3841'
 
 // The whole pipeline in three beats, paired with the trailer's differentiation pitch.
 // Plenty of our visitors are here for free HDRIs and have never scanned anything, so
@@ -50,13 +49,27 @@ const BEATS = [
   },
 ]
 
+// One source of truth for tool links, used by both the per-stage chips and the full
+// list in "what's included" — "do I have to buy anything to follow along?" is the most
+// common question a course like this has to answer, so every mention is clickable.
+// Insertion order drives the softwareRow.
+const SOFTWARE_URLS: Record<string, string> = {
+  Blender: 'https://www.blender.org/',
+  RealityScan: 'https://www.realityscan.com/',
+  Photoshop: 'https://www.adobe.com/products/photoshop.html',
+  RawTherapee: 'https://rawtherapee.com/',
+  'Substance 3D Painter': 'https://www.adobe.com/products/substance3d/apps/painter.html',
+  'Instant Meshes': 'https://github.com/wjakob/instant-meshes',
+  xNormal: 'https://xnormal.net/',
+}
+
 type Stage = {
   n: number
   kicker: string
   title: string
   body: string
   media: { type: string; src: string; poster?: string }
-  software?: string[]
+  software?: (keyof typeof SOFTWARE_URLS)[]
   techniques?: string
 }
 
@@ -74,15 +87,16 @@ const STAGES: Stage[] = [
     kicker: 'The fundamentals',
     title: 'Learn what makes a great scan',
     body: 'Understand what photoscanning really captures: real surface detail, not just colour. Learn why scanned materials look more believable than traditional textures or generated normals, and how photogrammetry fits into a modern 3D workflow.',
-    media: { type: 'image', src: `${PROMO}/wall_scan.jpg?width=576` },
+    media: { type: 'image', src: `${PROMO}/render_07.jpg?width=576` },
   },
   {
     n: 2,
     kicker: 'Scout and capture',
     title: 'Learn to see the world like a scanning artist',
     body: 'A good scan starts long before the shutter clicks. Learn the gear, camera settings, lighting techniques, then develop the instinct to recognise which surfaces to capture and which are better left behind.',
-    media: { type: 'image', src: `${PROMO}/capture_drone.jpg?width=576` },
-    techniques: 'Camera settings, flash lighting, light and weather, colour charts, drone scanning, judging scannable surfaces',
+    media: { type: 'image', src: `${PROMO}/03_01_.jpg?width=576&flop=true` },
+    techniques:
+      'Camera settings, flash lighting, light and weather, colour charts, drone scanning, judging scannable surfaces',
   },
   {
     n: 3,
@@ -116,9 +130,17 @@ const STAGES: Stage[] = [
     media: {
       type: 'video',
       src: `https://u.polyhaven.org/5L1/Chapter_05_Short_web.mp4`,
-      poster: `${PROMO}/render_06.jpg?width=576`,
+      poster: `${PROMO}/05_05.jpg?width=576`,
     },
-    software: ['RawTherapee', 'RealityScan', 'Blender', 'Instant Meshes', 'xNormal', 'Substance 3D Painter', 'Photoshop'],
+    software: [
+      'RawTherapee',
+      'RealityScan',
+      'Blender',
+      'Instant Meshes',
+      'xNormal',
+      'Substance 3D Painter',
+      'Photoshop',
+    ],
     techniques:
       'Field capture, scan reconstruction, mesh cleanup, retopology, UV mapping, texture reprojection, texture repair, opacity masking',
   },
@@ -130,7 +152,7 @@ const STAGES: Stage[] = [
     media: {
       type: 'video',
       src: `https://u.polyhaven.org/IiA/Chapter_06_Short_web.mp4`,
-      poster: `${PROMO}/render_01.jpg?width=576`,
+      poster: `${PROMO}/render_06.jpg?width=576`,
     },
     software: ['Blender'],
     techniques:
@@ -164,6 +186,27 @@ const StageMedia = ({ media }: { media: any }) => {
   return <img className={styles.stageImg} src={media.src} alt="" loading="lazy" />
 }
 
+const CTA_BUTTON_STYLE = { fontSize: '1.1rem', padding: '0.9em 2.2em' }
+
+// Used twice: once under the skills list and once to close the page. Shared so the
+// copy and button can't drift apart; the surrounding wrapper sets the heading size.
+const CtaBlock = ({ hasAccess, watchHref }: { hasAccess: boolean; watchHref: string }) => (
+  <>
+    <h2>Start scanning the real world</h2>
+    {hasAccess ? (
+      <Button
+        text="Start watching"
+        href={watchHref}
+        color="accent"
+        icon={<MdRocketLaunch />}
+        style={CTA_BUTTON_STYLE}
+      />
+    ) : (
+      <Button text="Get the course" href="#pricing" color="accent" icon={<MdRocketLaunch />} style={CTA_BUTTON_STYLE} />
+    )}
+  </>
+)
+
 const Photogrammetry = ({ course }) => {
   const { user, patron } = useUserPatron()
 
@@ -190,6 +233,20 @@ const Photogrammetry = ({ course }) => {
     e.currentTarget.style.setProperty('--tilt-x', '0deg')
     e.currentTarget.style.setProperty('--tilt-y', '0deg')
   }
+
+  // Smooth-scroll the in-page #anchor links (hero -> #trailer/#pricing, CTAs -> #pricing).
+  // It goes on <html> because that's the scrolling element, and Next's hash navigation
+  // calls scrollIntoView() with no args, which defers to this. Reverted on unmount so it
+  // doesn't leak to the rest of the site, and skipped entirely for reduced-motion users.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const root = document.documentElement
+    const previous = root.style.scrollBehavior
+    root.style.scrollBehavior = 'smooth'
+    return () => {
+      root.style.scrollBehavior = previous
+    }
+  }, [])
 
   return (
     <div className={styles.wrapper}>
@@ -304,9 +361,15 @@ const Photogrammetry = ({ course }) => {
                       <span className={styles.stageSpecLabel}>Software used</span>
                       <div className={styles.stageSoftware}>
                         {stage.software.map((tool) => (
-                          <span key={tool} className={styles.softwareChip}>
+                          <a
+                            key={tool}
+                            className={styles.softwareChip}
+                            href={SOFTWARE_URLS[tool]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             {tool}
-                          </span>
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -338,6 +401,10 @@ const Photogrammetry = ({ course }) => {
             </li>
           ))}
         </ul>
+
+        <div className={styles.inlineCta}>
+          <CtaBlock hasAccess={hasAccess} watchHref={watchHref} />
+        </div>
       </section>
 
       {/* ----------------------------- proof ----------------------------- */}
@@ -429,45 +496,13 @@ const Photogrammetry = ({ course }) => {
           <span>
             <em>Software used:</em>
           </span>
-          <span>
-            <a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer">
-              Blender
-            </a>
-          </span>
-          <span>
-            <a href="https://www.unrealengine.com/en-US/realityscan" target="_blank" rel="noopener noreferrer">
-              RealityScan
-            </a>
-          </span>
-          <span>
-            <a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer">
-              Photoshop
-            </a>
-          </span>
-          <span>
-            <a href="https://rawtherapee.com/" target="_blank" rel="noopener noreferrer">
-              RawTherapee
-            </a>
-          </span>
-          <span>
-            <a
-              href="https://www.adobe.com/products/substance3d/apps/painter.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Substance 3D Painter
-            </a>
-          </span>
-          <span>
-            <a href="https://github.com/wjakob/instant-meshes" target="_blank" rel="noopener noreferrer">
-              Instant Meshes
-            </a>
-          </span>
-          <span>
-            <a href="https://xnormal.net/" target="_blank" rel="noopener noreferrer">
-              xNormal
-            </a>
-          </span>
+          {Object.entries(SOFTWARE_URLS).map(([tool, url]) => (
+            <span key={tool}>
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                {tool}
+              </a>
+            </span>
+          ))}
         </div>
       </section>
 
@@ -488,7 +523,7 @@ const Photogrammetry = ({ course }) => {
         <CourseCallToAction
           hasAccess={hasAccess}
           watchHref={watchHref}
-          signInHref={`/account?returnTo=/learn/photogrammetry#pricing`}
+          signInHref={`/account?returnTo=/learn/photogrammetry/01_00`}
           patreonUrl={PATREON_JOIN_URL}
           patreonPrice="$7"
           patreonFeatures={[
@@ -601,24 +636,7 @@ const Photogrammetry = ({ course }) => {
         <img className={styles.finalBg} src={`${PROMO}/render_01.jpg`} alt="" />
         <div className={styles.finalOverlay} />
         <div className={styles.finalInner}>
-          <h2>Start scanning the real world</h2>
-          {hasAccess ? (
-            <Button
-              text="Start watching"
-              href={watchHref}
-              color="accent"
-              icon={<MdRocketLaunch />}
-              style={{ fontSize: '1.1rem', padding: '0.9em 2.2em' }}
-            />
-          ) : (
-            <Button
-              text="Get the course"
-              href="#pricing"
-              color="accent"
-              icon={<MdRocketLaunch />}
-              style={{ fontSize: '1.1rem', padding: '0.9em 2.2em' }}
-            />
-          )}
+          <CtaBlock hasAccess={hasAccess} watchHref={watchHref} />
         </div>
       </section>
 
