@@ -4,7 +4,7 @@ import { MdPlayArrow, MdExpandMore, MdCheck, MdRocketLaunch } from 'react-icons/
 import { SiDiscord } from 'react-icons/si'
 
 import { useUserPatron } from 'contexts/UserPatronContext'
-import { formatDuration } from 'utils/formatDuration'
+import { formatDuration, formatDurationCoarse } from 'utils/formatDuration'
 import Button from 'components/UI/Button/Button'
 import BlenderMarket from 'components/UI/Icons/BlenderMarket'
 import Lightbox from 'components/Lightbox/Lightbox'
@@ -15,11 +15,6 @@ import styles from './Photogrammetry.module.scss'
 
 /* ---------------------------------------------------------------------------
  * Bespoke marketing / overview body for the Photogrammetry course.
- *
- * All art is PLACEHOLDER for now (local files under /public/course_promo, which
- * is gitignored). When the final art is uploaded to the CDN, repoint PROMO at
- * `https://cdn.polyhaven.com/site_images/courses/photogrammetry` and the whole
- * page swaps over. Lesson thumbnails (THUMB_CDN) are already live.
  * ------------------------------------------------------------------------- */
 
 const PROMO = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/promo'
@@ -34,9 +29,46 @@ const PATREON_JOIN_URL = 'https://www.patreon.com/polyhaven'
 // TODO: confirm the Superhive product URL once the listing is published.
 const SUPERHIVE_URL = 'https://superhivemarket.com/products/poly-haven-photoscan-course'
 
+// The whole pipeline in three beats, paired with the trailer's differentiation pitch.
+// Plenty of our visitors are here for free HDRIs and have never scanned anything, so
+// this is the "what does that actually involve" rung above the 6 chapters / 62 lessons.
+const BEATS = [
+  {
+    n: '01',
+    title: 'Capture',
+    body: 'Find and photograph the right surfaces and objects on location.',
+  },
+  {
+    n: '02',
+    title: 'Process',
+    body: 'Turn raw photos into clean tileable materials and game-ready models.',
+  },
+  {
+    n: '03',
+    title: 'Build',
+    body: 'Assemble, light and dress a finished environment around your own scans.',
+  },
+]
+
+type Stage = {
+  n: number
+  kicker: string
+  title: string
+  body: string
+  media: { type: string; src: string; poster?: string }
+  software?: string[]
+  techniques?: string
+}
+
 // The course's 6 chapters, reframed as an outcome-led journey (the chapter list
 // itself lives further down). Media is placeholder.
-const STAGES = [
+//
+// `software`/`techniques` mirror the per-chapter spec boxes on the Superhive listing:
+// "which tools do I actually need, and where?" is the most common question a course
+// like this has to answer. Both are derived from the lecture descriptions in the API
+// — keep them in sync if the curriculum changes. The linked, complete tool list still
+// lives in the softwareRow further down; these are deliberately plain text.
+const STAGES: Stage[] = [
   {
     n: 1,
     kicker: 'The fundamentals',
@@ -50,6 +82,7 @@ const STAGES = [
     title: 'Learn to see the world like a scanning artist',
     body: 'A good scan starts long before the shutter clicks. Learn the gear, camera settings, lighting techniques, then develop the instinct to recognise which surfaces to capture and which are better left behind.',
     media: { type: 'image', src: `${PROMO}/capture_drone.jpg?width=576` },
+    techniques: 'Camera settings, flash lighting, light and weather, colour charts, drone scanning, judging scannable surfaces',
   },
   {
     n: 3,
@@ -61,6 +94,9 @@ const STAGES = [
       src: `https://u.polyhaven.org/9iq/Chapter_03_Short_web.mp4`,
       poster: `${PROMO}/wall_scan.jpg?width=576`,
     },
+    software: ['RawTherapee', 'RealityScan', 'Blender', 'xNormal', 'Photoshop'],
+    techniques:
+      'RAW development and colour calibration, photoscan reconstruction, bake planes and AO baking, seamless tiling, roughness maps',
   },
   {
     n: 4,
@@ -68,6 +104,9 @@ const STAGES = [
     title: 'Build a believable environment',
     body: 'Bring your scans to life inside Blender. Create materials, add displacement, blend surfaces together, weather the environment, decorate, and light the scene until it feels like a real place instead of a collection of assets.',
     media: { type: 'image', src: `${PROMO}/render_05.jpg?width=576` },
+    software: ['Blender'],
+    techniques:
+      'Scene blockout, Cycles material setup, adaptive displacement, vertex-paint blending, weathering, HDRI lighting and atmosphere',
   },
   {
     n: 5,
@@ -79,6 +118,9 @@ const STAGES = [
       src: `https://u.polyhaven.org/5L1/Chapter_05_Short_web.mp4`,
       poster: `${PROMO}/render_06.jpg?width=576`,
     },
+    software: ['RawTherapee', 'RealityScan', 'Blender', 'Instant Meshes', 'xNormal', 'Substance 3D Painter', 'Photoshop'],
+    techniques:
+      'Field capture, scan reconstruction, mesh cleanup, retopology, UV mapping, texture reprojection, texture repair, opacity masking',
   },
   {
     n: 6,
@@ -90,7 +132,23 @@ const STAGES = [
       src: `https://u.polyhaven.org/IiA/Chapter_06_Short_web.mp4`,
       poster: `${PROMO}/render_01.jpg?width=576`,
     },
+    software: ['Blender'],
+    techniques:
+      'Appending Poly Haven assets, vertex-paint masks, scatter modifier, hand-placement, camera depth of field, puddle masks',
   },
+]
+
+// Skimmable answer to "does it cover X?" — the journey reads as narrative and the
+// curriculum lists lesson names, so neither answers that without being read in full.
+const SKILLS = [
+  'Capture texture scans on location',
+  'Scan objects into game-ready models',
+  'Develop RAW files with accurate colour',
+  'Build seamless tileable PBR materials',
+  'Reconstruct scans in RealityScan',
+  'Retopology and UV mapping',
+  'Bake and repair scan textures',
+  'Build, light and dress a full environment',
 ]
 
 const RENDERS = ['01', '02', '03', '04', '05', '06', '07', '08']
@@ -182,33 +240,44 @@ const Photogrammetry = ({ course }) => {
         </div>
       )}
 
-      {/* ------------------------- trailer + reframe ------------------------- */}
-      <div className={styles.trailerWrapper}>
-        <section id="trailer" className={styles.split}>
-          <div className={styles.trailerWrap}>
-            <video className={styles.trailer} controls preload="none" poster={`${PROMO}/render_01.jpg`}>
-              <source src="https://u.polyhaven.org/gCG/photoscan_Course_Intro_Trailer_V2_web.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div className={styles.splitText}>
-            <span className={styles.accentBar} />
-            <h2>Not just another intro photogrammetry tutorial</h2>
-            <p>
-              Most courses teach you a button: <em>"Here's how RealityScan works, here's how to photograph a rock."</em>{' '}
-              This one teaches the <strong>decisions</strong>: which surfaces are worth capturing, which techniques to
-              use and when.
-            </p>
-            <p>
-              It's the full production pipeline we use to make the assets you already download from Poly Haven, start to
-              finish, on one real project.
-            </p>
-            <p>
-              By the end you won't just know the tools - you'll know exactly what to do when you arrive on location with
-              a camera.
-            </p>
-          </div>
-        </section>
-      </div>
+      {/* ----------------------------- trailer ----------------------------- */}
+      <section id="trailer" className={styles.trailerWrapper}>
+        <video className={styles.trailer} controls preload="none" poster={`${PROMO}/render_01.jpg`}>
+          <source src="https://u.polyhaven.org/gCG/photoscan_Course_Intro_Trailer_V2_web.mp4" type="video/mp4" />
+        </video>
+      </section>
+
+      {/* ------------------------- primer + reframe ------------------------- */}
+      <section className={styles.split}>
+        <div className={styles.beats}>
+          {BEATS.map((beat) => (
+            <div key={beat.n} className={styles.beat}>
+              <span className={styles.beatNum}>{beat.n}</span>
+              <div className={styles.beatText}>
+                <strong>{beat.title}</strong>
+                <p>{beat.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.splitText}>
+          <span className={styles.accentBar} />
+          <h2>Not just another intro photogrammetry tutorial</h2>
+          <p>
+            Most courses teach you a button: <em>"Here's how RealityScan works, here's how to photograph a rock."</em>{' '}
+            This one teaches the <strong>decisions</strong>: which surfaces are worth capturing, which techniques to use
+            and when.
+          </p>
+          <p>
+            It's the full production pipeline we use to make the assets you already download from Poly Haven, start to
+            finish, on one real project.
+          </p>
+          <p>
+            By the end you won't just know the tools - you'll know exactly what to do when you arrive on location with a
+            camera.
+          </p>
+        </div>
+      </section>
 
       {/* ----------------------------- journey ----------------------------- */}
       <section className={styles.journey}>
@@ -228,9 +297,47 @@ const Photogrammetry = ({ course }) => {
               <span className={styles.stageKicker}>{stage.kicker}</span>
               <h3>{stage.title}</h3>
               <p>{stage.body}</p>
+              {(stage.software || stage.techniques) && (
+                <div className={styles.stageSpecs}>
+                  {stage.software && (
+                    <div className={styles.stageSpecRow}>
+                      <span className={styles.stageSpecLabel}>Software used</span>
+                      <div className={styles.stageSoftware}>
+                        {stage.software.map((tool) => (
+                          <span key={tool} className={styles.softwareChip}>
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {stage.techniques && (
+                    <div className={styles.stageSpecRow}>
+                      <span className={styles.stageSpecLabel}>Techniques covered</span>
+                      <p className={styles.stageTechniques}>{stage.techniques}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         ))}
+      </section>
+
+      {/* ----------------------------- skills ----------------------------- */}
+      <section className={styles.skills}>
+        <div className={styles.sectionHead}>
+          <span className={styles.accentBar} />
+          <h2>What you'll walk away able to do</h2>
+        </div>
+        <ul className={styles.skillsGrid}>
+          {SKILLS.map((skill) => (
+            <li key={skill} className={styles.skillItem}>
+              <MdCheck />
+              {skill}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ----------------------------- proof ----------------------------- */}
@@ -431,12 +538,16 @@ const Photogrammetry = ({ course }) => {
           {(course?.chapters || []).map((chapter) => {
             const isOpen = openChapter === chapter.slug
             const lectures = chapter.lectures || []
+            const chapterSeconds = lectures.reduce((s, l) => s + (l.duration || 0), 0)
             return (
               <div key={chapter.slug} className={styles.chapterBlock}>
                 <button className={styles.chapterToggle} onClick={() => setOpenChapter(isOpen ? null : chapter.slug)}>
                   <span className={styles.chapterIndex}>{chapter.slug}</span>
                   <span className={styles.chapterName}>{chapter.name}</span>
-                  <span className={styles.chapterCount}>{lectures.length} lessons</span>
+                  <span className={styles.chapterCount}>
+                    {lectures.length} lessons
+                    {chapterSeconds > 0 && ` · ${formatDurationCoarse(chapterSeconds)}`}
+                  </span>
                   <MdExpandMore className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`} />
                 </button>
                 {isOpen && (

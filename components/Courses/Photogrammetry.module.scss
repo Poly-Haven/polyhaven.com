@@ -169,11 +169,30 @@ $stack: 900px;
   }
 }
 
-/* ----------------------- trailer + reframe ----------------------- */
+/* ----------------------------- trailer ----------------------------- */
+/* Full-width, first below the hero: showing the pipeline beats telling it. */
 .trailerWrapper {
-  background: $c-background-darkish;
   width: 100%;
+  background: $c-background-darkish;
+  padding: 3.5rem 1.5rem;
+  scroll-margin-top: $v-header-height;
+
+  @media screen and (max-width: $stack) {
+    padding: 2.5rem 1.5rem;
+  }
 }
+
+.trailer {
+  display: block;
+  width: 100%;
+  max-width: $max;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: black;
+  @include drop-shadow(0.5);
+}
+
+/* ------------------------- primer + reframe ------------------------- */
 .split {
   display: flex;
   gap: 3rem;
@@ -181,7 +200,6 @@ $stack: 900px;
   max-width: $max;
   margin: 0 auto;
   padding: 5rem 1.5rem;
-  scroll-margin-top: $v-header-height;
 
   @media screen and (max-width: $stack) {
     flex-direction: column;
@@ -190,17 +208,85 @@ $stack: 900px;
   }
 }
 
-.trailerWrap {
+/*
+ * Three steps in a flow, not three parallel facts — so the brand's purple -> orange
+ * accentBar gradient runs down the left edge across all three (01 starts purple, 03
+ * lands on orange) and the numerals step through the same progression.
+ */
+.beats {
   flex: 1 1 0;
   min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.trailer {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: black;
-  display: block;
-  @include drop-shadow(0.5);
+.beat {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.9rem;
+  overflow: hidden;
+
+  // this beat's slice of the purple -> orange run, down the left edge
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--beat-from), var(--beat-to));
+  }
+
+  &:nth-child(1) {
+    --beat-from: #{$c-accent};
+    --beat-to: #{mix($c-orange, $c-accent, 33%)};
+    --beat-num: #{$c-accent};
+  }
+
+  &:nth-child(2) {
+    --beat-from: #{mix($c-orange, $c-accent, 33%)};
+    --beat-to: #{mix($c-orange, $c-accent, 66%)};
+    --beat-num: #{mix($c-orange, $c-accent, 50%)};
+  }
+
+  &:nth-child(3) {
+    --beat-from: #{mix($c-orange, $c-accent, 66%)};
+    --beat-to: #{$c-orange};
+    --beat-num: #{$c-orange};
+  }
+}
+
+.beatNum {
+  flex-shrink: 0;
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--beat-num);
+  font-variant-numeric: tabular-nums;
+}
+
+.beatText {
+  min-width: 0;
+
+  strong {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 24rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: $c-gray-light;
+  }
 }
 
 .splitText {
@@ -297,6 +383,94 @@ $stack: 900px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: $c-accent-lighter;
+}
+
+/* per-stage spec box: which tools, where — see the STAGES comment in the .tsx */
+.stageSpecs {
+  margin-top: 1.3rem;
+  padding-left: 1rem;
+  border-left: 3px solid $c-accent;
+
+  // nested so it outranks `.stageText p` on specificity rather than !important
+  .stageTechniques {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: $c-gray;
+    margin: 0;
+  }
+}
+
+.stageSpecRow + .stageSpecRow {
+  margin-top: 0.8rem;
+}
+
+.stageSpecLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $c-gray;
+  margin-bottom: 0.4rem;
+}
+
+.stageSoftware {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.softwareChip {
+  padding: 0.15em 0.55em;
+  background: $c-background-light;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $c-text-light;
+  white-space: nowrap;
+}
+
+/* ----------------------------- skills ----------------------------- */
+.skills {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (max-width: $stack) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: $c-background;
+  border: 1px solid $c-background-lightish;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: $c-text-light;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 0.1em;
+    color: $c-community;
+    font-size: 1.2em;
+  }
 }
 
 /* ----------------------------- proof ----------------------------- */
