@@ -317,7 +317,7 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
         {showEndDone && (
           <div className={styles.endscreen}>
             <div className={styles.endDone}>
-              <p className={styles.endTitle}>You&apos;ve reached the end</p>
+              <p className={styles.endTitle}>You've reached the end</p>
               <Link href={`/learn/${course.id}`} className={styles.messageLink}>
                 Back to overview
               </Link>

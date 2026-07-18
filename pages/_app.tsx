@@ -38,7 +38,7 @@ Poly Haven is an open source project. This site's git repo is here: ` +
 
 We have a public API intended to help you integrate our assets into your software/plugin: ` +
           `%chttps://polyhaven.com/our-api` +
-          `%c, scraping this site for data is against our ToS :)`,
+          `%c, please don't scrape our site, use the API instead. Thanks!`,
         'color: rgb(190, 111, 255); font-size: 3em; font-weight: bold',
         '',
         'color: rgb(65, 187, 217); text-decoration:underline',

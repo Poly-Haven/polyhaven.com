@@ -26,7 +26,14 @@ const LogoGuidelines = () => {
         except...
       </p>
       <ol>
-        <li>When giving credit or attribution for using our assets.</li>
+        <li>
+          When giving credit or attribution for using our assets. This is optional - our assets are CC0 and never
+          require attribution.
+        </li>
+        <li>
+          When providing the required credit for a product, website, or service built on{' '}
+          <Link href="/our-api"> our API</Link>.
+        </li>
         <li>By the press when talking about Poly Haven in articles, videos, and social media.</li>
         <li>Or with written permission from us.</li>
       </ol>
@@ -70,18 +77,14 @@ const LogoGuidelines = () => {
       </ul>
       <h2>Prohibited Usage</h2>
       <ul>
+        <li>To impersonate us, or create a public profile on behalf of us.</li>
         <li>
-          Commercial usage of the logo is only permitted when you are an active{' '}
-          <Link href="/corporate">Corporate Sponsor</Link>. Film or video game credits are not considered commercial
-          usage.
+          Usage of our logo should not imply any affiliation or partnership without an associated{' '}
+          <Link href="/corporate">Corporate Sponsorship</Link> agreement.
         </li>
         <li>
           You may not display the logo more prominently than your own, nor should it appear as if the Poly Haven logo is
           your own logo.
-        </li>
-        <li>
-          Usage of our logo should not imply any affiliation or partnership without an associated{' '}
-          <Link href="/corporate">Corporate Sponsorship</Link> account.
         </li>
         <li>Use of the Poly Haven logo on merchandise and physical products is not permitted.</li>
       </ul>

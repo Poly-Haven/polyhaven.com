@@ -1,0 +1,67 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.codeBlock {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: rgba(black, 0.25);
+  color: $c-text-light;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
+  code {
+    font-family: inherit;
+  }
+}
+
+.json {
+  font-size: 0.68em; // 20% smaller than the 0.85em base
+}
+
+.scrollable {
+  @include dark_scrollbar();
+  overflow: auto;
+  max-height: 55vh;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.key {
+  color: $c-blue-light;
+}
+
+.string {
+  color: $c-green-light;
+}
+
+.number {
+  color: $c-orange-light;
+}
+
+.boolean,
+.null {
+  color: $c-pink-light;
+}
+
+.command {
+  color: $c-green-light;
+  font-weight: bold;
+}
+
+.flag {
+  color: $c-yellow-light;
+}
+
+.url {
+  color: $c-blue-light;
+}
+
+.comment {
+  color: $c-gray;
+  font-style: italic;
+}

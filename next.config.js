@@ -3,6 +3,9 @@ const { i18n } = require('./next-i18next.config')
 
 module.exports = {
   i18n,
+  // Lets a one-off verification build (e.g. CLAUDE_VERIFY_BUILD=1 npm run build) use its own output dir,
+  // so it doesn't clobber the .next used by an already-running `next dev` server.
+  distDir: process.env.CLAUDE_VERIFY_BUILD ? '.next-verify' : '.next',
   staticPageGenerationTimeout: 300,
   images: {
     domains: ['cdn.polyhaven.com'],
