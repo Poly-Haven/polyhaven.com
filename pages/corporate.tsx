@@ -32,69 +32,79 @@ const Corporate = (props) => {
 
   return (
     <TextPage
-      title="Commercial Licensing & Partnerships"
-      description="Guidance for companies integrating Poly Haven, licensing asset snapshots, or funding new work."
+      title="Corporate Partnerships"
+      description="Guidance for companies integrating Poly Haven, arranging a provenance attestation or bulk snapshot, or funding new work."
       url="/corporate"
     >
       <div dir="ltr" style={{ textAlign: 'left' }}>
-        <h1>Commercial Licensing & Partnerships</h1>
+        <h1>Corporate Partnerships</h1>
 
         <p>
           Poly Haven assets are free to use under CC0. This page is for companies that want to build products on top of
-          our library, license a fixed asset snapshot, or fund new work directly.
+          our library, arrange a bulk asset snapshot, or fund new work directly.
         </p>
         <p>
-          Most teams can use our assets without contacting us. If you need structured API access, bulk delivery,
-          commercial guarantees, or a direct partnership around new asset creation, the options below are designed for
-          that.
+          Our live <Link href="/our-api">API</Link> is free for everyone, for any purpose, including commercial use -
+          forever. There is no license to arrange and no fee for access. What we do offer, on a bespoke basis, is the
+          operational layer around that free data: a compliance-grade provenance guarantee, or a bulk snapshot with no
+          API dependency. The options below are designed for teams that need one of those, or want to fund new work
+          directly.
         </p>
 
         <section>
           <h2>How companies work with Poly Haven</h2>
-          <p>There are three common ways companies engage with us:</p>
+          <p>There are four common ways companies engage with us:</p>
           <ul>
             <li>
-              <strong>Building a product or workflow on top of our live data:</strong> API / Integration License.
+              <strong>Building a product or workflow on our live API:</strong> no special arrangement needed - it's free
+              and open for commercial use by default. See <Link href="/our-api">/our-api</Link>.
             </li>
             <li>
-              <strong>Need a full copy of the library with no API dependency:</strong> Bulk Asset License.
+              <strong>Need a compliance-grade guarantee of an asset's origin:</strong> Provenance Attestation.
+            </li>
+            <li>
+              <strong>Need a full copy of the library with no API dependency:</strong> Bulk Snapshots.
             </li>
             <li>
               <strong>Want to fund new captures, scans, or infrastructure:</strong> Sponsored Projects.
             </li>
           </ul>
           <p>
-            If you&apos;re unsure which option fits your use case, <Link href="/about-contact">contact us</Link> with a
-            short description of your product or requirements.
+            If you're unsure which option fits your use case, <Link href="/about-contact">contact us</Link> with a short
+            description of your product or requirements.
           </p>
         </section>
 
         <div style={styleRow}>
-          <InfoBlock title="API & Integration Licensing" image={<MdLink />} imageStyle={{ color: '#ffa726' }}>
+          <InfoBlock title="Provenance Attestation" image={<MdLink />} imageStyle={{ color: '#ffa726' }}>
             <p>
-              For companies building products, plugins, AI tools, or SaaS workflows on top of Poly Haven&apos;s live
-              asset data.
+              A signed manifest for an asset or snapshot: asset ID and version, SHA-256 content hash, CC0 confirmation,
+              our &quot;made by humans, no generative AI&quot; attestation, contributor chain of custody, and capture
+              metadata.
             </p>
             <p>
-              Our standard commercial model is a 5% revenue share with a minimum annual fee, which keeps access simple
-              for smaller teams while scaling with commercial use.
+              It's signed with Ed25519, and our public key is published so buyers can verify it independently rather
+              than take our word for it.
             </p>
             <p>
-              Larger companies can move to an enterprise agreement for higher usage, internal approvals, and closer
-              coordination around long-term integrations.
+              Companies pay for the warranty, not the (already free) assets - a document your own legal or compliance
+              review can point to. That matters more every year in an AI-training and compliance-heavy world where
+              &quot;can you prove this was clean and human-made&quot; is a real question. Bespoke, negotiated per case -{' '}
+              <Link href="/about-contact">contact us</Link> to discuss it.
             </p>
           </InfoBlock>
-          <InfoBlock title="Bulk Asset Licensing" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
+          <InfoBlock title="Bulk Snapshots" image={<MdCloudDownload />} imageStyle={{ color: '#b3e5fc' }}>
             <p>
-              This is for teams that need a fixed snapshot of Poly Haven assets delivered directly, without depending on
-              our API or infrastructure.
+              A point-in-time export of exactly the files, formats, and resolutions you need, cut on demand and
+              delivered directly, without depending on our live API or infrastructure.
             </p>
             <p>
-              It is a good fit for embedded asset libraries, internal mirrors, AI datasets, and products that need a
-              stable, reproducible asset set.
+              It's a good fit for embedded asset libraries, internal mirrors, AI datasets, and any product that needs a
+              fixed, reproducible asset set. Every snapshot ships bundled with its own provenance attestation manifest.
             </p>
             <p>
-              Redistribution rights, provenance guarantees, and other commercial assurances can be added when needed.
+              This isn't a recurring product or a self-serve download - each snapshot is a bespoke, negotiated contract.{' '}
+              <Link href="/about-contact">Contact us</Link> to scope one out.
             </p>
           </InfoBlock>
         </div>
@@ -115,12 +125,14 @@ const Corporate = (props) => {
             </p>
           </InfoBlock>
           <InfoBlock title="Why Companies Work With Us" image={<MdInfo />} imageStyle={{ color: '#9ccc65' }}>
-            <p>Even though the assets are free, companies often pay for the operational layer around them:</p>
+            <p>
+              The assets and the API to reach them are free, forever, for everyone. Companies that depend on the library
+              in production still choose to fund the operational layer around it:
+            </p>
             <ul>
-              <li>Structured API access, metadata, and integration support.</li>
-              <li>Reliability, updates, and a stable relationship for production use.</li>
-              <li>Provenance clarity and commercial assurances where required.</li>
-              <li>Bulk delivery for internal mirrors, datasets, and embedded libraries.</li>
+              <li>A signed, independently verifiable provenance and CC0 warranty for legal or compliance review.</li>
+              <li>A reproducible bulk snapshot, delivered directly, with no dependency on our live infrastructure.</li>
+              <li>A direct relationship with us if your product depends on the library in production.</li>
               <li>Supporting the continued creation of new public-domain assets.</li>
             </ul>
           </InfoBlock>
@@ -168,8 +180,8 @@ const Corporate = (props) => {
         <div style={ctaStyle}>
           <h2>Talk To Us About Your Use Case</h2>
           <p>
-            If you need API licensing, a bulk asset delivery, or a sponsored project, send us a short description of
-            your product, workflow, or requirements.
+            If you need a provenance attestation, a bulk snapshot, or want to fund a sponsored project, send us a short
+            description of your product, workflow, or requirements.
           </p>
           <Button text="Contact Poly Haven" href="/about-contact" color="accent" />
         </div>
