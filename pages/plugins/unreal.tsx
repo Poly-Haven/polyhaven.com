@@ -1,44 +1,13 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useTranslation } from 'next-i18next'
-
-import TextPage from 'components/Layout/TextPage/TextPage'
-import Unreal from 'components/Plugins/Unreal'
-
-const PluginPage = ({ numAssets }) => {
-  const { t } = useTranslation(['common'])
-
-  return (
-    <TextPage title="Unreal HDRI Browser" description="Get our HDRIs directly in Unreal Engine" url="/plugins/unreal">
-      <Unreal numAssets={numAssets} />
-    </TextPage>
-  )
+// The Unreal HDRI Browser plugin has been removed — redirect to the tools page.
+export default function UnrealPlugin() {
+  return null
 }
 
-function handleErrors(response) {
-  if (!response.ok) {
-    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
-  }
-  return response
-}
-
-export async function getStaticProps({ locale }) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
-  let error = null
-
-  const data = await fetch(`${baseUrl}/categories/all?future=true`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  const numAssets = data['hdris']
-
+export async function getServerSideProps() {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-      numAssets: numAssets,
+    redirect: {
+      destination: '/tools',
+      permanent: false,
     },
-    revalidate: 60 * 60 * 4, // 4 hour
   }
 }
-
-export default PluginPage

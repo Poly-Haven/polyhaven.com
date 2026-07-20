@@ -1,8 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Link from 'next/link'
 
 import Blender from 'components/UI/Icons/Blender'
-import Unreal from 'components/UI/Icons/Unreal'
 import Button from 'components/UI/Button/Button'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
@@ -50,12 +48,6 @@ const ToolsPage = () => {
             icon={<Blender />}
             description="Pulls all our assets into Blender's asset browser, making it easy for you to drag and drop HDRIs, materials and 3D models into your scene without having to visit the website."
             link="/plugins/blender"
-          />
-          <Tool
-            name="Unreal HDRI Browser"
-            icon={<Unreal />}
-            description="A plugin for UE5 that allows you to browse and import HDRIs directly into your projects."
-            link="/plugins/unreal"
           />
         </section>
 

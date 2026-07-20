@@ -266,9 +266,8 @@ const APIPage = () => {
             production.
           </li>
           <li>
-            Our own <Link href="/plugins/blender">Blender Add-on</Link> and{' '}
-            <Link href="/plugins/unreal">Unreal HDRI Browser</Link>, which pull assets directly into your scene without
-            visiting the website.
+            Our own <Link href="/plugins/blender">Blender Add-on</Link>, which pulls assets directly into your scene
+            without visiting the website.
           </li>
         </ul>
         <p>
