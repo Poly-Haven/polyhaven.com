@@ -1,64 +1,61 @@
-import { MouseEvent, useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
-import useDivSize from 'hooks/useDivSize'
 
 import Button from 'components/UI/Button/Button'
 import Countdown from 'components/UI/Countdown/Countdown'
-import Lightbox from 'components/Lightbox/Lightbox'
 import Spinner from 'components/UI/Spinner/Spinner'
 import PrizeCard from './PrizeCard'
 import LighthouseTimeline from './LighthouseTimeline'
 
 import styles from './Lighthouse.module.scss'
 
-const AssetCard = ({
-  slug,
-  onMouseMove,
-  onMouseLeave,
-}: {
-  slug: string
-  onMouseMove: (e: MouseEvent<HTMLImageElement>) => void
-  onMouseLeave: (e: MouseEvent<HTMLImageElement>) => void
-}) => (
-  <a className={styles.assetCard} href={`https://polyhaven.com/a/${slug}`} target="_blank" rel="noopener noreferrer">
-    <img
-      src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200&height=200&quality=95`}
-      alt={slug}
-      className={styles.clickableImage}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-    />
-  </a>
+// Steam store page, used by the "Wishlist on Steam" CTA below.
+const STEAM_URL = 'https://store.steampowered.com/app/4162610/Project_Lighthouse/'
+
+const steamIntro = [
+  `When the Static Rock lighthouse goes dark and contact with its "keepers" is lost, you're sent to restore its functionality.`,
+  `But the simple repair job quickly spirals out of control, leaving you trapped in an experiment gone wrong.`,
+  `As the truth unfolds, you'll find that the lighthouse hides more than its beam reveals.`,
+]
+
+const steamFeatures = [
+  {
+    title: `Control Teleportation`,
+    video: 'https://u.polyhaven.org/xp4/Cam_04_15fps.mp4',
+    text: `Discover the attributes of an evolving technology as you manipulate your surroundings to solve spatial puzzles.`,
+  },
+  {
+    title: `Explore Static Rock Island`,
+    video: 'https://u.polyhaven.org/9vs/Cam_01_15fps.mp4',
+    text: `Traverse crumbling military ruins, explore labyrinths of secret labs, and ascend the iconic lighthouse as you progress through the atmospheric island.`,
+  },
+  {
+    title: `Find the "Keepers"`,
+    video: 'https://u.polyhaven.org/0M3/Cam_05_15fps.mp4',
+    text: `The island inhabitants are gone. The secrets they held still remain. Delve into the lingering mystery behind a teleportation experiment as you find a way to leave the island.`,
+  },
+]
+
+const WishlistCTA = () => (
+  <div className={styles.wishlistCta}>
+    <h2 className={styles.comingSoon}>Coming Q1 2027</h2>
+    <a href={STEAM_URL} className={styles.wishlistNow}>
+      Wishlist now.
+    </a>
+    <p>
+      Whether you're here for the game or for the free assets it funds, hitting that <a href={STEAM_URL}>wishlist</a>{' '}
+      button is the most helpful click you've got. It helps Steam decide which games deserve attention.
+    </p>
+    <p>We'll email you on launch day {'<3'}</p>
+    <Button text="Wishlist on Steam" href={STEAM_URL} color="community" />
+  </div>
 )
 
 const Lighthouse = () => {
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
   const submissionDeadline = '2026-05-01T23:59:59.999Z'
   const currentTime = new Date().toISOString()
   const isBeforeDeadline = currentTime < submissionDeadline
-
-  const updateImageTilt = (e: MouseEvent<HTMLImageElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const relativeX = (e.clientX - rect.left) / rect.width - 0.5
-    const relativeY = (e.clientY - rect.top) / rect.height - 0.5
-    const maxTilt = 7
-
-    e.currentTarget.style.setProperty('--tilt-x', `${(-relativeY * maxTilt * 3).toFixed(2)}deg`)
-    e.currentTarget.style.setProperty('--tilt-y', `${(relativeX * maxTilt * 3).toFixed(2)}deg`)
-  }
-
-  const resetImageTilt = (e: MouseEvent<HTMLImageElement>) => {
-    e.currentTarget.style.setProperty('--tilt-x', '0deg')
-    e.currentTarget.style.setProperty('--tilt-y', '0deg')
-  }
-
-  const gameplayConceptImages = [
-    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp1.png',
-    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp4.png',
-    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp3.png',
-    'https://cdn.polyhaven.com/site_images/projects/lighthouse/gp2.png',
-  ]
 
   const { data: allPrizes, error: errorPrizes } = apiSWR(`/community_prizes`, { revalidateOnFocus: false })
   const [prizes, setPrizes] = useState<any[]>([])
@@ -74,48 +71,63 @@ const Lighthouse = () => {
     }
   }, [allPrizes])
 
-  const { data: assets, error: errorAssets } = apiSWR(`/assets?t=all&future=true&c=collection: project_lighthouse`, {
-    revalidateOnFocus: false,
-  })
-  const assetGalleryParentRef = useRef<HTMLDivElement>(null)
-  const assetGalleryRef = useRef<HTMLDivElement>(null)
-  const [assetGalleryMeasureTick, setAssetGalleryMeasureTick] = useState(0)
-  const assetGallerySizeRef = useRef({
-    parent: '',
-    gallery: '',
-  })
-
+  // Animate the "Join the Project" collage in a smooth circular orbit. A keyframed
+  // CSS version only approximates a circle (polygon facets) or won't recompute
+  // background-position from an animated angle, so we drive cos/sin per-frame here.
+  // The tunables (--orbit-radius / --orbit-speed) still live in the SCSS.
+  const joinBgRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (!assets || Object.keys(assets).length === 0 || typeof ResizeObserver === 'undefined') return
+    const el = joinBgRef.current
+    if (!el || typeof window === 'undefined') return
 
-    const observer = new ResizeObserver(() => {
-      const nextParentSize = assetGalleryParentRef.current
-        ? `${assetGalleryParentRef.current.offsetWidth}x${assetGalleryParentRef.current.offsetHeight}`
-        : ''
-      const nextGallerySize = assetGalleryRef.current
-        ? `${assetGalleryRef.current.offsetWidth}x${assetGalleryRef.current.offsetHeight}`
-        : ''
+    const style = getComputedStyle(el)
+    const radius = parseFloat(style.getPropertyValue('--orbit-radius')) || 3000
+    const speedSeconds = parseFloat(style.getPropertyValue('--orbit-speed')) || 120
+    const durationMs = Math.max(1000, speedSeconds * 1000)
 
-      if (
-        nextParentSize !== assetGallerySizeRef.current.parent ||
-        nextGallerySize !== assetGallerySizeRef.current.gallery
-      ) {
-        assetGallerySizeRef.current = {
-          parent: nextParentSize,
-          gallery: nextGallerySize,
-        }
-        setAssetGalleryMeasureTick((tick) => tick + 1)
-      }
+    const setPos = (angle: number) => {
+      el.style.setProperty('--orbit-x', `${(Math.cos(angle) * radius).toFixed(2)}px`)
+      el.style.setProperty('--orbit-y', `${(Math.sin(angle) * radius).toFixed(2)}px`)
+    }
+
+    // Reduced-motion: hold a static position, no loop.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setPos(0)
+      return
+    }
+
+    let rafId = 0
+    let lastTs = 0
+    let elapsed = 0 // ms of orbit progressed (accumulates only while visible)
+
+    const frame = (ts: number) => {
+      if (lastTs) elapsed += ts - lastTs
+      lastTs = ts
+      setPos((elapsed / durationMs) * Math.PI * 2)
+      rafId = requestAnimationFrame(frame)
+    }
+    const start = () => {
+      if (rafId) return
+      lastTs = 0 // avoid a jump when resuming after being scrolled away
+      rafId = requestAnimationFrame(frame)
+    }
+    const stop = () => {
+      if (rafId) cancelAnimationFrame(rafId)
+      rafId = 0
+    }
+
+    setPos(0) // initial position before the first frame paints
+    // Only run while the section is on-screen (saves CPU/battery when scrolled away).
+    const observer = new IntersectionObserver((entries) => (entries[0].isIntersecting ? start() : stop()), {
+      threshold: 0,
     })
+    observer.observe(el)
 
-    if (assetGalleryParentRef.current) observer.observe(assetGalleryParentRef.current)
-    if (assetGalleryRef.current) observer.observe(assetGalleryRef.current)
-
-    return () => observer.disconnect()
-  }, [assets])
-
-  const { height: assetGalleryParentHeight } = useDivSize(assetGalleryParentRef, [assets, assetGalleryMeasureTick])
-  const { height: assetGalleryHeight } = useDivSize(assetGalleryRef, [assets, assetGalleryMeasureTick])
+    return () => {
+      stop()
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <>
@@ -140,6 +152,34 @@ const Lighthouse = () => {
           />
           <h1>Project Lighthouse</h1>
           <p>Poly Haven's biggest adventure yet</p>
+        </div>
+
+        <div className={styles.sectionWrapper}>
+          <div className={`${styles.section} ${styles.sectionFullWidth}`}>
+            <div className={styles.subSection}>
+              <div className={styles.steamIntro}>
+                {steamIntro.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+
+              <div className={styles.steamFeatures}>
+                {steamFeatures.map((feature) => (
+                  <div key={feature.title} className={styles.steamFeature}>
+                    <h2>{feature.title}</h2>
+                    <div className={styles.featureVideo}>
+                      <video autoPlay loop muted playsInline>
+                        <source src={feature.video} type="video/mp4" />
+                      </video>
+                    </div>
+                    <p>{feature.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <WishlistCTA />
+            </div>
+          </div>
         </div>
 
         <div className={styles.sectionWrapper}>
@@ -173,25 +213,11 @@ const Lighthouse = () => {
           </div>
         </div>
 
-        <div className={styles.sectionWrapper} ref={assetGalleryParentRef}>
-          <div className={`${styles.section} ${styles.sectionHalfMobile} ${styles.sectionFullWidth}`}>
-            <div className={`${styles.subSection} ${styles.gameplayConcepts}`}>
-              <div className={styles.imgGrid}>
-                {gameplayConceptImages.map((imageUrl) => (
-                  <img
-                    key={imageUrl}
-                    className={styles.clickableImage}
-                    src={`${imageUrl}?width=284&quality=95`}
-                    alt="Project Lighthouse concept art"
-                    onMouseMove={updateImageTilt}
-                    onMouseLeave={resetImageTilt}
-                    onClick={() => setLightboxImage(`${imageUrl}?width=1600&quality=95`)}
-                  />
-                ))}
-              </div>
-            </div>
+        <div className={`${styles.sectionWrapper} ${styles.joinWrapper}`}>
+          <div className={styles.joinBackground} aria-hidden="true" ref={joinBgRef} />
+          <div className={`${styles.section} ${styles.sectionFullWidth} ${styles.joinContent}`}>
             <div className={styles.subSection}>
-              <div className={styles.text}>
+              <div className={`${styles.text} ${styles.joinCard}`}>
                 <h2>Join the Project</h2>
                 <p>
                   We invite 3D artists of all skill levels to collaborate and work alongside us to create a library of
@@ -207,53 +233,6 @@ const Lighthouse = () => {
                 </p>
                 <Button text="Learn more" href="https://blog.polyhaven.com/project-lighthouse-challenge/" />
               </div>
-            </div>
-            <div className={styles.subSection}>
-              {assets && Object.keys(assets).length > 0 && (
-                <div
-                  className={styles.assetGallery}
-                  style={
-                    (assetGalleryParentHeight
-                      ? {
-                          '--asset-gallery-max-height': `${assetGalleryParentHeight}px`,
-                        }
-                      : undefined) as React.CSSProperties | undefined
-                  }
-                >
-                  <div
-                    className={styles.assetGalleryInner}
-                    style={
-                      (assetGalleryHeight
-                        ? {
-                            '--scroll-height': `-${assetGalleryHeight}px`,
-                            '--scroll-duration': `${(assetGalleryHeight / 50).toFixed(2)}s`,
-                          }
-                        : { animationPlayState: 'paused' }) as React.CSSProperties
-                    }
-                  >
-                    <div ref={assetGalleryRef} className={styles.assetGalleryPage}>
-                      {Object.keys(assets).map((slug) => (
-                        <AssetCard key={slug} slug={slug} onMouseMove={updateImageTilt} onMouseLeave={resetImageTilt} />
-                      ))}
-                    </div>
-                    <div className={styles.assetGalleryPage} aria-hidden="true">
-                      {Object.keys(assets).map((slug) => (
-                        <AssetCard
-                          key={`${slug}-dup`}
-                          slug={slug}
-                          onMouseMove={updateImageTilt}
-                          onMouseLeave={resetImageTilt}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-              {errorAssets && (
-                <div style={{ color: 'red', textAlign: 'center', width: '100%' }}>
-                  Error loading assets: {errorAssets.message}
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -306,51 +285,6 @@ const Lighthouse = () => {
         <div className={styles.sectionWrapper}>
           <div className={`${styles.section} ${styles.sectionFullWidth}`}>
             <div className={styles.subSection}>
-              <h2>About the Game</h2>
-              <p>
-                Explore an atmospheric lighthouse island, solve puzzles with otherworldly technology, and uncover why
-                it's not so easy for you to leave.
-              </p>
-              <p className={styles.warningText} style={{ marginBottom: '-1em' }}>
-                Early development prototype:
-              </p>
-              <div className={styles.gameplayVideos}>
-                <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/SFI/Alpha_Gameplay_short_01_web.mp4" type="video/mp4" />
-                </video>
-                <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/Mie/Alpha_Gameplay_short_02_web.mp4" type="video/mp4" />
-                </video>
-                <video autoPlay loop muted playsInline controls={true}>
-                  <source src="https://u.polyhaven.org/K6j/Alpha_Gameplay_short_03_web.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <hr />
-              <div className={styles.row}>
-                <p>
-                  Project Lighthouse is a first-person linear atmospheric puzzle game that plunges you onto a remote,
-                  craggy island with a simple mission: Restore functionality to a vital Lighthouse as urgently as
-                  possible. But...
-                </p>
-                <p>
-                  Your plans unexpectedly change the moment you activate the lighthouse mechanism. Encased in a
-                  shimmering energy dome, the island is violently transformed and the lighthouse becomes the epicentre
-                  of a mysterious scientific catastrophe.
-                </p>
-                <p>
-                  Using highly experimental technology, you explore and solve environmental puzzles to uncover the fate
-                  of the island's disappeared inhabitants, solve the mysteries of a catastrophic experiment, and escape
-                  from being trapped in a philosophical limbo.
-                </p>
-              </div>
-              <Button text="Learn more" href="https://blog.polyhaven.com/project-lighthouse-challenge/" />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.sectionWrapper}>
-          <div className={`${styles.section} ${styles.sectionFullWidth}`}>
-            <div className={styles.subSection}>
               <h2>Timeline</h2>
               <LighthouseTimeline />
               <p className={styles.warningText}>
@@ -361,13 +295,13 @@ const Lighthouse = () => {
           </div>
         </div>
 
-        <Lightbox
-          isOpen={!!lightboxImage}
-          imageSrc={lightboxImage || ''}
-          imageAlt="Project Lighthouse concept art"
-          onClose={() => setLightboxImage(null)}
-          caption="Early visual concepts, WIP"
-        />
+        <div className={styles.sectionWrapper}>
+          <div className={`${styles.section} ${styles.sectionFullWidth}`}>
+            <div className={styles.subSection}>
+              <WishlistCTA />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )

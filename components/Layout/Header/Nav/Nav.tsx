@@ -15,6 +15,7 @@ import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
 import Heart from 'components/UI/Icons/Heart'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import Blender from 'components/UI/Icons/Blender'
+import Lighthouse from 'components/UI/Icons/Lighthouse'
 
 import styles from './Nav.module.scss'
 
@@ -198,6 +199,14 @@ const Nav = () => {
           <NavItem text={t('common:nav.license')} link="/license" />
           <NavItem text={t('common:nav.news')} link="https://www.patreon.com/polyhaven/posts?public=true" />
           <NavItem text={t('common:nav.blog')} link="https://blog.polyhaven.com" />
+          <NavItem
+            text={
+              <span className={styles.assetType}>
+                <Lighthouse color="rgb(0, 222, 151)" /> Project Lighthouse
+              </span>
+            }
+            link="/project/lighthouse"
+          />
         </NavItem>
 
         {user ? (
