@@ -197,19 +197,130 @@ $c-gradient-sides: rgb(206, 255, 239);
   text-align: left;
 }
 
-.gameplayVideos {
-  @include flex(row);
-  flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  justify-content: space-evenly;
-  margin: 2rem 0;
+// --- Steam page content ---
+.steamIntro {
+  margin: 0 auto 3.5rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
 
-  video {
-    max-width: 100%;
-    width: calc(33.33% - 2rem);
-    min-width: 300px;
+  p {
+    margin: 0.75rem 0;
   }
+}
+
+.steamFeatures {
+  @include flex(column, true);
+  gap: 4rem;
+  width: 100%;
+}
+
+.steamFeature {
+  width: 100%;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .featureVideo {
+    width: min(960px, 100%);
+    margin: 0 auto;
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      @include rounded();
+      @include drop-shadow(0.4);
+    }
+  }
+
+  p {
+    max-width: 720px;
+    margin: 1.25rem auto 0;
+    line-height: 1.6;
+  }
+}
+
+.wishlistCta {
+  max-width: 720px;
+  margin: 4.5rem auto 0;
+
+  .comingSoon {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    margin-bottom: 0.25rem;
+  }
+
+  .wishlistNow {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: $c-community-lightish;
+    margin: 0 0 1.5rem;
+    text-shadow:
+      0 0 0.5em rgba($c-community, 0.3),
+      0 0 1em rgba($c-community, 0.3);
+  }
+
+  p {
+    margin: 1rem 0;
+    line-height: 1.6;
+
+    a {
+      color: $c-community-lightish;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: 0 3px 0 $c-community-lightish;
+      }
+    }
+  }
+}
+
+// --- Join the Project (animated orbiting background) ---
+.joinWrapper {
+  position: relative;
+}
+
+.joinBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  // ===== Tweak the orbit here =====
+  --orbit-radius: 1500px; // radius of the orbit (was described as "6000px wide" = 6000px diameter)
+  --orbit-speed: 150s; // time for one full loop (larger = slower)
+  // ================================
+
+  // The drifting tiled texture. --orbit-x / --orbit-y are updated every frame by
+  // a small requestAnimationFrame loop in Lighthouse.tsx (cos/sin of a steadily
+  // advancing angle), so the orbit is a mathematically smooth circle - no facets.
+  // That loop reads the two --orbit-* values above, so tweak them right here.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://cdn.polyhaven.com/site_images/projects/lighthouse/lighthouse_collage_tile.png");
+    background-repeat: repeat; // tiles both directions
+    background-size: auto; // 1:1, no scaling
+    background-position: var(--orbit-x, 0px) var(--orbit-y, 0px);
+  }
+}
+
+.joinContent {
+  position: relative;
+  z-index: 1;
+  min-height: 32rem;
+}
+
+// Frosted glass card holding the text over the collage.
+.joinCard {
+  background: rgba($c-background-darkest, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(white, 0.14);
+  @include rounded();
+  box-shadow: 0 1.5rem 3rem rgba(black, 0.4);
+  text-shadow: 0 1px 3px rgba(black, 0.5);
 }
 
 .row {
@@ -220,61 +331,6 @@ $c-gradient-sides: rgb(206, 255, 239);
   p {
     max-width: 400px;
     text-align: left;
-  }
-}
-
-.imgGrid {
-  @include flex(row, true, true);
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  img {
-    width: calc(50% - 0.5rem);
-    height: auto;
-  }
-}
-
-.clickableImage {
-  --tilt-x: 0deg;
-  --tilt-y: 0deg;
-  cursor: pointer;
-  @include transition(0.5s);
-  transform-origin: center center;
-  will-change: transform;
-
-  &:hover {
-    transform: perspective(900px) translateY(-0.2rem) translateZ(1.4rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
-      scale(1.01);
-    filter: saturate(1.08) brightness(1.06) drop-shadow(0 2rem 1.5rem rgba(black, 0.15));
-    // box-shadow: 0 0.8rem 3.5rem -1.5rem rgba(black, 0.7);
-    @include transition(0.1s);
-  }
-}
-
-.assetGallery {
-  max-height: var(--asset-gallery-max-height, 10em);
-  margin: -3rem 0;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-
-.assetGalleryInner {
-  animation: scrollUp var(--scroll-duration, 10s) linear infinite;
-}
-
-.assetGalleryPage {
-  @include flex(row, true, true);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-@keyframes scrollUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(var(--scroll-height));
   }
 }
 
@@ -321,24 +377,21 @@ $c-gradient-sides: rgb(206, 255, 239);
     }
   }
 
-  .assetGallery {
-    max-height: 24em;
-    margin-top: 0;
-    margin-bottom: -1.5rem;
+  .steamIntro {
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
   }
 
-  .assetGalleryPage {
-    gap: 0.75rem;
+  .steamFeatures {
+    gap: 2.5rem;
   }
 
-  .gameplayVideos {
-    gap: 0.75rem;
+  .wishlistCta {
+    margin-top: 3rem;
+  }
 
-    video {
-      width: 100%;
-      max-width: 32rem;
-      height: auto;
-    }
+  .joinContent {
+    min-height: 24rem;
   }
 
   .prizeList {
@@ -350,19 +403,5 @@ $c-gradient-sides: rgb(206, 255, 239);
 @media screen and (max-width: 600px) {
   .banner {
     height: auto;
-  }
-
-  .imgGrid {
-    gap: 0.75rem;
-  }
-
-  .clickableImage {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 1300px) {
-  .gameplayConcepts {
-    display: none;
   }
 }
