@@ -173,7 +173,6 @@ $stack: 900px;
 /* Full-width, first below the hero: showing the pipeline beats telling it. */
 .trailerWrapper {
   width: 100%;
-  background: $c-background-darkish;
   padding: 3.5rem 0;
   scroll-margin-top: $v-header-height;
 
@@ -193,6 +192,9 @@ $stack: 900px;
 }
 
 /* ------------------------- primer + reframe ------------------------- */
+.splitWrapper {
+  background: $c-background-darkish;
+}
 .split {
   display: flex;
   gap: 3rem;
@@ -308,24 +310,30 @@ $stack: 900px;
 
 /* ----------------------------- journey ----------------------------- */
 .journey {
-  max-width: $max;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 5rem 0;
+}
+
+.stageWrapper {
+  padding: 0 1.5rem;
+  &:nth-child(odd) {
+    background-color: rgba($c-background, 0.5);
+  }
+  &:nth-child(even) {
+    .stage {
+      flex-direction: row-reverse;
+    }
+  }
 }
 
 .stage {
+  max-width: $max;
+  padding: 3rem 0;
   display: flex;
   align-items: center;
   gap: 3rem;
-  margin-bottom: 3.5rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-  }
+  margin: auto;
 
   @media screen and (max-width: $stack) {
     flex-direction: column !important;

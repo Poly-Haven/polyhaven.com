@@ -305,35 +305,37 @@ const Photogrammetry = ({ course }) => {
       </section>
 
       {/* ------------------------- primer + reframe ------------------------- */}
-      <section className={styles.split}>
-        <div className={styles.beats}>
-          {BEATS.map((beat) => (
-            <div key={beat.n} className={styles.beat}>
-              <span className={styles.beatNum}>{beat.n}</span>
-              <div className={styles.beatText}>
-                <strong>{beat.title}</strong>
-                <p>{beat.body}</p>
+      <section className={styles.splitWrapper}>
+        <section className={styles.split}>
+          <div className={styles.beats}>
+            {BEATS.map((beat) => (
+              <div key={beat.n} className={styles.beat}>
+                <span className={styles.beatNum}>{beat.n}</span>
+                <div className={styles.beatText}>
+                  <strong>{beat.title}</strong>
+                  <p>{beat.body}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className={styles.splitText}>
-          <span className={styles.accentBar} />
-          <h2>Not just another intro photogrammetry tutorial</h2>
-          <p>
-            Most courses teach you a button: <em>"Here's how RealityScan works, here's how to photograph a rock."</em>{' '}
-            This one teaches the <strong>decisions</strong>: which surfaces are worth capturing, which techniques to use
-            and when.
-          </p>
-          <p>
-            It's the full production pipeline we use to make the assets you already download from Poly Haven, start to
-            finish, on one real project.
-          </p>
-          <p>
-            By the end you won't just know the tools - you'll know exactly what to do when you arrive on location with a
-            camera.
-          </p>
-        </div>
+            ))}
+          </div>
+          <div className={styles.splitText}>
+            <span className={styles.accentBar} />
+            <h2>Not just another intro photogrammetry tutorial</h2>
+            <p>
+              Most courses teach you a button: <em>"Here's how RealityScan works, here's how to photograph a rock."</em>{' '}
+              This one teaches the <strong>decisions</strong>: which surfaces are worth capturing, which techniques to
+              use and when.
+            </p>
+            <p>
+              It's the full production pipeline we use to make the assets you already download from Poly Haven, start to
+              finish, on one real project.
+            </p>
+            <p>
+              By the end you won't just know the tools - you'll know exactly what to do when you arrive on location with
+              a camera.
+            </p>
+          </div>
+        </section>
       </section>
 
       {/* ----------------------------- journey ----------------------------- */}
@@ -345,43 +347,45 @@ const Photogrammetry = ({ course }) => {
         </div>
 
         {STAGES.map((stage) => (
-          <div key={stage.n} className={styles.stage}>
-            <div className={styles.stageMedia}>
-              <StageMedia media={stage.media} />
-            </div>
-            <div className={styles.stageText}>
-              <span className={styles.stageNum}>Chapter {stage.n}</span>
-              <span className={styles.stageKicker}>{stage.kicker}</span>
-              <h3>{stage.title}</h3>
-              <p>{stage.body}</p>
-              {(stage.software || stage.techniques) && (
-                <div className={styles.stageSpecs}>
-                  {stage.software && (
-                    <div className={styles.stageSpecRow}>
-                      <span className={styles.stageSpecLabel}>Software used</span>
-                      <div className={styles.stageSoftware}>
-                        {stage.software.map((tool) => (
-                          <a
-                            key={tool}
-                            className={styles.softwareChip}
-                            href={SOFTWARE_URLS[tool]}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {tool}
-                          </a>
-                        ))}
+          <div key={stage.n} className={styles.stageWrapper}>
+            <div className={styles.stage}>
+              <div className={styles.stageMedia}>
+                <StageMedia media={stage.media} />
+              </div>
+              <div className={styles.stageText}>
+                <span className={styles.stageNum}>Chapter {stage.n}</span>
+                <span className={styles.stageKicker}>{stage.kicker}</span>
+                <h3>{stage.title}</h3>
+                <p>{stage.body}</p>
+                {(stage.software || stage.techniques) && (
+                  <div className={styles.stageSpecs}>
+                    {stage.software && (
+                      <div className={styles.stageSpecRow}>
+                        <span className={styles.stageSpecLabel}>Software used</span>
+                        <div className={styles.stageSoftware}>
+                          {stage.software.map((tool) => (
+                            <a
+                              key={tool}
+                              className={styles.softwareChip}
+                              href={SOFTWARE_URLS[tool]}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {tool}
+                            </a>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {stage.techniques && (
-                    <div className={styles.stageSpecRow}>
-                      <span className={styles.stageSpecLabel}>Techniques covered</span>
-                      <p className={styles.stageTechniques}>{stage.techniques}</p>
-                    </div>
-                  )}
-                </div>
-              )}
+                    )}
+                    {stage.techniques && (
+                      <div className={styles.stageSpecRow}>
+                        <span className={styles.stageSpecLabel}>Techniques covered</span>
+                        <p className={styles.stageTechniques}>{stage.techniques}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))}
