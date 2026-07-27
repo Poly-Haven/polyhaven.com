@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local MCP server config (contains API keys)
+.mcp.json
+
 # misc
 .DS_Store
 *.pem
