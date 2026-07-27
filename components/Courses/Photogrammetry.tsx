@@ -322,9 +322,8 @@ const Photogrammetry = ({ course }) => {
             <span className={styles.accentBar} />
             <h2>Not just another intro photogrammetry tutorial</h2>
             <p>
-              Most courses teach you a button: <em>"Here's how RealityScan works, here's how to photograph a rock."</em>{' '}
-              This one teaches the <strong>decisions</strong>: which surfaces are worth capturing, which techniques to
-              use and when.
+              This course teaches you the <strong>decisions</strong> behind photogrammetry - which surfaces are worth
+              capturing, which techniques to use and when - not just which buttons to push or how to photograph a rock.
             </p>
             <p>
               It's the full production pipeline we use to make the assets you already download from Poly Haven, start to
