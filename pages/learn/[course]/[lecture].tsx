@@ -32,10 +32,14 @@ const LecturePage = ({ course, lecture }) => {
 
   return (
     <Page>
+      {/* Gated: logged-out visitors only see a sign-in prompt, so these read as
+          thin, near-duplicate pages. Keep them out of the index and let the
+          course landing page rank instead. */}
       <Head
         title={`${lecture.name} • ${course.name}`}
         description={lecture.description}
         url={`/learn/${course.id}/${lecture.slug}`}
+        noindex
       />
       <div className={styles.stage}>
         <div className={styles.video}>

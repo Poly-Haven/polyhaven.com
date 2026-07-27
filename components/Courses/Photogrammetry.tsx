@@ -10,6 +10,7 @@ import BlenderMarket from 'components/UI/Icons/BlenderMarket'
 import Lightbox from 'components/Lightbox/Lightbox'
 import CourseCallToAction from './CourseCallToAction'
 import CourseMilestone from './CourseMilestone'
+import { COURSE_SEO } from './courseSeo'
 
 import styles from './Photogrammetry.module.scss'
 
@@ -162,16 +163,9 @@ const STAGES: Stage[] = [
 
 // Skimmable answer to "does it cover X?" — the journey reads as narrative and the
 // curriculum lists lesson names, so neither answers that without being read in full.
-const SKILLS = [
-  'Capture texture scans on location',
-  'Scan objects into game-ready models',
-  'Develop RAW files with accurate colour',
-  'Build seamless tileable PBR materials',
-  'Reconstruct scans in RealityScan',
-  'Retopology and UV mapping',
-  'Bake and repair scan textures',
-  'Build, light and dress a full environment',
-]
+// Shared with the page's schema.org `teaches`: Google requires structured data to
+// match what's visible, so these must not drift apart.
+const SKILLS = COURSE_SEO.photogrammetry.teaches
 
 const RENDERS = ['01', '02', '03', '04', '05', '06', '07', '08']
 
@@ -299,9 +293,15 @@ const Photogrammetry = ({ course }) => {
 
       {/* ----------------------------- trailer ----------------------------- */}
       <section id="trailer" className={styles.trailerWrapper}>
-        <video className={styles.trailer} controls preload="none" poster={`${PROMO}/render_01.jpg`}>
-          <source src="https://u.polyhaven.org/gCG/photoscan_Course_Intro_Trailer_V2_web.mp4" type="video/mp4" />
-        </video>
+        {/* nocookie: YouTube sets no tracking cookies until playback starts. */}
+        <iframe
+          className={styles.trailer}
+          src="https://www.youtube-nocookie.com/embed/YdYgZsjqoQw?rel=0"
+          title="Production Photogrammetry Course trailer"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
       </section>
 
       {/* ------------------------- primer + reframe ------------------------- */}

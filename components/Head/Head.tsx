@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const HeadComponent = ({ title, description, keywords, url, author, assetType, image, children }) => {
+const HeadComponent = ({ title, description, keywords, url, author, assetType, image, noindex, children }) => {
   let defaultKeywords = 'Arch-viz,Game,Unreal,Unity,Blender,Maya,Max,free,cc0,creative commons'
   if (assetType === 0) {
     defaultKeywords = 'hdri,hdri haven,ibl,hdr,environment,exr,' + defaultKeywords
@@ -19,6 +19,9 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
       <meta name="description" content={description} />
       <meta name="keywords" content={`${keywords}${keywords ? ',' : ''}${defaultKeywords}`} />
       <meta name="author" content={author} />
+
+      {/* "follow" so link equity still flows out to the pages we do want indexed. */}
+      {noindex ? <meta name="robots" content="noindex, follow" /> : null}
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="rgb(234, 91, 12)" />
@@ -46,6 +49,7 @@ HeadComponent.defaultProps = {
   author: 'Poly Haven',
   assetType: null,
   image: null,
+  noindex: false,
   children: null,
 }
 

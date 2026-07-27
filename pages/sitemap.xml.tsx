@@ -46,6 +46,20 @@ export const getServerSideProps = async ({ res }) => {
       }
     })
 
+  // Course landing pages (the lecture pages themselves are gated, so they stay out).
+  await fetch(`${apiUrl}/courses`)
+    .then((response) => response.json())
+    .then((resdata) => {
+      for (const id of Object.keys(resdata)) {
+        dynamicPages[`${baseUrl}/learn/${id}`] = {
+          lastmod: new Date().toISOString(),
+          changefreq: 'monthly',
+          priority: '0.8',
+        }
+      }
+    })
+    .catch(() => {}) // a courses hiccup shouldn't take down the whole sitemap
+
   // Categories
   let types = []
   await fetch(`${apiUrl}/categories/all`)
@@ -100,8 +114,11 @@ export const getServerSideProps = async ({ res }) => {
               <changefreq>${dynamicPages[url].changefreq}</changefreq>
               <priority>${dynamicPages[url].priority}</priority>
               ${
-                dynamicPages[url].img &&
-                dynamicPages[url].img.map((u) => `<image:image><image:loc>${u}</image:loc></image:image>`).join('')
+                // Ternary, not `&&` — a bare `&&` renders the literal string
+                // "undefined" into every <url> that has no images.
+                dynamicPages[url].img
+                  ? dynamicPages[url].img.map((u) => `<image:image><image:loc>${u}</image:loc></image:image>`).join('')
+                  : ''
               }
             </url>
           `

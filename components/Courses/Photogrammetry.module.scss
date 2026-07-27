@@ -188,6 +188,7 @@ $stack: 900px;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
   background: black;
+  border: 0; // it's a YouTube <iframe>, which is bordered by default
   @include drop-shadow(0.5);
 }
 
