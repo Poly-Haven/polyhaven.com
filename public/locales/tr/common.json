@@ -4,7 +4,7 @@
   "Assets": "Varlıklar",
   "Co-founder": "Kurucu ortak",
   "Director": "Müdür",
-  "Graphic-Design": "Grafik dizayn",
+  "Graphic-Design": "Grafik Tasarım",
   "HDRIs": "HDRI'lar",
   "Models": "Modeller",
   "Textures": "Dokular",
@@ -33,7 +33,7 @@
   "email-address": "E-posta adresi",
   "footer": {
     "join-ranks": "Bize katılın, Poly Haven'ı Patreon'da destekleyin",
-    "thanks": "<lnk> Kullanıcılarımıza</lnk>  Poly Haven'ı mümkün kıldığı için teşekkürler."
+    "thanks": "<lnk>Kullanıcılarımıza</lnk> Poly Haven'ı mümkün kıldığı için teşekkürler."
   },
   "goal": {
     "complete": "Tamamlandı!",

@@ -1,8 +1,8 @@
 {
   "contact": {
     "h1": "Contacto",
-    "p1": "¿Tienes una pregunta? Por favor, lea la página de<lnk> preguntas frecuentes</lnk> primero :)",
-    "p2": "La forma más fácil de ponerse en contacto con nosotros es a través de correo electrónico (<lnk1> info@polyhaven.com</lnk1> ) o en<lnk2>Discord</lnk2> ."
+    "p1": "¿Tienes una pregunta? Por favor, lea la página de <lnk>preguntas frecuentes</lnk> primero :)",
+    "p2": "La forma más fácil de ponerse en contacto con nosotros es a través de correo electrónico (<lnk1>info@polyhaven.com</lnk1>) o en <lnk2>Discord</lnk2>."
   },
   "description": "Qué es Poly Haven, qué hacemos y por qué lo hacemos.",
   "greeting": {

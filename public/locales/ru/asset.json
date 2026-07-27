@@ -21,11 +21,11 @@
   "downloads": "Загрузки",
   "downloads-pd": "в день",
   "early-access": {
-    "already-patron": "Вы уже являетесь меценатом? <loginLink>Войдите в систему</loginLink>.",
-    "donate-access": "Пожертвуйте $3, чтобы загрузить его сейчас, а также {{numEaAssets, number}} других ресурсов раннего доступа.",
-    "get-access": "Получите ранний доступ",
+    "already-patron": "Вы уже являетесь патроном? <loginLink>Войдите</loginLink>.",
+    "donate-access": "Пожертвуйте $3, чтобы загрузить его сейчас, а также {{numEaAssets, number}} других ассетов раннего доступа.",
+    "get-access": "Получить Ранний Доступ",
     "release-date": "Этот ассет будет опубликован:<br/><strong>{{scheduleText}}</strong>",
-    "title": "Скоро будет!"
+    "title": "Уже Скоро!"
   },
   "formats": {
     "exr": "Настоящие 32 бита на канал, сжатие без потерь.",
@@ -40,7 +40,7 @@
   },
   "no-files": "Файлов нет",
   "no-files-d": "Попробуйте обновить, в противном случае сообщите нам об этом.",
-  "no-renders": "Еще нет,<lnk> добавь свой</lnk> .",
+  "no-renders": "Еще нет, <lnk>добавь свой</lnk>.",
   "nor-standard": "Стандарт карты нормалей:",
   "released": "Выпущено",
   "similar-assets": "Похожие ассеты",
@@ -53,10 +53,10 @@
   "vaulted": {
     "about": "О сайте",
     "access-now": "Доступ сейчас",
-    "already-patron": "Вы уже являетесь меценатом? <loginLink>Войдите в систему</loginLink>.",
-    "donate-access": "Пожертвуйте $3 на Patreon, чтобы загрузить его, а также {{totalVaultedAssets, number}} других хранимых активов.",
-    "locked-in": "Этот актив заперт в <vaultLink>хранилище{{vault}} </vaultLink>.",
-    "patrons-needed": "Когда у нас появится еще {{remaining, number}} меценатов, он будет выпущен бесплатно для всех.",
+    "already-patron": "Вы уже являетесь патроном? <loginLink>Войдите</loginLink>.",
+    "donate-access": "Пожертвуйте $3 на Patreon, чтобы скачать его, а также {{totalVaultedAssets, number}} других ассетов из хранилища.",
+    "locked-in": "Этот актив заперт в <vaultLink>хранилище {{vault}}</vaultLink>.",
+    "patrons-needed": "Когда у нас появится еще {{remaining, number}} патронов, он выйдет в бесплатный доступ для всех.",
     "title": "Сводчатые активы"
   },
   "wide": "в ширину",

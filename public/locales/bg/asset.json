@@ -23,7 +23,7 @@
   "early-access": {
     "already-patron": "Вече сте абонат? <loginLink>Влезте</loginLink>.",
     "donate-access": "Дарете $3, за да го изтеглите сега, заедно с {{numEaAssets, number}} други активи с ранен достъп.",
-    "get-access": "Получете Ранен Достъп",
+    "get-access": "Получете ранен достъп",
     "release-date": "Този актив ще бъде пуснат:<br/><strong>{{scheduleText}}</strong>",
     "title": "Скоро!"
   },

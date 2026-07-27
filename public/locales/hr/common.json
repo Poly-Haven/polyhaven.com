@@ -17,11 +17,11 @@
   "corporate-sponsors": "Korporativni sponzori",
   "display-name": "Ime za prikaz",
   "donation-box": {
-    "b1": "Pomozite nam da napravimo<lnk> besplatna imovina</lnk> za sve!",
+    "b1": "Pomozite nam da napravimo <lnk>besplatna imovina</lnk> za sve!",
     "b2": "<lnk>Rani pristup</lnk> na buduću imovinu.",
-    "b3": "Trenutni pristup svim sadržajima u<lnk> Trezori</lnk> .",
-    "b4": "Naš preglednik resursa u Blenderu<lnk> dodatak</lnk> .",
-    "b5": "Skupno preuzimanje i pristup izvan mreže s<lnk> naš oblak</lnk> .",
+    "b3": "Trenutni pristup svim sadržajima u <lnk>Trezori</lnk>.",
+    "b4": "Naš preglednik resursa u Blenderu <lnk>dodatak</lnk>.",
+    "b5": "Skupno preuzimanje i pristup izvan mreže s <lnk>naš oblak</lnk>.",
     "b6": "<lnk>Sponzorirajte imovinu</lnk> s vašim imenom i linkom.",
     "donate-monthly": "Mjesečne donacije",
     "donate-once": "Donirajte jednom",
@@ -33,7 +33,7 @@
   "email-address": "Email adresa",
   "footer": {
     "join-ranks": "Pridružite se redovima, podržite Poly Haven na Patreonu",
-    "thanks": "Zahvaljujući našim<lnk> pokrovitelji</lnk> za omogućavanje Poly Havena"
+    "thanks": "Zahvaljujući našim <lnk>pokrovitelji</lnk> za omogućavanje Poly Havena"
   },
   "goal": {
     "complete": "Završeno!",

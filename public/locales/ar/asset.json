@@ -55,7 +55,7 @@
     "access-now": "ادخل الآن",
     "already-patron": "هل أنت راعٍ بالفعل؟ سجّل <loginLink>الدخول</loginLink>",
     "donate-access": "تبرع بـ 3 دولارات على Patreon لتحميله، بالإضافة إلى {{totalVaultedAssets, number}} أصول أخرى مسجلة.",
-    "locked-in": "هذا الأصل محفوظ في <vaultLink>خزنة{{vault}} </vaultLink>.",
+    "locked-in": "هذا الأصل محفوظ في <vaultLink>خزنة{{vault}}</vaultLink>.",
     "patrons-needed": "عندما نحصل على {{remaining, number}} المزيد من الرعاة، سيتم إصداره مجاناً للجميع.",
     "title": "الأصول المقبّبة"
   },

@@ -36,7 +36,7 @@
     "offline-access": {
       "p1": "Digite seu endereço de e-mail para enviar a si mesmo um convite para nossa pasta na nuvem:",
       "p2": "Verifique seu e-mail :)",
-      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta, <lnk> Por favor, entre em contato conosco</lnk>.",
+      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta, <lnk>Por favor, entre em contato conosco</lnk>.",
       "p4": "Ver <lnk>esta postagem</lnk> para obter mais instruções sobre como configurar o Nextcloud e começar a sincronizar assets com seu computador.",
       "title": "Acesso Offline"
     },

@@ -77,7 +77,7 @@
   "remove-ads": "広告を非表示",
   "required": "必須",
   "roadmap": {
-    "join-support": "<patreonLink> {{numPatrons}} 他のパトロンと一緒に</patreonLink>、フリーアセットの未来を応援しましょう。",
+    "join-support": "<patreonLink>{{numPatrons}} 他のパトロンと一緒に</patreonLink>、フリーアセットの未来を応援しましょう。",
     "target-patrons": "{{target}} 後援者",
     "title": "ポリヘブンロードマップ",
     "to-be-announced": "発表予定",

@@ -21,7 +21,7 @@
   "downloads": "הורדות",
   "downloads-pd": "ליום",
   "early-access": {
-    "already-patron": "כבר פטרון?<loginLink> התחברות</loginLink> .",
+    "already-patron": "כבר פטרון? <loginLink>התחברות</loginLink>.",
     "donate-access": "תרמו 3 דולר כדי להוריד אותו עכשיו, יחד עם {{numEaAssets, number}} נכסים נוספים בגישה מוקדמת.",
     "get-access": "קבל גישה מוקדמת",
     "release-date": "נכס זה ישוחרר:<br/> <strong>{{scheduleText}}</strong>",
@@ -40,7 +40,7 @@
   },
   "no-files": "אין קבצים",
   "no-files-d": "נסה לרענן, אחרת אנא דווח לנו על כך.",
-  "no-renders": "עדיין אין,<lnk> להוסיף את שלך</lnk> .",
+  "no-renders": "עדיין אין, <lnk>להוסיף את שלך</lnk>.",
   "nor-standard": "תקן מפה רגילה (Normal):",
   "released": "מְשׁוּחרָר",
   "similar-assets": "נכסים דומים",
@@ -53,9 +53,9 @@
   "vaulted": {
     "about": "אוֹדוֹת",
     "access-now": "גישה עכשיו",
-    "already-patron": "כבר פטרון?<loginLink> התחברות</loginLink> .",
+    "already-patron": "כבר פטרון? <loginLink>התחברות</loginLink>.",
     "donate-access": "תרמו 3 דולר בפטריאון כדי להוריד אותו, יחד עם {{totalVaultedAssets, number}} נכסים אחרים המאוחסנים בכספת.",
-    "locked-in": "נכס זה נעול ב-<vaultLink> כספת {{vault}}</vaultLink> .",
+    "locked-in": "נכס זה נעול ב-<vaultLink>כספת {{vault}}</vaultLink>.",
     "patrons-needed": "כאשר נקבל עוד {{remaining, number}} פטרונים, הוא יופץ בחינם לכולם.",
     "title": "נכס מאובטח"
   },

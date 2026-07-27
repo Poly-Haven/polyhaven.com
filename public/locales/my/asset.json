@@ -21,7 +21,7 @@
   "downloads": "ဒေါင်းလုဒ် အရေအတွက်",
   "downloads-pd": "တစ်နေ့ချင်းနှုန်း",
   "early-access": {
-    "already-patron": "နာယကဖြစ်နေပြီလား။<loginLink> လော့ဂ်အင်</loginLink> .",
+    "already-patron": "နာယကဖြစ်နေပြီလား။ <loginLink>လော့ဂ်အင်</loginLink> .",
     "donate-access": "{{numEaAssets, number}} နှင့်အတူ အခြား အစောပိုင်းဝင်ရောက်နိုင်သော ပိုင်ဆိုင်မှုများကို ယခုဒေါင်းလုဒ်လုပ်ရန် $3 ကို လှူဒါန်းပါ။",
     "get-access": "စောစောစီးစီး ဝင်ရောက်ရယူလိုက်ပါ။",
     "release-date": "ဤပိုင်ဆိုင်မှုကို ထုတ်လွှတ်ပါမည်-<br/> <strong>{{scheduleText}}</strong>",
@@ -40,7 +40,7 @@
   },
   "no-files": "ဖိုင်မရှိပါ",
   "no-files-d": "Webpage ကို refresh လုပ်ကြည့်ပါ၊ မရပါက ဤပြဿနာကို ကျွန်ုပ်တို့ထံ သတင်းပို့ပါ",
-  "no-renders": "မရှိသေးပါ၊ <lnk> သင်ကိုယ်တိုင်ထည့်ရန် </lnk> .",
+  "no-renders": "မရှိသေးပါ၊ <lnk>သင်ကိုယ်တိုင်ထည့်ရန်</lnk> .",
   "nor-standard": "Normal Map အမျိုးအစား -",
   "released": "လွှတ်ပေးခဲ့သည်။",
   "similar-assets": "အလားတူ ပစ္စည်းများ",
@@ -53,9 +53,9 @@
   "vaulted": {
     "about": "အကြောင်း",
     "access-now": "ယခုဝင်ရောက်ပါ။",
-    "already-patron": "နာယကဖြစ်နေပြီလား။<loginLink> လော့ဂ်အင်</loginLink> .",
+    "already-patron": "နာယကဖြစ်နေပြီလား။ <loginLink>လော့ဂ်အင်</loginLink> .",
     "donate-access": "၎င်းကို ဒေါင်းလုဒ်လုပ်ရန် Patreon တွင် $3 ကို လှူဒါန်းပါ၊ {{totalVaultedAssets, number}} နှင့် အခြားသော ဘောင်ခတ်ထားသော ပိုင်ဆိုင်မှုများ။",
-    "locked-in": "ဤအရာဝတ္ထုကို သော့ခတ်ထားသည်။<vaultLink> {{vault}} အခန်း</vaultLink> .",
+    "locked-in": "ဤအရာဝတ္ထုကို သော့ခတ်ထားသည်။ <vaultLink>{{vault}} အခန်း</vaultLink> .",
     "patrons-needed": "နောက်ထပ် {{remaining, number}} အလှူရှင်များ ရရှိသောအခါ၊ ၎င်းကို လူတိုင်းအတွက် အခမဲ့ ထုတ်ပေးပါမည်။",
     "title": "အခန်းတွင် သော့ခတ်ထားသော ပိုင်ဆိုင်မှု"
   },

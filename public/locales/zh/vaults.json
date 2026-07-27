@@ -6,7 +6,7 @@
   "all-future-locked-p3": "同样，我们所有的社区项目和捐赠资产都会立即免费向公众开放。只有需要大量投资才能创建的大型藏品才可能被锁在保险库中。",
   "all-future-locked-p4": "请记住，所有资产（即使是金库中的资产）最终都将免费提供给所有人。",
   "different-question": "有其他问题？<contactLink>请联系我们</contactLink>。",
-  "donation-heading": "每月捐赠<span> 3 美元以上，</span>即可解锁{{numAssets}} 资产并支持我们的工作。",
+  "donation-heading": "每月捐赠<span>3 美元以上，</span>即可解锁{{numAssets}} 资产并支持我们的工作。",
   "faq": "常见问题",
   "how-it-works": "如何使用",
   "how-it-works-p1": "Poly Haven 制作免费的公共领域 3D 资产。为了资助我们的工作，我们已将一些新的资产集锁定在临时付费墙后面：金库。",

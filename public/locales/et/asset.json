@@ -45,7 +45,7 @@
   "released": "Avaldatud",
   "similar-assets": "Sarnased varad",
   "sponsored-by": "Sponsureeritud:",
-  "sponsored-by-d": "Toetage Poly Havenit Patreoonis, et lisada oma nimi siia.",
+  "sponsored-by-d": "Toetage Poly Havenit Patreonis, et lisada oma nimi siia.",
   "sponsored-by-none": "Mitte keegi veel :(",
   "tags": "Sildid",
   "tall": "pikk",
@@ -55,7 +55,7 @@
     "access-now": "Juurdepääs kohe",
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
     "donate-access": "Annetage 3 dollarit Patreonis, et see alla laadida, koos {{totalVaultedAssets, number}} teiste võlvitud varadega.",
-    "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}} </vaultLink>.",
+    "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}}</vaultLink>.",
     "patrons-needed": "Kui saame {{remaining, number}} rohkem toetajaid, avaldatakse see kõigile tasuta.",
     "title": "Võlvitud vara"
   },

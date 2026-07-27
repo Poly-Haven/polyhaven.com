@@ -21,7 +21,7 @@
   "downloads": "Preuzimanja",
   "downloads-pd": "dnevno",
   "early-access": {
-    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 USD da biste ga odmah preuzeli, zajedno s {{numEaAssets, number}} drugim resursima za rani pristup.",
     "get-access": "Ostvarite rani pristup",
     "release-date": "Ova imovina bit će objavljena:<br/> <strong>{{scheduleText}}</strong>",
@@ -40,7 +40,7 @@
   },
   "no-files": "Nema datoteka",
   "no-files-d": "Pokušajte osvježiti, u suprotnom prijavite ovo nama.",
-  "no-renders": "Još ništa,<lnk> dodajte svoje</lnk> .",
+  "no-renders": "Još ništa, <lnk>dodajte svoje</lnk>.",
   "nor-standard": "Standardna normalna karta:",
   "released": "Pušten na slobodu",
   "similar-assets": "Slična imovina",
@@ -53,9 +53,9 @@
   "vaulted": {
     "about": "Oko",
     "access-now": "Pristupite sada",
-    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 dolara na Patreonu kako biste ga preuzeli, zajedno s {{totalVaultedAssets, number}} drugim trezorskim datotekama.",
-    "locked-in": "Ova imovina je zaključana u<vaultLink> trezor {{vault}}</vaultLink> .",
+    "locked-in": "Ova imovina je zaključana u <vaultLink>trezor {{vault}}</vaultLink>.",
     "patrons-needed": "Kada dobijemo još {{remaining, number}} korisnika, bit će besplatno dostupno svima.",
     "title": "Trezorska imovina"
   },

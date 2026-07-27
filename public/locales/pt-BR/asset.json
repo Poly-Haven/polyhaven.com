@@ -55,7 +55,7 @@
     "access-now": "Acesse Agora",
     "already-patron": "Já é um apoiador? <loginLink>Faça o login</loginLink>.",
     "donate-access": "Faça uma doação de US$ 3 no Patreon para fazer o download, juntamente com {{totalVaultedAssets, number}} outros assets dos Cofres.",
-    "locked-in": "Esse asset está trancado no <vaultLink>Cofre{{vault}} </vaultLink>.",
+    "locked-in": "Esse asset está trancado no <vaultLink>Cofre {{vault}}</vaultLink>.",
     "patrons-needed": "Quando chegarmos a {{remaining, number}} apoiadores, o asset será liberado gratuitamente para todos.",
     "title": "Asset do Cofre"
   },
