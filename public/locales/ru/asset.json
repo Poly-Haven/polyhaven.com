@@ -24,7 +24,7 @@
     "already-patron": "Вы уже являетесь меценатом? <loginLink>Войдите в систему</loginLink>.",
     "donate-access": "Пожертвуйте $3, чтобы загрузить его сейчас, а также {{numEaAssets, number}} других ресурсов раннего доступа.",
     "get-access": "Получите ранний доступ",
-    "release-date": "Этот актив будет освобожден:<br/><strong>{{scheduleText}}</strong>",
+    "release-date": "Этот ассет будет опубликован:<br/><strong>{{scheduleText}}</strong>",
     "title": "Скоро будет!"
   },
   "formats": {

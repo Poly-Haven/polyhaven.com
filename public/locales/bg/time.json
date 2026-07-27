@@ -19,7 +19,7 @@
     "hour_other": "преди {{count}} часа",
     "month_one": "преди {{count}} месец",
     "month_other": "преди {{count}} месеца",
-    "week_one": "след {{count}} седмица",
+    "week_one": "преди {{count}} седмица",
     "week_other": "преди {{count}} седмици",
     "year_one": "преди {{count}} година",
     "year_other": "преди {{count}} години"
