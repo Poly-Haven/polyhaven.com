@@ -1,0 +1,247 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.info {
+  max-width: 1000px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+
+/* ---------- header: title + about/discord links ---------- */
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $c-background-light;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $c-accent;
+}
+
+.title {
+  margin: 0.25rem 0 0;
+  font-size: 1.6em;
+  color: $c-text-bright;
+}
+
+.headLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.aboutBtn,
+.discordBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.55em 0.9em;
+  font-weight: 700;
+  font-size: 0.9em;
+  text-decoration: none;
+  cursor: pointer;
+  @include transition();
+
+  svg {
+    font-size: 1.25em;
+  }
+}
+
+.aboutBtn {
+  color: $c-text-light;
+  box-shadow: inset 0 0 0 1px rgba($c-text-light, 0.3);
+
+  &:hover {
+    color: white;
+    background: $c-accent-light;
+    box-shadow: inset 0 0 0 1px $c-accent-light;
+  }
+}
+
+.discordBtn {
+  color: white;
+  background: #5865f2; // Discord blurple
+
+  &:hover {
+    background: lighten(#5865f2, 8%);
+  }
+}
+
+/* ---------- content blocks ---------- */
+.block {
+  margin-top: 2.25rem;
+}
+
+.blockTitle {
+  margin: 0 0 0.4rem;
+  font-size: 1.2em;
+  color: $c-text-bright;
+}
+
+.blockLead {
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+  color: $c-text-light;
+
+  strong {
+    color: $c-text-bright;
+  }
+}
+
+/* ---------- downloads ---------- */
+.sceneRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  background: $c-background-light;
+  @include drop-shadow();
+
+  &:hover {
+    background: $c-background-lighter;
+  }
+}
+
+.dlIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background: rgba($c-accent, 0.15);
+  color: $c-accent-light;
+
+  svg {
+    font-size: 1.4em;
+  }
+}
+
+.dlMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.dlName {
+  font-weight: 700;
+  color: $c-text-bright;
+}
+
+.dlNote {
+  font-size: 0.9em;
+  color: $c-text-light;
+  opacity: 0.85;
+}
+
+.scansLabel {
+  display: block;
+  margin: 1.5rem 0 0.6rem;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $c-gray;
+}
+
+.scanGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+
+  @media screen and (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 460px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scanCard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.9em;
+  color: $c-text-light;
+  text-decoration: none;
+  background: $c-background-light;
+  @include transition();
+
+  svg {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    color: $c-accent-light;
+    @include transition();
+  }
+
+  &:hover {
+    color: white;
+    background: $c-background-lighter;
+  }
+}
+
+/* ---------- patreon benefits ---------- */
+.benefitGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+
+  @media screen and (max-width: 620px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefitCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.15rem;
+  text-decoration: none;
+  background: $c-background-light;
+  @include drop-shadow();
+
+  &:hover {
+    background: $c-background-lighter;
+
+    .benefitHead svg {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+.benefitHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: $c-text-bright;
+
+  svg {
+    flex-shrink: 0;
+    font-size: 1.1em;
+    color: $c-accent-light;
+    opacity: 0.7;
+    @include transition();
+  }
+}
+
+.benefitDesc {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: $c-text-light;
+}

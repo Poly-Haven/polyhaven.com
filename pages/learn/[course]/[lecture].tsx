@@ -5,6 +5,7 @@ import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
 import CourseVideo from 'components/Courses/CourseVideo'
 import CourseNav from 'components/Courses/CourseNav'
+import CourseInfo from 'components/Courses/CourseInfo'
 import { useCourseProgress } from 'utils/courseProgress'
 import { getAutoplay, setAutoplay } from 'utils/courseProgressLocal'
 import styles from 'components/Courses/Courses.module.scss'
@@ -59,7 +60,7 @@ const LecturePage = ({ course, lecture }) => {
         </aside>
       </div>
 
-      <h1 style={{ color: 'yellow' }}>TODO: Add info about course files, other Patreon rewards, links, etc.</h1>
+      <CourseInfo course={course} />
     </Page>
   )
 }
