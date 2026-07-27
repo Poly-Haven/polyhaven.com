@@ -92,7 +92,11 @@ const CourseInfo = ({ course }) => {
         <p>Your Patreon membership includes more than just this course.</p>
         <p>
           When you've finished watching, consider{' '}
-          <a href="https://www.patreon.com/settings/memberships/polyhaven" target="_blank">
+          <a
+            href="https://www.patreon.com/cw/polyhaven/membership?jumpToTiersAndReveal=true&vanity=polyhaven"
+            target="_blank"
+            rel="noreferrer"
+          >
             downgrading to a lower tier
           </a>{' '}
           to keep these benefits and continue supporting us.
