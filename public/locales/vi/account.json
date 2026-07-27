@@ -1,0 +1,66 @@
+{
+  "account": "Tài khoản",
+  "hi": "Chào",
+  "login": {
+    "li1": "Xóa quảng cáo vĩnh viễn.",
+    "li2": "Truy cập sớm vào tài sản, trước khi chúng được phát hành công khai.",
+    "li3": "Truy cập vào dịch vụ đám mây của chúng tôi, để đồng bộ tất cả tài sản của chúng tôi với ổ cứng của bạn.",
+    "li4": "Tài trợ một tài sản vĩnh viễn mỗi tháng, hiển thị tên và liên kết của bạn bên cạnh các nút tải xuống.",
+    "p1": "Nếu bạn là một <lnk>patron</lnk> của Poly Haven, đăng nhập ở đây sẽ cho bạn quyền truy cập vào phần thưởng của bạn trực tiếp trên trang web này.",
+    "p2": "Tùy thuộc vào cấp độ hỗ trợ của bạn, phần thưởng của bạn có thể bao gồm:"
+  },
+  "not-patron": "Có vẻ như bạn không phải là một nhà tài trợ của Poly Haven :( nếu điều này không đúng, vui lòng <lnk>liên hệ</lnk> để chúng tôi có thể điều tra vấn đề trên trang này. Chúng tôi sẽ cần thông tin sau:",
+  "not-patron-anymore": "Có vẻ như bạn không còn là người ủng hộ Poly Haven nữa. Không sao cả, và chúng tôi đánh giá cao sự hỗ trợ của bạn trong quá khứ :)",
+  "reward_one": "Điều này sẽ cấp cho bạn phần thưởng sau:",
+  "reward_other": "Điều này sẽ cấp cho bạn các phần thưởng sau:",
+  "rewards": {
+    "credit": {
+      "invalid": "Tên không hợp lệ",
+      "p1": "Tên của bạn hiện tại là",
+      "p2": "{{hidden}} trong danh sách người ủng hộ ở chân trang của trang web này.",
+      "p3": "Việc thay đổi cài đặt này có thể mất vài giờ để cập nhật trên mọi trang của trang web.",
+      "p4": "Tên hiển thị:",
+      "title": "Ghi công ở chân trang"
+    },
+    "early-access": {
+      "p1": "Bây giờ bạn đã đăng nhập, <lnk>Thư viện Tài sản</lnk> sẽ bao gồm các tài sản mà chúng tôi đã lên lịch để xuất bản trong tương lai.",
+      "p2": "Chúng được đánh dấu bằng một vòng tròn màu xanh và logo Patreon ở góc trên bên phải, như thế này:",
+      "p3": "Bạn đã có thể tải xuống chúng, trước mọi người khác :)",
+      "title": "Truy cập sớm"
+    },
+    "no-ads": {
+      "p1": "Chúng tôi sử dụng Google AdSense trên polyhaven.com. Để ẩn những quảng cáo này, chỉ cần bật công tắc này:",
+      "p2": "Quảng cáo hiện tại là:",
+      "title": "Không có quảng cáo"
+    },
+    "offline-access": {
+      "p1": "Nhập địa chỉ email của bạn để gửi cho mình một lời mời đến thư mục đám mây của chúng tôi:",
+      "p2": "Kiểm tra email của bạn :)",
+      "p3": "Lời mời đã được gửi thành công. Nếu bạn gặp bất kỳ vấn đề nào hoặc cần thay đổi địa chỉ email tài khoản của mình, <lnk>xin vui lòng liên hệ với chúng tôi</lnk>.",
+      "p4": "Xem <lnk> bài viết này</lnk> để biết thêm hướng dẫn về cách thiết lập Nextcloud và bắt đầu đồng bộ hóa tài sản với máy tính của bạn.",
+      "title": "Truy cập ngoại tuyến"
+    },
+    "sponsor": {
+      "p1": "Bạn có thể chọn một tài sản mỗi tháng để gắn tên và liên kết của bạn bên cạnh mãi mãi. Để làm điều này, chúng tôi làm việc với một hệ thống \"token\".",
+      "p2": "Vào đầu mỗi tháng sau khi thanh toán của bạn được xử lý bởi Patreon, bạn sẽ tự động nhận được một <ticket /> <b>Mã Tài trợ</b>.",
+      "p3": "Có hai cách để sử dụng token này:",
+      "p3li1": "Bằng cách truy cập trang của tài sản mà bạn muốn tài trợ, và nhấp vào nút \"<ticket /> Tài trợ tài sản này\" ở bên phải của trang.",
+      "p3li2": "Hoặc bạn có thể bật tính năng tài trợ tự động bên dưới, sẽ chọn một tài sản ngẫu nhiên cho bạn mỗi tháng.",
+      "p4": "Token không hết hạn, vì vậy bạn có thể quay lại sau vài tháng và sử dụng các token đã tích lũy của mình.",
+      "p5": "Khi một token đã được sử dụng, nó không thể bị thu hồi hoặc chuyển sang tài sản khác.",
+      "p6": "Tự động tài trợ một tài sản ngẫu nhiên mỗi tháng:",
+      "p7": "Vào ngày 15 của mỗi tháng, bất kỳ token nào bạn có sẽ được sử dụng cho các tài sản ngẫu nhiên. Điều này cho bạn 15 ngày để sử dụng token của mình một cách thủ công nếu bạn muốn.",
+      "p8": "Nếu bạn muốn được thông báo khi một tài sản được chọn tự động cho bạn, vui lòng nhập địa chỉ email của bạn bên dưới:",
+      "p9": "Để hủy đăng ký nhận thông báo, hãy xóa địa chỉ email của bạn ở trên và nhấp vào nút lưu.",
+      "title": "Tài trợ"
+    },
+    "stakeholder": {
+      "p1": "Là một cổ đông của Poly Haven, bạn sẽ có quyền truy cập sâu hơn vào các kênh giao tiếp nội bộ của chúng tôi để giúp chúng tôi thảo luận về những gì cần làm và theo dõi hành trình của chúng tôi.",
+      "p2": "Nếu chúng tôi chưa liên hệ với bạn, vui lòng <lnk>liên hệ</lnk> để chúng tôi có thể cung cấp cho bạn quyền truy cập vào các kênh này và giới thiệu bạn với đội ngũ.",
+      "title": "Cổ đông"
+    }
+  },
+  "support-amount": "Bạn hiện đang hỗ trợ Poly Haven với ${{amount}} mỗi tháng, cảm ơn bạn!",
+  "support-amount-yearly": "Bạn hiện đang hỗ trợ Poly Haven với ${{amount}} mỗi năm, cảm ơn bạn!",
+  "title": "Đăng nhập"
+}
