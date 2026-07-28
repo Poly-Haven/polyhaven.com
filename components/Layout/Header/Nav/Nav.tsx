@@ -299,17 +299,19 @@ const Nav = () => {
             setLocaleOpen(!localeOpen)
           }}
         >
-          {Object.keys(locales).map(
-            (l) =>
-              renderLocaleFlags && (
-                <NavItem
-                  key={l}
-                  text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />}
-                  link={router.asPath}
-                  locale={l}
-                />
-              )
-          )}
+          <div className={styles.localeColumns}>
+            {Object.keys(locales).map(
+              (l) =>
+                renderLocaleFlags && (
+                  <NavItem
+                    key={l}
+                    text={<LocaleFlag locale={l} flag={locales[l].flag} name={locales[l].name} />}
+                    link={router.asPath}
+                    locale={l}
+                  />
+                )
+            )}
+          </div>
           <hr />
           <NavItem text="🤝 Help Translate!" link="/translate" />
         </NavItem>

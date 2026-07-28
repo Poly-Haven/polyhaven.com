@@ -137,6 +137,25 @@ button.navItem {
   }
 }
 
+// Locale dropdown. `wrap-reverse` against the 85vh cap filled bottom-up and
+// right-to-left, so the columns came out ragged and unbalanced; multi-column
+// splits them evenly and keeps the list reading top-to-bottom, left-to-right.
+.compactNavItemWrapper > .subNav {
+  display: block;
+  max-height: none;
+  width: 26rem;
+}
+
+.localeColumns {
+  column-count: 2;
+  column-gap: 0;
+  column-rule: 1px solid $c-background;
+
+  > * {
+    break-inside: avoid;
+  }
+}
+
 .lighthouseNavItem .navItem {
   font-weight: 600;
   font-style: italic;
@@ -383,10 +402,16 @@ button.navItem {
     @include dark_scrollbar;
   }
 
-  // Matches the compact height the dropdown already uses on desktop.
+  .compactNavItemWrapper.expanded > .subNav .localeColumns {
+    column-count: 1;
+  }
+
+  // Narrower than the drawer's rows, but still a 44px touch target. Padding is
+  // inside that 44px, so border-box rather than the page default content-box.
   .compactNavItemWrapper.expanded > .subNav .navItem {
+    box-sizing: border-box;
     height: auto;
-    min-height: 1.3rem;
+    min-height: 44px;
     flex-shrink: 0;
   }
 }
