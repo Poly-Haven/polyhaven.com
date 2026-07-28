@@ -23,9 +23,9 @@
   "early-access": {
     "already-patron": "Вы уже являетесь патроном? <loginLink>Войдите</loginLink>.",
     "donate-access": "Пожертвуйте $3, чтобы загрузить его сейчас, а также {{numEaAssets, number}} других ассетов раннего доступа.",
-    "get-access": "Получить Ранний Доступ",
+    "get-access": "Получить ранний доступ",
     "release-date": "Этот ассет будет опубликован:<br/><strong>{{scheduleText}}</strong>",
-    "title": "Уже Скоро!"
+    "title": "Уже скоро!"
   },
   "formats": {
     "exr": "Настоящие 32 бита на канал, сжатие без потерь.",
@@ -51,13 +51,13 @@
   "tall": "высота",
   "user-renders": "Пользовательские рендеры:",
   "vaulted": {
-    "about": "О сайте",
-    "access-now": "Доступ сейчас",
+    "about": "Подробнее",
+    "access-now": "Получить Доступ",
     "already-patron": "Вы уже являетесь патроном? <loginLink>Войдите</loginLink>.",
     "donate-access": "Пожертвуйте $3 на Patreon, чтобы скачать его, а также {{totalVaultedAssets, number}} других ассетов из хранилища.",
     "locked-in": "Этот актив заперт в <vaultLink>хранилище {{vault}}</vaultLink>.",
     "patrons-needed": "Когда у нас появится еще {{remaining, number}} патронов, он выйдет в бесплатный доступ для всех.",
-    "title": "Сводчатые активы"
+    "title": "Ассет в хранилище"
   },
   "wide": "в ширину",
   "zip-choose": "Выберите содержимое ZIP архива:"
