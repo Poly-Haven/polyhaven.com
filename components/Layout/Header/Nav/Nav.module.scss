@@ -385,6 +385,18 @@ button.navItem {
 
   // Locale menu. Same overlay as the drawer, but tap-triggered rather than
   // hover, and it keeps its narrower rows - 26 locales at 3em would be absurd.
+  //
+  // Drop the desktop dropdown's `transition: all`. Here it would animate
+  // between two completely different boxes - an absolutely positioned 26rem
+  // dropdown and a fixed full-height panel - so it slid up from the bottom of
+  // the screen on open (`top: 100%` means the viewport once the panel is fixed,
+  // not the row) and flashed the two-column desktop layout on the way out as
+  // the width animated back. It also inherited the 0.2s hover delay, which
+  // touch triggers on tap. The nav drawer doesn't animate either.
+  .navItemWrapper.compactNavItemWrapper > .subNav {
+    transition: none;
+  }
+
   .compactNavItemWrapper:hover > .subNav {
     visibility: hidden;
     opacity: 0;
