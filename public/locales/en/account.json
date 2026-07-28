@@ -17,10 +17,11 @@
   "reward_one": "This grants you the following reward:",
   "reward_other": "This grants you the following rewards:",
   "rewards": {
-    "no-ads": {
-      "title": "No Ads",
-      "p1": "We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:",
-      "p2": "Ads are now:"
+    "course-access": {
+      "title": "Course Access",
+      "p1": "Your membership includes full access to <lnk>our courses</lnk>, streamed right here on the site.",
+      "p2": "Your progress is saved to your account, so you can pick up where you left off on any device.",
+      "cta": "Go to courses"
     },
     "credit": {
       "title": "Footer Credit",
@@ -35,6 +36,11 @@
       "p1": "Now that you're logged in, the <lnk>Asset Library</lnk> will include assets that we've scheduled to publish in the future.",
       "p2": "They are marked by a blue circle and the Patreon logo in the top right, like this:",
       "p3": "You can already download them, ahead of everyone else :)"
+    },
+    "no-ads": {
+      "title": "No Ads",
+      "p1": "We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:",
+      "p2": "Ads are now:"
     },
     "offline-access": {
       "title": "Offline Access",

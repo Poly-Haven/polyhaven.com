@@ -4,9 +4,10 @@ require('dotenv').config()
 
 import patreon_tiers from 'constants/patreon_tiers.json'
 
-// The Patreon reward a member must hold to watch course videos.
-// TODO: switch this to the dedicated courses reward once that tier is created.
-const REQUIRED_REWARD = 'Offline Access'
+// The Patreon reward a member must hold to watch course videos. Granted by the $7
+// "Course Access" tier and up - see constants/patreon_tiers.json (and keep the api's
+// copy of that file in sync, since patron.rewards is computed there, not here).
+const REQUIRED_REWARD = 'Course Access'
 
 // Bunny Stream video library that hosts the course videos.
 const BUNNY_LIBRARY_ID = '689507'

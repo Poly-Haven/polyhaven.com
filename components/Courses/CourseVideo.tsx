@@ -11,6 +11,8 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import styles from './Courses.module.scss'
 
 const COMPLETE_THRESHOLD = 0.9
+// Checkout for the $7 Course Access tier (rid = its id in constants/patreon_tiers.json).
+const PATREON_JOIN_URL = 'https://www.patreon.com/checkout/polyhaven?rid=29202719&cadence=12'
 const THUMB_CDN = 'https://cdn.polyhaven.com/site_images/courses'
 const AUTOPLAY_DELAY = 3000
 // Signed URLs last ~4h; reuse a prefetched one only if comfortably fresh.
@@ -241,9 +243,9 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
       <>
         <p>{error || 'Unable to load this video.'}</p>
         {gated && (
-          <Link href="/join" className={styles.messageLink}>
-            See membership options
-          </Link>
+          <a href={PATREON_JOIN_URL} target="_blank" rel="noreferrer" className={styles.messageLink}>
+            Get access for $7/month
+          </a>
         )}
       </>
     )

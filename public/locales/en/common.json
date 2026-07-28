@@ -78,9 +78,10 @@
     "b4": "Our Blender asset browser <lnk>add-on</lnk>.",
     "b5": "Bulk download & offline access with <lnk>our cloud</lnk>.",
     "b6": "<lnk>Sponsor an asset</lnk> with your name & link.",
+    "b6-course": "<lnk>Learn from us</lnk> with full-length video courses.",
     "donate-monthly": "Donate monthly",
-    "monthly": "Monthly",
     "donate-once": "Donate once",
+    "monthly": "Monthly",
     "once": "Once",
     "one-time-benefits-p1": "One time donations do not include any Patreon benefits, or count towards Vault progress.",
     "one-time-benefits-p2": "Consider donating monthly instead."

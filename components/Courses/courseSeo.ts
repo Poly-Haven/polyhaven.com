@@ -51,7 +51,11 @@ export const COURSE_SEO: Record<string, CourseSeo> = {
     about: ['Photogrammetry', '3D scanning', 'Blender', 'Environment art', 'PBR texturing'],
     offers: [
       // Mirrors the prices rendered by CourseCallToAction in Photogrammetry.tsx.
-      { price: '7', url: 'https://www.patreon.com/polyhaven', category: 'Subscription' },
+      {
+        price: '7',
+        url: 'https://www.patreon.com/checkout/polyhaven?rid=29202719&cadence=12',
+        category: 'Subscription',
+      },
       {
         price: '39',
         url: 'https://superhivemarket.com/products/polyhaven-production-photogrammetry?ref=3841',

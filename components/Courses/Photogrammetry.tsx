@@ -22,11 +22,10 @@ const PROMO = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/prom
 const THUMB_CDN = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/chapter_thumbs'
 const DISCORD_URL = 'https://discord.gg/Dms7Mrs'
 
-// Access gating mirrors api/videoUrl.ts — still the placeholder "Offline Access"
-// reward until the dedicated $7 course tier exists. TODO: swap for the course reward.
-const REQUIRED_REWARD = 'Offline Access'
-// TODO: real checkout link for the new $7/mo course tier (rid unknown until it's created).
-const PATREON_JOIN_URL = 'https://www.patreon.com/polyhaven'
+// Access gating mirrors api/videoUrl.ts.
+const REQUIRED_REWARD = 'Course Access'
+// Checkout for the $7 Course Access tier (rid = its id in constants/patreon_tiers.json).
+const PATREON_JOIN_URL = 'https://www.patreon.com/checkout/polyhaven?rid=29202719&cadence=12'
 const SUPERHIVE_URL = 'https://superhivemarket.com/products/polyhaven-production-photogrammetry?ref=3841'
 
 // The whole pipeline in three beats, paired with the trailer's differentiation pitch.
@@ -75,7 +74,7 @@ type Stage = {
 }
 
 // The course's 6 chapters, reframed as an outcome-led journey (the chapter list
-// itself lives further down). Media is placeholder.
+// itself lives further down).
 //
 // `software`/`techniques` mirror the per-chapter spec boxes on the Superhive listing:
 // "which tools do I actually need, and where?" is the most common question a course

@@ -10,6 +10,7 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 import Other from 'components/RewardInfo/Other'
 import EarlyAccess from 'components/RewardInfo/EarlyAccess'
 import OfflineAccess from 'components/RewardInfo/OfflineAccess'
+import CourseAccess from 'components/RewardInfo/CourseAccess'
 import Sponsor from 'components/RewardInfo/Sponsor'
 import Stakeholder from 'components/RewardInfo/Stakeholder'
 import LinkText from 'components/LinkText/LinkText'
@@ -22,6 +23,8 @@ const rewardInfo = (r, uuid, patron) => {
       return <EarlyAccess />
     case 'Offline Access':
       return <OfflineAccess uuid={uuid} patron={patron} />
+    case 'Course Access':
+      return <CourseAccess />
     case 'Sponsor':
       return <Sponsor uuid={uuid} patron={patron} />
     case 'Stakeholder':

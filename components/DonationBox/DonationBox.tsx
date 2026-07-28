@@ -6,16 +6,17 @@ import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
 import Blender from 'components/UI/Icons/Blender'
 
-import { TbCalendarSearch, TbCloudDown } from 'react-icons/tb'
-import { IoTicket, IoLockOpen } from 'react-icons/io5'
+import { TbCalendarSearch, TbCloudDown, TbSchool } from 'react-icons/tb'
+import { IoLockOpen } from 'react-icons/io5'
 
 import styles from './DonationBox.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 
+// rid = the tier's id in constants/patreon_tiers.json.
 const tiers = {
   3: 'https://www.patreon.com/checkout/polyhaven?rid=6545091&cadence=12',
   5: 'https://www.patreon.com/checkout/polyhaven?rid=6545111&cadence=12',
-  10: 'https://www.patreon.com/checkout/polyhaven?rid=2011184&cadence=12',
+  7: 'https://www.patreon.com/checkout/polyhaven?rid=29202719&cadence=12',
 }
 
 const oneTimeTiers = [25, 50, 100]
@@ -92,17 +93,16 @@ const DonationBox = () => {
       cost: 5,
     },
     {
+      // New key rather than reusing b6: that key's translations all say "sponsor an
+      // asset", so reusing it would show stale text in every non-English locale.
+      // Untranslated locales fall back to English instead.
       text: (
         <span>
-          <Trans
-            i18nKey="common:donation-box.b6"
-            t={t}
-            components={{ lnk: <Link href={`https://www.patreon.com/posts/53488947`} /> }}
-          />
+          <Trans i18nKey="common:donation-box.b6-course" t={t} components={{ lnk: <Link href={`/learn`} /> }} />
         </span>
       ),
-      icon: <IoTicket />,
-      cost: 10,
+      icon: <TbSchool />,
+      cost: 7,
     },
   ]
 
