@@ -9,6 +9,7 @@ import { IoMdLogIn } from 'react-icons/io'
 import { PiStudentFill } from 'react-icons/pi'
 
 import useStoredState from 'hooks/useStoredState'
+import useMediaQuery, { MOBILE_QUERY } from 'hooks/useMediaQuery'
 
 import NavItem from './NavItem'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
@@ -26,7 +27,13 @@ const Nav = () => {
   const [suggestedLocale, setSuggestedLocale] = useState()
   const [suggestLocale, setSuggestLocale] = useStoredState('suggestLocale', true)
   const [navHide, setToggle] = useState(true)
+  const [localeOpen, setLocaleOpen] = useState(false)
   const [renderLocaleFlags, setRenderLocaleFlags] = useState(false)
+  const isMobile = useMediaQuery(MOBILE_QUERY)
+
+  // The nav drawer and the locale panel are the same kind of overlay, and only
+  // one can be open at a time.
+  const overlayOpen = isMobile && (!navHide || localeOpen)
 
   useEffect(() => {
     const fetchHeaders = async () => {
@@ -77,33 +84,38 @@ const Nav = () => {
     }
   }, [])
 
+  const closeOverlays = () => {
+    setToggle(true)
+    setLocaleOpen(false)
+  }
+
   const toggle = () => {
+    setLocaleOpen(false)
     setToggle(!navHide)
   }
 
-  // Close the mobile drawer whenever we navigate away.
+  // Close whatever is open whenever we navigate away.
   useEffect(() => {
-    const close = () => setToggle(true)
-    router.events.on('routeChangeComplete', close)
-    return () => router.events.off('routeChangeComplete', close)
+    router.events.on('routeChangeComplete', closeOverlays)
+    return () => router.events.off('routeChangeComplete', closeOverlays)
   }, [router.events])
 
-  // While the drawer is open, close on Escape and stop the page behind it from scrolling.
+  // While an overlay is open, close on Escape and stop the page behind it from scrolling.
   useEffect(() => {
-    if (navHide) return
+    if (!overlayOpen) return
 
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') setToggle(true)
+      if (e.key === 'Escape') closeOverlays()
     }
     // #page is the app's scroll container; body covers pages that scroll the document instead.
     const scrollTargets = [document.body, document.getElementById('page')].filter(Boolean)
     const prevOverflow = scrollTargets.map((el) => el.style.overflow)
     scrollTargets.forEach((el) => (el.style.overflow = 'hidden'))
 
-    // The header owns the stacking context the drawer lives in, so the drawer
-    // can't out-stack the cookie banner (999) on its own. Raise it for as long
-    // as the drawer is open, rather than globally - at rest the header must stay
-    // below the lightbox.
+    // The header owns the stacking context the overlays live in, so they can't
+    // out-stack the cookie banner (999) on their own. Raise it for as long as
+    // one is open, rather than globally - at rest the header must stay below
+    // the lightbox.
     const header = document.getElementById('mainheader')
     const prevZIndex = header?.style.zIndex
     if (header) header.style.zIndex = '1001'
@@ -115,7 +127,7 @@ const Nav = () => {
       if (header) header.style.zIndex = prevZIndex
       window.removeEventListener('keydown', onKeyDown)
     }
-  }, [navHide])
+  }, [overlayOpen])
 
   // Project lighthouse, remove after deadline
   const submissionDeadline = '2026-05-01T23:59:59.999Z'
@@ -126,7 +138,7 @@ const Nav = () => {
 
   return (
     <>
-      {!navHide ? <div className={styles.backdrop} onClick={() => setToggle(true)} /> : null}
+      {overlayOpen ? <div className={styles.backdrop} onClick={closeOverlays} /> : null}
 
       <div
         id="main-nav"
@@ -278,6 +290,14 @@ const Nav = () => {
           compact={true}
           text={<LocaleFlag locale={router.locale} flag={locales[router.locale].flag} />}
           onMouseEnter={() => setRenderLocaleFlags(true)}
+          open={localeOpen}
+          onToggle={() => {
+            // Desktop keeps the hover dropdown; only mobile taps to open a panel.
+            if (!isMobile) return
+            setRenderLocaleFlags(true)
+            setToggle(true)
+            setLocaleOpen(!localeOpen)
+          }}
         >
           {Object.keys(locales).map(
             (l) =>

@@ -46,6 +46,17 @@ $mobileBreakpoint: 890px;
   }
 }
 
+// A submenu row with no destination renders as a <button> so it can be tapped
+// and focused; strip the UA chrome so it matches the links beside it.
+button.navItem {
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .navItemMenuFlag {
   &::after {
     pointer-events: none;
@@ -330,6 +341,7 @@ $mobileBreakpoint: 890px;
 
   .nav .navItemWrapper > .subNav .navItem {
     height: auto;
+    flex-shrink: 0;
     padding: 0 0.8rem;
     border-left: 1em solid $c-background-light;
 
@@ -342,6 +354,40 @@ $mobileBreakpoint: 890px;
     max-height: 40em;
     visibility: visible;
     opacity: 1;
+  }
+
+  // Locale menu. Same overlay as the drawer, but tap-triggered rather than
+  // hover, and it keeps its narrower rows - 26 locales at 3em would be absurd.
+  .compactNavItemWrapper:hover > .subNav {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .compactNavItemWrapper.expanded > .subNav {
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 2;
+    width: min(85vw, 20rem);
+    min-width: 0;
+    max-height: none;
+    flex-wrap: nowrap;
+    visibility: visible;
+    opacity: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: -0.2em 0 0.6em rgba(black, 0.4);
+    @include dark_scrollbar;
+  }
+
+  // Matches the compact height the dropdown already uses on desktop.
+  .compactNavItemWrapper.expanded > .subNav .navItem {
+    height: auto;
+    min-height: 1.3rem;
+    flex-shrink: 0;
   }
 }
 
