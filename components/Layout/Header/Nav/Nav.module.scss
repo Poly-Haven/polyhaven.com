@@ -208,10 +208,11 @@ button.navItem {
     background: $c-accent;
     color: white;
   }
+}
 
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: grid;
-  }
+.localeArea {
+  display: flex;
+  height: 100%;
 }
 
 .suggestedLocale {
@@ -243,14 +244,21 @@ button.navItem {
 }
 
 // ---------------------------------------------------------------------------
-// Mobile drawer
+// Drawer mode
+//
+// Emitted twice, below. How wide the horizontal bar needs to be depends on how
+// long the nav labels are in the active locale - English fits in ~1000px, Greek
+// needs ~1256px - so a single breakpoint can't be right for everyone. Nav
+// measures the bar and sets `narrowNav` on the header when it no longer fits.
+// The media query stays as a floor so phones still get the drawer on the first
+// paint, before that measurement has run.
 //
 // Everything here is scoped under `.nav` so the locale picker (which lives
 // outside it, in the header bar) keeps its existing dropdown behaviour.
 // Selectors are deliberately specific enough to beat the desktop `:hover`
 // rules above, which touch devices still emulate on tap.
 // ---------------------------------------------------------------------------
-@media screen and (max-width: $mobileBreakpoint) {
+@mixin drawerMode {
   .backdrop {
     display: block;
     position: fixed;
@@ -414,10 +422,21 @@ button.navItem {
     min-height: 44px;
     flex-shrink: 0;
   }
-}
 
-.hiddenMobile {
-  @media screen and (max-width: $mobileBreakpoint) {
+  .menuToggle {
+    display: grid;
+  }
+
+  .hiddenMobile {
     display: none;
   }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+  @include drawerMode;
+}
+
+// Set on #mainheader by Nav once it has measured that the bar no longer fits.
+:global(.narrowNav) {
+  @include drawerMode;
 }

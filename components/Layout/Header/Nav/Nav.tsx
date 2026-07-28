@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import locales from 'utils/locales'
@@ -10,6 +10,7 @@ import { PiStudentFill } from 'react-icons/pi'
 
 import useStoredState from 'hooks/useStoredState'
 import useMediaQuery, { MOBILE_QUERY } from 'hooks/useMediaQuery'
+import useDivSize from 'hooks/useDivSize'
 
 import NavItem from './NavItem'
 import LocaleFlag from 'components/Layout/Header/Nav/LocaleFlag'
@@ -29,11 +30,24 @@ const Nav = () => {
   const [navHide, setToggle] = useState(true)
   const [localeOpen, setLocaleOpen] = useState(false)
   const [renderLocaleFlags, setRenderLocaleFlags] = useState(false)
-  const isMobile = useMediaQuery(MOBILE_QUERY)
+
+  const navRef = useRef(null)
+  const localeAreaRef = useRef(null)
+  const headerRef = useRef(null)
+  const [headerFound, setHeaderFound] = useState(false)
+  const { width: headerWidth } = useDivSize(headerRef, [headerFound])
+  const [requiredWidth, setRequiredWidth] = useState(0)
+
+  // How wide the horizontal bar needs to be depends on the locale's label
+  // lengths, so there's no single breakpoint that's right for all of them.
+  // The media query is the floor (phones are always narrow, and it applies
+  // before any of this has run); above it we go by the measured width.
+  const isMobileViewport = useMediaQuery(MOBILE_QUERY)
+  const isNarrow = isMobileViewport || (requiredWidth > 0 && headerWidth > 0 && headerWidth < requiredWidth)
 
   // The nav drawer and the locale panel are the same kind of overlay, and only
   // one can be open at a time.
-  const overlayOpen = isMobile && (!navHide || localeOpen)
+  const overlayOpen = isNarrow && (!navHide || localeOpen)
 
   useEffect(() => {
     const fetchHeaders = async () => {
@@ -83,6 +97,48 @@ const Nav = () => {
       fetchHeaders()
     }
   }, [])
+
+  useEffect(() => {
+    headerRef.current = document.getElementById('mainheader')
+    setHeaderFound(true)
+  }, [])
+
+  // Measure how much room the horizontal bar wants. Only possible while it's
+  // actually laid out horizontally - once we've switched to the drawer the
+  // measurement is meaningless - but the answer only depends on the locale, so
+  // the cached value stays valid for as long as we're in drawer mode. If the
+  // page loads narrow we never measure, and the media query floor covers us
+  // until the viewport is wide enough to lay the bar out again.
+  useEffect(() => {
+    if (isNarrow) return
+
+    const measure = () => {
+      const nav = navRef.current
+      const localeArea = localeAreaRef.current
+      const logo = document.getElementById('header-logo')
+      if (!nav || !localeArea) return
+
+      // scrollWidth, not offsetWidth: these are flex items, so they're already
+      // squashed when the bar is overflowing, which is exactly when we care.
+      const natural = nav.scrollWidth + localeArea.scrollWidth + (logo ? logo.scrollWidth : 0)
+      // Switch a little before it's genuinely tight, so resizing across the
+      // threshold can't oscillate.
+      setRequiredWidth(natural + 8)
+    }
+
+    measure()
+    // Webfonts change the text metrics, so the first measurement can be short.
+    document.fonts?.ready.then(measure)
+  }, [isNarrow, router.locale, user])
+
+  // The drawer rules key off this, since the header is the only common ancestor
+  // of the nav, the locale panel and the backdrop.
+  useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+    header.classList.toggle('narrowNav', isNarrow)
+    return () => header.classList.remove('narrowNav')
+  }, [isNarrow, headerFound])
 
   const closeOverlays = () => {
     setToggle(true)
@@ -142,6 +198,7 @@ const Nav = () => {
 
       <div
         id="main-nav"
+        ref={navRef}
         className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`}
         onClick={() => {
           setToggle(true)
@@ -269,7 +326,7 @@ const Nav = () => {
         )}
       </div>
 
-      <div style={{ height: '100%', display: 'flex' }}>
+      <div className={styles.localeArea} ref={localeAreaRef}>
         {suggestedLocale && suggestLocale ? (
           <div className={styles.suggestedLocale}>
             <NavItem
@@ -292,8 +349,8 @@ const Nav = () => {
           onMouseEnter={() => setRenderLocaleFlags(true)}
           open={localeOpen}
           onToggle={() => {
-            // Desktop keeps the hover dropdown; only mobile taps to open a panel.
-            if (!isMobile) return
+            // Desktop keeps the hover dropdown; only the drawer taps to open a panel.
+            if (!isNarrow) return
             setRenderLocaleFlags(true)
             setToggle(true)
             setLocaleOpen(!localeOpen)
