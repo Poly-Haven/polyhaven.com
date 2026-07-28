@@ -81,6 +81,42 @@ const Nav = () => {
     setToggle(!navHide)
   }
 
+  // Close the mobile drawer whenever we navigate away.
+  useEffect(() => {
+    const close = () => setToggle(true)
+    router.events.on('routeChangeComplete', close)
+    return () => router.events.off('routeChangeComplete', close)
+  }, [router.events])
+
+  // While the drawer is open, close on Escape and stop the page behind it from scrolling.
+  useEffect(() => {
+    if (navHide) return
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setToggle(true)
+    }
+    // #page is the app's scroll container; body covers pages that scroll the document instead.
+    const scrollTargets = [document.body, document.getElementById('page')].filter(Boolean)
+    const prevOverflow = scrollTargets.map((el) => el.style.overflow)
+    scrollTargets.forEach((el) => (el.style.overflow = 'hidden'))
+
+    // The header owns the stacking context the drawer lives in, so the drawer
+    // can't out-stack the cookie banner (999) on its own. Raise it for as long
+    // as the drawer is open, rather than globally - at rest the header must stay
+    // below the lightbox.
+    const header = document.getElementById('mainheader')
+    const prevZIndex = header?.style.zIndex
+    if (header) header.style.zIndex = '1001'
+
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      scrollTargets.forEach((el, i) => (el.style.overflow = prevOverflow[i]))
+      if (header) header.style.zIndex = prevZIndex
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [navHide])
+
   // Project lighthouse, remove after deadline
   const submissionDeadline = '2026-05-01T23:59:59.999Z'
   const currentTime = new Date().toISOString()
@@ -90,7 +126,10 @@ const Nav = () => {
 
   return (
     <>
+      {!navHide ? <div className={styles.backdrop} onClick={() => setToggle(true)} /> : null}
+
       <div
+        id="main-nav"
         className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`}
         onClick={() => {
           setToggle(true)
@@ -256,9 +295,16 @@ const Nav = () => {
         </NavItem>
       </div>
 
-      <div className={styles.menuToggle} onClick={toggle}>
+      <button
+        type="button"
+        className={styles.menuToggle}
+        onClick={toggle}
+        aria-expanded={!navHide}
+        aria-controls="main-nav"
+        aria-label={t('common:nav.menu', 'Menu')}
+      >
         {navHide ? <MdMenu /> : <MdExpandLess />}
-      </div>
+      </button>
     </>
   )
 }

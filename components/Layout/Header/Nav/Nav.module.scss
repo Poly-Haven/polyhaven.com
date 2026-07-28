@@ -7,35 +7,6 @@ $mobileBreakpoint: 890px;
 .nav {
   @include flex(row);
   height: 100%;
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    @include flex(column);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 50%;
-    background: $c-background-dark;
-    height: auto;
-
-    .navItem {
-      min-height: 3em;
-    }
-
-    .subNav {
-      visibility: visible;
-      opacity: 1;
-      position: relative;
-
-      .navItem {
-        padding: 0 0.8rem;
-        border-left: 1em solid $c-background-light;
-
-        &:hover {
-          border-left: 1em solid $c-accent-light;
-        }
-      }
-    }
-  }
 }
 
 .navItem {
@@ -175,6 +146,20 @@ $mobileBreakpoint: 890px;
   }
 }
 
+// Accordion control for submenus inside the mobile drawer. Desktop uses :hover instead.
+.expandToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+// Dims the page behind the open mobile drawer, and closes it when tapped.
+.backdrop {
+  display: none;
+}
+
 .menuToggle {
   display: none;
   place-items: center;
@@ -183,6 +168,10 @@ $mobileBreakpoint: 890px;
   padding: 0 1rem;
   line-height: 0;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
   @include transition;
 
   &:hover {
@@ -192,12 +181,6 @@ $mobileBreakpoint: 890px;
 
   @media screen and (max-width: $mobileBreakpoint) {
     display: grid;
-  }
-}
-
-.hiddenMobile {
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: none;
   }
 }
 
@@ -226,5 +209,144 @@ $mobileBreakpoint: 890px;
       color: white;
       cursor: pointer;
     }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Mobile drawer
+//
+// Everything here is scoped under `.nav` so the locale picker (which lives
+// outside it, in the header bar) keeps its existing dropdown behaviour.
+// Selectors are deliberately specific enough to beat the desktop `:hover`
+// rules above, which touch devices still emulate on tap.
+// ---------------------------------------------------------------------------
+@media screen and (max-width: $mobileBreakpoint) {
+  .backdrop {
+    display: block;
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(black, 0.5);
+  }
+
+  .nav {
+    @include flex(column);
+    // Pinned to the viewport rather than the fixed header, so it can own its
+    // own scroll. `bottom: 0` instead of a 100vh height: mobile browser chrome
+    // makes 100vh taller than the visible area.
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 2;
+    width: min(85vw, 20rem);
+    height: auto;
+    background: $c-background-dark;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: -0.2em 0 0.6em rgba(black, 0.4);
+    @include dark_scrollbar;
+  }
+
+  // Rows keep their height once the list overflows the drawer.
+  .nav > .navItemWrapper {
+    flex-shrink: 0;
+  }
+
+  // `height: 100%` is for the horizontal desktop bar; in the drawer it would
+  // resolve against an expanded wrapper and swallow the submenu below it.
+  .nav .navItem {
+    height: auto;
+    min-height: 3em;
+  }
+
+  .nav > .navItemWrapper > .navItem {
+    border-left: none;
+    border-bottom: 1px solid $c-background;
+  }
+
+  // Leave room for the expand toggle, and drop the desktop corner flag.
+  .nav > .navItemMenuFlag > .navItem {
+    padding-right: 3.5rem;
+  }
+
+  .nav > .navItemMenuFlag::after {
+    content: none;
+  }
+
+  .nav .expandToggle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    // Match the row's own 3em at the nav item's 1rem, not the header's 1.2rem.
+    font-size: 1rem;
+    width: 3em;
+    height: 3em;
+    padding: 0;
+    border-left: 1px solid $c-background;
+    color: $c-text-light;
+    cursor: pointer;
+    @include transition;
+
+    svg {
+      font-size: 1.4em;
+      @include transition;
+    }
+
+    &:hover {
+      background: $c-accent;
+      color: white;
+    }
+  }
+
+  .nav .navItemWrapper.expanded > .expandToggle svg {
+    transform: rotate(180deg);
+  }
+
+  // Submenus become collapsible sections rather than absolute dropdowns.
+  .nav .navItemWrapper > .subNav {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-wrap: nowrap;
+    min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: none;
+    transition:
+      max-height 0.25s ease,
+      opacity 0.15s ease,
+      visibility 0.15s ease;
+  }
+
+  .nav .navItemWrapper > .subNav .navItem {
+    height: auto;
+    padding: 0 0.8rem;
+    border-left: 1em solid $c-background-light;
+
+    &:hover {
+      border-left: 1em solid $c-accent-light;
+    }
+  }
+
+  .nav .navItemWrapper.expanded > .subNav {
+    max-height: 40em;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.hiddenMobile {
+  @media screen and (max-width: $mobileBreakpoint) {
+    display: none;
   }
 }
