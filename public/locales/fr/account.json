@@ -14,6 +14,12 @@
   "reward_one": "Cela vous accorde la récompense suivante :",
   "reward_other": "Cela vous accorde les récompenses suivantes :",
   "rewards": {
+    "course-access": {
+      "cta": "Aller aux cours",
+      "p1": "Votre adhésion comprend un accès complet à <lnk> nos cours </lnk>, diffusés directement ici sur le site.",
+      "p2": "Votre progression est enregistrée dans votre compte, vous pouvez donc reprendre là où vous vous étiez arrêté sur n'importe quel appareil.",
+      "title": "Accès au cours"
+    },
     "credit": {
       "invalid": "Nom invalide",
       "p1": "Votre nom est actuellement",

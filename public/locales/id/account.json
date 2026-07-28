@@ -14,6 +14,12 @@
   "reward_one": "Ini memberi Anda hadiah berikut:",
   "reward_other": "Ini memberi Anda hadiah berikut:",
   "rewards": {
+    "course-access": {
+      "cta": "Pergi ke kursus",
+      "p1": "Keanggotaan Anda mencakup akses penuh ke <lnk>kursus kami</lnk>, yang disiarkan langsung di sini di situs.",
+      "p2": "Kemajuan Anda disimpan di akun Anda, sehingga Anda dapat melanjutkan dari tempat Anda berhenti di perangkat mana pun.",
+      "title": "Akses Kursus"
+    },
     "credit": {
       "invalid": "Nama tidak sah",
       "p1": "Nama Anda saat ini",

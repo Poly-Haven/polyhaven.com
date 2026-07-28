@@ -14,6 +14,12 @@
   "reward_one": "Bu size aşağıdaki ödülü verir:",
   "reward_other": "Bu size aşağıdaki ödülleri verir:",
   "rewards": {
+    "course-access": {
+      "cta": "Kurslara git",
+      "p1": "Üyeliğiniz, <lnk>kurslarımıza</lnk> tam erişim içerir, burada sitede yayınlanmaktadır.",
+      "p2": "İlerlemeniz hesabınıza kaydedilir, böylece herhangi bir cihazda kaldığınız yerden devam edebilirsiniz.",
+      "title": "Kurs Erişimi"
+    },
     "credit": {
       "invalid": "Geçersiz isim",
       "p1": "Adınız şu anda mevcut",

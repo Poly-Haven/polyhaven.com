@@ -14,6 +14,12 @@
   "reward_one": "Time dobivate sljedeću nagradu:",
   "reward_other": "Time dobivate sljedeće nagrade:",
   "rewards": {
+    "course-access": {
+      "cta": "Idite na tečajeve",
+      "p1": "Vaše članstvo uključuje potpuni pristup <lnk> našim tečajevima </lnk>, koji se emitiraju upravo ovdje na stranici.",
+      "p2": "Vaš napredak se sprema na vaš račun, tako da možete nastaviti gdje ste stali na bilo kojem uređaju.",
+      "title": "Pristup tečaju"
+    },
     "credit": {
       "invalid": "Nevažeći naziv",
       "p1": "Vaše ime je trenutno",

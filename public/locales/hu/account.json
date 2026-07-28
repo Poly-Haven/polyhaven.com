@@ -14,6 +14,12 @@
   "reward_one": "Ezzel a következő jutalmat kapod:",
   "reward_other": "Ezzel a következő jutalmakat kapod:",
   "rewards": {
+    "course-access": {
+      "cta": "Menj a kurzusokhoz",
+      "p1": "A tagságod teljes hozzáférést biztosít <lnk>az kurzusainkhoz</lnk>, amelyek közvetlenül itt, a weboldalon érhetők el.",
+      "p2": "A haladásod elmentésre kerül a fiókodba, így bármely eszközön ott folytathatod, ahol abbahagytad.",
+      "title": "Kurzus hozzáférés"
+    },
     "credit": {
       "invalid": "Érvénytelen név",
       "p1": "Az Ön neve jelenleg",

@@ -14,6 +14,12 @@
   "reward_one": "Dit gee jou die volgende beloning:",
   "reward_other": "Dit gee jou die volgende belonings:",
   "rewards": {
+    "course-access": {
+      "cta": "Gaan na kursusse",
+      "p1": "Jou lidmaatskap sluit volle toegang tot <lnk>ons kursusse</lnk> in, wat reg hier op die webwerf gestroom word.",
+      "p2": "Jou vordering word na jou rekening gestoor, sodat jy kan voortgaan waar jy opgehou het op enige toestel.",
+      "title": "Kursus Toegang"
+    },
     "credit": {
       "invalid": "Ongeldige naam",
       "p1": "Jou naam is tans",

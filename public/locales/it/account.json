@@ -14,6 +14,12 @@
   "reward_one": "Questo ti garantisce la seguente ricompensa:",
   "reward_other": "Questo ti garantisce i seguenti premi:",
   "rewards": {
+    "course-access": {
+      "cta": "Vai ai corsi",
+      "p1": "La tua iscrizione include l'accesso completo ai <lnk> nostri corsi </lnk>, trasmessi proprio qui sul sito.",
+      "p2": "I tuoi progressi sono salvati nel tuo account, quindi puoi riprendere da dove hai interrotto su qualsiasi dispositivo.",
+      "title": "Accesso ai corsi"
+    },
     "credit": {
       "invalid": "Nome non valido",
       "p1": "Il tuo nome è attualmente",

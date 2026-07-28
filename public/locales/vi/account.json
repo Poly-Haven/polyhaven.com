@@ -14,6 +14,12 @@
   "reward_one": "Điều này sẽ cấp cho bạn phần thưởng sau:",
   "reward_other": "Điều này sẽ cấp cho bạn các phần thưởng sau:",
   "rewards": {
+    "course-access": {
+      "cta": "Đi đến các khóa học",
+      "p1": "Thành viên của bạn bao gồm quyền truy cập đầy đủ vào <lnk> các khóa học của chúng tôi </lnk>, được phát trực tiếp ngay tại đây trên trang web.",
+      "p2": "Tiến trình của bạn được lưu vào tài khoản của bạn, vì vậy bạn có thể tiếp tục từ nơi bạn đã dừng lại trên bất kỳ thiết bị nào.",
+      "title": "Quyền truy cập khóa học"
+    },
     "credit": {
       "invalid": "Tên không hợp lệ",
       "p1": "Tên của bạn hiện tại là",
