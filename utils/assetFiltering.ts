@@ -99,6 +99,17 @@ export const categoryCounts = (data: Record<string, any>): Record<string, number
   return counts
 }
 
+/** How many assets each author contributed to, for the author filter's options. */
+export const authorCounts = (data: Record<string, any>): Record<string, number> => {
+  const counts: Record<string, number> = {}
+  for (const asset of Object.values(data)) {
+    for (const author of Object.keys(asset?.authors || {})) {
+      counts[author] = (counts[author] || 0) + 1
+    }
+  }
+  return counts
+}
+
 /** How many assets have each value of each attribute (used to show/hide facet options). */
 export const attributeCounts = (data: Record<string, any>, assetType: string): Record<string, Record<string, number>> => {
   const schema = attributeSchema[assetType] || {}

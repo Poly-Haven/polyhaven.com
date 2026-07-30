@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce'
 import { v4 as uuid } from 'uuid'
 import apiSWR from 'utils/apiSWR'
 import { attributeFiltersFromQuery } from 'utils/assetFiltering'
+import { setQueryShallow } from 'utils/shallowQuery'
 
 import Sidebar from 'components/Library/Sidebar/Sidebar'
 import Grid from 'components/Library/Grid/Grid'
@@ -21,7 +22,14 @@ const Library = ({ assetType, collections, collection, vault, categoryPath, auth
   // so they're shareable and survive a reload.
   const attributes = useMemo(() => attributeFiltersFromQuery(router.query || {}, assetType), [router.query, assetType])
   const searchState = typeof router.query.s === 'string' ? router.query.s : search
-  const [authorState, setAuthor] = useState(author)
+  // The author filter keeps its long-standing ?a= param, so existing links to an author's work
+  // still work — it's just driven from the URL now instead of local state.
+  const authorState = typeof router.query.a === 'string' ? router.query.a : author
+  const setAuthor = (value) =>
+    setQueryShallow(router, (query) => {
+      if (value) query.a = value
+      else delete query.a
+    })
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
   const [sortState, setSort] = useStoredState('library_sort', sort)
   const [libSessionID, _] = useState(uuid()) // Anonymous session ID used to help determine synonyms in search tracking
@@ -46,15 +54,16 @@ const Library = ({ assetType, collections, collection, vault, categoryPath, auth
 
   const setSearchDebounced = useCallback(
     debounce((newSearchText) => {
-      const r = routerRef.current
-      const query = { ...r.query }
-      delete query.assets // the catch-all route param isn't a real query value
-      delete query.strict // typing a new term drops the exact-tag-match mode, so drop it from the URL too
-      if (newSearchText) query.s = newSearchText
-      else delete query.s
-      // Shallow, so the URL stays shareable but no navigation or refetch happens. `replace` rather
-      // than `push` so typing doesn't fill the history with an entry per pause.
-      r.replace({ pathname: r.asPath.split('?')[0], query }, undefined, { shallow: true })
+      // `replace` rather than `push` so typing doesn't fill the history with an entry per pause.
+      setQueryShallow(
+        routerRef.current,
+        (query) => {
+          delete query.strict // a new term drops exact-tag-match mode, so drop it from the URL too
+          if (newSearchText) query.s = newSearchText
+          else delete query.s
+        },
+        { replace: true }
+      )
       setStrictSearch(false)
     }, 300),
     []
@@ -73,6 +82,7 @@ const Library = ({ assetType, collections, collection, vault, categoryPath, auth
         assetType={assetType}
         categoryPath={categoryPath}
         attributes={attributes}
+        author={authorState}
         collection={collection}
         vault={vault}
       />

@@ -169,4 +169,9 @@
 .show {
   opacity: 1;
   visibility: visible;
+  // Long option lists (e.g. every author in the library) must scroll rather than run off-screen.
+  // Only while open, so the closed state keeps its clipped collapse.
+  max-height: 60vh;
+  overflow-y: auto;
+  @include dark_scrollbar();
 }

@@ -212,29 +212,48 @@
   padding: 0.5em 0.3em 1em;
   text-transform: none;
 }
+// Doubles as the divider between the category tree and the filters: a centred label with an
+// equal-length rule either side. Both rules flex from 0, so they stay the same length whatever
+// the label says (including once translated).
 .attrHeader {
   @include flex(row, true, false);
-  justify-content: space-between;
-  padding: 0 0.3em 0.3em;
+  gap: 0.6em;
+  padding: 0.2em 0.3em 0.5em;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1 1 0;
+    height: 1px;
+    background: $c-background-lightish;
+  }
 
   h3 {
+    @include flex(row, true, false);
+    gap: 0.3em;
     margin: 0;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    opacity: 0.6;
+    flex: none;
+    font-size: 0.95em;
+    font-weight: normal;
+    color: $c-text-light;
+    opacity: 0.7;
   }
 }
 .attrClear {
+  @include flex(row, true, true);
   background: none;
   border: none;
-  color: $c-accent-light;
-  font-size: 0.8em;
+  color: $c-text-light;
+  font-size: 1.1em;
+  line-height: 0;
   cursor: pointer;
   padding: 0;
+  opacity: 0.5;
+  @include transition();
 
   &:hover {
-    text-decoration: underline;
+    opacity: 1;
+    color: $c-accent-light;
   }
 }
 .attrGroup {
@@ -252,11 +271,13 @@
 }
 .attrCheckbox {
   flex: none;
-  margin: 0;
-  width: 0.95em;
-  height: 0.95em;
-  accent-color: $c-accent;
-  pointer-events: none; // the whole chip is the click target
+  font-size: 1.15em;
+  line-height: 0;
+  margin-left: -0.15em; // pull the icon's own padding back so the pill stays snug
+  opacity: 0.75;
+}
+.attrChipOn .attrCheckbox {
+  opacity: 1;
 }
 .attrValues {
   @include flex(row, true, false);

@@ -1,11 +1,17 @@
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdClose } from 'react-icons/md'
 
 import { attributeSchema } from 'utils/taxonomy'
-import { attributeCounts } from 'utils/assetFiltering'
+import { attributeCounts, authorCounts } from 'utils/assetFiltering'
+import { setQueryShallow } from 'utils/shallowQuery'
+
+import Dropdown from 'components/UI/Dropdown/Dropdown'
 
 import styles from './Sidebar.module.scss'
+
+const ANY_AUTHOR = '__any'
 
 /**
  * Facet filters for asset attributes (weather, condition, material, …).
@@ -21,7 +27,7 @@ import styles from './Sidebar.module.scss'
 
 const prettify = (value: string) => value.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
 
-const AttributeFilters = ({ assetType, assets, active }) => {
+const AttributeFilters = ({ assetType, assets, active, author }) => {
   const router = useRouter()
   const { t } = useTranslation('library')
 
@@ -30,31 +36,30 @@ const AttributeFilters = ({ assetType, assets, active }) => {
     () => (schema && assets ? attributeCounts(assets, assetType) : null),
     [schema, assets, assetType]
   )
+  // Authors of whatever is currently in scope, most prolific first.
+  const authors = useMemo(() => (assets ? authorCounts(assets) : null), [assets])
 
-  if (!schema || !assets || !counts) return null
+  if (!assets || !authors) return null
 
   const label = (key: string) => t(`attr.${key}`, { defaultValue: prettify(key) })
   const valueLabel = (value: string) => t(`attrValue.${value}`, { defaultValue: prettify(value) })
 
-  // Shallow so the URL reflects the filters without triggering a navigation/data fetch.
-  const pushQuery = (query: Record<string, any>) => {
-    delete query.assets // the catch-all route param isn't a real query value
-    router.push({ pathname: router.asPath.split('?')[0], query }, undefined, { shallow: true })
-  }
-
   const toggle = (key: string, value: string) => {
     const current = active[key] || []
     const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
-    const query = { ...router.query }
-    if (next.length) query[key] = next.join(',')
-    else delete query[key]
-    pushQuery(query)
+    setQueryShallow(router, (query) => {
+      if (next.length) query[key] = next.join(',')
+      else delete query[key]
+    })
   }
 
   const clearAll = () => {
-    const query = { ...router.query }
-    for (const key of Object.keys(schema)) delete query[key]
-    pushQuery(query)
+    setQueryShallow(router, (query) => {
+      // `schema` is undefined on /all, which has no per-type attributes but still offers the
+      // author filter.
+      for (const key of Object.keys(schema || {})) delete query[key]
+      delete query.a // the author filter lives in this panel too
+    })
   }
 
   const isBoolean = (spec: any) => spec.type === 'boolean' || spec.type === 'boolean|null'
@@ -78,14 +83,44 @@ const AttributeFilters = ({ assetType, assets, active }) => {
         onClick={() => toggle(key, value)}
         title={spec.description}
       >
-        {bool ? <input type="checkbox" className={styles.attrCheckbox} checked={on} readOnly tabIndex={-1} /> : null}
+        {bool ? (
+          <span className={styles.attrCheckbox}>{on ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}</span>
+        ) : null}
         {bool ? label(key) : valueLabel(value)}
         <span className={styles.attrCount}>{(counts[key] && counts[key][value]) || 0}</span>
       </button>
     )
   }
 
-  const entries = Object.entries(schema) as [string, any][]
+  // --- author -------------------------------------------------------------------------------
+  // Keeps the existing ?a= param so links to an author's work from elsewhere keep working.
+  const authorOptions = {
+    [ANY_AUTHOR]: { label: t('adv.any-author', { defaultValue: 'Anyone' }) },
+    ...Object.fromEntries(
+      Object.entries(authors)
+        .sort(([aName, aCount], [bName, bCount]) => bCount - aCount || aName.localeCompare(bName))
+        .map(([name, count]) => [name, { label: name, sub: String(count) }])
+    ),
+  }
+  const setAuthor = (value: string) => {
+    setQueryShallow(router, (query) => {
+      if (value && value !== ANY_AUTHOR) query.a = value
+      else delete query.a
+    })
+  }
+  const authorSection = Object.keys(authors).length ? (
+    <div className={styles.attrGroup}>
+      <div className={styles.attrLabel}>{t('author', { count: 1, defaultValue: 'Author' })}</div>
+      <Dropdown
+        value={author && authors[author] ? author : ANY_AUTHOR}
+        options={authorOptions}
+        onChange={setAuthor}
+        tooltipSide="right"
+      />
+    </div>
+  ) : null
+
+  const entries = Object.entries(schema || {}) as [string, any][]
 
   const enumSections = entries
     .filter(([, spec]) => !isBoolean(spec))
@@ -104,20 +139,28 @@ const AttributeFilters = ({ assetType, assets, active }) => {
     .filter(([, spec]) => isBoolean(spec))
     .flatMap(([key, spec]) => availableFor(key, spec).map((value) => chip(key, value, spec)))
 
-  if (!enumSections.some(Boolean) && !booleanChips.length) return null
+  if (!enumSections.some(Boolean) && !booleanChips.length && !authorSection) return null
 
-  const anyActive = Object.keys(schema).some((k) => (active[k] || []).length)
+  const anyActive = Boolean(author) || Object.keys(schema || {}).some((k) => (active[k] || []).length)
 
   return (
     <div className={styles.attrFilters}>
       <div className={styles.attrHeader}>
-        <h3>{t('attr.title', { defaultValue: 'Filters' })}</h3>
-        {anyActive ? (
-          <button type="button" className={styles.attrClear} onClick={clearAll}>
-            {t('attr.clear', { defaultValue: 'Clear' })}
-          </button>
-        ) : null}
+        <h3>
+          {t('attr.title', { defaultValue: 'Filters' })}
+          {anyActive ? (
+            <button
+              type="button"
+              className={styles.attrClear}
+              onClick={clearAll}
+              title={t('attr.clear', { defaultValue: 'Clear' })}
+            >
+              <MdClose />
+            </button>
+          ) : null}
+        </h3>
       </div>
+      {authorSection}
       {enumSections}
       {booleanChips.length ? (
         <div className={`${styles.attrGroup} ${styles.attrBooleans}`}>

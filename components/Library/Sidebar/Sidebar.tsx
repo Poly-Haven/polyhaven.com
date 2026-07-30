@@ -103,7 +103,12 @@ const Sidebar = (props) => {
             collection={props.collection}
             vault={props.vault}
           />
-          <AttributeFilters assetType={props.assetType} assets={scopedAssets} active={props.attributes || {}} />
+          <AttributeFilters
+            assetType={props.assetType}
+            assets={scopedAssets}
+            active={props.attributes || {}}
+            author={props.author}
+          />
           {props.assetType === 'all' && (
             <>
               <hr />
