@@ -93,7 +93,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
   const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
 
-  // Vault membership is a first-class field now; the legacy category string is only a fallback.
+  // Vault membership is a first-class field now. The legacy category string is only a fallback.
   let vault = data.vault || null
   if (!vault) {
     for (const cat of data.categories) {
@@ -411,15 +411,10 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               <CategoryBreadcrumb
                 assetType={assetTypeKey}
                 category={data.category}
-                label={t('categories')}
+                label={t('category', { defaultValue: 'Category' })}
                 t={tcat}
               />
-              <AssetAttributes
-                assetType={assetTypeKey}
-                attributes={data.attributes}
-                label={t('attributes', { defaultValue: 'Attributes' })}
-                t={tlib}
-              />
+              <AssetAttributes assetType={assetTypeKey} attributes={data.attributes} t={tlib} />
               <TagsList
                 label={t('tags')}
                 list={data.tags}

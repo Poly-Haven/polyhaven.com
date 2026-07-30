@@ -17,19 +17,22 @@ const CategoryBreadcrumb = ({ assetType, category, label, t }) => {
 
   const trail = [...ancestorsOf(assetType, node), node]
 
+  // Wrapped in a block so it doesn't run into whatever follows: InfoItem renders an inline span.
   return (
-    <InfoItem label={label}>
-      <span className={styles.catTrail}>
-        {trail.map((n, i) => (
-          <span key={n.path}>
-            {i > 0 ? <MdChevronRight className={styles.catTrailSep} /> : null}
-            <Link href={`/${assetType}/${n.slugPath}`} className={styles.catTrailCrumb} prefetch={false}>
-              {categoryLabel(t, n)}
-            </Link>
-          </span>
-        ))}
-      </span>
-    </InfoItem>
+    <div>
+      <InfoItem label={label}>
+        <span className={styles.catTrail}>
+          {trail.map((n, i) => (
+            <span key={n.path}>
+              {i > 0 ? <MdChevronRight className={styles.catTrailSep} /> : null}
+              <Link href={`/${assetType}/${n.slugPath}`} className={styles.catTrailCrumb} prefetch={false}>
+                {categoryLabel(t, n)}
+              </Link>
+            </span>
+          ))}
+        </span>
+      </InfoItem>
+    </div>
   )
 }
 

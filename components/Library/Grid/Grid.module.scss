@@ -57,29 +57,28 @@
       opacity: 0.35;
       font-size: 0.8em;
     }
+    // Plain text, underlined on hover only, following how links read elsewhere on the site.
     .crumb {
-      @include rounded();
       @include flex(row, true, false);
       gap: 0.3em;
-      padding: 0.1em 0.4em;
-      border: 1px solid transparent;
+      padding: 0 0.15em;
       color: $c-text-light;
       text-decoration: none;
+      box-shadow: none;
       @include transition();
 
       &:hover {
-        border-color: rgba($c-text-light, 0.25);
-        background: rgba($c-text-light, 0.06);
+        color: $c-accent-light;
+        box-shadow: 0 2px 0 $c-accent;
       }
     }
-    // The crumb you're currently on: subtly outlined so the trail has a clear end.
     .crumbCurrent {
-      border-color: rgba($c-text-light, 0.18);
-      background: rgba($c-text-light, 0.04);
+      opacity: 1;
     }
     .crumbAuthor {
       font-size: 0.75em;
       align-self: center;
+      opacity: 0.8;
     }
     .crumbClear {
       flex: none;

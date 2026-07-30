@@ -206,7 +206,7 @@
   background: rgba($c-text-light, 0.02);
 }
 
-// Attribute facet filters — qualities an asset has (weather, condition, material…), as opposed
+// Attribute facet filters - qualities an asset has (weather, condition, material…), as opposed
 // to the category it is. Sit below the category tree in the sidebar.
 .attrFilters {
   padding: 0.5em 0.3em 1em;
@@ -222,7 +222,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     flex: 1 1 0;
     height: 1px;
     background: $c-background-lightish;
@@ -243,17 +243,17 @@
   @include flex(row, true, true);
   background: none;
   border: none;
-  color: $c-text-light;
-  font-size: 1.1em;
+  color: $c-accent;
+  font-size: 1em;
   line-height: 0;
   cursor: pointer;
   padding: 0;
-  opacity: 0.5;
   @include transition();
 
   &:hover {
-    opacity: 1;
-    color: $c-accent-light;
+    color: $c-red;
+    transform: rotate(-90deg);
+    @include transition();
   }
 }
 .attrGroup {
@@ -313,6 +313,11 @@
 .attrCount {
   font-size: 0.85em;
   opacity: 0.65;
+}
+// Same inset as the chip rows, so the dropdown lines up with them and stays clear of the
+// sidebar's scrollbar rather than running under it.
+.attrDropdown {
+  padding: 0 0.2em;
 }
 
 .catSemiActive {

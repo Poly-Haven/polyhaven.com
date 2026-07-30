@@ -1,4 +1,5 @@
 {
+  "Clear author": "Clear author",
   "adv": {
     "show-names": "Always show text",
     "thumb-size": "Thumbnail size",
@@ -36,6 +37,31 @@
     "time_of_day": "Time of Day",
     "title": "Filters",
     "weather": "Weather"
+  },
+  "attrFull": {
+    "contrast": {
+      "high": "High contrast",
+      "low": "Low contrast",
+      "medium": "Medium contrast"
+    },
+    "light_type": {
+      "artificial": "Artificial light",
+      "mixed": "Mixed light",
+      "natural": "Natural light"
+    },
+    "surface_use": {
+      "ground": "Ground surface",
+      "object": "Object surface"
+    },
+    "weather": {
+      "clear": "Clear weather"
+    }
+  },
+  "attrNoun": {
+    "contrast": "contrast",
+    "light_type": "light",
+    "surface_use": "surface",
+    "weather": "weather"
   },
   "attrValue": {
     "afternoon": "Afternoon",
@@ -95,7 +121,6 @@
   },
   "backplates": "Includes a set of high-res background images.",
   "by-author": "by {{author}}",
-  "Clear author": "Clear author",
   "early-access": "Early Access",
   "geonodes": "This asset is made using Blender's geometry nodes and is only compatible with Blender 3.0+.",
   "lods": "This asset has multiple LODs (levels of detail) included.",

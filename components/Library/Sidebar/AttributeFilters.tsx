@@ -18,7 +18,7 @@ const ANY_AUTHOR = '__any'
  *
  * Attributes describe qualities an asset *has*, as opposed to the category, which is what an asset
  * *is*. They live in the query string so a filtered view can be linked and shared, and are applied
- * with shallow routing — the URL updates but no navigation happens, so filtering is instant and
+ * with shallow routing - the URL updates but no navigation happens, so filtering is instant and
  * costs no extra request.
  *
  * Booleans are only ever stored when true, so they render as self-describing checkbox chips with
@@ -111,12 +111,17 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
   const authorSection = Object.keys(authors).length ? (
     <div className={styles.attrGroup}>
       <div className={styles.attrLabel}>{t('author', { count: 1, defaultValue: 'Author' })}</div>
-      <Dropdown
-        value={author && authors[author] ? author : ANY_AUTHOR}
-        options={authorOptions}
-        onChange={setAuthor}
-        tooltipSide="right"
-      />
+      <div className={styles.attrDropdown}>
+        <Dropdown
+          value={author && authors[author] ? author : ANY_AUTHOR}
+          options={authorOptions}
+          onChange={setAuthor}
+          align="left"
+          mini
+          inline
+          tooltipSide="right"
+        />
+      </div>
     </div>
   ) : null
 
@@ -160,13 +165,13 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
           ) : null}
         </h3>
       </div>
-      {authorSection}
       {enumSections}
       {booleanChips.length ? (
         <div className={`${styles.attrGroup} ${styles.attrBooleans}`}>
           <div className={styles.attrValues}>{booleanChips}</div>
         </div>
       ) : null}
+      {authorSection}
     </div>
   )
 }

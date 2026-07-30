@@ -1,12 +1,12 @@
 {
   "add-yours": "Add yours",
-  "attributes": "Attributes",
   "author-donated": "This asset was donated to Poly Haven freely by the author :)",
   "author_one": "Author",
   "author_other": "Authors",
   "backplates": "Backplates",
   "backplates-description": "The images below are separate photos that you can use as high resolution background images in your render.<br />Depending on your render resolution and camera settings, sometimes an HDRI (even a very large one) might not have enough pixels to still appear sharp in the background of your render. In these cases you can use one of these backplates in the background instead, and use a lower resolution HDRI just for lighting and reflections.",
   "categories": "Categories",
+  "category": "Category",
   "cloud-sync": "Offline Access",
   "cloud-sync-d": "Support us with $5 per month and receive access to our cloud system, allowing you to sync our entire library to your hard drive.",
   "coming-soon": "Coming Soon!",

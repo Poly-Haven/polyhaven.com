@@ -239,12 +239,24 @@
       }
     }
 
+    // Attributes wrap freely rather than being clipped to one line: they carry their own meaning
+    // and have no header, so they must all be readable.
+    .attrPills {
+      @include flex(row, true, false);
+      flex-wrap: wrap;
+      gap: 0.2em;
+      padding: 0.3em 0 0.1em;
+    }
+
+    // Tags and attributes are the same sort of thing to a reader, so they get one shared look. The
+    // neutral outline sits back better than the old purple one, which competed with link colour.
     .tag {
       display: inline-block;
-      padding: 0.2em 0.4em;
+      padding: 0.2em 0.45em;
       margin: 0.1em;
-      border-radius: 0.3em;
-      border: 1px solid rgba($c-accent, 0.5);
+      @include rounded();
+      border: 1px solid rgba($c-text-light, 0.2);
+      background: rgba(white, 0.03);
       font-size: 0.75em;
       color: $c-text-light;
       white-space: nowrap;
@@ -253,12 +265,19 @@
 
       &:hover {
         background: $c-accent;
+        border-color: $c-accent;
         color: white;
       }
 
       svg {
         display: block;
       }
+    }
+    .attrPill {
+      @extend .tag;
+      margin: 0; // the wrapper spaces these with a flex gap instead
+      text-decoration: none;
+      box-shadow: none;
     }
     .expand {
       @extend .tag;
