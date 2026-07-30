@@ -46,7 +46,7 @@ const CatBanner = ({ assetType, collections }) => {
           const slug = images[node.slug]
           const imgUrl =
             assetType === 'models'
-              ? `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=180&width=180&quality=95`
+              ? `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=180&quality=95`
               : `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?aspect_ratio=1:1&height=180&quality=95`
           return (
             <Link
