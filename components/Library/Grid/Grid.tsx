@@ -21,6 +21,7 @@ import { filterAssets } from 'utils/assetFiltering'
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
+import Breadcrumbs from './Breadcrumbs'
 import Spinner from 'components/UI/Spinner/Spinner'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
@@ -290,20 +291,6 @@ const Grid = (props) => {
     }
   }
 
-  let title = tc(asset_type_name)
-  if (props.collection) {
-    title = ''
-  } else if (props.vault) {
-    title = ''
-  } else {
-    if (categoryTrail.length) {
-      title = tc(asset_type_name) + ': ' + categoryTrail.map((n) => categoryLabel(tcat, n)).join(' > ')
-    }
-    if (props.author) {
-      title += ` (${t('library:by-author', { author: props.author })})`
-    }
-  }
-  const fSize = Math.floor(title.length / 17.5) // Rough detection of line length used to reduce font size.
 
   const resetNews = () => {
     for (const key of Object.keys(localStorage)) {
@@ -353,12 +340,19 @@ const Grid = (props) => {
       <div className={`${styles.optionsBar} ${noSticky ? styles.noSticky : ''}`} ref={optionsRef}>
         <div className={styles.gridHeaderWrapper}>
           <div className={styles.gridHeader}>
-            <div className={styles.gridTitle}>
-              <h1 className={styles['s' + fSize]}>{title}</h1>
-              {props.author ? (
-                <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('library:Clear author')} />
-              ) : null}
-            </div>
+            <h1 className={styles.gridTitle}>
+              <Breadcrumbs
+                assetType={props.assetType}
+                assetTypeLabel={tc(asset_type_name)}
+                categoryPath={props.categoryPath}
+                author={props.author}
+                setAuthor={props.setAuthor}
+                collection={props.collection}
+                vault={props.vault}
+                tcat={tcat}
+                t={t}
+              />
+            </h1>
             <div className={styles.options}>
               <div className={styles.advWrapper}>
                 <div
