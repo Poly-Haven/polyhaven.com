@@ -89,12 +89,22 @@
   // the page. It is drawn by a pseudo-element rather than by padding on the link itself: padding
   // grew the box mid-transition, which moved the absolutely-positioned label and narrowed the
   // width it had to wrap in - enough to push "Vehicles & Transport" from two lines to three.
+  // The lift shadow moves onto the panel too. Left on the link it is drawn tight around the render,
+  // which is *inside* the panel, so you get a dark ring hugging the model and the panel's own edge
+  // half an em further out - reading as two shadows where there should be one.
   .modelCat {
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+
     &::before {
       content: '';
       position: absolute;
       inset: -0.5em;
       background: rgba($c-background-lightish, 0);
+      box-shadow: 0 0 0 -1em rgba(0, 0, 0, 1);
       pointer-events: none;
       z-index: -1;
       @include transition(0.1s);
@@ -102,6 +112,7 @@
 
     &:hover::before {
       background: rgba($c-background-lightish, 0.4);
+      box-shadow: 0.5em 0.5em 2em 0 rgba(0, 0, 0, 0.2);
     }
   }
 }
