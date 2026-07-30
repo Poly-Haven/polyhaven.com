@@ -6,6 +6,7 @@
   "backplates": "Stražnje ploče",
   "backplates-description": "Slike u nastavku su zasebne fotografije koje možete koristiti kao pozadinske slike visoke rezolucije u svom prikazu.<br /> Ovisno o vašoj razlučivosti iscrtavanja i postavkama kamere, ponekad HDRI (čak i vrlo velik) možda neće imati dovoljno piksela da i dalje izgleda oštro u pozadini vašeg iscrtavanja. U tim slučajevima umjesto toga možete koristiti jednu od ovih stražnjih ploča u pozadini i koristiti HDRI niže rezolucije samo za osvjetljenje i refleksije.",
   "categories": "Kategorije",
+  "category": "Kategorija",
   "cloud-sync": "Izvanmrežni pristup",
   "cloud-sync-d": "Podržite nas s 5 USD mjesečno i primite pristup našem sustavu u oblaku, što vam omogućuje da sinkronizirate cijelu našu biblioteku s vašim tvrdim diskom.",
   "coming-soon": "Uskoro!",

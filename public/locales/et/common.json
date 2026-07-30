@@ -28,7 +28,7 @@
     "donate-once": "Annetage üks kord",
     "monthly": "Igakuiselt",
     "once": "Üks kord",
-    "one-time-benefits-p1": "Ühekordsed annetused ei sisalda Patreoni soodustusi ega lähe arvesse Vault’i arengu puhul.",
+    "one-time-benefits-p1": "Ühekordsed annetused ei sisalda Patreoni soodustusi ega lähe arvesse Vaulti arengu puhul.",
     "one-time-benefits-p2": "Kaaluge hoopis igakuist annetamist."
   },
   "email-address": "E-posti aadress",
@@ -82,7 +82,7 @@
     "join-support": "<patreonLink>Liitu {{numPatrons}} teiste patroonidega</patreonLink>, toetage vaba vara tulevikku.",
     "target-patrons": "{{target}} patroonid",
     "title": "Poly Haven’i tegevuskava",
-    "to-be-announced": "Kuulutatakse välja",
+    "to-be-announced": "väljakuulutamisel",
     "whats-next": "Mis järgmiseks?"
   },
   "support-polyhaven": "Toetage Poly Haven'i!",

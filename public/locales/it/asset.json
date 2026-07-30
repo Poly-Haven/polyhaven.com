@@ -6,6 +6,7 @@
   "backplates": "Foto di sfondo",
   "backplates-description": "Le immagini qui sotto sono foto separate che si possono usare come immagini di sfondo ad alta risoluzione nel rendering.<br />A seconda della risoluzione del rendering e delle impostazioni della fotocamera, a volte una HDRI (anche molto grande) potrebbe non avere abbastanza pixel per apparire nitida sullo sfondo del rendering. In questi casi è possibile utilizzare uno di questi backplate sullo sfondo e utilizzare una HDRI a risoluzione inferiore solo per l'illuminazione e i riflessi.",
   "categories": "Categorie",
+  "category": "Categoria",
   "cloud-sync": "Accesso offline",
   "cloud-sync-d": "Sostienici con $ 5 al mese e ricevi l'accesso al nostro sistema cloud, che ti consente di sincronizzare l'intera libreria sul tuo disco rigido.",
   "coming-soon": "Prossimamente!",
@@ -55,7 +56,7 @@
     "access-now": "Accedi ora",
     "already-patron": "Sei già un mecenate? Effettua <loginLink>il login</loginLink>.",
     "donate-access": "Donate 3 dollari su Patreon per scaricarlo, insieme a {{totalVaultedAssets, number}} altre risorse custodite.",
-    "locked-in": "Questa risorsa è chiusa nel <vaultLink>caveau</vaultLink> di <vaultLink>{{vault}}.</vaultLink>",
+    "locked-in": "Questa risorsa è chiusa nel <vaultLink>caveau {{vault}}</vaultLink>.",
     "patrons-needed": "Quando avremo {{remaining, number}} più mecenati, verrà rilasciato gratuitamente per tutti.",
     "title": "Attività a volta"
   },

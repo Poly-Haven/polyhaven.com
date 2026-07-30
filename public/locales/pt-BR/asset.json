@@ -6,6 +6,7 @@
   "backplates": "Planos de fundo",
   "backplates-description": "As imagens abaixo são fotos separadas que você pode usar como planos de fundo de alta resolução em sua renderização.<br />Dependendo da resolução da renderização e das configurações da câmera, às vezes um HDRI (mesmo que seja de altíssima resolução) pode não ter pixels suficientes para parecer nítido no plano de fundo da renderização. Nesses casos, você pode usar uma dessas fotos no plano de fundo e usar um HDRI de resolução mais baixa apenas para iluminação e reflexos.",
   "categories": "Categorias",
+  "category": "Categoria",
   "cloud-sync": "Acesso Off-line",
   "cloud-sync-d": "Apoie-nos com $5 por mês e receba acesso ao nosso sistema em nuvem, permitindo que você sincronize toda a nossa biblioteca com o seu disco rígido.",
   "coming-soon": "Em breve!",

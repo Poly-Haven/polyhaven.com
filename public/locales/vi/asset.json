@@ -6,6 +6,7 @@
   "backplates": "Bảng nền",
   "backplates-description": "Các hình ảnh bên dưới là những bức ảnh riêng biệt mà bạn có thể sử dụng làm hình nền độ phân giải cao trong bản render của bạn.<br />Tùy thuộc vào độ phân giải render và cài đặt camera của bạn, đôi khi một HDRI (thậm chí là một HDRI rất lớn) có thể không có đủ pixel để vẫn xuất hiện sắc nét trong nền của bản render của bạn. Trong những trường hợp này, bạn có thể sử dụng một trong những bảng nền này ở phía sau thay thế, và sử dụng một HDRI có độ phân giải thấp hơn chỉ để chiếu sáng và phản chiếu.",
   "categories": "Danh mục",
+  "category": "Danh mục",
   "cloud-sync": "Truy cập ngoại tuyến",
   "cloud-sync-d": "Hỗ trợ chúng tôi với 5 đô la mỗi tháng và nhận quyền truy cập vào hệ thống đám mây của chúng tôi, cho phép bạn đồng bộ hóa toàn bộ thư viện của chúng tôi vào ổ cứng của bạn.",
   "coming-soon": "Sắp có!",
