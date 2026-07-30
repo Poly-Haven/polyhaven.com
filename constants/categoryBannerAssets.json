@@ -1,20 +1,20 @@
 {
   "hdris": {
-    "abandoned-ruins": "empty_warehouse_01",
-    "coast-water": "the_sky_is_on_fire",
-    "desert-arid": "rogland_clear_night",
-    "fields-countryside": "moonless_golf",
+    "abandoned-ruins": "peppermint_powerplant",
+    "coast-water": "venice_sunset",
+    "desert-arid": "goegap",
+    "fields-countryside": "grasslands_sunset",
     "forest-woodland": "meadow_2",
-    "industrial": "sunset_in_the_chalk_quarry",
-    "interiors": "fireplace",
-    "mountains-hills": "kloofendal_48d_partly_cloudy_puresky",
-    "parks-gardens": "rooitou_park",
+    "industrial": "industrial_pipe_and_valve_01",
+    "interiors": "studio_country_hall",
+    "mountains-hills": "golden_gate_hills",
+    "parks-gardens": "pretoria_gardens",
     "streets-town": "canary_wharf",
-    "studio": "brown_photostudio_02"
+    "studio": "wooden_studio_02"
   },
   "textures": {
     "asphalt-bitumen": "asphalt_02",
-    "brick-block": "red_brick",
+    "brick-block": "medieval_red_brick",
     "ceramic": "tiled_floor_001",
     "concrete": "gravel_concrete_03",
     "ground-terrain": "brown_mud_leaves_01",
@@ -27,7 +27,7 @@
     "wood": "oak_veneer_01"
   },
   "models": {
-    "apparel-personal-items": "wheelchair_01",
+    "apparel-personal-items": "pocket_watch",
     "architecture": "rollershutter_window_03",
     "containers-storage": "Barrel_01",
     "decor-art": "marble_bust_01",
