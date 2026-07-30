@@ -43,7 +43,9 @@
       }
     }
 
-    // The heading doubles as navigation: each crumb is a clickable pill, separated by carets.
+    // The heading doubles as navigation: each crumb is a link, separated by carets. This element
+    // is the h1 itself, so the size ladder below replaces the heading size rather than
+    // multiplying it.
     .breadcrumbs {
       @include flex(row, true, false);
       flex-wrap: wrap;
@@ -99,6 +101,12 @@
         padding: 0;
       }
     }
+    // Longer trails get a smaller heading. Every step is defined, including both ends, so no
+    // combination of category depth and author name can fall through to an unsized heading.
+    .s0,
+    .s1 {
+      font-size: 2em;
+    }
     .s2 {
       font-size: 1.9em;
     }
@@ -107,6 +115,12 @@
     }
     .s4 {
       font-size: 1.5em;
+    }
+    .s5 {
+      font-size: 1.35em;
+    }
+    .s6 {
+      font-size: 1.2em;
     }
   }
 

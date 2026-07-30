@@ -340,7 +340,7 @@ const Grid = (props) => {
       <div className={`${styles.optionsBar} ${noSticky ? styles.noSticky : ''}`} ref={optionsRef}>
         <div className={styles.gridHeaderWrapper}>
           <div className={styles.gridHeader}>
-            <h1 className={styles.gridTitle}>
+            <div className={styles.gridTitle}>
               <Breadcrumbs
                 assetType={props.assetType}
                 assetTypeLabel={tc(asset_type_name)}
@@ -352,7 +352,7 @@ const Grid = (props) => {
                 tcat={tcat}
                 t={t}
               />
-            </h1>
+            </div>
             <div className={styles.options}>
               <div className={styles.advWrapper}>
                 <div

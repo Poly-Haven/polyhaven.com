@@ -50,12 +50,14 @@ const Breadcrumbs = ({ assetType, assetTypeLabel, categoryPath, author, setAutho
     }
   }
 
-  // Keep the old font-size step-down for long trails so the header still fits.
+  // Step the heading down as the trail grows so it still fits. The ladder has to cover every
+  // length: while it only defined the middle steps, a short trail or a very long one matched no
+  // class at all and fell back to the untouched heading size.
   const totalLength = crumbs.reduce((n, c) => n + c.label.length, 0) + (author ? author.length : 0)
-  const sizeClass = styles['s' + Math.floor(totalLength / 17.5)] || ''
+  const sizeClass = styles['s' + Math.min(Math.floor(totalLength / 17.5), 6)]
 
   return (
-    <div className={`${styles.breadcrumbs} ${sizeClass}`}>
+    <h1 className={`${styles.breadcrumbs} ${sizeClass}`}>
       {crumbs.map((crumb, i) => {
         const isLast = i === crumbs.length - 1 && !author
         return (
@@ -84,7 +86,7 @@ const Breadcrumbs = ({ assetType, assetTypeLabel, categoryPath, author, setAutho
           </span>
         </span>
       ) : null}
-    </div>
+    </h1>
   )
 }
 
