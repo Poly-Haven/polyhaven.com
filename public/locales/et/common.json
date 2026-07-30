@@ -79,9 +79,9 @@
   "remove-ads": "Eemalda reklaamid",
   "required": "Nõutav",
   "roadmap": {
-    "join-support": "<patreonLink>Liitu {{numPatrons}} teiste patroonidega</patreonLink>, toetage vaba vara tulevikku.",
-    "target-patrons": "{{target}} patroonid",
-    "title": "Poly Haven’i tegevuskava",
+    "join-support": "<patreonLink>Liitu {{numPatrons}} teiste patroonidega</patreonLink>, toetage tasuta varade tulevikku.",
+    "target-patrons": "{{target}} patrooni",
+    "title": "Poly Haveni tegevuskava",
     "to-be-announced": "väljakuulutamisel",
     "whats-next": "Mis järgmiseks?"
   },
