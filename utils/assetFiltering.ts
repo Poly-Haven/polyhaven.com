@@ -89,25 +89,30 @@ export const inCollection = (asset: any, id: string): boolean =>
 export const inVault = (asset: any, id: string): boolean =>
   asset?.vault === id || (Array.isArray(asset?.categories) && asset.categories.includes(`vault: ${id}`))
 
+export const byAuthor = (asset: any, author: string): boolean =>
+  Object.keys(asset?.authors || {}).includes(author)
+
 interface FilterOptions {
   categoryPath?: string | null
   attributes?: AttributeFilters
   collection?: string | null
   vault?: string | null
   assetType?: string
+  author?: string | null
 }
 
 /** Filter a { slug: asset } map. Returns a new object, leaving the input untouched. */
 export const filterAssets = (data: Record<string, any>, opts: FilterOptions): Record<string, any> => {
-  const { categoryPath, attributes, collection, vault, assetType } = opts
+  const { categoryPath, attributes, collection, vault, assetType, author } = opts
   const hasAttrs = attributes && Object.keys(attributes).length > 0
-  if (!categoryPath && !hasAttrs && !collection && !vault) return data
+  if (!categoryPath && !hasAttrs && !collection && !vault && !author) return data
 
   const out: Record<string, any> = {}
   for (const [slug, asset] of Object.entries(data)) {
     if (categoryPath && !isInCategory(asset.category, categoryPath)) continue
     if (collection && !inCollection(asset, collection)) continue
     if (vault && !inVault(asset, vault)) continue
+    if (author && !byAuthor(asset, author)) continue
     if (hasAttrs && !matchesAttributes(asset, attributes, assetType)) continue
     out[slug] = asset
   }
@@ -132,35 +137,74 @@ export const categoryCounts = (data: Record<string, any>): Record<string, number
   return counts
 }
 
+/**
+ * Every facet count answers the same question: "how many assets would I see if I clicked this?"
+ *
+ * So a facet is counted against the set narrowed by every OTHER active filter, but not by its own.
+ * Excluding its own is what lets you still see the alternatives within a group: values inside one
+ * group are OR'd together, so with `night` selected the other times of day have to be counted as
+ * if nothing in that group were selected, otherwise they would all read 0 and the group would
+ * collapse to the one value you already picked.
+ */
+const scopeFor = (
+  data: Record<string, any>,
+  assetType: string,
+  active: AttributeFilters,
+  author: string | null,
+  exclude: string
+): Record<string, any> => {
+  const attributes = Object.fromEntries(Object.entries(active || {}).filter(([k]) => k !== exclude))
+  return filterAssets(data, {
+    attributes,
+    assetType,
+    author: exclude === '__author' ? null : author || null,
+  })
+}
+
 /** How many assets each author contributed to, for the author filter's options. */
-export const authorCounts = (data: Record<string, any>): Record<string, number> => {
+export const authorCounts = (
+  data: Record<string, any>,
+  assetType?: string,
+  active: AttributeFilters = {},
+  author: string | null = null
+): Record<string, number> => {
+  const scoped = assetType ? scopeFor(data, assetType, active, author, '__author') : data
   const counts: Record<string, number> = {}
-  for (const asset of Object.values(data)) {
-    for (const author of Object.keys(asset?.authors || {})) {
-      counts[author] = (counts[author] || 0) + 1
+  for (const asset of Object.values(scoped)) {
+    for (const a of Object.keys(asset?.authors || {})) {
+      counts[a] = (counts[a] || 0) + 1
     }
   }
   return counts
 }
 
-/** How many assets have each value of each attribute (used to show/hide facet options). */
-export const attributeCounts = (data: Record<string, any>, assetType: string): Record<string, Record<string, number>> => {
+/** Count one attribute's values over an already-scoped set. */
+const countKey = (scoped: Record<string, any>, key: string, spec: any): Record<string, number> => {
+  const bucket: Record<string, number> = {}
+  for (const asset of Object.values(scoped)) {
+    const value = (asset?.attributes || {})[key]
+    if (spec.type === 'boolean') {
+      if (isTrue(value)) bucket['true'] = (bucket['true'] || 0) + 1
+    } else if (Array.isArray(value)) {
+      for (const v of value) bucket[String(v)] = (bucket[String(v)] || 0) + 1
+    } else if (value !== undefined && value !== null && value !== '') {
+      bucket[String(value)] = (bucket[String(value)] || 0) + 1
+    }
+  }
+  return bucket
+}
+
+/** How many assets have each value of each attribute, cross-filtered by the other facets. */
+export const attributeCounts = (
+  data: Record<string, any>,
+  assetType: string,
+  active: AttributeFilters = {},
+  author: string | null = null
+): Record<string, Record<string, number>> => {
   const schema = attributeSchema[assetType] || {}
   const counts: Record<string, Record<string, number>> = {}
-  for (const key of Object.keys(schema)) counts[key] = {}
-  for (const asset of Object.values(data)) {
-    const attrs = asset?.attributes || {}
-    for (const [key, spec] of Object.entries(schema)) {
-      const value = attrs[key]
-      const bucket = counts[key]
-      if ((spec as any).type === 'boolean') {
-        if (isTrue(value)) bucket['true'] = (bucket['true'] || 0) + 1
-      } else if (Array.isArray(value)) {
-        for (const v of value) bucket[String(v)] = (bucket[String(v)] || 0) + 1
-      } else if (value !== undefined && value !== null && value !== '') {
-        bucket[String(value)] = (bucket[String(value)] || 0) + 1
-      }
-    }
+  for (const [key, spec] of Object.entries(schema)) {
+    counts[key] = countKey(scopeFor(data, assetType, active, author, key), key, spec)
   }
   return counts
 }

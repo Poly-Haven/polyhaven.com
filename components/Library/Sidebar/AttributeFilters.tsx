@@ -32,12 +32,17 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
   const { t } = useTranslation('library')
 
   const schema = attributeSchema[assetType]
+  // Counts answer "how many would I see if I clicked this", so each facet is counted against the
+  // set narrowed by every other active filter. See attributeCounts for why a facet excludes itself.
   const counts = useMemo(
-    () => (schema && assets ? attributeCounts(assets, assetType) : null),
-    [schema, assets, assetType]
+    () => (schema && assets ? attributeCounts(assets, assetType, active, author) : null),
+    [schema, assets, assetType, active, author]
   )
   // Authors of whatever is currently in scope, most prolific first.
-  const authors = useMemo(() => (assets ? authorCounts(assets) : null), [assets])
+  const authors = useMemo(
+    () => (assets ? authorCounts(assets, assetType, active, author) : null),
+    [assets, assetType, active, author]
+  )
 
   if (!assets || !authors) return null
 
@@ -66,13 +71,15 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
   // is an enum, so the two-state chip is now an honest representation of everything it renders.
   const isBoolean = (spec: any) => spec.type === 'boolean'
 
-  // Only offer values that actually exist in the current result set.
+  // Only offer values that exist in the current result set - but never hide one that is already
+  // selected, or another facet narrowing it to zero would leave it stuck on with no way to clear it.
+  const selected = (key: string, value: string) => (active[key] || []).includes(value)
   const availableFor = (key: string, spec: any): string[] =>
     isBoolean(spec)
-      ? counts[key] && counts[key]['true']
+      ? (counts[key] && counts[key]['true']) || selected(key, 'true')
         ? ['true']
         : []
-      : (spec.enum || []).filter((v: string) => counts[key] && counts[key][v])
+      : (spec.enum || []).filter((v: string) => (counts[key] && counts[key][v]) || selected(key, v))
 
   const chip = (key: string, value: string, spec: any) => {
     const on = (active[key] || []).includes(value)

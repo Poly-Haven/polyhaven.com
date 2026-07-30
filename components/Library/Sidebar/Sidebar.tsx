@@ -103,6 +103,7 @@ const Sidebar = (props) => {
             attributes={props.attributes}
             collection={props.collection}
             vault={props.vault}
+            author={props.author}
           />
           <AttributeFilters
             assetType={props.assetType}

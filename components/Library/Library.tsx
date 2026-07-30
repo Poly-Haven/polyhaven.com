@@ -21,10 +21,15 @@ const Library = ({ assetType, collections, collection, vault, categoryPath, auth
   // Attribute facets and the search term live in the query string (e.g. ?weather=clear&s=brick)
   // so they're shareable and survive a reload.
   const attributes = useMemo(() => attributeFiltersFromQuery(router.query || {}, assetType), [router.query, assetType])
-  const searchState = typeof router.query.s === 'string' ? router.query.s : search
+  // Once the router is ready the URL is the only source of truth for these. Falling back to the
+  // server-rendered prop whenever the param is absent made clearing impossible on any page that
+  // was rendered WITH the param: the X removed ?a= from the URL, the fallback immediately put the
+  // prop's value back, and the filter never went away. The props are still needed for the first
+  // render, before the router reports ready.
+  const searchState = router.isReady ? (typeof router.query.s === 'string' ? router.query.s : '') : search
   // The author filter keeps its long-standing ?a= param, so existing links to an author's work
   // still work - it's just driven from the URL now instead of local state.
-  const authorState = typeof router.query.a === 'string' ? router.query.a : author
+  const authorState = router.isReady ? (typeof router.query.a === 'string' ? router.query.a : undefined) : author
   const setAuthor = (value) =>
     setQueryShallow(router, (query) => {
       if (value) query.a = value

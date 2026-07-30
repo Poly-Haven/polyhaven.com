@@ -15,6 +15,12 @@ import styles from './Grid.module.scss'
  *
  * Collection and vault pages have their own headers above the grid, so they only get breadcrumbs
  * when there's something extra to show (an author filter).
+ *
+ * `t` is already bound to the library namespace, so keys here are unprefixed. That matters for
+ * "Clear author": i18next only strips a `ns:` prefix from keys it does not mistake for natural
+ * language, and any key containing a space qualifies, so `t('library:Clear author')` returned the
+ * raw key. next-i18next.config.js now declares the separators explicitly, which disables that
+ * guess, but leaving the prefixes off is clearer regardless.
  */
 const Breadcrumbs = ({ assetType, assetTypeLabel, categoryPath, author, setAuthor, collection, vault, tcat, t }) => {
   const router = useRouter()
@@ -81,7 +87,7 @@ const Breadcrumbs = ({ assetType, assetTypeLabel, categoryPath, author, setAutho
             <MdClose
               className={styles.crumbClear}
               onClick={() => setAuthor(undefined)}
-              data-tip={t('library:Clear author')}
+              data-tip={t('Clear author')}
             />
           </span>
         </span>
