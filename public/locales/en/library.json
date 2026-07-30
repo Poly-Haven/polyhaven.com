@@ -1,6 +1,7 @@
 {
   "Clear author": "Clear author",
   "adv": {
+    "any-author": "Anyone",
     "show-names": "Always show text",
     "thumb-size": "Thumbnail size",
     "thumb-size-1": "Small",
@@ -20,19 +21,22 @@
   },
   "aerial": "This asset was scanned with a drone, meaning it is typically a much larger scale than other assets.",
   "attr": {
+    "aerial": "Aerial",
     "backplates": "Backplates",
     "clear": "Clear",
     "condition": "Condition",
     "contrast": "Contrast",
-    "indoor": "Indoor",
+    "environment": "Environment",
+    "geonodes": "Geometry Nodes",
     "light_type": "Lighting",
-    "man_made": "Man-made",
+    "lods": "LODs",
     "material": "Material",
-    "open_sky": "Open Sky",
-    "outdoor": "Outdoor",
+    "origin": "Origin",
     "pure_sky": "Pure Sky",
     "rigged": "Rigged",
     "season": "Season",
+    "setting": "Setting",
+    "sky_view": "Sky View",
     "surface_use": "Used For",
     "time_of_day": "Time of Day",
     "title": "Filters",
@@ -55,13 +59,24 @@
     },
     "weather": {
       "clear": "Clear weather"
+    },
+    "sky_view": {
+      "open": "Open sky",
+      "obstructed": "Obstructed sky"
+    },
+    "setting": {
+      "indoor": "Indoor use",
+      "outdoor": "Outdoor use",
+      "either": "Indoor or outdoor"
     }
   },
   "attrNoun": {
     "contrast": "contrast",
     "light_type": "light",
     "surface_use": "surface",
-    "weather": "weather"
+    "weather": "weather",
+    "sky_view": "sky",
+    "setting": "use"
   },
   "attrValue": {
     "afternoon": "Afternoon",
@@ -77,14 +92,17 @@
     "cracked": "Cracked",
     "damaged": "Damaged",
     "dusk": "Dusk",
+    "either": "Either",
     "fabric": "Fabric",
     "floor": "Floor",
     "fog": "Fog",
     "glass": "Glass",
     "ground": "Ground",
     "high": "High",
+    "indoor": "Indoor",
     "leather": "Leather",
     "low": "Low",
+    "man_made": "Man-made",
     "medium": "Medium",
     "metal": "Metal",
     "midday": "Midday",
@@ -94,6 +112,9 @@
     "natural": "Natural",
     "night": "Night",
     "object": "Object",
+    "obstructed": "Obstructed",
+    "open": "Open",
+    "outdoor": "Outdoor",
     "overcast": "Overcast",
     "painted": "Painted",
     "paper": "Paper",
@@ -119,6 +140,8 @@
     "wood": "Wood",
     "worn": "Worn"
   },
+  "author_one": "Author",
+  "author_other": "Authors",
   "backplates": "Includes a set of high-res background images.",
   "by-author": "by {{author}}",
   "early-access": "Early Access",

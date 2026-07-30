@@ -46,10 +46,12 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
+  const legacyCats = Array.isArray(asset.categories) ? asset.categories : []
+
   // Vault membership is a first-class field now. The legacy category string is only a fallback.
   let vault = asset.vault || null
   if (!vault) {
-    for (const cat of asset.categories) {
+    for (const cat of legacyCats) {
       if (cat.startsWith('vault: ')) {
         vault = cat.split(': ')[1]
         break
@@ -87,38 +89,52 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
     }
   }
 
+  // Flags come from the new attributes map, falling back to their legacy shape while both are
+  // served. Every one of these used to read a different mechanism (top-level field, a string in
+  // the categories array, a hand-typed tag), which is why the badges and the filters disagreed.
+  const attrs = asset.attributes || {}
+  const flag = (key, legacy = false) => attrs[key] === true || legacy
+
+  // Derived rather than stored: max_resolution is already on the asset, and the old hand-typed
+  // "non square" tag was present on only 3 of the 44 textures that actually need the warning.
+  // Textures only - an equirectangular HDRI is always 2:1, so this would fire on every one of them.
+  const res = asset.max_resolution
+  const nonSquare =
+    (asset.type === 1 && Array.isArray(res) && res.length === 2 && Math.max(...res) / Math.min(...res) > 1.05) ||
+    (asset.tags || []).includes('non square')
+
   let indicators = []
-  if (asset.backplates) {
+  if (flag('backplates', asset.backplates)) {
     indicators.push({
       text: `✔ Backplates: ${t('backplates')}`,
       icon: <MdCollections />,
     })
   }
-  if (asset.tags.includes('non square')) {
+  if (nonSquare) {
     indicators.push({
       text: `⚠️ Non-square: ${t('non-square')}`,
       icon: <TbAspectRatio />,
     })
   }
-  if (asset.attributes?.rigged || asset.categories.includes('rigged')) {
+  if (flag('rigged', legacyCats.includes('rigged'))) {
     indicators.push({
       text: `✔ Rigged: ${t('rigged')}`,
       icon: <TbBone />,
     })
   }
-  if (asset.categories.includes('aerial')) {
+  if (flag('aerial', legacyCats.includes('aerial'))) {
     indicators.push({
       text: `✔ Aerial: ${t('aerial')}`,
       icon: <TbDrone />,
     })
   }
-  if (asset.lods) {
+  if (flag('lods', asset.lods)) {
     indicators.push({
       text: `✔ LODs: ${t('lods')}`,
       icon: <TbPyramid />,
     })
   }
-  if (asset.geonodes) {
+  if (flag('geonodes', asset.geonodes)) {
     indicators.push({
       text: `✔ Geometry Nodes: ${t('geonodes')}`,
       icon: <NodeTree />,

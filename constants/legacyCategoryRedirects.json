@@ -1,112 +1,372 @@
 {
-  "_comment": "Maps every legacy category (the old pseudo-tag array) to its home in the new system, so old URLs 301 rather than 404. `cat` = a taxonomy slug path, `attr` = attribute filter query params, `root` = the asset-type landing page. Multi-segment legacy URLs merge: the deepest `cat` wins and all `attr` values combine.",
-  "hdris": {
-    "natural light": { "attr": { "light_type": "natural" } },
-    "artificial light": { "attr": { "light_type": "artificial" } },
-    "outdoor": { "attr": { "indoor": "false" } },
-    "indoor": { "attr": { "indoor": "true" } },
-    "nature": { "root": true },
-    "urban": { "cat": "streets-town" },
-    "studio": { "cat": "studio" },
-    "skies": { "attr": { "open_sky": "true" } },
-    "pure skies": { "attr": { "pure_sky": "true" } },
-    "low contrast": { "attr": { "contrast": "low" } },
-    "medium contrast": { "attr": { "contrast": "medium" } },
-    "high contrast": { "attr": { "contrast": "high" } },
-    "clear": { "attr": { "weather": "clear" } },
-    "partly cloudy": { "attr": { "weather": "partly_cloudy" } },
-    "overcast": { "attr": { "weather": "overcast" } },
-    "morning-afternoon": { "attr": { "time_of_day": "morning,afternoon" } },
-    "sunrise-sunset": { "attr": { "time_of_day": "sunrise,sunset" } },
-    "midday": { "attr": { "time_of_day": "midday" } },
-    "night": { "attr": { "time_of_day": "night" } }
+ "_comment": "Maps every legacy category (the old pseudo-tag array) to its home in the new system, so old URLs 301 rather than 404. `cat` = a taxonomy slug path, `attr` = attribute filter query params, `root` = the asset-type landing page. Multi-segment legacy URLs merge: the deepest `cat` wins and all `attr` values combine.",
+ "hdris": {
+  "natural light": {
+   "attr": {
+    "light_type": "natural"
+   }
   },
-  "textures": {
-    "outdoor": { "attr": { "outdoor": "true" } },
-    "indoor": { "attr": { "outdoor": "false" } },
-    "man made": { "attr": { "man_made": "true" } },
-    "natural": { "attr": { "man_made": "false" } },
-    "floor": { "attr": { "surface_use": "floor" } },
-    "wall": { "attr": { "surface_use": "wall" } },
-    "roofing": { "attr": { "surface_use": "roof" } },
-    "clean": { "attr": { "condition": "clean" } },
-    "dirty": { "attr": { "condition": "weathered" } },
-    "wood": { "cat": "wood" },
-    "raw wood": { "cat": "wood" },
-    "bark": { "cat": "wood/bark" },
-    "brick": { "cat": "brick-block" },
-    "concrete": { "cat": "concrete" },
-    "plaster-concrete": { "cat": "concrete" },
-    "plaster": { "cat": "concrete/plaster-stucco" },
-    "rock": { "cat": "stone" },
-    "sandstone": { "cat": "stone" },
-    "cobblestone": { "cat": "stone/cobblestone" },
-    "terrain": { "cat": "ground-terrain" },
-    "aerial": { "cat": "ground-terrain" },
-    "sand": { "cat": "ground-terrain/sand" },
-    "gravel": { "cat": "ground-terrain/gravel-pebbles" },
-    "snow": { "cat": "ground-terrain/snow" },
-    "road": { "cat": "asphalt-bitumen/roads" },
-    "asphalt": { "cat": "asphalt-bitumen/asphalt" },
-    "metal": { "cat": "metal" },
-    "tiles": { "cat": "ceramic" },
-    "fabric": { "cat": "textiles-leather" },
-    "woven": { "cat": "textiles-leather/woven" },
-    "cotton": { "cat": "textiles-leather/woven" },
-    "hessian": { "cat": "textiles-leather/woven" },
-    "crepe": { "cat": "textiles-leather/woven" },
-    "satin": { "cat": "textiles-leather/woven" },
-    "jacquard": { "cat": "textiles-leather/patterned-jacquard" },
-    "knitted": { "cat": "textiles-leather/knit" },
-    "wool": { "cat": "textiles-leather/knit" },
-    "fleece": { "cat": "textiles-leather/knit" },
-    "velvet": { "cat": "textiles-leather/pile-velvet" },
-    "corduroy": { "cat": "textiles-leather/pile-velvet" },
-    "fur": { "cat": "textiles-leather/pile-velvet" },
-    "stretchy": { "cat": "textiles-leather/technical" },
-    "denim": { "cat": "textiles-leather/denim" },
-    "leather": { "cat": "textiles-leather/leather" },
-    "suede": { "cat": "textiles-leather/leather" },
-    "carpet": { "cat": "textiles-leather/carpet-matting" },
-    "food": { "cat": "organic/food" },
-    "industrial": { "root": true }
+  "artificial light": {
+   "attr": {
+    "light_type": "artificial"
+   }
   },
-  "models": {
-    "props": { "root": true },
-    "rigged": { "attr": { "rigged": "true" } },
-    "nature": { "cat": "nature" },
-    "plants": { "cat": "nature/plants" },
-    "flowers": { "cat": "nature/plants" },
-    "potted plants": { "cat": "nature/plants" },
-    "succulent": { "cat": "nature/plants" },
-    "trees": { "cat": "nature/trees" },
-    "rocks": { "cat": "nature/rocks-stone" },
-    "ground cover": { "cat": "nature/ground-cover-moss" },
-    "grass": { "cat": "nature/ground-cover-moss" },
-    "creature": { "cat": "nature/wildlife" },
-    "furniture": { "cat": "furniture" },
-    "seating": { "cat": "furniture/seating" },
-    "table": { "cat": "furniture/tables" },
-    "bed": { "cat": "furniture/beds" },
-    "shelves": { "cat": "furniture/storage-furniture" },
-    "decorative": { "cat": "decor-art" },
-    "vases": { "cat": "decor-art/vases-vessels" },
-    "wall decoration": { "cat": "decor-art/wall-decor" },
-    "industrial": { "cat": "industrial-infrastructure" },
-    "tools": { "cat": "tools-equipment" },
-    "containers": { "cat": "containers-storage" },
-    "electronics": { "cat": "electronics-appliances" },
-    "appliances": { "cat": "electronics-appliances/home-appliances" },
-    "lighting": { "cat": "lighting" },
-    "structures": { "cat": "architecture" },
-    "buildings": { "cat": "architecture" },
-    "food": { "cat": "food-kitchen" },
-    "dishes": { "cat": "food-kitchen/tableware" },
-    "office": { "cat": "office-stationery" },
-    "books": { "cat": "office-stationery/books-documents" },
-    "instrument": { "cat": "leisure/musical-instruments" },
-    "ships": { "cat": "vehicles-transport/watercraft" },
-    "weapons": { "cat": "weapons" },
-    "firearms": { "cat": "weapons/firearms" }
+  "outdoor": {
+   "attr": {
+    "environment": "outdoor"
+   }
+  },
+  "indoor": {
+   "attr": {
+    "environment": "indoor"
+   }
+  },
+  "nature": {
+   "root": true
+  },
+  "urban": {
+   "cat": "streets-town"
+  },
+  "studio": {
+   "cat": "studio"
+  },
+  "skies": {
+   "attr": {
+    "sky_view": "open"
+   }
+  },
+  "pure skies": {
+   "attr": {
+    "pure_sky": "true"
+   }
+  },
+  "low contrast": {
+   "attr": {
+    "contrast": "low"
+   }
+  },
+  "medium contrast": {
+   "attr": {
+    "contrast": "medium"
+   }
+  },
+  "high contrast": {
+   "attr": {
+    "contrast": "high"
+   }
+  },
+  "clear": {
+   "attr": {
+    "weather": "clear"
+   }
+  },
+  "partly cloudy": {
+   "attr": {
+    "weather": "partly_cloudy"
+   }
+  },
+  "overcast": {
+   "attr": {
+    "weather": "overcast"
+   }
+  },
+  "morning-afternoon": {
+   "attr": {
+    "time_of_day": "morning,afternoon"
+   }
+  },
+  "sunrise-sunset": {
+   "attr": {
+    "time_of_day": "sunrise,sunset"
+   }
+  },
+  "midday": {
+   "attr": {
+    "time_of_day": "midday"
+   }
+  },
+  "night": {
+   "attr": {
+    "time_of_day": "night"
+   }
   }
+ },
+ "textures": {
+  "outdoor": {
+   "attr": {
+    "setting": "outdoor"
+   }
+  },
+  "indoor": {
+   "attr": {
+    "setting": "indoor"
+   }
+  },
+  "man made": {
+   "attr": {
+    "origin": "man_made"
+   }
+  },
+  "natural": {
+   "attr": {
+    "origin": "natural"
+   }
+  },
+  "floor": {
+   "attr": {
+    "surface_use": "floor"
+   }
+  },
+  "wall": {
+   "attr": {
+    "surface_use": "wall"
+   }
+  },
+  "roofing": {
+   "attr": {
+    "surface_use": "roof"
+   }
+  },
+  "clean": {
+   "attr": {
+    "condition": "clean"
+   }
+  },
+  "dirty": {
+   "attr": {
+    "condition": "weathered"
+   }
+  },
+  "wood": {
+   "cat": "wood"
+  },
+  "raw wood": {
+   "cat": "wood"
+  },
+  "bark": {
+   "cat": "wood/bark"
+  },
+  "brick": {
+   "cat": "brick-block"
+  },
+  "concrete": {
+   "cat": "concrete"
+  },
+  "plaster-concrete": {
+   "cat": "concrete"
+  },
+  "plaster": {
+   "cat": "concrete/plaster-stucco"
+  },
+  "rock": {
+   "cat": "stone"
+  },
+  "sandstone": {
+   "cat": "stone"
+  },
+  "cobblestone": {
+   "cat": "stone/cobblestone"
+  },
+  "terrain": {
+   "cat": "ground-terrain"
+  },
+  "aerial": {
+   "attr": {
+    "aerial": "true"
+   }
+  },
+  "sand": {
+   "cat": "ground-terrain/sand"
+  },
+  "gravel": {
+   "cat": "ground-terrain/gravel-pebbles"
+  },
+  "snow": {
+   "cat": "ground-terrain/snow"
+  },
+  "road": {
+   "cat": "asphalt-bitumen/roads"
+  },
+  "asphalt": {
+   "cat": "asphalt-bitumen/asphalt"
+  },
+  "metal": {
+   "cat": "metal"
+  },
+  "tiles": {
+   "cat": "ceramic"
+  },
+  "fabric": {
+   "cat": "textiles-leather"
+  },
+  "woven": {
+   "cat": "textiles-leather/woven"
+  },
+  "cotton": {
+   "cat": "textiles-leather/woven"
+  },
+  "hessian": {
+   "cat": "textiles-leather/woven"
+  },
+  "crepe": {
+   "cat": "textiles-leather/woven"
+  },
+  "satin": {
+   "cat": "textiles-leather/woven"
+  },
+  "jacquard": {
+   "cat": "textiles-leather/patterned-jacquard"
+  },
+  "knitted": {
+   "cat": "textiles-leather/knit"
+  },
+  "wool": {
+   "cat": "textiles-leather/knit"
+  },
+  "fleece": {
+   "cat": "textiles-leather/knit"
+  },
+  "velvet": {
+   "cat": "textiles-leather/pile-velvet"
+  },
+  "corduroy": {
+   "cat": "textiles-leather/pile-velvet"
+  },
+  "fur": {
+   "cat": "textiles-leather/pile-velvet"
+  },
+  "stretchy": {
+   "cat": "textiles-leather/technical"
+  },
+  "denim": {
+   "cat": "textiles-leather/denim"
+  },
+  "leather": {
+   "cat": "textiles-leather/leather"
+  },
+  "suede": {
+   "cat": "textiles-leather/leather"
+  },
+  "carpet": {
+   "cat": "textiles-leather/carpet-matting"
+  },
+  "food": {
+   "cat": "organic/food"
+  },
+  "industrial": {
+   "root": true
+  }
+ },
+ "models": {
+  "props": {
+   "root": true
+  },
+  "rigged": {
+   "attr": {
+    "rigged": "true"
+   }
+  },
+  "nature": {
+   "cat": "nature"
+  },
+  "plants": {
+   "cat": "nature/plants"
+  },
+  "flowers": {
+   "cat": "nature/plants"
+  },
+  "potted plants": {
+   "cat": "nature/plants"
+  },
+  "succulent": {
+   "cat": "nature/plants"
+  },
+  "trees": {
+   "cat": "nature/trees"
+  },
+  "rocks": {
+   "cat": "nature/rocks-stone"
+  },
+  "ground cover": {
+   "cat": "nature/ground-cover-moss"
+  },
+  "grass": {
+   "cat": "nature/ground-cover-moss"
+  },
+  "creature": {
+   "cat": "nature/wildlife"
+  },
+  "furniture": {
+   "cat": "furniture"
+  },
+  "seating": {
+   "cat": "furniture/seating"
+  },
+  "table": {
+   "cat": "furniture/tables"
+  },
+  "bed": {
+   "cat": "furniture/beds"
+  },
+  "shelves": {
+   "cat": "furniture/storage-furniture"
+  },
+  "decorative": {
+   "cat": "decor-art"
+  },
+  "vases": {
+   "cat": "decor-art/vases-vessels"
+  },
+  "wall decoration": {
+   "cat": "decor-art/wall-decor"
+  },
+  "industrial": {
+   "cat": "industrial-infrastructure"
+  },
+  "tools": {
+   "cat": "tools-equipment"
+  },
+  "containers": {
+   "cat": "containers-storage"
+  },
+  "electronics": {
+   "cat": "electronics-appliances"
+  },
+  "appliances": {
+   "cat": "electronics-appliances/home-appliances"
+  },
+  "lighting": {
+   "cat": "lighting"
+  },
+  "structures": {
+   "cat": "architecture"
+  },
+  "buildings": {
+   "cat": "architecture"
+  },
+  "food": {
+   "cat": "food-kitchen"
+  },
+  "dishes": {
+   "cat": "food-kitchen/tableware"
+  },
+  "office": {
+   "cat": "office-stationery"
+  },
+  "books": {
+   "cat": "office-stationery/books-documents"
+  },
+  "instrument": {
+   "cat": "leisure/musical-instruments"
+  },
+  "ships": {
+   "cat": "vehicles-transport/watercraft"
+  },
+  "weapons": {
+   "cat": "weapons"
+  },
+  "firearms": {
+   "cat": "weapons/firearms"
+  }
+ }
 }

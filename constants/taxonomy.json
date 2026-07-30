@@ -1,5 +1,5 @@
 {
- "_generated": "from admin.polyhaven.com/utils/categoryRegistry.json — do not edit by hand",
+ "_generated": "from admin.polyhaven.com/utils/categoryRegistry.json via scripts/generateSharedConstants.mjs - do not edit by hand",
  "types": {
   "hdris": [
    {

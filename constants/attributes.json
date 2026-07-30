@@ -1,5 +1,5 @@
 {
- "_generated": "from admin.polyhaven.com/utils/categoryRegistry.json — do not edit by hand",
+ "_generated": "from admin.polyhaven.com/utils/assetCategories.ts (dimensionSchema) via scripts/generateSharedConstants.mjs - do not edit by hand",
  "types": {
   "hdris": {
    "time_of_day": {
@@ -56,17 +56,25 @@
     ],
     "description": "Season if evident."
    },
-   "indoor": {
-    "type": "boolean",
-    "description": "Captured indoors."
+   "environment": {
+    "type": "enum",
+    "enum": [
+     "indoor",
+     "outdoor"
+    ],
+    "description": "Where the capture was made. Studio shots are indoor - the Studio category carries that distinction."
    },
-   "open_sky": {
-    "type": "boolean",
-    "description": "Unobstructed open view of the sky."
+   "sky_view": {
+    "type": "enum|null",
+    "enum": [
+     "open",
+     "obstructed"
+    ],
+    "description": "How much open sky is visible. Null indoors, where it does not apply."
    },
    "pure_sky": {
     "type": "boolean",
-    "description": "Edited pure-sky variant (ground removed); inherits its base capture path."
+    "description": "Edited pure-sky variant (ground removed), inheriting its base capture path."
    },
    "backplates": {
     "type": "boolean",
@@ -87,27 +95,42 @@
     ],
     "description": "Where the material is typically applied."
    },
-   "man_made": {
-    "type": "boolean",
-    "description": "True = manufactured/built/worked; false = natural."
+   "origin": {
+    "type": "enum",
+    "enum": [
+     "man_made",
+     "natural"
+    ],
+    "description": "Manufactured, built or worked, versus naturally occurring."
    },
-   "outdoor": {
-    "type": "boolean|null",
-    "description": "Typical setting."
+   "setting": {
+    "type": "enum|null",
+    "enum": [
+     "indoor",
+     "outdoor",
+     "either"
+    ],
+    "description": "Where the material is typically found. Use \"either\" for materials equally at home in both, null if genuinely unassessed."
    },
    "condition": {
     "type": "string[]",
     "enum": [
      "clean",
+     "dirty",
      "weathered",
      "damaged",
      "mossy",
      "painted",
      "rusted",
      "cracked",
-     "worn"
+     "worn",
+     "broken"
     ],
     "description": "Condition tags ([] if pristine)."
+   },
+   "aerial": {
+    "type": "boolean",
+    "description": "Captured from the air by drone, so at a far larger scale than a ground scan."
    }
   },
   "models": {
@@ -126,25 +149,40 @@
      "leather",
      "fabric",
      "paper",
-     "rubber"
+     "rubber",
+     "food",
+     "wax",
+     "bone"
     ],
-    "description": "All materials making up the object, most prominent first (multi-value; avoid a single \"mixed\")."
+    "description": "All materials making up the object, most prominent first (multi-value, avoid a single \"mixed\")."
    },
    "condition": {
-    "type": "enum",
+    "type": "string[]",
     "enum": [
-     "pristine",
      "clean",
-     "worn",
+     "dirty",
      "weathered",
+     "damaged",
+     "mossy",
+     "painted",
      "rusted",
+     "cracked",
+     "worn",
      "broken"
     ],
-    "description": "Physical condition."
+    "description": "Condition tags ([] if pristine), same vocabulary and shape as the texture field."
    },
    "rigged": {
     "type": "boolean",
     "description": "Has an animation rig."
+   },
+   "lods": {
+    "type": "boolean",
+    "description": "Ships with level-of-detail variants."
+   },
+   "geonodes": {
+    "type": "boolean",
+    "description": "Includes a geometry-nodes setup."
    }
   }
  }

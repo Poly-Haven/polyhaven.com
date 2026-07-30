@@ -62,7 +62,9 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
     })
   }
 
-  const isBoolean = (spec: any) => spec.type === 'boolean' || spec.type === 'boolean|null'
+  // Only a plain boolean. There is no "boolean|null" any more: anything that needed a third state
+  // is an enum, so the two-state chip is now an honest representation of everything it renders.
+  const isBoolean = (spec: any) => spec.type === 'boolean'
 
   // Only offer values that actually exist in the current result set.
   const availableFor = (key: string, spec: any): string[] =>

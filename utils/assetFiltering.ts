@@ -30,21 +30,53 @@ export const attributeFiltersFromQuery = (query: Record<string, any>, assetType:
   return filters
 }
 
-export const matchesAttributes = (asset: any, filters: AttributeFilters): boolean => {
+/** The reserved query value that selects the empty side of an array attribute (e.g. pristine). */
+const EMPTY_ALIASES = ['none', 'pristine']
+
+/**
+ * Which branch a filter takes has to come from the schema rather than from the shape of the
+ * requested value, otherwise `?condition=false` reads as a boolean test against a string[] and
+ * quietly matches every asset. Mirrors api/utils/assetFilters.js.
+ */
+export const attributeSpec = (assetType: string, key: string): any => {
+  const schema = attributeSchema[assetType]
+  if (schema) return schema[key] || null
+  for (const spec of Object.values(attributeSchema)) {
+    if ((spec as any)[key]) return (spec as any)[key]
+  }
+  return null
+}
+
+export const matchesAttributes = (asset: any, filters: AttributeFilters, assetType: string): boolean => {
   const attrs = asset?.attributes || {}
   for (const [key, wanted] of Object.entries(filters)) {
     const actual = attrs[key]
-    // Booleans are only stored when true, so an absent value means false.
-    if (wanted.every((w) => w === 'true' || w === 'false')) {
+    const type = attributeSpec(assetType, key)?.type
+
+    if (type === 'boolean') {
+      // Only ever stored when true, so absent means false. Sound because every attribute whose
+      // false side is a thing in its own right is an enum instead.
       if (!wanted.includes(String(isTrue(actual)))) return false
       continue
     }
+    if (type === 'string[]') {
+      // Tolerate a scalar as well as an array, so this behaves the same before and after the data
+      // migration (models.condition used to be a single string).
+      const list = Array.isArray(actual) ? actual : actual === undefined || actual === null || actual === '' ? [] : [actual]
+      if (!list.length) {
+        if (!wanted.some((w) => EMPTY_ALIASES.includes(w))) return false
+        continue
+      }
+      if (!list.some((a) => wanted.includes(String(a).toLowerCase()))) return false
+      continue
+    }
+    // enum and enum|null: absent means never assessed, which matches nothing.
+    if (actual === undefined || actual === null) return false
     if (Array.isArray(actual)) {
       if (!actual.some((a) => wanted.includes(String(a).toLowerCase()))) return false
-    } else {
-      if (actual === undefined || actual === null) return false
-      if (!wanted.includes(String(actual).toLowerCase())) return false
+      continue
     }
+    if (!wanted.includes(String(actual).toLowerCase())) return false
   }
   return true
 }
@@ -62,11 +94,12 @@ interface FilterOptions {
   attributes?: AttributeFilters
   collection?: string | null
   vault?: string | null
+  assetType?: string
 }
 
 /** Filter a { slug: asset } map. Returns a new object, leaving the input untouched. */
 export const filterAssets = (data: Record<string, any>, opts: FilterOptions): Record<string, any> => {
-  const { categoryPath, attributes, collection, vault } = opts
+  const { categoryPath, attributes, collection, vault, assetType } = opts
   const hasAttrs = attributes && Object.keys(attributes).length > 0
   if (!categoryPath && !hasAttrs && !collection && !vault) return data
 
@@ -75,7 +108,7 @@ export const filterAssets = (data: Record<string, any>, opts: FilterOptions): Re
     if (categoryPath && !isInCategory(asset.category, categoryPath)) continue
     if (collection && !inCollection(asset, collection)) continue
     if (vault && !inVault(asset, vault)) continue
-    if (hasAttrs && !matchesAttributes(asset, attributes)) continue
+    if (hasAttrs && !matchesAttributes(asset, attributes, assetType)) continue
     out[slug] = asset
   }
   return out

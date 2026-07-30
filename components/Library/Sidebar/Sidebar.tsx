@@ -43,6 +43,7 @@ const Sidebar = (props) => {
         categoryPath: props.categoryPath,
         collection: props.collection ? props.collection.id : null,
         vault: props.vault ? props.vault.id : null,
+        assetType: props.assetType,
       })
     : null
 

@@ -111,9 +111,10 @@ const CategoryList = (props) => {
             attributes: props.attributes,
             collection: props.collection ? props.collection.id : null,
             vault: props.vault ? props.vault.id : null,
+            assetType: props.assetType,
           })
         : null,
-    [data, props.attributes, props.collection, props.vault]
+    [data, props.attributes, props.collection, props.vault, props.assetType]
   )
   const counts = useMemo(() => (scoped ? categoryCounts(scoped) : {}), [scoped])
 

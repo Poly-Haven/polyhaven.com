@@ -237,9 +237,10 @@ const Grid = (props) => {
             attributes: props.attributes,
             collection: props.collection ? props.collection.id : null,
             vault: props.vault ? props.vault.id : null,
+            assetType: props.assetType,
           })
         : {},
-    [publicData, publicError, props.categoryPath, props.attributes, props.collection, props.vault]
+    [publicData, publicError, props.categoryPath, props.attributes, props.collection, props.vault, props.assetType]
   )
 
   if (data) {

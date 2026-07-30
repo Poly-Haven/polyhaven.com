@@ -19,6 +19,8 @@ const CONTEXT_NOUN: Record<string, string> = {
   light_type: 'light',
   weather: 'weather',
   surface_use: 'surface',
+  sky_view: 'sky',
+  setting: 'use',
 }
 
 // `true` = every value of this attribute needs the noun, an array = only those listed do.
@@ -27,6 +29,9 @@ const NEEDS_CONTEXT: Record<string, true | string[]> = {
   light_type: true, // "Natural" -> "Natural light"
   weather: ['clear'], // "Clear" -> "Clear weather", but "Overcast" stands alone
   surface_use: ['ground', 'object'], // "Wall" is clear enough, "Object" is not
+  sky_view: true, // "Open" -> "Open sky"
+  setting: true, // "Indoor" alone reads as the environment, not as where the material is used
+  // `environment` needs nothing: "Indoor" and "Outdoor" say it on their own.
 }
 
 const prettify = (value: string) => String(value).replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
