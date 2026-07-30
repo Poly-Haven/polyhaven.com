@@ -14,12 +14,10 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from 'react-icons/md'
 
-import AssetDlGraph from 'components/Stats/AssetDlGraph'
 import AuthorCredit from 'components/AssetPage/AuthorCredit'
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import AfterDownload from './AfterDownload'
-import GLTFViewer from './WebGL/GLTFViewer'
 import Heart from 'components/UI/Icons/Heart'
 import IconButton from 'components/UI/Button/IconButton'
 import InfoItem from './InfoItem'
@@ -39,6 +37,8 @@ import ErrorBoundary from 'utils/ErrorBoundary'
 
 const PanoViewer = dynamic(() => import('./WebGL/PanoViewer'), { ssr: false })
 const UserRenders = dynamic(() => import('./UserRenders'), { ssr: false })
+const GLTFViewer = dynamic(() => import('./WebGL/GLTFViewer'), { ssr: false })
+const AssetDlGraph = dynamic(() => import('components/Stats/AssetDlGraph'), { ssr: false })
 
 const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
