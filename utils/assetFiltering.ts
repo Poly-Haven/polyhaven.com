@@ -4,7 +4,7 @@ import { isInCategory, attributeSchema } from 'utils/taxonomy'
  * Client-side filtering and counting for the library.
  *
  * The grid already holds every asset of the current type, so category/attribute/collection/vault
- * filtering happens in the browser — instant, and it lets the sidebar show accurate inclusive
+ * filtering happens in the browser - instant, and it lets the sidebar show accurate inclusive
  * counts without a second round-trip.
  */
 
@@ -64,7 +64,7 @@ interface FilterOptions {
   vault?: string | null
 }
 
-/** Filter a { slug: asset } map. Returns a new object; the input is untouched. */
+/** Filter a { slug: asset } map. Returns a new object, leaving the input untouched. */
 export const filterAssets = (data: Record<string, any>, opts: FilterOptions): Record<string, any> => {
   const { categoryPath, attributes, collection, vault } = opts
   const hasAttrs = attributes && Object.keys(attributes).length > 0
@@ -82,7 +82,7 @@ export const filterAssets = (data: Record<string, any>, opts: FilterOptions): Re
 }
 
 /**
- * Inclusive asset counts per category path — a parent's count includes every descendant,
+ * Inclusive asset counts per category path - a parent's count includes every descendant,
  * so the sidebar reads like a Blender catalog.
  */
 export const categoryCounts = (data: Record<string, any>): Record<string, number> => {

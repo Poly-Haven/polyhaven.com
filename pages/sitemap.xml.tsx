@@ -61,7 +61,7 @@ export const getServerSideProps = async ({ res }) => {
     })
     .catch(() => {}) // a courses hiccup shouldn't take down the whole sitemap
 
-  // Categories — the single-path taxonomy, straight from the bundled tree. Deeper categories get a
+  // Categories - the single-path taxonomy, straight from the bundled tree. Deeper categories get a
   // slightly lower priority so the broad landing pages stay the strongest entry points.
   for (const type of Object.keys(taxonomy.types)) {
     dynamicPages[`${baseUrl}/${type}`] = {

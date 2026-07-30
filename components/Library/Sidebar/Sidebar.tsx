@@ -35,7 +35,7 @@ const Sidebar = (props) => {
     setTypeHeader(t_c(assetTypeName(props.assetType)))
   }
 
-  // Same request the grid and category tree use — SWR dedupes it. Attribute facet counts are
+  // Same request the grid and category tree use - SWR dedupes it. Attribute facet counts are
   // scoped to the current category/collection/vault so the numbers match what's on screen.
   const { data: assetData } = apiSWR(`/assets?t=${props.assetType}&future=true`, { revalidateOnFocus: false })
   const scopedAssets = assetData

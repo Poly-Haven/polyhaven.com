@@ -23,7 +23,7 @@ const Library = ({ assetType, collections, collection, vault, categoryPath, auth
   const attributes = useMemo(() => attributeFiltersFromQuery(router.query || {}, assetType), [router.query, assetType])
   const searchState = typeof router.query.s === 'string' ? router.query.s : search
   // The author filter keeps its long-standing ?a= param, so existing links to an author's work
-  // still work — it's just driven from the URL now instead of local state.
+  // still work - it's just driven from the URL now instead of local state.
   const authorState = typeof router.query.a === 'string' ? router.query.a : author
   const setAuthor = (value) =>
     setQueryShallow(router, (query) => {

@@ -162,7 +162,7 @@ const Grid = (props) => {
     []
   )
 
-  // The input is the source of truth while typing; the URL catches up on the debounce. Only adopt
+  // The input is the source of truth while typing, and the URL catches up on the debounce. Only adopt
   // an incoming value when it didn't originate here (back/forward, or a cleared search), otherwise
   // the lagging prop would overwrite what's being typed.
   const localSearchRef = useRef(props.search)

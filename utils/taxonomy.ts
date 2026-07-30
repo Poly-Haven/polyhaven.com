@@ -9,9 +9,9 @@ import attributeData from 'constants/attributes.json'
  * everything nested beneath it, and assets may live at any level of the tree.
  *
  * URLs use each node's `slugPath` (e.g. /hdris/coast-water/beaches). The canonical `path` is what
- * we compare against asset data; the slug is purely for the URL.
+ * we compare against asset data. The slug is purely for the URL.
  *
- * Generated from admin's category registry — see constants/taxonomy.json.
+ * Generated from admin's category registry - see constants/taxonomy.json.
  */
 
 export interface TaxonomyNode {
@@ -71,7 +71,7 @@ export const ancestorsOf = (assetType: string, node: TaxonomyNode): TaxonomyNode
   return out
 }
 
-/** Inclusive match — the category itself plus everything nested beneath it. */
+/** Inclusive match - the category itself plus everything nested beneath it. */
 export const isInCategory = (assetCategory: string | undefined, categoryPath: string): boolean =>
   typeof assetCategory === 'string' &&
   (assetCategory === categoryPath || assetCategory.startsWith(categoryPath + '/'))

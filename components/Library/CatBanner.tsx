@@ -11,7 +11,7 @@ import styles from './Library.module.scss'
  *
  * Category tiles come straight from the taxonomy, so adding or renaming a top-level category
  * needs no change here. Each tile's image is a representative asset from that category
- * (constants/categoryBannerAssets.json — regenerate if a category ends up empty).
+ * (constants/categoryBannerAssets.json - regenerate if a category ends up empty).
  */
 const CatBanner = ({ assetType, collections }) => {
   const { t } = useTranslation('categories')

@@ -15,7 +15,7 @@ import styles from './Sidebar.module.scss'
 
 /**
  * The category tree. Unlike the old tag co-occurrence list, this renders the fixed single-path
- * taxonomy, and counts are INCLUSIVE — a parent shows the total of everything nested inside it,
+ * taxonomy, and counts are INCLUSIVE - a parent shows the total of everything nested inside it,
  * exactly like a Blender catalog.
  *
  * Counts come from the same asset list the grid already loads (SWR dedupes the request), so the
@@ -44,7 +44,7 @@ const CategoryNode = ({
   t: any
 }) => {
   const count = counts[node.path] || 0
-  // Hide empty branches — nothing to browse there.
+  // Hide empty branches - nothing to browse there.
   if (!count) return null
 
   const isActive = activePath === node.path
@@ -120,7 +120,7 @@ const CategoryList = (props) => {
   if (error) return <div>Error</div>
   if (!data || !scoped) return <Spinner />
 
-  // The "all" view has no taxonomy of its own — it lists the asset types instead.
+  // The "all" view has no taxonomy of its own - it lists the asset types instead.
   if (props.assetType === 'all') {
     const perType = { hdris: 0, textures: 0, models: 0 }
     const typeNames = ['hdris', 'textures', 'models']

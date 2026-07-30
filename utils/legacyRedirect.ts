@@ -6,7 +6,7 @@ import legacyMap from 'constants/legacyCategoryRedirects.json'
  * closest equivalent instead of 404ing.
  *
  * A legacy path can contain several tags. We merge them: the deepest category wins, and every
- * attribute tag becomes a query parameter — so /hdris/outdoor/night lands on
+ * attribute tag becomes a query parameter - so /hdris/outdoor/night lands on
  * /hdris?indoor=false&time_of_day=night.
  */
 
@@ -48,7 +48,7 @@ export const resolveLegacyRedirect = (
     const target = typeMap[key]
     if (!target) continue
     matched = true
-    if (target.cat) category = target.cat // deepest wins — later segments are more specific
+    if (target.cat) category = target.cat // deepest wins - later segments are more specific
     if (target.attr) Object.assign(attrs, target.attr)
   }
 

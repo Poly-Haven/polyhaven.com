@@ -46,7 +46,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
-  // Vault membership is a first-class field now; the legacy category string is only a fallback.
+  // Vault membership is a first-class field now. The legacy category string is only a fallback.
   let vault = asset.vault || null
   if (!vault) {
     for (const cat of asset.categories) {
