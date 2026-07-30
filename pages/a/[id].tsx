@@ -13,6 +13,30 @@ function handleErrors(response) {
   return response
 }
 
+const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+
+// During `next build` getStaticProps below runs once per asset, thousands of times per worker
+// process, and two of its four requests return identical bytes every single time: /assets already
+// contains every field this page reads out of /info/[id], and /stats/post_download takes no
+// parameters at all. Fetch those two once per worker rather than once per page.
+// Build time only, so on-demand regeneration still reads fresh data on every request.
+const isBuild = process.env.NEXT_PHASE === 'phase-production-build'
+const buildCache = new Map()
+
+const fetchOncePerBuild = (path) => {
+  const cached = buildCache.get(path)
+  if (cached) {
+    return cached
+  }
+  const request = fetch(`${apiBase}${path}`)
+    .then(handleErrors)
+    .then((response) => response.json())
+  buildCache.set(path, request)
+  // Never let one failed request poison every remaining page in the build.
+  request.catch(() => buildCache.delete(path))
+  return request
+}
+
 const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
   const pageUrl = `/a/${assetID}`
   if (!data) {
@@ -50,29 +74,44 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
 
 export async function getStaticProps(context) {
   const id = context.params.id
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+  const baseUrl = apiBase
 
   let error = null
 
-  const info = await fetch(`${baseUrl}/info/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const fetchInfo = () =>
+    fetch(`${baseUrl}/info/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
 
-  const files = await fetch(`${baseUrl}/files/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  // /assets leaves out only reviewers, staging, old_id and scale, none of which this site reads.
+  // Ids it does not list (staging or future dated) fall back to /info/[id] further down.
+  const infoRequest = isBuild ? fetchOncePerBuild('/assets').then((assets) => assets[id]) : fetchInfo()
 
-  const renders = await fetch(`${baseUrl}/renders/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const statsRequest = isBuild
+    ? fetchOncePerBuild('/stats/post_download')
+    : fetch(`${baseUrl}/stats/post_download`)
+        .then(handleErrors)
+        .then((response) => response.json())
 
-  const postDownloadStats = await fetch(`${baseUrl}/stats/post_download`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  // None of these depend on each other, so let them overlap instead of running back to back.
+  // Each keeps its own catch, so no promise here can reject and fail the whole set.
+  let [info, files, renders, postDownloadStats] = await Promise.all([
+    infoRequest.catch((e) => (error = e)),
+    fetch(`${baseUrl}/files/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
+      .catch((e) => (error = e)),
+    fetch(`${baseUrl}/renders/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
+      .catch((e) => (error = e)),
+    statsRequest.catch((e) => (error = e)),
+  ])
+
+  // An id missing from /assets is either unpublished or does not exist, so let /info decide which.
+  if (isBuild && !info && !error) {
+    info = await fetchInfo().catch((e) => (error = e))
+  }
 
   if (error) {
     console.error(error)
