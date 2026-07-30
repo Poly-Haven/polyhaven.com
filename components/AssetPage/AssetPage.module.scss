@@ -217,6 +217,28 @@
       white-space: initial;
     }
 
+    // The asset's single category as one compact line, rather than the row of unrelated pills the
+    // old flat category list produced.
+    .catTrail {
+      display: inline;
+      font-size: 0.85em;
+      line-height: 1.6;
+    }
+    .catTrailSep {
+      opacity: 0.35;
+      vertical-align: -0.15em;
+    }
+    .catTrailCrumb {
+      color: $c-text-light;
+      text-decoration: none;
+      box-shadow: none;
+      @include transition();
+
+      &:hover {
+        color: $c-accent-light;
+      }
+    }
+
     .tag {
       display: inline-block;
       padding: 0.2em 0.4em;

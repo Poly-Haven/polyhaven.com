@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
-import { nodeFromPath, ancestorsOf } from 'utils/taxonomy'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -25,6 +24,8 @@ import Heart from 'components/UI/Icons/Heart'
 import IconButton from 'components/UI/Button/IconButton'
 import InfoItem from './InfoItem'
 import InfoBlock from './InfoBlock'
+import CategoryBreadcrumb from './CategoryBreadcrumb'
+import AssetAttributes from './AssetAttributes'
 import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
 import Spinner from 'components/UI/Spinner/Spinner'
@@ -43,6 +44,8 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
+  const { t: tcat } = useTranslation('categories')
+  const { t: tlib } = useTranslation('library')
   const { patron } = useUserPatron()
   const [uuid, setUuid] = useState(null)
   const [pageLoading, setPageLoading] = useState(false)
@@ -101,12 +104,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
     }
   }
 
-  // The asset's single category, shown as its full trail (each level links to that browse page).
   const assetTypeKey = Object.keys(asset_types)[data.type]
-  const categoryNode = nodeFromPath(assetTypeKey, data.category)
-  const categoryTrail = categoryNode
-    ? [...ancestorsOf(assetTypeKey, categoryNode), categoryNode].map((n) => n.slugPath)
-    : []
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -410,11 +408,17 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
             <div className={styles.spacer} />
 
             <div ref={widthRef} style={{ marginTop: '1rem' }}>
-              <TagsList
+              <CategoryBreadcrumb
+                assetType={assetTypeKey}
+                category={data.category}
                 label={t('categories')}
-                list={categoryTrail}
-                linkPrefix={`/${assetTypeKey}/`}
-                width={sidebarWidth}
+                t={tcat}
+              />
+              <AssetAttributes
+                assetType={assetTypeKey}
+                attributes={data.attributes}
+                label={t('attributes', { defaultValue: 'Attributes' })}
+                t={tlib}
               />
               <TagsList
                 label={t('tags')}
