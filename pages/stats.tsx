@@ -49,7 +49,7 @@ export async function getStaticProps(context) {
     `${baseUrl}/assets?future=true`,
     `${baseUrl}/stats/downloads?type=TYPE_RES&date_from=${aMonthAgo}&date_to=${today}`,
     `${baseUrl}/stats/downloads?type=TYPE_FORMAT&date_from=${aMonthAgo}&date_to=${today}`,
-    `${baseUrl}/stats/relativecategory`,
+    `${baseUrl}/stats/taxonomy`,
     `${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${isoDay(
       fixTzOffset(startOfMonth(monthAgo))
     )}&date_to=${isoDay(fixTzOffset(endOfMonth(monthAgo)))}`,
@@ -78,7 +78,7 @@ export async function getStaticProps(context) {
     assets,
     resolutionsData,
     formatsData,
-    relativecategory,
+    taxonomy,
     dailyDownloads,
     traffic,
     cfdaily,
@@ -191,11 +191,13 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common'])),
+      // `library` carries the attribute and value labels the attribute chart reuses, so the names
+      // on the chart match the names in the library's own filter sidebar.
+      ...(await serverSideTranslations(context.locale, ['common', 'library'])),
       datasets: {
         threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
         relativeType,
-        relativecategory,
+        taxonomy,
         monthlyAssets,
         resolutions,
         formats,
