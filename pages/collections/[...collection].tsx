@@ -10,14 +10,14 @@ const LibraryPage = (props) => {
     <>
       <Head
         title={props.collection.name}
-        url={`/collections/${props.collection.id}/${props.assetType}/${props.categories.join('/')}`}
+        url={`/collections/${props.collection.id}`}
         description={props.collection.description}
         assetType={asset_types[props.assetType]}
         image={`https://cdn.polyhaven.com/collections/${props.collection.id}.png?width=580&quality=95`}
       />
       <Library
         assetType={props.assetType}
-        categories={props.categories}
+        categoryPath={null}
         collections={{}}
         collection={props.collection}
         author={props.author}
@@ -74,7 +74,6 @@ export async function getServerSideProps(context) {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
       assetType: 'all',
       collection: collectionData,
-      categories: [`collection: ${collectionID}`, ...params],
       author: author ? author : '',
       search: search ? search : '',
       strictSearch: strictSearch ? true : false,

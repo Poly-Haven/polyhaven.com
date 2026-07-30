@@ -1,0 +1,151 @@
+{
+ "_generated": "from admin.polyhaven.com/utils/categoryRegistry.json — do not edit by hand",
+ "types": {
+  "hdris": {
+   "time_of_day": {
+    "type": "enum|null",
+    "enum": [
+     "sunrise",
+     "morning",
+     "midday",
+     "afternoon",
+     "sunset",
+     "dusk",
+     "night"
+    ],
+    "description": "Best single time-of-day; null for time-less indoor/studio."
+   },
+   "weather": {
+    "type": "enum|null",
+    "enum": [
+     "clear",
+     "partly_cloudy",
+     "overcast",
+     "fog",
+     "storm",
+     "rain",
+     "snow"
+    ],
+    "description": "Dominant sky/weather."
+   },
+   "light_type": {
+    "type": "enum",
+    "enum": [
+     "natural",
+     "artificial",
+     "mixed"
+    ],
+    "description": "Dominant light source."
+   },
+   "contrast": {
+    "type": "enum",
+    "enum": [
+     "low",
+     "medium",
+     "high"
+    ],
+    "description": "Lighting contrast."
+   },
+   "season": {
+    "type": "enum|null",
+    "enum": [
+     "spring",
+     "summer",
+     "autumn",
+     "winter"
+    ],
+    "description": "Season if evident."
+   },
+   "indoor": {
+    "type": "boolean",
+    "description": "Captured indoors."
+   },
+   "open_sky": {
+    "type": "boolean",
+    "description": "Unobstructed open view of the sky."
+   },
+   "pure_sky": {
+    "type": "boolean",
+    "description": "Edited pure-sky variant (ground removed); inherits its base capture path."
+   },
+   "backplates": {
+    "type": "boolean",
+    "description": "Has matching backplate photographs."
+   }
+  },
+  "textures": {
+   "surface_use": {
+    "type": "enum|null",
+    "enum": [
+     "floor",
+     "wall",
+     "ceiling",
+     "roof",
+     "ground",
+     "paving",
+     "object"
+    ],
+    "description": "Where the material is typically applied."
+   },
+   "man_made": {
+    "type": "boolean",
+    "description": "True = manufactured/built/worked; false = natural."
+   },
+   "outdoor": {
+    "type": "boolean|null",
+    "description": "Typical setting."
+   },
+   "condition": {
+    "type": "string[]",
+    "enum": [
+     "clean",
+     "weathered",
+     "damaged",
+     "mossy",
+     "painted",
+     "rusted",
+     "cracked",
+     "worn"
+    ],
+    "description": "Condition tags ([] if pristine)."
+   }
+  },
+  "models": {
+   "material": {
+    "type": "string[]",
+    "enum": [
+     "wood",
+     "metal",
+     "brass",
+     "steel",
+     "plastic",
+     "ceramic",
+     "stone",
+     "concrete",
+     "glass",
+     "leather",
+     "fabric",
+     "paper",
+     "rubber"
+    ],
+    "description": "All materials making up the object, most prominent first (multi-value; avoid a single \"mixed\")."
+   },
+   "condition": {
+    "type": "enum",
+    "enum": [
+     "pristine",
+     "clean",
+     "worn",
+     "weathered",
+     "rusted",
+     "broken"
+    ],
+    "description": "Physical condition."
+   },
+   "rigged": {
+    "type": "boolean",
+    "description": "Has an animation rig."
+   }
+  }
+ }
+}

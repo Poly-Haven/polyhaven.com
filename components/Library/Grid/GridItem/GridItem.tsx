@@ -46,11 +46,14 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const blur = blurUpcoming && daysOld(asset.date_published) < 0
 
-  let vault = null
-  for (const cat of asset.categories) {
-    if (cat.startsWith('vault: ')) {
-      vault = cat.split(': ')[1]
-      break
+  // Vault membership is a first-class field now; the legacy category string is only a fallback.
+  let vault = asset.vault || null
+  if (!vault) {
+    for (const cat of asset.categories) {
+      if (cat.startsWith('vault: ')) {
+        vault = cat.split(': ')[1]
+        break
+      }
     }
   }
 
@@ -97,7 +100,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
       icon: <TbAspectRatio />,
     })
   }
-  if (asset.categories.includes('rigged')) {
+  if (asset.attributes?.rigged || asset.categories.includes('rigged')) {
     indicators.push({
       text: `✔ Rigged: ${t('rigged')}`,
       icon: <TbBone />,

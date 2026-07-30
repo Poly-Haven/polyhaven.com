@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
+import { nodeFromPath, ancestorsOf } from 'utils/taxonomy'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -89,13 +90,23 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
   const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
 
-  let vault = null
-  for (const cat of data.categories) {
-    if (cat.startsWith('vault: ')) {
-      vault = cat.split(': ')[1]
-      break
+  // Vault membership is a first-class field now; the legacy category string is only a fallback.
+  let vault = data.vault || null
+  if (!vault) {
+    for (const cat of data.categories) {
+      if (cat.startsWith('vault: ')) {
+        vault = cat.split(': ')[1]
+        break
+      }
     }
   }
+
+  // The asset's single category, shown as its full trail (each level links to that browse page).
+  const assetTypeKey = Object.keys(asset_types)[data.type]
+  const categoryNode = nodeFromPath(assetTypeKey, data.category)
+  const categoryTrail = categoryNode
+    ? [...ancestorsOf(assetTypeKey, categoryNode), categoryNode].map((n) => n.slugPath)
+    : []
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -401,8 +412,8 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
             <div ref={widthRef} style={{ marginTop: '1rem' }}>
               <TagsList
                 label={t('categories')}
-                list={data.categories}
-                linkPrefix={`/${Object.keys(asset_types)[data.type]}/`}
+                list={categoryTrail}
+                linkPrefix={`/${assetTypeKey}/`}
                 width={sidebarWidth}
               />
               <TagsList

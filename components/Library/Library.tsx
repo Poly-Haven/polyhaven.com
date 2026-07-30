@@ -1,8 +1,10 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useState, useEffect, useMemo, useRef } from 'react'
+import { useRouter } from 'next/router'
 import useStoredState from 'hooks/useStoredState'
 import debounce from 'lodash.debounce'
 import { v4 as uuid } from 'uuid'
 import apiSWR from 'utils/apiSWR'
+import { attributeFiltersFromQuery } from 'utils/assetFiltering'
 
 import Sidebar from 'components/Library/Sidebar/Sidebar'
 import Grid from 'components/Library/Grid/Grid'
@@ -13,9 +15,13 @@ import CatBanner from 'components/Library/CatBanner'
 
 import styles from './Library.module.scss'
 
-const Library = ({ assetType, collections, collection, vault, categories, author, search, strictSearch, sort }) => {
+const Library = ({ assetType, collections, collection, vault, categoryPath, author, search, strictSearch, sort }) => {
+  const router = useRouter()
+  // Attribute facets and the search term live in the query string (e.g. ?weather=clear&s=brick)
+  // so they're shareable and survive a reload.
+  const attributes = useMemo(() => attributeFiltersFromQuery(router.query || {}, assetType), [router.query, assetType])
+  const searchState = typeof router.query.s === 'string' ? router.query.s : search
   const [authorState, setAuthor] = useState(author)
-  const [searchState, setSearch] = useState(search)
   const [strictSearchState, setStrictSearch] = useState(strictSearch)
   const [sortState, setSort] = useStoredState('library_sort', sort)
   const [libSessionID, _] = useState(uuid()) // Anonymous session ID used to help determine synonyms in search tracking
@@ -31,10 +37,25 @@ const Library = ({ assetType, collections, collection, vault, categories, author
     }, [data, error])
   }
 
+  // The debounced callback is created once, so keep a ref to the current router rather than
+  // capturing a stale one.
+  const routerRef = useRef(router)
+  useEffect(() => {
+    routerRef.current = router
+  }, [router])
+
   const setSearchDebounced = useCallback(
     debounce((newSearchText) => {
-      setSearch(newSearchText)
-      if (strictSearchState) setStrictSearch(false)
+      const r = routerRef.current
+      const query = { ...r.query }
+      delete query.assets // the catch-all route param isn't a real query value
+      delete query.strict // typing a new term drops the exact-tag-match mode, so drop it from the URL too
+      if (newSearchText) query.s = newSearchText
+      else delete query.s
+      // Shallow, so the URL stays shareable but no navigation or refetch happens. `replace` rather
+      // than `push` so typing doesn't fill the history with an entry per pause.
+      r.replace({ pathname: r.asPath.split('?')[0], query }, undefined, { shallow: true })
+      setStrictSearch(false)
     }, 300),
     []
   )
@@ -43,19 +64,26 @@ const Library = ({ assetType, collections, collection, vault, categories, author
     document.getElementById('page').scrollTop = 0
   })
 
-  // Show banner if no category or collection is selected
-  const banner = !categories.length && !collection
+  // Show banner if nothing is narrowing the library down yet
+  const banner = !categoryPath && !collection && !vault && !Object.keys(attributes).length
 
   return (
     <div id={styles.library}>
-      <Sidebar assetType={assetType} categories={categories} />
+      <Sidebar
+        assetType={assetType}
+        categoryPath={categoryPath}
+        attributes={attributes}
+        collection={collection}
+        vault={vault}
+      />
       <Page library>
         {vault && <VaultBanner vault={vault} numPatrons={numPatrons} libraryPage={true} />}
         {collection && <CollectionHeader collection={collection} />}
         {banner ? <CatBanner assetType={assetType} collections={collections} /> : null}
         <Grid
           assetType={assetType}
-          categories={categories}
+          categoryPath={categoryPath}
+          attributes={attributes}
           banner={banner}
           collection={collection}
           vault={vault}

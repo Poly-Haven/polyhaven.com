@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import LazyLoad from 'react-lazy-load'
 import debounce from 'lodash.debounce'
@@ -16,6 +16,8 @@ import { assetTypeName } from 'utils/assetTypeName'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
 import { useUserPatron } from 'contexts/UserPatronContext'
+import { nodeFromPath, ancestorsOf, categoryLabel } from 'utils/taxonomy'
+import { filterAssets } from 'utils/assetFiltering'
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
@@ -88,8 +90,8 @@ const Grid = (props) => {
   }, [props.assetType])
   const refCategories = useRef(null)
   useEffect(() => {
-    refCategories.current = props.categories
-  }, [props.categories])
+    refCategories.current = props.categoryPath ? [props.categoryPath] : []
+  }, [props.categoryPath])
 
   const sortBy = {
     hot: (d: Object) => {
@@ -159,8 +161,20 @@ const Grid = (props) => {
     []
   )
 
+  // The input is the source of truth while typing; the URL catches up on the debounce. Only adopt
+  // an incoming value when it didn't originate here (back/forward, or a cleared search), otherwise
+  // the lagging prop would overwrite what's being typed.
+  const localSearchRef = useRef(props.search)
+  useEffect(() => {
+    if (props.search !== localSearchRef.current) {
+      localSearchRef.current = props.search
+      setSearchInputFieldText(props.search)
+    }
+  }, [props.search])
+
   const setSearch = (event) => {
     const newSearchText = event.target.value
+    localSearchRef.current = newSearchText
     // FIX: Unfortunately, if the user starts typing a lot of characters really fast
     // into the search input field, something like this:
     // "alsjdfllakjsdfkjahsdfahsdjfoijwqoeifjhweoifhuipewowjerfjwoiefhwiaeohfoawiejfew"
@@ -175,11 +189,15 @@ const Grid = (props) => {
     event.preventDefault()
   }
   const resetSearch = () => {
+    localSearchRef.current = ''
     setSearchInputFieldText('')
     props.setSearchDebounced('')
   }
 
   const asset_type_name = assetTypeName(props.assetType)
+
+  const activeNode = props.categoryPath ? nodeFromPath(props.assetType, props.categoryPath) : null
+  const categoryTrail = activeNode ? [...ancestorsOf(props.assetType, activeNode), activeNode] : []
 
   const setHeaderPath = () => {
     let path = ''
@@ -195,9 +213,8 @@ const Grid = (props) => {
         link += `/${props.assetType}`
         path += `<a href=${encodeURI(link)}>${tc(asset_type_name)}</a> /`
       }
-      for (const c of props.categories) {
-        link += `/${c}`
-        path += ` <a href=${encodeURI(link)}>${tcat(c)}</a> /`
+      for (const node of categoryTrail) {
+        path += ` <a href=${encodeURI(`/${props.assetType}/${node.slugPath}`)}>${categoryLabel(tcat, node)}</a> /`
       }
     }
     document.getElementById('header-frompath').innerHTML = path.trim()
@@ -205,15 +222,24 @@ const Grid = (props) => {
 
   const blurUpcoming = !earlyAccess
 
-  let data = {}
-  let urlParams = `?t=${props.assetType}&future=true`
-  if (props.categories.length) {
-    urlParams += '&c=' + props.categories.join(',')
-  }
-  const { data: publicData, error: publicError } = apiSWR(`/assets${urlParams}`, { revalidateOnFocus: false })
-  if (publicData && !publicError) {
-    data = { ...data, ...publicData }
-  }
+  // Fetch every asset of this type once, then narrow it down in the browser. The category tree and
+  // attribute facets share this exact request (SWR dedupes), which keeps their counts consistent
+  // with the grid and makes filtering instant.
+  const { data: publicData, error: publicError } = apiSWR(`/assets?t=${props.assetType}&future=true`, {
+    revalidateOnFocus: false,
+  })
+  const data = useMemo(
+    () =>
+      publicData && !publicError
+        ? filterAssets(publicData, {
+            categoryPath: props.categoryPath,
+            attributes: props.attributes,
+            collection: props.collection ? props.collection.id : null,
+            vault: props.vault ? props.vault.id : null,
+          })
+        : {},
+    [publicData, publicError, props.categoryPath, props.attributes, props.collection, props.vault]
+  )
 
   if (data) {
     sortedKeys = sortBy[props.sort](data)
@@ -270,8 +296,8 @@ const Grid = (props) => {
   } else if (props.vault) {
     title = ''
   } else {
-    if (props.categories.length) {
-      title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
+    if (categoryTrail.length) {
+      title = tc(asset_type_name) + ': ' + categoryTrail.map((n) => categoryLabel(tcat, n)).join(' > ')
     }
     if (props.author) {
       title += ` (${t('library:by-author', { author: props.author })})`

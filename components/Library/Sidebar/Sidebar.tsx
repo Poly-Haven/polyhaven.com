@@ -8,6 +8,9 @@ import { MdApps, MdFilterList, MdFirstPage, MdUnarchive, MdKeyboardArrowRight } 
 import Button from 'components/UI/Button/Button'
 import IconButton from 'components/UI/Button/IconButton'
 import CategoryList from './CategoryList'
+import AttributeFilters from './AttributeFilters'
+import apiSWR from 'utils/apiSWR'
+import { filterAssets } from 'utils/assetFiltering'
 
 import styles from './Sidebar.module.scss'
 
@@ -31,6 +34,17 @@ const Sidebar = (props) => {
   const hovTypeLeave = (e) => {
     setTypeHeader(t_c(assetTypeName(props.assetType)))
   }
+
+  // Same request the grid and category tree use — SWR dedupes it. Attribute facet counts are
+  // scoped to the current category/collection/vault so the numbers match what's on screen.
+  const { data: assetData } = apiSWR(`/assets?t=${props.assetType}&future=true`, { revalidateOnFocus: false })
+  const scopedAssets = assetData
+    ? filterAssets(assetData, {
+        categoryPath: props.categoryPath,
+        collection: props.collection ? props.collection.id : null,
+        vault: props.vault ? props.vault.id : null,
+      })
+    : null
 
   return (
     <>
@@ -82,7 +96,14 @@ const Sidebar = (props) => {
             </Link>
             <h2 id="typeHeader">{typeHeader}</h2>
           </div>
-          <CategoryList assetType={props.assetType} categories={props.categories} level={-1} />
+          <CategoryList
+            assetType={props.assetType}
+            categoryPath={props.categoryPath}
+            attributes={props.attributes}
+            collection={props.collection}
+            vault={props.vault}
+          />
+          <AttributeFilters assetType={props.assetType} assets={scopedAssets} active={props.attributes || {}} />
           {props.assetType === 'all' && (
             <>
               <hr />

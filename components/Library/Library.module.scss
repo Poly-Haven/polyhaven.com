@@ -28,6 +28,7 @@
   position: relative;
   padding: 1.9em;
   @include flex(row, true);
+  flex-wrap: wrap;
   min-width: min-content;
   justify-content: center;
   gap: 1.9em;

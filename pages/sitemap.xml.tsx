@@ -2,6 +2,7 @@ import React from 'react'
 import fs from 'fs'
 
 import { removeExtension } from 'utils/stringUtils'
+import taxonomy from 'constants/taxonomy.json'
 
 const Sitemap = () => {}
 
@@ -60,34 +61,25 @@ export const getServerSideProps = async ({ res }) => {
     })
     .catch(() => {}) // a courses hiccup shouldn't take down the whole sitemap
 
-  // Categories
-  let types = []
-  await fetch(`${apiUrl}/categories/all`)
-    .then((response) => response.json())
-    .then((resdata) => {
-      for (const type of Object.keys(resdata)) {
-        if (type === 'all') continue
-        types.push(type)
-        dynamicPages[`https://polyhaven.com/${type}`] = {
+  // Categories — the single-path taxonomy, straight from the bundled tree. Deeper categories get a
+  // slightly lower priority so the broad landing pages stay the strongest entry points.
+  for (const type of Object.keys(taxonomy.types)) {
+    dynamicPages[`${baseUrl}/${type}`] = {
+      lastmod: new Date().toISOString(),
+      changefreq: 'daily',
+      priority: '1.0',
+    }
+    const walk = (nodes, depth) => {
+      for (const node of nodes) {
+        dynamicPages[`${baseUrl}/${type}/${node.slugPath}`] = {
           lastmod: new Date().toISOString(),
-          changefreq: 'daily',
-          priority: '1.0',
+          changefreq: 'monthly',
+          priority: depth === 0 ? '0.7' : depth === 1 ? '0.5' : '0.3',
         }
+        walk(node.children, depth + 1)
       }
-    })
-  for (const type of types) {
-    await fetch(`${apiUrl}/categories/${type}`)
-      .then((response) => response.json())
-      .then((resdata) => {
-        for (const cat of Object.keys(resdata)) {
-          if (cat === 'all') continue
-          dynamicPages[`https://polyhaven.com/${type}/${encodeURIComponent(cat)}`] = {
-            lastmod: new Date().toISOString(),
-            changefreq: 'monthly',
-            priority: '0.5',
-          }
-        }
-      })
+    }
+    walk(taxonomy.types[type], 0)
   }
 
   // Compile sitemap
