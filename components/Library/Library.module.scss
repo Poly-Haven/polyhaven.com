@@ -37,11 +37,21 @@
     flex-wrap: wrap;
   }
 
+  // Promote the tiles while the pointer is anywhere in the banner, so the hover lift is composited
+  // instead of re-rasterising the label every frame, which is what makes the text shimmer during
+  // the transition. Scoped to hover so the layers are not held for the life of the page.
+  &:hover .cat {
+    will-change: transform;
+  }
+
   .cat {
     position: relative;
     flex-shrink: 0;
     height: 180px;
     line-height: 0;
+    // Own stacking context, so the model tiles' hover panel below can sit behind the image with a
+    // negative z-index without escaping into an ancestor's paint order.
+    isolation: isolate;
     @include transition(0.1s);
     box-shadow: 0 0 0 -1em rgba(0, 0, 0, 1);
 
@@ -75,14 +85,23 @@
     }
   }
 
+  // Model renders are transparent PNGs, so they get a panel behind them on hover to lift them off
+  // the page. It is drawn by a pseudo-element rather than by padding on the link itself: padding
+  // grew the box mid-transition, which moved the absolutely-positioned label and narrowed the
+  // width it had to wrap in - enough to push "Vehicles & Transport" from two lines to three.
   .modelCat {
-    &:hover {
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -0.5em;
+      background: rgba($c-background-lightish, 0);
+      pointer-events: none;
+      z-index: -1;
+      @include transition(0.1s);
+    }
+
+    &:hover::before {
       background: rgba($c-background-lightish, 0.4);
-      padding: 0.5em;
-      margin: -0.5em;
-      p {
-        padding: 0.7em 1.1em;
-      }
     }
   }
 }
