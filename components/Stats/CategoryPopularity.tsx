@@ -13,14 +13,21 @@ import styles from './Stats.module.scss'
  * what the average one is downloaded per day (Y). A point up and to the left is a category people
  * want more of than we have.
  *
- * The taxonomy is ~230 nodes per type, far too many to plot at once, so the chart shows one level
- * at a time: the top-level categories first, then the children of whichever you click. Counts are
- * INCLUSIVE of everything nested beneath a node, matching how the library browses, so the levels
- * stay comparable as you descend. A node whose children hold no assets has nothing to drill into,
- * so clicking it opens the library instead.
+ * Every category is plotted at once, all three levels of the tree together, with the dot shrinking
+ * as it goes deeper. Counts are INCLUSIVE of everything nested beneath a node, matching how the
+ * library browses, so a top-level dot sits to the right of its own children rather than competing
+ * with them - the size and the position agree about which is the broader category.
+ *
+ * Clicking a category with populated children narrows the chart to that subtree, which is the only
+ * way to read a dense branch; a breadcrumb goes back up. A node with nothing under it opens the
+ * library instead.
  *
  * Replaces RelativeCat, which plotted the legacy multi-value `categories` array.
  */
+
+/** Dot radius by depth, so the level a category sits at is legible without reading the tooltip. */
+const RADIUS = [7, 7, 5, 3.5]
+const radiusFor = (depth: number) => RADIUS[depth] || 3
 
 interface CategoryStat {
   count: number
@@ -30,26 +37,49 @@ interface CategoryStat {
 
 const axisLabelStyle = { fontSize: '0.7em', fill: 'rgba(255,255,255,0.4)', textAnchor: 'middle' as const }
 
-/** Round tick steps, so a sqrt axis doesn't label itself 1, 6, 44, 86. */
-const niceTicks = (max: number, count = 4): number[] => {
-  if (!max) return [0]
-  const rough = max / count
-  const magnitude = Math.pow(10, Math.floor(Math.log10(rough)))
-  const step = [1, 2, 5, 10].map((m) => m * magnitude).find((s) => s >= rough) || magnitude * 10
-  const ticks: number[] = []
-  for (let v = 0; v <= max; v += step) ticks.push(v)
-  return ticks
+/**
+ * Ticks for a log axis: the 1-2-5 sequence, clipped to the domain. Recharts' own log ticks are
+ * evenly spaced in value, which on a log scale bunches them all against one end.
+ *
+ * A narrow domain can contain no 1-2-5 value at all - focusing a branch whose categories all sit
+ * between 21 and 28 a day is enough, which is most of them. Recharts takes an empty `ticks` array
+ * as authoritative: it drops every horizontal gridline and falls back to its own labels, so the
+ * grid and the axis end up disagreeing. Derive ticks from the domain itself in that case.
+ */
+const logTicks = (min: number, max: number, integers = false): number[] => {
+  const out: number[] = []
+  for (let e = Math.floor(Math.log10(min)); e <= Math.ceil(Math.log10(max)); e++) {
+    for (const m of [1, 2, 5]) {
+      const v = m * Math.pow(10, e)
+      if (v >= min && v <= max) out.push(v)
+    }
+  }
+  if (out.length >= 2) return out
+  const round = integers ? Math.round : (v: number) => Number(v.toPrecision(2))
+  // Geometric midpoint, since the scale is logarithmic and the arithmetic mean would sit visually
+  // off-centre.
+  return Array.from(new Set([round(min), round(Math.sqrt(min * max)), round(max)])).filter((v) => v > 0)
 }
 
 interface Point {
   cat: string
   name: string
+  trail: string
+  depth: number
   url: string
   count: number
   avg: number
+  plotAvg: number
   direct: number
   drillable: boolean
 }
+
+/**
+ * A log axis cannot place zero, and a category published a couple of days ago with no downloads
+ * yet would land at -Infinity and vanish. Plot those at the floor and keep `avg` itself untouched
+ * for the tooltip, so the dot is visible and the number it reports is still the real one.
+ */
+const AVG_FLOOR = 0.1
 
 const CategoryPopularity = ({
   data,
@@ -66,28 +96,64 @@ const CategoryPopularity = ({
   const stats = data?.[type] || {}
   const node = path ? nodeFromPath(type, path) : null
   // A path that no longer resolves (a category renamed since the page was generated) falls back to
-  // the roots rather than rendering an empty chart with no way out.
-  const level: TaxonomyNode[] = path && node ? node.children : getRoots(type)
-  const trail = node ? [...ancestorsOf(type, node), node] : []
+  // the whole tree rather than rendering an empty chart with no way out.
+  const crumbs = node ? [...ancestorsOf(type, node), node] : []
+
+  // The focused subtree, flattened: the node itself plus every descendant, or the whole tree when
+  // nothing is focused.
+  const scope: TaxonomyNode[] = useMemo(() => {
+    const out: TaxonomyNode[] = []
+    const walk = (nodes: TaxonomyNode[]) => {
+      for (const n of nodes) {
+        out.push(n)
+        walk(n.children)
+      }
+    }
+    walk(node ? [node] : getRoots(type))
+    return out
+  }, [node, type])
 
   const points: Point[] = useMemo(
     () =>
-      level
+      scope
         .map((n) => ({ n, stat: stats[n.path] }))
         .filter(({ stat }) => stat && stat.count > 0)
-        .map(({ n, stat }) => ({
-          cat: n.path,
-          name: n.name,
-          url: `/${type}/${n.slugPath}`,
-          count: stat.count,
-          avg: stat.avg,
-          direct: stat.direct || 0,
-          drillable: n.children.some((c) => stats[c.path]?.count),
-        })),
-    [level, stats, type]
+        .map(({ n, stat }) => {
+          const parts = n.path.split('/')
+          return {
+            cat: n.path,
+            name: n.name,
+            trail: parts.slice(0, -1).join(' › '),
+            depth: parts.length,
+            url: `/${type}/${n.slugPath}`,
+            count: stat.count,
+            avg: stat.avg,
+            plotAvg: Math.max(stat.avg, AVG_FLOOR),
+            direct: stat.direct || 0,
+            drillable: n.children.some((c) => stats[c.path]?.count),
+          }
+        })
+        // Shallow first, so the small deep dots paint on top of the big shallow rings that contain
+        // them rather than disappearing underneath.
+        .sort((a, b) => a.depth - b.depth),
+    [scope, stats, type]
   )
 
-  const maxCount = points.reduce((m, p) => Math.max(m, p.count), 0)
+  // Both axes are heavily skewed - most categories are small and most averages are modest, with a
+  // handful of each an order of magnitude out - so both are log scaled and the domains come from
+  // the data. A linear axis put 95% of the dots in the bottom fifth of the chart.
+  const bounds = points.reduce(
+    (b, p) => ({
+      maxCount: Math.max(b.maxCount, p.count),
+      minAvg: Math.min(b.minAvg, p.plotAvg),
+      maxAvg: Math.max(b.maxAvg, p.plotAvg),
+    }),
+    { maxCount: 1, minAvg: Infinity, maxAvg: 1 }
+  )
+  // Padded outwards - multiplicatively, since the scale is logarithmic - so the dots sitting at the
+  // extremes are not sliced in half by the axis. The single-asset column is always at one edge.
+  const domainX: [number, number] = [1 / 1.3, bounds.maxCount * 1.3]
+  const domainY: [number, number] = [Math.min(bounds.minAvg, bounds.maxAvg) / 1.4, bounds.maxAvg * 1.4]
 
   const onPointClick = (point: Point) => {
     if (point.drillable) setPath(point.cat)
@@ -100,7 +166,7 @@ const CategoryPopularity = ({
       <Dot
         cx={cx}
         cy={cy}
-        r={5}
+        r={radiusFor(payload.depth)}
         fill={typeColorsTransp[type]}
         stroke={typeColors[type]}
         style={{ cursor: payload.drillable ? 'zoom-in' : 'pointer' }}
@@ -114,6 +180,9 @@ const CategoryPopularity = ({
     const p: Point = payload[0].payload
     return (
       <div style={tooltipStyles.contentStyle}>
+        {/* Every level is on the chart at once, so a bare name like "Chairs" or "Industrial" does
+            not say where the dot sits. */}
+        {p.trail ? <div style={{ ...tooltipStyles.itemStyle, opacity: 0.45 }}>{p.trail}</div> : null}
         <div style={tooltipStyles.labelStyle}>{p.name}</div>
         <div style={tooltipStyles.itemStyle}>
           {p.count} asset{p.count === 1 ? '' : 's'}
@@ -121,7 +190,7 @@ const CategoryPopularity = ({
         </div>
         <div style={tooltipStyles.itemStyle}>{Math.round(p.avg)} downloads/day each</div>
         <div style={{ ...tooltipStyles.itemStyle, opacity: 0.55, marginTop: '0.3em' }}>
-          {p.drillable ? 'Click to explore' : 'Click to browse'}
+          {p.drillable ? 'Click to focus' : 'Click to browse'}
         </div>
       </div>
     )
@@ -133,10 +202,10 @@ const CategoryPopularity = ({
         <p>Popularity of {name} categories:</p>
       </div>
       <div className={styles.drillCrumbs}>
-        <button className={styles.drillCrumb} onClick={() => setPath(null)} disabled={!trail.length}>
+        <button className={styles.drillCrumb} onClick={() => setPath(null)} disabled={!crumbs.length}>
           All
         </button>
-        {trail.map((n) => (
+        {crumbs.map((n) => (
           <span key={n.path} className={styles.drillCrumbWrap}>
             <MdChevronRight />
             <button className={styles.drillCrumb} onClick={() => setPath(n.path)}>
@@ -153,17 +222,25 @@ const CategoryPopularity = ({
               <XAxis
                 type="number"
                 dataKey="count"
-                // Square root, so the many small categories spread out instead of piling against
-                // the axis while one big one stretches the scale.
-                scale="sqrt"
-                domain={[0, maxCount]}
-                ticks={niceTicks(maxCount)}
+                scale="log"
+                domain={domainX}
+                ticks={logTicks(domainX[0], domainX[1], true)}
                 tick={{ fontSize: '0.7em' }}
                 height={26}
+                allowDataOverflow
               >
                 <Label value="assets" position="insideBottom" offset={0} style={axisLabelStyle} />
               </XAxis>
-              <YAxis type="number" dataKey="avg" domain={[0, 'auto']} tick={{ fontSize: '0.7em' }} width={44}>
+              <YAxis
+                type="number"
+                dataKey="plotAvg"
+                scale="log"
+                domain={domainY}
+                ticks={logTicks(domainY[0], domainY[1])}
+                tick={{ fontSize: '0.7em' }}
+                width={44}
+                allowDataOverflow
+              >
                 <Label value="downloads/day" angle={-90} position="insideLeft" offset={12} style={axisLabelStyle} />
               </YAxis>
               <Tooltip content={<TooltipContent />} cursor={{ strokeDasharray: '3 3' }} />

@@ -42,6 +42,23 @@ interface AttributeStat {
   values: Record<string, Bucket>
 }
 
+const COUNT_BAR_MAX = 44
+
+/**
+ * The demand marker: a third the width of the supply bar it sits in front of, so it reads against
+ * it the way a bullet chart does. A dot here was too small to see at the width this chart gets.
+ *
+ * Recharts lays out every Bar sharing an x-axis side by side, so the two series are put on separate
+ * x-axes (the second hidden) to make them overlap. That means `width` here is the full category
+ * band, and the marker has to be sized off the supply bar's own capped width rather than off the
+ * band, or it would balloon whenever an attribute has only a few values.
+ */
+const DemandBar = (props: any) => {
+  const { x, y, width, height, fill } = props
+  const w = Math.max(3, Math.min(width, COUNT_BAR_MAX) / 3)
+  return <rect x={x + (width - w) / 2} y={y} width={w} height={Math.max(height, 1)} fill={fill} />
+}
+
 const titleCase = (s: string) =>
   s
     .split('_')
@@ -129,6 +146,9 @@ const AttributePopularity = ({
               height={48}
               tick={{ fontSize: '0.7em' }}
             />
+            {/* Second, hidden category axis, purely so the demand marker overlaps the supply bar
+                instead of being dodged alongside it. */}
+            <XAxis dataKey="label" xAxisId="demand" hide />
             <YAxis yAxisId="count" tick={{ fontSize: '0.75em', fill: typeColors[assetType] }} />
             <YAxis
               yAxisId="avg"
@@ -146,27 +166,28 @@ const AttributePopularity = ({
               dataKey="count"
               fill={typeColors[assetType]}
               opacity={0.75}
-              maxBarSize={44}
+              maxBarSize={COUNT_BAR_MAX}
               isAnimationActive={false}
             />
-            {/* Dots, not a line. The bars are ordered by count, so joining the averages up drew a
-                zig-zag that read as a trend across values that have no order to trend along. */}
-            <Line
+            <Bar
               yAxisId="avg"
+              xAxisId="demand"
               dataKey="avg"
-              stroke="none"
-              dot={{ r: 4, fill: demandColor, strokeWidth: 0 }}
-              activeDot={{ r: 5.5, fill: demandColor, strokeWidth: 0 }}
+              fill={demandColor}
+              shape={<DemandBar />}
               isAnimationActive={false}
             />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
-      <p className={styles.graphCaption}>
-        <span style={{ color: typeColors[assetType] }}>Bars</span>: assets with each value.{' '}
-        <span style={{ color: demandColor }}>Dots</span>: average downloads per day.
-        {partial ? ` Set on ${stat.assessed} of ${total} ${typeNames[assetType].toLowerCase()}s.` : ''}
-      </p>
+      {/* No legend for the two series - the tooltip names both, and the axes are already coloured
+          to match them. Coverage stays, because nothing else says how much of the type was
+          assessed for an attribute that is only sometimes recorded. */}
+      {partial ? (
+        <p className={styles.graphCaption}>
+          Set on {stat.assessed} of {total} {typeNames[assetType].toLowerCase()}s.
+        </p>
+      ) : null}
     </div>
   )
 }
