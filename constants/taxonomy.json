@@ -185,15 +185,6 @@
       "description": "Sandy and mixed shorelines.",
       "children": [
        {
-        "name": "Beach Promenades",
-        "slug": "beach-promenades",
-        "path": "Coast & Water/Beaches/Beach Promenades",
-        "slugPath": "coast-water/beaches/beach-promenades",
-        "id": "9d52cf40-bf4d-50a9-9de1-968d61722120",
-        "description": "Paved or boardwalk paths running along a beach front",
-        "children": []
-       },
-       {
         "name": "Coastal Dunes",
         "slug": "coastal-dunes",
         "path": "Coast & Water/Beaches/Coastal Dunes",
@@ -1088,15 +1079,6 @@
         "id": "6c21499f-d45e-5ba2-ae20-6c39d6f3e43f",
         "description": "Formal and casual restaurant dining rooms and service areas",
         "children": []
-       },
-       {
-        "name": "Terraces & Patios",
-        "slug": "terraces-patios",
-        "path": "Interiors/Dining & Hospitality/Terraces & Patios",
-        "slugPath": "interiors/dining-hospitality/terraces-patios",
-        "id": "f84f41a1-b274-5733-b4db-c9fa34366d3f",
-        "description": "Covered or open outdoor dining terraces attached to hospitality venues",
-        "children": []
        }
       ]
      },
@@ -1243,15 +1225,6 @@
         "slugPath": "interiors/residential/attics-lofts",
         "id": "760f76d0-2bf7-5a23-b5c9-50c93f85c703",
         "description": "Converted attic spaces and open-plan loft-style residential rooms",
-        "children": []
-       },
-       {
-        "name": "Balconies & Patios",
-        "slug": "balconies-patios",
-        "path": "Interiors/Residential/Balconies & Patios",
-        "slugPath": "interiors/residential/balconies-patios",
-        "id": "005686c1-dfa4-5ce1-b80a-6768d51df2e7",
-        "description": "Semi-outdoor residential balconies, terraces, and ground-level patios",
         "children": []
        },
        {
@@ -1735,6 +1708,15 @@
       ]
      },
      {
+      "name": "Patios & Verandas",
+      "slug": "patios-verandas",
+      "path": "Parks & Gardens/Patios & Verandas",
+      "slugPath": "parks-gardens/patios-verandas",
+      "id": "1bf5c95f-1c19-5f21-8045-03caee1b4554",
+      "description": "Ground-level covered outdoor living space attached to a building: verandas, stoeps, patios, and shaded decks. Elevated rooftop and upper-floor spaces belong under Streets & Town/Rooftops & Balconies.",
+      "children": []
+     },
+     {
       "name": "Playgrounds",
       "slug": "playgrounds",
       "path": "Parks & Gardens/Playgrounds",
@@ -1897,7 +1879,7 @@
       "path": "Streets & Town/Rooftops & Balconies",
       "slugPath": "streets-town/rooftops-balconies",
       "id": "fe85e892-178e-5f1d-af59-2b291b40a661",
-      "description": "Rooftop and elevated city views.",
+      "description": "Elevated outdoor spaces: rooftops, upper-floor balconies, and terraces above ground level.",
       "children": [
        {
         "name": "Balconies & Terraces",
@@ -1924,15 +1906,6 @@
         "slugPath": "streets-town/rooftops-balconies/helipads",
         "id": "15d91d1e-14ed-5109-9299-cc560b7fe486",
         "description": "Rooftop or ground-level helicopter landing pads",
-        "children": []
-       },
-       {
-        "name": "Rooftop Car Parks",
-        "slug": "rooftop-car-parks",
-        "path": "Streets & Town/Rooftops & Balconies/Rooftop Car Parks",
-        "slugPath": "streets-town/rooftops-balconies/rooftop-car-parks",
-        "id": "1900187f-c6cd-585b-970c-351733b4b3d1",
-        "description": "Open-air top-deck levels of multi-storey parking structures",
         "children": []
        }
       ]
@@ -2396,7 +2369,7 @@
         "path": "Brick & Block/Stone Block & Paver/Cut-Stone Pavers",
         "slugPath": "brick-block/stone-block-paver/cut-stone-pavers",
         "id": "5aa99c3f-7783-51e3-90d1-2c496368ad24",
-        "description": "Precisely cut natural stone pavers for floors and paths",
+        "description": "Sawn or dressed stone pavers with flat faces and regular edges, laid to a tight repeating pattern. Rounded or irregular natural cobbles belong under Stone/Cobblestone.",
         "children": []
        },
        {
@@ -2455,17 +2428,7 @@
       "slugPath": "ceramic/quarry-unglazed",
       "id": "3a92bf01-5218-5998-86bc-598021427fb9",
       "description": "Matte unglazed/quarry ceramic.",
-      "children": [
-       {
-        "name": "(matte unglazed ceramic)",
-        "slug": "matte-unglazed-ceramic",
-        "path": "Ceramic/Quarry & Unglazed/(matte unglazed ceramic)",
-        "slugPath": "ceramic/quarry-unglazed/matte-unglazed-ceramic",
-        "id": "fb6ec593-9d38-5bd0-b32a-e0aabe89c7ed",
-        "description": "Unglazed matte ceramic quarry tiles with natural fired surface",
-        "children": []
-       }
-      ]
+      "children": []
      },
      {
       "name": "Terracotta",
@@ -2474,17 +2437,7 @@
       "slugPath": "ceramic/terracotta",
       "id": "6165a492-c53c-5b5f-96df-20c96a7763df",
       "description": "Fired terracotta tiles & surfaces.",
-      "children": [
-       {
-        "name": "(fired terracotta tiles & surfaces)",
-        "slug": "fired-terracotta-tiles-surfaces",
-        "path": "Ceramic/Terracotta/(fired terracotta tiles & surfaces)",
-        "slugPath": "ceramic/terracotta/fired-terracotta-tiles-surfaces",
-        "id": "832e49b2-db5d-5282-a722-3974d9b215f8",
-        "description": "Fired terracotta tiles and surfaces with warm earthy tone",
-        "children": []
-       }
-      ]
+      "children": []
      },
      {
       "name": "Terrazzo & Mosaic",
@@ -2778,6 +2731,34 @@
         "slugPath": "ground-terrain/forest-floor/pine-needle-litter",
         "id": "8f7b5218-24b6-53f1-9298-0d51d2d0764e",
         "description": "Accumulated conifer needles forming a dense mat on forest ground",
+        "children": []
+       }
+      ]
+     },
+     {
+      "name": "Grass & Vegetation",
+      "slug": "grass-vegetation",
+      "path": "Ground & Terrain/Grass & Vegetation",
+      "slugPath": "ground-terrain/grass-vegetation",
+      "id": "a1b3da38-22fa-5f92-b066-c60dbf87d360",
+      "description": "Grass-dominant ground cover.",
+      "children": [
+       {
+        "name": "Dry & Sparse Grass",
+        "slug": "dry-sparse-grass",
+        "path": "Ground & Terrain/Grass & Vegetation/Dry & Sparse Grass",
+        "slugPath": "ground-terrain/grass-vegetation/dry-sparse-grass",
+        "id": "e9516d71-1efd-51d6-b3c4-ce945ee92604",
+        "description": "Dormant, dead, or thinly scattered grass where soil shows through",
+        "children": []
+       },
+       {
+        "name": "Lush & Green Grass",
+        "slug": "lush-green-grass",
+        "path": "Ground & Terrain/Grass & Vegetation/Lush & Green Grass",
+        "slugPath": "ground-terrain/grass-vegetation/lush-green-grass",
+        "id": "21e06d88-2ab6-5bdd-ad11-869b7ff0b573",
+        "description": "Living green grass and lawn, dense enough that the grass rather than the soil is the surface",
         "children": []
        }
       ]
@@ -3083,15 +3064,6 @@
         "slugPath": "metal/cladding-shutters/container-panels",
         "id": "19c3f4e9-03df-528c-981a-4e9f779596b2",
         "description": "Corrugated steel panels from shipping containers and freight boxes",
-        "children": []
-       },
-       {
-        "name": "Metal Cladding",
-        "slug": "metal-cladding",
-        "path": "Metal/Cladding & Shutters/Metal Cladding",
-        "slugPath": "metal/cladding-shutters/metal-cladding",
-        "id": "346b6832-edfa-5d42-b4aa-290443de85d6",
-        "description": "Corrugated, ribbed, and flat metal sheet panels used as exterior wall cladding",
         "children": []
        },
        {
@@ -3411,7 +3383,7 @@
       "path": "Stone/Cobblestone",
       "slugPath": "stone/cobblestone",
       "id": "9e674e31-fc3f-5624-b5ce-9148bad8d55c",
-      "description": "Rounded natural cobblestone.",
+      "description": "Paving of rounded or irregular natural stones, laid with visibly uneven faces and joints.",
       "children": [
        {
         "name": "Irregular Cobbles",
@@ -4213,7 +4185,7 @@
         "path": "Apparel & Personal Items/Accessories/Nautical Instruments",
         "slugPath": "apparel-personal-items/accessories/nautical-instruments",
         "id": "32ae5b02-8860-5d30-ac2d-2121f2dc69a0",
-        "description": "Compasses, sextants, telescopes, and handheld navigation instruments",
+        "description": "Compasses, sextants, and handheld navigation instruments. Telescopes and binoculars belong under Electronics & Appliances/Devices & Instruments/Optical Instruments.",
         "children": []
        },
        {
@@ -5083,7 +5055,7 @@
         "path": "Electronics & Appliances/Devices & Instruments/Lab Equipment",
         "slugPath": "electronics-appliances/devices-instruments/lab-equipment",
         "id": "d6c96414-71f9-5680-854b-9d6351c735e1",
-        "description": "Scientific instruments: microscopes, centrifuges, meters, and analysers",
+        "description": "Laboratory apparatus: centrifuges, meters, analysers, burners, and glassware. Lens-based instruments including microscopes belong under Optical Instruments.",
         "children": []
        },
        {
@@ -5092,7 +5064,7 @@
         "path": "Electronics & Appliances/Devices & Instruments/Optical Instruments",
         "slugPath": "electronics-appliances/devices-instruments/optical-instruments",
         "id": "dc601232-ec2d-56d2-80de-c9acac17b25a",
-        "description": "Telescopes, binoculars, microscopes, and rangefinders",
+        "description": "Lens-based instruments: telescopes, binoculars, microscopes, and rangefinders, wherever they are used.",
         "children": []
        },
        {
@@ -6465,7 +6437,7 @@
         "path": "Tools & Equipment/Garden Tools/Brooms & Cleaning",
         "slugPath": "tools-equipment/garden-tools/brooms-cleaning",
         "id": "bd5a3a66-33cd-52d7-b0f2-a152f8921e78",
-        "description": "Outdoor brooms, leaf rakes, brushes, and yard-cleaning implements",
+        "description": "Brooms, dustpans, brushes, plungers, and other cleaning implements, indoor or outdoor.",
         "children": []
        },
        {
