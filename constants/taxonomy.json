@@ -2364,15 +2364,6 @@
         "children": []
        },
        {
-        "name": "Cut-Stone Pavers",
-        "slug": "cut-stone-pavers",
-        "path": "Brick & Block/Stone Block & Paver/Cut-Stone Pavers",
-        "slugPath": "brick-block/stone-block-paver/cut-stone-pavers",
-        "id": "5aa99c3f-7783-51e3-90d1-2c496368ad24",
-        "description": "Sawn or dressed stone pavers with flat faces and regular edges, laid to a tight repeating pattern. Rounded or irregular natural cobbles belong under Stone/Cobblestone.",
-        "children": []
-       },
-       {
         "name": "Sandstone Brick & Block",
         "slug": "sandstone-brick-block",
         "path": "Brick & Block/Stone Block & Paver/Sandstone Brick & Block",
@@ -3378,38 +3369,38 @@
     "description": "Natural rock — faces, rubble, cobbles and slabs.",
     "children": [
      {
-      "name": "Cobblestone",
-      "slug": "cobblestone",
-      "path": "Stone/Cobblestone",
-      "slugPath": "stone/cobblestone",
+      "name": "Cobblestone & Paving",
+      "slug": "cobblestone-paving",
+      "path": "Stone/Cobblestone & Paving",
+      "slugPath": "stone/cobblestone-paving",
       "id": "9e674e31-fc3f-5624-b5ce-9148bad8d55c",
-      "description": "Paving of rounded or irregular natural stones, laid with visibly uneven faces and joints.",
+      "description": "Stone laid as a paved surface: cobbles, setts and pavers. Large flat slabs belong under Stone/Slabs & Tiles.",
       "children": [
        {
-        "name": "Irregular Cobbles",
-        "slug": "irregular-cobbles",
-        "path": "Stone/Cobblestone/Irregular Cobbles",
-        "slugPath": "stone/cobblestone/irregular-cobbles",
+        "name": "Cut Setts & Pavers",
+        "slug": "cut-setts-pavers",
+        "path": "Stone/Cobblestone & Paving/Cut Setts & Pavers",
+        "slugPath": "stone/cobblestone-paving/cut-setts-pavers",
+        "id": "5aa99c3f-7783-51e3-90d1-2c496368ad24",
+        "description": "Uniform dressed blocks laid to a repeating pattern: rows, fans, or herringbone.",
+        "children": []
+       },
+       {
+        "name": "Rough & Irregular Setts",
+        "slug": "rough-irregular-setts",
+        "path": "Stone/Cobblestone & Paving/Rough & Irregular Setts",
+        "slugPath": "stone/cobblestone-paving/rough-irregular-setts",
         "id": "99762fb0-f134-5cd9-93f7-5b876875f7c9",
-        "description": "Angular or unevenly shaped cobblestones with varied size and spacing",
+        "description": "Split or roughly shaped stone of uneven size and outline, laid without a repeating unit.",
         "children": []
        },
        {
-        "name": "Mossy & Overgrown Cobbles",
-        "slug": "mossy-overgrown-cobbles",
-        "path": "Stone/Cobblestone/Mossy & Overgrown Cobbles",
-        "slugPath": "stone/cobblestone/mossy-overgrown-cobbles",
-        "id": "fc48fbe1-c143-54d1-9f49-82765252c445",
-        "description": "Cobblestone paving partially covered by moss, weeds, or ground growth",
-        "children": []
-       },
-       {
-        "name": "Rounded Cobblestone",
-        "slug": "rounded-cobblestone",
-        "path": "Stone/Cobblestone/Rounded Cobblestone",
-        "slugPath": "stone/cobblestone/rounded-cobblestone",
+        "name": "Rounded Cobbles & Pebbles",
+        "slug": "rounded-cobbles-pebbles",
+        "path": "Stone/Cobblestone & Paving/Rounded Cobbles & Pebbles",
+        "slugPath": "stone/cobblestone-paving/rounded-cobbles-pebbles",
         "id": "e68bcb96-6d27-562a-bac7-d821ebdaa2a7",
-        "description": "Smooth river-rounded cobbles set in sand or mortar paving",
+        "description": "Water-worn stones with no cut faces, set in sand or mortar.",
         "children": []
        }
       ]
