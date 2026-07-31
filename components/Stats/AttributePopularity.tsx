@@ -1,15 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import {
-  ComposedChart,
-  Bar,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts'
+import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import { typeColors, typeNames, demandColor, tooltipStyles } from './chartColors'
@@ -88,7 +79,8 @@ const AttributePopularity = ({
     if (stat?.type === 'boolean') return value === 'true' ? 'Yes' : 'No'
     // The empty side of a multi-value attribute. For condition that is a real state of the asset,
     // for everything else it just means nobody has filled it in.
-    if (value === 'none') return key === 'condition' ? String(t('attrValue.pristine', { defaultValue: 'Pristine' })) : 'Unspecified'
+    if (value === 'none')
+      return key === 'condition' ? String(t('attrValue.pristine', { defaultValue: 'Pristine' })) : 'Unspecified'
     return String(t(`attrValue.${value}`, { defaultValue: titleCase(value) }))
   }
 
@@ -96,12 +88,8 @@ const AttributePopularity = ({
     .map(([value, bucket]) => ({ value, label: valueLabel(value), count: bucket.count, avg: bucket.avg }))
     .sort((a, b) => b.count - a.count)
 
-  const typeOptions = Object.fromEntries(
-    Object.keys(typeNames).map((k) => [k, { label: `${typeNames[k]}s` }])
-  )
-  const attributeOptions = Object.fromEntries(
-    Object.keys(attributes).map((k) => [k, { label: attrLabel(k) }])
-  )
+  const typeOptions = Object.fromEntries(Object.keys(typeNames).map((k) => [k, { label: `${typeNames[k]}s` }]))
+  const attributeOptions = Object.fromEntries(Object.keys(attributes).map((k) => [k, { label: attrLabel(k) }]))
 
   const total = totals?.[assetType] || 0
   const partial = stat && stat.assessed < total
@@ -115,9 +103,7 @@ const AttributePopularity = ({
         <div style={{ ...tooltipStyles.itemStyle, color: typeColors[assetType] }}>
           {row.count} asset{row.count === 1 ? '' : 's'}
         </div>
-        <div style={{ ...tooltipStyles.itemStyle, color: demandColor }}>
-          {Math.round(row.avg)} downloads/day each
-        </div>
+        <div style={{ ...tooltipStyles.itemStyle, color: demandColor }}>{Math.round(row.avg)} downloads/day each</div>
       </div>
     )
   }
@@ -138,14 +124,7 @@ const AttributePopularity = ({
             {/* Angled, because material runs to seventeen values and "Partly Cloudy" will not fit
                 in a band however wide the column gets. The height has to cover the rotated text or
                 recharts silently clips it. */}
-            <XAxis
-              dataKey="label"
-              interval={0}
-              angle={-35}
-              textAnchor="end"
-              height={48}
-              tick={{ fontSize: '0.7em' }}
-            />
+            <XAxis dataKey="label" interval={0} angle={-35} textAnchor="end" height={48} tick={{ fontSize: '0.7em' }} />
             {/* Second, hidden category axis, purely so the demand marker overlaps the supply bar
                 instead of being dodged alongside it. */}
             <XAxis dataKey="label" xAxisId="demand" hide />
@@ -164,8 +143,8 @@ const AttributePopularity = ({
             <Bar
               yAxisId="count"
               dataKey="count"
-              fill={typeColors[assetType]}
-              opacity={0.75}
+              stroke={typeColors[assetType]}
+              fill="transparent"
               maxBarSize={COUNT_BAR_MAX}
               isAnimationActive={false}
             />

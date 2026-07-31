@@ -13,21 +13,39 @@ import styles from './Stats.module.scss'
  * what the average one is downloaded per day (Y). A point up and to the left is a category people
  * want more of than we have.
  *
- * Every category is plotted at once, all three levels of the tree together, with the dot shrinking
- * as it goes deeper. Counts are INCLUSIVE of everything nested beneath a node, matching how the
- * library browses, so a top-level dot sits to the right of its own children rather than competing
- * with them - the size and the position agree about which is the broader category.
+ * Top-level categories and their immediate children are plotted together; the third level is left
+ * off, since plotting it put ~200 dots per type on a 300px-wide chart and the detail drowned the
+ * shape. Counts are INCLUSIVE of everything nested beneath a node, matching how the library browses
+ * and meaning the omitted level is still represented - it is counted into its parent, just not
+ * drawn as its own dot. A top-level dot therefore sits to the right of its own children rather than
+ * competing with them, so size and position agree about which is the broader category.
  *
- * Clicking a category with populated children narrows the chart to that subtree, which is the only
- * way to read a dense branch; a breadcrumb goes back up. A node with nothing under it opens the
- * library instead.
+ * Clicking a top-level category narrows the chart to its branch, which rescales both axes around
+ * that branch alone; a breadcrumb goes back up. A sub-category has nothing further to show, so it
+ * opens the library instead.
  *
  * Replaces RelativeCat, which plotted the legacy multi-value `categories` array.
  */
 
-/** Dot radius by depth, so the level a category sits at is legible without reading the tooltip. */
-const RADIUS = [7, 7, 5, 3.5]
+/**
+ * Dot radius and opacity by depth, so the level a category sits at is legible without reading the
+ * tooltip. Deeper categories are both smaller and fainter, which lets the broad ones read as the
+ * structure of the chart and the narrow ones as detail on top of it.
+ */
+const RADIUS = [7.5, 7.5, 4.5]
+const OPACITY = [1, 1, 0.6]
 const radiusFor = (depth: number) => RADIUS[depth] || 3
+const opacityFor = (depth: number) => OPACITY[depth] || 0.5
+
+/** Levels of the tree drawn as their own dots. Anything deeper is counted into its parent. */
+const MAX_DEPTH = 2
+
+/**
+ * Below this, a category's mean downloads per day is really just one or two assets' own rate, which
+ * says nothing about the category. RelativeCat drew the same line at three; models in particular
+ * have a long tail of tiny leaves that would otherwise dominate the plot by sheer count.
+ */
+const MIN_ASSETS = 5
 
 interface CategoryStat {
   count: number
@@ -117,7 +135,7 @@ const CategoryPopularity = ({
     () =>
       scope
         .map((n) => ({ n, stat: stats[n.path] }))
-        .filter(({ stat }) => stat && stat.count > 0)
+        .filter(({ n, stat }) => stat && stat.count >= MIN_ASSETS && n.path.split('/').length <= MAX_DEPTH)
         .map(({ n, stat }) => {
           const parts = n.path.split('/')
           return {
@@ -130,7 +148,11 @@ const CategoryPopularity = ({
             avg: stat.avg,
             plotAvg: Math.max(stat.avg, AVG_FLOOR),
             direct: stat.direct || 0,
-            drillable: n.children.some((c) => stats[c.path]?.count),
+            // Against the same threshold and depth limit the plot uses, or a dot would offer a
+            // focus that lands on nothing but itself. Counts are inclusive, so a child below the
+            // threshold cannot hide a descendant above it.
+            drillable:
+              parts.length < MAX_DEPTH && n.children.some((c) => (stats[c.path]?.count || 0) >= MIN_ASSETS),
           }
         })
         // Shallow first, so the small deep dots paint on top of the big shallow rings that contain
@@ -144,15 +166,17 @@ const CategoryPopularity = ({
   // the data. A linear axis put 95% of the dots in the bottom fifth of the chart.
   const bounds = points.reduce(
     (b, p) => ({
+      minCount: Math.min(b.minCount, p.count),
       maxCount: Math.max(b.maxCount, p.count),
       minAvg: Math.min(b.minAvg, p.plotAvg),
       maxAvg: Math.max(b.maxAvg, p.plotAvg),
     }),
-    { maxCount: 1, minAvg: Infinity, maxAvg: 1 }
+    { minCount: Infinity, maxCount: MIN_ASSETS, minAvg: Infinity, maxAvg: 1 }
   )
   // Padded outwards - multiplicatively, since the scale is logarithmic - so the dots sitting at the
-  // extremes are not sliced in half by the axis. The single-asset column is always at one edge.
-  const domainX: [number, number] = [1 / 1.3, bounds.maxCount * 1.3]
+  // extremes are not sliced in half by the axis. Anchored to the smallest category actually plotted
+  // rather than to 1, or the threshold would leave a third of the width empty before the first dot.
+  const domainX: [number, number] = [Math.min(bounds.minCount, bounds.maxCount) / 1.3, bounds.maxCount * 1.3]
   const domainY: [number, number] = [Math.min(bounds.minAvg, bounds.maxAvg) / 1.4, bounds.maxAvg * 1.4]
 
   const onPointClick = (point: Point) => {
@@ -167,6 +191,7 @@ const CategoryPopularity = ({
         cx={cx}
         cy={cy}
         r={radiusFor(payload.depth)}
+        opacity={opacityFor(payload.depth)}
         fill={typeColorsTransp[type]}
         stroke={typeColors[type]}
         style={{ cursor: payload.drillable ? 'zoom-in' : 'pointer' }}
@@ -229,7 +254,9 @@ const CategoryPopularity = ({
                 height={26}
                 allowDataOverflow
               >
-                <Label value="assets" position="insideBottom" offset={0} style={axisLabelStyle} />
+                {/* The threshold is stated on the axis rather than left to be inferred from where
+                    the ticks start, so a missing category reads as filtered, not as missing data. */}
+                <Label value={`assets (${MIN_ASSETS}+)`} position="insideBottom" offset={0} style={axisLabelStyle} />
               </XAxis>
               <YAxis
                 type="number"
