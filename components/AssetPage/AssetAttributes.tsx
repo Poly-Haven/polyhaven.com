@@ -34,7 +34,10 @@ const NEEDS_CONTEXT: Record<string, true | string[]> = {
   // `environment` needs nothing: "Indoor" and "Outdoor" say it on their own.
 }
 
-const prettify = (value: string) => String(value).replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+const prettify = (value: string) =>
+  String(value)
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())
 
 const AssetAttributes = ({ assetType, attributes, t }) => {
   const schema = attributeSchema[assetType]
@@ -73,7 +76,7 @@ const AssetAttributes = ({ assetType, attributes, t }) => {
       pills.push({
         key: `${key}:${v}`,
         text: pillLabel(key, String(v)),
-        tip: `${attrLabel(key)}: ${spec.description}`,
+        tip: attrLabel(key),
         href: `/${assetType}?${key}=${encodeURIComponent(String(v))}`,
       })
     }
