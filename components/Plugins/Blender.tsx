@@ -67,7 +67,7 @@ const Blender = ({ numAssets }) => {
       secondaryUrl="https://superhivemarket.com/products/poly-haven-asset-browser?ref=3841"
       secondaryIcon={<BlenderMarket />}
       secondaryTitle="Superhive"
-      secondaryPrice="$69"
+      secondaryPrice="$49"
       secondaryDescription={
         <p>
           Once-off purchase
