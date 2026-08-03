@@ -126,7 +126,7 @@
      "worn",
      "broken"
     ],
-    "description": "Condition tags ([] if pristine)."
+    "description": "Condition tags. Use \"clean\" when the surface shows no wear, dirt or damage; omit the key only if you genuinely cannot judge it."
    },
    "aerial": {
     "type": "boolean",
@@ -170,7 +170,7 @@
      "worn",
      "broken"
     ],
-    "description": "Condition tags ([] if pristine), same vocabulary and shape as the texture field."
+    "description": "Condition tags, same vocabulary and shape as the texture field. Use \"clean\" when the object shows no wear, dirt or damage; omit the key only if you genuinely cannot judge it."
    },
    "rigged": {
     "type": "boolean",

@@ -77,10 +77,6 @@ const AttributePopularity = ({
 
   const valueLabel = (value: string) => {
     if (stat?.type === 'boolean') return value === 'true' ? 'Yes' : 'No'
-    // The empty side of a multi-value attribute. For condition that is a real state of the asset,
-    // for everything else it just means nobody has filled it in.
-    if (value === 'none')
-      return key === 'condition' ? String(t('attrValue.pristine', { defaultValue: 'Pristine' })) : 'Unspecified'
     return String(t(`attrValue.${value}`, { defaultValue: titleCase(value) }))
   }
 

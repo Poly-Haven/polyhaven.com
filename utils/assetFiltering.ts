@@ -30,8 +30,8 @@ export const attributeFiltersFromQuery = (query: Record<string, any>, assetType:
   return filters
 }
 
-/** The reserved query value that selects the empty side of an array attribute (e.g. pristine). */
-const EMPTY_ALIASES = ['none', 'pristine']
+// No reserved value for "empty": an absent multi-value attribute means never assessed, exactly like
+// an absent enum. "No wear or dirt" is the `clean` tag. Mirrors api/utils/assetFilters.js.
 
 /**
  * Which branch a filter takes has to come from the schema rather than from the shape of the
@@ -63,10 +63,8 @@ export const matchesAttributes = (asset: any, filters: AttributeFilters, assetTy
       // Tolerate a scalar as well as an array, so this behaves the same before and after the data
       // migration (models.condition used to be a single string).
       const list = Array.isArray(actual) ? actual : actual === undefined || actual === null || actual === '' ? [] : [actual]
-      if (!list.length) {
-        if (!wanted.some((w) => EMPTY_ALIASES.includes(w))) return false
-        continue
-      }
+      // Absent means never assessed, so it matches nothing - the same rule the enum branch uses.
+      if (!list.length) return false
       if (!list.some((a) => wanted.includes(String(a).toLowerCase()))) return false
       continue
     }
