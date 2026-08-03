@@ -41,9 +41,12 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
   // engines to drop all 25 non-English versions, so none of the translation work could rank.
   const fullUrl = absUrl(locale, defaultLocale, url)
 
+  // "Poly Haven" alone on the home page, rather than "Poly Haven • Poly Haven".
+  const fullTitle = title === 'Poly Haven' ? title : `${title} • Poly Haven`
+
   return (
     <Head>
-      <title>{title === 'Poly Haven' ? title : `${title} • Poly Haven`}</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={`${keywords}${keywords ? ',' : ''}${defaultKeywords}`} />
       <meta name="author" content={author} />
@@ -65,14 +68,20 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
 
       <meta property="og:locale" content={ogLocale(locale)} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${title} • Poly Haven`} />
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="Poly Haven" />
       {image ? <meta property="og:image" content={image} /> : null}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:site" content="@polyhaven" />
-      {image ? <meta property="twitter:image" content={image} /> : null}
+
+      {/* Twitter tags are `name`, not `property` - `property` is the Open Graph convention.
+          Cards fall back to OG, but the card type must match: claiming a large image on a page
+          that has none leaves an empty preview. */}
+      <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+      <meta name="twitter:site" content="@polyhaven" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      {image ? <meta name="twitter:image" content={image} /> : null}
       {children}
     </Head>
   )
