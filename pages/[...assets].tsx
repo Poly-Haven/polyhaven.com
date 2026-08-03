@@ -10,6 +10,7 @@ import { assetTypeName } from 'utils/assetTypeName'
 import asset_types from 'constants/asset_types.json'
 import { hasTaxonomy, nodeFromSlugSegments, nodeFromPath, ancestorsOf, categoryLabel } from 'utils/taxonomy'
 import { resolveLegacyRedirect, safeDecode } from 'utils/legacyRedirect'
+import { buildLibraryJsonLd } from 'components/Library/librarySeo'
 
 const LibraryPage = (props) => {
   const { t } = useTranslation('common')
@@ -58,6 +59,8 @@ const LibraryPage = (props) => {
   }
   description += ` ${typeDescription[props.assetType]}, ready to use for any purpose. No login required.`
 
+  const jsonLd = buildLibraryJsonLd(props.assetType, node, title, description)
+
   return (
     <>
       <Head
@@ -66,7 +69,14 @@ const LibraryPage = (props) => {
         description={description}
         assetType={asset_types[props.assetType]}
         image={imageUrl}
-      />
+      >
+        {jsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+          />
+        ) : null}
+      </Head>
       <Library
         assetType={props.assetType}
         categoryPath={categoryPath}
