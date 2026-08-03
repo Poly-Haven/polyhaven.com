@@ -4,6 +4,8 @@ import ErrorBoundary from 'utils/ErrorBoundary'
 import LastThreeMonths from './LastThreeMonths'
 import CategoryPopularity from './CategoryPopularity'
 import AttributePopularity from './AttributePopularity'
+import SoftwarePopularity from './SoftwarePopularity'
+import SoftwarePairs from './SoftwarePairs'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
@@ -25,6 +27,7 @@ const Stats = ({ datasets }) => {
   // Read before the JSX rather than inline, so a failed fetch renders empty charts instead of
   // throwing here - outside any ErrorBoundary - and taking the whole page down.
   const taxonomy = datasets.taxonomy || { categories: {}, attributes: {}, totals: {} }
+  const software = datasets.software || { meta: {}, categories: {}, software: {}, timeline: [], pairs: {} }
 
   return (
     <div className={styles.page}>
@@ -135,6 +138,23 @@ const Stats = ({ datasets }) => {
         <ErrorBoundary>
           <div className={`${styles.half} ${styles.wide}`}>
             <AttributePopularity data={taxonomy.attributes} totals={taxonomy.totals} />
+          </div>
+        </ErrorBoundary>
+      </div>
+
+      <div className={styles.spacer} />
+
+      {/* The only view we have of what our audience actually works in, so the two charts sit
+          together - the trend is the headline and the pairing is the detail behind it. */}
+      <div className={styles.row}>
+        <ErrorBoundary>
+          <div className={styles.half}>
+            <SoftwarePopularity data={software} />
+          </div>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <div className={styles.half}>
+            <SoftwarePairs data={software} />
           </div>
         </ErrorBoundary>
       </div>

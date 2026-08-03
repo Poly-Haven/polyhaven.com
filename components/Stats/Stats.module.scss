@@ -172,6 +172,29 @@
   line-height: 1.4em;
 }
 
+// For charts whose colour belongs to each bar rather than to a series, which recharts' own <Legend>
+// cannot describe. Sits under the plot in the same place recharts would have put it.
+.chartLegend {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  gap: 0.3em 0.9em;
+  margin: 0.4em 0.5rem 0;
+  font-size: 0.72em;
+  opacity: 0.75;
+
+  span {
+    @include flex(row, true);
+    gap: 0.4em;
+  }
+
+  i {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 0.15em;
+    flex-shrink: 0;
+  }
+}
+
 .graphNote {
   color: red;
   position: relative;
