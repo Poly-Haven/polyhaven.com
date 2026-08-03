@@ -221,7 +221,16 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
 
         <div className={styles.previewWrapper}>
           <div className={`${styles.activePreview}${showWebGL ? ' ' + styles.activePreviewGLTF : ''}`}>
-            <img id="activePreview" onLoad={imageLoaded} src={activeImage} alt={data.description} />
+            {/* The LCP element on every asset page: tell the browser so, rather than leaving it
+                to be discovered at the default priority alongside everything else. */}
+            <img
+              id="activePreview"
+              onLoad={imageLoaded}
+              src={activeImage}
+              alt={data.description}
+              fetchPriority="high"
+              decoding="async"
+            />
             {data.sketchfab_id ? (
               showWebGL ? (
                 <div className={styles.sketchfabWrapper}>

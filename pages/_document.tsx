@@ -12,7 +12,15 @@ export default class CustomDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
 
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          {/* Every asset preview and grid thumbnail comes from here, including the LCP image,
+              so warm the connection instead of paying DNS+TLS when the first <img> is parsed. */}
+          <link rel="preconnect" href="https://cdn.polyhaven.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://cdn.polyhaven.com" />
+
+          {/* Next's font optimizer injects its own crossorigin preconnect for gstatic. Font
+              requests are CORS-mode, so a preconnect without crossorigin warms a socket they
+              cannot reuse - it has to match. */}
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
 
