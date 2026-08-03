@@ -9,7 +9,7 @@ import styles from 'components/Library/Grid/Grid.module.scss'
 export default function HomePage() {
   return (
     <Page>
-      <Head title="Test Newscards" description="Page for testing probability of news cards!" url="/testnc" />
+      <Head title="Test Newscards" description="Page for testing probability of news cards!" url="/testnc" noindex />
       <div dir="ltr" style={{ textAlign: 'left' }}>
         <div className={styles.grid}>
           {Array.from({ length: 24 }).map((_, index) => (

@@ -42,14 +42,14 @@ const Page = () => {
 
   if (isLoading)
     return (
-      <TextPage title="Account" url="/account">
+      <TextPage title="Account" url="/account" noindex>
         <Loader />
       </TextPage>
     )
 
   if (!user)
     return (
-      <TextPage title={t('account:title')} url="/account">
+      <TextPage title={t('account:title')} url="/account" noindex>
         <h1>{t('account:title')}</h1>
         <p>
           <Trans
@@ -70,7 +70,7 @@ const Page = () => {
 
   if (!Object.keys(patron).length) {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <Loader />
       </TextPage>
     )
@@ -78,7 +78,7 @@ const Page = () => {
 
   if (patron['error']) {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <h1>{t('account:account')}</h1>
         <p>
           <Trans i18nKey="account:not-patron" t={t} components={{ lnk: <LinkText href="/about-contact" /> }} />
@@ -92,7 +92,7 @@ const Page = () => {
 
   if (patron['status'] !== 'active_patron') {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <h1>
           {t('account:hi')} {patron['display_name'] || patron['name']}!
         </h1>
@@ -102,7 +102,7 @@ const Page = () => {
   }
 
   return (
-    <TextPage title={t('account:account')} url="/account">
+    <TextPage title={t('account:account')} url="/account" noindex>
       <h1 title={uuid} style={{ textAlign: 'center' }}>
         {t('account:hi')} {(patron['display_name'] || patron['name']).trim()}!
       </h1>
