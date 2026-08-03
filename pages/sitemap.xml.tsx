@@ -10,19 +10,27 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = 'https://polyhaven.com'
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
+  // Hand-maintained, so keep it in step with pages/. Anything that redirects (e.g. /faq, which
+  // 308s to docs.polyhaven.com, and /plugins/unreal) must stay out - a sitemap should only ever
+  // list URLs that answer 200.
   const staticPages = [
     '', // Home
     'collections',
     'about-contact',
     'contribute',
-    'faq',
+    'corporate',
+    'donate',
     'finance-reports',
+    'gallery',
     'license',
     'logo',
     'map',
     'our-api',
+    'plugins/blender',
     'privacy',
+    'project/lighthouse',
     'stats',
+    'tools',
     'vaults',
     'tools/ev-diff',
   ].map((page) => {
@@ -62,6 +70,28 @@ export const getServerSideProps = async ({ res }) => {
       }
     })
     .catch(() => {}) // a courses hiccup shouldn't take down the whole sitemap
+
+  // Collection and vault detail pages. Both index pages were listed but neither linked its
+  // members from the sitemap, so the detail pages had no discovery path of their own.
+  await Promise.all(
+    [
+      { path: 'collections', endpoint: '/collections' },
+      { path: 'vaults', endpoint: '/vaults' },
+    ].map(({ path, endpoint }) =>
+      fetch(`${apiUrl}${endpoint}`)
+        .then((response) => response.json())
+        .then((resdata) => {
+          for (const id of Object.keys(resdata)) {
+            dynamicPages[`${baseUrl}/${path}/${id}`] = {
+              lastmod: new Date().toISOString(),
+              changefreq: 'monthly',
+              priority: '0.6',
+            }
+          }
+        })
+        .catch(() => {}) // one bad endpoint shouldn't take down the whole sitemap
+    )
+  )
 
   // Categories - the single-path taxonomy, straight from the bundled tree. Deeper categories get a
   // slightly lower priority so the broad landing pages stay the strongest entry points.
