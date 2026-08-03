@@ -222,20 +222,27 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
   }, [ended, advancing, dismissed, autoplay, nextLecture])
 
   let message = null
-  if (isLoading || loading) {
+  if (isLoading) {
     message = (
       <>
         <Spinner />
-        <p>{isLoading ? 'Loading…' : 'Checking access…'}</p>
+        <p>Loading…</p>
       </>
     )
   } else if (!user) {
     message = (
       <>
-        <p>Please sign in with your Patreon-linked account to watch this lecture.</p>
+        <p>Please sign in with your Patreon account to watch this video.</p>
         <Link href={`/account?returnTo=${encodeURIComponent(router.asPath)}`} className={styles.messageLink}>
           Sign in
         </Link>
+      </>
+    )
+  } else if (loading) {
+    message = (
+      <>
+        <Spinner />
+        <p>Checking access…</p>
       </>
     )
   } else if (error || !videoUrl) {
