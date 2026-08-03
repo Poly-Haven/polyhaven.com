@@ -6,7 +6,18 @@
   "d2p": "Egyszeri adományozáshoz használja a PayPal-t vagy a Ko-fi-t:",
   "d2t": "Nagyobb adományok",
   "description": "Hogyan lehet egyszeri adományt adni Poly Havennek.",
+  "help-contribute": "<lnk>Járulj hozzá egy eszközhöz</lnk>, amit készítettél a könyvtárhoz.",
+  "help-corporate": "Ha céged nevében adományozol, nézd meg a <lnk>vállalati partnerségek</lnk> oldalunkat.",
+  "help-share": "Mondd el másoknak rólunk. Nincs hirdetésünk, így a szájhagyomány az, ahogyan a legtöbb ember ránk talál.",
+  "help-t": "Egyéb módok a segítségnyújtásra",
+  "help-translate": "<lnk>Segíts lefordítani</lnk> az oldalt a te nyelvedre.",
+  "intro": "A Poly Haven minden eszköze ingyenes és közterület, nincs fizetési fal, nincs fiók és nincsenek hirdetések. Ez csak azért lehetséges, mert azok az emberek, akik használják az eszközeinket, úgy döntenek, hogy mások nevében fizetnek értük.",
+  "one-time-t": "Egyszeri adományok",
   "p1": "Annak érdekében, hogy fenntartható nyílt projekt legyünk, szeretjük a <lnk1>kiszámítható költségvetés</lnk1>. A vadul változó bevételek megnehezítik az előre tervezést és a hosszú távú munkaerő felvételét. Sokkal szívesebben adományoznánk a <lnk2>kis havi összeg</lnk2> hosszú távon, mint egy átalányösszeg.",
   "p2": "Ennek ellenére természetesen bármilyen adományt elfogadunk :)",
-  "title": "Adjon egyszeri adományt"
+  "page-description": "Támogasd a Poly Haven-t havi vagy egyszeri adománnyal, és segíts, hogy a 3D eszközeink ingyenesek maradjanak mindenki számára.",
+  "page-title": "Adományozz a Poly Haven-nek",
+  "title": "Adjon egyszeri adományt",
+  "where-p": "Az adományok fedezik művészeink bérét, a szervereket és tárolást, amelyek havi több millió letöltést biztosítanak, valamint az eszközöket, amelyeket új eszközök készítésére használunk. Minden egyes centet, amit keresünk és költünk, közzéteszünk a <lnk> pénzügyi jelentéseinkben</lnk>.",
+  "where-t": "Hová megy a pénzed"
 }

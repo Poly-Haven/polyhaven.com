@@ -6,7 +6,18 @@
   "d2p": "Za jednokratnu donaciju koristite PayPal ili Ko-fi:",
   "d2t": "Veće donacije",
   "description": "Kako dati jednokratnu donaciju Poly Havenu.",
+  "help-contribute": "<lnk>Doprinosite imovini</lnk> koju ste napravili u biblioteku.",
+  "help-corporate": "Ako donirate u ime tvrtke, pogledajte našu <lnk>corporate partnerships</lnk> stranicu.",
+  "help-share": "Obavijestite druge o nama. Ne oglašavamo se, pa je usmena predaja način na koji nas većina ljudi pronalazi.",
+  "help-t": "Ostali načini pomoći",
+  "help-translate": "<lnk>Pomozite prevesti</lnk> stranicu na vaš jezik.",
+  "intro": "Svaka imovina na Poly Haven je besplatna i u javnom vlasništvu, bez plaćanja, bez računa i bez oglasa. To je moguće samo zato što ljudi koji koriste naše resurse biraju da ih plate u ime svih ostalih.",
+  "one-time-t": "Jednokratne donacije",
   "p1": "Kako bismo bili održivi otvoreni projekt, volimo a <lnk1>predvidljiv proračun</lnk1>. Imajući jako različite prihode otežava nam planiranje unaprijed i dugoročno zapošljavanje osoblja. Bilo bi nam draže da donirate a <lnk2>mali mjesečni iznos</lnk2> dugoročno od jednog paušalnog iznosa.",
   "p2": "Uz to, mi naravno prihvaćamo donacije bilo koje vrste :)",
-  "title": "Dajte jednokratnu donaciju"
+  "page-description": "Podržite Poly Haven mjesečnom ili jednokratnom donacijom i pomozite da naši 3D resursi ostanu besplatni za sve.",
+  "page-title": "Donirajte Poly Haven",
+  "title": "Dajte jednokratnu donaciju",
+  "where-p": "Donacije plaćaju plaće naših umjetnika, servere i skladište koji isporučuju nekoliko milijuna preuzimanja mjesečno, i opremu koju koristimo za izradu novih resursa. Objavljujemo svaki cent koji zarađujemo i trošimo u našim <lnk>financijskim izvještajima</lnk>.",
+  "where-t": "Kuda ide vaš novac"
 }

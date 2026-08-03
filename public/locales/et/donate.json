@@ -6,7 +6,18 @@
   "d2p": "Ühekordse annetuse tegemiseks kasutage palun kas PayPali või Ko-fi:",
   "d2t": "Suuremad annetused",
   "description": "Kuidas teha ühekordne annetus Poly Havenile.",
+  "help-contribute": "<lnk>Anna oma loodud vara</lnk> raamatukogusse.",
+  "help-corporate": "Kui annetate ettevõtte nimel, vaadake meie <lnk>ettevõtte partnerluse</lnk> lehte.",
+  "help-share": "Rääkige teistel meist. Me ei reklaami, seega on suust suhu edasiviimine, kuidas enamik inimesi meid leiab.",
+  "help-t": "Muud viisid aitamiseks",
+  "help-translate": "<lnk>Aita tõlkida</lnk> veebisaiti oma keelde.",
+  "intro": "Iga vara Poly Havenis on tasuta ja avalikus omandis, ilma maksebarjäärideta, ilma kontota ja ilma reklaamideta. See on võimalik ainult seetõttu, et inimesed, kes meie varasid kasutavad, valivad nende eest tasumise kõigi teiste nimel.",
+  "one-time-t": "Ühekordsed annetused",
   "p1": "Selleks, et olla jätkusuutlik avatud projekt, meeldib meile <lnk1>prognoositav eelarve</lnk1>. Kuna meie sissetulekud on väga erinevad, on meil raske pikemas perspektiivis ette planeerida ja töötajaid palgata. Me eelistaksime, et annetaksite <lnk2>väikese igakuise summa</lnk2> pikema aja jooksul, mitte ühekordset ühekordset summat.",
   "p2": "See tähendab, et me loomulikult võtame vastu igasuguseid annetusi :)",
-  "title": "Tehke ühekordne annetus"
+  "page-description": "Toetage Poly Havenit igakuise või ühekordse annetusega ning aidake hoida meie 3D varad tasuta kõigile.",
+  "page-title": "Annetage Poly Havenile",
+  "title": "Tehke ühekordne annetus",
+  "where-p": "Annetused katavad meie kunstnike palgad, serverid ja salvestusruumid, mis toimetavad mitu miljonit allalaadimist kuus, ja seadmed, mida kasutame uute varade loomiseks. Avaldame iga senti, mille teenime ja kulutame, meie <lnk>finantsaruannetes</lnk>.",
+  "where-t": "Kuhu teie raha läheb"
 }

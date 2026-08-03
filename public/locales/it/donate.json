@@ -6,7 +6,18 @@
   "d2p": "Per fare una donazione una tantum, utilizza PayPal o Ko-fi:",
   "d2t": "Grandi donazioni",
   "description": "Come fare una donazione una tantum a Poly Haven.",
+  "help-contribute": "<lnk>Contribuisci con un asset</lnk> che hai creato alla libreria.",
+  "help-corporate": "Se stai donando per conto di un'azienda, consulta la nostra pagina sulle <lnk>partner corporate</lnk>.",
+  "help-share": "Parla di noi ad altre persone. Non facciamo pubblicità, quindi il passaparola è il modo in cui la maggior parte delle persone ci trova.",
+  "help-t": "Altri modi per aiutare",
+  "help-translate": "<lnk>Aiuta a tradurre</lnk> il sito nella tua lingua.",
+  "intro": "Ogni asset su Poly Haven è gratuito e di pubblico dominio, senza paywall, senza account e senza pubblicità. Questo è possibile solo perché le persone che usano i nostri asset scelgono di pagarli per conto di tutti gli altri.",
+  "one-time-t": "Donazioni una tantum",
   "p1": "Per mantenere il nostro un progetto sostenibile, ci piacerebbe avere a <lnk1>bilancio prevedibile</lnk1>. Avere un reddito estremamente variabile ci rende difficile pianificare in anticipo e assumere personale a lungo termine. Preferiremmo di gran lunga che tu donassi un <lnk2>piccolo importo mensile</lnk2> a lungo termine rispetto a un'unica somma forfettaria.",
   "p2": "Detto questo, accettiamo ovviamente donazioni di qualsiasi tipo :)",
-  "title": "Fai una donazione una tantum"
+  "page-description": "Sostieni Poly Haven con una donazione mensile o una tantum e aiuta a mantenere i nostri asset 3D gratuiti per tutti.",
+  "page-title": "Dona a Poly Haven",
+  "title": "Fai una donazione una tantum",
+  "where-p": "Le donazioni pagano gli stipendi dei nostri artisti, i server e lo spazio di archiviazione che forniscono diversi milioni di download al mese e le attrezzature che usiamo per creare nuovi asset. Pubblicizziamo ogni centesimo che guadagniamo e spendiamo nei nostri <lnk> rapporti finanziari</lnk>.",
+  "where-t": "Dove vanno i tuoi soldi"
 }

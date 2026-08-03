@@ -6,7 +6,18 @@
   "d2p": "Para hacer una donación única, utiliza PayPal o Ko-fi:",
   "d2t": "Donaciones más grandes",
   "description": "Cómo hacer una donación única a Poly Haven.",
+  "help-contribute": "<lnk>Contribuye un activo</lnk> que has creado a la biblioteca.",
+  "help-corporate": "Si estás donando en nombre de una empresa, consulta nuestra página de <lnk>partnerships corporativos</lnk>.",
+  "help-share": "Dile a otras personas sobre nosotros. No hacemos publicidad, así que el boca a boca es cómo la mayoría de la gente nos encuentra.",
+  "help-t": "Otras formas de ayudar",
+  "help-translate": "<lnk>Ayuda a traducir</lnk> el sitio a tu idioma.",
+  "intro": "Cada activo en Poly Haven es gratuito y de dominio público, sin muros de pago, sin cuenta y sin anuncios. Eso solo es posible porque las personas que utilizan nuestros activos eligen pagarlos en nombre de los demás.",
+  "one-time-t": "Donaciones únicas",
   "p1": "Para ser un proyecto abierto sostenible, nos gusta un <lnk1>presupuesto predecible</lnk1> . Tener un ingreso muy variable nos dificulta planificar con anticipación y contratar personal a largo plazo. Preferiríamos mucho que donaras un <lnk2>pequeña cantidad mensual</lnk2> a largo plazo que una sola suma global.",
   "p2": "Dicho esto, por supuesto aceptamos donaciones de cualquier tipo :)",
-  "title": "Haz una donación única"
+  "page-description": "Apoya a Poly Haven con una donación mensual o única, y ayuda a mantener nuestros activos 3D gratuitos para todos.",
+  "page-title": "Donar a Poly Haven",
+  "title": "Haz una donación única",
+  "where-p": "Las donaciones pagan los salarios de nuestros artistas, los servidores y el almacenamiento que entregan varios millones de descargas al mes, y el equipo que usamos para crear nuevos activos. Publicamos cada centavo que ganamos y gastamos en nuestros <lnk>relatorios financieros</lnk>.",
+  "where-t": "A dónde va tu dinero"
 }

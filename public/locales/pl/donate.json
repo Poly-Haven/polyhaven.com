@@ -6,7 +6,18 @@
   "d2p": "Aby dokonać jednorazowej darowizny, użyj PayPal lub Ko-fi:",
   "d2t": "Większe darowizny",
   "description": "Jak dokonać jednorazowej darowizny dla Poly Haven.",
+  "help-contribute": "<lnk>Przyczyń się do zasobu</lnk>, który stworzyłeś, w bibliotece.",
+  "help-corporate": "Jeśli przekazujesz darowiznę w imieniu firmy, zobacz naszą <lnk> stronę o partnerstwach korporacyjnych</lnk>.",
+  "help-share": "Powiedz innym o nas. Nie prowadzimy reklam, więc to, jak większość ludzi nas znajduje, to poczta pantoflowa.",
+  "help-t": "Inne sposoby wsparcia",
+  "help-translate": "<lnk>Pomóż przetłumaczyć</lnk> stronę na swój język.",
+  "intro": "Każdy zasób w Poly Haven jest darmowy i w domenie publicznej, bez paywalla, konta i reklam. To możliwe tylko dlatego, że osoby korzystające z naszych zasobów decydują się na ich opłacenie w imieniu innych.",
+  "one-time-t": "Darowizny jednorazowe",
   "p1": "Aby być zrównoważonym, otwartym projektem, lubimy posiadać : <lnk1>przewidywalny budżet</lnk1>. Posiadanie bardzo zróżnicowanych dochodów utrudnia nam planowanie z wyprzedzeniem i zatrudnianie pracowników na dłuższą metę. Zdecydowanie wolelibyśmy, abyś przekazał <lnk2>małą miesięczną kwotę</lnk2> w dłuższym okresie niż jednorazowo większą ilość pieniędzy.",
   "p2": "To powiedziawszy, przyjmujemy również darowizny innego rodzaju :)",
-  "title": "Przekaż jednorazową darowiznę"
+  "page-description": "Wspieraj Poly Haven regularną lub jednorazową darowizną i pomóż utrzymać nasze zasoby 3D darmowymi dla wszystkich.",
+  "page-title": "Darowizna dla Poly Haven",
+  "title": "Przekaż jednorazową darowiznę",
+  "where-p": "Darowizny pokrywają wynagrodzenia naszych artystów, serwery i przechowywanie, które dostarczają kilka milionów pobrań miesięcznie, oraz sprzęt, którego używamy do tworzenia nowych zasobów. Publikujemy każdy grosz, który zarabiamy i wydajemy w naszych <lnk> raportach finansowych</lnk>.",
+  "where-t": "Dokąd trafiają twoje pieniądze"
 }

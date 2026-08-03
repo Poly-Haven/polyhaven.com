@@ -6,7 +6,18 @@
   "d2p": "Để thực hiện một khoản quyên góp một lần, vui lòng sử dụng PayPal hoặc Ko-fi:",
   "d2t": "Các khoản quyên góp lớn hơn",
   "description": "Cách để thực hiện một khoản quyên góp một lần cho Poly Haven.",
+  "help-contribute": "<lnk>Đóng góp một tài sản</lnk> mà bạn đã tạo ra cho thư viện.",
+  "help-corporate": "Nếu bạn đang đóng góp thay mặt cho một công ty, hãy xem trang <lnk>đối tác doanh nghiệp</lnk> của chúng tôi.",
+  "help-share": "Hãy cho người khác biết về chúng tôi. Chúng tôi không chạy quảng cáo, vì vậy truyền miệng là cách mà hầu hết mọi người tìm thấy chúng tôi.",
+  "help-t": "Các cách khác để giúp đỡ",
+  "help-translate": "<lnk>Giúp dịch</lnk> trang web sang ngôn ngữ của bạn.",
+  "intro": "Mọi tài sản trên Poly Haven đều miễn phí và thuộc về công cộng, không có tường phí, không cần tài khoản và không có quảng cáo. Điều đó chỉ có thể xảy ra vì những người sử dụng tài sản của chúng tôi chọn trả tiền cho chúng thay mặt cho mọi người khác.",
+  "one-time-t": "Đóng góp một lần",
   "p1": "Để trở thành một dự án mở bền vững, chúng tôi thích có một <lnk1>budget dự đoán được</lnk1>. Có một nguồn thu nhập thay đổi mạnh mẽ khiến chúng tôi khó khăn trong việc lập kế hoạch và thuê nhân viên lâu dài. Chúng tôi rất thích bạn quyên góp một <lnk2>số tiền nhỏ hàng tháng</lnk2> trong thời gian dài hơn là một khoản tiền lớn một lần.",
   "p2": "Nói như vậy, chúng tôi vẫn chấp nhận các khoản quyên góp dưới mọi hình thức :)",
-  "title": "Thực hiện một khoản quyên góp một lần"
+  "page-description": "Hỗ trợ Poly Haven với một khoản đóng góp hàng tháng hoặc một lần, và giúp giữ cho tài sản 3D của chúng tôi miễn phí cho mọi người.",
+  "page-title": "Đóng góp cho Poly Haven",
+  "title": "Thực hiện một khoản quyên góp một lần",
+  "where-p": "Các khoản đóng góp trả lương cho các nghệ sĩ của chúng tôi, cho các máy chủ và lưu trữ cung cấp hàng triệu lượt tải xuống mỗi tháng, và cho thiết bị mà chúng tôi sử dụng để tạo ra tài sản mới. Chúng tôi công bố mọi xu chúng tôi kiếm được và chi tiêu trong các <lnk>báo cáo tài chính</lnk> của chúng tôi.",
+  "where-t": "Nơi tiền của bạn đi"
 }
