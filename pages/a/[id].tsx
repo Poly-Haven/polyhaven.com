@@ -8,7 +8,10 @@ import ErrorPage from 'components/Layout/Page/CenteredPage'
 
 function handleErrors(response) {
   if (!response.ok) {
-    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+    const error: any = new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+    // Kept so callers can tell "this asset does not exist" (404) apart from "the API is unwell" (5xx).
+    error.status = response.status
+    throw error
   }
   return response
 }
@@ -77,6 +80,9 @@ export async function getStaticProps(context) {
   const baseUrl = apiBase
 
   let error = null
+  // Tracked separately from `error`: only /info can say whether an asset exists. /files and
+  // /renders are not authoritative enough to 404 a page on.
+  let infoError = null
 
   const fetchInfo = () =>
     fetch(`${baseUrl}/info/${id}`)
@@ -96,7 +102,7 @@ export async function getStaticProps(context) {
   // None of these depend on each other, so let them overlap instead of running back to back.
   // Each keeps its own catch, so no promise here can reject and fail the whole set.
   let [info, files, renders, postDownloadStats] = await Promise.all([
-    infoRequest.catch((e) => (error = e)),
+    infoRequest.catch((e) => (infoError = error = e)),
     fetch(`${baseUrl}/files/${id}`)
       .then(handleErrors)
       .then((response) => response.json())
@@ -110,7 +116,19 @@ export async function getStaticProps(context) {
 
   // An id missing from /assets is either unpublished or does not exist, so let /info decide which.
   if (isBuild && !info && !error) {
-    info = await fetchInfo().catch((e) => (error = e))
+    info = await fetchInfo().catch((e) => (infoError = error = e))
+  }
+
+  // A 404 from /info means the asset genuinely does not exist, so serve a real 404. Returning props
+  // without `data` instead renders a 200 page titled "Error: 404", which search engines index as a
+  // soft 404 and ISR then caches - an unbounded surface, since /a/<anything> hits this path.
+  // Early access assets are safe here: they are absent from /assets but /info still answers 200.
+  // Any other failure keeps the soft render, so an API blip never 404s a real asset.
+  if (infoError && infoError.status === 404) {
+    return {
+      notFound: true,
+      revalidate: 60 * 60, // 1 hour - short enough that a newly published asset appears promptly
+    }
   }
 
   if (error) {
