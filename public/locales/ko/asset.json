@@ -52,12 +52,12 @@
   "tall": "tall",
   "user-renders": "사용자 렌더링:",
   "vaulted": {
-    "about": "정보",
+    "about": "Vault 정보",
     "access-now": "지금 액세스",
     "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
-    "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 볼트에 보관된 에셋과 함께 다운로드할 수 있습니다.",
-    "locked-in": "이 자산은 <vaultLink>{{vault}} 보관소에 잠겨 있습니다.</vaultLink>",
-    "patrons-needed": "{{remaining, number}} 더 많은 후원자가 확보되면 모든 사람에게 무료로 공개할 예정입니다.",
+    "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 Vault에 보관된 에셋과 함께 다운로드할 수 있습니다.",
+    "locked-in": "이 에셋은 <vaultLink>{{vault}} Vault에 잠겨 있습니다.</vaultLink>",
+    "patrons-needed": "후원자 {{remaining, number}}명을 확보하면 모든 사람에게 무료로 공개할 예정입니다.",
     "title": "보관 자산"
   },
   "wide": "너비",

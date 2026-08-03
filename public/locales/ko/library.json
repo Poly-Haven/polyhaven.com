@@ -29,7 +29,7 @@
     "environment": "환경",
     "geonodes": "기하학 노드",
     "light_type": "조명",
-    "lods": "LOD",
+    "lods": "LODs",
     "material": "재료",
     "origin": "출처",
     "pure_sky": "순수 하늘",
@@ -56,7 +56,7 @@
     "setting": {
       "either": "실내 또는 실외",
       "indoor": "실내용",
-      "outdoor": "실외 사용"
+      "outdoor": "실외용"
     },
     "sky_view": {
       "obstructed": "가려진 하늘",
