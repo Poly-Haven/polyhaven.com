@@ -26,7 +26,7 @@
     "clear": "Wis",
     "condition": "Toestand",
     "contrast": "Contrast",
-    "environment": "Milieu",
+    "environment": "Omgeving",
     "geonodes": "Geometrieknooppunten",
     "light_type": "Verlichting",
     "lods": "LOD's",
@@ -36,7 +36,7 @@
     "rigged": "Gemonteerd",
     "season": "Seizoen",
     "setting": "Locatie",
-    "sky_view": "Zichtbaarheid aan de hemel",
+    "sky_view": "Zichtbaarheid aan de lucht",
     "surface_use": "Toegepast op",
     "time_of_day": "Tijd van de Dag",
     "title": "Filters",
@@ -55,11 +55,11 @@
     },
     "setting": {
       "either": "Binnen of buiten",
-      "indoor": "Gebruik binnenshuis",
-      "outdoor": "Gebruik buitenshuis"
+      "indoor": "Binnenshuis gebruik",
+      "outdoor": "Buitenshuis gebruik"
     },
     "sky_view": {
-      "obstructed": "Bedekte hemel",
+      "obstructed": "Bedekte lucht",
       "open": "Open lucht"
     },
     "surface_use": {
@@ -92,7 +92,7 @@
     "cracked": "Gebarsten",
     "damaged": "Beschadigd",
     "dusk": "Schemering",
-    "either": "Ofwel",
+    "either": "Of",
     "fabric": "Stof",
     "floor": "Vloer",
     "fog": "Mist",
@@ -113,7 +113,7 @@
     "night": "Nacht",
     "object": "Object",
     "obstructed": "Geblokkeerd",
-    "open": "Openen",
+    "open": "Open",
     "outdoor": "Buiten",
     "overcast": "Bewolkt",
     "painted": "Geverfd",

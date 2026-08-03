@@ -22,17 +22,17 @@
   "aerial": "Dieses Objekt wurde mit einer Drohne gescannt, was bedeutet, dass es in der Regel einen viel größeren Maßstab hat als andere Objekte.",
   "attr": {
     "aerial": "Luftaufnahme",
-    "backplates": "Hintergrundbilder",
-    "clear": "Löschen",
+    "backplates": "Backplates",
+    "clear": "Filter entfernen",
     "condition": "Zustand",
     "contrast": "Kontrast",
     "environment": "Umwelt",
-    "geonodes": "Geometrie-Knoten",
+    "geonodes": "Geometry Nodes",
     "light_type": "Beleuchtung",
     "lods": "LODs",
     "material": "Material",
     "origin": "Herkunft",
-    "pure_sky": "Reiner Himmel",
+    "pure_sky": "Klarer Himmel",
     "rigged": "Geriggt",
     "season": "Jahreszeit",
     "setting": "Standort",
@@ -67,16 +67,16 @@
       "object": "Objektoberfläche"
     },
     "weather": {
-      "clear": "Klares Wetter"
+      "clear": "Wolkenlos"
     }
   },
   "attrNoun": {
-    "contrast": "kontrast",
-    "light_type": "licht",
+    "contrast": "Kontrast",
+    "light_type": "Licht",
     "setting": "Verwendung",
     "sky_view": "Himmel",
-    "surface_use": "oberfläche",
-    "weather": "wetter"
+    "surface_use": "Oberfläche",
+    "weather": "Wetter"
   },
   "attrValue": {
     "afternoon": "Nachmittag",
@@ -111,17 +111,17 @@
     "mossy": "Moosig",
     "natural": "Natürlich",
     "night": "Nacht",
-    "object": "Objekt",
+    "object": "Gegenstand",
     "obstructed": "Blockiert",
     "open": "Öffnen",
     "outdoor": "Im Freien",
-    "overcast": "Bewölkt",
+    "overcast": "Bedeckt",
     "painted": "Lackiert",
     "paper": "Papier",
     "partly_cloudy": "Teilweise bewölkt",
-    "paving": "Pflasterung",
+    "paving": "Wegebelag",
     "plastic": "Kunststoff",
-    "pristine": "Unberührt",
+    "pristine": "Neuwertig",
     "rain": "Regen",
     "roof": "Dach",
     "rubber": "Gummi",

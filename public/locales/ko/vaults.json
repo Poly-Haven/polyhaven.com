@@ -6,7 +6,7 @@
   "all-future-locked-p3": "마찬가지로, 모든 커뮤니티 프로젝트와 기부된 자산은 항상 대중에게 즉시 무료로 공개됩니다. 자체 제작에 상당한 투자가 필요한 대규모 컬렉션만 Vault에 보관할 수 있습니다.",
   "all-future-locked-p4": "그리고 모든 자산(금고에 있는 자산도 포함)은 결국 모든 사람에게 무료로 제공된다는 점을 기억하세요.",
   "different-question": "다른 질문이 있으신가요? <contactLink>문의해</contactLink> 주세요.",
-  "donation-heading": "매월 <span>3달러 이상을</span> 기부하여 {{numAssets}} 자산을 잠금 해제하고 저희의 활동을 지원하세요.",
+  "donation-heading": "매월 <span>3달러 이상을</span> 기부하여 {{numAssets}} 에셋을 잠금 해제하고 저희의 활동을 지원하세요.",
   "faq": "자주 묻는 질문",
   "how-it-works": "작동 방식:",
   "how-it-works-p1": "Poly Haven은 무료 퍼블릭 도메인 3D 에셋을 제작합니다. 작업 자금을 지원하기 위해 일부 새로운 에셋 컬렉션을 일시적으로 유료로 전환했습니다: 더 볼트입니다.",

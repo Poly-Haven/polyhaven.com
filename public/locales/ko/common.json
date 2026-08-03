@@ -79,7 +79,7 @@
   "remove-ads": "광고 제거",
   "required": "필수",
   "roadmap": {
-    "join-support": "<patreonLink>{{numPatrons}} 다른 후원자들과 함께</patreonLink> 무료 자산의 미래를 응원하세요.",
+    "join-support": "<patreonLink>{{numPatrons}} 다른 후원자들과 함께</patreonLink> 무료 에셋의 미래를 응원하세요.",
     "target-patrons": "{{target}} 후원자",
     "title": "폴리 헤이븐 로드맵",
     "to-be-announced": "발표 예정",

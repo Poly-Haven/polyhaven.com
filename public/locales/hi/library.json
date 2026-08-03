@@ -1,7 +1,7 @@
 {
   "Clear author": "निर्माता का नाम हटाए",
   "adv": {
-    "any-author": "कोई भी",
+    "any-author": "कोई भी निर्माता",
     "show-names": "मूलपाठ हमेशा दिखाएँ",
     "thumb-size": "चित्र की आकार ",
     "thumb-size-1": "छोटा",
@@ -29,7 +29,7 @@
     "environment": "पर्यावरण",
     "geonodes": "ज्यामिति नोड्स",
     "light_type": "प्रकाश",
-    "lods": "एलओडी",
+    "lods": "एल. ओ. डी. ",
     "material": "सामग्री",
     "origin": "उत्पत्ति",
     "pure_sky": "शुद्ध आकाश",
@@ -60,7 +60,7 @@
     },
     "sky_view": {
       "obstructed": "अवरोधित आकाश",
-      "open": "खुला आकाश"
+      "open": "खुला आसमान"
     },
     "surface_use": {
       "ground": "भूमि सतह",
@@ -74,7 +74,7 @@
     "contrast": "कॉन्ट्रास्ट",
     "light_type": "रोशनी",
     "setting": "उपयोग करें",
-    "sky_view": "आसमान",
+    "sky_view": "आकाश",
     "surface_use": "सतह",
     "weather": "मौसम"
   },
