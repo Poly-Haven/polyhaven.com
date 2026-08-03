@@ -6,8 +6,10 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 import styles from './CourseInfo.module.scss'
 
 const DISCORD_URL = 'https://discord.gg/Dms7Mrs'
+// Access gating mirrors api/videoUrl.ts.
+const REQUIRED_REWARD = 'Course Access'
 
-// Supplementary downloads, per course. Only rendered for signed-in viewers.
+// Supplementary downloads, per course. Only rendered for viewers holding REQUIRED_REWARD.
 const SUPPLEMENTARY = {
   photogrammetry: {
     scene: {
@@ -61,10 +63,13 @@ const PATRON_BENEFITS = [
 ]
 
 const CourseInfo = ({ course }) => {
-  const { user } = useUserPatron()
+  const { user, patron } = useUserPatron()
 
-  // Never expose course files or benefit links to logged-out visitors.
-  if (!user) return null
+  // Being signed in isn't enough - this block holds the course file downloads, so it
+  // needs the same reward the videos do (mirrors api/videoUrl.ts). `patron` is {} until
+  // it resolves, so this stays hidden until we positively know the viewer is entitled.
+  const hasAccess = !!(user && patron?.rewards && patron.rewards.includes(REQUIRED_REWARD))
+  if (!hasAccess) return null
 
   const supp = SUPPLEMENTARY[course.id]
 
