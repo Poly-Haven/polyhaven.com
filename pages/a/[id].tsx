@@ -5,6 +5,7 @@ import { assetTypeName } from 'utils/assetTypeName'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
+import { buildAssetJsonLd } from 'components/AssetPage/assetSeo'
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -51,6 +52,8 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
       </ErrorPage>
     )
   }
+  const jsonLd = buildAssetJsonLd(assetID, data)
+
   return (
     <div className="content">
       <Head
@@ -61,7 +64,14 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
         author={Object.keys(data.authors).join(', ')}
         keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
         image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630&quality=95`}
-      />
+      >
+        {jsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+          />
+        ) : null}
+      </Head>
       <div>
         <AssetPage
           assetID={assetID}
