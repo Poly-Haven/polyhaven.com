@@ -51,7 +51,9 @@ export const getServerSideProps = async ({ res }) => {
   await fetch(`${apiUrl}/courses`)
     .then((response) => response.json())
     .then((resdata) => {
-      for (const id of Object.keys(resdata)) {
+      for (const [id, course] of Object.entries(resdata)) {
+        // Placeholder documents (no name) 404 on the course page, so keep them out of the sitemap.
+        if (!course || !(course as any).name) continue
         dynamicPages[`${baseUrl}/learn/${id}`] = {
           lastmod: new Date().toISOString(),
           changefreq: 'monthly',

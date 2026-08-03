@@ -34,7 +34,9 @@ export async function getServerSideProps(context) {
     .then((r) => (r.ok ? r.json() : null))
     .catch(() => null)
 
-  if (!course) return { notFound: true }
+  // A course document with no name is a placeholder, not a page. Without this it renders as
+  // "undefined • Poly Haven" with JSON-LD missing the properties that make it valid.
+  if (!course || !course.name) return { notFound: true }
 
   // The rendered HTML is identical for every visitor — access state is resolved
   // client-side by UserPatronContext — so it's safe to cache at the edge. Keeps
