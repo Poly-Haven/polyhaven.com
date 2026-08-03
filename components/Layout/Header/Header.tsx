@@ -9,7 +9,8 @@ const header = () => {
     <div className={styles.header} id="mainheader">
       <Link href="/" className={styles.logo} id="header-logo">
         <div className={styles.logo_image}>
-          <img src="/Logo 256.png" />
+          {/* Decorative: the link already reads "Poly Haven" next to it. */}
+          <img src="/Logo 256.png" alt="" />
         </div>
         Poly Haven
       </Link>

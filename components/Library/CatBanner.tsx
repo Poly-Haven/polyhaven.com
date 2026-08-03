@@ -23,8 +23,11 @@ const CatBanner = ({ assetType, collections }) => {
         <div className={styles.catBannerFlex} style={{ flexWrap: 'nowrap' }}>
           {Object.keys(collections).map((collectionID, i) => (
             <Link key={i} href={`/collections/${collectionID}`} className={`${styles.cat}`}>
+              {/* Decorative: the link already carries the collection name below it. */}
               <img
                 src={`https://cdn.polyhaven.com/collections/${collectionID}.png?width=578&aspect_ratio=16:9&quality=95`}
+                alt=""
+                loading="lazy"
               />
               <p>{collections[collectionID]}</p>
             </Link>
@@ -55,7 +58,8 @@ const CatBanner = ({ assetType, collections }) => {
               title={node.description || undefined}
               className={`${styles.cat} ${assetType === 'models' ? styles.modelCat : ''}`}
             >
-              <img src={imgUrl} />
+              {/* Decorative: the category name is rendered as text inside the same link. */}
+              <img src={imgUrl} alt="" loading="lazy" />
               <p>{categoryLabel(t, node)}</p>
             </Link>
           )

@@ -1,13 +1,16 @@
 import { Md3dRotation } from 'react-icons/md'
 
 import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
-import { urlBaseName } from 'utils/stringUtils'
+import { urlBaseName, removeExtension } from 'utils/stringUtils'
 
 import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePreview, active }) => {
+const Carousel = ({ slug, name, data, files, assetType, setter, showWebGL, showTilePreview, active }) => {
+  // Render keys are a mix of bare labels ("Thumb", "Preview") and filenames ("clay.png"), and
+  // removeExtension returns "" for anything without a dot - so fall back to the key itself.
+  const renderLabel = (key: string) => removeExtension(key) || key
   let images = {
     Preview: `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
   }
@@ -73,7 +76,11 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
           onClick={clickImage}
           className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}
         >
-          <img src={images[i] + '?height=110&quality=95'} />
+          <img
+            src={images[i] + '?height=110&quality=95'}
+            alt={image_info[i]?.title ? `${name} - ${image_info[i].title}` : `${name} - ${renderLabel(i)}`}
+            loading="lazy"
+          />
           {Object.keys(image_info).includes(i) ? (
             <div className={styles.credit}>
               <p>
@@ -120,6 +127,8 @@ const Carousel = ({ slug, data, files, assetType, setter, showWebGL, showTilePre
                     src={`https://cdn.polyhaven.com/asset_img/map_previews/${slug}/${urlBaseName(
                       maps[m]
                     )}?height=50&width=50&quality=95`}
+                    alt={`${name} - ${m} map`}
+                    loading="lazy"
                   />
                 </div>
               ))}

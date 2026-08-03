@@ -275,6 +275,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
         <div className={styles.carousel}>
           <Carousel
             slug={assetID}
+            name={data.name}
             data={renders}
             files={files}
             assetType={data.type}

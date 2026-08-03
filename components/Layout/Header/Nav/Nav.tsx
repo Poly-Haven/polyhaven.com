@@ -209,7 +209,7 @@ const Nav = () => {
           <NavItem
             text={
               <span className={styles.assetType}>
-                <img src="/icons/a_hdris.png" /> {t('common:HDRIs')}
+                <img src="/icons/a_hdris.png" alt="" /> {t('common:HDRIs')}
               </span>
             }
             link="/hdris"
@@ -217,7 +217,7 @@ const Nav = () => {
           <NavItem
             text={
               <span className={styles.assetType}>
-                <img src="/icons/a_textures.png" /> {t('common:Textures')}
+                <img src="/icons/a_textures.png" alt="" /> {t('common:Textures')}
               </span>
             }
             link="/textures"
@@ -225,7 +225,7 @@ const Nav = () => {
           <NavItem
             text={
               <span className={styles.assetType}>
-                <img src="/icons/a_models.png" /> {t('common:Models')}
+                <img src="/icons/a_models.png" alt="" /> {t('common:Models')}
               </span>
             }
             link="/models"

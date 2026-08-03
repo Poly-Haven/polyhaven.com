@@ -71,7 +71,7 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_hdris.png" />
+              <img src="/icons/a_hdris.png" alt="HDRIs" />
             </Link>
             <Link
               href="/textures"
@@ -82,7 +82,7 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_textures.png" />
+              <img src="/icons/a_textures.png" alt="Textures" />
             </Link>
             <Link
               href="/models"
@@ -93,7 +93,7 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_models.png" />
+              <img src="/icons/a_models.png" alt="Models" />
             </Link>
             <h2 id="typeHeader">{typeHeader}</h2>
           </div>
