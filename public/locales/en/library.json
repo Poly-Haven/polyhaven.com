@@ -53,30 +53,30 @@
       "mixed": "Mixed light",
       "natural": "Natural light"
     },
+    "setting": {
+      "either": "Indoor or outdoor",
+      "indoor": "Indoor use",
+      "outdoor": "Outdoor use"
+    },
+    "sky_view": {
+      "obstructed": "Obstructed sky",
+      "open": "Open sky"
+    },
     "surface_use": {
       "ground": "Ground surface",
       "object": "Object surface"
     },
     "weather": {
       "clear": "Clear weather"
-    },
-    "sky_view": {
-      "open": "Open sky",
-      "obstructed": "Obstructed sky"
-    },
-    "setting": {
-      "indoor": "Indoor use",
-      "outdoor": "Outdoor use",
-      "either": "Indoor or outdoor"
     }
   },
   "attrNoun": {
     "contrast": "contrast",
     "light_type": "light",
-    "surface_use": "surface",
-    "weather": "weather",
+    "setting": "use",
     "sky_view": "sky",
-    "setting": "use"
+    "surface_use": "surface",
+    "weather": "weather"
   },
   "attrValue": {
     "afternoon": "Afternoon",
@@ -120,9 +120,9 @@
     "paper": "Paper",
     "partly_cloudy": "Partly Cloudy",
     "paving": "Paving",
+    "plant": "Plant matter",
     "plastic": "Plastic",
     "pristine": "Pristine",
-    "plant": "Plant",
     "rain": "Rain",
     "roof": "Roof",
     "rubber": "Rubber",
