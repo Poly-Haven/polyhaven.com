@@ -1,10 +1,7 @@
 {
-  "d1p": "Polyhaven의 <lnk>Patreon</lnk> 에 임시로 가입한 후, 결제가 완료되는 월말까지 기다렸다가 후원을 해지하세요.",
-  "d1t": "$20 미만 기부",
   "d2b1": "PayPal에서 후원",
   "d2b2": "Ko-fi에서 후원",
   "d2p": "일회성 기부를 하려면 PayPal 또는 Ko-fi를 사용하세요.",
-  "d2t": "더 큰 기부",
   "description": "Poly Haven에 일회성 기부하는 방법.",
   "help-contribute": "<lnk>자산 기여하기</lnk> 당신이 만든 자산을 라이브러리에 기여하세요.",
   "help-corporate": "회사를 대신해 기부하는 경우, <lnk>기업 파트너십</lnk> 페이지를 참조하세요.",

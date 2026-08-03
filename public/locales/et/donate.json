@@ -1,10 +1,7 @@
 {
-  "d1p": "Palun liituge meiega ajutiselt <lnk>Patreonis</lnk>, oodake kuni kuu lõpuni, kui teie makse on tehtud, ja siis tühistage oma konto.",
-  "d1t": "Annetused alla $20",
   "d2b1": "Annetada PayPalis",
   "d2b2": "Annetada Ko-fis",
   "d2p": "Ühekordse annetuse tegemiseks kasutage palun kas PayPali või Ko-fi:",
-  "d2t": "Suuremad annetused",
   "description": "Kuidas teha ühekordne annetus Poly Havenile.",
   "help-contribute": "<lnk>Anna oma loodud vara</lnk> raamatukogusse.",
   "help-corporate": "Kui annetate ettevõtte nimel, vaadake meie <lnk>ettevõtte partnerluse</lnk> lehte.",
