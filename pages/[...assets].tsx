@@ -99,6 +99,11 @@ export async function getServerSideProps(context) {
   const translations = async () =>
     await serverSideTranslations(context.locale, ['common', 'home', 'library', 'categories', 'time'])
 
+  // Next does not localise `redirect` destinations from getServerSideProps, so without this every
+  // legacy URL under a locale (/de/hdris/outdoor) lands the visitor on the English page.
+  const localised = (destination: string) =>
+    context.locale && context.locale !== context.defaultLocale ? `/${context.locale}${destination}` : destination
+
   if (typesAvailable[assetType] === undefined) {
     return {
       notFound: true,
@@ -115,9 +120,9 @@ export async function getServerSideProps(context) {
       // /all only ever had asset types beneath it.
       const first = safeDecode(params[0])
       if (typesAvailable[first] !== undefined && first !== 'all') {
-        return { redirect: { destination: `/${first}`, permanent: true } }
+        return { redirect: { destination: localised(`/${first}`), permanent: true } }
       }
-      return { redirect: { destination: '/all', permanent: true } }
+      return { redirect: { destination: localised('/all'), permanent: true } }
     }
 
     const node = hasTaxonomy(assetType) ? nodeFromSlugSegments(assetType, params.map(safeDecode)) : null
@@ -127,7 +132,7 @@ export async function getServerSideProps(context) {
     } else {
       const destination = resolveLegacyRedirect(assetType, params, context.query)
       if (destination) {
-        return { redirect: { destination, permanent: true } }
+        return { redirect: { destination: localised(destination), permanent: true } }
       }
       return {
         notFound: true,
