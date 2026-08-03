@@ -152,9 +152,10 @@
      "rubber",
      "food",
      "wax",
-     "bone"
+     "bone",
+     "plant"
     ],
-    "description": "All materials making up the object, most prominent first (multi-value, avoid a single \"mixed\")."
+    "description": "All materials making up the object, most prominent first (multi-value, avoid a single \"mixed\"). Use \"plant\" for living or dried plant matter - foliage, grass, flowers, soft stems; \"wood\" is for timber and bark."
    },
    "condition": {
     "type": "string[]",
