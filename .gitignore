@@ -49,3 +49,6 @@ pages/db_json*.json
 # local-only course file-processing scripts (kept out of this public repo)
 /scripts/local
 /public/locales/.rmtest
+
+# Planning
+/plans
