@@ -16,7 +16,8 @@ export default class CustomDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
 
-          <meta property="og:locale" content="en_US" />
+          {/* og:locale is emitted per locale by components/Head/Head.tsx - a hardcoded en_US here
+              would contradict it on every translated page. */}
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="Poly Haven" />
           <meta content="text/html;charset=utf-8" httpEquiv="Content-Type" />
