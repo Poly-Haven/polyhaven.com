@@ -24,13 +24,12 @@ export default class CustomDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
 
-          {/* og:locale is emitted per locale by components/Head/Head.tsx - a hardcoded en_US here
-              would contradict it on every translated page. */}
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="Poly Haven" />
+          {/* og:locale, og:type, og:site_name and theme-color all come from
+              components/Head/Head.tsx, which every page renders. Duplicating them here emitted
+              each one twice per page, and the theme-color copy was a different colour
+              (rgb(190, 111, 255)) that lost to Head's on document order anyway. */}
           <meta content="text/html;charset=utf-8" httpEquiv="Content-Type" />
           <meta content="utf-8" httpEquiv="encoding" />
-          <meta name="theme-color" content="rgb(190, 111, 255)" />
           <meta property="commit_hash" content={process.env.CONFIG_BUILD_ID} />
 
           {/* Download service worker */}
