@@ -333,15 +333,15 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
 
             {data.categories.includes('collection: project_lighthouse') ? (
               <div className={styles.community} lang="en" dir="ltr">
-                <h3>Join Project Lighthouse</h3>
+                <h3>Poly Haven's Biggest Project</h3>
                 <p>
-                  This asset was made for Poly Haven's <strong>upcoming game</strong>. Want to help us?
+                  This asset was made for Poly Haven's{' '}
+                  <Link href="https://store.steampowered.com/app/4162610/Project_Lighthouse/" target="_blank">
+                    upcoming game
+                  </Link>
+                  . Want to help us?
                 </p>
-                <Button
-                  text="Join the Community Project"
-                  href="https://blog.polyhaven.com/project-lighthouse-challenge/"
-                  color="community"
-                />
+                <Button text="Join Project Lighthouse" href="https://phvn.io/lighthouse" color="community" />
               </div>
             ) : null}
 
