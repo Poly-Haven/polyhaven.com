@@ -6,14 +6,20 @@
     "li2": "Rani pristup imovini, prije nego što se javno objavi.",
     "li3": "Pristup našoj usluzi u oblaku za sinkronizaciju svih naših sredstava na vaš tvrdi disk.",
     "li4": "Stalno sponzorirajte sredstvo svakog mjeseca, prikazujući svoje ime i vezu pored gumba za preuzimanje.",
-    "p1": "Ako ste a<lnk> pokrovitelj</lnk> Poly Havena, prijavom ovdje dobit ćete pristup svojim nagradama izravno na ovoj stranici.",
+    "p1": "Ako ste a <lnk>pokrovitelj</lnk> Poly Havena, prijavom ovdje dobit ćete pristup svojim nagradama izravno na ovoj stranici.",
     "p2": "Ovisno o vašoj razini podrške, vaše nagrade mogu uključivati:"
   },
-  "not-patron": "Čini se da nisi pokrovitelj Poly Havena :( ako je ovo netočno, molim te<lnk> javiti se</lnk> tako da možemo istražiti problem na ovoj stranici. Trebat će nam sljedeće informacije:",
+  "not-patron": "Čini se da nisi pokrovitelj Poly Havena :( ako je ovo netočno, molim te <lnk>javiti se</lnk> tako da možemo istražiti problem na ovoj stranici. Trebat će nam sljedeće informacije:",
   "not-patron-anymore": "Čini se da više nisi pokrovitelj Poly Havena. To je u redu, i cijenimo vašu prethodnu podršku :)",
   "reward_one": "Time dobivate sljedeću nagradu:",
   "reward_other": "Time dobivate sljedeće nagrade:",
   "rewards": {
+    "course-access": {
+      "cta": "Idite na tečajeve",
+      "p1": "Vaše članstvo uključuje potpuni pristup <lnk> našim tečajevima </lnk>, koji se emitiraju upravo ovdje na stranici.",
+      "p2": "Vaš napredak se sprema na vaš račun, tako da možete nastaviti gdje ste stali na bilo kojem uređaju.",
+      "title": "Pristup tečaju"
+    },
     "credit": {
       "invalid": "Nevažeći naziv",
       "p1": "Vaše ime je trenutno",
@@ -23,7 +29,7 @@
       "title": "Kredit za podnožje"
     },
     "early-access": {
-      "p1": "Sada kada ste prijavljeni,<lnk> Knjižnica sredstava</lnk> će uključivati materijale koje smo planirali objaviti u budućnosti.",
+      "p1": "Sada kada ste prijavljeni, <lnk>Knjižnica sredstava</lnk> će uključivati materijale koje smo planirali objaviti u budućnosti.",
       "p2": "Označeni su plavim krugom i logotipom Patreona u gornjem desnom kutu, ovako:",
       "p3": "Već ih možete preuzeti, prije svih :)",
       "title": "Rani pristup"
@@ -36,8 +42,8 @@
     "offline-access": {
       "p1": "Unesite svoju adresu e-pošte kako biste sebi poslali pozivnicu za našu mapu u oblaku:",
       "p2": "Provjerite e-poštu :)",
-      "p3": "Poziv je uspješno poslan. Ako imate problema ili trebate promijeniti e-poštu računa,<lnk> molimo kontaktirajte nas</lnk> .",
-      "p4": "Vidjeti<lnk> ovaj post</lnk> za daljnje upute o tome kako postaviti Nextcloud i započeti sinkronizaciju imovine s vašim računalom.",
+      "p3": "Poziv je uspješno poslan. Ako imate problema ili trebate promijeniti e-poštu računa, <lnk>molimo kontaktirajte nas</lnk>.",
+      "p4": "Vidjeti <lnk>ovaj post</lnk> za daljnje upute o tome kako postaviti Nextcloud i započeti sinkronizaciju imovine s vašim računalom.",
       "title": "Izvanmrežni pristup"
     },
     "sponsor": {
@@ -56,7 +62,7 @@
     },
     "stakeholder": {
       "p1": "Kao dionik tvrtke Poly Haven, dobivate dublji pristup našim internim komunikacijskim kanalima kako biste nam pomogli da razgovaramo o tome na čemu raditi i pratimo na našem putu.",
-      "p2": "Ako vas već nismo kontaktirali, molimo<lnk> javiti se</lnk> kako bismo vam mogli omogućiti pristup tim kanalima i predstaviti vas timu.",
+      "p2": "Ako vas već nismo kontaktirali, molimo <lnk>javiti se</lnk> kako bismo vam mogli omogućiti pristup tim kanalima i predstaviti vas timu.",
       "title": "Sudionik"
     }
   },

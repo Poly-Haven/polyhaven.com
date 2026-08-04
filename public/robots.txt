@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Everything here is CC0 and meant to be found - by search engines, by AI answer
+# engines, and by anything else that wants to point people at free assets.
 User-agent: *
 Disallow:
+
+Sitemap: https://polyhaven.com/sitemap.xml

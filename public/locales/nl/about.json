@@ -1,7 +1,7 @@
 {
   "contact": {
     "h1": "Contact",
-    "p1": "Heb je een vraag? Lees dan eerste de<lnk> FAQ</lnk> :)",
+    "p1": "Heb je een vraag? Lees dan eerste de <lnk>FAQ</lnk> :)",
     "p2": "De gemakkelijkste manier om ons te bereiken is via e-mail (<lnk1>info@polyhaven.com</lnk1>) of op <lnk2>Discord</lnk2> ."
   },
   "description": "Wat Poly Haven is, wat we doen en waarom we het doen.",
@@ -14,7 +14,7 @@
   "help": {
     "h1": "Hoe je kan helpen",
     "s1": "Steun ons op Patreon",
-    "s1p1": "Als je wat besteedbaar inkomen hebt en je wilt ons helpen meer gratis HDRI's, texturen en 3D-modellen te publiceren, dan kun je ons steunen met een kleine maandelijkse donatie op<lnk> Patreon</lnk> :)",
+    "s1p1": "Als je wat besteedbaar inkomen hebt en je wilt ons helpen meer gratis HDRI's, texturen en 3D-modellen te publiceren, dan kun je ons steunen met een kleine maandelijkse donatie op <lnk>Patreon</lnk> :)",
     "s1p2": "In ruil daarvoor kunnen we je een klein blijk van dank geven, zoals toegang tot een cloudmap die je kunt synchroniseren met je harde schijf zodat je altijd onze nieuwste assets binnen handbereik hebt, of je naam vereeuwigt op onze site.",
     "s1p3": "We gebruiken uw donaties rechtstreeks om onze kosten te dekken en nieuwe assets te financieren, zoals geverifieerd door onze <lnk>financiële rapporten</lnk>.",
     "s2": "Doneer uw assets",

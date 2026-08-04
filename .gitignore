@@ -10,7 +10,9 @@
 
 # next.js
 /.next/
+/.next-verify/
 /out/
+tsconfig.tsbuildinfo
 
 # production
 /build
@@ -29,8 +31,24 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local MCP server config (contains API keys)
+.mcp.json
+
 # misc
 .DS_Store
 *.pem
 pages/db_json*.json
 .vscode
+
+# transient course thumbnail downloads (uploaded to the CDN manually)
+/tmp_course_thumbnails
+
+# placeholder course marketing media (local dev only; final art uploaded to the CDN)
+/public/course_promo
+
+# local-only course file-processing scripts (kept out of this public repo)
+/scripts/local
+/public/locales/.rmtest
+
+# Planning
+/plans

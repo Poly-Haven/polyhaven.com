@@ -1,0 +1,864 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+$max: 1200px;
+$stack: 900px;
+
+.wrapper {
+  width: 100%;
+  color: $c-text-light;
+  background: $c-background-dark;
+  text-align: left;
+  overflow: hidden;
+
+  h1,
+  h2,
+  h3 {
+    color: $c-text-bright;
+  }
+
+  strong {
+    color: $c-text-bright;
+  }
+}
+
+/* purple -> orange brand bar, from Rob's draft */
+.accentBar {
+  display: block;
+  height: 5px;
+  width: 130px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $c-accent, $c-orange);
+  margin-bottom: 1.1rem;
+}
+
+/* ----------------------------- hero ----------------------------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - #{$v-header-height});
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(black, 0.9) 0%,
+    rgba(black, 0.72) 38%,
+    rgba(black, 0.35) 70%,
+    rgba(black, 0.55) 100%
+  );
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: $max;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.05;
+    margin: 0 0 1.2rem;
+    letter-spacing: -0.5px;
+  }
+}
+
+.kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $c-accent-lighter;
+}
+
+.heroSub {
+  max-width: 40rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: $c-gray-light;
+  white-space: break-spaces;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  // <Button> brings its own 0.5rem margin; offset it so the row lines up with the copy.
+  margin: 0 0 2rem -0.5rem;
+}
+
+.heroStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-size: 0.95rem;
+    color: $c-gray-light;
+  }
+
+  strong {
+    display: block;
+    font-size: 1.9rem;
+    line-height: 1.1;
+    color: $c-text-bright;
+  }
+}
+
+.accessBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: rgba($c-community, 0.14);
+  border-bottom: 1px solid rgba($c-community, 0.35);
+  color: $c-community-lightish;
+  font-weight: 600;
+
+  svg {
+    font-size: 1.3em;
+  }
+
+  a {
+    color: $c-text-bright;
+  }
+}
+
+/* --------------------- shared section heading --------------------- */
+.sectionHead {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+
+  .accentBar {
+    margin: 0 auto 1.1rem;
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    margin: 0 0 0.8rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: $c-gray-light;
+    margin: 0;
+  }
+}
+
+/* ----------------------------- trailer ----------------------------- */
+/* Full-width, first below the hero: showing the pipeline beats telling it. */
+.trailerWrapper {
+  width: 100%;
+  padding: 3.5rem 0;
+  scroll-margin-top: $v-header-height;
+
+  @media screen and (max-width: $stack) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.trailer {
+  display: block;
+  width: 100%;
+  max-width: $max;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: black;
+  border: 0; // it's a YouTube <iframe>, which is bordered by default
+  @include drop-shadow(0.5);
+}
+
+/* ------------------------- primer + reframe ------------------------- */
+.splitWrapper {
+  background: $c-background-darkish;
+}
+.split {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  max-width: $max;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+
+  @media screen and (max-width: $stack) {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+  }
+}
+
+/*
+ * Three steps in a flow, not three parallel facts — so the brand's purple -> orange
+ * accentBar gradient runs down the left edge across all three (01 starts purple, 03
+ * lands on orange) and the numerals step through the same progression.
+ */
+.beats {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.beat {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.9rem;
+  overflow: hidden;
+
+  // this beat's slice of the purple -> orange run, down the left edge
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--beat-from), var(--beat-to));
+  }
+
+  &:nth-child(1) {
+    --beat-from: #{$c-accent};
+    --beat-to: #{mix($c-orange, $c-accent, 33%)};
+    --beat-num: #{$c-accent};
+  }
+
+  &:nth-child(2) {
+    --beat-from: #{mix($c-orange, $c-accent, 33%)};
+    --beat-to: #{mix($c-orange, $c-accent, 66%)};
+    --beat-num: #{mix($c-orange, $c-accent, 50%)};
+  }
+
+  &:nth-child(3) {
+    --beat-from: #{mix($c-orange, $c-accent, 66%)};
+    --beat-to: #{$c-orange};
+    --beat-num: #{$c-orange};
+  }
+}
+
+.beatNum {
+  flex-shrink: 0;
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--beat-num);
+  font-variant-numeric: tabular-nums;
+}
+
+.beatText {
+  min-width: 0;
+
+  strong {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 24rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: $c-gray-light;
+  }
+}
+
+.splitText {
+  flex: 1 1 0;
+  min-width: 0;
+
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    margin: 0 0 1rem;
+  }
+
+  p {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    color: $c-gray-light;
+  }
+}
+
+/* ----------------------------- journey ----------------------------- */
+.journey {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.stageWrapper {
+  padding: 0 1.5rem;
+  &:nth-child(odd) {
+    background-color: rgba($c-background, 0.5);
+  }
+  &:nth-child(even) {
+    .stage {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.stage {
+  max-width: $max;
+  padding: 3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin: auto;
+
+  @media screen and (max-width: $stack) {
+    flex-direction: column !important;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.stageMedia {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+}
+
+.stageImg,
+.stageVideo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: $c-background-darkest;
+  @include drop-shadow(0.45);
+}
+
+.stageText {
+  flex: 1 1 0;
+  min-width: 0;
+
+  h3 {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    line-height: 1.15;
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  p {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    color: $c-gray-light;
+    margin: 0;
+  }
+}
+
+.stageNum {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $c-orange;
+  margin-right: 0.7rem;
+}
+
+.stageKicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: $c-accent-lighter;
+}
+
+/* per-stage spec box: which tools, where — see the STAGES comment in the .tsx */
+.stageSpecs {
+  margin-top: 1.3rem;
+  padding-left: 1rem;
+  border-left: 3px solid $c-accent;
+
+  // nested so it outranks `.stageText p` on specificity rather than !important
+  .stageTechniques {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: $c-gray;
+    margin: 0;
+  }
+}
+
+.stageSpecRow + .stageSpecRow {
+  margin-top: 0.8rem;
+}
+
+.stageSpecLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $c-gray;
+  margin-bottom: 0.4rem;
+}
+
+.stageSoftware {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/*
+ * A link, but styled as plain text: `color` overrides the global accent-purple on <a>,
+ * and box-shadow is pre-empted in case this ever moves inside a p/li/h4/span (globals
+ * gives those an underline). The chip background carries the hover affordance instead.
+ */
+.softwareChip {
+  padding: 0.15em 0.55em;
+  background: $c-background-light;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $c-text-light;
+  white-space: nowrap;
+  box-shadow: none;
+  @include transition();
+
+  &:hover {
+    background: $c-background-lighter;
+    color: $c-text-bright;
+  }
+}
+
+/* ----------------------------- skills ----------------------------- */
+.skills {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (max-width: $stack) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quiet CTA that closes out the skills section - no background, smaller heading than
+   the full-bleed one at the end of the page, so it reads as part of the list above. */
+.inlineCta {
+  text-align: center;
+  margin-top: 3rem;
+
+  h2 {
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    margin: 0 0 1.2rem;
+  }
+}
+
+.skillItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: $c-background;
+  border: 1px solid $c-background-lightish;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: $c-text-light;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 0.1em;
+    color: $c-community;
+    font-size: 1.2em;
+  }
+}
+
+/* ----------------------------- proof ----------------------------- */
+.proof {
+  padding: 5rem 0;
+  background: $c-background-darkish;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  gap: 0.6rem;
+  animation: courseMarquee 180s linear infinite;
+
+  img {
+    height: 118px;
+    width: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: $c-background-darkest;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes courseMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.renderGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @media screen and (max-width: $stack) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.renderThumb {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transform-origin: center center;
+  will-change: transform;
+  @include transition(0.4s);
+
+  &:hover {
+    transform: perspective(900px) translateZ(1.2rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    filter: saturate(1.08) brightness(1.06);
+    @include transition(0.1s);
+  }
+}
+
+/* --------------------------- what's included --------------------------- */
+.included {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.includedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  @media screen and (max-width: $stack) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.includedCard {
+  padding: 1.5rem;
+  background: $c-background;
+  border: 1px solid $c-background-lightish;
+  @include drop-shadow(0.3);
+
+  strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: $c-gray-light;
+  }
+}
+
+.softwareRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.6rem;
+  margin-top: 2.5rem;
+  color: $c-gray;
+  font-weight: 600;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  a {
+    box-shadow: 0 1px 0 rgba($c-text-light, 0.5);
+    color: $c-text-light;
+    @include transition();
+
+    &:hover {
+      color: $c-text-light;
+      box-shadow: 0 3px 0 $c-accent;
+    }
+  }
+
+  em {
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  svg {
+    font-size: 1.2em;
+  }
+}
+
+/* ----------------------------- pricing ----------------------------- */
+.pricing {
+  padding: 5rem 1.5rem;
+  background: $c-background-darkish;
+  scroll-margin-top: $v-header-height;
+}
+
+.priceNotes {
+  text-align: center;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/* ----------------------------- curriculum ----------------------------- */
+.curriculum {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  scroll-margin-top: $v-header-height;
+}
+
+.chapterList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chapterBlock {
+  background: $c-background;
+  border: 1px solid $c-background-lightish;
+}
+
+.chapterToggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: none;
+  border: none;
+  color: $c-text-bright;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: $c-background-lightish;
+  }
+}
+
+.chapterIndex {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: $c-orange;
+  font-variant-numeric: tabular-nums;
+}
+
+.chapterName {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapterCount {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: $c-gray;
+}
+
+.chevron {
+  flex-shrink: 0;
+  font-size: 1.4em;
+  color: $c-gray;
+  @include transition();
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.lectureList {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.2rem 0.6rem 1.2rem;
+  border-top: 1px solid $c-background-lighter;
+
+  li {
+    border-bottom: 1px solid rgba(white, 0.04);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.lectureLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  box-shadow: none !important;
+
+  &:hover .lectureName {
+    color: $c-accent;
+  }
+}
+
+.lectureName {
+  flex: 1;
+  min-width: 0;
+  color: $c-text-light;
+}
+
+.lectureDur {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: $c-gray;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------- brand ----------------------------- */
+.brand {
+  padding: 5rem 1.5rem;
+  background: $c-background-darkish;
+}
+
+.brandInner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+
+  .accentBar {
+    margin: 0 auto 1.1rem;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    margin: 0 0 1.2rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: $c-gray-light;
+    margin: 0 0 1rem;
+  }
+}
+
+.help {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem !important;
+  font-size: 1rem !important;
+
+  svg {
+    color: $c-community;
+    font-size: 1.2em;
+  }
+}
+
+/* ----------------------------- final CTA ----------------------------- */
+.finalCta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  overflow: hidden;
+}
+
+.finalBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.finalOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(black, 0.62);
+}
+
+.finalInner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 3rem 1.5rem;
+
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 0 0 1.5rem;
+  }
+}

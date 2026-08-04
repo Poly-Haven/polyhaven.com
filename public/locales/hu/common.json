@@ -23,6 +23,7 @@
     "b4": "A Blender eszközböngésző <lnk>kiegészítőnk</lnk>.",
     "b5": "Tömeges letöltés és offline hozzáférés <lnk>a felhőnkkel</lnk>.",
     "b6": "<lnk>Szponzoráljon egy eszközt</lnk> nevével és linkjével.",
+    "b6-course": "<lnk>Tanulj tőlünk</lnk> teljes hosszúságú videókurzusokkal.",
     "donate-monthly": "Havi adományozás",
     "donate-once": "Adományozzon egyszer",
     "monthly": "Havi",
@@ -33,7 +34,7 @@
   "email-address": "Email cím",
   "footer": {
     "join-ranks": "Csatlakozz, és támogasd a Poly Havent a Patreonon",
-    "thanks": "Köszönet a miénknek<lnk> Mecénások</lnk> amiért lehetővé tette a Poly Havent"
+    "thanks": "Köszönet a miénknek <lnk>Mecénások</lnk> amiért lehetővé tette a Poly Havent"
   },
   "goal": {
     "complete": "Teljes!",
@@ -62,11 +63,13 @@
     "logo": "Logó",
     "logout": "Kijelentkezés",
     "map": "HDRI világtérkép",
+    "menu": "Menü",
     "news": "hírek",
     "plugins": "Plugins",
     "privacy": "Magánélet",
     "source": "Forrás",
     "stats": "Statisztika",
+    "status": "Állapot",
     "support-us": "Támogass minket"
   },
   "optional": "Választható",

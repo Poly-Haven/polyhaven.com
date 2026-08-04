@@ -1,0 +1,190 @@
+{
+ "_generated": "from admin.polyhaven.com/utils/assetCategories.ts (dimensionSchema) via scripts/generateSharedConstants.mjs - do not edit by hand",
+ "types": {
+  "hdris": {
+   "time_of_day": {
+    "type": "enum|null",
+    "enum": [
+     "sunrise",
+     "morning",
+     "midday",
+     "afternoon",
+     "sunset",
+     "dusk",
+     "night"
+    ],
+    "description": "Best single time-of-day; null for time-less indoor/studio."
+   },
+   "weather": {
+    "type": "enum|null",
+    "enum": [
+     "clear",
+     "partly_cloudy",
+     "overcast",
+     "fog",
+     "storm",
+     "rain",
+     "snow"
+    ],
+    "description": "Dominant sky/weather."
+   },
+   "light_type": {
+    "type": "enum",
+    "enum": [
+     "natural",
+     "artificial",
+     "mixed"
+    ],
+    "description": "Dominant light source."
+   },
+   "contrast": {
+    "type": "enum",
+    "enum": [
+     "low",
+     "medium",
+     "high"
+    ],
+    "description": "Lighting contrast."
+   },
+   "season": {
+    "type": "enum|null",
+    "enum": [
+     "spring",
+     "summer",
+     "autumn",
+     "winter"
+    ],
+    "description": "Season if evident."
+   },
+   "environment": {
+    "type": "enum",
+    "enum": [
+     "indoor",
+     "outdoor"
+    ],
+    "description": "Where the capture was made. Studio shots are indoor - the Studio category carries that distinction."
+   },
+   "sky_view": {
+    "type": "enum|null",
+    "enum": [
+     "open",
+     "obstructed"
+    ],
+    "description": "How much open sky is visible. Null indoors, where it does not apply."
+   },
+   "pure_sky": {
+    "type": "boolean",
+    "description": "Edited pure-sky variant (ground removed), inheriting its base capture path."
+   },
+   "backplates": {
+    "type": "boolean",
+    "description": "Has matching backplate photographs."
+   }
+  },
+  "textures": {
+   "surface_use": {
+    "type": "enum|null",
+    "enum": [
+     "floor",
+     "wall",
+     "ceiling",
+     "roof",
+     "ground",
+     "paving",
+     "object"
+    ],
+    "description": "Where the material is typically applied."
+   },
+   "origin": {
+    "type": "enum",
+    "enum": [
+     "man_made",
+     "natural"
+    ],
+    "description": "Manufactured, built or worked, versus naturally occurring."
+   },
+   "setting": {
+    "type": "enum|null",
+    "enum": [
+     "indoor",
+     "outdoor",
+     "either"
+    ],
+    "description": "Where the material is typically found. Use \"either\" for materials equally at home in both, null if genuinely unassessed."
+   },
+   "condition": {
+    "type": "string[]",
+    "enum": [
+     "clean",
+     "dirty",
+     "weathered",
+     "damaged",
+     "mossy",
+     "painted",
+     "rusted",
+     "cracked",
+     "worn",
+     "broken"
+    ],
+    "description": "Condition tags. Use \"clean\" when the surface shows no wear, dirt or damage; omit the key only if you genuinely cannot judge it."
+   },
+   "aerial": {
+    "type": "boolean",
+    "description": "Captured from the air by drone, so at a far larger scale than a ground scan."
+   }
+  },
+  "models": {
+   "material": {
+    "type": "string[]",
+    "enum": [
+     "wood",
+     "metal",
+     "brass",
+     "steel",
+     "plastic",
+     "ceramic",
+     "stone",
+     "concrete",
+     "glass",
+     "leather",
+     "fabric",
+     "paper",
+     "rubber",
+     "food",
+     "wax",
+     "bone",
+     "plant"
+    ],
+    "description": "All materials making up the object, most prominent first (multi-value, avoid a single \"mixed\"). Use \"plant\" for living or dried plant matter - foliage, grass, flowers, soft stems; \"wood\" is for timber and bark."
+   },
+   "condition": {
+    "type": "string[]",
+    "enum": [
+     "clean",
+     "dirty",
+     "weathered",
+     "damaged",
+     "mossy",
+     "painted",
+     "rusted",
+     "cracked",
+     "worn",
+     "broken"
+    ],
+    "description": "Condition tags, same vocabulary and shape as the texture field. Use \"clean\" when the object shows no wear, dirt or damage; omit the key only if you genuinely cannot judge it."
+   },
+   "rigged": {
+    "type": "boolean",
+    "description": "Has an animation rig."
+   },
+   "lods": {
+    "type": "boolean",
+    "description": "Ships with level-of-detail variants."
+   },
+   "geonodes": {
+    "type": "boolean",
+    "description": "Includes a geometry-nodes setup."
+   }
+  }
+ }
+}

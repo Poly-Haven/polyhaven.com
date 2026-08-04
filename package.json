@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "startwin": "next start -p 3002",
-    "translate": "i18nexus pull && jsonsort public/locales -s && git checkout public/locales/en"
+    "translate": "i18nexus pull && jsonsort public/locales -s"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^2.6.2",
@@ -57,6 +57,8 @@
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.2.13",
+    "i18nexus-cli": "3.0.0",
+    "json-sort-cli": "2.0.15",
     "typescript": "^5.1.3"
   },
   "engines": {

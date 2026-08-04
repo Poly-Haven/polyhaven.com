@@ -1,12 +1,20 @@
 {
-  "title": "Make a once-off donation",
+  "d2b1": "Donate on PayPal",
+  "d2b2": "Donate on Ko-fi",
+  "d2p": "To make a one-time donation, please use either PayPal or Ko-fi:",
   "description": "How to make a once-off donation to Poly Haven.",
+  "help-contribute": "<lnk>Contribute an asset</lnk> you've made to the library.",
+  "help-corporate": "If you're giving on behalf of a company, see our <lnk>corporate partnerships</lnk> page.",
+  "help-share": "Tell other people about us. We don't run ads, so word of mouth is how most people find us.",
+  "help-t": "Other ways to help",
+  "help-translate": "<lnk>Help translate</lnk> the site into your language.",
+  "intro": "Every asset on Poly Haven is free and public domain, with no paywall, no account, and no ads. That's only possible because the people who use our assets choose to pay for them on everyone else's behalf.",
+  "one-time-t": "One-time donations",
   "p1": "In order to be a sustainable open project, we like a <lnk1>predictable budget</lnk1>. Having a wildly varying income makes it difficult for us to plan ahead and hire staff long term. We would much prefer you to donate a <lnk2>small monthly amount</lnk2> over a long term than a single lump sum.",
   "p2": "That said, we do of course accept donations of any kind :)",
-  "d1t": "Donations under $20",
-  "d1p": "Please join us temporarily on <lnk>Patreon</lnk>, wait until the end of the month when your payment is made, and then cancel your account.",
-  "d2t": "Larger donations",
-  "d2p": "To make a one-time donation, please use either PayPal or Ko-fi:",
-  "d2b1": "Donate on PayPal",
-  "d2b2": "Donate on Ko-fi"
+  "page-description": "Support Poly Haven with a monthly or one-time donation, and help keep our 3D assets free for everyone.",
+  "page-title": "Donate to Poly Haven",
+  "title": "Make a once-off donation",
+  "where-p": "Donations pay the salaries of our artists, the servers and storage that deliver several million downloads a month, and the equipment we use to make new assets. We publish every cent we earn and spend in our <lnk>finance reports</lnk>.",
+  "where-t": "Where your money goes"
 }

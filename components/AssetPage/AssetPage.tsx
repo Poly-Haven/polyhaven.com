@@ -14,17 +14,16 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from 'react-icons/md'
 
-import AssetDlGraph from 'components/Stats/AssetDlGraph'
 import AuthorCredit from 'components/AssetPage/AuthorCredit'
 import Carousel from './Carousel/Carousel'
-import DisplayAd from 'components/Ads/DisplayAd'
 import Download from './Download/Download'
 import AfterDownload from './AfterDownload'
-import GLTFViewer from './WebGL/GLTFViewer'
 import Heart from 'components/UI/Icons/Heart'
 import IconButton from 'components/UI/Button/IconButton'
 import InfoItem from './InfoItem'
 import InfoBlock from './InfoBlock'
+import CategoryBreadcrumb from './CategoryBreadcrumb'
+import AssetAttributes from './AssetAttributes'
 import Page from 'components/Layout/Page/Page'
 import Similar from './Similar/Similar'
 import Spinner from 'components/UI/Spinner/Spinner'
@@ -38,11 +37,15 @@ import ErrorBoundary from 'utils/ErrorBoundary'
 
 const PanoViewer = dynamic(() => import('./WebGL/PanoViewer'), { ssr: false })
 const UserRenders = dynamic(() => import('./UserRenders'), { ssr: false })
+const GLTFViewer = dynamic(() => import('./WebGL/GLTFViewer'), { ssr: false })
+const AssetDlGraph = dynamic(() => import('components/Stats/AssetDlGraph'), { ssr: false })
 
 const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
+  const { t: tcat } = useTranslation('categories')
+  const { t: tlib } = useTranslation('library')
   const { patron } = useUserPatron()
   const [uuid, setUuid] = useState(null)
   const [pageLoading, setPageLoading] = useState(false)
@@ -90,13 +93,18 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
   const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
 
-  let vault = null
-  for (const cat of data.categories) {
-    if (cat.startsWith('vault: ')) {
-      vault = cat.split(': ')[1]
-      break
+  // Vault membership is a first-class field now. The legacy category string is only a fallback.
+  let vault = data.vault || null
+  if (!vault) {
+    for (const cat of data.categories) {
+      if (cat.startsWith('vault: ')) {
+        vault = cat.split(': ')[1]
+        break
+      }
     }
   }
+
+  const assetTypeKey = Object.keys(asset_types)[data.type]
 
   const toggleSidebar = () => {
     setHideSidebar(!hideSidebar)
@@ -213,7 +221,16 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
 
         <div className={styles.previewWrapper}>
           <div className={`${styles.activePreview}${showWebGL ? ' ' + styles.activePreviewGLTF : ''}`}>
-            <img id="activePreview" onLoad={imageLoaded} src={activeImage} alt={data.description} />
+            {/* The LCP element on every asset page: tell the browser so, rather than leaving it
+                to be discovered at the default priority alongside everything else. */}
+            <img
+              id="activePreview"
+              onLoad={imageLoaded}
+              src={activeImage}
+              alt={data.description}
+              fetchPriority="high"
+              decoding="async"
+            />
             {data.sketchfab_id ? (
               showWebGL ? (
                 <div className={styles.sketchfabWrapper}>
@@ -258,6 +275,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
         <div className={styles.carousel}>
           <Carousel
             slug={assetID}
+            name={data.name}
             data={renders}
             files={files}
             assetType={data.type}
@@ -315,15 +333,15 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
 
             {data.categories.includes('collection: project_lighthouse') ? (
               <div className={styles.community} lang="en" dir="ltr">
-                <h3>Join Project Lighthouse</h3>
+                <h3>Poly Haven's Biggest Project</h3>
                 <p>
-                  This asset was made for Poly Haven's <strong>upcoming game</strong>. Want to help us?
+                  This asset was made for Poly Haven's{' '}
+                  <Link href="https://store.steampowered.com/app/4162610/Project_Lighthouse/" target="_blank">
+                    upcoming game
+                  </Link>
+                  . Want to help us?
                 </p>
-                <Button
-                  text="Join the Community Project"
-                  href="https://blog.polyhaven.com/project-lighthouse-challenge/"
-                  color="community"
-                />
+                <Button text="Join Project Lighthouse" href="https://phvn.io/lighthouse" color="community" />
               </div>
             ) : null}
 
@@ -400,12 +418,13 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
             <div className={styles.spacer} />
 
             <div ref={widthRef} style={{ marginTop: '1rem' }}>
-              <TagsList
-                label={t('categories')}
-                list={data.categories}
-                linkPrefix={`/${Object.keys(asset_types)[data.type]}/`}
-                width={sidebarWidth}
+              <CategoryBreadcrumb
+                assetType={assetTypeKey}
+                category={data.category}
+                label={t('category', { defaultValue: 'Category' })}
+                t={tcat}
               />
+              <AssetAttributes assetType={assetTypeKey} attributes={data.attributes} t={tlib} />
               <TagsList
                 label={t('tags')}
                 list={data.tags}
@@ -429,10 +448,6 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               )}
             </InfoItem>
           </div>
-        </div>
-
-        <div className={styles.sidebarAd}>
-          <DisplayAd id="assetPage" x={336} y={280} />
         </div>
       </div>
     </div>

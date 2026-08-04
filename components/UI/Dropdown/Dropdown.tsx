@@ -6,7 +6,7 @@ import Tooltip from 'components/UI/Tooltip/Tooltip'
 
 import styles from './Dropdown.module.scss'
 
-const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, tooltipID }) => {
+const Dropdown = ({ value, options, label, sub, onChange, small, mini, align, inline, tooltipSide, tooltipID }) => {
   const [expand, setExpand] = useState(false)
   const ref = useRef(null)
   // Unique per Dropdown instance so multiple dropdowns don't share a tooltip id
@@ -48,8 +48,11 @@ const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, to
     )
   }
 
+  const alignClass = align === 'left' ? styles.alignLeft : ''
+  const miniClass = mini && !small ? styles.mini : ''
+
   return (
-    <div className={small ? styles.wrapperSmall : styles.wrapper} ref={ref}>
+    <div className={`${small ? styles.wrapperSmall : styles.wrapper} ${alignClass} ${miniClass}`} ref={ref}>
       <div className={small ? styles.buttonSmall : styles.button} onClick={toggle}>
         {label ? `${label}:` : null}
         <div className={styles.buttonValue}>{buttonValue}</div>
@@ -57,7 +60,9 @@ const Dropdown = ({ value, options, label, sub, onChange, small, tooltipSide, to
           <MdExpandMore />
         </div>
       </div>
-      <div className={`${styles.menu} ${expand ? styles.show : null}`}>
+      <div
+        className={`${styles.menu} ${expand ? styles.show : null} ${inline && expand ? styles.menuInline : ''}`}
+      >
         {Object.keys(options).map((k, i) => (
           <div
             key={i}
@@ -84,6 +89,9 @@ Dropdown.defaultProps = {
   label: null,
   sub: null,
   small: false,
+  mini: false, // compact type and padding, sized to sit among the sidebar's attribute chips
+  align: null, // 'left' to left-align the value and the options, default alignment is unchanged
+  inline: false, // open in the document flow instead of floating (for scrollable containers)
   tooltipSide: 'right',
   tooltipID: null,
 }

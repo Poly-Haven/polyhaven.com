@@ -1,0 +1,549 @@
+@import "constants/colors";
+@import "constants/variables";
+@import "constants/mixins";
+
+// Width of the lecture sidebar — change here to resize everything that depends on it.
+$sidebar-width: 420px;
+// Below this viewport width the sidebar stacks under the video.
+$stack-width: $sidebar-width + 600px;
+
+/* ---------- full-bleed stage: video + sidebar, same height ---------- */
+.stage {
+  position: relative;
+  width: 100%;
+}
+
+.video {
+  // Full page width minus the sidebar, 16:9, but never taller than the viewport
+  // (minus the header) so it stays fully visible — letterboxed with black bars.
+  width: calc(100% - #{$sidebar-width});
+  aspect-ratio: 16 / 9;
+  max-height: calc(100vh - #{$v-header-height});
+  background: #000;
+
+  @media screen and (max-width: #{$stack-width}) {
+    width: 100%;
+    max-height: none;
+  }
+}
+
+.sidebar {
+  // Absolutely filling the right column, so height:100% == the video's height.
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $sidebar-width;
+  height: 100%;
+  overflow: hidden;
+  background: $c-background-dark;
+
+  @media screen and (max-width: #{$stack-width}) {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border-left: none;
+    border-top: 1px solid $c-background-light;
+  }
+}
+
+/* ---------- the video frame (rendered by CourseVideo) ---------- */
+.player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+
+  iframe {
+    @include absolute_cover();
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.loadingThumb {
+  @include absolute_cover();
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(24px) brightness(0.45);
+  transform: scale(1.15);
+}
+
+.playerMessage {
+  @include absolute_cover();
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 2rem;
+  color: $c-text-light;
+
+  p {
+    margin: 0;
+    max-width: 30rem;
+  }
+}
+
+.messageLink {
+  color: $c-accent;
+  font-weight: 700;
+}
+
+/* ---------- after-video endscreen ---------- */
+.endscreen {
+  @include absolute_cover();
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(black, 0.6);
+  color: white;
+}
+
+// The bright "Next up" box: text on the left, play/spinner in a separate section right.
+.nextBox {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  max-width: min(90%, 560px);
+  background: $c-accent;
+  color: white;
+  @include drop-shadow(0.45);
+}
+
+.nextClose {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: rgba(white, 0.7);
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    color: white;
+  }
+
+  svg {
+    font-size: 1.1em;
+  }
+}
+
+.nextText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.nextControl {
+  flex-shrink: 0;
+  width: 96px; // static, so swapping play button <-> spinner doesn't resize the box
+  display: grid;
+  place-items: center;
+  padding: 1rem 0;
+  background: rgba(black, 0.15);
+}
+
+.nextLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.endLabel {
+  margin: 0;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.nextTag {
+  display: inline-flex;
+  padding: 0.1em 0.4em;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: white;
+  background: rgba(white, 0.22);
+  white-space: nowrap;
+}
+
+.endTitle {
+  margin: 0;
+  font-size: 1.35em;
+  font-weight: 700;
+}
+
+.endDone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.nextPlay {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: $c-accent;
+  cursor: pointer;
+  @include transition();
+
+  svg {
+    font-size: 1.8em;
+  }
+
+  &:hover {
+    background: rgba(white, 0.85);
+  }
+}
+
+.nextCountdown {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(white, 0.15);
+  color: white;
+  cursor: pointer;
+  @include transition();
+
+  svg.icon {
+    font-size: 1.6em;
+  }
+
+  &:hover {
+    background: rgba(white, 0.28);
+  }
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.ringTrack {
+  fill: none;
+  stroke: rgba(white, 0.3);
+  stroke-width: 3;
+}
+
+.ringFill {
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  stroke-dasharray: 182; // 2π·29
+  stroke-dashoffset: 182;
+  animation: courseCountdown 3s linear forwards;
+}
+
+@keyframes courseCountdown {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- sidebar nav ---------- */
+.nav {
+  position: relative;
+  height: 100%;
+
+  @media screen and (max-width: #{$stack-width}) {
+    height: auto;
+  }
+}
+
+.navScroll {
+  height: 100%;
+  overflow-y: auto;
+  @include dark_scrollbar();
+
+  @media screen and (max-width: #{$stack-width}) {
+    height: auto;
+    max-height: 60vh;
+  }
+}
+
+.jumpWrap {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 3;
+
+  @media screen and (max-width: #{$stack-width}) {
+    display: none;
+  }
+}
+
+.navHeader {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.75rem;
+  background: $c-background-dark;
+  border-bottom: 1px solid $c-background-light;
+}
+
+.courseTitle {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: $c-text-bright;
+  box-shadow: none;
+  text-decoration: none;
+
+  &:hover {
+    color: $c-accent;
+    text-decoration: underline;
+    box-shadow: none;
+  }
+}
+
+.navProgressRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.navProgressInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.navProgress {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(white, 0.08);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: $c-community;
+  @include transition(0.3s);
+}
+
+.chapter {
+  border-bottom: 1px solid rgba(white, 0.04);
+}
+
+.chapterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem;
+  background: $c-background-dark;
+  color: $c-text-bright;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: $c-background-darkish;
+  }
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+    font-size: 1.2em;
+  }
+}
+
+// The active lecture's chapter when it's collapsed (so the highlight stays visible).
+.chapterActive {
+  background: rgba($c-accent, 0.22);
+  box-shadow: inset 3px 0 0 $c-accent;
+
+  &:hover {
+    background: rgba($c-accent, 0.28);
+  }
+}
+
+.chapterTitle {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chapterCount {
+  font-size: 0.8em;
+  font-weight: 400;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.lecture {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  color: $c-text-light;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(white, 0.03);
+  @include transition();
+
+  &:hover {
+    background: $c-background-light;
+  }
+}
+
+// The active lecture's expanded block (row + full description + help).
+.activeBlock {
+  background: rgba($c-accent, 0.22);
+  box-shadow: inset 3px 0 0 $c-accent;
+
+  .lecture {
+    cursor: default;
+    align-items: center;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.thumb {
+  position: relative;
+  width: 200px;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  background: $c-background-darkest;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: $c-text-bright;
+  background: rgba(black, 0.75);
+}
+
+.lectureMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.tagRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.lectureTag {
+  flex-shrink: 0;
+  padding: 0.1em 0.4em;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: $c-text-light;
+  background: rgba($c-accent, 0.12);
+  border: 1px solid rgba($c-accent, 0.4);
+  white-space: nowrap;
+}
+
+.check {
+  flex-shrink: 0;
+  color: $c-community;
+  font-size: 1.15em;
+}
+
+.lectureName {
+  font-weight: 700;
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+// When the name sits inline in the tag row (non-active rows).
+.nameInline {
+  flex: 1;
+  min-width: 0;
+}
+
+.excerpt {
+  font-size: 0.9em;
+  font-style: italic;
+  opacity: 0.9;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.activeDesc {
+  margin: 0 0.5rem 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba($c-background-dark, 0.25);
+  border: 1px solid rgba(white, 0.08);
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: $c-text-light;
+}
+
+.helpMini {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.5rem 0.6rem 1rem;
+  font-size: 0.8em;
+  opacity: 0.8;
+  color: $c-text-light;
+
+  svg {
+    color: $c-community;
+    flex-shrink: 0;
+  }
+}

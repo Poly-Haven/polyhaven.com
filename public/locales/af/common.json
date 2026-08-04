@@ -17,12 +17,13 @@
   "corporate-sponsors": "Korporatiewe borge",
   "display-name": "Vertoon naam",
   "donation-box": {
-    "b1": "Help ons maak<lnk> gratis bates</lnk> vir almal!",
+    "b1": "Help ons maak <lnk>gratis bates</lnk> vir almal!",
     "b2": "<lnk>Vroeë toegang</lnk> tot komende bates.",
-    "b3": "Onmiddellike toegang tot alle inhoud in<lnk> die Kluise</lnk> .",
-    "b4": "Ons Blender-bateblaaier<lnk> byvoeging</lnk> .",
-    "b5": "Grootmaat aflaai en vanlyn toegang met<lnk> ons wolk</lnk> .",
+    "b3": "Onmiddellike toegang tot alle inhoud in <lnk>die Kluise</lnk>.",
+    "b4": "Ons Blender-bateblaaier <lnk>byvoeging</lnk>.",
+    "b5": "Grootmaat aflaai en vanlyn toegang met <lnk>ons wolk</lnk>.",
     "b6": "<lnk>Borg 'n bate</lnk> met jou naam en skakel.",
+    "b6-course": "<lnk>Leer van ons</lnk> met volledige video kursusse.",
     "donate-monthly": "Skenk maandeliks",
     "donate-once": "Skenk een keer",
     "monthly": "Maandeliks",
@@ -33,7 +34,7 @@
   "email-address": "E-pos adres",
   "footer": {
     "join-ranks": "Sluit aan, ondersteun Poly Haven op Patreon",
-    "thanks": "Danksy ons <lnk> Beskermhere</lnk> om Poly Haven moontlik te maak"
+    "thanks": "Danksy ons <lnk>Beskermhere</lnk> om Poly Haven moontlik te maak"
   },
   "goal": {
     "complete": "Bereik!",
@@ -62,11 +63,13 @@
     "logo": "Logo",
     "logout": "Teken uit",
     "map": "HDRI Wêreldkaart",
+    "menu": "Kieslys",
     "news": "Nuus",
     "plugins": "Inproppe",
     "privacy": "Privaatheid",
     "source": "Bron",
     "stats": "Statistieke",
+    "status": "Status",
     "support-us": "Ondersteun Ons"
   },
   "optional": "Opsioneel",

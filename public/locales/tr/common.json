@@ -4,7 +4,7 @@
   "Assets": "Varlıklar",
   "Co-founder": "Kurucu ortak",
   "Director": "Müdür",
-  "Graphic-Design": "Grafik dizayn",
+  "Graphic-Design": "Grafik Tasarım",
   "HDRIs": "HDRI'lar",
   "Models": "Modeller",
   "Textures": "Dokular",
@@ -23,6 +23,7 @@
     "b4": "Blender varlık tarayıcı <lnk>eklentimiz</lnk>.",
     "b5": "<lnk>Bulutumuzla</lnk> toplu indirme ve çevrimdışı erişim.",
     "b6": "Adınız ve bağlantınızla <lnk>bir varlığa sponsor</lnk> olun.",
+    "b6-course": "<lnk>Bizden öğrenin</lnk> tam uzunlukta video kurslarıyla.",
     "donate-monthly": "Aylık bağış yapın",
     "donate-once": "Bir kez bağış yapın",
     "monthly": "Aylık",
@@ -33,7 +34,7 @@
   "email-address": "E-posta adresi",
   "footer": {
     "join-ranks": "Bize katılın, Poly Haven'ı Patreon'da destekleyin",
-    "thanks": "<lnk> Kullanıcılarımıza</lnk>  Poly Haven'ı mümkün kıldığı için teşekkürler."
+    "thanks": "<lnk>Kullanıcılarımıza</lnk> Poly Haven'ı mümkün kıldığı için teşekkürler."
   },
   "goal": {
     "complete": "Tamamlandı!",
@@ -62,11 +63,13 @@
     "logo": "Logo",
     "logout": "Çıkış Yap",
     "map": "HDRI Dünya Haritası",
+    "menu": "Menü",
     "news": "Haberler",
     "plugins": "Eklentiler",
     "privacy": "Gizlilik",
     "source": "Kaynak",
     "stats": "İstatistik",
+    "status": "Durum",
     "support-us": "Bizi destekle"
   },
   "optional": "İsteğe bağlı",

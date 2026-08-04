@@ -14,6 +14,12 @@
   "reward_one": "Isso concede a você a seguinte recompensa:",
   "reward_other": "Isso concede a você as seguintes recompensas:",
   "rewards": {
+    "course-access": {
+      "cta": "Ir para cursos",
+      "p1": "Sua assinatura inclui acesso total a <lnk> nossos cursos </lnk>, transmitidos aqui mesmo no site.",
+      "p2": "Seu progresso é salvo na sua conta, para que você possa retomar de onde parou em qualquer dispositivo.",
+      "title": "Acesso ao Curso"
+    },
     "credit": {
       "invalid": "Nome inválido",
       "p1": "Seu nome está atualmente",
@@ -36,7 +42,7 @@
     "offline-access": {
       "p1": "Digite seu endereço de e-mail para enviar a si mesmo um convite para nossa pasta na nuvem:",
       "p2": "Verifique seu e-mail :)",
-      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta, <lnk> Por favor, entre em contato conosco</lnk>.",
+      "p3": "Convite enviado com sucesso. Se você tiver algum problema ou precisar alterar o e-mail da sua conta, <lnk>Por favor, entre em contato conosco</lnk>.",
       "p4": "Ver <lnk>esta postagem</lnk> para obter mais instruções sobre como configurar o Nextcloud e começar a sincronizar assets com seu computador.",
       "title": "Acesso Offline"
     },

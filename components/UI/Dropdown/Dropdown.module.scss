@@ -115,6 +115,10 @@
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
+  // A hidden menu still lays out its options, and being absolutely positioned does not exempt it
+  // from a scrolling ancestor's overflow area - a long list would give that ancestor a scrollbar
+  // and a tall run of empty space while the menu is shut. Collapsing it to nothing avoids that.
+  max-height: 0;
   background: $c-background;
   border: 1px solid rgba($c-text-light, 0.2);
   border-top: none;
@@ -152,12 +156,13 @@
     }
 
     .label {
-      @include flex(column, true, true);
+      @include flex(row, true, true);
+      gap: 0.4em;
+      min-width: 0;
     }
     .sub {
       opacity: 0.5;
       font-size: 0.7em;
-      margin-top: -0.3em;
       white-space: nowrap;
     }
   }
@@ -166,7 +171,61 @@
     color: white;
   }
 }
+
+// Left-aligned variant, for lists of names where centred text is hard to scan.
+.alignLeft {
+  .buttonValue {
+    justify-content: flex-start;
+  }
+  .option {
+    justify-content: flex-start;
+  }
+  // Name on the left, count pushed out to the right, matching how the category tree lists counts.
+  // Matches `.menu .option .label`'s specificity so it can actually override the centred default.
+  .option .label {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: space-between;
+    gap: 0.6em;
+  }
+}
+
+// Compact variant, scaled down to sit among the sidebar's attribute chips. Square edges are kept,
+// and the minimum width is dropped so a narrow sidebar can hold it without clipping.
+.mini {
+  min-width: 0;
+  font-size: 0.78em; // same as the attribute chips it sits below
+
+  .button {
+    height: auto;
+    padding: 0.15em 0.15em 0.15em 0.55em;
+  }
+  .buttonValue {
+    padding-left: 0.2em;
+  }
+  .arrow {
+    font-size: 1.2em;
+  }
+  .option {
+    height: auto;
+    min-height: 0;
+    padding: 0.25em 0.55em;
+  }
+}
+
+// Opens in the normal document flow rather than floating over the page. Needed inside a
+// scrollable container (the library sidebar), where an absolutely positioned menu is clipped by
+// the container instead of scrolling with it.
+.menuInline {
+  position: static;
+  border-top: 1px solid rgba($c-text-light, 0.2);
+}
 .show {
   opacity: 1;
   visibility: visible;
+  // Long option lists (e.g. every author in the library) must scroll rather than run off-screen.
+  // Only while open, so the closed state keeps its clipped collapse.
+  max-height: 60vh;
+  overflow-y: auto;
+  @include dark_scrollbar();
 }

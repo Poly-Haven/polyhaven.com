@@ -6,6 +6,7 @@
   "backplates": "Agterplate",
   "backplates-description": "Die prente hieronder is aparte foto's wat jy as hoë resolusie agtergrondprente in jou weergawe kan gebruik.<br /> Afhangende van jou weergawe-resolusie en kamera-instellings, het 'n HDRI (selfs 'n baie groot een) soms dalk nie genoeg pixels om steeds skerp op die agtergrond van jou weergawe te lyk nie. In hierdie gevalle kan jy eerder een van hierdie agterplate in die agtergrond gebruik, en 'n laer resolusie HDRI gebruik net vir beligting en refleksies.",
   "categories": "Kategorieë",
+  "category": "Kategorietjie",
   "cloud-sync": "Vanlyn toegang",
   "cloud-sync-d": "Ondersteun ons met $5 per maand en kry toegang tot ons aanlyn bergingstelsel, sodat jy ons hele versaameling na jou hardeskyf kan sinkroniseer.",
   "coming-soon": "Binnekort beskikbaar!",
@@ -21,7 +22,7 @@
   "downloads": "Aflaaie",
   "downloads-pd": "per dag",
   "early-access": {
-    "already-patron": "Reeds 'n beskermheer?<loginLink> Teken aan</loginLink> .",
+    "already-patron": "Reeds 'n beskermheer? <loginLink>Teken aan</loginLink>.",
     "donate-access": "Skenk $3 om dit nou af te laai, saam met {{numEaAssets, number}} ander vroeëtoegang-bates.",
     "get-access": "Kry vroeë toegang",
     "release-date": "Hierdie bate sal vrygestel word:<br/> <strong>{{scheduleText}}</strong>",
@@ -53,9 +54,9 @@
   "vaulted": {
     "about": "Oor",
     "access-now": "Toegang Nou",
-    "already-patron": "Reeds 'n beskermheer?<loginLink> Teken aan</loginLink> .",
+    "already-patron": "Reeds 'n beskermheer? <loginLink>Teken aan</loginLink>.",
     "donate-access": "Skenk $3 op Patreon om dit af te laai, saam met {{totalVaultedAssets, number}} ander gebergde bates.",
-    "locked-in": "Hierdie bate is vasgesluit in die<vaultLink> {{vault}} kluis</vaultLink> .",
+    "locked-in": "Hierdie bate is vasgesluit in die <vaultLink>{{vault}} kluis</vaultLink>.",
     "patrons-needed": "Wanneer ons {{remaining, number}} meer klante kry, sal dit gratis vir almal vrygestel word.",
     "title": "Gekluiste Bate"
   },

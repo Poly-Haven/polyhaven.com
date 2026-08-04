@@ -6,7 +6,7 @@
     "hour_other": "即将于{{count}}小时后发布",
     "month_one": "即将于{{count}}月后发布",
     "month_other": "即将于{{count}}月后发布",
-    "week_one": "{{count}}周前发布",
+    "week_one": "即将于{{count}}周后发布",
     "week_other": "即将于{{count}}周后发布",
     "year_one": "即将于{{count}}年后发布",
     "year_other": "即将于{{count}}年后发布"

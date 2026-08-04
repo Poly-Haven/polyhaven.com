@@ -2,7 +2,9 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts'
 
 import apiSWR from 'utils/apiSWR'
 
-const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string; dateFrom: string; dateTo: string }) => {
+// dateTo is supplied by defaultProps below, so it's optional for callers. Explicit here because
+// `dynamic()` erases the defaultProps that JSX would otherwise infer as making it optional.
+const AssetDlGraph = ({ slug, dateFrom, dateTo }: { slug: string; dateFrom: string; dateTo?: string }) => {
   const { data, error } = apiSWR(`/stats/downloads?type=ASSET&slug=${slug}&date_from=${dateFrom}&date_to=${dateTo}`, {
     revalidateOnFocus: false,
   })

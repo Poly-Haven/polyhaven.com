@@ -5,12 +5,40 @@ import { assetTypeName } from 'utils/assetTypeName'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
+import { buildAssetJsonLd } from 'components/AssetPage/assetSeo'
 
 function handleErrors(response) {
   if (!response.ok) {
-    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+    const error: any = new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+    // Kept so callers can tell "this asset does not exist" (404) apart from "the API is unwell" (5xx).
+    error.status = response.status
+    throw error
   }
   return response
+}
+
+const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+
+// During `next build` getStaticProps below runs once per asset, thousands of times per worker
+// process, and two of its four requests return identical bytes every single time: /assets already
+// contains every field this page reads out of /info/[id], and /stats/post_download takes no
+// parameters at all. Fetch those two once per worker rather than once per page.
+// Build time only, so on-demand regeneration still reads fresh data on every request.
+const isBuild = process.env.NEXT_PHASE === 'phase-production-build'
+const buildCache = new Map()
+
+const fetchOncePerBuild = (path) => {
+  const cached = buildCache.get(path)
+  if (cached) {
+    return cached
+  }
+  const request = fetch(`${apiBase}${path}`)
+    .then(handleErrors)
+    .then((response) => response.json())
+  buildCache.set(path, request)
+  // Never let one failed request poison every remaining page in the build.
+  request.catch(() => buildCache.delete(path))
+  return request
 }
 
 const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
@@ -24,6 +52,8 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
       </ErrorPage>
     )
   }
+  const jsonLd = buildAssetJsonLd(assetID, data)
+
   return (
     <div className="content">
       <Head
@@ -34,7 +64,14 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
         author={Object.keys(data.authors).join(', ')}
         keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
         image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630&quality=95`}
-      />
+      >
+        {jsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+          />
+        ) : null}
+      </Head>
       <div>
         <AssetPage
           assetID={assetID}
@@ -50,35 +87,65 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
 
 export async function getStaticProps(context) {
   const id = context.params.id
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
+  const baseUrl = apiBase
 
   let error = null
+  // Tracked separately from `error`: only /info can say whether an asset exists. /files and
+  // /renders are not authoritative enough to 404 a page on.
+  let infoError = null
 
-  const info = await fetch(`${baseUrl}/info/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const fetchInfo = () =>
+    fetch(`${baseUrl}/info/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
 
-  const files = await fetch(`${baseUrl}/files/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  // /assets leaves out only reviewers, staging, old_id and scale, none of which this site reads.
+  // Ids it does not list (staging or future dated) fall back to /info/[id] further down.
+  const infoRequest = isBuild ? fetchOncePerBuild('/assets').then((assets) => assets[id]) : fetchInfo()
 
-  const renders = await fetch(`${baseUrl}/renders/${id}`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  const statsRequest = isBuild
+    ? fetchOncePerBuild('/stats/post_download')
+    : fetch(`${baseUrl}/stats/post_download`)
+        .then(handleErrors)
+        .then((response) => response.json())
 
-  const postDownloadStats = await fetch(`${baseUrl}/stats/post_download`)
-    .then(handleErrors)
-    .then((response) => response.json())
-    .catch((e) => (error = e))
+  // None of these depend on each other, so let them overlap instead of running back to back.
+  // Each keeps its own catch, so no promise here can reject and fail the whole set.
+  let [info, files, renders, postDownloadStats] = await Promise.all([
+    infoRequest.catch((e) => (infoError = error = e)),
+    fetch(`${baseUrl}/files/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
+      .catch((e) => (error = e)),
+    fetch(`${baseUrl}/renders/${id}`)
+      .then(handleErrors)
+      .then((response) => response.json())
+      .catch((e) => (error = e)),
+    statsRequest.catch((e) => (error = e)),
+  ])
+
+  // An id missing from /assets is either unpublished or does not exist, so let /info decide which.
+  if (isBuild && !info && !error) {
+    info = await fetchInfo().catch((e) => (infoError = error = e))
+  }
+
+  // A 404 from /info means the asset genuinely does not exist, so serve a real 404. Returning props
+  // without `data` instead renders a 200 page titled "Error: 404", which search engines index as a
+  // soft 404 and ISR then caches - an unbounded surface, since /a/<anything> hits this path.
+  // Early access assets are safe here: they are absent from /assets but /info still answers 200.
+  // Any other failure keeps the soft render, so an API blip never 404s a real asset.
+  if (infoError && infoError.status === 404) {
+    return {
+      notFound: true,
+      revalidate: 60 * 60, // 1 hour - short enough that a newly published asset appears promptly
+    }
+  }
 
   if (error) {
     console.error(error)
     return {
       props: {
-        ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'time'])),
+        ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time'])),
         assetID: id,
       },
       revalidate: 60 * 5, // 5 minutes
@@ -87,7 +154,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'time'])),
+      ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time'])),
       assetID: id,
       data: info,
       files: files,

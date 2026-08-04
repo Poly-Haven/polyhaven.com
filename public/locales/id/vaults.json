@@ -13,7 +13,7 @@
   "how-it-works-p2": "Setiap Vault memiliki target pendanaan tertentu, yang ditentukan oleh jumlah target anggota <patreonLink>Patreon</patreonLink>. Setelah target ini tercapai, Vault akan dirilis secara gratis untuk semua orang.",
   "how-it-works-p3": "Sebagai contoh, Vault berikutnya, <vaultLink>{{vaultName}}</vaultLink>berisi {{assetsCount}} aset dan akan dibuka setelah kita mencapai {{target}} total pelanggan ({{remaining}} untuk pergi!).",
   "how-it-works-p4": "Sampai saat itu tiba, dukung kami di Patreon untuk mengakses konten di dalam <strong>semua</strong> Vault.",
-  "how-it-works-p5": "Anda tidak hanya mendapatkan <strong>akses langsung ke semua aset yang disimpan di {{numAssets}} </strong>, tetapi Anda juga membantu merilisnya secara gratis ke publik dengan lebih cepat.",
+  "how-it-works-p5": "Anda tidak hanya mendapatkan <strong>akses langsung ke semua aset yang disimpan di {{numAssets}}</strong>, tetapi Anda juga membantu merilisnya secara gratis ke publik dengan lebih cepat.",
   "how-it-works-p6": "Semua pendanaan digunakan untuk menciptakan lebih banyak aset - lihat <financeLink>laporan keuangan</financeLink> kami.",
   "how-to-access": "Bagaimana cara mengakses Vault?",
   "how-to-access-p1": "Anda harus mendukung kami di <patreonLink>Patreon</patreonLink> dengan setidaknya $3 per bulan. Setelah Anda menjadi patron, Anda akan menerima akses ke semua aset di dalam semua Vault.",

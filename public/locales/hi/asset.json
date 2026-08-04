@@ -6,6 +6,7 @@
   "backplates": "Backplates",
   "backplates-description": "नीचे उपलब्ध तस्वीर जो आप अपने रेन्डर मैं हाई रेसोल्यूशन बैक्ड्राप के रूप मैं इस्तमल कर सकते है <br />आपके रेन्डर रेसौलऊटीऑन और कैमरा के खूबी के आधार पर कुछ HDRI (बहुत बड़े वाले भी) मैं पिक्सेल की संख्या कम है और वे सफाई से रेन्डर में नहीं दिखाई देते है। इस स्थिति मैं आप पिकके एक Backplate इस्तमाल कर सकते है ",
   "categories": "श्रेणियाँ",
+  "category": "श्रेणी",
   "cloud-sync": "ऑफ़लाइन एक्सेस ",
   "cloud-sync-d": "हमें प्रति महीने $5 का सहयोग दें और हमारे Cloud System का उपयोग करें, जिससे आप हमारी संपूर्ण लाइब्रेरी को अपनी हार्ड ड्राइव से सिंक कर सकेंगे।",
   "coming-soon": "जल्द आ रहा है!",
@@ -21,7 +22,7 @@
   "downloads": "डाउनलोड",
   "downloads-pd": "प्रति दिन",
   "early-access": {
-    "already-patron": "पहले से ही patreon हैं?<loginLink> लॉग इन करें</loginLink> .",
+    "already-patron": "पहले से ही patreon हैं? <loginLink>लॉग इन करें</loginLink> .",
     "donate-access": "3 डॉलर का दान करें इसे और अभी डाउनलोड करें, साथ ही {{numEaAssets, number}} अन्य शीघ्र-पहुंच वाली संपत्तियों को प्राप्त करें।",
     "get-access": "शीघ्र पहुँच प्राप्त करें",
     "release-date": "यह परिसंपत्ति जारी की जाएगी:<br/> <strong>{{scheduleText}}</strong>",
@@ -40,7 +41,7 @@
   },
   "no-files": "कोई फ़ाइल नहीं उपलब्ध",
   "no-files-d": "रीफ्रेश करने का प्रयास करें, अन्यथा कृपया हमें इसकी सूचना दें।",
-  "no-renders": "अभी तक कोई नहीं,<lnk> अपना जोड़ें</lnk> .",
+  "no-renders": "अभी तक कोई नहीं, <lnk>अपना जोड़ें</lnk> .",
   "nor-standard": "सामान्य Normal मानक:",
   "released": "प्रकाशित",
   "similar-assets": "समान संपत्तियां",
@@ -53,9 +54,9 @@
   "vaulted": {
     "about": "अधिक जानने के लिए क्लिक करें",
     "access-now": "अभी एक्सेस करें",
-    "already-patron": "क्या आप पहले से ही आश्रयदाता हैं?<loginLink> लॉग इन करें</loginLink> .",
+    "already-patron": "क्या आप पहले से ही आश्रयदाता हैं? <loginLink>लॉग इन करें</loginLink> .",
     "donate-access": "इसे डाउनलोड करने और साथ ही अन्य वाल्टेड {{totalVaultedAssets, number}}संपत्तियों केलिये  पैट्रियन पर $3 का दान करें  ।",
-    "locked-in": "यह परिसंपत्ति लॉक है<vaultLink> {{vault}} तिजोरी</vaultLink> .",
+    "locked-in": "यह परिसंपत्ति लॉक है <vaultLink>{{vault}} तिजोरी</vaultLink> .",
     "patrons-needed": "जब हमें {{remaining, number}} और संरक्षक मिल जाएंगे, तो इसे सभी के लिए निःशुल्क जारी कर दिया जाएगा।",
     "title": "Vaulted संपत्ति"
   },

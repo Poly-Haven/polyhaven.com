@@ -106,4 +106,8 @@ module.exports = {
     name: 'Українська',
     flag: 'UA',
   },
+  vi: {
+    name: 'Tiếng Việt',
+    flag: 'VN',
+  },
 }

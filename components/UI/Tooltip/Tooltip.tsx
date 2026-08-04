@@ -36,16 +36,37 @@ const nodeHasTip = (node: Node) =>
   node.nodeType === Node.ELEMENT_NODE &&
   ((node as Element).matches?.('[data-tip]') || (node as Element).querySelector?.('[data-tip]'))
 
-// True if a mutation affects tooltip targets.
-const mutationAffectsTips = (mutations: MutationRecord[]): boolean => {
+// What a batch of mutations means for us: whether anything needs re-binding, and whether a
+// tooltip target disappeared (which needs handling immediately rather than on the debounce).
+const inspect = (mutations: MutationRecord[]): { affects: boolean; removed: boolean } => {
+  let affects = false
+  let removed = false
   for (const m of mutations) {
     // A data-tip value changing in place on an existing node (e.g. the download tips
     // that depend on the selected resolution). attributeFilter limits this to data-tip.
-    if (m.type === 'attributes') return true
-    for (const node of Array.from(m.addedNodes)) if (nodeHasTip(node)) return true
-    for (const node of Array.from(m.removedNodes)) if (nodeHasTip(node)) return true
+    if (m.type === 'attributes') affects = true
+    for (const node of Array.from(m.addedNodes)) if (nodeHasTip(node)) affects = true
+    for (const node of Array.from(m.removedNodes)) {
+      if (nodeHasTip(node)) {
+        affects = true
+        removed = true
+      }
+    }
   }
-  return false
+  return { affects, removed }
+}
+
+/**
+ * The element the pointer last entered. react-tooltip v4 shows on mouseenter and hides on
+ * mouseleave, so a target that is unmounted *while hovered* (clicking the clear-author button
+ * removes the crumb it lives in) never fires the leave event, and its tooltip stays on screen
+ * until some unrelated scroll or hover displaces it. Tracking the hovered target lets us hide
+ * only in that case, rather than blanket-hiding whenever any tooltip host anywhere is removed.
+ */
+let hovered: Element | null = null
+const onOver = (e: Event) => {
+  const el = e.target as Element
+  hovered = el?.closest?.('[data-tip]') || null
 }
 
 const onRouteChange = () => rebuild()
@@ -56,9 +77,15 @@ const startDriver = () => {
   observer = new MutationObserver((mutations) => {
     // Cheap guard first: ignore the constant DOM churn (recharts/SVG, grid items)
     // that carries no tooltip targets, so we only pay for rebuild() when it matters.
-    if (mutationAffectsTips(mutations)) rebuild()
+    const { affects, removed } = inspect(mutations)
+    if (removed && hovered && !document.contains(hovered)) {
+      hovered = null
+      ReactTooltip.hide()
+    }
+    if (affects) rebuild()
   })
   observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-tip'] })
+  document.addEventListener('mouseover', onOver, true)
   Router.events.on('routeChangeComplete', onRouteChange)
 }
 
@@ -67,6 +94,8 @@ const stopDriver = () => {
   if (instanceCount > 0) return
   observer?.disconnect()
   observer = null
+  document.removeEventListener('mouseover', onOver, true)
+  hovered = null
   Router.events.off('routeChangeComplete', onRouteChange)
   rebuild.cancel()
 }

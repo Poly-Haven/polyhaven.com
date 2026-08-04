@@ -6,6 +6,7 @@
   "backplates": "Hintergrundbilder",
   "backplates-description": "Die folgenden Bilder sind separate Fotos, die du als hochauflösende Hintergrundbilder in deinem Rendering verwenden kannst.<br />Je nach Renderauflösung und Kameraeinstellungen kann es vorkommen, dass ein HDRI (selbst ein sehr großes) nicht genug Pixel hat, um im Hintergrund des Renderings noch scharf zu erscheinen. In diesen Fällen kannst du stattdessen eines dieser Hintergrundbilder verwenden und ein HDRI mit geringerer Auflösung für die Beleuchtung und Reflexionen nutzen.",
   "categories": "Kategorien",
+  "category": "Kategorie",
   "cloud-sync": "Offline-Zugriff",
   "cloud-sync-d": "Unterstütze uns mit 5 $ pro Monat und erhalte Zugang zu unserem Cloud-System, mit dem du unsere gesamte Bibliothek auf deine Festplatte synchronisieren kannst.",
   "coming-soon": "Bald verfügbar!",
@@ -55,7 +56,7 @@
     "access-now": "Jetzt zugreifen",
     "already-patron": "Bereits ein Unterstützer? <loginLink>Logge dich ein</loginLink>.",
     "donate-access": "Spende 3 $ auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Assets in Vaults herunterzuladen.",
-    "locked-in": "Dieses Asset ist im <vaultLink> {{vault}}-Vault</vaultLink> eingeschlossen.",
+    "locked-in": "Dieses Asset ist im <vaultLink>{{vault}}-Vault</vaultLink> eingeschlossen.",
     "patrons-needed": "Sobald wir {{remaining, number}} mehr Unterstützer haben, wird es für alle kostenlos veröffentlicht.",
     "title": "Asset eines Vaults"
   },

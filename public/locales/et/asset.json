@@ -6,6 +6,7 @@
   "backplates": "Tagaplaadid",
   "backplates-description": "Allpool olevad pildid on eraldi fotod, mida saate kasutada kõrge resolutsiooniga taustapiltidena oma renderdamisel.<br />Sõltuvalt teie renderduse eraldusvõimest ja kaamera seadetest ei pruugi mõnikord HDRI (isegi väga suurel) olla piisavalt piksleid, et see oleks teie renderduse taustal ikka veel terav. Sellistel juhtudel võite selle asemel kasutada taustapildina ühte neist taustapiltidest ning kasutada väiksema resolutsiooniga HDRI-d ainult valgustuse ja peegelduste jaoks.",
   "categories": "Kategooriad",
+  "category": "Kategooria",
   "cloud-sync": "Ligipääs võrguühenduseta",
   "cloud-sync-d": "Toetage meid 5 dollariga kuus ja saate juurdepääsu meie pilvesüsteemile, mis võimaldab teil sünkroonida kogu meie kogumikku oma kõvakettale.",
   "coming-soon": "Varsti tulemas!",
@@ -22,7 +23,7 @@
   "downloads-pd": "päeva kohta ",
   "early-access": {
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
-    "donate-access": "Anneta 3 dollarit, et see nüüd alla laadida, koos {{numEaAssets, number}} teiste varajase juurdepääsu varadega.",
+    "donate-access": "Annetage 3 dollarit, et see nüüd alla laadida, koos {{numEaAssets, number}} teise varajase juurdepääsu varaga.",
     "get-access": "Hangi varajane juurdepääs",
     "release-date": "See vara avaldatakse:<br/><strong>{{scheduleText}}</strong>",
     "title": "Varsti tulemas!"
@@ -45,19 +46,19 @@
   "released": "Avaldatud",
   "similar-assets": "Sarnased varad",
   "sponsored-by": "Sponsureeritud:",
-  "sponsored-by-d": "Toetage Poly Havenit Patreoonis, et lisada oma nimi siia.",
+  "sponsored-by-d": "Toetage Poly Havenit Patreonis, et lisada oma nimi siia.",
   "sponsored-by-none": "Mitte keegi veel :(",
   "tags": "Sildid",
   "tall": "pikk",
   "user-renders": "Kasutaja renderid:",
   "vaulted": {
-    "about": "Info",
-    "access-now": "Juurdepääs kohe",
+    "about": "Teave",
+    "access-now": "Kohene juurdepääs",
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
-    "donate-access": "Annetage 3 dollarit Patreonis, et see alla laadida, koos {{totalVaultedAssets, number}} teiste võlvitud varadega.",
-    "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}} </vaultLink>.",
-    "patrons-needed": "Kui saame {{remaining, number}} rohkem toetajaid, avaldatakse see kõigile tasuta.",
-    "title": "Võlvitud vara"
+    "donate-access": "Annetage 3 dollarit Patreonis, et see alla laadida, koos {{totalVaultedAssets, number}} muu eksklusiivse varaga.",
+    "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}}</vaultLink>.",
+    "patrons-needed": "Kui saame veel {{remaining, number}} patrooni, avaldatakse see kõigile tasuta.",
+    "title": "Eksklusiivne vara"
   },
   "wide": "lai",
   "zip-choose": "Valige ZIP-i sisu:"

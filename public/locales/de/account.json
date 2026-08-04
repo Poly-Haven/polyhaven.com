@@ -14,6 +14,12 @@
   "reward_one": "Dafür erhältst du die folgende Belohnung:",
   "reward_other": "Dadurch erhältst du die folgenden Vorteile:",
   "rewards": {
+    "course-access": {
+      "cta": "Zu den Kursen",
+      "p1": "Deine Mitgliedschaft umfasst den vollständigen Zugang zu <lnk>unseren Kursen</lnk>, die direkt hier auf der Seite gestreamt werden können.",
+      "p2": "Dein Fortschritt wird in deinem Konto gespeichert, sodass du auf jedem Gerät dort weitermachen kannst, wo du aufgehört hast.",
+      "title": "Kurszugang"
+    },
     "credit": {
       "invalid": "Ungültiger Name",
       "p1": "Dein Name ist derzeit",

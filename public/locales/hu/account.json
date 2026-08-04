@@ -6,14 +6,20 @@
     "li2": "Korai hozzáférés az eszközökhöz, még mielőtt azok nyilvánosan megjelennének.",
     "li3": "Hozzáférés felhőszolgáltatásunkhoz, hogy szinkronizálhassa az összes eszközünket a merevlemezével.",
     "li4": "Állandóan szponzorálj minden hónapban egy elemet, a letöltés gombok mellett a neved és a hivatkozásod feltüntetésével.",
-    "p1": "Ha Ön a<lnk> mecénás</lnk> a Poly Havenről, ha ide bejelentkezik, közvetlenül ezen az oldalon érheti el jutalmait.",
+    "p1": "Ha Ön a <lnk>mecénás</lnk> a Poly Havenről, ha ide bejelentkezik, közvetlenül ezen az oldalon érheti el jutalmait.",
     "p2": "A támogatási szinttől függően a jutalmak a következőket tartalmazhatják:"
   },
-  "not-patron": "Úgy tűnik, nem vagy a Poly Haven pártfogója :( ha ez nem igaz, kérlek<lnk> felveszi a kapcsolatot</lnk> így ezen az oldalon kivizsgálhatjuk a problémát. A következő információkra lesz szükségünk:",
+  "not-patron": "Úgy tűnik, nem vagy a Poly Haven pártfogója :( ha ez nem igaz, kérlek <lnk>felveszi a kapcsolatot</lnk> így ezen az oldalon kivizsgálhatjuk a problémát. A következő információkra lesz szükségünk:",
   "not-patron-anymore": "Úgy tűnik, már nem vagy Poly Haven pártfogója. Rendben van, és köszönjük korábbi támogatását :)",
   "reward_one": "Ezzel a következő jutalmat kapod:",
   "reward_other": "Ezzel a következő jutalmakat kapod:",
   "rewards": {
+    "course-access": {
+      "cta": "Menj a kurzusokhoz",
+      "p1": "A tagságod teljes hozzáférést biztosít <lnk>az kurzusainkhoz</lnk>, amelyek közvetlenül itt, a weboldalon érhetők el.",
+      "p2": "A haladásod elmentésre kerül a fiókodba, így bármely eszközön ott folytathatod, ahol abbahagytad.",
+      "title": "Kurzus hozzáférés"
+    },
     "credit": {
       "invalid": "Érvénytelen név",
       "p1": "Az Ön neve jelenleg",
@@ -23,7 +29,7 @@
       "title": "Footer Credit"
     },
     "early-access": {
-      "p1": "Most, hogy bejelentkezett, a<lnk> Eszköztár</lnk> tartalmazni fogja azokat az elemeket, amelyeket a jövőben terveztünk közzétenni.",
+      "p1": "Most, hogy bejelentkezett, a <lnk>Eszköztár</lnk> tartalmazni fogja azokat az elemeket, amelyeket a jövőben terveztünk közzétenni.",
       "p2": "Ezeket egy kék kör és a Patreon logó jelöli a jobb felső sarokban, így:",
       "p3": "Már letöltheted őket, mindenkit megelőzve :)",
       "title": "Korai hozzáférés"
@@ -36,8 +42,8 @@
     "offline-access": {
       "p1": "Adja meg e-mail címét, hogy meghívót küldjön magának felhőmappánkba:",
       "p2": "Nézd meg az e-mailedet :)",
-      "p3": "Meghívó sikeresen elküldve. Ha bármilyen problémája van, vagy módosítania kell fiókja e-mail-címét,<lnk> kérjük lépjen kapcsolatba velünk</lnk> .",
-      "p4": "Lát<lnk> ez a poszt</lnk> további útmutatásért a Nextcloud beállításához és az eszközök számítógépével való szinkronizálásának megkezdéséhez.",
+      "p3": "Meghívó sikeresen elküldve. Ha bármilyen problémája van, vagy módosítania kell fiókja e-mail-címét, <lnk>kérjük lépjen kapcsolatba velünk</lnk>.",
+      "p4": "Lát <lnk>ez a poszt</lnk> további útmutatásért a Nextcloud beállításához és az eszközök számítógépével való szinkronizálásának megkezdéséhez.",
       "title": "Offline hozzáférés"
     },
     "sponsor": {
@@ -56,7 +62,7 @@
     },
     "stakeholder": {
       "p1": "A Poly Haven érdekelt feleként mélyebb hozzáférést kap belső kommunikációs csatornáinkhoz, hogy segítsen megbeszélni, hogy min dolgozzunk és mit kövessen utunk során.",
-      "p2": "Ha még nem vettük fel Önnel a kapcsolatot, kérem<lnk> felveszi a kapcsolatot</lnk> hogy hozzáférést biztosíthassunk ezekhez a csatornákhoz, és bemutathassuk a csapatot.",
+      "p2": "Ha még nem vettük fel Önnel a kapcsolatot, kérem <lnk>felveszi a kapcsolatot</lnk> hogy hozzáférést biztosíthassunk ezekhez a csatornákhoz, és bemutathassuk a csapatot.",
       "title": "Érintettek"
     }
   },

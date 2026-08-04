@@ -14,6 +14,12 @@
   "reward_one": "See annab teile järgmise preemia:",
   "reward_other": "See annab teile järgmised preemiad:",
   "rewards": {
+    "course-access": {
+      "cta": "Mine kursustele",
+      "p1": "Teie liikmelisus sisaldab täielikku juurdepääsu <lnk>meie kursustele</lnk>, mis on otse siin saidil voogedastatud.",
+      "p2": "Teie edusammud salvestatakse teie kontole, nii et saate jätkata sealt, kus pooleli jäite, igal seadmel.",
+      "title": "Kursuse juurdepääs"
+    },
     "credit": {
       "invalid": "Vale nimi",
       "p1": "Teie praegune nimi on",

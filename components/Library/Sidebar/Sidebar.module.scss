@@ -139,33 +139,44 @@
 }
 
 .cat {
-  display: block;
+  // Row of [caret | label | count]: the label wraps onto as many lines as it needs while the
+  // caret and count keep their size, so long category names never overflow the sidebar.
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
   text-decoration: none;
   color: $c-text-light;
   padding: 0.3em;
   cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
   @include transition();
 
   .caret {
     position: relative;
     font-size: 140%;
-    vertical-align: middle;
+    flex: none;
+    margin-left: -0.1em;
   }
   .smallCaret {
     @extend .caret;
     font-size: 90%;
   }
 
+  .catLabel {
+    flex: 1 1 auto;
+    min-width: 0; // lets the label actually shrink/wrap inside the flex row
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+    letter-spacing: -0.35px;
+    font-size: 0.93em;
+  }
+
   .num {
+    flex: none;
     display: inline-block;
     line-height: 2em;
     width: 2em;
     height: 2em;
-    margin-left: 0.5em;
-    margin-top: -1px;
-    vertical-align: middle;
+    margin-left: 0.25em;
     text-align: center;
     font-size: 70%;
     font-weight: 700;
@@ -193,6 +204,120 @@
   font-size: 93%;
   box-shadow: inset 2px -2px 0px 0px rgba($c-accent, 0.2);
   background: rgba($c-text-light, 0.02);
+}
+
+// Attribute facet filters - qualities an asset has (weather, condition, material…), as opposed
+// to the category it is. Sit below the category tree in the sidebar.
+.attrFilters {
+  padding: 0.5em 0.3em 1em;
+  text-transform: none;
+}
+// Doubles as the divider between the category tree and the filters: a centred label with an
+// equal-length rule either side. Both rules flex from 0, so they stay the same length whatever
+// the label says (including once translated).
+.attrHeader {
+  @include flex(row, true, false);
+  gap: 0.6em;
+  padding: 0.2em 0.3em 0.5em;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1 1 0;
+    height: 1px;
+    background: $c-background-lightish;
+  }
+
+  h3 {
+    @include flex(row, true, false);
+    gap: 0.3em;
+    margin: 0;
+    flex: none;
+    font-size: 0.95em;
+    font-weight: normal;
+    color: $c-text-light;
+    opacity: 0.7;
+  }
+}
+.attrClear {
+  @include flex(row, true, true);
+  background: none;
+  border: none;
+  color: $c-accent;
+  font-size: 1em;
+  line-height: 0;
+  cursor: pointer;
+  padding: 0;
+  @include transition();
+
+  &:hover {
+    color: $c-red;
+    transform: rotate(-90deg);
+    @include transition();
+  }
+}
+.attrGroup {
+  margin-bottom: 0.6em;
+}
+// Booleans are self-describing (the chip says what it is), so they get no group label and sit
+// together at the bottom of the filter list.
+.attrBooleans {
+  margin-top: 0.2em;
+}
+.attrLabel {
+  font-size: 0.78em;
+  opacity: 0.55;
+  padding: 0 0.3em 0.2em;
+}
+.attrCheckbox {
+  flex: none;
+  font-size: 1.15em;
+  line-height: 0;
+  margin-left: -0.15em; // pull the icon's own padding back so the pill stays snug
+  opacity: 0.75;
+}
+.attrChipOn .attrCheckbox {
+  opacity: 1;
+}
+.attrValues {
+  @include flex(row, true, false);
+  flex-wrap: wrap;
+  gap: 0.25em;
+  padding: 0 0.2em;
+}
+.attrChip {
+  @include flex(row, true, false);
+  gap: 0.35em;
+  background: rgba(white, 0.04);
+  border: 1px solid rgba($c-text-light, 0.12);
+  border-radius: 1em;
+  color: $c-text-light;
+  font-size: 0.78em;
+  padding: 0.15em 0.55em;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: rgba($c-accent, 0.5);
+  }
+}
+.attrChipOn {
+  background: $c-accent;
+  border-color: $c-accent;
+  color: white;
+
+  &:hover {
+    background: $c-accent-dark;
+  }
+}
+.attrCount {
+  font-size: 0.85em;
+  opacity: 0.65;
+}
+// Same inset as the chip rows, so the dropdown lines up with them and stays clear of the
+// sidebar's scrollbar rather than running under it.
+.attrDropdown {
+  padding: 0 0.2em;
 }
 
 .catSemiActive {

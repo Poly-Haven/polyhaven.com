@@ -9,6 +9,7 @@ export default function HomePage({ finances }) {
       title="HDRI Popularity"
       description="Popularity ratings of HDRIs used for bonus earning calculations."
       url="/popularity"
+      noindex
     >
       <Popularity data={finances} />
     </TextPage>

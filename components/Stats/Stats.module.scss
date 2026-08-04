@@ -52,6 +52,22 @@
     }
   }
 
+  // The attribute chart carries two dropdowns and up to seventeen labelled bars, so it gets more
+  // room than the fixed charts beside it. Nested here so it outranks .half without !important.
+  .wide {
+    flex: 1.7 0 0;
+  }
+
+  // Holds the three search charts plus the caption that belongs to all three, so the caption stays
+  // under them rather than stretching across the attribute chart and looking like its footnote.
+  // Three units wide, so each chart inside still matches the charts in the rows above.
+  .searchGroup {
+    @include flex(column);
+    flex: 3 0 0;
+    width: 100%;
+    min-width: 0;
+  }
+
   .divider {
     position: relative;
     left: 1px;
@@ -82,6 +98,101 @@
 .smallGraph {
   width: 100%;
   height: 17vh;
+}
+
+.chartControls {
+  @include flex(row, true);
+  gap: 0.4em;
+  flex-shrink: 0;
+}
+
+// Level indicator for the drill-down category chart. Styled as text rather than as buttons: it is
+// a trail showing where you are, and only incidentally a way back up.
+.drillCrumbs {
+  @include flex(row, true);
+  flex-wrap: wrap;
+  margin: 0 0.5rem 0.25rem;
+  font-size: 0.8em;
+  min-height: 1.6em;
+  color: $c-text-light;
+
+  svg {
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+}
+
+.drillCrumbWrap {
+  @include flex(row, true);
+}
+
+.drillCrumb {
+  background: none;
+  border: none;
+  padding: 0.1em 0.2em;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  @include transition(0.1s);
+
+  &:hover {
+    color: $c-text-bright;
+  }
+
+  // The deepest crumb is where you already are, and "All" when nothing is open.
+  &:disabled,
+  &:last-child {
+    cursor: default;
+  }
+
+  &:disabled:hover {
+    color: inherit;
+  }
+}
+
+.drillCrumbs .drillCrumbWrap:last-child .drillCrumb {
+  color: $c-text-bright;
+}
+
+.graphEmpty {
+  @include center;
+  flex-direction: column;
+  gap: 0.3em;
+  height: 100%;
+  opacity: 0.4;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.graphCaption {
+  margin: 0.4em 0.5rem 0;
+  font-size: 0.75em;
+  opacity: 0.6;
+  line-height: 1.4em;
+}
+
+// For charts whose colour belongs to each bar rather than to a series, which recharts' own <Legend>
+// cannot describe. Sits under the plot in the same place recharts would have put it.
+.chartLegend {
+  @include flex(row, true, true);
+  flex-wrap: wrap;
+  gap: 0.3em 0.9em;
+  margin: 0.4em 0.5rem 0;
+  font-size: 0.72em;
+  opacity: 0.75;
+
+  span {
+    @include flex(row, true);
+    gap: 0.4em;
+  }
+
+  i {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 0.15em;
+    flex-shrink: 0;
+  }
 }
 
 .graphNote {

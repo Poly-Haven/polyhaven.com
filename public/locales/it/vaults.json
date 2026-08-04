@@ -13,7 +13,7 @@
   "how-it-works-p2": "Ogni Vault ha un obiettivo di finanziamento specifico, definito da un numero target di membri di <patreonLink>Patreon</patreonLink>. Una volta raggiunto questo obiettivo, il Vault viene rilasciato liberamente per tutti.",
   "how-it-works-p3": "Ad esempio, il prossimo Vault, <vaultLink>{{vaultName}}</vaultLink>contiene {{assetsCount}} beni e sarà sbloccato quando avremo raggiunto {{target}} patroni totali (ne mancano{{remaining}}!).",
   "how-it-works-p4": "Fino ad allora, sosteneteci su Patreon per accedere ai contenuti di <strong>tutti i</strong> Vault.",
-  "how-it-works-p5": "Non solo si ottiene l'<strong>accesso immediato a tutti i beni custoditi nel caveau di {{numAssets}} </strong>, ma si contribuisce anche a rilasciarli gratuitamente al pubblico più rapidamente.",
+  "how-it-works-p5": "Non solo si ottiene l'<strong>accesso immediato a tutti i beni custoditi nel caveau di {{numAssets}}</strong>, ma si contribuisce anche a rilasciarli gratuitamente al pubblico più rapidamente.",
   "how-it-works-p6": "Tutti i finanziamenti sono destinati alla creazione di ulteriori attività - vedi i nostri <financeLink>rapporti finanziari</financeLink>.",
   "how-to-access": "Come si accede ai caveau?",
   "how-to-access-p1": "È necessario sostenerci su <patreonLink>Patreon</patreonLink> con almeno 3 dollari al mese. Una volta diventato mecenate, riceverai l'accesso a tutte le risorse all'interno di tutti i Vault.",

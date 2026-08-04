@@ -14,6 +14,12 @@
   "reward_one": "Esto te otorga la siguiente recompensa:",
   "reward_other": "Esto te otorga las siguientes recompensas:",
   "rewards": {
+    "course-access": {
+      "cta": "Ir a cursos",
+      "p1": "Tu membresía incluye acceso completo a <lnk> nuestros cursos </lnk>, transmitidos aquí mismo en el sitio.",
+      "p2": "Tu progreso se guarda en tu cuenta, así que puedes continuar donde lo dejaste en cualquier dispositivo.",
+      "title": "Acceso al curso"
+    },
     "credit": {
       "invalid": "Nombre inválido",
       "p1": "Tu nombre es actualmente",
@@ -23,7 +29,7 @@
       "title": "Crédito de Pie de Página"
     },
     "early-access": {
-      "p1": "Ahora que ha iniciado sesión, la<lnk> Biblioteca de contenido</lnk> incluirá contenido que hemos programado para publicar en el futuro.",
+      "p1": "Ahora que ha iniciado sesión, la <lnk>Biblioteca de contenido</lnk> incluirá contenido que hemos programado para publicar en el futuro.",
       "p2": "Están marcados con un círculo azul y el logo de Patreon en la parte superior derecha, así:",
       "p3": "Ya puedes descargarlos, antes que nadie :)",
       "title": "Acceso Temprano"

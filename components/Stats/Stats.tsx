@@ -2,7 +2,10 @@ import { timeDiff } from 'utils/dateUtils'
 import ErrorBoundary from 'utils/ErrorBoundary'
 
 import LastThreeMonths from './LastThreeMonths'
-import RelativeCat from './RelativeCat'
+import CategoryPopularity from './CategoryPopularity'
+import AttributePopularity from './AttributePopularity'
+import SoftwarePopularity from './SoftwarePopularity'
+import SoftwarePairs from './SoftwarePairs'
 import RelativeType from './RelativeType'
 import AssetsPerMonth from './AssetsPerMonth'
 import ResolutionComparison from './ResolutionComparison'
@@ -21,6 +24,11 @@ import styles from './Stats.module.scss'
 */
 
 const Stats = ({ datasets }) => {
+  // Read before the JSX rather than inline, so a failed fetch renders empty charts instead of
+  // throwing here - outside any ErrorBoundary - and taking the whole page down.
+  const taxonomy = datasets.taxonomy || { categories: {}, attributes: {}, totals: {} }
+  const software = datasets.software || { meta: {}, categories: {}, software: {}, timeline: [], pairs: {} }
+
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -74,50 +82,82 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.spacer} />
 
-      <ErrorBoundary>
-        <div className={styles.row}>
-          <div className={styles.half}>
-            <RelativeCat data={datasets.relativecategory} type="hdris" name="HDRI" />
-          </div>
-          <div className={styles.half}>
-            <RelativeCat data={datasets.relativecategory} type="textures" name="Texture" />
-          </div>
-          <div className={styles.half}>
-            <RelativeCat data={datasets.relativecategory} type="models" name="Model" />
-          </div>
+      <div className={styles.row}>
+        {[
+          ['hdris', 'HDRI'],
+          ['textures', 'Texture'],
+          ['models', 'Model'],
+        ].map(([type, name]) => (
+          // One boundary per chart: these drill through the taxonomy on click, and a bad path in
+          // one type's data should not take the whole row down with it.
+          <ErrorBoundary key={type}>
+            <div className={styles.half}>
+              <CategoryPopularity data={taxonomy.categories} type={type} name={name} />
+            </div>
+          </ErrorBoundary>
+        ))}
+        <ErrorBoundary>
           <div className={styles.half}>
             <RelativeType data={datasets.relativeType} />
           </div>
+        </ErrorBoundary>
+        <ErrorBoundary>
           <div className={styles.half}>
             <AssetsPerMonth data={datasets.monthlyAssets} />
           </div>
-        </div>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </div>
 
       <div className={styles.spacer} />
 
-      <ErrorBoundary>
-        <div className={styles.row}>
-          <div className={styles.half}>
-            <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+      <div className={styles.row}>
+        <ErrorBoundary>
+          <div className={styles.searchGroup}>
+            <div className={styles.row}>
+              <div className={styles.half}>
+                <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+              </div>
+              <div className={styles.half}>
+                <SearchPop data={datasets.searches} type="textures" name="Texture" />
+              </div>
+              <div className={styles.half}>
+                <SearchPop data={datasets.searches} type="models" name="Model" />
+              </div>
+            </div>
+            <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
+              Based on {datasets.searches.meta.total} searches in the last{' '}
+              {timeDiff(
+                new Date(datasets.searches.meta.earliestSearch),
+                new Date(datasets.searches.meta.latestSearch),
+                true
+              )}
+              .
+            </div>
           </div>
-          <div className={styles.half}>
-            <SearchPop data={datasets.searches} type="textures" name="Texture" />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <div className={`${styles.half} ${styles.wide}`}>
+            <AttributePopularity data={taxonomy.attributes} totals={taxonomy.totals} />
           </div>
+        </ErrorBoundary>
+      </div>
+
+      <div className={styles.spacer} />
+
+      {/* The only view we have of what our audience actually works in, so the two charts sit
+          together - the trend is the headline and the pairing is the detail behind it. */}
+      <div className={styles.row}>
+        <ErrorBoundary>
           <div className={styles.half}>
-            <SearchPop data={datasets.searches} type="models" name="Model" />
+            <SoftwarePopularity data={software} />
           </div>
-        </div>
-        <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
-          Based on {datasets.searches.meta.total} searches in the last{' '}
-          {timeDiff(
-            new Date(datasets.searches.meta.earliestSearch),
-            new Date(datasets.searches.meta.latestSearch),
-            true
-          )}
-          .
-        </div>
-      </ErrorBoundary>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <div className={styles.half}>
+            <SoftwarePairs data={software} />
+          </div>
+        </ErrorBoundary>
+      </div>
 
       <div className={styles.spacer} />
 

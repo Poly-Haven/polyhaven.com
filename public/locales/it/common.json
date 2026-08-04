@@ -23,6 +23,7 @@
     "b4": "Il nostro <lnk>componente aggiuntivo</lnk> del browser delle risorse di Blender.",
     "b5": "Download massivo e accesso offline con il <lnk>nostro cloud</lnk>.",
     "b6": "<lnk>Sponsorizzate una risorsa</lnk> con il vostro nome e il vostro link.",
+    "b6-course": "<lnk>Impara da noi</lnk> con corsi video completi.",
     "donate-monthly": "Donazione mensile",
     "donate-once": "Donare una volta",
     "monthly": "Mensile",
@@ -33,7 +34,7 @@
   "email-address": "Indirizzo e-mail",
   "footer": {
     "join-ranks": "Unisciti ai nostri sostenitori, supporta Poly Haven su Patreon",
-    "thanks": "Grazie ai nostri <lnk> Patrons</lnk> per aver reso possibile Poly Haven"
+    "thanks": "Grazie ai nostri <lnk>Patrons</lnk> per aver reso possibile Poly Haven"
   },
   "goal": {
     "complete": "Completato!",
@@ -62,11 +63,13 @@
     "logo": "Logo",
     "logout": "Disconnettersi",
     "map": "Mappa del mondo delle HDRI",
+    "menu": "Menu",
     "news": "Notizie",
     "plugins": "Plugin",
     "privacy": "Privacy",
     "source": "Fonte",
     "stats": "Statistiche",
+    "status": "Stato",
     "support-us": "Supportaci"
   },
   "optional": "Opzionale",

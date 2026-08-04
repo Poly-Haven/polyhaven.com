@@ -9,6 +9,7 @@ export default function HomePage({ finances }) {
       title="Texture Popularity"
       description="Popularity ratings of textures used for bonus earning calculations."
       url="/popularity-tex"
+      noindex
     >
       <PopularityTex data={finances} />
     </TextPage>

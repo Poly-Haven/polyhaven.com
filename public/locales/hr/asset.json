@@ -6,6 +6,7 @@
   "backplates": "Stražnje ploče",
   "backplates-description": "Slike u nastavku su zasebne fotografije koje možete koristiti kao pozadinske slike visoke rezolucije u svom prikazu.<br /> Ovisno o vašoj razlučivosti iscrtavanja i postavkama kamere, ponekad HDRI (čak i vrlo velik) možda neće imati dovoljno piksela da i dalje izgleda oštro u pozadini vašeg iscrtavanja. U tim slučajevima umjesto toga možete koristiti jednu od ovih stražnjih ploča u pozadini i koristiti HDRI niže rezolucije samo za osvjetljenje i refleksije.",
   "categories": "Kategorije",
+  "category": "Kategorija",
   "cloud-sync": "Izvanmrežni pristup",
   "cloud-sync-d": "Podržite nas s 5 USD mjesečno i primite pristup našem sustavu u oblaku, što vam omogućuje da sinkronizirate cijelu našu biblioteku s vašim tvrdim diskom.",
   "coming-soon": "Uskoro!",
@@ -21,7 +22,7 @@
   "downloads": "Preuzimanja",
   "downloads-pd": "dnevno",
   "early-access": {
-    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 USD da biste ga odmah preuzeli, zajedno s {{numEaAssets, number}} drugim resursima za rani pristup.",
     "get-access": "Ostvarite rani pristup",
     "release-date": "Ova imovina bit će objavljena:<br/> <strong>{{scheduleText}}</strong>",
@@ -40,7 +41,7 @@
   },
   "no-files": "Nema datoteka",
   "no-files-d": "Pokušajte osvježiti, u suprotnom prijavite ovo nama.",
-  "no-renders": "Još ništa,<lnk> dodajte svoje</lnk> .",
+  "no-renders": "Još ništa, <lnk>dodajte svoje</lnk>.",
   "nor-standard": "Standardna normalna karta:",
   "released": "Pušten na slobodu",
   "similar-assets": "Slična imovina",
@@ -53,9 +54,9 @@
   "vaulted": {
     "about": "Oko",
     "access-now": "Pristupite sada",
-    "already-patron": "Već ste pokrovitelj?<loginLink> Prijava</loginLink> .",
+    "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 dolara na Patreonu kako biste ga preuzeli, zajedno s {{totalVaultedAssets, number}} drugim trezorskim datotekama.",
-    "locked-in": "Ova imovina je zaključana u<vaultLink> trezor {{vault}}</vaultLink> .",
+    "locked-in": "Ova imovina je zaključana u <vaultLink>trezor {{vault}}</vaultLink>.",
     "patrons-needed": "Kada dobijemo još {{remaining, number}} korisnika, bit će besplatno dostupno svima.",
     "title": "Trezorska imovina"
   },

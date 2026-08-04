@@ -14,6 +14,12 @@
   "reward_one": "To zapewnia następujące nagrody:",
   "reward_other": "Zapewnia to następujące nagrody:",
   "rewards": {
+    "course-access": {
+      "cta": "Przejdź do kursów",
+      "p1": "Twoje członkostwo obejmuje pełny dostęp do <lnk> naszych kursów </lnk>, transmitowanych bezpośrednio tutaj na stronie.",
+      "p2": "Twój postęp jest zapisywany na Twoim koncie, więc możesz kontynuować tam, gdzie przerwałeś na dowolnym urządzeniu.",
+      "title": "Dostęp do kursów"
+    },
     "credit": {
       "invalid": "Błędna nazwa",
       "p1": "Twoje imię jest obecnie",

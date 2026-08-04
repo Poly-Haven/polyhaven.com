@@ -1,12 +1,20 @@
 {
-  "d1p": "Bitte nimm vorübergehend am <lnk>Patreon</lnk> teil, warte bis zum Ende des Monats, wenn deine Zahlung erfolgt ist, und kündige dann dein Konto.",
-  "d1t": "Spenden unter 20 $",
   "d2b1": "Über PayPal spenden",
   "d2b2": "Auf Ko-fi spenden",
   "d2p": "Für eine einmalige Spende benutze bitte entweder PayPal oder Ko-fi:",
-  "d2t": "Größere Spenden",
   "description": "Wie du Poly Haven eine einmalige Spende zukommen lassen kannst.",
+  "help-contribute": "<lnk>Trage einen von dir erstellten Inhalt</lnk> zur Bibliothek bei.",
+  "help-corporate": "Wenn du im Namen eines Unternehmens spendest, sieh dir unsere <lnk>Unternehmenspartnerschaften</lnk>-Seite an.",
+  "help-share": "Erzähle anderen von uns. Wir schalten keine Werbung, daher ist Mundpropaganda der Weg, wie die meisten Menschen uns finden.",
+  "help-t": "Andere Möglichkeiten zu helfen",
+  "help-translate": "<lnk>Hilf mit, die Seite in deine Sprache zu übersetzen</lnk>.",
+  "intro": "Jeder Inhalt auf Poly Haven ist kostenlos und im öffentlichen Bereich, ohne Bezahlschranke, ohne Konto und ohne Werbung. Das ist nur möglich, weil die Menschen, die unsere Inhalte nutzen, sich entscheiden, für sie im Namen aller anderen zu bezahlen.",
+  "one-time-t": "Einmalige Spenden",
   "p1": "Um ein nachhaltiges offenes Projekt zu sein, brauchen wir ein <lnk1>vorhersehbares Budget</lnk1>. Ein stark schwankendes Einkommen macht es für uns schwierig, vorauszuplanen und langfristig Personal einzustellen. Wir würden es viel lieber sehen, wenn du über einen längeren Zeitraum einen <lnk2>kleinen monatlichen Betrag</lnk2> spenden würdest, als eine einzige Pauschalsumme.",
   "p2": "Dennoch nehmen wir natürlich Spenden jeglicher Art an :)",
-  "title": "Eine einmalige Spende machen"
+  "page-description": "Unterstütze Poly Haven mit einer monatlichen oder einmaligen Spende und hilf, unsere 3D-Inhalte für alle kostenlos zu halten.",
+  "page-title": "Spende an Poly Haven",
+  "title": "Eine einmalige Spende machen",
+  "where-p": "Spenden decken die Gehälter unserer Künstler, die Server und den Speicher, die mehrere Millionen Downloads pro Monat liefern, und die Ausrüstung, die wir verwenden, um neue Inhalte zu erstellen. Wir veröffentlichen jeden Cent, den wir verdienen und ausgeben, in unseren <lnk>Finanzberichten</lnk>.",
+  "where-t": "Wohin dein Geld geht"
 }

@@ -47,7 +47,7 @@ const footer = () => {
         <div className={styles.links}>
           <Link href="/">
             <div className={styles.logoWrapper}>
-              <img src="/Logo 256.png" className={styles.logo} />
+              <img src="/Logo 256.png" className={styles.logo} alt="" />
               <h1>Poly Haven</h1>
               <p>{t('common:tagline')}</p>
             </div>

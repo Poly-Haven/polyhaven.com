@@ -1,0 +1,145 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+/* ---------------------------------------------------------------------------
+ * Extracted + adjusted from components/Plugins (CallToAction + Plugins.module).
+ * Same two-card "purchase option" chrome and Recommended/owned ribbons, but the
+ * descriptions are now green-check feature lists, left-aligned. Note the icon
+ * styling is scoped to the card's DIRECT svg child (`> svg`) so it doesn't bleed
+ * onto the check icons inside the feature list.
+ * ------------------------------------------------------------------------- */
+
+.row {
+  @include flex(row, true, false);
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+
+  p {
+    margin: 1em;
+  }
+}
+
+.or {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
+
+.purchaseOption {
+  @include flex(column, true, true);
+  background: $c-background-light;
+  border: 1px solid $c-background-lighter;
+  @include drop-shadow;
+  padding: 3em 2.5em;
+  margin: 1em;
+  color: $c-text-light;
+
+  > svg {
+    width: calc(150px - 2em);
+    height: calc(150px - 2em);
+    padding: 2em;
+    overflow: visible;
+    background-color: rgba(white, 0.3);
+    border: 1px solid rgba(white, 0.3);
+    border-radius: 50%;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 0;
+    color: $c-text-bright;
+  }
+
+  > p {
+    text-align: center;
+    margin-top: 0.4em;
+
+    strong {
+      font-size: 1.3em;
+      color: $c-text-bright;
+    }
+  }
+}
+
+.recommendedPurchaseOption {
+  position: relative;
+  box-shadow: 0 0 0 0.4em $c-accent;
+
+  > svg {
+    background-color: $c-pink;
+  }
+
+  &::after {
+    content: "Recommended";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: -1px;
+    padding: 0.3em;
+    text-align: center;
+    background-color: rgba($c-accent, 0.7);
+    color: $c-text-bright;
+    font-style: italic;
+  }
+}
+
+.ownedPurchaseOption {
+  @extend .recommendedPurchaseOption;
+  box-shadow: 0 0 0 0.4em $c-yellow;
+
+  &::after {
+    content: "You have this!";
+    background-color: rgba($c-yellow, 0.7);
+  }
+}
+
+/* green-check feature list, left-aligned (the adjustment) */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 1.4em 0 0.4em;
+  text-align: left;
+  align-self: stretch;
+  width: 100%;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.6rem 0;
+    line-height: 1.4;
+    color: $c-text-light;
+  }
+
+  svg {
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0.1em;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: $c-community;
+    font-size: 1.2em;
+  }
+}
+
+.signin {
+  margin-top: -0.35em;
+  font-size: 0.9em;
+  opacity: 0.5;
+  filter: saturate(0);
+
+  a {
+    color: $c-text-bright;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "contact": {
+    "h1": "Liên hệ",
+    "p1": "Có câu hỏi nào không? Vui lòng đọc <lnk>FAQ</lnk> trước :)",
+    "p2": "Cách dễ nhất để liên hệ với chúng tôi là qua email (<lnk1>info@polyhaven.com</lnk1>) hoặc trên <lnk2>Discord</lnk2>."
+  },
+  "description": "Poly Haven là gì, chúng tôi làm gì và tại sao chúng tôi làm điều đó.",
+  "greeting": {
+    "h1": "Chào bạn!",
+    "p1": "Poly Haven là một thư viện tài sản công được tuyển chọn cho các nghệ sĩ hiệu ứng hình ảnh và nhà thiết kế trò chơi, cung cấp các tài sản 3D chất lượng cao hữu ích theo cách dễ dàng có được.",
+    "p2": "Không có tường phí, tài khoản hay mẫu email nào được yêu cầu, chỉ cần tải xuống một tài sản và sử dụng nó mà không cần lo lắng.",
+    "p3": "Tất cả tài sản ở đây đều là <lnk>CC0</lnk>, có nghĩa là chúng gần như miễn phí bản quyền và bạn có thể sử dụng chúng cho bất kỳ mục đích nào."
+  },
+  "help": {
+    "h1": "Cách bạn có thể giúp đỡ",
+    "s1": "Hỗ trợ chúng tôi trên Patreon",
+    "s1p1": "Nếu bạn có một khoản thu nhập khả dụng và muốn giúp chúng tôi xuất bản thêm nhiều HDRI, kết cấu và mô hình 3D miễn phí, bạn có thể hỗ trợ chúng tôi bằng một khoản đóng góp nhỏ hàng tháng trên <lnk>Patreon</lnk> :)",
+    "s1p2": "Để đáp lại, chúng tôi có thể tặng bạn một món quà nhỏ để cảm ơn, như quyền truy cập vào một thư mục đám mây mà bạn có thể đồng bộ hóa với ổ cứng của mình để luôn có các tài sản mới nhất của chúng tôi trong tầm tay, hoặc ghi danh tên bạn trên trang web của chúng tôi.",
+    "s1p3": "Chúng tôi sử dụng các khoản đóng góp của bạn trực tiếp để trang trải chi phí và tài trợ cho các tài sản mới, như đã được xác minh bởi các <lnk>báo cáo tài chính</lnk> của chúng tôi.",
+    "s2": "Đóng góp tài sản của bạn",
+    "s2p1": "Bạn có một mô hình 3D, kết cấu hoặc HDRI chất lượng cao nào muốn chia sẻ với cộng đồng không? Chúng tôi rất muốn xuất bản nó cho bạn :)",
+    "s2p2": "Chúng tôi có một tiêu chuẩn chất lượng nghiêm ngặt để duy trì, và mọi thứ chúng tôi xuất bản đều phải là <lnk1>CC0</lnk1>, nhưng nếu tài sản của bạn được chấp nhận, toàn bộ cộng đồng 3D sẽ được hưởng lợi từ nó. <lnk2>Đọc thêm và gửi tài sản của bạn tại đây</lnk2>.",
+    "s3": "Truyền bá thông tin",
+    "s3p1": "Không sao nếu bạn không thể hoặc không muốn quyên góp cho chúng tôi :) Bạn vẫn có thể giúp chúng tôi phát triển bằng cách đảm bảo rằng bạn bè và đồng nghiệp của bạn biết về chúng tôi, càng nhiều người chúng tôi có thể giúp thì càng tốt!",
+    "s3p2": "Điều này không bắt buộc, nhưng nếu bạn sử dụng tài sản của chúng tôi trong công việc của bạn, bạn có thể đề cập đến nơi bạn đã lấy chúng và điều đó sẽ giúp cho nhiều người hơn biết rằng chúng tôi tồn tại."
+  },
+  "how": {
+    "h1": "Chúng ta đang làm điều này như thế nào?",
+    "li1": "Các nghệ sĩ làm việc cho Poly Haven, tập trung vào bức tranh tổng thể.",
+    "li2": "Các nhà thầu độc lập mà chúng tôi thuê, được giao nhiệm vụ với các dự án cụ thể.",
+    "li3": "Người dùng tự do quyên góp công việc của họ cho nền tảng.",
+    "p1": "Chúng tôi là một studio nhỏ làm việc từ xa có trụ sở tại Nam Phi, làm việc với các nhà sáng tạo trên toàn thế giới chia sẻ tầm nhìn của chúng tôi.",
+    "p2": "Về mặt tài trợ, chúng tôi chủ yếu được hỗ trợ bởi các khoản quyên góp từ những người như bạn trên <lnk>Patreon</lnk> và các nhà tài trợ doanh nghiệp tin rằng họ có thể hưởng lợi từ việc hỗ trợ công việc của chúng tôi trong dài hạn.",
+    "p3": "Đối với việc tạo ra tài sản, có ba nguồn:"
+  },
+  "title": "Giới thiệu / Liên hệ",
+  "transparency": {
+    "h1": "Minh bạch",
+    "li1": "Chúng tôi viết các Nhật ký Phát triển thường xuyên trên <lnk>blog của chúng tôi</lnk> để chia sẻ những gì chúng tôi đã làm gần đây.",
+    "li2": "Các <lnk>bài viết của chúng tôi trên Patreon</lnk> cũng là nơi tốt để tìm các cập nhật nhỏ hơn và các cuộc thăm dò khi chúng tôi cần giúp đỡ trong việc đưa ra quyết định.",
+    "li3": "<lnk>Discord</lnk> là nơi chúng tôi tụ tập hàng ngày, hãy thoải mái chào hỏi!",
+    "li4": "Mạng xã hội của chúng tôi chủ yếu được tự động hóa để đăng tải các tài sản mới nhất, nhưng chúng tôi cũng thỉnh thoảng hoạt động ở đó (liên kết trong <lnk>chân trang</lnk>).",
+    "li5": "Các <lnk>báo cáo tài chính</lnk> của chúng tôi chi tiết chính xác cách chúng tôi chi tiêu hoặc tiết kiệm quỹ.",
+    "p1": "Vì phần lớn tài trợ của chúng tôi đến từ các khoản quyên góp, nên điều quan trọng đối với chúng tôi là bất kỳ ai cũng có thể thấy những gì chúng tôi đang làm, những gì chúng tôi đang lên kế hoạch và lý do đằng sau tất cả các quyết định của chúng tôi.",
+    "p2": "Chia sẻ tài sản của chúng tôi là ưu tiên hàng đầu, nhưng chúng tôi cũng muốn chia sẻ kiến thức của mình, để người khác có thể học cách tạo ra các tài sản giống như của chúng tôi và có thể chia sẻ chúng."
+  },
+  "why": {
+    "h1": "Tại sao chúng tôi lại làm điều này?",
+    "p1": "Bởi vì chúng tôi có thể!",
+    "p2": "Và vì chúng tôi tin rằng chúng tôi có thể giúp cộng đồng 3D lớn hơn phát triển bằng cách cung cấp tài sản của chúng tôi miễn phí thay vì bán chúng.",
+    "p3": "Chúng tôi muốn giảm rào cản gia nhập cho các nghệ sĩ mới, loại bỏ các rào cản tài chính, và tạo điều kiện cho các nghệ sĩ có kinh nghiệm tập trung vào sự sáng tạo thay vì phải tái phát minh bánh xe cho mỗi đạo cụ họ cần."
+  }
+}

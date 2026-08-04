@@ -10,6 +10,7 @@ import TextPage from 'components/Layout/TextPage/TextPage'
 import Other from 'components/RewardInfo/Other'
 import EarlyAccess from 'components/RewardInfo/EarlyAccess'
 import OfflineAccess from 'components/RewardInfo/OfflineAccess'
+import CourseAccess from 'components/RewardInfo/CourseAccess'
 import Sponsor from 'components/RewardInfo/Sponsor'
 import Stakeholder from 'components/RewardInfo/Stakeholder'
 import LinkText from 'components/LinkText/LinkText'
@@ -22,6 +23,8 @@ const rewardInfo = (r, uuid, patron) => {
       return <EarlyAccess />
     case 'Offline Access':
       return <OfflineAccess uuid={uuid} patron={patron} />
+    case 'Course Access':
+      return <CourseAccess />
     case 'Sponsor':
       return <Sponsor uuid={uuid} patron={patron} />
     case 'Stakeholder':
@@ -39,14 +42,14 @@ const Page = () => {
 
   if (isLoading)
     return (
-      <TextPage title="Account" url="/account">
+      <TextPage title="Account" url="/account" noindex>
         <Loader />
       </TextPage>
     )
 
   if (!user)
     return (
-      <TextPage title={t('account:title')} url="/account">
+      <TextPage title={t('account:title')} url="/account" noindex>
         <h1>{t('account:title')}</h1>
         <p>
           <Trans
@@ -67,7 +70,7 @@ const Page = () => {
 
   if (!Object.keys(patron).length) {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <Loader />
       </TextPage>
     )
@@ -75,7 +78,7 @@ const Page = () => {
 
   if (patron['error']) {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <h1>{t('account:account')}</h1>
         <p>
           <Trans i18nKey="account:not-patron" t={t} components={{ lnk: <LinkText href="/about-contact" /> }} />
@@ -89,7 +92,7 @@ const Page = () => {
 
   if (patron['status'] !== 'active_patron') {
     return (
-      <TextPage title={t('account:account')} url="/account">
+      <TextPage title={t('account:account')} url="/account" noindex>
         <h1>
           {t('account:hi')} {patron['display_name'] || patron['name']}!
         </h1>
@@ -99,7 +102,7 @@ const Page = () => {
   }
 
   return (
-    <TextPage title={t('account:account')} url="/account">
+    <TextPage title={t('account:account')} url="/account" noindex>
       <h1 title={uuid} style={{ textAlign: 'center' }}>
         {t('account:hi')} {(patron['display_name'] || patron['name']).trim()}!
       </h1>

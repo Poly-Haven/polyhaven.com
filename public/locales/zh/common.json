@@ -23,6 +23,7 @@
     "b4": "我们的 Blender 资产浏览器<lnk>插件</lnk>",
     "b5": "使用<lnk>我们的云</lnk>服务批量下载和离线访问。",
     "b6": "以您的名字和链接<lnk>赞助一项资产</lnk>。",
+    "b6-course": "<lnk>向我们学习</lnk>，观看完整的视频课程。",
     "donate-monthly": "每月捐款",
     "donate-once": "捐赠一次",
     "monthly": "每月",
@@ -46,7 +47,7 @@
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
   "missing-invalid": "丢失或无效",
-  "n-patrons-to-go": "{{number}} 赞助人要走了！",
+  "n-patrons-to-go": "还差 {{number}} 位赞助人！",
   "nav": {
     "about-contact": "关于/联系方式",
     "add-on": "Blender插件",
@@ -62,11 +63,13 @@
     "logo": "品牌标识",
     "logout": "注销",
     "map": "HDRI世界地图",
+    "menu": "菜单",
     "news": "新闻",
     "plugins": "插件",
     "privacy": "隐私性",
     "source": "源代码",
     "stats": "统计数据",
+    "status": "现状",
     "support-us": "支持我们"
   },
   "optional": "可选的",
@@ -78,11 +81,11 @@
   "roadmap": {
     "join-support": "<patreonLink>加入{{numPatrons}} 其他读者的行列</patreonLink>，支持免费资产的未来。",
     "target-patrons": "{{target}} 顾客",
-    "title": "保利海文路线图",
+    "title": "Poly Haven路线图",
     "to-be-announced": "待定",
     "whats-next": "下一步是什么？"
   },
-  "support-polyhaven": "支持保利天堂！",
+  "support-polyhaven": "支持Poly Haven！",
   "tagline": "公共3D资源库",
   "visible": "可见"
 }

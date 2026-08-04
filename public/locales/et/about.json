@@ -2,7 +2,7 @@
   "contact": {
     "h1": "Kontakt",
     "p1": "Kas teil on küsimus? Palun lugege esmalt <lnk>KKK-d</lnk>:}}",
-    "p2": "Kõige lihtsam viis meiega ühendust võtta on e-posti teel<lnk1>(info@polyhaven.com</lnk1>}} </span> või <lnk2>Discordis</lnk2>."
+    "p2": "Kõige lihtsam viis meiega ühendust võtta on e-posti teel (<lnk1>info@polyhaven.com</lnk1>) või <lnk2>Discordis</lnk2>."
   },
   "description": "Mis on Poly Haven, mida me teeme ja miks me seda teeme.",
   "greeting": {

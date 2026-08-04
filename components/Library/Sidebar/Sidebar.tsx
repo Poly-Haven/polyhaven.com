@@ -8,6 +8,9 @@ import { MdApps, MdFilterList, MdFirstPage, MdUnarchive, MdKeyboardArrowRight } 
 import Button from 'components/UI/Button/Button'
 import IconButton from 'components/UI/Button/IconButton'
 import CategoryList from './CategoryList'
+import AttributeFilters from './AttributeFilters'
+import apiSWR from 'utils/apiSWR'
+import { filterAssets } from 'utils/assetFiltering'
 
 import styles from './Sidebar.module.scss'
 
@@ -31,6 +34,18 @@ const Sidebar = (props) => {
   const hovTypeLeave = (e) => {
     setTypeHeader(t_c(assetTypeName(props.assetType)))
   }
+
+  // Same request the grid and category tree use - SWR dedupes it. Attribute facet counts are
+  // scoped to the current category/collection/vault so the numbers match what's on screen.
+  const { data: assetData } = apiSWR(`/assets?t=${props.assetType}&future=true`, { revalidateOnFocus: false })
+  const scopedAssets = assetData
+    ? filterAssets(assetData, {
+        categoryPath: props.categoryPath,
+        collection: props.collection ? props.collection.id : null,
+        vault: props.vault ? props.vault.id : null,
+        assetType: props.assetType,
+      })
+    : null
 
   return (
     <>
@@ -56,7 +71,7 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_hdris.png" />
+              <img src="/icons/a_hdris.png" alt="HDRIs" />
             </Link>
             <Link
               href="/textures"
@@ -67,7 +82,7 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_textures.png" />
+              <img src="/icons/a_textures.png" alt="Textures" />
             </Link>
             <Link
               href="/models"
@@ -78,11 +93,24 @@ const Sidebar = (props) => {
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >
-              <img src="/icons/a_models.png" />
+              <img src="/icons/a_models.png" alt="Models" />
             </Link>
             <h2 id="typeHeader">{typeHeader}</h2>
           </div>
-          <CategoryList assetType={props.assetType} categories={props.categories} level={-1} />
+          <CategoryList
+            assetType={props.assetType}
+            categoryPath={props.categoryPath}
+            attributes={props.attributes}
+            collection={props.collection}
+            vault={props.vault}
+            author={props.author}
+          />
+          <AttributeFilters
+            assetType={props.assetType}
+            assets={scopedAssets}
+            active={props.attributes || {}}
+            author={props.author}
+          />
           {props.assetType === 'all' && (
             <>
               <hr />

@@ -11,6 +11,7 @@ export default function SlugCheckPage() {
         title="Slug Check"
         description="Check for similar or matching asset slugs on Poly Haven."
         url="/tools/slug-check"
+        noindex
       />
       <div>
         <SlugCheck />

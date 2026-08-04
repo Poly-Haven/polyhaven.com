@@ -7,35 +7,6 @@ $mobileBreakpoint: 890px;
 .nav {
   @include flex(row);
   height: 100%;
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    @include flex(column);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 50%;
-    background: $c-background-dark;
-    height: auto;
-
-    .navItem {
-      min-height: 3em;
-    }
-
-    .subNav {
-      visibility: visible;
-      opacity: 1;
-      position: relative;
-
-      .navItem {
-        padding: 0 0.8rem;
-        border-left: 1em solid $c-background-light;
-
-        &:hover {
-          border-left: 1em solid $c-accent-light;
-        }
-      }
-    }
-  }
 }
 
 .navItem {
@@ -73,6 +44,17 @@ $mobileBreakpoint: 890px;
       width: 1em;
     }
   }
+}
+
+// A submenu row with no destination renders as a <button> so it can be tapped
+// and focused; strip the UA chrome so it matches the links beside it.
+button.navItem {
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .navItemMenuFlag {
@@ -155,6 +137,25 @@ $mobileBreakpoint: 890px;
   }
 }
 
+// Locale dropdown. `wrap-reverse` against the 85vh cap filled bottom-up and
+// right-to-left, so the columns came out ragged and unbalanced; multi-column
+// splits them evenly and keeps the list reading top-to-bottom, left-to-right.
+.compactNavItemWrapper > .subNav {
+  display: block;
+  max-height: none;
+  width: 26rem;
+}
+
+.localeColumns {
+  column-count: 2;
+  column-gap: 0;
+  column-rule: 1px solid $c-background;
+
+  > * {
+    break-inside: avoid;
+  }
+}
+
 .lighthouseNavItem .navItem {
   font-weight: 600;
   font-style: italic;
@@ -175,6 +176,20 @@ $mobileBreakpoint: 890px;
   }
 }
 
+// Accordion control for submenus inside the mobile drawer. Desktop uses :hover instead.
+.expandToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+// Dims the page behind the open mobile drawer, and closes it when tapped.
+.backdrop {
+  display: none;
+}
+
 .menuToggle {
   display: none;
   place-items: center;
@@ -183,22 +198,21 @@ $mobileBreakpoint: 890px;
   padding: 0 1rem;
   line-height: 0;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
   @include transition;
 
   &:hover {
     background: $c-accent;
     color: white;
   }
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: grid;
-  }
 }
 
-.hiddenMobile {
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: none;
-  }
+.localeArea {
+  display: flex;
+  height: 100%;
 }
 
 .suggestedLocale {
@@ -227,4 +241,214 @@ $mobileBreakpoint: 890px;
       cursor: pointer;
     }
   }
+}
+
+// ---------------------------------------------------------------------------
+// Drawer mode
+//
+// Emitted twice, below. How wide the horizontal bar needs to be depends on how
+// long the nav labels are in the active locale - English fits in ~1000px, Greek
+// needs ~1256px - so a single breakpoint can't be right for everyone. Nav
+// measures the bar and sets `narrowNav` on the header when it no longer fits.
+// The media query stays as a floor so phones still get the drawer on the first
+// paint, before that measurement has run.
+//
+// Everything here is scoped under `.nav` so the locale picker (which lives
+// outside it, in the header bar) keeps its existing dropdown behaviour.
+// Selectors are deliberately specific enough to beat the desktop `:hover`
+// rules above, which touch devices still emulate on tap.
+// ---------------------------------------------------------------------------
+@mixin drawerMode {
+  .backdrop {
+    display: block;
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(black, 0.5);
+  }
+
+  .nav {
+    @include flex(column);
+    // Pinned to the viewport rather than the fixed header, so it can own its
+    // own scroll. `bottom: 0` instead of a 100vh height: mobile browser chrome
+    // makes 100vh taller than the visible area.
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 2;
+    width: min(85vw, 20rem);
+    height: auto;
+    background: $c-background-dark;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: -0.2em 0 0.6em rgba(black, 0.4);
+    @include dark_scrollbar;
+  }
+
+  // Rows keep their height once the list overflows the drawer.
+  .nav > .navItemWrapper {
+    flex-shrink: 0;
+  }
+
+  // `height: 100%` is for the horizontal desktop bar; in the drawer it would
+  // resolve against an expanded wrapper and swallow the submenu below it.
+  .nav .navItem {
+    height: auto;
+    min-height: 3em;
+  }
+
+  .nav > .navItemWrapper > .navItem {
+    border-left: none;
+    border-bottom: 1px solid $c-background;
+  }
+
+  // Leave room for the expand toggle, and drop the desktop corner flag.
+  .nav > .navItemMenuFlag > .navItem {
+    padding-right: 3.5rem;
+  }
+
+  .nav > .navItemMenuFlag::after {
+    content: none;
+  }
+
+  .nav .expandToggle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    // Match the row's own 3em at the nav item's 1rem, not the header's 1.2rem.
+    font-size: 1rem;
+    width: 3em;
+    height: 3em;
+    padding: 0;
+    border-left: 1px solid $c-background;
+    color: $c-text-light;
+    cursor: pointer;
+    @include transition;
+
+    svg {
+      font-size: 1.4em;
+      @include transition;
+    }
+
+    &:hover {
+      background: $c-accent;
+      color: white;
+    }
+  }
+
+  .nav .navItemWrapper.expanded > .expandToggle svg {
+    transform: rotate(180deg);
+  }
+
+  // Submenus become collapsible sections rather than absolute dropdowns.
+  .nav .navItemWrapper > .subNav {
+    position: relative;
+    top: auto;
+    right: auto;
+    flex-wrap: nowrap;
+    min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: none;
+    transition:
+      max-height 0.25s ease,
+      opacity 0.15s ease,
+      visibility 0.15s ease;
+  }
+
+  .nav .navItemWrapper > .subNav .navItem {
+    height: auto;
+    flex-shrink: 0;
+    padding: 0 0.8rem;
+    border-left: 1em solid $c-background-light;
+
+    &:hover {
+      border-left: 1em solid $c-accent-light;
+    }
+  }
+
+  .nav .navItemWrapper.expanded > .subNav {
+    max-height: 40em;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // Locale menu. Same overlay as the drawer, but tap-triggered rather than
+  // hover, and it keeps its narrower rows - 26 locales at 3em would be absurd.
+  //
+  // Drop the desktop dropdown's `transition: all`. Here it would animate
+  // between two completely different boxes - an absolutely positioned 26rem
+  // dropdown and a fixed full-height panel - so it slid up from the bottom of
+  // the screen on open (`top: 100%` means the viewport once the panel is fixed,
+  // not the row) and flashed the two-column desktop layout on the way out as
+  // the width animated back. It also inherited the 0.2s hover delay, which
+  // touch triggers on tap. The nav drawer doesn't animate either.
+  .navItemWrapper.compactNavItemWrapper > .subNav {
+    transition: none;
+  }
+
+  .compactNavItemWrapper:hover > .subNav {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .compactNavItemWrapper.expanded > .subNav {
+    position: fixed;
+    top: $v-header-height;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 2;
+    width: min(85vw, 20rem);
+    min-width: 0;
+    max-height: none;
+    flex-wrap: nowrap;
+    visibility: visible;
+    opacity: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: -0.2em 0 0.6em rgba(black, 0.4);
+    @include dark_scrollbar;
+  }
+
+  .compactNavItemWrapper.expanded > .subNav .localeColumns {
+    column-count: 1;
+  }
+
+  // Narrower than the drawer's rows, but still a 44px touch target. Padding is
+  // inside that 44px, so border-box rather than the page default content-box.
+  .compactNavItemWrapper.expanded > .subNav .navItem {
+    box-sizing: border-box;
+    height: auto;
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+
+  .menuToggle {
+    display: grid;
+  }
+
+  .hiddenMobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+  @include drawerMode;
+}
+
+// Set on #mainheader by Nav once it has measured that the bar no longer fits.
+:global(.narrowNav) {
+  @include drawerMode;
 }

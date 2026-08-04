@@ -1,12 +1,20 @@
 {
-  "d1p": "Sluit asseblief tydelik by ons aan op <lnk>Patreon</lnk> , wag tot die einde van die maand wanneer jou betaling gemaak word, en kanselleer dan jou rekening.",
-  "d1t": "Skenkings onder $20",
   "d2b1": "Skenk op PayPal",
   "d2b2": "Skenk op Ko-fi",
   "d2p": "Om 'n eenmalige skenking te maak, gebruik asseblief PayPal of Ko-fi:",
-  "d2t": "Groter skenkings",
   "description": "Hoe om 'n eenmalige skenking aan Poly Haven te maak.",
+  "help-contribute": "<lnk>Draag 'n bate by</lnk> wat jy gemaak het tot die biblioteek.",
+  "help-corporate": "As jy namens 'n maatskappy gee, sien ons <lnk>korporatiewe vennootskappe</lnk> bladsy.",
+  "help-share": "Vertel ander mense van ons. Ons plaas nie advertensies nie, so mond-tot-mond is hoe die meeste mense ons vind.",
+  "help-t": "Ander maniere om te help",
+  "help-translate": "<lnk>Help vertaal</lnk> die webwerf in jou taal.",
+  "intro": "Elke bate op Poly Haven is gratis en in die publieke domein, sonder 'n betaalmuur, sonder 'n rekening, en sonder advertensies. Dit is slegs moontlik omdat die mense wat ons bates gebruik, kies om vir hulle te betaal namens almal anders.",
+  "one-time-t": "Eenmalige donasies",
   "p1": "Om 'n volhoubare oop projek te wees, hou ons van 'n <lnk1>voorspelbare begroting</lnk1>. Om 'n baie wisselende inkomste te hê, maak dit vir ons moeilik om vooruit te beplan en personeel langtermyn aan te stel. Ons sal dit verkies as jy 'n <lnk2>klein maandelikse bedrag</lnk2> as 'n skenking gee oor 'n lang termyn plaas van 'n enkele enkelbedrag.",
   "p2": "Dit gesê, ons aanvaar natuurlik skenkings van enige aard :)",
-  "title": "Maak 'n eenmalige skenking"
+  "page-description": "Ondersteun Poly Haven met 'n maandelikse of eenmalige donasie, en help om ons 3D-bates gratis vir almal te hou.",
+  "page-title": "Doneer aan Poly Haven",
+  "title": "Maak 'n eenmalige skenking",
+  "where-p": "Donasies betaal die salarisse van ons kunstenaars, die bedieners en stoor wat verskeie miljoene aflaaie per maand lewer, en die toerusting wat ons gebruik om nuwe bates te maak. Ons publiseer elke sent wat ons verdien en spandeer in ons <lnk>finansiële verslae</lnk>.",
+  "where-t": "Waar jou geld gaan"
 }

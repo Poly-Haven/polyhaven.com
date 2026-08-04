@@ -1,0 +1,28 @@
+{
+  "future": {
+    "day_one": "{{count}} ngày nữa",
+    "day_other": "{{count}} ngày nữa",
+    "hour_one": "{{count}} giờ nữa",
+    "hour_other": "{{count}} giờ nữa",
+    "month_one": "{{count}} tháng nữa",
+    "month_other": "{{count}} tháng nữa",
+    "week_one": "{{count}} tuần nữa",
+    "week_other": "{{count}} tuần nữa",
+    "year_one": "{{count}} năm nữa",
+    "year_other": "{{count}} năm nữa"
+  },
+  "new": "Mới",
+  "past": {
+    "day_one": "{{count}} ngày trước",
+    "day_other": "{{count}} ngày trước",
+    "hour_one": "{{count}} giờ trước",
+    "hour_other": "{{count}} giờ trước",
+    "month_one": "{{count}} tháng trước",
+    "month_other": "{{count}} tháng trước",
+    "week_one": "{{count}} tuần trước",
+    "week_other": "{{count}} tuần trước",
+    "year_one": "{{count}} năm trước",
+    "year_other": "{{count}} năm trước"
+  },
+  "today": "Hôm nay"
+}

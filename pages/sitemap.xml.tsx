@@ -2,6 +2,7 @@ import React from 'react'
 import fs from 'fs'
 
 import { removeExtension } from 'utils/stringUtils'
+import taxonomy from 'constants/taxonomy.json'
 
 const Sitemap = () => {}
 
@@ -9,19 +10,27 @@ export const getServerSideProps = async ({ res }) => {
   const baseUrl = 'https://polyhaven.com'
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
+  // Hand-maintained, so keep it in step with pages/. Anything that redirects (e.g. /faq, which
+  // 308s to docs.polyhaven.com, and /plugins/unreal) must stay out - a sitemap should only ever
+  // list URLs that answer 200.
   const staticPages = [
     '', // Home
     'collections',
     'about-contact',
     'contribute',
-    'faq',
+    'corporate',
+    'donate',
     'finance-reports',
+    'gallery',
     'license',
     'logo',
     'map',
     'our-api',
+    'plugins/blender',
     'privacy',
+    'project/lighthouse',
     'stats',
+    'tools',
     'vaults',
     'tools/ev-diff',
   ].map((page) => {
@@ -46,34 +55,63 @@ export const getServerSideProps = async ({ res }) => {
       }
     })
 
-  // Categories
-  let types = []
-  await fetch(`${apiUrl}/categories/all`)
+  // Course landing pages (the lecture pages themselves are gated, so they stay out).
+  await fetch(`${apiUrl}/courses`)
     .then((response) => response.json())
     .then((resdata) => {
-      for (const type of Object.keys(resdata)) {
-        if (type === 'all') continue
-        types.push(type)
-        dynamicPages[`https://polyhaven.com/${type}`] = {
+      for (const [id, course] of Object.entries(resdata)) {
+        // Placeholder documents (no name) 404 on the course page, so keep them out of the sitemap.
+        if (!course || !(course as any).name) continue
+        dynamicPages[`${baseUrl}/learn/${id}`] = {
           lastmod: new Date().toISOString(),
-          changefreq: 'daily',
-          priority: '1.0',
+          changefreq: 'monthly',
+          priority: '0.8',
         }
       }
     })
-  for (const type of types) {
-    await fetch(`${apiUrl}/categories/${type}`)
-      .then((response) => response.json())
-      .then((resdata) => {
-        for (const cat of Object.keys(resdata)) {
-          if (cat === 'all') continue
-          dynamicPages[`https://polyhaven.com/${type}/${encodeURIComponent(cat)}`] = {
-            lastmod: new Date().toISOString(),
-            changefreq: 'monthly',
-            priority: '0.5',
+    .catch(() => {}) // a courses hiccup shouldn't take down the whole sitemap
+
+  // Collection and vault detail pages. Both index pages were listed but neither linked its
+  // members from the sitemap, so the detail pages had no discovery path of their own.
+  await Promise.all(
+    [
+      { path: 'collections', endpoint: '/collections' },
+      { path: 'vaults', endpoint: '/vaults' },
+    ].map(({ path, endpoint }) =>
+      fetch(`${apiUrl}${endpoint}`)
+        .then((response) => response.json())
+        .then((resdata) => {
+          for (const id of Object.keys(resdata)) {
+            dynamicPages[`${baseUrl}/${path}/${id}`] = {
+              lastmod: new Date().toISOString(),
+              changefreq: 'monthly',
+              priority: '0.6',
+            }
           }
+        })
+        .catch(() => {}) // one bad endpoint shouldn't take down the whole sitemap
+    )
+  )
+
+  // Categories - the single-path taxonomy, straight from the bundled tree. Deeper categories get a
+  // slightly lower priority so the broad landing pages stay the strongest entry points.
+  for (const type of Object.keys(taxonomy.types)) {
+    dynamicPages[`${baseUrl}/${type}`] = {
+      lastmod: new Date().toISOString(),
+      changefreq: 'daily',
+      priority: '1.0',
+    }
+    const walk = (nodes, depth) => {
+      for (const node of nodes) {
+        dynamicPages[`${baseUrl}/${type}/${node.slugPath}`] = {
+          lastmod: new Date().toISOString(),
+          changefreq: 'monthly',
+          priority: depth === 0 ? '0.7' : depth === 1 ? '0.5' : '0.3',
         }
-      })
+        walk(node.children, depth + 1)
+      }
+    }
+    walk(taxonomy.types[type], 0)
   }
 
   // Compile sitemap
@@ -100,8 +138,11 @@ export const getServerSideProps = async ({ res }) => {
               <changefreq>${dynamicPages[url].changefreq}</changefreq>
               <priority>${dynamicPages[url].priority}</priority>
               ${
-                dynamicPages[url].img &&
-                dynamicPages[url].img.map((u) => `<image:image><image:loc>${u}</image:loc></image:image>`).join('')
+                // Ternary, not `&&` — a bare `&&` renders the literal string
+                // "undefined" into every <url> that has no images.
+                dynamicPages[url].img
+                  ? dynamicPages[url].img.map((u) => `<image:image><image:loc>${u}</image:loc></image:image>`).join('')
+                  : ''
               }
             </url>
           `

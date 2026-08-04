@@ -1,12 +1,20 @@
 {
-  "d1p": "Lütfen geçici olarak bize katılın<lnk>Patreon</lnk>, ödemenizin yapıldığı ayın sonunu bekleyin ve ardından hesabınızı iptal edin.",
-  "d1t": "20 doların altındaki bağışlar",
   "d2b1": "PayPal ile bağış yapın",
   "d2b2": "Ko-fi ile bağış yapın",
   "d2p": "Tek seferlik bağış yapmak için lütfen PayPal veya Ko-fi kullanın:",
-  "d2t": "Daha büyük bağışlar",
   "description": "Poly Haven'a bir kerelik bağış nasıl yapılır.",
-  "p1": "Sürdürülebilir bir açık proje olmak için,<lnk1> öngörülebilir bütçe</lnk1> . Son derece değişken bir gelire sahip olmak önceden plan yapmamızı ve uzun vadeli personel kiralamamızı zorlaştırıyor. Toplu tek bir ödemeden daha uzun vadede <lnk2> aylık küçük bir miktar</lnk2> bağış yapmanızı tercih ederiz. ",
+  "help-contribute": "<lnk>Kütüphaneye yaptığınız bir varlığı katkıda bulunun</lnk>.",
+  "help-corporate": "Eğer bir şirket adına bağış yapıyorsanız, <lnk>şirket ortaklıkları</lnk> sayfamıza bakın.",
+  "help-share": "Diğer insanlara bizi anlatın. Reklam vermiyoruz, bu yüzden çoğu insan bizi ağızdan ağıza duyuyor.",
+  "help-t": "Yardım etmenin diğer yolları",
+  "help-translate": "<lnk>Siteyi kendi dilinize çevirin</lnk>.",
+  "intro": "Poly Haven'deki her varlık ücretsizdir ve kamu malıdır, hiçbir ödeme duvarı, hesap ve reklam yoktur. Bu, varlıklarımızı kullanan insanların, başkaları adına onları ödemeyi seçmesinden dolayı mümkündür.",
+  "one-time-t": "Tek seferlik bağışlar",
+  "p1": "Sürdürülebilir bir açık proje olmak için, <lnk1>öngörülebilir bütçe</lnk1>. Son derece değişken bir gelire sahip olmak önceden plan yapmamızı ve uzun vadeli personel kiralamamızı zorlaştırıyor. Toplu tek bir ödemeden daha uzun vadede <lnk2>aylık küçük bir miktar</lnk2> bağış yapmanızı tercih ederiz.",
   "p2": "Bununla birlikte, elbette her türlü bağışı kabul ediyoruz :)",
-  "title": "Tek seferlik bağış yapın"
+  "page-description": "Poly Haven'ı aylık veya tek seferlik bir bağışla destekleyin ve 3D varlıklarımızın herkes için ücretsiz kalmasına yardımcı olun.",
+  "page-title": "Poly Haven'a bağış yapın",
+  "title": "Tek seferlik bağış yapın",
+  "where-p": "Bağışlar, sanatçılarımızın maaşlarını, ayda birkaç milyon indirme sağlayan sunucuları ve depolamayı ve yeni varlıklar yapmak için kullandığımız ekipmanı finanse eder. Kazandığımız ve harcadığımız her kuruşu <lnk>finans raporlarımızda</lnk> yayımlıyoruz.",
+  "where-t": "Paranız nereye gidiyor"
 }

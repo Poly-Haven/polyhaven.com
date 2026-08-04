@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import LazyLoad from 'react-lazy-load'
 import debounce from 'lodash.debounce'
@@ -16,11 +16,13 @@ import { assetTypeName } from 'utils/assetTypeName'
 import apiSWR from 'utils/apiSWR'
 import useStoredState from 'hooks/useStoredState'
 import { useUserPatron } from 'contexts/UserPatronContext'
+import { nodeFromPath, ancestorsOf, categoryLabel } from 'utils/taxonomy'
+import { filterAssets } from 'utils/assetFiltering'
 
 import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
+import Breadcrumbs from './Breadcrumbs'
 import Spinner from 'components/UI/Spinner/Spinner'
-import DisplayAd from 'components/Ads/DisplayAd'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Switch from 'components/UI/Switch/Switch'
@@ -89,8 +91,8 @@ const Grid = (props) => {
   }, [props.assetType])
   const refCategories = useRef(null)
   useEffect(() => {
-    refCategories.current = props.categories
-  }, [props.categories])
+    refCategories.current = props.categoryPath ? [props.categoryPath] : []
+  }, [props.categoryPath])
 
   const sortBy = {
     hot: (d: Object) => {
@@ -160,8 +162,20 @@ const Grid = (props) => {
     []
   )
 
+  // The input is the source of truth while typing, and the URL catches up on the debounce. Only adopt
+  // an incoming value when it didn't originate here (back/forward, or a cleared search), otherwise
+  // the lagging prop would overwrite what's being typed.
+  const localSearchRef = useRef(props.search)
+  useEffect(() => {
+    if (props.search !== localSearchRef.current) {
+      localSearchRef.current = props.search
+      setSearchInputFieldText(props.search)
+    }
+  }, [props.search])
+
   const setSearch = (event) => {
     const newSearchText = event.target.value
+    localSearchRef.current = newSearchText
     // FIX: Unfortunately, if the user starts typing a lot of characters really fast
     // into the search input field, something like this:
     // "alsjdfllakjsdfkjahsdfahsdjfoijwqoeifjhweoifhuipewowjerfjwoiefhwiaeohfoawiejfew"
@@ -176,11 +190,15 @@ const Grid = (props) => {
     event.preventDefault()
   }
   const resetSearch = () => {
+    localSearchRef.current = ''
     setSearchInputFieldText('')
     props.setSearchDebounced('')
   }
 
   const asset_type_name = assetTypeName(props.assetType)
+
+  const activeNode = props.categoryPath ? nodeFromPath(props.assetType, props.categoryPath) : null
+  const categoryTrail = activeNode ? [...ancestorsOf(props.assetType, activeNode), activeNode] : []
 
   const setHeaderPath = () => {
     let path = ''
@@ -196,9 +214,8 @@ const Grid = (props) => {
         link += `/${props.assetType}`
         path += `<a href=${encodeURI(link)}>${tc(asset_type_name)}</a> /`
       }
-      for (const c of props.categories) {
-        link += `/${c}`
-        path += ` <a href=${encodeURI(link)}>${tcat(c)}</a> /`
+      for (const node of categoryTrail) {
+        path += ` <a href=${encodeURI(`/${props.assetType}/${node.slugPath}`)}>${categoryLabel(tcat, node)}</a> /`
       }
     }
     document.getElementById('header-frompath').innerHTML = path.trim()
@@ -206,15 +223,25 @@ const Grid = (props) => {
 
   const blurUpcoming = !earlyAccess
 
-  let data = {}
-  let urlParams = `?t=${props.assetType}&future=true`
-  if (props.categories.length) {
-    urlParams += '&c=' + props.categories.join(',')
-  }
-  const { data: publicData, error: publicError } = apiSWR(`/assets${urlParams}`, { revalidateOnFocus: false })
-  if (publicData && !publicError) {
-    data = { ...data, ...publicData }
-  }
+  // Fetch every asset of this type once, then narrow it down in the browser. The category tree and
+  // attribute facets share this exact request (SWR dedupes), which keeps their counts consistent
+  // with the grid and makes filtering instant.
+  const { data: publicData, error: publicError } = apiSWR(`/assets?t=${props.assetType}&future=true`, {
+    revalidateOnFocus: false,
+  })
+  const data = useMemo(
+    () =>
+      publicData && !publicError
+        ? filterAssets(publicData, {
+            categoryPath: props.categoryPath,
+            attributes: props.attributes,
+            collection: props.collection ? props.collection.id : null,
+            vault: props.vault ? props.vault.id : null,
+            assetType: props.assetType,
+          })
+        : {},
+    [publicData, publicError, props.categoryPath, props.attributes, props.collection, props.vault, props.assetType]
+  )
 
   if (data) {
     sortedKeys = sortBy[props.sort](data)
@@ -265,20 +292,6 @@ const Grid = (props) => {
     }
   }
 
-  let title = tc(asset_type_name)
-  if (props.collection) {
-    title = ''
-  } else if (props.vault) {
-    title = ''
-  } else {
-    if (props.categories.length) {
-      title = tc(asset_type_name) + ': ' + titleCase(props.categories.map((c) => tcat(c)).join(' > '))
-    }
-    if (props.author) {
-      title += ` (${t('library:by-author', { author: props.author })})`
-    }
-  }
-  const fSize = Math.floor(title.length / 17.5) // Rough detection of line length used to reduce font size.
 
   const resetNews = () => {
     for (const key of Object.keys(localStorage)) {
@@ -329,10 +342,17 @@ const Grid = (props) => {
         <div className={styles.gridHeaderWrapper}>
           <div className={styles.gridHeader}>
             <div className={styles.gridTitle}>
-              <h1 className={styles['s' + fSize]}>{title}</h1>
-              {props.author ? (
-                <MdClose onClick={(_) => props.setAuthor(undefined)} data-tip={t('library:Clear author')} />
-              ) : null}
+              <Breadcrumbs
+                assetType={props.assetType}
+                assetTypeLabel={tc(asset_type_name)}
+                categoryPath={props.categoryPath}
+                author={props.author}
+                setAuthor={props.setAuthor}
+                collection={props.collection}
+                vault={props.vault}
+                tcat={tcat}
+                t={t}
+              />
             </div>
             <div className={styles.options}>
               <div className={styles.advWrapper}>
@@ -361,9 +381,6 @@ const Grid = (props) => {
                 </p>
               }
             </div>
-          </div>
-          <div className={styles.adGridTop}>
-            <DisplayAd id="grid" x={728} y={90} />
           </div>
         </div>
         {showAdvanced ? (
