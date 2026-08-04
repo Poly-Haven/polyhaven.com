@@ -6,26 +6,16 @@ import Heart from 'components/UI/Icons/Heart'
 
 import styles from './CourseMilestone.module.scss'
 
-/* ───────────────────────────────────────────────────────────────────────────
- * INJECTED milestone — TEMPORARY
- *
- * The course's "free for everyone" goal hasn't been added to the /milestones
- * database yet. We inject it client-side here so this section can render now.
- * When it's added to the DB, delete this constant and read the milestone from
- * `data.milestones` instead (see `milestone` below).
- * ─────────────────────────────────────────────────────────────────────────── */
-const INJECTED_MILESTONE = { text: 'Free Photogrammetry Course', target: 4800 }
-
 // Deterministic formatting (explicit locale) so SSR and client output match.
 const fmt = (n: number) => n.toLocaleString('en-US')
 
 const CourseMilestone = ({ patreonUrl }: { patreonUrl: string }) => {
   const { data } = apiSWR('/milestones', { revalidateOnFocus: false })
 
-  // Inject the course goal until it lives in the DB (see the note above).
-  // Later: `const milestone = data?.milestones.find((m) => m.id === 'course_photogrammetry')`
-  const milestone = INJECTED_MILESTONE
+  const milestone = data?.milestones.find((m) => m.key === 'course_photogrammetry')
   const numPatrons: number | null = data?.numPatrons ?? null
+
+  if (!milestone) return null
 
   const target = milestone.target
   const pct = numPatrons != null ? Math.min(100, (numPatrons / target) * 100) : 0
