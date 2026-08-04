@@ -90,11 +90,8 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
         type="button"
         className={`${styles.attrChip} ${on ? styles.attrChipOn : ''}`}
         onClick={() => toggle(key, value)}
-        title={spec.description}
       >
-        {bool ? (
-          <span className={styles.attrCheckbox}>{on ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}</span>
-        ) : null}
+        {bool ? <span className={styles.attrCheckbox}>{on ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}</span> : null}
         {bool ? label(key) : valueLabel(value)}
         <span className={styles.attrCount}>{(counts[key] && counts[key][value]) || 0}</span>
       </button>
