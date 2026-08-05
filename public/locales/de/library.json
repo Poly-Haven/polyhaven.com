@@ -59,7 +59,7 @@
       "outdoor": "Verwendung im Außenbereich"
     },
     "sky_view": {
-      "obstructed": "Eingeschränkte Himmelsicht",
+      "obstructed": "Eingeschränkte Himmelssicht",
       "open": "Freier Himmel"
     },
     "surface_use": {
@@ -116,7 +116,7 @@
     "open": "Frei",
     "outdoor": "Im Freien",
     "overcast": "Bedeckt",
-    "painted": "Bemahlt",
+    "painted": "Bemalt",
     "paper": "Papier",
     "partly_cloudy": "Teilweise bewölkt",
     "paving": "Wegebelag",
