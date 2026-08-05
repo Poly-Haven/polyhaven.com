@@ -13,7 +13,7 @@
      "dusk",
      "night"
     ],
-    "description": "Best single time-of-day; null for time-less indoor/studio."
+    "description": "Time of day the DAYLIGHT indicates. Null whenever no daylight reaches the capture - a windowless room and a lamp-lit studio have no time of day however bright they look, and darkness from switched-off lights is not \"night\"."
    },
    "weather": {
     "type": "enum|null",
@@ -26,7 +26,7 @@
      "rain",
      "snow"
     ],
-    "description": "Dominant sky/weather."
+    "description": "Condition of the sky, judged from the sky itself or from the daylight it casts. Null whenever you cannot actually see it - any interior no daylight reaches, including every artificially lit studio. Do not answer \"clear\" for the absence of weather."
    },
    "light_type": {
     "type": "enum",
