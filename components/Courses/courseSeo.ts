@@ -73,7 +73,7 @@ export const COURSE_SEO: Record<string, CourseSeo> = {
         'https://i.ytimg.com/vi/YdYgZsjqoQw/maxresdefault.jpg',
         'https://i.ytimg.com/vi/YdYgZsjqoQw/hqdefault.jpg',
       ],
-      uploadDate: '2026-07-29',
+      uploadDate: '2026-08-04T07:16:46-07:00',
       duration: 'PT1M19S', // 79s, per YouTube
     },
   },
