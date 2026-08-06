@@ -1,5 +1,5 @@
 {
-  "add-yours": "添加你的作品",
+  "add-yours": "添加您的作品",
   "author-donated": "该资产由其作者无偿捐赠给Poly Haven :)",
   "author_one": "作者",
   "author_other": "作者",
@@ -23,17 +23,17 @@
   "downloads-pd": "次/天",
   "early-access": {
     "already-patron": "已经是赞助人？<loginLink>登录</loginLink>。",
-    "donate-access": "捐赠 3 美元即可下载，同时还可下载{{numEaAssets, number}} 其他早期访问资产。",
-    "get-access": "提前访问",
-    "release-date": "该资产将被释放：<br/><strong>{{scheduleText}}</strong>",
-    "title": "即将推出"
+    "donate-access": "捐赠 3 美元即可立即下载，同时还可下载其他 {{numEaAssets, number}} 项抢先体验资产。",
+    "get-access": "获取抢先体验",
+    "release-date": "该资产将于以下时间发布：<br/><strong>{{scheduleText}}</strong>",
+    "title": "即将到来！"
   },
   "formats": {
     "exr": "每通道真32位，无损压缩。",
     "hdr": "通常比EXR更小，支持更广泛，但少数情况下颜色不太准确。",
-    "incl-tex": "包含所有选定的纹理贴图。",
+    "incl-tex": "包含所需的全部贴图。",
     "most-software": "大多数3D软件都在某些程度上支持，但材质可能需要手动设置。",
-    "some-software": "被某些3D软件支持。",
+    "some-software": "部分3D软件支持。",
     "thumb": "缩略图/预览",
     "thumb-d": "缩略图可用于您的资产管理器。",
     "tm": "HDRI的低动态范围预览图。有时可用作预览，或用于非CG相关用途，但不要用于照明。",
@@ -41,7 +41,7 @@
   },
   "no-files": "没有文件",
   "no-files-d": "请尝试刷新，或者向我们提交报告。",
-  "no-renders": "还没有作品，<lnk>添加你的作品</lnk>。",
+  "no-renders": "还没有作品，<lnk>添加您的作品</lnk>。",
   "nor-standard": "法线贴图标准：",
   "released": "发布时间",
   "similar-assets": "类似资产",
@@ -55,11 +55,11 @@
     "about": "关于",
     "access-now": "立即访问",
     "already-patron": "已经是赞助人？<loginLink>登录</loginLink>。",
-    "donate-access": "在 Patreon 上捐赠 3 美元就能下载它，以及{{totalVaultedAssets, number}} 其他金库资产。",
-    "locked-in": "这笔资产被锁在<vaultLink>{{vault}} 的保险库</vaultLink>中。",
-    "patrons-needed": "当我们获得{{remaining, number}} 更多赞助时，将向所有人免费发布。",
-    "title": "拱顶资产"
+    "donate-access": "在 Patreon 上捐赠 3 美元即可下载它，以及其他 {{totalVaultedAssets, number}} 项保险库资产。",
+    "locked-in": "该资产被锁定在<vaultLink>{{vault}} 保险库</vaultLink>中。",
+    "patrons-needed": "当我们再获得 {{remaining, number}} 位赞助人时，它将免费向所有人发布。",
+    "title": "保险库资产"
   },
-  "wide": "宽度",
+  "wide": "宽",
   "zip-choose": "选择 ZIP 内容："
 }
