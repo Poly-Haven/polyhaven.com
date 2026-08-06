@@ -59,7 +59,7 @@
       "outdoor": "Verwendung im Außenbereich"
     },
     "sky_view": {
-      "obstructed": "Eingeschränkte Himmelssicht",
+      "obstructed": "Verdeckter Himmel",
       "open": "Freier Himmel"
     },
     "surface_use": {
