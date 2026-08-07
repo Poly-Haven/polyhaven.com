@@ -23,9 +23,9 @@
   "downloads-pd": "하루에",
   "early-access": {
     "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
-    "donate-access": "3달러를 기부하면 {{numEaAssets, number}} 다른 얼리 액세스 에셋과 함께 지금 다운로드할 수 있습니다.",
+    "donate-access": "3달러를 기부하면 {{numEaAssets, number}}가지 다른 얼리 액세스 에셋과 함께 지금 다운로드할 수 있습니다.",
     "get-access": "얼리 액세스 받기",
-    "release-date": "이 자산이 공개됩니다:<br/><strong>{{scheduleText}}</strong>",
+    "release-date": "이 에셋은 이 날에 출시됩니다:<br/><strong>{{scheduleText}}</strong>",
     "title": "곧 출시됩니다!"
   },
   "formats": {
@@ -57,7 +57,7 @@
     "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
     "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 Vault에 보관된 에셋과 함께 다운로드할 수 있습니다.",
     "locked-in": "이 에셋은 <vaultLink>{{vault}} Vault에 잠겨 있습니다.</vaultLink>",
-    "patrons-needed": "후원자 {{remaining, number}}명을 확보하면 모든 사람에게 무료로 공개할 예정입니다.",
+    "patrons-needed": "후원자 {{remaining, number}}명을 확보하면 모든 사람에게 무료로 출시할 예정입니다.",
     "title": "보관 자산"
   },
   "wide": "너비",
