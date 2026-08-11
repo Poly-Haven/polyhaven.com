@@ -2,6 +2,7 @@ import { useTranslation, Trans } from 'next-i18next'
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
@@ -50,6 +51,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   const { t } = useTranslation('asset')
   const { t: tcat } = useTranslation('categories')
   const { t: tlib } = useTranslation('library')
+  // Dates are formatted against the page's locale, never the runtime default - Node and the
+  // browser resolve that differently, which hydration-mismatches.
+  const router = useRouter()
   const { patron } = useUserPatron()
   const [uuid, setUuid] = useState(null)
   const [pageLoading, setPageLoading] = useState(false)
@@ -347,7 +351,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
                 {exVault.unlocked ? (
                   <p className={styles.unvaultedDate}>
                     {tc('unlocked-on', {
-                      date: new Date(exVault.unlocked).toLocaleDateString(undefined, {
+                      date: new Date(exVault.unlocked).toLocaleDateString(router.locale || 'en', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',

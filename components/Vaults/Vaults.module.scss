@@ -101,6 +101,13 @@
   position: relative;
   overflow: hidden;
 
+  // Off-screen banners are skipped entirely - no layout, paint or compositing for a video and up
+  // to 70 thumbnails nobody is looking at. This is what stops the page getting heavier with every
+  // vault we add. The `auto` keyword makes the browser remember each banner's real height once
+  // rendered, so the scrollbar doesn't jump as they come in and out.
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+
   .vault {
     @include flex(row, true);
     position: relative;
