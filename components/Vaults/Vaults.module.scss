@@ -76,24 +76,24 @@
 // Vaults the community has already unlocked. Kept on the page as a record of what the funding
 // actually achieved, below the vaults still being funded.
 .pastVaults {
-  background: $c-background-dark;
-  padding-top: 3em;
+  padding-top: 5em;
 
-  h2,
-  > p {
-    max-width: 45em;
-    margin: 0 auto;
-    padding: 0 1em;
-    text-align: center;
-  }
+  .pastVaultsHeader {
+    h2,
+    > p {
+      margin: 0 auto;
+      padding: 0 1em;
+      text-align: center;
+    }
 
-  h2 {
-    margin-bottom: 0.3em;
-  }
+    h2 {
+      margin-bottom: 0.3em;
+    }
 
-  > p {
-    margin-bottom: 2em;
-    opacity: 0.8;
+    > p {
+      margin-bottom: 2em;
+      opacity: 0.8;
+    }
   }
 }
 

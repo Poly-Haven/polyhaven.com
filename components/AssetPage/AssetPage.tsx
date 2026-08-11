@@ -335,9 +335,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
 
             {exVault ? (
               <div className={styles.unvaulted}>
-                <h3>
-                  <IoMdUnlock /> {t('unvaulted.title')}
-                </h3>
+                <h3>{t('unvaulted.title')} 🎉</h3>
                 <p>
                   <Trans
                     i18nKey="asset:unvaulted.freed"
@@ -357,7 +355,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
                     })}
                   </p>
                 ) : null}
-                <Button text={t('unvaulted.help-unlock')} href="/vaults" color="red" icon={<HeartLock />} />
+                <Button text={t('unvaulted.help-unlock')} href="/vaults" color="community" icon={<HeartLock />} />
               </div>
             ) : null}
 

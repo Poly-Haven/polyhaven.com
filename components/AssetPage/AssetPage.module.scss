@@ -174,21 +174,19 @@
       }
     }
 
-    // Assets the community freed by hitting a vault's funding goal. Deliberately shares the red of
-    // the vault lock card it replaces - same story, opposite end of it.
     .unvaulted {
       font-size: 0.85em;
-      background: rgba($c-red, 0.1);
-      border: 1px solid rgba($c-red, 0.3);
+      background: rgba($c-community, 0.1);
+      border: 1px solid rgba($c-community, 0.3);
       margin: 0 1rem 1rem;
-      padding: 0.5rem 0.5rem;
+      padding: 0.5rem;
       hyphens: auto;
       text-align: center;
 
       h3 {
         @include flex(row, true, true);
         gap: 0.4em;
-        margin: 0.5em 0;
+        margin: 0.35em 0;
 
         svg {
           flex-shrink: 0;
@@ -198,13 +196,13 @@
         margin: 0.5em 0;
 
         a {
-          color: $c-red;
-          box-shadow: 0 1px 0 $c-red;
+          color: $c-community;
+          box-shadow: 0 1px 0 $c-community;
           @include transition();
 
           &:hover {
-            color: $c-red-light;
-            box-shadow: 0 3px 0 $c-red;
+            color: $c-community-light;
+            box-shadow: 0 3px 0 $c-community;
           }
         }
       }

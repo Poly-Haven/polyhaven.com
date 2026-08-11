@@ -81,18 +81,6 @@ const VaultLanding = ({ vaults }) => {
         ))}
       </div>
 
-      {Object.keys(unlocked).length ? (
-        <div className={styles.pastVaults}>
-          <h2>{t('vaults:past-vaults')}</h2>
-          <p>{t('vaults:past-vaults-intro')}</p>
-          <div className={styles.vaultsList}>
-            {Object.keys(unlocked).map((vaultId) => (
-              <VaultBanner key={vaultId} vault={unlocked[vaultId]} numPatrons={numPatrons} />
-            ))}
-          </div>
-        </div>
-      ) : null}
-
       <div className={styles.infoSection}>
         <div className={styles.row}>
           <FaqItem question={t('vaults:how-it-works')} qID="how-it-works" activeQ={clicked} main>
@@ -154,6 +142,20 @@ const VaultLanding = ({ vaults }) => {
       </div>
 
       <Roadmap vaults />
+
+      {Object.keys(unlocked).length ? (
+        <div className={styles.pastVaults}>
+          <div className={styles.pastVaultsHeader}>
+            <h2>🎉 {t('vaults:past-vaults')}</h2>
+            <p>{t('vaults:past-vaults-intro')}</p>
+          </div>
+          <div className={styles.vaultsList}>
+            {Object.keys(unlocked).map((vaultId) => (
+              <VaultBanner key={vaultId} vault={unlocked[vaultId]} numPatrons={numPatrons} />
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <div className={styles.textSection} style={{ marginBottom: '5em' }}>
         <h1>{t('vaults:faq')}</h1>
