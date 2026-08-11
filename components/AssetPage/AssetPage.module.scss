@@ -181,7 +181,7 @@
       background: rgba($c-red, 0.1);
       border: 1px solid rgba($c-red, 0.3);
       margin: 0 1rem 1rem;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.5rem;
       hyphens: auto;
       text-align: center;
 
@@ -212,6 +212,15 @@
       .unvaultedDate {
         opacity: 0.75;
         font-size: 0.9em;
+      }
+
+      // HeartLock is authored at width/height 100%, so it expands to fill whatever box it lands in.
+      // Button's .icon only sets font-size, which is enough for react-icons (they render at 1em)
+      // but leaves this one unconstrained. Pinned here rather than in Button, because .icon is
+      // shared with Heart, which is a fixed 20px and would shift.
+      a svg {
+        width: 1em;
+        height: 1em;
       }
     }
 
