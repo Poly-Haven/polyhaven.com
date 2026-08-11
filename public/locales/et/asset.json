@@ -50,6 +50,11 @@
   "sponsored-by-none": "Mitte keegi veel :(",
   "tags": "Sildid",
   "tall": "pikk",
+  "unvaulted": {
+    "freed": "See vara oli lukus <vaultLink>{{vault}} Vault</vaultLink> kuni meie toetajad saavutasid selle rahastamise eesmärgi ja vabastasid selle kõigile.",
+    "help-unlock": "Aita avada järgmine Vault",
+    "title": "Avatud kogukonna poolt"
+  },
   "user-renders": "Kasutaja renderid:",
   "vaulted": {
     "about": "Teave",

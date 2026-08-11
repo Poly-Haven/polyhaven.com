@@ -50,6 +50,11 @@
   "sponsored-by-none": "Nikogo (jeszcze) :(",
   "tags": "Tagi",
   "tall": "wysokości",
+  "unvaulted": {
+    "freed": "Ten zasób był zablokowany w <vaultLink>{{vault}} Skarbcu</vaultLink>, dopóki nasi patroni nie osiągnęli celu finansowego i nie uwolnili go dla wszystkich.",
+    "help-unlock": "Pomóż odblokować następny Skarbiec",
+    "title": "Odblokowane przez społeczność"
+  },
   "user-renders": "Projekty Użytkowników:",
   "vaulted": {
     "about": "Więcej informacji",

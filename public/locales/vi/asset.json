@@ -50,6 +50,11 @@
   "sponsored-by-none": "Chưa có ai cả :(",
   "tags": "Thẻ",
   "tall": "cao",
+  "unvaulted": {
+    "freed": "Tài sản này đã bị khóa trong <vaultLink>{{vault}} Vault</vaultLink> cho đến khi các nhà tài trợ của chúng tôi đạt được mục tiêu tài trợ và giải phóng nó cho mọi người.",
+    "help-unlock": "Giúp mở khóa Vault tiếp theo",
+    "title": "Được mở khóa bởi Cộng đồng"
+  },
   "user-renders": "Người dùng Render:",
   "vaulted": {
     "about": "Về chúng tôi",

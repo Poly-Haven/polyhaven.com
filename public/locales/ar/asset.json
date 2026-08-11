@@ -50,6 +50,11 @@
   "sponsored-by-none": "لا أحد حتى الآن :(",
   "tags": "العلامات",
   "tall": "الارتفاع",
+  "unvaulted": {
+    "freed": "تم قفل هذا الأصل في <vaultLink>{{vault}} Vault</vaultLink> حتى وصل رعاتنا إلى هدف التمويل الخاص به وأطلقوه للجميع.",
+    "help-unlock": "ساعد في فتح القبو التالي",
+    "title": "مفتوح من قبل المجتمع"
+  },
   "user-renders": "تصيير المستخدم:",
   "vaulted": {
     "about": "نبذة عن",

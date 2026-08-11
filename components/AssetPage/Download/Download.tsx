@@ -25,6 +25,7 @@ import Heart from 'components/UI/Icons/Heart'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
+import { countVaultAssets, isVaultLocked, vaultsByStatus } from 'utils/vaults'
 import threeDFormats from 'constants/3D_formats.json'
 import { useUserPatron } from 'contexts/UserPatronContext'
 
@@ -58,14 +59,18 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     setIsClient(true)
   }, [])
 
+  // A released asset keeps its vault id, so both of these key off the lock rather than off `vault`
+  // - otherwise every formerly-vaulted asset page would fetch two endpoints it never reads.
+  const locked = isVaultLocked(data)
+
   // Only fetch milestones when needed
   const { data: milestones, error: milestonesError } = apiSWR(
-    vault || data.date_published * 1000 > Date.now() ? '/milestones' : null,
+    locked || data.date_published * 1000 > Date.now() ? '/milestones' : null,
     { revalidateOnFocus: false }
   )
 
   // Only fetch vaults when needed
-  const { data: vaults, error: vaultsError } = apiSWR(vault ? '/vaults' : null, { revalidateOnFocus: false })
+  const { data: vaults, error: vaultsError } = apiSWR(locked ? '/vaults' : null, { revalidateOnFocus: false })
 
   useEffect(() => {
     if (milestones && !milestonesError) {
@@ -79,13 +84,9 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       if (vaults[vault]) {
         setTargetPatrons(vaults[vault].target)
       }
-      let totalAssets = 0
-      for (const v of Object.values(vaults)) {
-        if (v['assets']) {
-          totalAssets += v['assets'].length
-        }
-      }
-      setTotalVaultedAssets(totalAssets)
+      // Only locked vaults count: this number sells a Patreon tier ("along with N other vaulted
+      // assets"), so counting released ones would overstate what the money actually buys.
+      setTotalVaultedAssets(countVaultAssets(vaultsByStatus(vaults, 'locked')))
     }
   }, [vaults, vaultsError, vault])
 
@@ -128,8 +129,9 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     )
   }
 
-  // Asset is vaulted, user is not a patron
-  if (vault && !earlyAccess) {
+  // Asset is still locked in a vault, user is not a patron. Note this is the lock, not `vault`:
+  // assets released when their vault was unlocked keep the id so we can credit the vault.
+  if (locked && !earlyAccess) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
       return (
         <div className={styles.unreleased}>

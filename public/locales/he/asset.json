@@ -50,6 +50,11 @@
   "sponsored-by-none": "אף אחד עדיין לא :(",
   "tags": "תגים",
   "tall": "גָבוֹהַ",
+  "unvaulted": {
+    "freed": "הנכס הזה היה נעול ב<vaultLink>{{vault}} Vault</vaultLink> עד שהתומכים שלנו הגיעו למטרת המימון שלו ושחררו אותו לכולם.",
+    "help-unlock": "עזור לשחרר את ה-Vault הבא",
+    "title": "שוחרר על ידי הקהילה"
+  },
   "user-renders": "עיבודי משתמש:",
   "vaulted": {
     "about": "אוֹדוֹת",

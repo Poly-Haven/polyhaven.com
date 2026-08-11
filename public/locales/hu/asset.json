@@ -50,6 +50,11 @@
   "sponsored-by-none": "Még senki :(",
   "tags": "Címkék",
   "tall": "magas",
+  "unvaulted": {
+    "freed": "Ez az eszköz a <vaultLink>{{vault}} Vault</vaultLink> alatt volt zárolva, amíg a támogatóink el nem érték a finanszírozási célt, és nem szabadították fel mindenki számára.",
+    "help-unlock": "Segíts unlockolni a következő Vault-ot",
+    "title": "A közösség által unlockolva"
+  },
   "user-renders": "Felhasználói renderek:",
   "vaulted": {
     "about": "A  oldalról",

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import apiSWR from 'utils/apiSWR'
 import useQuery from 'hooks/useQuery'
 
+import { countVaultAssets, vaultsByStatus } from 'utils/vaults'
+
 import VaultBanner from './VaultBanner'
 import DonationBox from 'components/DonationBox/DonationBox'
 import HeartLock from 'components/UI/Icons/HeartLock'
@@ -46,12 +48,18 @@ const VaultLanding = ({ vaults }) => {
     }
   }, [query])
 
-  let numAssets = 0
-  for (const vaultId in vaults) {
-    numAssets += vaults[vaultId].assets.length
-  }
+  // `upcoming` vaults are deliberately absent from both lists: they exist so assets can be
+  // uploaded before the vault is announced.
+  const locked = vaultsByStatus(vaults, 'locked')
+  const unlocked = vaultsByStatus(vaults, 'unlocked')
 
-  const nextVault = Object.values(vaults)[0]
+  // Everything the donation copy promises is about vaults you can't reach yet, so released ones
+  // don't count towards it.
+  const numAssets = countVaultAssets(locked)
+
+  // /vaults is sorted by target ascending, so the cheapest unmet goal is the one to point at.
+  // Undefined once every vault has been released - the copy that uses it is skipped in that case.
+  const nextVault: any = Object.values(locked)[0]
 
   return (
     <div className={styles.wrapper}>
@@ -68,10 +76,22 @@ const VaultLanding = ({ vaults }) => {
       </div>
 
       <div className={styles.vaultsList}>
-        {Object.keys(vaults).map((vaultId) => (
-          <VaultBanner key={vaultId} vault={vaults[vaultId]} numPatrons={numPatrons} />
+        {Object.keys(locked).map((vaultId) => (
+          <VaultBanner key={vaultId} vault={locked[vaultId]} numPatrons={numPatrons} />
         ))}
       </div>
+
+      {Object.keys(unlocked).length ? (
+        <div className={styles.pastVaults}>
+          <h2>{t('vaults:past-vaults')}</h2>
+          <p>{t('vaults:past-vaults-intro')}</p>
+          <div className={styles.vaultsList}>
+            {Object.keys(unlocked).map((vaultId) => (
+              <VaultBanner key={vaultId} vault={unlocked[vaultId]} numPatrons={numPatrons} />
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <div className={styles.infoSection}>
         <div className={styles.row}>
@@ -84,19 +104,21 @@ const VaultLanding = ({ vaults }) => {
                 components={{ patreonLink: <a href="https://www.patreon.com/polyhaven" /> }}
               />
             </p>
-            <p>
-              <Trans
-                i18nKey="vaults:how-it-works-p3"
-                t={t}
-                values={{
-                  vaultName: nextVault['name'],
-                  assetsCount: nextVault['assets'].length,
-                  target: nextVault['target'],
-                  remaining: nextVault['target'] - numPatrons,
-                }}
-                components={{ vaultLink: <Link href={`/vaults/${nextVault['id']}`} /> }}
-              />
-            </p>
+            {nextVault ? (
+              <p>
+                <Trans
+                  i18nKey="vaults:how-it-works-p3"
+                  t={t}
+                  values={{
+                    vaultName: nextVault.name,
+                    assetsCount: nextVault.assets.length,
+                    target: nextVault.target,
+                    remaining: nextVault.target - numPatrons,
+                  }}
+                  components={{ vaultLink: <Link href={`/vaults/${nextVault.id}`} /> }}
+                />
+              </p>
+            ) : null}
             <p>
               <Trans i18nKey="vaults:how-it-works-p4" t={t} components={{ strong: <strong /> }} />
             </p>

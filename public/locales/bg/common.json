@@ -87,5 +87,7 @@
   },
   "support-polyhaven": "Подкрепете Poly Haven!",
   "tagline": "Публичната библиотека за 3D активи",
+  "unlocked-free": "Отключено - безплатно за всички",
+  "unlocked-on": "Отключено {{date}}",
   "visible": "Видим"
 }

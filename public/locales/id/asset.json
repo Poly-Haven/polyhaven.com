@@ -50,6 +50,11 @@
   "sponsored-by-none": "Belum ada :(",
   "tags": "Tag",
   "tall": "tinggi",
+  "unvaulted": {
+    "freed": "Aset ini terkunci di <vaultLink>{{vault}} Vault</vaultLink> sampai para patron kami mencapai tujuan pendanaannya dan membebaskannya untuk semua orang.",
+    "help-unlock": "Bantu Buka Vault Berikutnya",
+    "title": "Dibuka oleh Komunitas"
+  },
   "user-renders": "Render Pengguna:",
   "vaulted": {
     "about": "Tentang",

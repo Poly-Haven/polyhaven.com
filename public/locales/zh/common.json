@@ -87,5 +87,7 @@
   },
   "support-polyhaven": "支持Poly Haven！",
   "tagline": "公共3D资源库",
+  "unlocked-free": "已解锁，向所有人免费开放",
+  "unlocked-on": "已于 {{date}} 解锁",
   "visible": "可见"
 }

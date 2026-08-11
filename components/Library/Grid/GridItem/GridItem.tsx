@@ -8,6 +8,7 @@ import { MdCollections } from 'react-icons/md'
 import { TbBone, TbDrone, TbPyramid, TbAspectRatio, TbTool } from 'react-icons/tb'
 
 import { daysOld } from 'utils/dateUtils'
+import { isVaultLocked, vaultOf } from 'utils/vaults'
 import IconPatreon from 'components/UI/Icons/Patreon'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import NodeTree from 'components/UI/Icons/NodeTree'
@@ -48,19 +49,12 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
 
   const legacyCats = Array.isArray(asset.categories) ? asset.categories : []
 
-  // Vault membership is a first-class field now. The legacy category string is only a fallback.
-  let vault = asset.vault || null
-  if (!vault) {
-    for (const cat of legacyCats) {
-      if (cat.startsWith('vault: ')) {
-        vault = cat.split(': ')[1]
-        break
-      }
-    }
-  }
+  const vault = vaultOf(asset)
+  // Released assets keep their vault id, so the badge and the timeago below key off the lock.
+  const locked = isVaultLocked(asset)
 
   let badge
-  if (vault) {
+  if (locked) {
     badge = {
       text: (
         <>
@@ -172,7 +166,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
       </div>
       <div className={styles.text}>
         <h3>{asset.name}</h3>
-        {!vault && <p>{timeago(asset.date_published * 1000, tt)}</p>}
+        {!locked && <p>{timeago(asset.date_published * 1000, tt)}</p>}
       </div>
       {badge ? (
         <div className={`${styles.badge} ${badge.style}`} title={badge.tooltip}>

@@ -50,6 +50,11 @@
   "sponsored-by-none": "まだ誰もいません。:(",
   "tags": "タグ",
   "tall": "高さ",
+  "unvaulted": {
+    "freed": "このアセットは、<vaultLink>{{vault}} Vault</vaultLink>で資金目標に達するまでロックされており、すべての人に解放されました。",
+    "help-unlock": "次のVaultを解除する手助けをしてください",
+    "title": "コミュニティによって解除されました"
+  },
   "user-renders": "ユーザーレンダリング：",
   "vaulted": {
     "about": "について",

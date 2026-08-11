@@ -8,6 +8,27 @@ export function daysOld(epoch) {
   return (Date.now() - epoch * 1000) / 1000 / 60 / 60 / 24
 }
 
+/**
+ * Assets held back for a funding milestone carry a placeholder publish date far in the future
+ * (year 3000) rather than a real one. Anything beyond this cutoff is "unreleased", anything
+ * between now and it is genuinely scheduled. Mirrors SENTINEL_CUTOFF in admin's pureskyScan.
+ */
+export const SENTINEL_CUTOFF = 4_102_444_800 // 2100-01-01
+
+export type ReleaseState = 'unreleased' | 'scheduled' | 'published'
+
+/**
+ * Whether an asset is locked in a vault, on the release schedule, or out. Prefer this over
+ * comparing `date_published` to the clock: the sentinel branch is a constant comparison, so it
+ * resolves identically on the server and during hydration, and an ISR page generated before an
+ * asset's release date can't disagree with the browser rendering it.
+ */
+export function releaseStateOf(datePublished: number, now = Math.floor(Date.now() / 1000)): ReleaseState {
+  if (datePublished > SENTINEL_CUTOFF) return 'unreleased'
+  if (datePublished > now) return 'scheduled'
+  return 'published'
+}
+
 export function timeago(epoch, t, returnList = false) {
   const segments = {
     year: 3.154e10,

@@ -50,6 +50,11 @@
   "sponsored-by-none": "No one yet :(",
   "tags": "Tags",
   "tall": "tall",
+  "unvaulted": {
+    "freed": "This asset was locked in the <vaultLink>{{vault}} Vault</vaultLink> until our patrons reached its funding goal and freed it for everyone.",
+    "help-unlock": "Help Unlock the Next Vault",
+    "title": "Unlocked by the Community"
+  },
   "user-renders": "User Renders:",
   "vaulted": {
     "about": "About",

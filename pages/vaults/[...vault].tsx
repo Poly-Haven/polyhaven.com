@@ -2,6 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Head from 'components/Head/Head'
 import Library from 'components/Library/Library'
+import { isUpcomingVault } from 'utils/vaults'
 
 import asset_types from 'constants/asset_types.json'
 
@@ -51,7 +52,9 @@ export async function getServerSideProps(context) {
     .then((response) => response.json())
     .catch((e) => (error = e))
 
-  if (!Object.keys(vaults).includes(vaultID)) {
+  // Released vaults keep their page as an archive of what the community unlocked. Upcoming ones
+  // have no public existence yet, so they 404 alongside ids that were never vaults at all.
+  if (!vaults?.[vaultID] || isUpcomingVault(vaults[vaultID])) {
     return {
       notFound: true,
       props: {

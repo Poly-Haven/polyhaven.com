@@ -50,6 +50,11 @@
   "sponsored-by-none": "Nog niemand :(",
   "tags": "Tags",
   "tall": "hoog",
+  "unvaulted": {
+    "freed": "Dit bezit was vergrendeld in de <vaultLink>{{vault}} Vault</vaultLink> totdat onze patrons het financieringsdoel bereikten en het voor iedereen vrijgaven.",
+    "help-unlock": "Help de Volgende Vault Ontgrendelen",
+    "title": "Ontgrendeld door de Gemeenschap"
+  },
   "user-renders": "Gebruiker renders:",
   "vaulted": {
     "about": "Over",

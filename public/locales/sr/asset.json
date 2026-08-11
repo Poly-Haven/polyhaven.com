@@ -6,7 +6,7 @@
   "backplates": "Позадине",
   "backplates-description": "Слике испод су засебне фотографије које можете користити као позадинске слике високе резолуције у свом рендеру.<br /> У зависности од ваше резолуције рендеровања и подешавања камере, понекад ХДРИ (чак и веома велики) можда неће имати довољно пиксела да би и даље изгледао оштро у позадини вашег рендеровања. У овим случајевима можете користити једну од ових позадинских плоча у позадини и користити ХДРИ ниже резолуције само за осветљење и рефлексије.",
   "categories": "Категорије",
-  "category": "Kategorija",
+  "category": "Категорија",
   "cloud-sync": "Приступ Ван Мреже",
   "cloud-sync-d": "Подржите нас са 5$ месечно и добијте приступ нашем систему у облаку, што вам омогућава да синхронизујете целу нашу библиотеку са вашим чврстим диском.",
   "coming-soon": "Долази Ускоро!",
@@ -50,6 +50,11 @@
   "sponsored-by-none": "Нико још :(",
   "tags": "Ознаке",
   "tall": "висок",
+  "unvaulted": {
+    "freed": "Ova imovina je bila zaključana u <vaultLink>{{vault}} Trezoru</vaultLink> dok naši donatori nisu dostigli cilj finansiranja i oslobodili je za sve.",
+    "help-unlock": "Pomozite da otključamo sledeći Trezor",
+    "title": "Otključano od strane zajednice"
+  },
   "user-renders": "Кориснички Рендери:",
   "vaulted": {
     "about": "Детаљније",

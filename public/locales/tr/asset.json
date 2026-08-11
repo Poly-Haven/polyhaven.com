@@ -50,6 +50,11 @@
   "sponsored-by-none": "Henüz kimse yok :(",
   "tags": "Etiketler",
   "tall": "uzun boylu",
+  "unvaulted": {
+    "freed": "Bu varlık, <vaultLink>{{vault}} Vault</vaultLink> içinde kilitliydi, ta ki destekçilerimiz finansman hedefine ulaşana kadar ve herkes için serbest bırakılana kadar.",
+    "help-unlock": "Sonraki Vault'u Açmaya Yardımcı Olun",
+    "title": "Topluluk Tarafından Açıldı"
+  },
   "user-renders": "Kullanıcı Çalışmaları:",
   "vaulted": {
     "about": "Hakkında",

@@ -50,6 +50,11 @@
   "sponsored-by-none": "Nessuno ancora :(",
   "tags": "Tag",
   "tall": "alto",
+  "unvaulted": {
+    "freed": "Questo asset era bloccato nel <vaultLink>{{vault}} Vault</vaultLink> fino a quando i nostri sostenitori non hanno raggiunto il suo obiettivo di finanziamento e lo hanno liberato per tutti.",
+    "help-unlock": "Aiuta a sbloccare il prossimo Vault",
+    "title": "Sbloccato dalla Comunità"
+  },
   "user-renders": "Rendering utente:",
   "vaulted": {
     "about": "Circa",

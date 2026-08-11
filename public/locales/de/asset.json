@@ -50,6 +50,11 @@
   "sponsored-by-none": "Noch niemandem :(",
   "tags": "Schlagwörter",
   "tall": "hoch",
+  "unvaulted": {
+    "freed": "Dieses Asset war im <vaultLink>{{vault}} Vault</vaultLink> gesperrt, bis unsere Unterstützer das Finanzierungsziel erreicht haben und es für alle freigegeben wurde.",
+    "help-unlock": "Hilf dabei, den nächsten Vault freizuschalten",
+    "title": "Von der Community freigeschaltet"
+  },
   "user-renders": "Benutzer-Renderings:",
   "vaulted": {
     "about": "Mehr",

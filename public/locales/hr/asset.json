@@ -50,6 +50,11 @@
   "sponsored-by-none": "Još nitko :(",
   "tags": "Oznake",
   "tall": "visok",
+  "unvaulted": {
+    "freed": "Ova imovina je bila zaključana u <vaultLink>{{vault}} Vaultu</vaultLink> dok naši donatori nisu dostigli cilj financiranja i oslobodili je za sve.",
+    "help-unlock": "Pomozi otključati sljedeći Vault",
+    "title": "Otključano od strane zajednice"
+  },
   "user-renders": "Korisnički prikazi:",
   "vaulted": {
     "about": "Oko",

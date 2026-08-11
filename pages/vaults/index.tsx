@@ -4,10 +4,12 @@ import Head from 'components/Head/Head'
 
 import Page from 'components/Layout/Page/Page'
 import VaultLanding from 'components/Vaults/VaultLanding'
+import { vaultsByStatus } from 'utils/vaults'
 
 export default function CollectionsPage({ vaults }) {
   const { t } = useTranslation(['common', 'vaults'])
-  const firstVault = Object.keys(vaults)[0]
+  // The social image should show a vault you can still fund, not one already released.
+  const firstVault = Object.keys(vaultsByStatus(vaults, 'locked'))[0] || Object.keys(vaults)[0]
 
   return (
     <Page>

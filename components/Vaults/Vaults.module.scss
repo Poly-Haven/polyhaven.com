@@ -73,6 +73,30 @@
   background: $c-background-dark;
 }
 
+// Vaults the community has already unlocked. Kept on the page as a record of what the funding
+// actually achieved, below the vaults still being funded.
+.pastVaults {
+  background: $c-background-dark;
+  padding-top: 3em;
+
+  h2,
+  > p {
+    max-width: 45em;
+    margin: 0 auto;
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 0.3em;
+  }
+
+  > p {
+    margin-bottom: 2em;
+    opacity: 0.8;
+  }
+}
+
 .vaultWrapper {
   position: relative;
   overflow: hidden;
@@ -136,6 +160,23 @@
 
     .right {
       margin-top: auto;
+
+      // Stands in for the progress bar on a released vault - same slot, same footprint.
+      .unlockedNote {
+        @include flex(row, true, true);
+        gap: 0.4em;
+        width: calc(100% - 1rem);
+        min-width: 300px;
+        margin: 0.5rem;
+        padding: 0.3em 0;
+        font-weight: bold;
+        color: $c-text-bright;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+
+        svg {
+          flex-shrink: 0;
+        }
+      }
 
       .barWrapper {
         width: calc(100% - 1rem);

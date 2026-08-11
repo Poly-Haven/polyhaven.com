@@ -50,6 +50,11 @@
   "sponsored-by-none": "还没有人赞助呢 :(",
   "tags": "标签",
   "tall": "高",
+  "unvaulted": {
+    "freed": "该资产曾被锁定在<vaultLink>{{vault}} 保险库</vaultLink>中，直到我们的赞助人达成其资助目标，将它免费开放给所有人。",
+    "help-unlock": "帮助解锁下一个保险库",
+    "title": "由社区解锁"
+  },
   "user-renders": "用户渲染作品：",
   "vaulted": {
     "about": "关于",

@@ -5,6 +5,7 @@ import { useUserPatron } from 'contexts/UserPatronContext'
 
 import Button from 'components/UI/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
+import { isUnlockedVault } from 'utils/vaults'
 
 import { IoMdUnlock } from 'react-icons/io'
 import { MdArrowForward } from 'react-icons/md'
@@ -88,6 +89,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
     }
   }, [])
 
+  // A released vault keeps its banner as an archive entry, but everything that sells access to it
+  // goes: the goal is met, and the assets behind it are already free.
+  const released = isUnlockedVault(vault)
   const progressBarPosition = Math.min(1, numPatrons / vault.target)
   return (
     <div className={styles.vaultWrapper}>
@@ -145,7 +149,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
                 href={`/vaults/${vault.id}`}
               />
             )}
-            {!earlyAccess && (
+            {!earlyAccess && !released && (
               <Button
                 text={t('common:access-now')}
                 href="https://www.patreon.com/polyhaven/join?cadence=12"
@@ -155,22 +159,37 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
             )}
           </div>
 
-          <div className={styles.barWrapper}>
-            <div className={styles.barOuter}>
-              <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
-                <div className={styles.barShine} />
-                {numPatrons > 0 ? (
-                  <div className={styles.barText}>
-                    {t('common:n-patrons-to-go', { number: Math.max(0, vault.target - numPatrons) })}
-                  </div>
-                ) : (
-                  <div className={styles.barText}>
-                    <Loader />
-                  </div>
-                )}
+          {released ? (
+            <div className={styles.unlockedNote}>
+              <IoMdUnlock />
+              {vault.unlocked
+                ? t('common:unlocked-on', {
+                    date: new Date(vault.unlocked).toLocaleDateString(undefined, {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }),
+                  })
+                : t('common:unlocked-free')}
+            </div>
+          ) : (
+            <div className={styles.barWrapper}>
+              <div className={styles.barOuter}>
+                <div className={styles.barInner} style={{ width: `${progressBarPosition * 100}%` }}>
+                  <div className={styles.barShine} />
+                  {numPatrons > 0 ? (
+                    <div className={styles.barText}>
+                      {t('common:n-patrons-to-go', { number: Math.max(0, vault.target - numPatrons) })}
+                    </div>
+                  ) : (
+                    <div className={styles.barText}>
+                      <Loader />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {vault.render_credit && (
@@ -191,7 +210,9 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         <div className={styles.assetList}>
           {vault.assets.map((slug) => (
             <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
+              {/* The archive puts several hundred of these on one page, so they load on approach. */}
               <img
+                loading="lazy"
                 src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90&quality=95&sharpen=true`}
               />
             </Link>

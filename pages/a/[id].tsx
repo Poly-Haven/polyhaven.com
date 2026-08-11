@@ -2,6 +2,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'components/Head/Head'
 
 import { assetTypeName } from 'utils/assetTypeName'
+import { vaultOf, vaultStatus } from 'utils/vaults'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
@@ -41,7 +42,7 @@ const fetchOncePerBuild = (path) => {
   return request
 }
 
-const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
+const Page = ({ assetID, data, files, renders, postDownloadStats, vaultInfo }) => {
   const pageUrl = `/a/${assetID}`
   if (!data) {
     return (
@@ -79,6 +80,7 @@ const Page = ({ assetID, data, files, renders, postDownloadStats }) => {
           files={files}
           renders={renders}
           postDownloadStats={postDownloadStats}
+          vaultInfo={vaultInfo}
         />
       </div>
     </div>
@@ -109,9 +111,17 @@ export async function getStaticProps(context) {
         .then(handleErrors)
         .then((response) => response.json())
 
+  // Only the vault that produced this asset is passed down, and only the fields the callout reads:
+  // the full /vaults map carries a slug list per vault, which would land in every page's
+  // __NEXT_DATA__ for nothing. Its catch is deliberately its own and swallows to null - feeding the
+  // shared `error` below would turn a /vaults blip into a data-less render on *every* asset page.
+  const vaultsRequest = (isBuild ? fetchOncePerBuild('/vaults') : fetch(`${baseUrl}/vaults`).then(handleErrors).then((r) => r.json())).catch(
+    () => null
+  )
+
   // None of these depend on each other, so let them overlap instead of running back to back.
   // Each keeps its own catch, so no promise here can reject and fail the whole set.
-  let [info, files, renders, postDownloadStats] = await Promise.all([
+  let [info, files, renders, postDownloadStats, vaults] = await Promise.all([
     infoRequest.catch((e) => (infoError = error = e)),
     fetch(`${baseUrl}/files/${id}`)
       .then(handleErrors)
@@ -122,6 +132,7 @@ export async function getStaticProps(context) {
       .then((response) => response.json())
       .catch((e) => (error = e)),
     statsRequest.catch((e) => (error = e)),
+    vaultsRequest,
   ])
 
   // An id missing from /assets is either unpublished or does not exist, so let /info decide which.
@@ -152,6 +163,9 @@ export async function getStaticProps(context) {
     }
   }
 
+  const vaultId = vaultOf(info)
+  const vault = vaultId && vaults ? vaults[vaultId] : null
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time'])),
@@ -160,6 +174,15 @@ export async function getStaticProps(context) {
       files: files,
       renders: renders,
       postDownloadStats: postDownloadStats,
+      vaultInfo: vault
+        ? {
+            id: vaultId,
+            name: vault.name || null,
+            status: vaultStatus(vault),
+            // A date string ("2025-09-05") when achieved, otherwise false.
+            unlocked: vault.unlocked || null,
+          }
+        : null,
     },
     revalidate: 60 * 60 * 4, // 4 hours
   }

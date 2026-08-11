@@ -50,6 +50,11 @@
   "sponsored-by-none": "Personne pour le moment :(",
   "tags": "Mots clés",
   "tall": "de hauteur",
+  "unvaulted": {
+    "freed": "Cet actif était verrouillé dans le <vaultLink>{{vault}} Coffre</vaultLink> jusqu'à ce que nos mécènes atteignent son objectif de financement et le libèrent pour tout le monde.",
+    "help-unlock": "Aidez à débloquer le prochain coffre",
+    "title": "Débloqué par la communauté"
+  },
   "user-renders": "Rendus d'utilisateurs :",
   "vaulted": {
     "about": "À propos",

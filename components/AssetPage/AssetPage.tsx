@@ -1,10 +1,12 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslation, Trans } from 'next-i18next'
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
+import { inCollection } from 'utils/assetFiltering'
+import { isFormerlyVaulted, isUnlockedVault, isVaultLocked, vaultOf } from 'utils/vaults'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -13,8 +15,10 @@ import useStoredState from 'hooks/useStoredState'
 import { useUserPatron } from 'contexts/UserPatronContext'
 
 import { MdFileDownload, MdLastPage, MdLocationOn, MdShowChart } from 'react-icons/md'
+import { IoMdUnlock } from 'react-icons/io'
 
 import AuthorCredit from 'components/AssetPage/AuthorCredit'
+import HeartLock from 'components/UI/Icons/HeartLock'
 import Carousel from './Carousel/Carousel'
 import Download from './Download/Download'
 import AfterDownload from './AfterDownload'
@@ -40,7 +44,7 @@ const UserRenders = dynamic(() => import('./UserRenders'), { ssr: false })
 const GLTFViewer = dynamic(() => import('./WebGL/GLTFViewer'), { ssr: false })
 const AssetDlGraph = dynamic(() => import('components/Stats/AssetDlGraph'), { ssr: false })
 
-const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
+const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo }) => {
   const { t: tc } = useTranslation('common')
   const { t: tt } = useTranslation('time')
   const { t } = useTranslation('asset')
@@ -93,16 +97,14 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
   const largestAxis = data.dimensions ? data.dimensions.indexOf(largestDimension) : 0
   const sizeWord = data.type === 1 ? ['wide', 'tall', 'ERR'][largestAxis] : ['wide', 'wide', 'tall'][largestAxis]
 
-  // Vault membership is a first-class field now. The legacy category string is only a fallback.
-  let vault = data.vault || null
-  if (!vault) {
-    for (const cat of data.categories) {
-      if (cat.startsWith('vault: ')) {
-        vault = cat.split(': ')[1]
-        break
-      }
-    }
-  }
+  const vault = vaultOf(data)
+  // A released asset keeps its vault id so we can credit the vault that produced it, so anything
+  // that means "still paywalled" has to check the lock, not the id.
+  const vaultLocked = isVaultLocked(data)
+  // Needs both halves to agree: the asset is out of its vault, and the vault is on record as
+  // released. Without the vault doc there is no name to celebrate, and a published asset whose
+  // vault still reads as locked is a data error, not something to put a banner on.
+  const exVault = isFormerlyVaulted(data) && isUnlockedVault(vaultInfo) && vaultInfo?.name ? vaultInfo : null
 
   const assetTypeKey = Object.keys(asset_types)[data.type]
 
@@ -331,7 +333,35 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               </div>
             ) : null}
 
-            {data.categories.includes('collection: project_lighthouse') ? (
+            {exVault ? (
+              <div className={styles.unvaulted}>
+                <h3>
+                  <IoMdUnlock /> {t('unvaulted.title')}
+                </h3>
+                <p>
+                  <Trans
+                    i18nKey="asset:unvaulted.freed"
+                    t={t}
+                    values={{ vault: exVault.name }}
+                    components={{ vaultLink: <Link href={`/vaults/${vault}`} prefetch={false} /> }}
+                  />
+                </p>
+                {exVault.unlocked ? (
+                  <p className={styles.unvaultedDate}>
+                    {tc('unlocked-on', {
+                      date: new Date(exVault.unlocked).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      }),
+                    })}
+                  </p>
+                ) : null}
+                <Button text={t('unvaulted.help-unlock')} href="/vaults" color="red" icon={<HeartLock />} />
+              </div>
+            ) : null}
+
+            {inCollection(data, 'project_lighthouse') ? (
               <div className={styles.community} lang="en" dir="ltr">
                 <h3>Poly Haven's Biggest Project</h3>
                 <p>
@@ -433,7 +463,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats }) => {
               />
             </div>
             <InfoItem label={t('released')}>
-              {vault ? (
+              {vaultLocked ? (
                 <span style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>
                   When the{' '}
                   <Link href={`/vaults/${vault}`} prefetch={false}>

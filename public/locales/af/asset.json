@@ -50,6 +50,11 @@
   "sponsored-by-none": "Nog niemand nie :(",
   "tags": "Merkers",
   "tall": "lank",
+  "unvaulted": {
+    "freed": "Hierdie bates was gesluit in die <vaultLink>{{vault}} Vault</vaultLink> totdat ons borge sy befondsingsdoel bereik het en dit vir almal vrygestel het.",
+    "help-unlock": "Help om die Volgende Vault te Ontsluit",
+    "title": "Ontsluit deur die Gemeenskap"
+  },
   "user-renders": "Gebruikers Kunswerke:",
   "vaulted": {
     "about": "Oor",

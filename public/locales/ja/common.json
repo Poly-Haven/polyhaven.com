@@ -87,5 +87,7 @@
   },
   "support-polyhaven": "ポリヘブンを支援する！",
   "tagline": "パブリック3Dアセットライブラリ",
+  "unlocked-free": "解除 - 誰でも無料",
+  "unlocked-on": "解除 {{date}}",
   "visible": "表示される"
 }

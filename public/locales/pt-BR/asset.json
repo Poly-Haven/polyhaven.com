@@ -50,6 +50,11 @@
   "sponsored-by-none": "Ninguém ainda :(",
   "tags": "Tags",
   "tall": "altura",
+  "unvaulted": {
+    "freed": "Este ativo estava bloqueado no <vaultLink>{{vault}} Cofre</vaultLink> até que nossos patrocinadores atingissem sua meta de financiamento e o liberassem para todos.",
+    "help-unlock": "Ajude a Desbloquear o Próximo Cofre",
+    "title": "Desbloqueado pela Comunidade"
+  },
   "user-renders": "Renderizações dos Usuários:",
   "vaulted": {
     "about": "Sobre",
