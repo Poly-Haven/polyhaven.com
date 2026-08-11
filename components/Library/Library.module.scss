@@ -6,7 +6,11 @@
   display: flex;
   flex-direction: row;
   flex-grow: 100;
-  width: 100vh;
+  // Without this, the nested flex chain won't shrink below the content's natural width, so the
+  // catBannerFlex carousel below (deliberately wider than the viewport, for horizontal scroll)
+  // inflates every ancestor up to the document instead of staying contained by catBannerWrapper's
+  // own overflow-x: auto.
+  min-width: 0;
   direction: ltr;
 }
 
