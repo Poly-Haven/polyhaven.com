@@ -51,8 +51,8 @@
   "tags": "Tags",
   "tall": "hoog",
   "unvaulted": {
-    "freed": "Dit bezit was vergrendeld in de <vaultLink>{{vault}} Vault</vaultLink> totdat onze patrons het financieringsdoel bereikten en het voor iedereen vrijgaven.",
-    "help-unlock": "Help de Volgende Vault Ontgrendelen",
+    "freed": "Deze asset was vergrendeld in de <vaultLink>{{vault}} Kluis</vaultLink> totdat onze patrons het financieringsdoel bereikten en het voor iedereen vrijgaven.",
+    "help-unlock": "Help de Volgende Kluis Ontgrendelen",
     "title": "Ontgrendeld door de Gemeenschap"
   },
   "user-renders": "Gebruiker renders:",

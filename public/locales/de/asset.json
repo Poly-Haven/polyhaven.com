@@ -51,8 +51,8 @@
   "tags": "Schlagwörter",
   "tall": "hoch",
   "unvaulted": {
-    "freed": "Dieses Asset war im <vaultLink>{{vault}} Vault</vaultLink> gesperrt, bis unsere Unterstützer das Finanzierungsziel erreicht haben und es für alle freigegeben wurde.",
-    "help-unlock": "Hilf dabei, den nächsten Vault freizuschalten",
+    "freed": "Dieses Asset war im <vaultLink>{{vault}} Vault</vaultLink> gesperrt, bis unsere Unterstützer das Finanzierungsziel erreicht und es für alle freigeschaltet haben.",
+    "help-unlock": "Hilf mit, den nächsten Vault freizuschalten",
     "title": "Von der Community freigeschaltet"
   },
   "user-renders": "Benutzer-Renderings:",

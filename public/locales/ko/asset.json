@@ -52,7 +52,7 @@
   "tall": "tall",
   "unvaulted": {
     "freed": "이 자산은 <vaultLink>{{vault}} 금고</vaultLink>에 잠겨 있었으며, 우리의 후원자들이 자금을 모아 모든 사람에게 무료로 해제했습니다.",
-    "help-unlock": "다음 금고 잠금 해제 도와주세요",
+    "help-unlock": "다음 Vault 잠금 해제 도와주기",
     "title": "커뮤니티에 의해 잠금 해제됨"
   },
   "user-renders": "사용자 렌더링:",

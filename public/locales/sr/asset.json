@@ -51,9 +51,9 @@
   "tags": "Ознаке",
   "tall": "висок",
   "unvaulted": {
-    "freed": "Ova imovina je bila zaključana u <vaultLink>{{vault}} Trezoru</vaultLink> dok naši donatori nisu dostigli cilj finansiranja i oslobodili je za sve.",
-    "help-unlock": "Pomozite da otključamo sledeći Trezor",
-    "title": "Otključano od strane zajednice"
+    "freed": "Oвај садржај је био закључан у <vaultLink>{{vault}} Трезору</vaultLink> док наши донатори нису достигли циљ финансирања и ослободили га за све.",
+    "help-unlock": "Помозите да откључамо следећи трезор",
+    "title": "Откључабо од стране заједнице"
   },
   "user-renders": "Кориснички Рендери:",
   "vaulted": {
