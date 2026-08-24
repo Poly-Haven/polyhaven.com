@@ -36,9 +36,7 @@
    }
   },
   "pure skies": {
-   "attr": {
-    "pure_sky": "true"
-   }
+   "cat": "pure-skies"
   },
   "low contrast": {
    "attr": {

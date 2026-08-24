@@ -72,10 +72,6 @@
     ],
     "description": "How much open sky is visible. Null indoors, where it does not apply."
    },
-   "pure_sky": {
-    "type": "boolean",
-    "description": "Edited pure-sky variant (ground removed), inheriting its base capture path."
-   },
    "backplates": {
     "type": "boolean",
     "description": "Has matching backplate photographs."

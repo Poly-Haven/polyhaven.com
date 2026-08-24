@@ -1756,6 +1756,15 @@
     ]
    },
    {
+    "name": "Pure Skies",
+    "slug": "pure-skies",
+    "path": "Pure Skies",
+    "slugPath": "pure-skies",
+    "id": "61ac0f4c-0977-548f-b345-f34c2d9eff35",
+    "description": "Edited sky-only HDRIs with the ground removed - no location, just sky, time of day and weather. No sub-categories; use the time_of_day/weather/light_type/contrast/season/sky_view attributes to narrow down.",
+    "children": []
+   },
+   {
     "name": "Streets & Town",
     "slug": "streets-town",
     "path": "Streets & Town",
