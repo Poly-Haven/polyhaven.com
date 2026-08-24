@@ -49,7 +49,7 @@
   "sponsored-by-d": "Patreon에서 Poly Haven을 지원하여 여기에 이름을 추가하세요",
   "sponsored-by-none": "아직 아무도 없습니다 :(",
   "tags": "태그",
-  "tall": "tall",
+  "tall": "높이",
   "unvaulted": {
     "freed": "이 자산은 <vaultLink>{{vault}} 금고</vaultLink>에 잠겨 있었으며, 우리의 후원자들이 자금을 모아 모든 사람에게 무료로 해제했습니다.",
     "help-unlock": "다음 Vault 잠금 해제 도와주기",
@@ -63,7 +63,7 @@
     "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 Vault에 보관된 에셋과 함께 다운로드할 수 있습니다.",
     "locked-in": "이 에셋은 <vaultLink>{{vault}} Vault에 잠겨 있습니다.</vaultLink>",
     "patrons-needed": "후원자 {{remaining, number}}명을 확보하면 모든 사람에게 무료로 출시할 예정입니다.",
-    "title": "보관 자산"
+    "title": "잠긴 에셋"
   },
   "wide": "너비",
   "zip-choose": "ZIP 콘텐츠 선택:"
