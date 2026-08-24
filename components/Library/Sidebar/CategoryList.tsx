@@ -147,6 +147,15 @@ const CategoryList = (props) => {
 
   return (
     <div>
+      <Link
+        href={{ pathname: `/${props.assetType}`, query }}
+        shallow
+        className={`${styles.cat} ${!props.categoryPath ? styles.catActive : ''}`}
+      >
+        <MdKeyboardArrowRight className={styles.caret} />
+        <span className={styles.catLabel}>{tc('All Things', { things: tc(assetTypeName(props.assetType)) })}</span>
+        <div className={styles.num}>{Object.keys(scoped).length}</div>
+      </Link>
       {getRoots(props.assetType).map((node) => (
         <CategoryNode
           key={node.path}
