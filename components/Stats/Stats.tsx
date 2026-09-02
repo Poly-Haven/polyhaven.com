@@ -1,4 +1,3 @@
-import { timeDiff } from 'utils/dateUtils'
 import ErrorBoundary from 'utils/ErrorBoundary'
 
 import LastThreeMonths from './LastThreeMonths'
@@ -112,28 +111,31 @@ const Stats = ({ datasets }) => {
 
       <div className={styles.row}>
         <ErrorBoundary>
-          <div className={styles.searchGroup}>
-            <div className={styles.row}>
-              <div className={styles.half}>
-                <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+          {datasets.searches && (
+            <div className={styles.searchGroup}>
+              <div className={styles.row}>
+                <div className={styles.half}>
+                  <SearchPop data={datasets.searches} type="hdris" name="HDRI" />
+                </div>
+                <div className={styles.half}>
+                  <SearchPop data={datasets.searches} type="textures" name="Texture" />
+                </div>
+                <div className={styles.half}>
+                  <SearchPop data={datasets.searches} type="models" name="Model" />
+                </div>
               </div>
-              <div className={styles.half}>
-                <SearchPop data={datasets.searches} type="textures" name="Texture" />
-              </div>
-              <div className={styles.half}>
-                <SearchPop data={datasets.searches} type="models" name="Model" />
+              <p className={styles.graphCaption}>
+                Match quality among first ten results. Further right: we answer that search better. Line spans to single
+                best, i.e. a long line = one good asset with little else.
+              </p>
+              <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
+                {/* Deliberately not "in the last N hours": these come from a nightly rollup, so the
+                    window ends whenever that last ran rather than now. meta still carries the exact
+                    span if it is ever wanted here. */}
+                Based on {datasets.searches.meta.total.toLocaleString()} recent searches.
               </div>
             </div>
-            <div style={{ fontStyle: 'italic', textAlign: 'right', width: '100%', opacity: '0.4' }}>
-              Based on {datasets.searches.meta.total} searches in the last{' '}
-              {timeDiff(
-                new Date(datasets.searches.meta.earliestSearch),
-                new Date(datasets.searches.meta.latestSearch),
-                true
-              )}
-              .
-            </div>
-          </div>
+          )}
         </ErrorBoundary>
         <ErrorBoundary>
           <div className={`${styles.half} ${styles.wide}`}>

@@ -217,7 +217,18 @@
   .numResults {
     padding: 0.5rem;
     text-align: center;
-    min-width: 11ch;
+    // 12ch fits the widest count the library can produce ("2441 results"), so the box is the same
+    // size whether it holds a count or the loader below and nothing reflows on either transition.
+    min-width: 12ch;
+
+    // The loader stands in for the count while a search resolves. Its own wrapper is a padded flex
+    // block, which would resize this box - and not moving is the entire point of the swap.
+    > span {
+      display: inline-flex;
+      height: 1em;
+      padding: 0;
+      vertical-align: middle;
+    }
   }
 }
 

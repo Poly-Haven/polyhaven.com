@@ -2,7 +2,6 @@ import React from 'react'
 import { useTranslation, Trans } from 'next-i18next'
 import Fuse from 'fuse.js'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useRouter } from 'next/router'
 import LazyLoad from 'react-lazy-load'
 import debounce from 'lodash.debounce'
 import { MdSearch, MdClose } from 'react-icons/md'
@@ -23,6 +22,7 @@ import GridItem from './GridItem/GridItem'
 import NewsCard from './GridItem/NewsCard'
 import Breadcrumbs from './Breadcrumbs'
 import Spinner from 'components/UI/Spinner/Spinner'
+import Loader from 'components/UI/Loader/Loader'
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import Disabled from 'components/UI/Disabled/Disabled'
 import Switch from 'components/UI/Switch/Switch'
@@ -37,7 +37,6 @@ const Grid = (props) => {
   const optionsRef = useRef(null)
   const { earlyAccess } = useUserPatron()
   const [delay, setDelay] = useState(false)
-  const { locale } = useRouter()
 
   let sortedKeys = []
 
@@ -173,6 +172,26 @@ const Grid = (props) => {
     }
   }, [props.search])
 
+  // Ctrl-F (Cmd-F on macOS) jumps to the search box, which is what someone hitting "find" on a
+  // library page almost always means. Pressing it again does nothing special: once the input has
+  // focus the event is left alone and the browser's own find takes over, so the shortcut is
+  // borrowed rather than taken.
+  const searchInputRef = useRef(null)
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (!(e.ctrlKey || e.metaKey) || e.altKey || e.shiftKey) return
+      if (String(e.key).toLowerCase() !== 'f') return
+      const input = searchInputRef.current
+      if (!input || document.activeElement === input) return
+      e.preventDefault()
+      input.focus()
+      // Select what is there so typing replaces the previous query rather than appending to it.
+      input.select()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   const setSearch = (event) => {
     const newSearchText = event.target.value
     localSearchRef.current = newSearchText
@@ -229,6 +248,18 @@ const Grid = (props) => {
   const { data: publicData, error: publicError } = apiSWR(`/assets?t=${props.assetType}&future=true`, {
     revalidateOnFocus: false,
   })
+  // Sent to /search as-is. Deliberately NOT the string handed to Fuse below, which is rewritten into
+  // extended-search syntax (space -> OR, + -> AND). Lower-cased and collapsed so equivalent queries
+  // share one Cloudflare cache entry.
+  const searchQuery = (props.search || '').replace(/\s+/g, ' ').trim().toLowerCase()
+
+  // keepPreviousData means the grid keeps showing the last result set while the next query is in
+  // flight, instead of emptying out on every debounce tick.
+  const { data: searchData, error: searchError } = apiSWR(
+    searchQuery ? `/search?t=${props.assetType}&q=${encodeURIComponent(searchQuery)}&future=true` : null,
+    { revalidateOnFocus: false, keepPreviousData: true }
+  )
+
   const data = useMemo(
     () =>
       publicData && !publicError
@@ -243,37 +274,118 @@ const Grid = (props) => {
     [publicData, publicError, props.categoryPath, props.attributes, props.collection, props.vault, props.assetType]
   )
 
+  /**
+   * The ordered slugs for the term currently typed, or null if we do not have them yet.
+   *
+   * Null means "no answer for this term yet", which renders as a spinner. While merely waiting, the
+   * grid shows nothing that looks like an answer - not Fuse's, not the previous term's - because
+   * both produce results that appear, settle, and are then replaced by a different set. Only a
+   * genuinely BROKEN api hands over to Fuse. See searchFailed below.
+   *
+   * The api's list is intersected with `data` rather than replacing it, so every client-side scope
+   * (collection, vault, category, attribute) stays correct without /search knowing about any of them.
+   *
+   * Ranking is entirely the api's: it fuses semantic and keyword rankings and pins exact matches
+   * server-side, so the Blender add-on and any third party get the same order rather than each
+   * reinventing it. Nothing here reorders the list - it only drops what this page is not showing.
+   */
+  const semanticKeys = useMemo(() => {
+    if (!searchQuery || !searchData || !Array.isArray(searchData.results)) return null
+    // The response echoes the query it answered. keepPreviousData hands back the previous term's
+    // results while a new request is in flight, and those must not be mistaken for this term's.
+    if (searchData.query !== searchQuery) return null
+    return searchData.results.map((row) => row.slug).filter((slug) => slug in data)
+  }, [searchQuery, searchData, data])
+
+  // The input is the immediate truth, and props.search lags it by the 300ms URL debounce. Without
+  // the grid keeps rendering the whole unfiltered library for those 300ms and then swaps - another
+  // "results appear, then change" transition, just from a different source.
+  const typedQuery = (searchInputFieldText || '').replace(/\s+/g, ' ').trim().toLowerCase()
+  const searchSettling = Boolean(typedQuery && typedQuery !== searchQuery)
+
+  /**
+   * Is /search actually broken, as opposed to merely slow? Only the former hands over to Fuse -
+   * search should survive the api being down, but a slow response must wait rather than switch
+   * engines, which is what made results appear and then change.
+   *
+   * Three real signals, no timers among them:
+   *  - SWR error: the fetch rejected, or utils/fetcher's res.json() choked on a non-JSON body.
+   *    That covers the 400/429/503/500-HTML cases, since those routes reply in plain text.
+   *  - A 200 whose body is not a search result. fetcher has no res.ok check, so a JSON error
+   *    payload resolves happily, and without this it would spin forever instead of falling back.
+   *  - A hang: no response and no error, since Chrome will not give up for ~30s.
+   *
+   * That last one used to be 10s, described here as "about eight times the worst latency measured,
+   * so it cannot fire on a working request". Both halves were wrong. Cold queries measured 1.4s
+   * median and 8.8s max against a local api with no TLS, no network and no Cloudflare hop, so 10s
+   * was 88% of the budget rather than an eighth of it. And the api's ceiling is higher than the
+   * client's patience by design: utils/workersAI.js retries the embed twice at 8s each with 400ms
+   * between, and embeddingIndex's build runs after that rather than alongside it, so a correct 200
+   * can legitimately take ~21s. A timer under that discards good answers instead of catching hangs.
+   *
+   * So: 20s, past the embed budget, and the latch now clears on success. The clear is the important
+   * half - hungQuery was previously only ever set, and unlike searchError, which SWR drops on the
+   * next success, nothing reset it. One slow response made that exact term Fuse-only for the rest of
+   * the visit even once the api was answering again. With the clear, a spurious fire self-corrects
+   * as soon as the real results land, which also makes the exact timeout much less load-bearing.
+   */
+  const HANG_MS = 20000
+  const responseIsSearchResult = (r) => Boolean(r && typeof r.query === 'string' && Array.isArray(r.results))
+  const [hungQuery, setHungQuery] = useState(null)
+  useEffect(() => {
+    // Setting it to the same null is a no-op in React, so this cannot loop.
+    if (semanticKeys) {
+      setHungQuery(null)
+      return
+    }
+    if (!searchQuery || searchError) return
+    const timer = setTimeout(() => setHungQuery(searchQuery), HANG_MS)
+    return () => clearTimeout(timer)
+  }, [searchQuery, searchError, semanticKeys])
+
+  const searchFailed = Boolean(
+    searchQuery && (searchError || (searchData && !responseIsSearchResult(searchData)) || hungQuery === searchQuery)
+  )
+
+  // Fuse now exists for exactly one reason: /search being broken. It is not an alternative engine
+  // and not a placeholder for latency.
+  const useFuse = searchFailed
+
+  // No answer for what is currently typed, and nothing broken. Shows the spinner, and keeps the
+  // "No results" copy from claiming an empty library before there is anything to claim it about.
+  const searchPending = Boolean(!searchFailed && (searchSettling || (searchQuery && !semanticKeys)))
+
   if (data) {
     sortedKeys = sortBy[props.sort](data)
   } else {
     console.error({ publicError })
   }
 
-  if (props.search && data) {
-    const fuse = new Fuse(Object.values(data), {
-      keys: ['categories', 'tags', 'name'],
-      includeScore: true,
-      useExtendedSearch: true,
-      threshold: 0.2,
-    })
-    let search = props.search
-    search = search.replace(/ /g, '|') // Use spaces as OR operation
-    search = search.replace(/\+/g, ' ') // Use + as AND operation
-    const searchResults = fuse.search(search)
-    const filteredData = {}
-    for (const sr of searchResults) {
-      let srID = Object.keys(data)[sr.refIndex]
-      filteredData[srID] = data[srID]
+  if (searchSettling && data) {
+    // Typed but not yet searched: show the spinner, not the library the user has already left behind.
+    sortedKeys = []
+  } else if (props.search && data) {
+    if (!useFuse) {
+      // Empty while pending, which renders as the spinner below rather than as any stand-in answer.
+      sortedKeys = semanticKeys || []
+    } else {
+      const fuse = new Fuse(Object.values(data), {
+        keys: ['categories', 'tags', 'name'],
+        includeScore: true,
+        useExtendedSearch: true,
+        threshold: 0.2,
+      })
+      let search = props.search
+      search = search.replace(/ /g, '|') // Use spaces as OR operation
+      search = search.replace(/\+/g, ' ') // Use + as AND operation
+      const searchResults = fuse.search(search)
+      sortedKeys = searchResults.map((sr) => Object.keys(data)[sr.refIndex])
     }
     if (props.strictSearch) {
-      // Used to remove results that don't have a tag that exactly matches the search term
-      for (const [k, v] of Object.entries(filteredData)) {
-        if (!v['tags'].includes(props.search)) {
-          delete filteredData[k]
-        }
-      }
+      // Used to remove results that don't have a tag that exactly matches the search term.
+      // Applied to whichever result set we ended up with, so ?strict= behaves the same either way.
+      sortedKeys = sortedKeys.filter((k) => data[k]['tags'].includes(props.search))
     }
-    sortedKeys = Object.keys(filteredData)
   }
 
   if (props.author) {
@@ -291,7 +403,6 @@ const Grid = (props) => {
       })
     }
   }
-
 
   const resetNews = () => {
     for (const key of Object.keys(localStorage)) {
@@ -368,16 +479,22 @@ const Grid = (props) => {
                   <Dropdown value={props.sort} options={sortOptions} label={t('library:sort-by')} onChange={setSort} />
                 </Disabled>
               </div>
-              <div className={styles.search} data-tip={locale !== 'en' ? t('library:search-en') : null}>
+              <div className={styles.search}>
                 <MdSearch className={styles.searchIcon} />
                 <form onSubmit={submitSearch}>
-                  <input type="text" placeholder="Search..." value={searchInputFieldText} onChange={setSearch} />
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder={t('library:search-placeholder')}
+                    value={searchInputFieldText}
+                    onChange={setSearch}
+                  />
                 </form>
                 {props.search ? <MdClose className={styles.resetSearchIcon} onClick={resetSearch} /> : null}
               </div>
               {
-                <p className={styles.numResults}>
-                  {sortedKeys.length} {t('library:results')}
+                <p className={styles.numResults} aria-busy={searchPending}>
+                  {searchPending ? <Loader /> : `${sortedKeys.length} ${t('library:results')}`}
                 </p>
               }
             </div>
@@ -478,7 +595,7 @@ const Grid = (props) => {
             <DonationBox />
           </div>
         </>
-      ) : publicData ? (
+      ) : publicData && !searchPending ? (
         <div className={styles.noResults}>
           {props.search ? <p>{t('library:no-results')} :(</p> : null}
           <h3 className="red-links">
