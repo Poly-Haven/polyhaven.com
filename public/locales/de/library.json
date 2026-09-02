@@ -155,7 +155,7 @@
   "non-square": "Dieses Asset verwendet Texturen mit nicht quadratischem Seitenverhältnis.",
   "results": "Ergebnisse",
   "rigged": "Dieses Modell ist geriggt und bereit zum Animieren.",
-  "search-en": "Die Suche funktioniert nur auf Englisch, sorry!",
+  "search-placeholder": "Suchen...",
   "sort": {
     "downloads": "Downloads",
     "downloads-d": "Gesamtzahl aller Downloads.",

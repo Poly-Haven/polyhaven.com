@@ -155,7 +155,7 @@
   "non-square": "Este asset utiliza texturas de proporção não quadrada.",
   "results": "resultados",
   "rigged": "Este modelo possui um rig e está pronto para animar.",
-  "search-en": "A pesquisa só funciona em Inglês, desculpe!",
+  "search-placeholder": "Pesquisar...",
   "sort": {
     "downloads": "Downloads",
     "downloads-d": "Contagem total de downloads.",

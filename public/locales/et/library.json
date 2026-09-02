@@ -155,7 +155,7 @@
   "non-square": "See vara kasutab mittekandilise kuvasuhtega tekstuure.",
   "results": "tulemused",
   "rigged": "See mudel on üles seatud ja  animeerimiseks valmis.",
-  "search-en": "Otsida saab ainult inglise keeles, vabandame ebamugavuste pärast!",
+  "search-placeholder": "Otsi...",
   "sort": {
     "downloads": "Allalaadimised",
     "downloads-d": "Totaalne allalaadimiste kord.",

@@ -155,7 +155,7 @@
   "non-square": "Bu öğe kare olmayan en-boy oranlı dokular kullanır.",
   "results": "Sonuçlar",
   "rigged": "Bu model donatıldı ve canlandırmaya hazır.",
-  "search-en": "Üzgünüz! Arama sadece İngilizce yapılabilir.",
+  "search-placeholder": "Ara...",
   "sort": {
     "downloads": "İndirilenler",
     "downloads-d": "Tüm zamanların toplam indirme sayısı.",

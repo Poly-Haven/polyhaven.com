@@ -157,7 +157,7 @@
   "non-square": "Ten zasób wykorzystuje tekstury o nie kwadratowych proporcjach.",
   "results": "wyników",
   "rigged": "Ten model jest olinowany i gotowy do animacji.",
-  "search-en": "Wyszukiwanie działa jedynie w języku angielskim, przepraszamy!",
+  "search-placeholder": "Wyszukaj...",
   "sort": {
     "downloads": "Liczba Pobrań",
     "downloads-d": "Całkowita liczba pobrań.",

@@ -156,7 +156,7 @@
   "non-square": "Cette ressource utilise des textures à rapport d'aspect non carré.",
   "results": "résultats",
   "rigged": "Ce modèle est « riggé » et prêt à être animé.",
-  "search-en": "La recherche ne fonctionne qu'en anglais, désolé!",
+  "search-placeholder": "Rechercher...",
   "sort": {
     "downloads": "Téléchargements",
     "downloads-d": "Nombre total de téléchargements depuis la création du site.",

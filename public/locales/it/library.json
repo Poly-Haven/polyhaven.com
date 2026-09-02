@@ -155,7 +155,7 @@
   "non-square": "Questa risorsa utilizza texture con proporzioni non quadrate.",
   "results": "risultati",
   "rigged": "Questo modello è riggato e pronto per l'animazione.",
-  "search-en": "Spiacente, la ricerca funziona solo in inglese!",
+  "search-placeholder": "Cerca...",
   "sort": {
     "downloads": "Download",
     "downloads-d": "Download totali.",

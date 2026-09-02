@@ -154,7 +154,7 @@
   "non-square": "这个资产使用了非正方形尺寸的贴图。",
   "results": "结果",
   "rigged": "这个模型已经绑定好骨骼，可以直接用于制作动画。",
-  "search-en": "只支持英文搜索，抱歉！",
+  "search-placeholder": "搜索...",
   "sort": {
     "downloads": "下载量",
     "downloads-d": "总下载次数。",

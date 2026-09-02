@@ -155,7 +155,7 @@
   "non-square": "Dit assets gebruikt niet-vierkante aspect ratio texturen.",
   "results": "resultaten",
   "rigged": "Dit model is opgetuigd en klaar om te animeren.",
-  "search-en": "Zoeken werkt alleen in het Engels, sorry!",
+  "search-placeholder": "Zoeken...",
   "sort": {
     "downloads": "Downloads",
     "downloads-d": "Totaal aantal downloads al tijd.",

@@ -155,7 +155,7 @@
   "non-square": "Este recurso utiliza texturas de relación de aspecto no cuadrada.",
   "results": "resultados",
   "rigged": "Este modelo contiene rig y esta listo para ser animado.",
-  "search-en": "La búsqueda solo funciona en inglés, ¡lo sentimos!",
+  "search-placeholder": "Buscar...",
   "sort": {
     "downloads": "Descargas",
     "downloads-d": "Cantidad total histórica de descargas.",

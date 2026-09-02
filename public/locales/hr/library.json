@@ -156,7 +156,7 @@
   "non-square": "Ovaj materijal koristi teksture nekvadratnog omjera slike.",
   "results": "rezultati",
   "rigged": "Ovaj model je namješten i spreman za animiranje.",
-  "search-en": "Pretraživanje radi samo na engleskom, ispričavamo se!",
+  "search-placeholder": "Pretraživanje...",
   "sort": {
     "downloads": "Preuzimanja",
     "downloads-d": "Ukupan broj preuzimanja svih vremena.",

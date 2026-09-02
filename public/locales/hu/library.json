@@ -155,7 +155,7 @@
   "non-square": "Ez az eszköz nem négyzetes képarányú textúrákat használ.",
   "results": "eredmények",
   "rigged": "Ez a modell fel van szerelve és készen áll az animálásra.",
-  "search-en": "A keresés csak angolul működik!",
+  "search-placeholder": "Keresés...",
   "sort": {
     "downloads": "Letöltések",
     "downloads-d": "Minden idők teljes letöltési száma.",

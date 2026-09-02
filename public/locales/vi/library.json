@@ -154,7 +154,7 @@
   "non-square": "Tài sản này sử dụng kết cấu có tỷ lệ khung hình không vuông.",
   "results": "kết quả",
   "rigged": "Mô hình này đã được rig và sẵn sàng để hoạt hình.",
-  "search-en": "Tìm kiếm chỉ hoạt động bằng tiếng Anh, xin lỗi!",
+  "search-placeholder": "Tìm kiếm...",
   "sort": {
     "downloads": "Tải xuống",
     "downloads-d": "Tổng số lượt tải xuống từ trước đến nay.",
