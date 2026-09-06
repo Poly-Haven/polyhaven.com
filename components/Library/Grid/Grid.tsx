@@ -30,6 +30,13 @@ import DonationBox from 'components/DonationBox/DonationBox'
 
 import styles from './Grid.module.scss'
 
+/**
+ * One spelling of a query, shared by everything that has to agree on what "the same search" means:
+ * the string sent to /search, the text currently typed, and the term queued for tracking. Collapsed
+ * and lower-cased so equivalent queries also share one Cloudflare cache entry.
+ */
+const normaliseQuery = (s) => (s || '').replace(/\s+/g, ' ').trim().toLowerCase()
+
 const Grid = (props) => {
   const { t: tc } = useTranslation('common')
   const { t: tcat } = useTranslation('categories')
@@ -79,20 +86,6 @@ const Grid = (props) => {
     }
   }, [props.collection, props.vault, props.banner])
 
-  // Work around stale state issues
-  const numResults = useRef(null)
-  useEffect(() => {
-    numResults.current = sortedKeys.length
-  }, [sortedKeys])
-  const refAssetType = useRef(null)
-  useEffect(() => {
-    refAssetType.current = props.assetType
-  }, [props.assetType])
-  const refCategories = useRef(null)
-  useEffect(() => {
-    refCategories.current = props.categoryPath ? [props.categoryPath] : []
-  }, [props.categoryPath])
-
   const sortBy = {
     hot: (d: Object) => {
       return Object.keys(d).sort(function (a, b) {
@@ -131,7 +124,7 @@ const Grid = (props) => {
     props.setSort(selectedOption)
   }
 
-  const doTrackSearch = async (newSearchText) => {
+  const doTrackSearch = async (newSearchText, results) => {
     await fetch(`/api/trackSearch`, {
       method: 'POST',
       headers: {
@@ -139,9 +132,9 @@ const Grid = (props) => {
       },
       body: JSON.stringify({
         search_term: newSearchText,
-        results: numResults.current,
-        type: refAssetType.current,
-        categories: refCategories.current,
+        results,
+        type: props.assetType,
+        categories: props.categoryPath ? [props.categoryPath] : [],
         session: props.libSessionID,
       }),
     })
@@ -153,10 +146,21 @@ const Grid = (props) => {
       })
   }
 
+  /**
+   * Which term is worth recording: the one the user rested on. Not when to record it - see the
+   * flush effect further down, which waits for that term's results to actually arrive.
+   *
+   * The tick exists only to schedule a render. By the time this fires the results have usually
+   * settled and nothing else is changing, so writing the ref alone would leave the flush effect
+   * with no render to run on and the search would never be recorded at all.
+   */
+  const pendingTrack = useRef<string | null>(null)
+  const [trackTick, setTrackTick] = useState(0)
   const trackSearch = useCallback(
     debounce((newSearchText) => {
       if (newSearchText.length < 3) return
-      doTrackSearch(newSearchText)
+      pendingTrack.current = newSearchText
+      setTrackTick((n) => n + 1)
     }, 2000),
     []
   )
@@ -212,6 +216,8 @@ const Grid = (props) => {
     localSearchRef.current = ''
     setSearchInputFieldText('')
     props.setSearchDebounced('')
+    // Clearing the box abandons the search, so a term still waiting on its results is not recorded.
+    pendingTrack.current = null
   }
 
   const asset_type_name = assetTypeName(props.assetType)
@@ -249,9 +255,8 @@ const Grid = (props) => {
     revalidateOnFocus: false,
   })
   // Sent to /search as-is. Deliberately NOT the string handed to Fuse below, which is rewritten into
-  // extended-search syntax (space -> OR, + -> AND). Lower-cased and collapsed so equivalent queries
-  // share one Cloudflare cache entry.
-  const searchQuery = (props.search || '').replace(/\s+/g, ' ').trim().toLowerCase()
+  // extended-search syntax (space -> OR, + -> AND).
+  const searchQuery = normaliseQuery(props.search)
 
   // keepPreviousData means the grid keeps showing the last result set while the next query is in
   // flight, instead of emptying out on every debounce tick.
@@ -300,7 +305,7 @@ const Grid = (props) => {
   // The input is the immediate truth, and props.search lags it by the 300ms URL debounce. Without
   // the grid keeps rendering the whole unfiltered library for those 300ms and then swaps - another
   // "results appear, then change" transition, just from a different source.
-  const typedQuery = (searchInputFieldText || '').replace(/\s+/g, ' ').trim().toLowerCase()
+  const typedQuery = normaliseQuery(searchInputFieldText)
   const searchSettling = Boolean(typedQuery && typedQuery !== searchQuery)
 
   /**
@@ -403,6 +408,40 @@ const Grid = (props) => {
       })
     }
   }
+
+  /**
+   * Record the search once its results are on screen.
+   *
+   * This used to fire straight off the 2s keystroke debounce, reading whatever the grid happened to
+   * be showing. That was safe while Fuse answered in the browser, and stopped being safe the moment
+   * /search became a network round trip: sortedKeys is empty while a request is in flight, so any
+   * answer slower than the debounce was recorded as "0 results".
+   *
+   * It was not a rare edge. Measured on 2026-09-05, terms searched once that day logged 0 results
+   * 65% of the time against 4.7% for terms searched 20+ times, the difference being that the
+   * popular ones were already in Cloudflare's cache and came back inside the 2s. That reads as a
+   * library that answers common queries and fails novel ones, which is the exact opposite of what
+   * semantic search actually does, and it would have poisoned the relevance floor tuning that the
+   * numbers are for.
+   *
+   * searchPending is the gate because it already means "no answer yet, and nothing broken". A
+   * failed search is not pending and is still worth recording, since Fuse's results are what the
+   * user saw. Terms abandoned mid-request are simply never flushed, which drops the half-typed
+   * fragments that used to be recorded as real searches.
+   *
+   * The term lives in a ref rather than in state so that clearing it takes effect immediately: in
+   * development React runs this twice against the same state, and a ref is what stops the second
+   * pass sending the search again.
+   */
+  useEffect(() => {
+    if (pendingTrack.current === null || searchPending) return
+    // keepPreviousData means the previous term's results stay on screen while the next request is
+    // in flight, so the count is only ours once the query it answers is the one we mean to record.
+    if (normaliseQuery(pendingTrack.current) !== searchQuery) return
+    const term = pendingTrack.current
+    pendingTrack.current = null
+    doTrackSearch(term, sortedKeys.length)
+  }, [trackTick, searchPending, searchQuery, sortedKeys])
 
   const resetNews = () => {
     for (const key of Object.keys(localStorage)) {
