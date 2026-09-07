@@ -3,6 +3,7 @@ import fs from 'fs'
 
 import { removeExtension } from 'utils/stringUtils'
 import taxonomy from 'constants/taxonomy.json'
+import assetTypes from 'constants/asset_types.json'
 
 const Sitemap = () => {}
 
@@ -13,6 +14,10 @@ export const getServerSideProps = async ({ res }) => {
   // Hand-maintained, so keep it in step with pages/. Anything that redirects (e.g. /faq, which
   // 308s to docs.polyhaven.com, and /plugins/unreal) must stay out - a sitemap should only ever
   // list URLs that answer 200.
+  // `lastmod` is omitted anywhere we don't have a real modification date. It used to be stamped
+  // with `new Date()` on almost everything, which told crawlers the entire category tree had just
+  // changed on every single fetch of this file — an open invitation to recrawl pages that hadn't
+  // moved in months. An absent lastmod is legal, and honest; a fabricated one is neither.
   const staticPages = [
     '', // Home
     'collections',
@@ -38,13 +43,21 @@ export const getServerSideProps = async ({ res }) => {
   })
 
   let dynamicPages = {}
+  // The newest publish date per asset type, so the three top-level browse pages can carry a real
+  // lastmod instead of a fabricated one. Deeper category nodes are left without: working out which
+  // assets sit under an arbitrary taxonomy node is more machinery than a lastmod is worth.
+  const newestByType = {}
   // Assets
   await fetch(`${apiUrl}/assets`)
     .then((response) => response.json())
     .then((resdata) => {
       for (const [slug, info] of Object.entries(resdata)) {
+        const published = info['date_published']
+        if (published && (!newestByType[info['type']] || published > newestByType[info['type']])) {
+          newestByType[info['type']] = published
+        }
         dynamicPages[`https://polyhaven.com/a/${slug}`] = {
-          lastmod: new Date(info['date_published'] * 1000).toISOString(),
+          lastmod: new Date(published * 1000).toISOString(),
           changefreq: 'monthly',
           priority: '1.0',
           img: [
@@ -63,7 +76,6 @@ export const getServerSideProps = async ({ res }) => {
         // Placeholder documents (no name) 404 on the course page, so keep them out of the sitemap.
         if (!course || !(course as any).name) continue
         dynamicPages[`${baseUrl}/learn/${id}`] = {
-          lastmod: new Date().toISOString(),
           changefreq: 'monthly',
           priority: '0.8',
         }
@@ -83,7 +95,6 @@ export const getServerSideProps = async ({ res }) => {
         .then((resdata) => {
           for (const id of Object.keys(resdata)) {
             dynamicPages[`${baseUrl}/${path}/${id}`] = {
-              lastmod: new Date().toISOString(),
               changefreq: 'monthly',
               priority: '0.6',
             }
@@ -96,15 +107,19 @@ export const getServerSideProps = async ({ res }) => {
   // Categories - the single-path taxonomy, straight from the bundled tree. Deeper categories get a
   // slightly lower priority so the broad landing pages stay the strongest entry points.
   for (const type of Object.keys(taxonomy.types)) {
+    const newest = newestByType[assetTypes[type]]
     dynamicPages[`${baseUrl}/${type}`] = {
-      lastmod: new Date().toISOString(),
-      changefreq: 'daily',
+      // A real date: the last time an asset of this type was published, which is genuinely the
+      // last time this listing changed.
+      ...(newest ? { lastmod: new Date(newest * 1000).toISOString() } : {}),
+      // Was 'daily'. These listings gain an asset every few days at most, and combined with a
+      // just-now lastmod it kept the whole uncached browse tree under constant recrawl.
+      changefreq: 'weekly',
       priority: '1.0',
     }
     const walk = (nodes, depth) => {
       for (const node of nodes) {
         dynamicPages[`${baseUrl}/${type}/${node.slugPath}`] = {
-          lastmod: new Date().toISOString(),
           changefreq: 'monthly',
           priority: depth === 0 ? '0.7' : depth === 1 ? '0.5' : '0.3',
         }
@@ -122,7 +137,6 @@ export const getServerSideProps = async ({ res }) => {
           return `
             <url>
               <loc>${url}</loc>
-              <lastmod>${new Date().toISOString()}</lastmod>
               <changefreq>monthly</changefreq>
               <priority>0.5</priority>
             </url>
@@ -134,7 +148,7 @@ export const getServerSideProps = async ({ res }) => {
           return `
             <url>
               <loc>${url}</loc>
-              <lastmod>${dynamicPages[url].lastmod}</lastmod>
+              ${dynamicPages[url].lastmod ? `<lastmod>${dynamicPages[url].lastmod}</lastmod>` : ''}
               <changefreq>${dynamicPages[url].changefreq}</changefreq>
               <priority>${dynamicPages[url].priority}</priority>
               ${
@@ -152,6 +166,11 @@ export const getServerSideProps = async ({ res }) => {
   `
 
   res.setHeader('Content-Type', 'text/xml')
+  // This route is server-rendered and makes four upstream API calls (assets, courses, collections,
+  // vaults) every time it's fetched, with no cache header of its own. Crawlers poll it often, so
+  // give the edge an hour. Publishing is what changes it, and admin purges /assets on publish, so
+  // an hour is well inside the delay a crawler would take to act on it anyway.
+  res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')
   res.write(sitemap)
   res.end()
 

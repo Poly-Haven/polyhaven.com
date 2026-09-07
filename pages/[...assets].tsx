@@ -166,6 +166,14 @@ export async function getServerSideProps(context) {
     collectionNames[name] = collections[name].name
   }
 
+  // Cacheable at the edge, and the reason is structural rather than incidental: this HTML contains
+  // no asset list at all. The grid fetches /assets?t=…&future=true from the browser
+  // (components/Library/Grid/Grid.tsx) and filters early-access items against the client's own
+  // clock, so the markup is identical for every visitor and never goes stale as assets publish.
+  // Only set on the success path — the legacy-redirect and notFound branches above return early,
+  // and a cached 404 on a category is not worth the risk.
+  context.res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')
+
   return {
     props: {
       ...(await translations()),

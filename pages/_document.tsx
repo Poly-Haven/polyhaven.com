@@ -12,6 +12,13 @@ export default class CustomDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
 
+          {/* Declared so iOS stops probing the well-known default paths, which nothing served:
+              /apple-touch-icon.png and /apple-touch-icon-precomposed.png together were 53k 404s a
+              week, each one a billed edge request. Both files exist as a fallback for clients that
+              probe regardless of this tag. 256px rather than the nominal 180 - iOS scales it, and
+              downscaling the real logo beats shipping a resized copy. */}
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
           {/* Every asset preview and grid thumbnail comes from here, including the LCP image,
               so warm the connection instead of paying DNS+TLS when the first <img> is parsed. */}
           <link rel="preconnect" href="https://cdn.polyhaven.com" crossOrigin="anonymous" />

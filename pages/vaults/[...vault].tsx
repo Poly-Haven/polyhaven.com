@@ -70,6 +70,16 @@ export async function getServerSideProps(context) {
 
   const vaultData = vaults[vaultID]
 
+  // Cacheable for the same reason as [...assets].tsx: the asset list is fetched client-side, so
+  // only the vault's own unlock state is baked in, and admin's unlockVault job purges this path
+  // (every locale) when that changes.
+  //
+  // Cloudflare already caches this for ~4 hours off its own rules, ignoring the origin — measured:
+  // cf-cache-status HIT with max-age=14400 while the origin sent no header at all. So do NOT read
+  // this as shortening that to an hour; whether the zone honours s-maxage is unverified. What it
+  // reliably changes is Vercel's own edge cache, which currently misses on every request.
+  context.res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),

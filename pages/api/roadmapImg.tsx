@@ -220,7 +220,14 @@ export default async function handler(req: NextRequest) {
         width: width,
         height: height,
         headers: {
-          'Cache-Control': 'public, max-age=3600, s-maxage=3600, CDN-Cache-Control=3600, Vercel-CDN-Cache-Control=3600',
+          // CDN-Cache-Control and Vercel-CDN-Cache-Control are separate headers, not Cache-Control
+          // directives - written inline with `=` they were just unknown tokens, silently ignored,
+          // so only the max-age/s-maxage pair was ever doing anything. Same one hour everywhere,
+          // now actually addressed to each layer: Vercel-CDN-* wins at Vercel's edge,
+          // CDN-Cache-Control at Cloudflare's, Cache-Control in the browser.
+          'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+          'CDN-Cache-Control': 'public, max-age=3600',
+          'Vercel-CDN-Cache-Control': 'public, max-age=3600',
         },
       }
     )

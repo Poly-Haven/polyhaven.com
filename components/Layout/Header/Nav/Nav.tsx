@@ -25,7 +25,9 @@ const Nav = () => {
   const { t } = useTranslation(['common'])
   const router = useRouter()
   const { user } = useUser()
-  const [suggestedLocale, setSuggestedLocale] = useState()
+  // Typed explicitly: bare useState() infers `undefined`, which only ever compiled because the old
+  // locale value came out of an untyped fetch response as `any`.
+  const [suggestedLocale, setSuggestedLocale] = useState<string>()
   const [suggestLocale, setSuggestLocale] = useStoredState('suggestLocale', true)
   const [navHide, setToggle] = useState(true)
   const [localeOpen, setLocaleOpen] = useState(false)
@@ -49,52 +51,35 @@ const Nav = () => {
   // one can be open at a time.
   const overlayOpen = isNarrow && (!navHide || localeOpen)
 
+  // Which of our locales the visitor would probably rather be reading.
+  //
+  // This used to POST /api/reqHeaders just to read the request's Accept-Language back out, because
+  // the pages are edge-cached and so the header can't be read at render time. `navigator.languages`
+  // answers the same question locally - and better: Chrome now reduces the Accept-Language *header*
+  // to a single tag while still exposing the full ordered list here, so the server route had
+  // strictly less to work with than the browser does.
+  //
+  // Tags are matched exactly first so pt-BR finds its own locale, then by base subtag. Without the
+  // base fallback almost nothing matches: browsers send a region (de-DE, zh-CN, ja-JP) and all our
+  // locale keys except pt-BR are bare languages.
   useEffect(() => {
-    const fetchHeaders = async () => {
-      const cachedHeaderKey = 'acceptLanguage'
-      let acceptLanguage = null
-
-      try {
-        acceptLanguage = localStorage.getItem(cachedHeaderKey)
-      } catch (error) {
-        console.warn('Unable to read cached accept-language header', error)
-      }
-
-      if (!acceptLanguage) {
-        try {
-          const response = await fetch('/api/reqHeaders', { method: 'POST' })
-          const resdata = await response.json()
-          acceptLanguage = resdata?.['accept-language']
-          if (acceptLanguage) {
-            try {
-              localStorage.setItem(cachedHeaderKey, acceptLanguage)
-            } catch (error) {
-              console.warn('Unable to cache accept-language header', error)
-            }
-          }
-        } catch (error) {
-          console.warn('Unable to fetch request headers', error)
-        }
-      }
-
-      if (!acceptLanguage) {
-        return
-      }
-
-      const reqLocales = acceptLanguage.split(',').map((l) => l.split(';')[0])
-      for (const locale of reqLocales) {
-        if (locales[locale]) {
-          // This is the first requested locale that we support
-          if (router.locale !== locale) {
-            console.log(`Suggesting locale "${locale}" based on request headers`)
-            setSuggestedLocale(locale)
-          }
-          break
-        }
-      }
+    if (!suggestLocale) {
+      return
     }
-    if (suggestLocale) {
-      fetchHeaders()
+
+    const preferred = Array.from(navigator.languages || [navigator.language]).filter(Boolean)
+
+    for (const tag of preferred) {
+      const match = locales[tag] ? tag : locales[tag.split('-')[0]] ? tag.split('-')[0] : null
+      if (!match) {
+        continue
+      }
+      // The first preference we actually have a translation for wins, whether or not the visitor
+      // is already reading it - a later, less-preferred match must not override it.
+      if (router.locale !== match) {
+        setSuggestedLocale(match)
+      }
+      break
     }
   }, [])
 

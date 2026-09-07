@@ -3,6 +3,7 @@ import Head from 'components/Head/Head'
 
 import { assetTypeName } from 'utils/assetTypeName'
 import { vaultOf, vaultStatus } from 'utils/vaults'
+import { releaseStateOf } from 'utils/dateUtils'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
@@ -148,7 +149,12 @@ export async function getStaticProps(context) {
   if (infoError && infoError.status === 404) {
     return {
       notFound: true,
-      revalidate: 60 * 60, // 1 hour - short enough that a newly published asset appears promptly
+      // Deliberately short, and short on purpose rather than by omission. Vercel serves this 404 as
+      // publicly cacheable, Cloudflare pins it, and admin's purge list only ever covered the
+      // unprefixed /a/<slug> - so a long window here means one stray hit on a slug before it is
+      // uploaded leaves that slug 404ing for hours after the asset really exists. Cheap to keep
+      // short: asset-id probing is not a measurable share of our 404s.
+      revalidate: 60,
     }
   }
 
@@ -165,6 +171,34 @@ export async function getStaticProps(context) {
 
   const vaultId = vaultOf(info)
   const vault = vaultId && vaults ? vaults[vaultId] : null
+
+  // Asset pages do not change on a timer. admin purges this path across all 26 locales whenever an
+  // asset is published, edited or recategorised, so a periodic re-render buys nothing - and it was
+  // the single largest line on the Vercel bill: 2,370 assets x 26 locales, six regenerations a day
+  // each, for content that had not changed.
+  //
+  // The one genuinely clock-dependent thing on this page is early access ending, which is just
+  // date_published passing now. So an unreleased asset expires exactly at its release moment (the
+  // next request after that regenerates with the correct release text), and anything already
+  // public never expires at all. Cache correctness for public assets is the purge path's job -
+  // see admin's utils/purgeAssetCache.ts.
+  // Uses releaseStateOf rather than comparing date_published to the clock directly, because a
+  // future date means two different things here. An asset held for a funding milestone carries a
+  // year-3000 placeholder, not a release date: comparing to the clock would set a revalidate a
+  // thousand years out (which also trips Next's "more than a year" warning). Only a vault unlock
+  // releases it, and that purges, so it needs no timer at all.
+  const nowSec = Math.floor(Date.now() / 1000)
+  const releaseState = info ? releaseStateOf(info.date_published, nowSec) : null
+  const revalidate = !info
+    ? // Every branch above either sets `info` or returns, so this should be unreachable - but a
+      // data-less page is exactly the thing that must not be cached forever, so don't rely on it.
+      60 * 5
+    : releaseState === 'scheduled'
+    ? // Genuinely scheduled: expire exactly at the release moment, so the next request after it
+      // regenerates with the correct release text.
+      Math.max(60, info.date_published - nowSec)
+    : // 'published' or 'unreleased' — neither changes on a timer, only on a purge.
+      false
 
   return {
     props: {
@@ -184,7 +218,7 @@ export async function getStaticProps(context) {
           }
         : null,
     },
-    revalidate: 60 * 60 * 4, // 4 hours
+    revalidate,
   }
 }
 

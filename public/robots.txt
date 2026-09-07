@@ -3,6 +3,9 @@
 # Everything here is CC0 and meant to be found - by search engines, by AI answer
 # engines, and by anything else that wants to point people at free assets.
 User-agent: *
-Disallow:
+# The only exception: /_next/data/*.json are Next.js client-navigation payloads,
+# not content. Crawlers render the HTML instead, so fetching these costs us and
+# tells them nothing they can index.
+Disallow: /_next/data/
 
 Sitemap: https://polyhaven.com/sitemap.xml

@@ -49,7 +49,11 @@ const NavItem = ({
             {text}
           </a>
         ) : (
-          <Link href={link} className={styles.navItem} id={labelId}>
+          // prefetch={false}: every nav link funnels through here and the header renders on every
+          // page, so prefetching means each page view also fetches the route data for /account,
+          // /all, /hdris, /gallery and the rest. /account alone was the single most-requested
+          // uncached path on the site. Same reasoning as the footer links.
+          <Link href={link} className={styles.navItem} id={labelId} prefetch={false}>
             {text}
           </Link>
         )

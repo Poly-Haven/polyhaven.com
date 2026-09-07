@@ -69,6 +69,24 @@ export async function getServerSideProps(context) {
   const collectionData = collections[collectionID]
   collectionData.id = collectionID
 
+  // Safe to cache at the edge: the asset list is fetched client-side by the shared Library grid, so
+  // this HTML is visitor-independent and doesn't go stale as assets publish. See [...assets].tsx.
+  //
+  // With one exception, and it is the reason this page can't just reuse that header verbatim.
+  // CollectionHeader decides "Submissions are open!" by comparing submission_deadline to the clock
+  // during render (components/Library/Collections/CollectionHeader.tsx), so it is the one thing here
+  // that changes on time rather than on a publish. A cached copy would keep inviting entries to a
+  // closed challenge. Cap the edge TTL at whatever is left, and drop stale-while-revalidate, which
+  // would otherwise let a stale "open" banner live another day past the deadline.
+  const deadlineMs = collectionData.submission_deadline ? Date.parse(collectionData.submission_deadline) : NaN
+  const secondsLeft = Number.isNaN(deadlineMs) ? -1 : Math.floor((deadlineMs - Date.now()) / 1000)
+  context.res.setHeader(
+    'Cache-Control',
+    secondsLeft > 0
+      ? `public, max-age=0, s-maxage=${Math.min(3600, secondsLeft)}`
+      : 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'
+  )
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),

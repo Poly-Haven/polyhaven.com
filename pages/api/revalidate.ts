@@ -24,8 +24,30 @@ import { i18n } from '../../next-i18next.config'
 
 const { locales = [], defaultLocale } = i18n
 
+/**
+ * Drop a leading locale segment, so `locales=true` accepts a path in either form.
+ *
+ * admin's Cloudflare purge lists have to name every localised URL explicitly (the zone is on the
+ * Pro plan, which can only purge by exact URL), and those same pathnames get handed to this
+ * endpoint. Without this, "/de/a/foo" would expand to "/de/de/a/foo" — revalidating a path that
+ * doesn't exist while leaving the real one stale. Normalising here rather than asking callers to
+ * filter keeps the locale list in the one place that actually owns it.
+ */
+const stripLocale = (path: string): string => {
+  const [, first, ...rest] = path.split('/')
+  if (!locales.includes(first) || first === defaultLocale) return path
+  // "/de" is the German home page, so it normalises to "/" rather than the empty string.
+  return `/${rest.join('/')}`
+}
+
 const localize = (path: string): string[] =>
-  locales.map((locale) => (locale === defaultLocale ? path : `/${locale}${path}`))
+  locales.map((locale) => {
+    if (locale === defaultLocale) return path
+    // The root needs special-casing: naive concatenation gives "/de/", which 308s to "/de", and
+    // res.revalidate() on a redirect throws — failing the whole Promise.all below, including the
+    // paths that were fine. Reachable via stripLocale, which normalises "/de" to "/".
+    return path === '/' ? `/${locale}` : `/${locale}${path}`
+  })
 
 const Route = async (req: NextApiRequest, res: NextApiResponse) => {
   const secret = process.env.REVALIDATION_KEY
@@ -58,7 +80,10 @@ const Route = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const expand = String(source.locales) === 'true'
-  const targets = expand ? Array.from(new Set(paths.flatMap(localize))) : paths
+  // Normalised before expanding, and the Set then collapses the duplicates that produces — being
+  // handed all 26 localised variants of one page is the common case, and it should mean one
+  // expansion, not 26 nested ones. Without `locales=true` paths are honoured exactly as given.
+  const targets = expand ? Array.from(new Set(paths.map(stripLocale).flatMap(localize))) : paths
 
   try {
     await Promise.all(targets.map((target) => res.revalidate(target)))

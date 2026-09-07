@@ -45,7 +45,7 @@ const footer = () => {
       <div className={styles.linksWrapper}>
         <a id="social" />
         <div className={styles.links}>
-          <Link href="/">
+          <Link href="/" prefetch={false}>
             <div className={styles.logoWrapper}>
               <img src="/Logo 256.png" className={styles.logo} alt="" />
               <h1>Poly Haven</h1>

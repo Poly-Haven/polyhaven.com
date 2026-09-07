@@ -79,6 +79,12 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   const monthAgo = new Date(Date.now() - 30 * msPerDay).toISOString().split('T')[0]
   const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
   const isOlderThanFourDays = Date.now() - data.date_published * 1000 > 4 * msPerDay
+  // An early-access asset has a negative age and one published today a fractional one, either of
+  // which turns download_count / daysOld into nonsense - a negative rate, or one extrapolated from
+  // a few hours. The label is just "per day", so there is no honest number to show until there has
+  // been a whole day to divide by; null suppresses the tooltip instead of captioning the raw count
+  // with a rate it isn't.
+  const downloadsPerDay = daysOld >= 1 ? Math.round(data.download_count / daysOld) : null
   let [ageValue, ageLabel] = timeago(data.date_published * 1000, tt, true)
   ageValue = ageValue === 0 ? tt('new') : ageValue
   ageLabel = ageLabel.replace(ageValue, '').trim()
@@ -431,7 +437,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
             </div>
 
             <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
-              <span data-tip={`${Math.round(data.download_count / daysOld)} ${t('downloads-pd')}`}>
+              <span data-tip={downloadsPerDay === null ? undefined : `${downloadsPerDay} ${t('downloads-pd')}`}>
                 {data.download_count}
               </span>
               {isOlderThanFourDays ? (

@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import CSS from 'csstype'
-import { subMonths, startOfMonth, endOfMonth, differenceInYears } from 'date-fns'
+import { subMonths, startOfMonth, endOfMonth, differenceInYears, startOfHour } from 'date-fns'
 
 import { MdCloudDownload, MdCropFree, MdLink, MdInfo } from 'react-icons/md'
 
@@ -229,7 +229,11 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'time'])),
-      updated: now.valueOf(),
+      // Rounded to the hour. At millisecond precision this one field made the rendered output
+      // byte-different on every single regeneration, across all 26 locales, even when none of the
+      // stats had moved - which defeats ETag revalidation downstream. The page only refreshes
+      // every four hours, so the hour is all the precision "last updated" can honestly claim.
+      updated: startOfHour(now).valueOf(),
       numPatrons: patrons.length,
       monthlyDownloads,
       traffic,
