@@ -65,6 +65,11 @@ export const withParams = (url: string, params?: CdnParams): string => {
   return `${base}${query ? '?' + query : ''}`
 }
 
+// Strips the query so a URL can be inspected by extension. Needed because these URLs now usually
+// carry ?v=<hash>, which breaks the obvious `url.endsWith('.mp4')` / `url.slice(-4)` tests - they
+// see the tail of the version instead of the file type.
+export const withoutQuery = (url: string): string => url.split('?')[0]
+
 // The asset_img prefixes, so call sites name a folder instead of repeating the path shape.
 export const assetImg = {
   thumb: (slug: string, params?: CdnParams, version?: string) =>

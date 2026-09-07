@@ -2,7 +2,7 @@ import { Md3dRotation } from 'react-icons/md'
 
 import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
 import { urlBaseName, removeExtension } from 'utils/stringUtils'
-import { assetImg } from 'utils/cdn'
+import { assetImg, withParams } from 'utils/cdn'
 
 import IconButton from 'components/UI/Button/IconButton'
 
@@ -80,7 +80,7 @@ const Carousel = ({ slug, name, imgVersion, data, files, assetType, setter, show
           className={`${styles.image} ${active === images[i] ? styles.activeImage : ''}`}
         >
           <img
-            src={images[i] + '?height=110&quality=95'}
+            src={withParams(images[i], { height: 110, quality: 95 })}
             alt={image_info[i]?.title ? `${name} - ${image_info[i].title}` : `${name} - ${renderLabel(i)}`}
             loading="lazy"
           />

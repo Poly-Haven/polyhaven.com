@@ -6,6 +6,7 @@ import { randomWeightSelection } from 'utils/arrayUtils'
 import { MdPause, MdPlayArrow, MdClose } from 'react-icons/md'
 
 import { useSiteImg } from 'contexts/ImageVersionsContext'
+import { withParams, withoutQuery } from 'utils/cdn'
 import styles from './NewsCard.module.scss'
 
 const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile, important, flags }) => {
@@ -86,12 +87,12 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
         {(pause || isMobile) && pausedImg ? (
           <img
             src={
-              ['.png', '.jpg'].includes(pausedImg.slice(-4).toLowerCase())
-                ? `${pausedImg}?width=384&quality=95`
+              ['.png', '.jpg'].includes(withoutQuery(pausedImg).slice(-4).toLowerCase())
+                ? withParams(pausedImg, { width: 384, quality: 95 })
                 : pausedImg
             }
           />
-        ) : img.endsWith('mp4') ? (
+        ) : withoutQuery(img).endsWith('mp4') ? (
           <video
             width="384"
             autoPlay={true}
@@ -105,7 +106,13 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
             Sorry, your browser doesn't support embedded videos.
           </video>
         ) : (
-          <img src={['.png', '.jpg'].includes(img.slice(-4).toLowerCase()) ? `${img}?width=384&quality=95` : img} />
+          <img
+            src={
+              ['.png', '.jpg'].includes(withoutQuery(img).slice(-4).toLowerCase())
+                ? withParams(img, { width: 384, quality: 95 })
+                : img
+            }
+          />
         )}
         {flagImg && <img src={flagImg} className={`${styles.flag} ${!pause && !isMobile ? styles.flagAnim : ''}`} />}
         {flagImg && !pause && !isMobile && (
