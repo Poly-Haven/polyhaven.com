@@ -10,6 +10,8 @@ import useDivSize from 'hooks/useDivSize'
 import useQuery from 'hooks/useQuery'
 import Lightbox from 'components/Lightbox/Lightbox'
 
+import { assetImg } from 'utils/cdn'
+
 import styles from './Gallery.module.scss'
 
 const URL_VALIDATION_OPTIONS = {
@@ -99,6 +101,8 @@ const Gallery = ({ data, assetPage }) => {
         {data.map((d, k) => (
           <div key={k} className={styles.thumbnail} data-info={JSON.stringify(d)} onClick={viewImage}>
             <LazyLoad offset={500}>
+              {/* No version: gallery file_names are random per upload, so a replacement is a
+                  new filename and there is nothing to bust. */}
               <img src={`https://cdn.polyhaven.com/gallery/${d.file_name}?width=${imgWidth}&quality=95`} alt={d.name} />
             </LazyLoad>
           </div>
@@ -136,7 +140,7 @@ const Gallery = ({ data, assetPage }) => {
               <p>Assets used:</p>
               {lightboxData.assets_used.map((a, key) => (
                 <Link key={key} href={`/a/${a}`}>
-                  <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a}.png?height=50&width=200`} />
+                  <img src={assetImg.thumb(a, { height: 50, width: 200 })} />
                 </Link>
               ))}
             </>

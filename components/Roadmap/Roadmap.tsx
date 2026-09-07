@@ -9,9 +9,11 @@ import { GoLinkExternal } from 'react-icons/go'
 import DonationBox from 'components/DonationBox/DonationBox'
 import Loader from 'components/UI/Loader/Loader'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Roadmap.module.scss'
 
 const Milestone = ({ milestone, active, achieved }) => {
+  const siteImg = useSiteImg()
   const { t } = useTranslation(['common'])
   const Comp = active || achieved ? Link : 'div'
 
@@ -19,7 +21,7 @@ const Milestone = ({ milestone, active, achieved }) => {
     <Comp href={milestone.link} className={styles.milestoneText}>
       {milestone.img && (
         <div className={styles.icon}>
-          <img src={milestone.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : milestone.img} />
+          <img src={milestone.text === '???' ? siteImg('vaults/icons/question.svg') : milestone.img} />
         </div>
       )}
       <div
@@ -41,6 +43,7 @@ const Milestone = ({ milestone, active, achieved }) => {
 }
 
 const Roadmap = ({ mini, vaults, addon }) => {
+  const siteImg = useSiteImg()
   const { t } = useTranslation(['common'])
   const widthRef = useRef(null)
   const { width: divWidth } = useDivSize(widthRef)
@@ -169,7 +172,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
                     {!(mini || isMobile) && <div className={styles.arrow} />}
                     {(mini || isMobile) && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
-                        <img src={m.text === '???' ? 'https://cdn.polyhaven.com/vaults/icons/question.svg' : m.img} />
+                        <img src={m.text === '???' ? siteImg('vaults/icons/question.svg') : m.img} />
                       </div>
                     ) : (
                       <div className={styles.dot} />

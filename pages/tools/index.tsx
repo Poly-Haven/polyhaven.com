@@ -1,10 +1,12 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 
 import Blender from 'components/UI/Icons/Blender'
 import Button from 'components/UI/Button/Button'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 const Tool = ({ name, icon, description, link }) => {
   return (
     <div
@@ -30,6 +32,7 @@ const Tool = ({ name, icon, description, link }) => {
 }
 
 const ToolsPage = () => {
+  const siteImg = useSiteImg()
   return (
     <TextPage
       title="Tools"
@@ -56,44 +59,44 @@ const ToolsPage = () => {
           <p>Other things we made that help us run Poly Haven:</p>
           <Tool
             name="imgvwr"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/imgvwr.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/imgvwr.png', { height: 32 })} />}
             description="A fast, minimal, but highly capable viewer for HDRIs and images of any kind."
             link="https://github.com/Poly-Haven/imgvwr"
           />
           <Tool
             name="HDR Merge Master"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/hdr-merge-master.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/hdr-merge-master.png', { height: 32 })} />}
             description="What we use to merge exposure brackets into reliable linear 32-bit EXRs in the process of making HDRIs."
             link="https://github.com/gregzaal/HDR-Merge-Master"
           />
           <Tool
             name="Bracket Buddy"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/bracket-buddy.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/bracket-buddy.png', { height: 32 })} />}
             description="An HDRI companion mobile app to help calculate your HDR exposure bracket sequences."
             link="https://github.com/Poly-Haven/BracketBuddy"
           />
           <Tool
             name="panoverlay"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/panoverlay.jpg?height=32&sharpen=true" />}
+            icon={<img src={siteImg('site_images/icons/panoverlay.jpg', { height: 32, sharpen: 'true' })} />}
             description="Augmentations for PTGui to assist in stitching difficult panoramas."
             link="https://github.com/Poly-Haven/panoverlay"
           />
           <Tool
             name="Gaffer"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/gaffer.jpg?height=32&sharpen=true" />}
+            icon={<img src={siteImg('site_images/icons/gaffer.jpg', { height: 32, sharpen: 'true' })} />}
             description="A light and HDRI manager add-on for Blender."
             link="https://superhivemarket.com/products/gaffer-light-manager"
           />
           <Tool
             name="Matalogue"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/matalogue.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/matalogue.png', { height: 32 })} />}
             description="A Blender add-on that displays a list of materials & node trees in the toolbar of the Node Editor."
             link="https://extensions.blender.org/add-ons/matalogue/"
           />
           <Tool
             name="Manage File Paths"
             icon={
-              <img src="https://cdn.polyhaven.com/site_images/icons/manage-file-paths.png?height=32&sharpen=true" />
+              <img src={siteImg('site_images/icons/manage-file-paths.png', { height: 32, sharpen: 'true' })} />
             }
             description="A Blender add-on that lists all image and cache file paths in your project."
             link="https://github.com/gregzaal/manage-file-paths"
@@ -105,13 +108,13 @@ const ToolsPage = () => {
           <p>Things that are tangentially related to Poly Haven that we also maintain:</p>
           <Tool
             name="Compact Screen Ruler"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/screenruler.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/screenruler.png', { height: 32 })} />}
             description="A minimal frameless ruler for measuring distances on your screen. Also takes screenshots."
             link="https://github.com/gregzaal/Compact-Screen-Ruler"
           />
           <Tool
             name="Auto-Voice-Channels"
-            icon={<img src="https://cdn.polyhaven.com/site_images/icons/auto_voice_channels_T.png?height=32" />}
+            icon={<img src={siteImg('site_images/icons/auto_voice_channels_T.png', { height: 32 })} />}
             description="A Discord bot that creates voice channels dynamically with naming templates."
             link="https://auto-voice.io"
           />
@@ -125,6 +128,9 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['site_images/icons']),
     },
   }
 }

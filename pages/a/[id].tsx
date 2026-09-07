@@ -1,7 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import Head from 'components/Head/Head'
 
 import { assetTypeName } from 'utils/assetTypeName'
+import { assetImg } from 'utils/cdn'
 import { vaultOf, vaultStatus } from 'utils/vaults'
 import { releaseStateOf } from 'utils/dateUtils'
 
@@ -65,7 +67,7 @@ const Page = ({ assetID, data, files, renders, postDownloadStats, vaultInfo }) =
         assetType={data.type}
         author={Object.keys(data.authors).join(', ')}
         keywords={`${data.categories.join(',')},${data.tags.join(',')}`}
-        image={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630&quality=95`}
+        image={assetImg.thumb(assetID, { width: 630, quality: 95 }, data.img_version)}
       >
         {jsonLd ? (
           <script
@@ -203,6 +205,15 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time'])),
+      // Versions for the non-asset images this page renders. Narrowed to THIS asset's authors
+      // rather than the whole people/ folder: whatever goes in here is serialised into the page's
+      // __NEXT_DATA__, and Next already warns that some asset pages exceed its 128KB threshold.
+      imageVersions: await getImageVersions([
+        ...Object.keys(info.authors || {}).map((author) => `people/${author}`),
+        'corporate_sponsors',
+        'vaults',
+        'site_images/map_types',
+      ]),
       assetID: id,
       data: info,
       files: files,

@@ -8,6 +8,7 @@ import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
 import { inCollection } from 'utils/assetFiltering'
 import { isFormerlyVaulted, isUnlockedVault, isVaultLocked, vaultOf } from 'utils/vaults'
+import { assetImg, withParams, CDN } from 'utils/cdn'
 
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
@@ -59,9 +60,11 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   const [pageLoading, setPageLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [activeImage, setActiveImage] = useState(
-    `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760&quality=95`
+    assetImg.primary(assetID, { height: 760, quality: 95 }, data.img_version)
   )
-  const [activeImageSrc, setActiveImageSrc] = useState(`https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`) // Without height=X, used to highlight active image in carousel
+  // Without height=X, used to highlight active image in carousel. Carries the same img_version as
+  // every other URL the carousel builds, so the equality check below still matches.
+  const [activeImageSrc, setActiveImageSrc] = useState(assetImg.primary(assetID, null, data.img_version))
   const [showWebGL, setShowWebGL] = useState(false)
   const [showTilePreview, setShowTilePreview] = useState('')
   const [showDownloadGraph, setShowDownloadGraph] = useStoredState('asset_showDownloadGraph', false)
@@ -134,7 +137,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
     document.getElementById('page').scrollTop = 0
 
     setPageLoading(false)
-    const defaultImg = `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png`
+    const defaultImg = assetImg.primary(assetID, null, data.img_version)
     if (activeImageSrc !== defaultImg) {
       setPreviewImage(defaultImg)
     }
@@ -186,8 +189,11 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
       setShowWebGL(false)
     }
     setActiveImageSrc(src)
-    if (src.startsWith('https://cdn.polyhaven.com/')) {
-      src += '?height=760&quality=95'
+    if (src.startsWith(`${CDN}/`)) {
+      // Merged rather than concatenated: srcs arriving here already carry ?v=<img_version>, and
+      // some (render URLs) used to carry no query string at all - appending '?...' to the first
+      // kind would produce a second '?' and Bunny would ignore everything after it.
+      src = withParams(src, { height: 760, quality: 95 })
     }
     setActiveImage(src)
     setShowTilePreview('')
@@ -288,6 +294,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
           <Carousel
             slug={assetID}
             name={data.name}
+            imgVersion={data.img_version}
             data={renders}
             files={files}
             assetType={data.type}

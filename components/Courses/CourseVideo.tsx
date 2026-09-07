@@ -8,12 +8,14 @@ import { loadPlayerJs } from 'utils/playerjs'
 import { getSavedPosition, savePosition } from 'utils/courseProgressLocal'
 import { getPrefetched, setPrefetched } from 'utils/videoUrlCache'
 import Spinner from 'components/UI/Spinner/Spinner'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
+
 import styles from './Courses.module.scss'
 
 const COMPLETE_THRESHOLD = 0.9
 // Checkout for the $7 Course Access tier (rid = its id in constants/patreon_tiers.json).
 const PATREON_JOIN_URL = 'https://www.patreon.com/checkout/polyhaven?rid=29202719&cadence=12'
-const THUMB_CDN = 'https://cdn.polyhaven.com/site_images/courses'
+const THUMB_PREFIX = 'site_images/courses'
 const AUTOPLAY_DELAY = 3000
 // Signed URLs last ~4h; reuse a prefetched one only if comfortably fresh.
 const PREFETCH_MAX_AGE = 3 * 60 * 60 * 1000
@@ -37,6 +39,7 @@ async function fetchVideoUrl(uuid, courseId, lectureSlug) {
 }
 
 const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPlay }) => {
+  const siteImg = useSiteImg()
   const { user, isLoading, uuid } = useUserPatron()
   const router = useRouter()
 
@@ -65,7 +68,11 @@ const CourseVideo = ({ course, lecture, nextLecture, autoplay, onComplete, onPla
     nextRef.current = nextLecture
   }, [nextLecture])
 
-  const thumbUrl = `${THUMB_CDN}/${course.id}/chapter_thumbs/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`
+  const thumbUrl = siteImg(`${THUMB_PREFIX}/${course.id}/chapter_thumbs/${lecture.slug}.jpg`, {
+    width: 200,
+    quality: 95,
+    sharpen: 'true',
+  })
 
   const advance = () => {
     const next = nextRef.current

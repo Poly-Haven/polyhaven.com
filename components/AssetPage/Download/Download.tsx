@@ -29,6 +29,8 @@ import { countVaultAssets, isVaultLocked, vaultsByStatus } from 'utils/vaults'
 import threeDFormats from 'constants/3D_formats.json'
 import { useUserPatron } from 'contexts/UserPatronContext'
 
+import { assetImg } from 'utils/cdn'
+
 import styles from './Download.module.scss'
 
 // Just to keep TS happy, these functions/objects exist in /public/download-js/download.js, which is loaded in _document.tsx
@@ -283,7 +285,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       }
       if (files['backplates'][bp]['jpg_pretty']) {
         const fileName = files['backplates'][bp]['jpg_pretty']['url'].split('/').pop()
-        backplates.push(`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?height=32&quality=95`)
+        backplates.push(assetImg.backplate(assetID, fileName, { height: 32, quality: 95 }, data.img_version))
       }
     }
   }
@@ -561,6 +563,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
       <DownloadOptions
         open={dlOptions}
         assetID={assetID}
+        imgVersion={data.img_version}
         tempUUID={tempUUID}
         files={files}
         res={dlRes}

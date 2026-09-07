@@ -1,4 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import { useTranslation } from 'next-i18next'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
@@ -22,6 +23,9 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['site_images/Poly Haven Logo Kit']),
     },
   }
 }

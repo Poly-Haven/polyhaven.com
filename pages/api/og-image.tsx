@@ -1,6 +1,8 @@
 import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
+import { assetImg } from 'utils/cdn'
+
 export const config = {
   runtime: 'edge',
 }
@@ -98,7 +100,7 @@ export default async function handler(req: NextRequest) {
           {sortedKeys.map((key) => (
             <img
               key={key}
-              src={`https://cdn.polyhaven.com/asset_img/thumbs/${key}.png?width=371&height=278&quality=95`}
+              src={assetImg.thumb(key, { width: 371, height: 278, quality: 95 }, data[key]?.img_version)}
               style={{
                 margin: '10px',
                 width: `${thumbWidth}px}`,

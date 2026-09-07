@@ -5,6 +5,7 @@ import { randomWeightSelection } from 'utils/arrayUtils'
 
 import { MdPause, MdPlayArrow, MdClose } from 'react-icons/md'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './NewsCard.module.scss'
 
 const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, isMobile, important, flags }) => {
@@ -137,6 +138,7 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
 }
 
 const NewsCard = ({ isMobile }) => {
+  const siteImg = useSiteImg()
   const [news, setNews] = useState(null)
 
   const { data: newsData } = apiSWR(`/news`, { revalidateOnFocus: false })
@@ -172,8 +174,8 @@ const NewsCard = ({ isMobile }) => {
     <DisplayNewsCard
       newsKey={news.key}
       topText={news.text_top}
-      img={`https://cdn.polyhaven.com/site_images/news_cards/${news.image}`}
-      pausedImg={news.image_paused ? `https://cdn.polyhaven.com/site_images/news_cards/${news.image_paused}` : null}
+      img={siteImg(`site_images/news_cards/${news.image}`)}
+      pausedImg={news.image_paused ? siteImg(`site_images/news_cards/${news.image_paused}`) : null}
       bottomText={news.text_bottom}
       link={news.link}
       isMobile={isMobile}

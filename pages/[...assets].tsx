@@ -1,4 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 
@@ -177,6 +178,10 @@ export async function getServerSideProps(context) {
   return {
     props: {
       ...(await translations()),
+      // Non-asset image versions for _app's ImageVersionsProvider - the category banners, news
+      // cards and vault banners on this page. One small edge-cached fetch per origin render, which
+      // the s-maxage above already limits to roughly one an hour per path.
+      imageVersions: await getImageVersions(['collections', 'vaults', 'people', 'site_images/news_cards']),
       assetType: assetType,
       categoryPath,
       categorySlugPath,

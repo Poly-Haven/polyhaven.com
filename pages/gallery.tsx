@@ -1,4 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import { useTranslation } from 'next-i18next'
 import Head from 'components/Head/Head'
 import Link from 'next/link'
@@ -61,6 +62,9 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'gallery'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['people']),
       data: data,
     },
     revalidate: 60 * 60 * 24, // 24 hours (fallback; updates happen on-demand via /api/revalidate)

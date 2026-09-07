@@ -8,6 +8,7 @@ import Spinner from 'components/UI/Spinner/Spinner'
 import PrizeCard from './PrizeCard'
 import LighthouseTimeline from './LighthouseTimeline'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Lighthouse.module.scss'
 
 // Steam store page, used by the "Wishlist on Steam" CTA below.
@@ -53,6 +54,7 @@ const WishlistCTA = () => (
 )
 
 const Lighthouse = () => {
+  const siteImg = useSiteImg()
   const submissionDeadline = '2026-05-01T23:59:59.999Z'
   const currentTime = new Date().toISOString()
   const isBeforeDeadline = currentTime < submissionDeadline
@@ -141,13 +143,13 @@ const Lighthouse = () => {
               loop
               muted
               playsInline
-              poster={`https://cdn.polyhaven.com/site_images/projects/lighthouse/feature.jpg?width=1920&quality=95`}
+              poster={siteImg('site_images/projects/lighthouse/feature.jpg', { width: 1920, quality: 95 })}
             >
               <source src="https://u.polyhaven.org/Ni3/lighthouse_bg.mp4" type="video/mp4" />
             </video>
           </div>
           <img
-            src="https://cdn.polyhaven.com/site_images/logo/community.png?width=256&quality=100"
+            src={siteImg('site_images/logo/community.png', { width: 256, quality: 100 })}
             className={styles.logo}
           />
           <h1>Project Lighthouse</h1>
@@ -259,7 +261,7 @@ const Lighthouse = () => {
                       key={prize.key}
                       link={prize.link}
                       title={prize.name}
-                      image={`https://cdn.polyhaven.com/site_images/projects/lighthouse/prizes/${prize.key}.png?height=64&quality=95`}
+                      image={siteImg(`site_images/projects/lighthouse/prizes/${prize.key}.png`, { height: 64, quality: 95 })}
                       description={prize.description}
                       copiesAvailable={prize.copies}
                       value={prize.value}

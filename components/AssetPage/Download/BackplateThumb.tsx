@@ -1,9 +1,11 @@
 import { filesize } from 'filesize'
 import { MdVisibility, MdFileDownload } from 'react-icons/md'
 
+import { assetImg } from 'utils/cdn'
+
 import styles from './DownloadOptions.module.scss'
 
-const BackplateThumb = ({ assetID, bp, fileName, preview, trackDownload }) => {
+const BackplateThumb = ({ assetID, imgVersion, bp, fileName, preview, trackDownload }) => {
   const types = {
     jpg_pretty: { name: 'Pretty JPG', tip: 'With some visual improvements (as shown).' },
     jpg_plain: { name: 'Plain JPG', tip: 'No adjustments, converted straight from RAW.' },
@@ -13,14 +15,14 @@ const BackplateThumb = ({ assetID, bp, fileName, preview, trackDownload }) => {
   return (
     <div className={styles.thumbnail}>
       <img
-        src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}?width=152&quality=95`}
-        data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
+        src={assetImg.backplate(assetID, fileName, { width: 152, quality: 95 }, imgVersion)}
+        data-src={assetImg.backplate(assetID, fileName, null, imgVersion)}
         onClick={preview}
       />
       <div className={styles.buttonWrapper}>
         <div
           className={styles.button}
-          data-src={`https://cdn.polyhaven.com/asset_img/backplates/${assetID}/${fileName}`}
+          data-src={assetImg.backplate(assetID, fileName, null, imgVersion)}
           onClick={preview}
         >
           <MdVisibility />

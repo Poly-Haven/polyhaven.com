@@ -8,6 +8,7 @@ import { appWithTranslation } from 'next-i18next'
 
 import Layout from 'components/Layout/Layout'
 import { UserPatronProvider } from 'contexts/UserPatronContext'
+import { ImageVersionsProvider } from 'contexts/ImageVersionsContext'
 
 import 'styles/globals.scss'
 
@@ -53,35 +54,37 @@ We have a public API intended to help you integrate our assets into your softwar
     <>
       <UserProvider>
         <UserPatronProvider>
-          <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          </Head>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <ImageVersionsProvider versions={pageProps.imageVersions}>
+            <Head>
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Head>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
 
-          <div lang="en" dir="ltr">
-            <CookieConsent
-              onAccept={consentGranted}
-              buttonText="Got it!"
-              style={{
-                background: 'rgb(190, 111, 255)',
-                alignItems: 'center',
-                padding: '1em',
-                width: 'auto',
-              }}
-              buttonStyle={{
-                fontSize: '1.1em',
-                padding: '0.7em 1em',
-                fontWeight: 'bold',
-              }}
-            >
-              This website uses cookies to enhance the user experience.{' '}
-              <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
-                Learn more.
-              </Link>
-            </CookieConsent>
-          </div>
+            <div lang="en" dir="ltr">
+              <CookieConsent
+                onAccept={consentGranted}
+                buttonText="Got it!"
+                style={{
+                  background: 'rgb(190, 111, 255)',
+                  alignItems: 'center',
+                  padding: '1em',
+                  width: 'auto',
+                }}
+                buttonStyle={{
+                  fontSize: '1.1em',
+                  padding: '0.7em 1em',
+                  fontWeight: 'bold',
+                }}
+              >
+                This website uses cookies to enhance the user experience.{' '}
+                <Link href="/privacy" style={{ color: 'white', textDecoration: 'underline' }}>
+                  Learn more.
+                </Link>
+              </CookieConsent>
+            </div>
+          </ImageVersionsProvider>
         </UserPatronProvider>
       </UserProvider>
     </>

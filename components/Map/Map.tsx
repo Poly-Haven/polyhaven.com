@@ -5,6 +5,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 
 import styles from './Map.module.scss'
+import { assetImg } from 'utils/cdn'
 
 const Map = ({ hdris }) => {
   return (
@@ -18,7 +19,9 @@ const Map = ({ hdris }) => {
         <Marker key={slug} position={hdris[slug]}>
           <Popup>
             <Link href={`/a/${slug}`}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=200&quality=95`} width="200" />
+              {/* No img_version here: `hdris` maps slug -> coordinates, not to the asset
+                  document that carries it, so this falls back to the unversioned URL. */}
+              <img src={assetImg.thumb(slug, { width: 200, quality: 95 })} width="200" />
             </Link>
           </Popup>
         </Marker>

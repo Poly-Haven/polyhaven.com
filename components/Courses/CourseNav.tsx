@@ -14,23 +14,32 @@ import { SiDiscord } from 'react-icons/si'
 import { formatDuration } from 'utils/formatDuration'
 import Switch from 'components/UI/Switch/Switch'
 import IconButton from 'components/UI/Button/IconButton'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
+
 import styles from './Courses.module.scss'
 
-const THUMB_CDN = 'https://cdn.polyhaven.com/site_images/courses'
+const THUMB_PREFIX = 'site_images/courses'
 const DISCORD_URL = 'https://discord.gg/Dms7Mrs'
 
 const chapterOf = (slug: string | null) => (slug ? slug.split('_')[0] : null)
 
-const Thumb = ({ courseId, lecture }) => (
-  <div className={styles.thumb}>
-    <img
-      src={`${THUMB_CDN}/${courseId}/chapter_thumbs/${lecture.slug}.jpg?width=200&quality=95&sharpen=true`}
-      alt=""
-      loading="lazy"
-    />
-    <span className={styles.duration}>{formatDuration(lecture.duration)}</span>
-  </div>
-)
+const Thumb = ({ courseId, lecture }) => {
+  const siteImg = useSiteImg()
+  return (
+    <div className={styles.thumb}>
+      <img
+        src={siteImg(`${THUMB_PREFIX}/${courseId}/chapter_thumbs/${lecture.slug}.jpg`, {
+          width: 200,
+          quality: 95,
+          sharpen: 'true',
+        })}
+        alt=""
+        loading="lazy"
+      />
+      <span className={styles.duration}>{formatDuration(lecture.duration)}</span>
+    </div>
+  )
+}
 
 const CourseNav = ({
   course,

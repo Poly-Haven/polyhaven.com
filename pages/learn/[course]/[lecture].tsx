@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 
 import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
@@ -88,6 +89,9 @@ export async function getServerSideProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['site_images/courses']),
       course,
       lecture,
     },

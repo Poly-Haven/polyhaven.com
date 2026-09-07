@@ -5,6 +5,7 @@ import useDivSize from 'hooks/useDivSize'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 import { shuffleArray } from 'utils/arrayUtils'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Slider.module.scss'
 
 const mod = (a, b) => {
@@ -95,6 +96,7 @@ const SliderLogoDynamic = dynamic(
 )
 
 const Slider = () => {
+  const siteImg = useSiteImg()
   const { t } = useTranslation('common')
   const [imageIndex, setImageIndex] = useState(null)
   const [transitionBusy, setTransitionBusy] = useState(false)
@@ -158,15 +160,8 @@ const Slider = () => {
       height: height * window.devicePixelRatio,
       quality: 95,
     }
-    const urlParamsStr = Object.entries(urlParams)
-      .map(([k, v]) => `${k}=${v}`)
-      .join('&')
-    const urlCurrent = encodeURI(
-      `https://cdn.polyhaven.com/site_images/home/slider/${renderCurrent.filename}?${urlParamsStr}`
-    )
-    const urlNext = encodeURI(
-      `https://cdn.polyhaven.com/site_images/home/slider/${renderNext.filename}?${urlParamsStr}`
-    )
+    const urlCurrent = encodeURI(siteImg(`site_images/home/slider/${renderCurrent.filename}`, urlParams))
+    const urlNext = encodeURI(siteImg(`site_images/home/slider/${renderNext.filename}`, urlParams))
 
     imgCurrent.current.style.background = `url(${urlCurrent}) no-repeat center center`
     imgCurrent.current.style.backgroundSize = `cover`

@@ -1,12 +1,15 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import Link from 'next/link'
 import locales from 'utils/locales'
 import apiSWR from 'utils/apiSWR'
 
 import TextPage from 'components/Layout/TextPage/TextPage'
 import LocaleInfo from 'components/LocaleInfo/LocaleInfo'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 
 const Page = () => {
+  const siteImg = useSiteImg()
   const { data: progress, error } = apiSWR(`/translation_progress`, { revalidateOnFocus: true })
 
   return (
@@ -66,7 +69,7 @@ const Page = () => {
           context on where the string is located on the website.
         </p>
 
-        <img src="https://cdn.polyhaven.com/site_images/translations_ui.png" style={{ width: '100%' }} />
+        <img src={siteImg('site_images/translations_ui.png')} style={{ width: '100%' }} />
 
         <p>
           If you help contribute a significant portion of string translations (100+ strings), we want to thank you by:
@@ -157,6 +160,9 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['site_images/translations_ui']),
     },
   }
 }

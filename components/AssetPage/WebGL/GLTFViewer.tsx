@@ -15,6 +15,9 @@ import {
   MeshState,
 } from './GLTF_Visibility_reducer'
 
+import { assetImg } from 'utils/cdn'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
+
 import styles from './GLTFViewer.module.scss'
 
 interface Props {
@@ -87,6 +90,7 @@ const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy, transparent) => {
 }
 
 const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
+  const siteImg = useSiteImg()
   if (!show) return null
 
   const handle = useFullScreenHandle()
@@ -201,11 +205,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
               return (
                 <IconButton
                   key={k}
-                  icon={
-                    <img
-                      src={`https://cdn.polyhaven.com/asset_img/primary/${presetEnvs[p]}.png?width=32&aspect_ratio=1:1&quality=95`}
-                    />
-                  }
+                  icon={<img src={assetImg.primary(presetEnvs[p], { width: 32, aspect_ratio: '1:1', quality: 95 })} />}
                   active={showEnvironment && envPreset === p}
                   onClick={() => {
                     // @ts-ignore - String not detected as part of preset list, but we know they are.
@@ -232,28 +232,28 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
           />
           <IconButton icon={<MdLayers />}>
             <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />}
+              icon={<img src={siteImg('site_images/map_types/DIFFUSE.png', { width: 32 })} />}
               active={soloMap === 'DIFFUSE'}
               onClick={() => {
                 setSoloMap('DIFFUSE')
               }}
             />
             <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />}
+              icon={<img src={siteImg('site_images/map_types/NORMAL.png', { width: 32 })} />}
               active={soloMap === 'NORMAL'}
               onClick={() => {
                 setSoloMap('NORMAL')
               }}
             />
             <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />}
+              icon={<img src={siteImg('site_images/map_types/METALNESS.png', { width: 32 })} />}
               active={soloMap === 'METALNESS'}
               onClick={() => {
                 setSoloMap('METALNESS')
               }}
             />
             <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />}
+              icon={<img src={assetImg.thumb('rough_wood', { width: 32 })} />}
               active={soloMap === ''}
               onClick={() => {
                 setSoloMap('')

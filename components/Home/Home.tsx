@@ -2,6 +2,7 @@ import { useTranslation, Trans } from 'next-i18next'
 import Link from 'next/link'
 import LinkText from 'components/LinkText/LinkText'
 import apiSWR from 'utils/apiSWR'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 
 import Slider from './Slider/Slider'
 import Heart from 'components/UI/Icons/Heart'
@@ -19,6 +20,7 @@ import styles from './Home.module.scss'
 const Home = () => {
   const { t: tc } = useTranslation('common')
   const { t } = useTranslation('home')
+  const siteImg = useSiteImg()
   const { data: galleryData, error } = apiSWR(`/gallery?limit=22`, { revalidateOnFocus: false })
 
   return (
@@ -32,9 +34,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionHDRI}`}>
             <Link href="/hdris">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/hdri.png?width=300&quality=95" />
+                <img src={siteImg('site_images/home/balls/hdri.png', { width: 300, quality: 95 })} />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/hdri_h.png?width=300&quality=95"
+                  src={siteImg('site_images/home/balls/hdri_h.png', { width: 300, quality: 95 })}
                   className={styles.hover}
                 />
               </div>
@@ -48,9 +50,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionTex}`}>
             <Link href="/textures">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/tex.png?width=300&quality=95" />
+                <img src={siteImg('site_images/home/balls/tex.png', { width: 300, quality: 95 })} />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/tex_h.png?width=300&quality=95"
+                  src={siteImg('site_images/home/balls/tex_h.png', { width: 300, quality: 95 })}
                   className={styles.hover}
                 />
               </div>
@@ -64,9 +66,9 @@ const Home = () => {
           <div className={`${styles.subSection} ${styles.subSectionMod}`}>
             <Link href="/models">
               <div className={styles.assetTypeImage}>
-                <img src="https://cdn.polyhaven.com/site_images/home/balls/mod.png?width=300&quality=95" />
+                <img src={siteImg('site_images/home/balls/mod.png', { width: 300, quality: 95 })} />
                 <img
-                  src="https://cdn.polyhaven.com/site_images/home/balls/mod_h.png?width=300&quality=95"
+                  src={siteImg('site_images/home/balls/mod_h.png', { width: 300, quality: 95 })}
                   className={styles.hover}
                 />
               </div>

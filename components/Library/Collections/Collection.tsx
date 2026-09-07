@@ -8,9 +8,12 @@ import Unreal from 'components/UI/Icons/Unreal'
 
 import { MdArrowForward } from 'react-icons/md'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Collections.module.scss'
+import { assetImg } from 'utils/cdn'
 
 const Collection = ({ collectionId, data }) => {
+  const siteImg = useSiteImg()
   const softwareIcons = {
     blender: <Blender />,
     unreal: <Unreal />,
@@ -31,7 +34,7 @@ const Collection = ({ collectionId, data }) => {
       <div className={styles.collectionInner}>
         <Link href={isBeforeDeadline ? data.project_link : collectionLink} className={styles.imageWrapper}>
           <img
-            src={`https://cdn.polyhaven.com/collections/${collectionId}.png?width=578&aspect_ratio=16:9&quality=95`}
+            src={siteImg(`collections/${collectionId}.png`, { width: 578, aspect_ratio: '16:9', quality: 95 })}
             alt={`${data.name}`}
           />
           {isBeforeDeadline && (
@@ -86,7 +89,7 @@ const Collection = ({ collectionId, data }) => {
         <div className={styles.assetList}>
           {data.assets.map((slug) => (
             <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=64&quality=95`} />
+              <img src={assetImg.thumb(slug, { width: 192, height: 64, quality: 95 })} />
             </Link>
           ))}
           <Link href={collectionLink} className={styles.arrow}>

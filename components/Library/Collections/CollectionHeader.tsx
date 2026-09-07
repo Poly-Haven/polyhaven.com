@@ -11,9 +11,11 @@ import { MdInfo } from 'react-icons/md'
 
 import { titleCase } from 'utils/stringUtils'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './CollectionHeader.module.scss'
 
 const CollectionHeader = ({ collection }) => {
+  const siteImg = useSiteImg()
   const wrapperRef = useRef(null)
   const textRef = useRef(null)
   const { width } = useDivSize(wrapperRef)
@@ -45,7 +47,7 @@ const CollectionHeader = ({ collection }) => {
     isBeforeDeadline = currentTime < collection.submission_deadline
   }
 
-  const backgroundImage = `https://cdn.polyhaven.com/collections/${collection.id}.png?width=${imageWidth}&quality=95`
+  const backgroundImage = siteImg(`collections/${collection.id}.png`, { width: imageWidth, quality: 95 })
 
   return (
     <div

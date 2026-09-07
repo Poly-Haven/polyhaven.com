@@ -18,6 +18,10 @@ import styles from './Photogrammetry.module.scss'
  * Bespoke marketing / overview body for the Photogrammetry course.
  * ------------------------------------------------------------------------- */
 
+// Not versioned: these are referenced from the module-scope chapter table below, outside any
+// component, so the image-versions manifest (a React context) cannot be read here. They are
+// promo stills for one course - replace one by uploading under a new name, or move the table
+// into the component if they ever need busting in place.
 const PROMO = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/promo'
 const THUMB_CDN = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/chapter_thumbs'
 const DISCORD_URL = 'https://discord.gg/Dms7Mrs'

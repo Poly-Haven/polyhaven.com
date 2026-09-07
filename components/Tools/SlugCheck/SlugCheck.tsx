@@ -8,6 +8,7 @@ import useQuery from 'hooks/useQuery'
 import Spinner from 'components/UI/Spinner/Spinner'
 
 import styles from './SlugCheck.module.scss'
+import { assetImg } from 'utils/cdn'
 
 const AssetList = ({ arr, assetList, search }) => {
   return (
@@ -22,7 +23,7 @@ const AssetList = ({ arr, assetList, search }) => {
             href={`https://polyhaven.com/a/${key}`}
           >
             <span className={styles.thumb}>
-              <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${key}.png?width=64&height=64&quality=95`} />
+              <img src={assetImg.thumb(key, { width: 64, height: 64, quality: 95 })} />
             </span>
             {key}
           </a>

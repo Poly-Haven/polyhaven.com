@@ -1,5 +1,6 @@
 import { ancestorsOf, nodeFromPath } from 'utils/taxonomy'
 import { assetTypeName } from 'utils/assetTypeName'
+import { assetImg } from 'utils/cdn'
 import asset_types from 'constants/asset_types.json'
 
 /* ---------------------------------------------------------------------------
@@ -43,8 +44,8 @@ export function buildAssetJsonLd(assetID: string, data: any) {
 
   // The preview PNG is what the page actually displays and what Google Images can crawl -
   // so it, not the multi-gigabyte source file, is the image being described here.
-  const preview = `https://cdn.polyhaven.com/asset_img/primary/${assetID}.png?height=760`
-  const thumbnail = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=630`
+  const preview = assetImg.primary(assetID, { height: 760 }, data.img_version)
+  const thumbnail = assetImg.thumb(assetID, { width: 630 }, data.img_version)
 
   // A 3D model is not an image; everything else on this site fundamentally is one.
   const isModel = data.type === 2

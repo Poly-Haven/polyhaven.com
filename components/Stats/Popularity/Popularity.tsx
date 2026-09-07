@@ -10,6 +10,7 @@ import Avatar from 'components/UI/Avatar/Avatar'
 import Spinner from 'components/UI/Spinner/Spinner'
 
 import styles from './Popularity.module.scss'
+import { assetImg } from 'utils/cdn'
 
 const money = (v: number) => getCurrency(v, 'ZAR', {})
 
@@ -58,7 +59,7 @@ const Popularity = ({ data }) => {
               <td>
                 <Link href={`/a/${pop.slug}`}>
 
-                  <img src={`https://cdn.polyhaven.com/asset_img/primary/${pop.slug}.png?height=50`} />
+                  <img src={assetImg.primary(pop.slug, { height: 50 })} />
 
                 </Link>
               </td>

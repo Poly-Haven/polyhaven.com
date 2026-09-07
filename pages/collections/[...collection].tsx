@@ -1,4 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
+import { cdnUrl } from 'utils/cdn'
 
 import Head from 'components/Head/Head'
 import Library from 'components/Library/Library'
@@ -13,7 +15,11 @@ const LibraryPage = (props) => {
         url={`/collections/${props.collection.id}`}
         description={props.collection.description}
         assetType={asset_types[props.assetType]}
-        image={`https://cdn.polyhaven.com/collections/${props.collection.id}.png?width=580&quality=95`}
+        image={cdnUrl(
+          `collections/${props.collection.id}.png`,
+          { width: 580, quality: 95 },
+          props.imageVersions?.[`collections/${props.collection.id}.png`]
+        )}
       />
       <Library
         assetType={props.assetType}
@@ -57,6 +63,9 @@ export async function getServerSideProps(context) {
       notFound: true,
       props: {
         ...(await serverSideTranslations(context.locale, ['common', 'library', 'categories', 'time'])),
+        // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+        // pageview: getStaticProps runs at build time and on revalidation only.
+        imageVersions: await getImageVersions(['collections', 'people', 'vaults', 'site_images/news_cards']),
       },
     }
   }

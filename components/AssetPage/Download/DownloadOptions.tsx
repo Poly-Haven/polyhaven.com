@@ -10,11 +10,24 @@ import IconMacbeth from 'components/UI/Icons/Macbeth'
 import IconPatreon from 'components/UI/Icons/Patreon'
 
 import { sortCaseInsensitive, sortByPreference } from 'utils/arrayUtils'
+import { assetImg } from 'utils/cdn'
 import threeDFormats from 'constants/3D_formats.json'
 
 import styles from './DownloadOptions.module.scss'
 
-const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, type, setPreview, callback }) => {
+const DownloadOptions = ({
+  open,
+  assetID,
+  imgVersion,
+  tempUUID,
+  files,
+  res,
+  fmt,
+  selectMap,
+  type,
+  setPreview,
+  callback,
+}) => {
   const { t } = useTranslation('asset')
 
   const trackDownload = async (e) => {
@@ -90,7 +103,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         ) : null}
         <div className={`${styles.optionRow} ${styles.wideOptionRow}`} data-tip={t('asset:formats.thumb-d')}>
           <a
-            href={`https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?format=png`}
+            href={assetImg.thumb(assetID, { format: 'png' }, imgVersion)}
             className={styles.format}
             target="_blank"
             rel="noopener"
@@ -127,6 +140,7 @@ const DownloadOptions = ({ open, assetID, tempUUID, files, res, fmt, selectMap, 
         {type === 0 && files['backplates'] ? (
           <BackplateList
             assetID={assetID}
+            imgVersion={imgVersion}
             files={files['backplates']}
             trackDownload={trackDownload}
             setPreview={setPreview}

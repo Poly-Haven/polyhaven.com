@@ -9,6 +9,7 @@ import { TbBone, TbDrone, TbPyramid, TbAspectRatio, TbTool } from 'react-icons/t
 
 import { daysOld } from 'utils/dateUtils'
 import { isVaultLocked, vaultOf } from 'utils/vaults'
+import { assetImg } from 'utils/cdn'
 import IconPatreon from 'components/UI/Icons/Patreon'
 import HeartLock from 'components/UI/Icons/HeartLock'
 import NodeTree from 'components/UI/Icons/NodeTree'
@@ -145,7 +146,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
     creditedAuthors = Object.keys(asset.authors)
   }
 
-  const img_src = `https://cdn.polyhaven.com/asset_img/thumbs/${assetID}.png?width=${size[0]}&height=${size[1]}&quality=95`
+  const img_src = assetImg.thumb(assetID, { width: size[0], height: size[1], quality: 95 }, asset.img_version)
   return (
     <Link
       href="/a/[id]"

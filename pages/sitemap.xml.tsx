@@ -2,6 +2,7 @@ import React from 'react'
 import fs from 'fs'
 
 import { removeExtension } from 'utils/stringUtils'
+import { assetImg } from 'utils/cdn'
 import taxonomy from 'constants/taxonomy.json'
 import assetTypes from 'constants/asset_types.json'
 
@@ -61,8 +62,8 @@ export const getServerSideProps = async ({ res }) => {
           changefreq: 'monthly',
           priority: '1.0',
           img: [
-            `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=630`,
-            `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=760`,
+            assetImg.thumb(slug, { width: 630 }, info['img_version']),
+            assetImg.primary(slug, { height: 760 }, info['img_version']),
           ],
         }
       }

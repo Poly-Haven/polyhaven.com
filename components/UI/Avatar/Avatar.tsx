@@ -1,10 +1,12 @@
 import styles from './Avatar.module.scss'
 import { placeholderAvatar } from 'utils/placeholderAvatar'
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 
 const Avatar = ({ id, size }) => {
+  const siteImg = useSiteImg()
   return (
     <img
-      src={`https://cdn.polyhaven.com/people/${id}.jpg?width=${size}&quality=95`}
+      src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })}
       width={size}
       height={size}
       onError={(e) => {

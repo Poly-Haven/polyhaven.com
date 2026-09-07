@@ -11,7 +11,9 @@ import { isUnlockedVault } from 'utils/vaults'
 import { IoMdUnlock } from 'react-icons/io'
 import { MdArrowForward } from 'react-icons/md'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Vaults.module.scss'
+import { assetImg } from 'utils/cdn'
 
 const MAX_BLUR = 33 // px
 // Below this much of the banner on screen the video pauses and blurs instead of playing slowly.
@@ -22,9 +24,11 @@ const PLAY_AT = 1 / 3
 // on every scroll event.
 const THRESHOLDS = Array.from({ length: 51 }, (_, i) => i / 50)
 
-const poster = (id: string) => `https://cdn.polyhaven.com/vaults/${id}.png?width=1920&quality=80&sharpen=true`
+const poster = (id: string, siteImg: (p: string, params?: any) => string) =>
+  siteImg(`vaults/${id}.png`, { width: 1920, quality: 80, sharpen: 'true' })
 
 const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
+  const siteImg = useSiteImg()
   const { t } = useTranslation('common')
   // Pinned to the page's locale rather than left to the runtime default: Node resolves that to a
   // different locale than the browser does ("19 June 2025" vs "June 19, 2025"), which is a
@@ -122,7 +126,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
           <img
             loading="lazy"
             decoding="async"
-            src={`https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png?width=192&height=90&quality=95&sharpen=true`}
+            src={assetImg.thumb(slug, { width: 192, height: 90, quality: 95, sharpen: 'true' })}
           />
         </Link>
       )),
@@ -147,7 +151,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
               position: 'relative',
               objectPosition: vault.video_position || 'center',
             }}
-            poster={poster(vault.id)}
+            poster={poster(vault.id, siteImg)}
           >
             <source src={vault.video} type="video/mp4" />
           </video>
@@ -158,7 +162,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
         className={styles.vault}
         // The poster also stands in for a video that has not mounted yet. The swap happens a
         // screenful before the banner is visible, so it is never seen.
-        style={vault.video && showVideo ? {} : { backgroundImage: `url("${poster(vault.id)}")` }}
+        style={vault.video && showVideo ? {} : { backgroundImage: `url("${poster(vault.id, siteImg)}")` }}
       >
         {vault.no_gradient ? null : (
           <>

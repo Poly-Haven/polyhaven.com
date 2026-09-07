@@ -4,7 +4,9 @@ import { useTranslation } from 'next-i18next'
 import { getRoots, categoryLabel } from 'utils/taxonomy'
 import bannerAssets from 'constants/categoryBannerAssets.json'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Library.module.scss'
+import { assetImg } from 'utils/cdn'
 
 /**
  * The landing-page grid of top-level categories (or collections on /all).
@@ -14,6 +16,7 @@ import styles from './Library.module.scss'
  * (constants/categoryBannerAssets.json - regenerate if a category ends up empty).
  */
 const CatBanner = ({ assetType, collections }) => {
+  const siteImg = useSiteImg()
   const { t } = useTranslation('categories')
 
   if (assetType === 'all') {
@@ -25,7 +28,7 @@ const CatBanner = ({ assetType, collections }) => {
             <Link key={i} href={`/collections/${collectionID}`} className={`${styles.cat}`}>
               {/* Decorative: the link already carries the collection name below it. */}
               <img
-                src={`https://cdn.polyhaven.com/collections/${collectionID}.png?width=578&aspect_ratio=16:9&quality=95`}
+                src={siteImg(`collections/${collectionID}.png`, { width: 578, aspect_ratio: '16:9', quality: 95 })}
                 alt=""
                 loading="lazy"
               />
@@ -49,8 +52,8 @@ const CatBanner = ({ assetType, collections }) => {
           const slug = images[node.slug]
           const imgUrl =
             assetType === 'models'
-              ? `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?height=180&quality=95`
-              : `https://cdn.polyhaven.com/asset_img/primary/${slug}.png?aspect_ratio=1:1&height=180&quality=95`
+              ? assetImg.primary(slug, { height: 180, quality: 95 })
+              : assetImg.primary(slug, { aspect_ratio: '1:1', height: 180, quality: 95 })
           return (
             <Link
               key={node.path}

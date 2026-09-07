@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getImageVersions } from 'utils/imageVersions'
 import Link from 'next/link'
 import CSS from 'csstype'
 import { subMonths, startOfMonth, endOfMonth, differenceInYears, startOfHour } from 'date-fns'
@@ -229,6 +230,9 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ['common', 'time'])),
+      // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
+      // pageview: getStaticProps runs at build time and on revalidation only.
+      imageVersions: await getImageVersions(['corporate_sponsors']),
       // Rounded to the hour. At millisecond precision this one field made the rendered output
       // byte-different on every single regeneration, across all 26 locales, even when none of the
       // stats had moved - which defeats ETag revalidation downstream. The page only refreshes

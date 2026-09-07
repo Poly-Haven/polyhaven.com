@@ -7,7 +7,7 @@ import BackplateThumb from './BackplateThumb'
 
 import styles from './DownloadOptions.module.scss'
 
-const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
+const BackplateList = ({ assetID, imgVersion, files, trackDownload, setPreview }) => {
   const { t } = useTranslation('asset')
 
   const types = {
@@ -39,6 +39,7 @@ const BackplateList = ({ assetID, files, trackDownload, setPreview }) => {
               <BackplateThumb
                 key={i}
                 assetID={assetID}
+                imgVersion={imgVersion}
                 bp={bp}
                 fileName={bp['jpg_pretty']['url'].split('/').pop()}
                 preview={preview}

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
 import { MdDownload } from 'react-icons/md'
 
+import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './LogoGuidelines.module.scss'
 
 const Logo = ({ url, color }) => {
@@ -15,6 +16,7 @@ const Logo = ({ url, color }) => {
 }
 
 const LogoGuidelines = () => {
+  const siteImg = useSiteImg()
   return (
     <div className={styles.wrapper} dir="ltr" style={{ textAlign: 'left' }}>
       <h1>Poly Haven Logo</h1>
@@ -40,15 +42,15 @@ const LogoGuidelines = () => {
 
       <div className={styles.logoBoxes}>
         <Logo
-          url="https://cdn.polyhaven.com/site_images/Poly Haven Logo Kit/Colored/Poly Haven Logo Colored Full White.svg"
+          url={siteImg('site_images/Poly Haven Logo Kit/Colored/Poly Haven Logo Colored Full White.svg')}
           color="dark"
         />
         <Logo
-          url="https://cdn.polyhaven.com/site_images/Poly Haven Logo Kit/Black/Poly Haven Logo Black Full.svg"
+          url={siteImg('site_images/Poly Haven Logo Kit/Black/Poly Haven Logo Black Full.svg')}
           color="light"
         />
         <Logo
-          url="https://cdn.polyhaven.com/site_images/Poly Haven Logo Kit/White/Poly Haven Logo White Full.svg"
+          url={siteImg('site_images/Poly Haven Logo Kit/White/Poly Haven Logo White Full.svg')}
           color="dark"
         />
       </div>

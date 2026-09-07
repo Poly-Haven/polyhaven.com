@@ -15,6 +15,8 @@ import Spinner from 'components/UI/Spinner/Spinner'
 
 import useQuery from 'hooks/useQuery'
 
+import { assetImg } from 'utils/cdn'
+
 import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
@@ -341,7 +343,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
                 <div className={styles.assetsWrapper}>
                   {assetsUsed.map((a) => (
                     <Link href={`/a/${a.value}`} key={a.value}>
-                      <img src={`https://cdn.polyhaven.com/asset_img/thumbs/${a.value}.png?height=100&width=200`} />
+                      <img src={assetImg.thumb(a.value, { height: 100, width: 200 })} />
                     </Link>
                   ))}
                 </div>

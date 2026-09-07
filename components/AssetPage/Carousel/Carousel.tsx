@@ -2,27 +2,30 @@ import { Md3dRotation } from 'react-icons/md'
 
 import { sortCaseInsensitive, sliceIntoChunks, sortByPreference } from 'utils/arrayUtils'
 import { urlBaseName, removeExtension } from 'utils/stringUtils'
+import { assetImg } from 'utils/cdn'
 
 import IconButton from 'components/UI/Button/IconButton'
 
 import styles from './Carousel.module.scss'
 
-const Carousel = ({ slug, name, data, files, assetType, setter, showWebGL, showTilePreview, active }) => {
+const Carousel = ({ slug, name, imgVersion, data, files, assetType, setter, showWebGL, showTilePreview, active }) => {
   // Render keys are a mix of bare labels ("Thumb", "Preview") and filenames ("clay.png"), and
   // removeExtension returns "" for anything without a dot - so fall back to the key itself.
   const renderLabel = (key: string) => removeExtension(key) || key
+  // No size params here: these are the bare URLs AssetPage compares against activeImageSrc, and
+  // it adds the display size itself. The version still belongs on them - it is part of identity.
   let images = {
-    Preview: `https://cdn.polyhaven.com/asset_img/primary/${slug}.png`,
+    Preview: assetImg.primary(slug, null, imgVersion),
   }
   if (assetType !== 2) {
     // Model thumb and primary are the same, don't need to show both.
-    images['Thumb'] = `https://cdn.polyhaven.com/asset_img/thumbs/${slug}.png`
+    images['Thumb'] = assetImg.thumb(slug, null, imgVersion)
   }
 
   let image_info = {}
   if (data) {
     for (const i of Object.keys(data)) {
-      images[i] = `https://cdn.polyhaven.com/asset_img/renders/${slug}/${i}`
+      images[i] = assetImg.render(slug, i, null, imgVersion)
       if (typeof data[i] === 'object') {
         image_info[i] = data[i]
       }
@@ -124,9 +127,12 @@ const Carousel = ({ slug, name, data, files, assetType, setter, showWebGL, showT
                   className={`${styles.image} ${active === maps[m] ? styles.activeImage : ''}`}
                 >
                   <img
-                    src={`https://cdn.polyhaven.com/asset_img/map_previews/${slug}/${urlBaseName(
-                      maps[m]
-                    )}?height=50&width=50&quality=95`}
+                    src={assetImg.mapPreview(
+                      slug,
+                      urlBaseName(maps[m]),
+                      { height: 50, width: 50, quality: 95 },
+                      imgVersion
+                    )}
                     alt={`${name} - ${m} map`}
                     loading="lazy"
                   />

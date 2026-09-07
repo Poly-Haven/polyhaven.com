@@ -10,6 +10,8 @@ import { isoDuration } from 'utils/formatDuration'
  * ------------------------------------------------------------------------- */
 
 const SITE = 'https://polyhaven.com'
+// Not versioned: this builds JSON-LD from a plain function, with no component to read the
+// image-versions context from. It is one og:image for one course page.
 const PROMO = 'https://cdn.polyhaven.com/site_images/courses/photogrammetry/promo'
 
 type CourseSeo = {
