@@ -1,7 +1,7 @@
 import React, { FC, useReducer, useState, useEffect, useMemo, Suspense } from 'react'
-import { Vector3, Quaternion, Box3, CineonToneMapping, Texture } from 'three'
-import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Vector3, Quaternion, Box3, CineonToneMapping, Texture, type Texture as ThreeTexture } from 'three'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Environment, OrbitControls, MeshTransmissionMaterial, useFBO } from '@react-three/drei'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 
 import { MdPublic, MdLayers, MdLanguage, MdNotInterested, MdFullscreen } from 'react-icons/md'
@@ -26,64 +26,152 @@ interface Props {
 
 const linearMaps = ['normalMap', 'emissiveMap', 'metalnessMap', 'roughnessMap', 'aoMap']
 
-const renderMesh = (mesh, soloMap, wireframe, maxAnisotropy, transparent) => {
-  const objects = []
-  if (mesh.children) {
-    mesh.children.forEach((child) => {
-      objects.push(renderMesh(child, soloMap, wireframe, maxAnisotropy, transparent))
-    })
+const channelVertexShader = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
-  objects.push(
-    <React.Fragment key={mesh.uuid}>
-      <mesh
-        geometry={mesh.geometry}
-        position={mesh.getWorldPosition(new Vector3())}
-        scale={mesh.getWorldScale(new Vector3())}
-        quaternion={mesh.getWorldQuaternion(new Quaternion())}
-      >
-        {soloMap === '' ? (
-          <meshPhysicalMaterial {...mesh.material} vertexColors={false} transparent={transparent}>
-            {Object.entries(mesh.material).map(([key, value]) =>
-              value instanceof Texture ? (
-                <texture
-                  key={key}
-                  attach={key}
-                  {...value}
-                  colorSpace={linearMaps.includes(key) ? 'srgb-linear' : 'srgb'}
-                  anisotropy={maxAnisotropy}
-                />
-              ) : null
-            )}
-          </meshPhysicalMaterial>
-        ) : (
-          <meshBasicMaterial>
-            {mesh.material['map'] && soloMap === 'DIFFUSE' && (
-              <texture attach="map" {...mesh.material['map']} anisotropy={maxAnisotropy} />
-            )}
-            {mesh.material['normalMap'] && soloMap === 'NORMAL' && (
-              <texture attach="map" {...mesh.material['normalMap']} anisotropy={maxAnisotropy} />
-            )}
-            {mesh.material['metalnessMap'] && soloMap === 'METALNESS' && (
-              <texture attach="map" {...mesh.material['metalnessMap']} anisotropy={maxAnisotropy} />
-            )}
-            {mesh.material['roughnessMap'] && soloMap === 'ROUGHNESS' && (
-              <texture attach="map" {...mesh.material['roughnessMap']} anisotropy={maxAnisotropy} />
-            )}
-          </meshBasicMaterial>
-        )}
-      </mesh>
+`
 
-      <mesh
-        geometry={mesh.geometry}
-        position={mesh.getWorldPosition(new Vector3())}
-        scale={mesh.getWorldScale(new Vector3())}
-        quaternion={mesh.getWorldQuaternion(new Quaternion())}
-      >
-        <meshStandardMaterial wireframe={true} visible={wireframe} color="black" />
-      </mesh>
-    </React.Fragment>
+const channelFragmentShader = `
+  uniform sampler2D map;
+  uniform int channel;
+  varying vec2 vUv;
+  void main() {
+    vec4 c = texture2D(map, vUv);
+    float v;
+    if (channel == 0) v = c.r;
+    else if (channel == 1) v = c.g;
+    else v = c.b;
+    gl_FragColor = vec4(v, v, v, 1.0);
+  }
+`
+
+const armChannelIndex = { AO: 0, ROUGHNESS: 1, METALNESS: 2 }
+const armTextureName = { AO: 'aoMap', ROUGHNESS: 'roughnessMap', METALNESS: 'metalnessMap' }
+
+interface SceneMeshesProps {
+  gltf: any
+  soloMap: string
+  wireframe: boolean
+  maxAnisotropy: number
+  transparent: boolean
+  transmissionBuffer: ThreeTexture
+}
+
+const collectMeshes = (node: any, result: any[] = []): any[] => {
+  if (node.type === 'Mesh' && node.material) result.push(node)
+  if (node.children) node.children.forEach((c) => collectMeshes(c, result))
+  return result
+}
+
+const SceneMeshes: FC<SceneMeshesProps> = ({ gltf, soloMap, wireframe, maxAnisotropy, transparent, transmissionBuffer }) => {
+  const meshes = useMemo(() => collectMeshes(gltf.scene), [gltf])
+
+  return (
+    <>
+      {meshes.map((mesh) => {
+        const isArmChannel = soloMap === 'AO' || soloMap === 'ROUGHNESS' || soloMap === 'METALNESS'
+        const isTransmissive = mesh.material.transmission > 0
+        const needsTransparent = transparent || mesh.material.transparent || isTransmissive
+
+        return (
+          <React.Fragment key={mesh.uuid}>
+            <mesh
+              geometry={mesh.geometry}
+              position={mesh.getWorldPosition(new Vector3())}
+              scale={mesh.getWorldScale(new Vector3())}
+              quaternion={mesh.getWorldQuaternion(new Quaternion())}
+            >
+              {soloMap === '' ? (
+                isTransmissive ? (
+                  <MeshTransmissionMaterial
+                    {...mesh.material}
+                    transmission={mesh.material.transmission}
+                    roughness={mesh.material.roughness}
+                    thickness={mesh.material.thickness ?? 0.5}
+                    chromaticAberration={0.03}
+                    buffer={transmissionBuffer}
+                    samples={6}
+                    resolution={256}
+                  >
+                    {Object.entries(mesh.material).map(([key, value]) =>
+                      value instanceof Texture ? (
+                        <texture
+                          key={key}
+                          attach={key}
+                          {...value}
+                          colorSpace={linearMaps.includes(key) ? 'srgb-linear' : 'srgb'}
+                          anisotropy={maxAnisotropy}
+                        />
+                      ) : null
+                    )}
+                  </MeshTransmissionMaterial>
+                ) : (
+                  <meshPhysicalMaterial {...mesh.material} vertexColors={false} transparent={needsTransparent}>
+                    {Object.entries(mesh.material).map(([key, value]) =>
+                      value instanceof Texture ? (
+                        <texture
+                          key={key}
+                          attach={key}
+                          {...value}
+                          colorSpace={linearMaps.includes(key) ? 'srgb-linear' : 'srgb'}
+                          anisotropy={maxAnisotropy}
+                        />
+                      ) : null
+                    )}
+                  </meshPhysicalMaterial>
+                )
+              ) : isArmChannel ? (
+                <shaderMaterial
+                  key={soloMap}
+                  vertexShader={channelVertexShader}
+                  fragmentShader={channelFragmentShader}
+                  uniforms={{
+                    map: { value: (mesh.material[armTextureName[soloMap]] ?? mesh.material.roughnessMap) ?? null },
+                    channel: { value: armChannelIndex[soloMap] },
+                  }}
+                />
+              ) : (
+                <meshBasicMaterial>
+                  {mesh.material['map'] && soloMap === 'DIFFUSE' && (
+                    <texture attach="map" {...mesh.material['map']} anisotropy={maxAnisotropy} />
+                  )}
+                  {mesh.material['normalMap'] && soloMap === 'NORMAL' && (
+                    <texture attach="map" {...mesh.material['normalMap']} anisotropy={maxAnisotropy} />
+                  )}
+                </meshBasicMaterial>
+              )}
+            </mesh>
+
+            <mesh
+              geometry={mesh.geometry}
+              position={mesh.getWorldPosition(new Vector3())}
+              scale={mesh.getWorldScale(new Vector3())}
+              quaternion={mesh.getWorldQuaternion(new Quaternion())}
+            >
+              <meshStandardMaterial wireframe={true} visible={wireframe} color="black" />
+            </mesh>
+          </React.Fragment>
+        )
+      })}
+    </>
   )
-  return objects
+}
+
+interface SceneProps extends Omit<SceneMeshesProps, 'transmissionBuffer'> {}
+
+const Scene: FC<SceneProps> = (props) => {
+  const buffer = useFBO(256, 256)
+
+  useFrame((state) => {
+    state.gl.setRenderTarget(buffer)
+    state.gl.render(state.scene, state.camera)
+    state.gl.setRenderTarget(null)
+  })
+
+  return <SceneMeshes {...props} transmissionBuffer={buffer.texture} />
 }
 
 const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
@@ -91,10 +179,10 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
 
   const handle = useFullScreenHandle()
 
-  const [soloMap, setSoloMap] = useState<'NORMAL' | 'METALNESS' | 'ROUGHNESS' | 'DIFFUSE' | ''>('')
+  const [soloMap, setSoloMap] = useState<'NORMAL' | 'AO' | 'ROUGHNESS' | 'METALNESS' | 'DIFFUSE' | ''>('')
   const [wireframe, setWireframe] = useState(false)
 
-  const [showEnvironment, setShowEnvironment] = useState(true)
+  const [showEnvironment, setShowEnvironment] = useState(false)
   const [envPreset, setEnvPreset] = useState<
     'warehouse' | 'sunset' | 'dawn' | 'night' | 'forest' | 'apartment' | 'studio' | 'city' | 'park' | 'lobby'
   >('warehouse')
@@ -129,11 +217,15 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
     return <div className={styles.wrapper}>No preview available for this model, sorry :(</div>
   }
 
-  const gltfFiles = files.gltf['4k']?.gltf ?? files.gltf['2k'].gltf
+  const gltfFiles = { ...files.gltf }
   if (files['Alpha'] && files['Diffuse']) {
     gltfFiles['alpha'] = files['Diffuse']['4k']?.png ?? files['Diffuse']['2k'].png
   }
-  const processedGLTFFromAPI = useGLTFFromAPI(gltfFiles)
+  const { gltf: processedGLTFFromAPI, texturesLoaded } = useGLTFFromAPI(gltfFiles)
+
+  useEffect(() => {
+    if (texturesLoaded) onLoad()
+  }, [texturesLoaded])
 
   // As this functionality is not really necessary, it is overkill to useReducer to handle it.
   // If we need finer grained interaction per part it is useful.
@@ -170,6 +262,7 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
         <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
           <Canvas
             dpr={[1, 2]}
+            gl={{ alpha: true }}
             camera={{
               fov: 27,
               near: 0.1,
@@ -179,18 +272,27 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
             onCreated={({ gl }) => {
               gl.toneMapping = CineonToneMapping
               setMaxAnisotropy(Math.max(1, Math.min(16, gl.capabilities.getMaxAnisotropy())))
-              onLoad()
             }}
           >
             <Suspense fallback={null}>
               <Environment preset={envPreset} background={showEnvironment} />
+              {!texturesLoaded && (
+                <>
+                  <ambientLight intensity={1.5} />
+                  <directionalLight intensity={10.5} position={[5, 10, 5]} />
+                </>
+              )}
               <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} target={center} />
 
-              {processedGLTFFromAPI &&
-                state.meshes &&
-                Object.values(state.meshes).map((node) =>
-                  renderMesh(node.mesh, soloMap, wireframe, maxAnisotropy, !!gltfFiles['alpha'])
-                )}
+              {processedGLTFFromAPI && (
+                <Scene
+                  gltf={processedGLTFFromAPI}
+                  soloMap={soloMap}
+                  wireframe={wireframe}
+                  maxAnisotropy={maxAnisotropy}
+                  transparent={!!gltfFiles['alpha']}
+                />
+              )}
             </Suspense>
           </Canvas>
         </div>
@@ -231,27 +333,56 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
             }}
           />
           <IconButton icon={<MdLayers />}>
-            <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />}
-              active={soloMap === 'DIFFUSE'}
-              onClick={() => {
-                setSoloMap('DIFFUSE')
-              }}
-            />
-            <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />}
-              active={soloMap === 'NORMAL'}
-              onClick={() => {
-                setSoloMap('NORMAL')
-              }}
-            />
-            <IconButton
-              icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />}
-              active={soloMap === 'METALNESS'}
-              onClick={() => {
-                setSoloMap('METALNESS')
-              }}
-            />
+            <div className={styles.labeledButton}>
+              <span className={styles.mapLabel}>Base Color</span>
+              <IconButton
+                icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/DIFFUSE.png?width=32`} />}
+                active={soloMap === 'DIFFUSE'}
+                onClick={() => {
+                  setSoloMap('DIFFUSE')
+                }}
+              />
+            </div>
+            <div className={styles.labeledButton}>
+              <span className={styles.mapLabel}>Normal</span>
+              <IconButton
+                icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/NORMAL.png?width=32`} />}
+                active={soloMap === 'NORMAL'}
+                onClick={() => {
+                  setSoloMap('NORMAL')
+                }}
+              />
+            </div>
+            <div className={styles.labeledButton}>
+              <span className={styles.mapLabel}>Ambient Occlusion</span>
+              <IconButton
+                icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/AO.png?width=32`} />}
+                active={soloMap === 'AO'}
+                onClick={() => {
+                  setSoloMap('AO')
+                }}
+              />
+            </div>
+            <div className={styles.labeledButton}>
+              <span className={styles.mapLabel}>Roughness</span>
+              <IconButton
+                icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/ROUGHNESS.png?width=32`} />}
+                active={soloMap === 'ROUGHNESS'}
+                onClick={() => {
+                  setSoloMap('ROUGHNESS')
+                }}
+              />
+            </div>
+            <div className={styles.labeledButton}>
+              <span className={styles.mapLabel}>Metalness</span>
+              <IconButton
+                icon={<img src={`https://cdn.polyhaven.com/site_images/map_types/METALNESS.png?width=32`} />}
+                active={soloMap === 'METALNESS'}
+                onClick={() => {
+                  setSoloMap('METALNESS')
+                }}
+              />
+            </div>
             <IconButton
               icon={<img src={`https://cdn.polyhaven.com/asset_img/thumbs/rough_wood.png?width=32`} />}
               active={soloMap === ''}
