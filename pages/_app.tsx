@@ -6,6 +6,7 @@ import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import { v4 as uuid } from 'uuid'
 import { appWithTranslation } from 'next-i18next'
 
+import authFetcher from 'utils/authHint'
 import Layout from 'components/Layout/Layout'
 import { UserPatronProvider } from 'contexts/UserPatronContext'
 import { ImageVersionsProvider } from 'contexts/ImageVersionsContext'
@@ -52,7 +53,8 @@ We have a public API intended to help you integrate our assets into your softwar
 
   return (
     <>
-      <UserProvider>
+      {/* fetcher: skips the /api/auth/me round trip entirely for anonymous visitors. */}
+      <UserProvider fetcher={authFetcher}>
         <UserPatronProvider>
           <ImageVersionsProvider versions={pageProps.imageVersions}>
             <Head>
