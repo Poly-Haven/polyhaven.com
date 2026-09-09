@@ -21,4 +21,7 @@ Disallow: /_next/data/
 # Users are unaffected; this only stops crawlers.
 Disallow: /*?s=
 
+Disallow: /account
+Disallow: /*/account
+
 Sitemap: https://polyhaven.com/sitemap.xml

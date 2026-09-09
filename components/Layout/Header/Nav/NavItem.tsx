@@ -15,6 +15,7 @@ const NavItem = ({
   lighthouse = false,
   open = null,
   onToggle = null,
+  onClick = null,
 }) => {
   // Only used on mobile, where the desktop :hover reveal has no touch equivalent.
   const [selfExpanded, setSelfExpanded] = useState(false)
@@ -49,11 +50,7 @@ const NavItem = ({
             {text}
           </a>
         ) : (
-          // prefetch={false}: every nav link funnels through here and the header renders on every
-          // page, so prefetching means each page view also fetches the route data for /account,
-          // /all, /hdris, /gallery and the rest. /account alone was the single most-requested
-          // uncached path on the site. Same reasoning as the footer links.
-          <Link href={link} className={styles.navItem} id={labelId} prefetch={false}>
+          <Link href={link} className={styles.navItem} id={labelId} prefetch={false} onClick={onClick}>
             {text}
           </Link>
         )

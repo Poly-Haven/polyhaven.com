@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import locales from 'utils/locales'
+import { rememberReturnTo } from 'utils/returnTo'
 
 import { MdMenu, MdExpandLess, MdAccountCircle, MdClose, MdFolder, MdList } from 'react-icons/md'
 import { IoMdLogIn } from 'react-icons/io'
@@ -307,7 +308,7 @@ const Nav = () => {
             <NavItem text={t('common:nav.logout')} link="/api/auth/logout" />
           </NavItem>
         ) : (
-          <NavItem text={<IoMdLogIn />} link={`/account?returnTo=${router.asPath}`} />
+          <NavItem text={<IoMdLogIn />} link="/account" onClick={() => rememberReturnTo(router.asPath)} />
         )}
       </div>
 

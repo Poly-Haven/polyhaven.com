@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation, Trans } from 'next-i18next'
 import { useUserPatron } from 'contexts/UserPatronContext'
+import { readReturnTo } from 'utils/returnTo'
 
 import Button from 'components/UI/Button/Button'
 import Loader from 'components/UI/Loader/Loader'
@@ -37,7 +38,10 @@ const rewardInfo = (r, uuid, patron) => {
 const Page = () => {
   const { user, isLoading, uuid, patron } = useUserPatron()
   const router = useRouter()
-  const returnTo = router.query.returnTo
+  const [storedReturnTo, setStoredReturnTo] = useState<string | null>(null)
+  useEffect(() => setStoredReturnTo(readReturnTo()), [])
+  const queryReturnTo = Array.isArray(router.query.returnTo) ? router.query.returnTo[0] : router.query.returnTo
+  const returnTo = queryReturnTo || storedReturnTo
   const { t } = useTranslation(['common', 'account'])
 
   if (isLoading)
@@ -64,7 +68,10 @@ const Page = () => {
           <li>{t('account:login.li3')}</li>
           <li>{t('account:login.li4')}</li>
         </ul>
-        <Button text={t('account:title')} href={`/api/auth/login${returnTo ? `?returnTo=${returnTo}` : ''}`} />
+        <Button
+          text={t('account:title')}
+          href={`/api/auth/login${returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ''}`}
+        />
       </TextPage>
     )
 
