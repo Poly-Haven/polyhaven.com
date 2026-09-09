@@ -3,9 +3,22 @@
 # Everything here is CC0 and meant to be found - by search engines, by AI answer
 # engines, and by anything else that wants to point people at free assets.
 User-agent: *
-# The only exception: /_next/data/*.json are Next.js client-navigation payloads,
-# not content. Crawlers render the HTML instead, so fetching these costs us and
-# tells them nothing they can index.
+# Two exceptions, both about cost rather than secrecy.
+#
+# /_next/data/*.json are Next.js client-navigation payloads, not content. Crawlers
+# render the HTML instead, so fetching these costs us and tells them nothing they
+# can index.
 Disallow: /_next/data/
+#
+# ?s= is the library search filter. Every asset page links its tags as /{type}?s={tag},
+# and each of the 26 locales emits its own prefixed variant, so the crawlable space is
+# ~2,515 tags x 3 types x 26 locales = ~196,000 URLs. The library route is server-rendered
+# and Cloudflare's cache key includes the query string, so each one is an uncached ~45KB
+# render of a page whose HTML is near-identical to the bare category. Measured 2026-09-09:
+# 430k billed requests and 20GB a day, 88% of all browse-page origin traffic, and growing.
+# Nothing is lost by not crawling them - they already carry rel=canonical to the bare
+# category, and Google fetches them 378 times a day against 8,443 for the categories.
+# Users are unaffected; this only stops crawlers.
+Disallow: /*?s=
 
 Sitemap: https://polyhaven.com/sitemap.xml

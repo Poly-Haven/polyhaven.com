@@ -45,7 +45,7 @@ const CustomizedShape = (props) => {
   const { cx, cy, fill, stroke, payload } = props
   return (
     <g>
-      <a href={`/${payload.type}?s=${payload.search}`}>
+      <a href={`/${payload.type}?s=${payload.search}`} rel="nofollow">
         <Dot cx={cx} cy={cy} r={5} fill={fill} stroke={stroke} />
       </a>
     </g>
