@@ -70,8 +70,12 @@ const Grid = (props) => {
   const topOfPageRef = useRef(null)
   useEffect(() => {
     const handleScroll = () => {
-      const headerHeight = document.getElementById('mainheader').offsetHeight
-      if (window.scrollY > topOfPageRef.current.offsetTop - headerHeight) {
+      const header = document.getElementById('mainheader')
+      const topOfPage = topOfPageRef.current
+      if (!header || !topOfPage) {
+        return
+      }
+      if (window.scrollY > topOfPage.offsetTop - header.offsetHeight) {
         setNoSticky(false)
       } else {
         setNoSticky(true)
