@@ -226,7 +226,7 @@ const Slider = () => {
         <SliderLogoDynamic containerWidth={width} containerHeight={height} />
       ) : (
         <>
-          <img src="/Logo 256.png" className={styles.logo} />
+          <img src="/Logo 256.png" className={styles.logo} alt="" />
           <h1>Poly Haven</h1>
           <p>{t('tagline')}</p>
         </>

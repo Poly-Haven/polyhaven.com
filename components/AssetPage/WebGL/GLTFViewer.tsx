@@ -19,6 +19,7 @@ import { assetImg } from 'utils/cdn'
 import { useSiteImg } from 'contexts/ImageVersionsContext'
 
 import styles from './GLTFViewer.module.scss'
+import { titleCase } from 'utils/stringUtils'
 
 interface Props {
   readonly show: boolean
@@ -205,7 +206,12 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
               return (
                 <IconButton
                   key={k}
-                  icon={<img src={assetImg.primary(presetEnvs[p], { width: 32, aspect_ratio: '1:1', quality: 95 })} />}
+                  icon={
+                    <img
+                      src={assetImg.primary(presetEnvs[p], { width: 32, aspect_ratio: '1:1', quality: 95 })}
+                      alt={titleCase(p)}
+                    />
+                  }
                   active={showEnvironment && envPreset === p}
                   onClick={() => {
                     // @ts-ignore - String not detected as part of preset list, but we know they are.
@@ -232,28 +238,28 @@ const GLTFViewer: FC<Props> = ({ show, assetID, files, onLoad }) => {
           />
           <IconButton icon={<MdLayers />}>
             <IconButton
-              icon={<img src={siteImg('site_images/map_types/DIFFUSE.png', { width: 32 })} />}
+              icon={<img src={siteImg('site_images/map_types/DIFFUSE.png', { width: 32 })} alt="Base color" />}
               active={soloMap === 'DIFFUSE'}
               onClick={() => {
                 setSoloMap('DIFFUSE')
               }}
             />
             <IconButton
-              icon={<img src={siteImg('site_images/map_types/NORMAL.png', { width: 32 })} />}
+              icon={<img src={siteImg('site_images/map_types/NORMAL.png', { width: 32 })} alt="Normal" />}
               active={soloMap === 'NORMAL'}
               onClick={() => {
                 setSoloMap('NORMAL')
               }}
             />
             <IconButton
-              icon={<img src={siteImg('site_images/map_types/METALNESS.png', { width: 32 })} />}
+              icon={<img src={siteImg('site_images/map_types/METALNESS.png', { width: 32 })} alt="Metalness" />}
               active={soloMap === 'METALNESS'}
               onClick={() => {
                 setSoloMap('METALNESS')
               }}
             />
             <IconButton
-              icon={<img src={assetImg.thumb('rough_wood', { width: 32 })} />}
+              icon={<img src={assetImg.thumb('rough_wood', { width: 32 })} alt="Rendered" />}
               active={soloMap === ''}
               onClick={() => {
                 setSoloMap('')

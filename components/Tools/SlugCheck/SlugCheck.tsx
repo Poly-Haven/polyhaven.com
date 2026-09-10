@@ -23,7 +23,7 @@ const AssetList = ({ arr, assetList, search }) => {
             href={`https://polyhaven.com/a/${key}`}
           >
             <span className={styles.thumb}>
-              <img src={assetImg.thumb(key, { width: 64, height: 64, quality: 95 })} />
+              <img src={assetImg.thumb(key, { width: 64, height: 64, quality: 95 })} alt="" />
             </span>
             {key}
           </a>

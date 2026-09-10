@@ -14,6 +14,7 @@ import { MdArrowForward } from 'react-icons/md'
 import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Vaults.module.scss'
 import { assetImg } from 'utils/cdn'
+import { titleCase } from 'utils/stringUtils'
 
 const MAX_BLUR = 33 // px
 // Below this much of the banner on screen the video pauses and blurs instead of playing slowly.
@@ -127,6 +128,7 @@ const VaultBanner = ({ vault, numPatrons, libraryPage }) => {
             loading="lazy"
             decoding="async"
             src={assetImg.thumb(slug, { width: 192, height: 90, quality: 95, sharpen: 'true' })}
+            alt={titleCase(slug.replace(/_/g, ' '))}
           />
         </Link>
       )),

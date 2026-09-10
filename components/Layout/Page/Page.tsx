@@ -10,7 +10,7 @@ const Page = ({ children, immersiveScroll, library, assetPage }) => {
         assetPage ? styles.assetPage : ''
       }`}
     >
-      <div className={styles.pageContent}>{children}</div>
+      <main className={styles.pageContent}>{children}</main>
       <Footer />
     </div>
   )

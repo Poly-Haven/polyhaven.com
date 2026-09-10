@@ -69,7 +69,11 @@ const Page = () => {
           context on where the string is located on the website.
         </p>
 
-        <img src={siteImg('site_images/translations_ui.png')} style={{ width: '100%' }} />
+        <img
+          src={siteImg('site_images/translations_ui.png')}
+          style={{ width: '100%' }}
+          alt="The i18nexus editor, showing the screenshot and description columns beside each string"
+        />
 
         <p>
           If you help contribute a significant portion of string translations (100+ strings), we want to thank you by:

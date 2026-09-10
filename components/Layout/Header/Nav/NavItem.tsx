@@ -16,6 +16,7 @@ const NavItem = ({
   open = null,
   onToggle = null,
   onClick = null,
+  ariaLabel = null,
 }) => {
   // Only used on mobile, where the desktop :hover reveal has no touch equivalent.
   const [selfExpanded, setSelfExpanded] = useState(false)
@@ -46,11 +47,23 @@ const NavItem = ({
     >
       {link ? (
         locale ? (
-          <a href={`${locale === 'en' ? '' : `/${locale}`}${link}`} className={styles.navItem} id={labelId}>
+          <a
+            href={`${locale === 'en' ? '' : `/${locale}`}${link}`}
+            className={styles.navItem}
+            id={labelId}
+            aria-label={ariaLabel}
+          >
             {text}
           </a>
         ) : (
-          <Link href={link} className={styles.navItem} id={labelId} prefetch={false} onClick={onClick}>
+          <Link
+            href={link}
+            className={styles.navItem}
+            id={labelId}
+            prefetch={false}
+            onClick={onClick}
+            aria-label={ariaLabel}
+          >
             {text}
           </Link>
         )

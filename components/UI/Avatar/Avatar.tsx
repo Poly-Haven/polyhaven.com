@@ -9,6 +9,7 @@ const Avatar = ({ id, size }) => {
       src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })}
       width={size}
       height={size}
+      alt={id}
       onError={(e) => {
         const target = e.target as HTMLImageElement
         target.src = placeholderAvatar(id, size)

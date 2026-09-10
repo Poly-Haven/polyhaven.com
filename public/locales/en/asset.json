@@ -1,6 +1,9 @@
 {
   "add-yours": "Add yours",
+  "author-donate": "Donate to {{name}}",
   "author-donated": "This asset was donated to Poly Haven freely by the author :)",
+  "author-email": "Copy {{name}}'s email address",
+  "author-website": "{{name}}'s website",
   "author_one": "Author",
   "author_other": "Authors",
   "backplates": "Backplates",
@@ -19,6 +22,7 @@
     "scanning": "scanning"
   },
   "download": "Download",
+  "download-options": "Download options",
   "downloads": "Downloads",
   "downloads-pd": "per day",
   "early-access": {

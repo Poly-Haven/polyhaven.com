@@ -34,7 +34,7 @@ const PrizeCard = ({ link, title, image, description, copiesAvailable, value, co
 
   return (
     <a href={link} className={styles.prize} target="_blank" style={{ backgroundColor, borderColor }}>
-      <img src={image} />
+      <img src={image} alt="" />
       <div className={styles.text}>
         <h4>{breakTitle(title)}</h4>
         <p>

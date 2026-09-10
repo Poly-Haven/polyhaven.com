@@ -57,6 +57,7 @@ const Sidebar = (props) => {
               className={`${styles.type}
         ${props.assetType === 'all' ? styles.activeType : ''}`}
               data-assettype="All Assets"
+              aria-label={t_c('All Assets')}
               onMouseEnter={hovType}
               onMouseLeave={hovTypeLeave}
             >

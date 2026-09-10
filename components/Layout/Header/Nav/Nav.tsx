@@ -182,7 +182,7 @@ const Nav = () => {
     <>
       {overlayOpen ? <div className={styles.backdrop} onClick={closeOverlays} /> : null}
 
-      <div
+      <nav
         id="main-nav"
         ref={navRef}
         className={`${styles.nav} ${navHide ? styles.hiddenMobile : null}`}
@@ -304,13 +304,18 @@ const Nav = () => {
         </NavItem>
 
         {user ? (
-          <NavItem text={<MdAccountCircle />} link="/account">
+          <NavItem text={<MdAccountCircle />} link="/account" ariaLabel={t('common:nav.account')}>
             <NavItem text={t('common:nav.logout')} link="/api/auth/logout" />
           </NavItem>
         ) : (
-          <NavItem text={<IoMdLogIn />} link="/account" onClick={() => rememberReturnTo(router.asPath)} />
+          <NavItem
+            text={<IoMdLogIn />}
+            link="/account"
+            onClick={() => rememberReturnTo(router.asPath)}
+            ariaLabel={t('common:nav.login')}
+          />
         )}
-      </div>
+      </nav>
 
       <div className={styles.localeArea} ref={localeAreaRef}>
         {suggestedLocale && suggestLocale ? (

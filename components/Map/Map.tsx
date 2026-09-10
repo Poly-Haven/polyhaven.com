@@ -6,6 +6,7 @@ import 'leaflet-defaulticon-compatibility'
 
 import styles from './Map.module.scss'
 import { assetImg } from 'utils/cdn'
+import { titleCase } from 'utils/stringUtils'
 
 const Map = ({ hdris }) => {
   return (
@@ -21,7 +22,11 @@ const Map = ({ hdris }) => {
             <Link href={`/a/${slug}`}>
               {/* No img_version here: `hdris` maps slug -> coordinates, not to the asset
                   document that carries it, so this falls back to the unversioned URL. */}
-              <img src={assetImg.thumb(slug, { width: 200, quality: 95 })} width="200" />
+              <img
+                src={assetImg.thumb(slug, { width: 200, quality: 95 })}
+                width="200"
+                alt={titleCase(slug.replace(/_/g, ' '))}
+              />
             </Link>
           </Popup>
         </Marker>

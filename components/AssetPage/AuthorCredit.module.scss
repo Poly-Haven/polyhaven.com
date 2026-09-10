@@ -77,6 +77,11 @@
     }
 
     .a {
+      appearance: none;
+      background: none;
+      border: none;
+      font: inherit;
+
       cursor: pointer;
       color: $c-accent;
     }

@@ -6,6 +6,10 @@
   @include flex(row, true, true);
   flex-wrap: wrap;
   width: 100%;
+
+  > .image {
+    min-height: 110px;
+  }
 }
 
 .image {

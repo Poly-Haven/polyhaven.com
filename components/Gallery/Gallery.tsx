@@ -13,6 +13,7 @@ import Lightbox from 'components/Lightbox/Lightbox'
 import { assetImg } from 'utils/cdn'
 
 import styles from './Gallery.module.scss'
+import { titleCase } from 'utils/stringUtils'
 
 const URL_VALIDATION_OPTIONS = {
   require_protocol: true,
@@ -140,7 +141,7 @@ const Gallery = ({ data, assetPage }) => {
               <p>Assets used:</p>
               {lightboxData.assets_used.map((a, key) => (
                 <Link key={key} href={`/a/${a}`}>
-                  <img src={assetImg.thumb(a, { height: 50, width: 200 })} />
+                  <img src={assetImg.thumb(a, { height: 50, width: 200 })} alt={titleCase(a.replace(/_/g, ' '))} />
                 </Link>
               ))}
             </>

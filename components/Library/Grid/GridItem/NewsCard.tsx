@@ -71,7 +71,7 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
     <div className={styles.wrapper}>
       <div className={styles.topText}>
         <div className={styles.spacer} />
-        <img src="/Logo 256.png" />
+        <img src="/Logo 256.png" alt="" />
         {topText}
         <div className={styles.spacer} />
         {pausedImg && !isMobile ? (
@@ -91,6 +91,7 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
                 ? withParams(pausedImg, { width: 384, quality: 95 })
                 : pausedImg
             }
+            alt=""
           />
         ) : withoutQuery(img).endsWith('mp4') ? (
           <video
@@ -112,6 +113,7 @@ const DisplayNewsCard = ({ newsKey, topText, img, pausedImg, bottomText, link, i
                 ? withParams(img, { width: 384, quality: 95 })
                 : img
             }
+            alt=""
           />
         )}
         {flagImg && <img src={flagImg} className={`${styles.flag} ${!pause && !isMobile ? styles.flagAnim : ''}`} />}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import apiSWR from 'utils/apiSWR'
 
 import CorporateSponsorLogo from './CorporateSponsorLogo'
@@ -9,6 +10,7 @@ import { MdInfoOutline } from 'react-icons/md'
 import styles from './CorporateSponsors.module.scss'
 
 const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
+  const { t } = useTranslation('common')
   const { data, error } = apiSWR('/corporate', { revalidateOnFocus: false })
   if (error) return <div className={styles.wrapper}>Error fetching corporate sponsors</div>
   if (!data)
@@ -33,7 +35,7 @@ const CorporateSponsors = ({ header, home, hideInfoBtn }) => {
       <h2>
         {header}
         {!hideInfoBtn && (
-          <Link href="/corporate">
+          <Link href="/corporate" aria-label={t('common:corporate-info')}>
             <MdInfoOutline />
           </Link>
         )}

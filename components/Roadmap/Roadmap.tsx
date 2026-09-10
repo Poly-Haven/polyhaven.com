@@ -21,7 +21,7 @@ const Milestone = ({ milestone, active, achieved }) => {
     <Comp href={milestone.link} className={styles.milestoneText}>
       {milestone.img && (
         <div className={styles.icon}>
-          <img src={milestone.text === '???' ? siteImg('vaults/icons/question.svg') : milestone.img} />
+          <img src={milestone.text === '???' ? siteImg('vaults/icons/question.svg') : milestone.img} alt="" />
         </div>
       )}
       <div
@@ -172,7 +172,7 @@ const Roadmap = ({ mini, vaults, addon }) => {
                     {!(mini || isMobile) && <div className={styles.arrow} />}
                     {(mini || isMobile) && m.img ? (
                       <div className={`${styles.dotImg} ${activeMilestoneIndex === i + 1 && styles.activeDot}`}>
-                        <img src={m.text === '???' ? siteImg('vaults/icons/question.svg') : m.img} />
+                        <img src={m.text === '???' ? siteImg('vaults/icons/question.svg') : m.img} alt="" />
                       </div>
                     ) : (
                       <div className={styles.dot} />

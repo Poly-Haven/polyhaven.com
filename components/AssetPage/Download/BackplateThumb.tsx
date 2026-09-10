@@ -4,6 +4,7 @@ import { MdVisibility, MdFileDownload } from 'react-icons/md'
 import { assetImg } from 'utils/cdn'
 
 import styles from './DownloadOptions.module.scss'
+import { titleCase } from 'utils/stringUtils'
 
 const BackplateThumb = ({ assetID, imgVersion, bp, fileName, preview, trackDownload }) => {
   const types = {
@@ -18,6 +19,7 @@ const BackplateThumb = ({ assetID, imgVersion, bp, fileName, preview, trackDownl
         src={assetImg.backplate(assetID, fileName, { width: 152, quality: 95 }, imgVersion)}
         data-src={assetImg.backplate(assetID, fileName, null, imgVersion)}
         onClick={preview}
+        alt={`${titleCase(assetID.replace(/_/g, ' '))} backplate`}
       />
       <div className={styles.buttonWrapper}>
         <div

@@ -486,6 +486,19 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
     }
   }
 
+  const downloadBtnContent = (
+    <>
+      <MdFileDownload />
+      <div>
+        <h3>{t('download')}</h3>
+        <p>{filesize(fsize).toString()}</p>
+      </div>
+      <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}>
+        <Loader />
+      </div>
+    </>
+  )
+
   return (
     <div>
       <div className={styles.downloadBtnWrapper}>
@@ -500,32 +513,38 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
           tooltipID="dropdown-fmt"
         />
 
-        <a
-          href={isHDRI ? files['hdri'][dlRes][dlFmt].url : null}
-          target="_blank"
-          rel="noopener"
-          className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
-          onClick={
-            isHDRI
-              ? (e) => {
-                  setDownloadError(null) // Clear any previous errors
-                  trackDownload()
-                }
-              : downloadZip
-          }
+        {isHDRI ? (
+          <a
+            href={files['hdri'][dlRes][dlFmt].url}
+            target="_blank"
+            rel="noopener"
+            className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
+            onClick={() => {
+              setDownloadError(null) // Clear any previous errors
+              trackDownload()
+            }}
+          >
+            {downloadBtnContent}
+          </a>
+        ) : (
+          <button
+            type="button"
+            className={`${styles.downloadBtn} ${busyDownloading ? styles.disabled : null}`}
+            onClick={downloadZip}
+            aria-disabled={busyDownloading}
+          >
+            {downloadBtnContent}
+          </button>
+        )}
+        <button
+          type="button"
+          className={styles.downloadBtnSml}
+          onClick={toggleDlOptions}
+          aria-expanded={Boolean(dlOptions)}
+          aria-label={t('download-options')}
         >
-          <MdFileDownload />
-          <div>
-            <h3>{t('download')}</h3>
-            <p>{filesize(fsize).toString()}</p>
-          </div>
-          <div className={`${styles.busyDownloading} ${busyDownloading ? styles.show : null}`}>
-            <Loader />
-          </div>
-        </a>
-        <div className={styles.downloadBtnSml} onClick={toggleDlOptions}>
           {dlOptions ? <MdArrowBack /> : <MdMenu />}
-        </div>
+        </button>
       </div>
 
       {downloadError && (
@@ -554,7 +573,7 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
         <div className={styles.backplatePreviews} onClick={toggleDlOptions}>
           <strong>{t('backplates')}:</strong>
           {backplates.map((bp, i) => (
-            <img key={i} src={bp} />
+            <img key={i} src={bp} alt="" />
           ))}
           <div className={styles.fadeOut} />
         </div>

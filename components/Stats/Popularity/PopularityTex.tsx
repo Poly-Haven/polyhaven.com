@@ -42,9 +42,7 @@ const Popularity = ({ data }) => {
               <tr>
                 <td>
                   <Link href={`/a/${pop.slug}`}>
-
-                    <img src={assetImg.primary(pop.slug, { height: 50 })} />
-
+                    <img src={assetImg.primary(pop.slug, { height: 50 })} alt={pop.name} />
                   </Link>
                 </td>
                 <td>

@@ -77,22 +77,27 @@ const AuthorCredit = ({ id, size, credit }) => {
         {credit ? <span className={styles.credit}>{creditStr}</span> : ''}
         <div className={styles.links}>
           {link ? (
-            <a href={link} target="_blank" rel="noopener">
+            <a href={link} target="_blank" rel="noopener" aria-label={t('author-website', { name: id })}>
               <MdLink />
             </a>
           ) : (
             ''
           )}
           {encryptedEmail ? (
-            <div className={styles.a} onClick={emailClick}>
+            <button
+              type="button"
+              className={styles.a}
+              onClick={emailClick}
+              aria-label={t('author-email', { name: id })}
+            >
               <MdMail />
               <div className={`${styles.popup} ${!popup ? styles.hide : ''}`}>Copied email to clipboard!</div>
-            </div>
+            </button>
           ) : (
             ''
           )}
           {donate ? (
-            <a href={donate} target="_blank" rel="noopener">
+            <a href={donate} target="_blank" rel="noopener" aria-label={t('author-donate', { name: id })}>
               <Heart />
             </a>
           ) : (

@@ -40,9 +40,9 @@ export default class CustomDocument extends Document {
           <meta property="commit_hash" content={process.env.CONFIG_BUILD_ID} />
 
           {/* Download service worker */}
-          <script src="/download-js/ua-parser.min.js"></script>
-          <script src="/download-js/zip.js"></script>
-          <script src="/download-js/download.js"></script>
+          <script defer src="/download-js/ua-parser.min.js"></script>
+          <script defer src="/download-js/zip.js"></script>
+          <script defer src="/download-js/download.js"></script>
         </Head>
 
         <body>

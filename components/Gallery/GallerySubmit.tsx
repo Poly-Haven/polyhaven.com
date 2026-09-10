@@ -20,6 +20,7 @@ import { assetImg } from 'utils/cdn'
 import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
+import { titleCase } from 'utils/stringUtils'
 
 const URL_VALIDATION_OPTIONS = {
   require_protocol: true,
@@ -267,7 +268,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
         >
           {localImage ? (
             <div className={styles.imagePreview}>
-              <img src={localImage} />
+              <img src={localImage} alt="" />
             </div>
           ) : null}
           <div className={styles.buttonWrapper}>
@@ -343,7 +344,10 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
                 <div className={styles.assetsWrapper}>
                   {assetsUsed.map((a) => (
                     <Link href={`/a/${a.value}`} key={a.value}>
-                      <img src={assetImg.thumb(a.value, { height: 100, width: 200 })} />
+                      <img
+                        src={assetImg.thumb(a.value, { height: 100, width: 200 })}
+                        alt={titleCase(a.value.replace(/_/g, ' '))}
+                      />
                     </Link>
                   ))}
                 </div>

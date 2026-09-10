@@ -9,7 +9,7 @@ const Avatar = ({ id, name, role, country }) => {
 
   return (
     <div className={styles.avatar}>
-      <img src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })} width={size} height={size} />
+      <img src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })} width={size} height={size} alt="" />
       <div className={styles.avatarInfo}>
         <CountryFlag code={country} />
         <strong>{name}</strong>

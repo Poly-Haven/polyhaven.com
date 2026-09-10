@@ -42,8 +42,8 @@ const Feature = ({ title, image, hover, children }) => {
         {children}
       </div>
       <div className={styles.images}>
-        <img src={image} />
-        <img src={hover} className={`${styles.hover} ${visible && flicker ? null : styles.hidden}`} />
+        <img src={image} alt="" />
+        <img src={hover} className={`${styles.hover} ${visible && flicker ? null : styles.hidden}`} alt="" />
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import styles from './Page.module.scss'
 const Page = ({ children }) => {
   return (
     <div className={styles.page}>
-      <div className={styles.pageContentCentered}>{children}</div>
+      <main className={styles.pageContentCentered}>{children}</main>
       <Footer />
     </div>
   )

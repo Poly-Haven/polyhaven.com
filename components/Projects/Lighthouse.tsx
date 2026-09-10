@@ -151,6 +151,7 @@ const Lighthouse = () => {
           <img
             src={siteImg('site_images/logo/community.png', { width: 256, quality: 100 })}
             className={styles.logo}
+            alt=""
           />
           <h1>Project Lighthouse</h1>
           <p>Poly Haven's biggest adventure yet</p>
@@ -261,7 +262,10 @@ const Lighthouse = () => {
                       key={prize.key}
                       link={prize.link}
                       title={prize.name}
-                      image={siteImg(`site_images/projects/lighthouse/prizes/${prize.key}.png`, { height: 64, quality: 95 })}
+                      image={siteImg(`site_images/projects/lighthouse/prizes/${prize.key}.png`, {
+                        height: 64,
+                        quality: 95,
+                      })}
                       description={prize.description}
                       copiesAvailable={prize.copies}
                       value={prize.value}

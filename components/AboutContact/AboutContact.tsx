@@ -14,7 +14,7 @@ const AboutPage = () => {
   return (
     <div>
       <div className={styles.intro}>
-        <img src="/Logo 256.png" className={styles.logo} />
+        <img src="/Logo 256.png" className={styles.logo} alt="" />
         <div className={styles.text}>
           <h1>{t('about:greeting.h1')}</h1>
           <p>{t('about:greeting.p1')}</p>

@@ -11,6 +11,7 @@ import { MdArrowForward } from 'react-icons/md'
 import { useSiteImg } from 'contexts/ImageVersionsContext'
 import styles from './Collections.module.scss'
 import { assetImg } from 'utils/cdn'
+import { titleCase } from 'utils/stringUtils'
 
 const Collection = ({ collectionId, data }) => {
   const siteImg = useSiteImg()
@@ -89,7 +90,10 @@ const Collection = ({ collectionId, data }) => {
         <div className={styles.assetList}>
           {data.assets.map((slug) => (
             <Link href="/a/[id]" as={`/a/${slug}`} className={styles.asset} key={slug}>
-              <img src={assetImg.thumb(slug, { width: 192, height: 64, quality: 95 })} />
+              <img
+                src={assetImg.thumb(slug, { width: 192, height: 64, quality: 95 })}
+                alt={titleCase(slug.replace(/_/g, ' '))}
+              />
             </Link>
           ))}
           <Link href={collectionLink} className={styles.arrow}>

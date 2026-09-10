@@ -12,7 +12,7 @@ const Staff = ({ id, name, role, country, link = null, mode }) => {
   return (
     <div className={styles.staffAvatar}>
       <Link href={link || `/all?a=${id}`} target="_blank" rel={link ? 'noopener noreferrer' : undefined}>
-        <img src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })} width={size} height={size} />
+        <img src={siteImg(`people/${id}.jpg`, { width: size, quality: 95 })} width={size} height={size} alt={name} />
       </Link>
       <div className={`${styles.staffInfo} ${mode === 'compact' ? styles.staffInfoCompact : null}`}>
         <span lang="en" dir="ltr">

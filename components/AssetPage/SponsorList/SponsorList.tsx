@@ -22,7 +22,11 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
     <div className={styles.sponsor}>
       <h4>
         {t('sponsored-by')}{' '}
-        <a href="https://www.patreon.com/polyhaven/join?cadence=12" data-tip={t('sponsored-by-d')}>
+        <a
+          href="https://www.patreon.com/polyhaven/join?cadence=12"
+          data-tip={t('sponsored-by-d')}
+          aria-label={t('sponsored-by-d')}
+        >
           <MdHelp />
         </a>
       </h4>
