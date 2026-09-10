@@ -1,6 +1,9 @@
 {
   "add-yours": "أضف خاصتك",
+  "author-donate": "تبرع لـ {{name}}",
   "author-donated": "تم التبرع بهذا الأصل إلى Poly Haven مجاناً من قبل المؤلف :)",
+  "author-email": "نسخ عنوان البريد الإلكتروني الخاص بـ {{name}}",
+  "author-website": "الموقع الإلكتروني لـ {{name}}",
   "author_one": "مؤلف",
   "author_other": "المؤلفون",
   "backplates": "اللوحات الخلفية",
@@ -19,6 +22,7 @@
     "scanning": "جاري المسح"
   },
   "download": "تحميل",
+  "download-options": "خيارات التنزيل",
   "downloads": "التنزيلات",
   "downloads-pd": "في اليوم الواحد",
   "early-access": {

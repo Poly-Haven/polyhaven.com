@@ -12,6 +12,7 @@
   "access-now": "Toegang Nou",
   "also-supported-by": "Ook geondersteun deur:",
   "browse-n": "Blaai deur {{number}}",
+  "corporate-info": "Oor korporatiewe borgskap",
   "corporate-sponsor_one": "Korporatiewe Borg",
   "corporate-sponsor_other": "Korporatiewe borge",
   "corporate-sponsors": "Korporatiewe borge",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "{{number}} klante om te gaan!",
   "nav": {
     "about-contact": "Oor/Kontak",
+    "account": "Rekening",
     "add-on": "Byvoeging",
     "api": "API",
     "blog": "webjoernaal",
@@ -60,6 +62,7 @@
     "gallery": "Galery",
     "home": "Tuis",
     "license": "Lisensie",
+    "login": "Teken aan",
     "logo": "Logo",
     "logout": "Teken uit",
     "map": "HDRI Wêreldkaart",

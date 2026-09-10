@@ -1,6 +1,9 @@
 {
   "add-yours": "Aggiungi il tuo",
+  "author-donate": "Fai una donazione a {{name}}",
   "author-donated": "Questa risorsa è stata donata a Poly Haven gratuitamente dall'autore :)",
+  "author-email": "Copia l'indirizzo e-mail di {{name}}",
+  "author-website": "Sito web di {{name}}",
   "author_one": "Autore",
   "author_other": "Autori",
   "backplates": "Foto di sfondo",
@@ -19,6 +22,7 @@
     "scanning": "scansione"
   },
   "download": "Scarica",
+  "download-options": "Opzioni di download",
   "downloads": "Download",
   "downloads-pd": "al giorno",
   "early-access": {

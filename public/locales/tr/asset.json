@@ -1,6 +1,9 @@
 {
   "add-yours": "Kendinizi ekleyin",
+  "author-donate": "Bağış yapın {{name}}",
   "author-donated": "Bu varlık yaratıcı tarafından ücretsiz olarak Poly Haven'a bağışlanmıştır :)",
+  "author-email": "{{name}}'in e-posta adresini kopyala",
+  "author-website": "Web sitesi {{name}}",
   "author_one": "Yaratıcı",
   "author_other": "Yaratıcı",
   "backplates": "Arka plakalar",
@@ -19,6 +22,7 @@
     "scanning": "tarama"
   },
   "download": "İndir",
+  "download-options": "İndirme seçenekleri",
   "downloads": "İndirilenler",
   "downloads-pd": "günlük",
   "early-access": {

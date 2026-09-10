@@ -1,6 +1,9 @@
 {
   "add-yours": "Lisa oma",
+  "author-donate": "Tee annetus {{name}}",
   "author-donated": "See vara on annetatud Poly Havenile tasuta autori poolt :)",
+  "author-email": "Kopeeri {{name}} e-posti aadress",
+  "author-website": "Veebisait {{name}}",
   "author_one": "Autor",
   "author_other": "Autorid",
   "backplates": "Tagaplaadid",
@@ -19,6 +22,7 @@
     "scanning": "Skaneerimine"
   },
   "download": "Lae alla",
+  "download-options": "Allalaadimisvõimalused",
   "downloads": "Allalaadimised",
   "downloads-pd": "päeva kohta ",
   "early-access": {

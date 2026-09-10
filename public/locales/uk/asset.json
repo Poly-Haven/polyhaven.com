@@ -1,6 +1,9 @@
 {
   "add-yours": "Додай свій",
+  "author-donate": "Зробити пожертву на користь {{name}}",
   "author-donated": "Автор безкоштовно подарував цей ассет Poly Haven :)",
+  "author-email": "Скопіювати адресу електронної пошти {{name}}",
+  "author-website": "Веб-сайт {{name}}",
   "author_one": "Автор",
   "author_other": "Автори",
   "backplates": "Задні панелі",
@@ -19,6 +22,7 @@
     "scanning": "сканую"
   },
   "download": "Завантажити",
+  "download-options": "Параметри завантаження",
   "downloads": "Завантажили",
   "downloads-pd": "на день",
   "early-access": {

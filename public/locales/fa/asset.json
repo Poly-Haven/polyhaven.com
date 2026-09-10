@@ -1,6 +1,9 @@
 {
   "add-yours": "مال خودت رو اضافه کن",
+  "author-donate": "به {{name}} کمک مالی کنید",
   "author-donated": "این دارایی به صورت رایگان توسط نویسنده به Poly Haven اهدا شده :)",
+  "author-email": "آدرس ایمیل {{name}} را کپی کنید",
+  "author-website": "وب‌سایت {{name}}",
   "author_one": "نویسنده",
   "author_other": "نویسندگان",
   "backplates": "صفحات پشتی",
@@ -19,6 +22,7 @@
     "scanning": "اسکن کردن"
   },
   "download": "دانلود",
+  "download-options": "گزینه‌های دانلود",
   "downloads": "دانلودها",
   "downloads-pd": "در هر روز",
   "early-access": {

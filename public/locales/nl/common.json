@@ -12,6 +12,7 @@
   "access-now": "Krijg nu toegang",
   "also-supported-by": "Ook ondersteund door:",
   "browse-n": "Blader door {{number}}",
+  "corporate-info": "Over bedrijfssponsoring",
   "corporate-sponsor_one": "Bedrijfssponsor",
   "corporate-sponsor_other": "Bedrijfssponsors",
   "corporate-sponsors": "Bedrijfssponsors",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "{{number}} patrons te gaan!",
   "nav": {
     "about-contact": "Over/Contact",
+    "account": "Account",
     "add-on": "Add-on",
     "api": "API",
     "blog": "Blog",
@@ -60,6 +62,7 @@
     "gallery": "Galerij",
     "home": "Thuis",
     "license": "Licentie",
+    "login": "Inloggen",
     "logo": "Logo",
     "logout": "Uitloggen",
     "map": "HDRI-wereldkaart",

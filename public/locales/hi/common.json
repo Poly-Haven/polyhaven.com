@@ -12,6 +12,7 @@
   "access-now": "अभी एक्सेस करें",
   "also-supported-by": "इसके अलावा समर्थित:",
   "browse-n": "{{number}} ब्राउज़ करें",
+  "corporate-info": "कॉर्पोरेट प्रायोजन के बारे में",
   "corporate-sponsor_one": "कॉर्पोरेट प्रायोजक",
   "corporate-sponsor_other": "कॉर्पोरेट प्रायोजक",
   "corporate-sponsors": "कॉर्पोरेट प्रायोजक",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "सिरफ {{number}}  और प्रायोजक बाकी हैं ।",
   "nav": {
     "about-contact": "संपर्क/के बारे में",
+    "account": "खाता",
     "add-on": "ऐड-ऑन",
     "api": "एपीआई",
     "blog": "ब्लॉग",
@@ -60,6 +62,7 @@
     "gallery": "गैलरी",
     "home": "हॉम",
     "license": "लाइसेंस",
+    "login": "लॉग इन",
     "logo": "प्रतीक चिन्ह",
     "logout": "लॉग आउट",
     "map": "HDRI विश्व मानचित्र",

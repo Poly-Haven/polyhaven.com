@@ -12,6 +12,7 @@
   "access-now": "Uzyskaj dostęp teraz",
   "also-supported-by": "Jesteśmy wspierani również przez:",
   "browse-n": "Przeglądaj {{number}}",
+  "corporate-info": "O sponsorowaniu korporacyjnym",
   "corporate-sponsor_one": "Sponsor korporacyjny",
   "corporate-sponsor_other": "Sponsorzy korporacyjni",
   "corporate-sponsors": "Sponsorzy Korporacyjni",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "{{number}} patronów do celu!",
   "nav": {
     "about-contact": "O Nas/Kontakt",
+    "account": "Konto",
     "add-on": "Dodatek",
     "api": "API",
     "blog": "Blog",
@@ -60,6 +62,7 @@
     "gallery": "Galeria",
     "home": "Strona Główna",
     "license": "Licencja",
+    "login": "Zaloguj się",
     "logo": "Logo",
     "logout": "Wyloguj",
     "map": "Mapa lokalizacji naszych HDRI",

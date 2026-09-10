@@ -12,6 +12,7 @@
   "access-now": "גישה עכשיו",
   "also-supported-by": "נתמך גם על ידי:",
   "browse-n": "עיין ב {{number}}",
+  "corporate-info": "אודות חסות תאגידית",
   "corporate-sponsor_one": "חסות תאגידית",
   "corporate-sponsor_other": "נותני חסות תאגידים",
   "corporate-sponsors": "נותני חסות תאגידים",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "נותרו {{number}} לקוחות!",
   "nav": {
     "about-contact": "אודות/צור קשר",
+    "account": "חֶשְׁבּוֹן",
     "add-on": "תוסף",
     "api": "ממשק API",
     "blog": "בלוג",
@@ -60,6 +62,7 @@
     "gallery": "גָלֶרֵיָה",
     "home": "בַּיִת",
     "license": "רִשָׁיוֹן",
+    "login": "התחברות",
     "logo": "סֵמֶל",
     "logout": "התנתק",
     "map": "מפת העולם של HDRI",

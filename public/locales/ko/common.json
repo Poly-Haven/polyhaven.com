@@ -12,6 +12,7 @@
   "access-now": "지금 액세스",
   "also-supported-by": "또한 지원 대상:",
   "browse-n": "찾아보기 {{number}}",
+  "corporate-info": "기업 후원 안내",
   "corporate-sponsor_one": "후원 기업",
   "corporate-sponsor_other": "후원 기업",
   "corporate-sponsors": "후원 기업",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "{{number}} 후원자 여러분!",
   "nav": {
     "about-contact": "정보/연락처",
+    "account": "계정",
     "add-on": "애드온",
     "api": "API",
     "blog": "블로그",
@@ -60,6 +62,7 @@
     "gallery": "갤러리",
     "home": "홈",
     "license": "라이선스",
+    "login": "로그인",
     "logo": "로고",
     "logout": "로그아웃",
     "map": "HDRI 세계 지도",

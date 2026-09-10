@@ -1,6 +1,9 @@
 {
   "add-yours": "添加您的作品",
+  "author-donate": "向……捐款{{name}}",
   "author-donated": "该资产由其作者无偿捐赠给Poly Haven :)",
+  "author-email": "复制{{name}} 的电子邮件地址",
+  "author-website": "网站{{name}}",
   "author_one": "作者",
   "author_other": "作者",
   "backplates": "高清背景",
@@ -19,6 +22,7 @@
     "scanning": "扫描"
   },
   "download": "下载",
+  "download-options": "下载选项",
   "downloads": "下载量",
   "downloads-pd": "次/天",
   "early-access": {

@@ -1,6 +1,9 @@
 {
   "add-yours": "투고하기",
+  "author-donate": "기부하기 {{name}}",
   "author-donated": "이 에셋은 작가가 Poly Haven에 무료로 기부한 것입니다 :)",
+  "author-email": "{{name}} 의 이메일 주소를 복사하세요",
+  "author-website": "웹사이트 {{name}}",
   "author_one": "작가",
   "author_other": "작가",
   "backplates": "백플레이트",
@@ -19,6 +22,7 @@
     "scanning": "스캐닝"
   },
   "download": "다운로드",
+  "download-options": "다운로드 옵션",
   "downloads": "다운로드",
   "downloads-pd": "하루에",
   "early-access": {

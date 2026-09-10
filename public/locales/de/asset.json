@@ -1,6 +1,9 @@
 {
   "add-yours": "Füge deine hinzu",
+  "author-donate": "Spenden Sie an {{name}}",
   "author-donated": "Dieses Asset wurde Poly Haven vom Autor kostenlos zur Verfügung gestellt :)",
+  "author-email": "E-Mail-Adresse von {{name}} kopieren",
+  "author-website": "Website von {{name}}",
   "author_one": "Autor",
   "author_other": "Autoren",
   "backplates": "Hintergrundbilder",
@@ -19,6 +22,7 @@
     "scanning": "scannen"
   },
   "download": "Herunterladen",
+  "download-options": "Download-Optionen",
   "downloads": "Downloads",
   "downloads-pd": "pro Tag",
   "early-access": {

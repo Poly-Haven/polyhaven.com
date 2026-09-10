@@ -1,6 +1,9 @@
 {
   "add-yours": "Добавете Вашето",
+  "author-donate": "Дарете на {{name}}",
   "author-donated": "Този актив беше дарен на Poly Haven безплатно от автора :)",
+  "author-email": "Копирайте имейл адреса на {{name}}",
+  "author-website": "Уебсайт на {{name}}",
   "author_one": "Автор",
   "author_other": "Автори",
   "backplates": "Фонови изображения",
@@ -19,6 +22,7 @@
     "scanning": "сканиране"
   },
   "download": "Изтегляне",
+  "download-options": "Опции за изтегляне",
   "downloads": "Изтегляния",
   "downloads-pd": "Дневно",
   "early-access": {

@@ -1,6 +1,9 @@
 {
   "add-yours": "הוסף את שלך",
+  "author-donate": "תרומה ל {{name}}",
   "author-donated": "נכס זה נתרם לפולי הייבן באופן חופשי על ידי המחבר :)",
+  "author-email": "העתק את כתובת הדוא\"ל של {{name}}",
+  "author-website": "אתר האינטרנט של {{name}}",
   "author_one": "מְחַבֵּר",
   "author_other": "מחברים",
   "backplates": "לוחות אחוריים",
@@ -19,6 +22,7 @@
     "scanning": "סריקה"
   },
   "download": "הורד",
+  "download-options": "אפשרויות הורדה",
   "downloads": "הורדות",
   "downloads-pd": "ליום",
   "early-access": {

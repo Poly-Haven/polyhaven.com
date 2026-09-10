@@ -1,6 +1,9 @@
 {
   "add-yours": "Add hozzá a tiédet",
+  "author-donate": "Adományozz a {{name}}",
   "author-donated": "Ezt a készítő ingyen adományozta Poly Havennek :)",
+  "author-email": "{{name}} e-mail-címének másolása",
+  "author-website": "A {{name}}",
   "author_one": "Készítő",
   "author_other": "Készítők",
   "backplates": "Hátlapok",
@@ -19,6 +22,7 @@
     "scanning": "szkennelés"
   },
   "download": "Letöltés",
+  "download-options": "Letöltési lehetőségek",
   "downloads": "Letöltések",
   "downloads-pd": "naponta",
   "early-access": {

@@ -12,6 +12,7 @@
   "access-now": "Truy cập ngay",
   "also-supported-by": "Cũng được hỗ trợ bởi:",
   "browse-n": "Duyệt {{number}}",
+  "corporate-info": "Về tài trợ doanh nghiệp",
   "corporate-sponsor_one": "Nhà tài trợ doanh nghiệp",
   "corporate-sponsor_other": "Nhà tài trợ doanh nghiệp",
   "corporate-sponsors": "Nhà tài trợ doanh nghiệp",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "Còn {{number}} người ủng hộ nữa!",
   "nav": {
     "about-contact": "Giới thiệu/Liên hệ",
+    "account": "Tài khoản",
     "add-on": "Tiện ích mở rộng",
     "api": "API",
     "blog": "Blog",
@@ -60,6 +62,7 @@
     "gallery": "Thư viện",
     "home": "Trang chủ",
     "license": "Giấy phép",
+    "login": "Đăng nhập",
     "logo": "Logo",
     "logout": "Đăng xuất",
     "map": "Bản đồ Thế giới HDRI",

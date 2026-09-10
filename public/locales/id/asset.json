@@ -1,6 +1,9 @@
 {
   "add-yours": "Tambahkan milikmu",
+  "author-donate": "Berikan donasi ke {{name}}",
   "author-donated": "Aset ini disumbangkan ke Poly Haven secara gratis oleh penulis :)",
+  "author-email": "Salin alamat email {{name}}",
+  "author-website": "Situs web dari {{name}}",
   "author_one": "Pengarang",
   "author_other": "Pengarang",
   "backplates": "Pelat belakang",
@@ -19,6 +22,7 @@
     "scanning": "Pemindaian"
   },
   "download": "Unduh",
+  "download-options": "Opsi unduhan",
   "downloads": "Unduhan",
   "downloads-pd": "per hari",
   "early-access": {

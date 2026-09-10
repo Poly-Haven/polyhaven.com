@@ -12,6 +12,7 @@
   "access-now": "Отримати доступ зараз",
   "also-supported-by": "Також підтримується:",
   "browse-n": "Переглянути {{number}}",
+  "corporate-info": "Про корпоративне спонсорство",
   "corporate-sponsor_one": "Корпоративний спонсор",
   "corporate-sponsor_other": "Корпоративні спонсори",
   "corporate-sponsors": "Корпоративні спонсори",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "Ще {{number}} патронів до мети!",
   "nav": {
     "about-contact": "Про нас/Контакт",
+    "account": "Обліковий запис",
     "add-on": "Аддони",
     "api": "API",
     "blog": "Блог",
@@ -60,6 +62,7 @@
     "gallery": "Галерея",
     "home": "Додому",
     "license": "Ліцензія",
+    "login": "Увійти",
     "logo": "Лого",
     "logout": "Вийти",
     "map": "Карта світу HDRI",

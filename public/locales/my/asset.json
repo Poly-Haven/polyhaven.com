@@ -1,6 +1,9 @@
 {
   "add-yours": "သင်ကိုယ်တိုင်ထည့်ရန်",
+  "author-donate": "{{name}} သို့ လှူဒါန်းပါ",
   "author-donated": "ဖန်သူတီးသူကိုယ်တိုင် Poly Haven သို့ လှူဒါန်းခဲ့သော asset ဖြစ်သည် :)",
+  "author-email": "{{name}} ၏ အီးမေးလ်လိပ်စာကို ကူးယူပါ",
+  "author-website": "{{name}} ၏ ဝက်ဘ်ဆိုက်",
   "author_one": "ဖန်တီးသူ",
   "author_other": "ဖန်တီးသူများ",
   "backplates": "ကျောပြားများ",
@@ -19,6 +22,7 @@
     "scanning": "စကင်န်ဖတ်ခြင်း။"
   },
   "download": "ဒေါင်းလုဒ်လုပ်ရန်",
+  "download-options": "ဒေါင်းလုဒ်လုပ်ရန် ရွေးချယ်စရာများ",
   "downloads": "ဒေါင်းလုဒ် အရေအတွက်",
   "downloads-pd": "တစ်နေ့ချင်းနှုန်း",
   "early-access": {

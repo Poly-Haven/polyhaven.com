@@ -12,6 +12,7 @@
   "access-now": "Вход сега",
   "also-supported-by": "Също така подкрепено от:",
   "browse-n": "Прегледайте {{number}}",
+  "corporate-info": "За корпоративно спонсорство",
   "corporate-sponsor_one": "Корпоративен спонсор",
   "corporate-sponsor_other": "Корпоративни спонсори",
   "corporate-sponsors": "Корпоративни спонсори",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "Още {{number}} абоната!",
   "nav": {
     "about-contact": "За нас/Контакт",
+    "account": "Акаунт",
     "add-on": "Add-on",
     "api": "API",
     "blog": "Блог",
@@ -60,6 +62,7 @@
     "gallery": "Галерия",
     "home": "Начало",
     "license": "Лиценз",
+    "login": "Вход",
     "logo": "Лого",
     "logout": "Изход",
     "map": "HDRI карта на света",

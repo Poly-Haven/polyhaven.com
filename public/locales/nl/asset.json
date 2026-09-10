@@ -1,6 +1,9 @@
 {
   "add-yours": "Voeg de jouwe toe",
+  "author-donate": "Doneer aan {{name}}",
   "author-donated": "Deze asset is door de auteur gratis aan Poly Haven geschonken :)",
+  "author-email": "Kopieer het e-mailadres van {{name}}",
+  "author-website": "Website van {{name}}",
   "author_one": "Auteur",
   "author_other": "Auteurs",
   "backplates": "Achterplaten",
@@ -19,6 +22,7 @@
     "scanning": "scannen"
   },
   "download": "Downloaden",
+  "download-options": "Downloadopties",
   "downloads": "Downloads",
   "downloads-pd": "per dag",
   "early-access": {

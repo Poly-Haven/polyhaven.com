@@ -1,6 +1,9 @@
 {
   "add-yours": "Dodaj własne",
+  "author-donate": "Przekaż darowiznę na rzecz {{name}}",
   "author-donated": "Zasoby zostały przekazane przez autora dla Poly Haven :)",
+  "author-email": "Skopiuj adres e-mail {{name}}",
+  "author-website": "Strona internetowa {{name}}",
   "author_one": "Autor",
   "author_other": "Autorzy",
   "backplates": "Płyty tylne",
@@ -19,6 +22,7 @@
     "scanning": "skanowanie"
   },
   "download": "Pobierz",
+  "download-options": "Opcje pobierania",
   "downloads": "Liczba pobrań",
   "downloads-pd": "dziś",
   "early-access": {

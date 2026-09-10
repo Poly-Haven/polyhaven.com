@@ -1,6 +1,9 @@
 {
   "add-yours": "अपना जोड़ें",
+  "author-donate": "{{name}} को दान करें",
   "author-donated": "यह संपत्ति निर्माता द्वारा Poly Haven को मुफ़्त में दान दी गई थी :)",
+  "author-email": "{{name}} का ईमेल पता कॉपी करें",
+  "author-website": "{{name}} की वेबसाइट",
   "author_one": "निर्माता",
   "author_other": "निर्माता",
   "backplates": "Backplates",
@@ -19,6 +22,7 @@
     "scanning": "स्कैनिंग"
   },
   "download": "डाउनलोड करे",
+  "download-options": "डाउनलोड विकल्प",
   "downloads": "डाउनलोड",
   "downloads-pd": "प्रति दिन",
   "early-access": {

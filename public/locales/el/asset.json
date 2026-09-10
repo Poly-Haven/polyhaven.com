@@ -1,6 +1,9 @@
 {
   "add-yours": "Προσθέστε το δικό σας",
+  "author-donate": "Κάντε μια δωρεά στο {{name}}",
   "author-donated": "Αυτό το περιουσιακό στοιχείο παραχωρήθηκε στο Poly Haven δωρεάν από τον συγγραφέα :)",
+  "author-email": "Αντιγράψτε τη διεύθυνση ηλεκτρονικού ταχυδρομείου του {{name}}",
+  "author-website": "Ιστοσελίδα του {{name}}",
   "author_one": "Συγγραφέας",
   "author_other": "Συγγραφείς",
   "backplates": "Πίσω πλάκες",
@@ -19,6 +22,7 @@
     "scanning": "σάρωση"
   },
   "download": "Λήψη",
+  "download-options": "Επιλογές λήψης",
   "downloads": "Λήψεις",
   "downloads-pd": "ανά ημέρα",
   "early-access": {

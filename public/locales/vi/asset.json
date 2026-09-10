@@ -1,6 +1,9 @@
 {
   "add-yours": "Thêm của bạn",
+  "author-donate": "Đóng góp cho {{name}}",
   "author-donated": "Tài sản này đã được tác giả tặng cho Poly Haven miễn phí :)",
+  "author-email": "Sao chép địa chỉ email của {{name}}",
+  "author-website": "Trang web của {{name}}",
   "author_one": "Tác giả",
   "author_other": "Tác giả",
   "backplates": "Bảng nền",
@@ -19,6 +22,7 @@
     "scanning": "quét"
   },
   "download": "Tải xuống",
+  "download-options": "Tùy chọn tải xuống",
   "downloads": "Tải xuống",
   "downloads-pd": "mỗi ngày",
   "early-access": {

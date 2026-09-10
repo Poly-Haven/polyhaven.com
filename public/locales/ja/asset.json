@@ -1,6 +1,9 @@
 {
   "add-yours": "あなたのものを追加する",
+  "author-donate": "寄付はこちら{{name}}",
   "author-donated": "このアセットは、著者からPoly Havenに寄贈されたものです。 :)",
+  "author-email": "{{name}} のメールアドレスをコピーする",
+  "author-website": "のウェブサイト{{name}}",
   "author_one": "著者",
   "author_other": "著者",
   "backplates": "バックプレート",
@@ -19,6 +22,7 @@
     "scanning": "スキャン中"
   },
   "download": "ダウンロード",
+  "download-options": "ダウンロードオプション",
   "downloads": "ダウンロード",
   "downloads-pd": "1日あたり",
   "early-access": {

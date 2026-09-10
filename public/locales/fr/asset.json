@@ -1,6 +1,9 @@
 {
   "add-yours": "Ajoutez le vôtre",
+  "author-donate": "Faites un don à {{name}}",
   "author-donated": "Cette ressource a été donné gratuitement à Poly Haven par son auteur :)",
+  "author-email": "Copier l'adresse e-mail de {{name}}",
+  "author-website": "Site web de {{name}}",
   "author_one": "Auteur",
   "author_other": "Auteurs",
   "backplates": "Plaques d'arrière-plan",
@@ -19,6 +22,7 @@
     "scanning": "balayage"
   },
   "download": "Télécharger",
+  "download-options": "Options de téléchargement",
   "downloads": "Téléchargements",
   "downloads-pd": "par jour",
   "early-access": {

@@ -12,6 +12,7 @@
   "access-now": "立即访问",
   "also-supported-by": "同时支持我们的还有：",
   "browse-n": "浏览{{number}}",
+  "corporate-info": "关于企业赞助",
   "corporate-sponsor_one": "企业赞助商",
   "corporate-sponsor_other": "企业赞助商",
   "corporate-sponsors": "企业赞助商",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "还差 {{number}} 位赞助人！",
   "nav": {
     "about-contact": "关于/联系方式",
+    "account": "账户",
     "add-on": "Blender插件",
     "api": "API",
     "blog": "博客",
@@ -60,6 +62,7 @@
     "gallery": "画廊",
     "home": "首页",
     "license": "许可证",
+    "login": "登录",
     "logo": "品牌标识",
     "logout": "注销",
     "map": "HDRI世界地图",

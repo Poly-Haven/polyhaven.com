@@ -12,6 +12,7 @@
   "access-now": "Akses Sekarang",
   "also-supported-by": "Juga didukung oleh:",
   "browse-n": "Jelajahi {{number}}",
+  "corporate-info": "Tentang sponsor perusahaan",
   "corporate-sponsor_one": "Sponsor Perusahaan",
   "corporate-sponsor_other": "Sponsor Perusahaan",
   "corporate-sponsors": "Sponsor Perusahaan",
@@ -50,6 +51,7 @@
   "n-patrons-to-go": "{{number}} pelanggan untuk pergi!",
   "nav": {
     "about-contact": "Tentang/Kontak",
+    "account": "Akun",
     "add-on": "Pengaya",
     "api": "API",
     "blog": "Blog",
@@ -60,6 +62,7 @@
     "gallery": "Galeri",
     "home": "Beranda",
     "license": "Lisensi",
+    "login": "Masuk",
     "logo": "Logo",
     "logout": "Keluar",
     "map": "Peta Dunia HDRI",

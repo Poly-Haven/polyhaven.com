@@ -1,6 +1,9 @@
 {
   "add-yours": "Dodajte svoje",
+  "author-donate": "Donirajte {{name}}",
   "author-donated": "Autor je ovaj materijal besplatno donirao Poly Havenu :)",
+  "author-email": "Kopiraj adresu e-pošte korisnika {{name}}",
+  "author-website": "Web-stranica tvrtke {{name}}",
   "author_one": "Autor",
   "author_other": "Autori",
   "backplates": "Stražnje ploče",
@@ -19,6 +22,7 @@
     "scanning": "skeniranje"
   },
   "download": "Preuzmi",
+  "download-options": "Opcije preuzimanja",
   "downloads": "Preuzimanja",
   "downloads-pd": "dnevno",
   "early-access": {

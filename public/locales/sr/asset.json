@@ -1,6 +1,9 @@
 {
   "add-yours": "Додајте своје",
+  "author-donate": "Донирајте за {{name}}",
   "author-donated": "Ово средство је аутор бесплатно поклонио Poly Haven-у :)",
+  "author-email": "Копирај имејл адресу корисника {{name}}",
+  "author-website": "Веб-сајт корисника {{name}}",
   "author_one": "Аутор",
   "author_other": "Аутори",
   "backplates": "Позадине",
@@ -19,6 +22,7 @@
     "scanning": "скенирање"
   },
   "download": "Преузми",
+  "download-options": "Опције преузимања",
   "downloads": "Преузимања",
   "downloads-pd": "дневно",
   "early-access": {

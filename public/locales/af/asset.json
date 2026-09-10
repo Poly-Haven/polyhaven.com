@@ -1,6 +1,9 @@
 {
   "add-yours": "Voeg joune by",
+  "author-donate": "Skenk aan {{name}}",
   "author-donated": "Hierdie asset is vryelik aan Poly Haven geskenk deur die outeur :)",
+  "author-email": "Kopieer {{name}} se e-posadres",
+  "author-website": "Webwerf van {{name}}",
   "author_one": "Outeur",
   "author_other": "Outeur",
   "backplates": "Agterplate",
@@ -19,6 +22,7 @@
     "scanning": "skandering"
   },
   "download": "Aflaai",
+  "download-options": "Aflaai-opsies",
   "downloads": "Aflaaie",
   "downloads-pd": "per dag",
   "early-access": {
