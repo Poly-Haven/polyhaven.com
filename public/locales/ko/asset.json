@@ -1,9 +1,9 @@
 {
   "add-yours": "투고하기",
-  "author-donate": "기부하기 {{name}}",
+  "author-donate": "{{name}} 한테 기부하기",
   "author-donated": "이 에셋은 작가가 Poly Haven에 무료로 기부한 것입니다 :)",
-  "author-email": "{{name}} 의 이메일 주소를 복사하세요",
-  "author-website": "웹사이트 {{name}}",
+  "author-email": "{{name}} 의 이메일 주소를 복사하기",
+  "author-website": "{{name}}의 웹사이트",
   "author_one": "작가",
   "author_other": "작가",
   "backplates": "백플레이트",
