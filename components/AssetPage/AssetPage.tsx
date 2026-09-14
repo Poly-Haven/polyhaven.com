@@ -10,6 +10,7 @@ import { inCollection } from 'utils/assetFiltering'
 import { isFormerlyVaulted, isUnlockedVault, isVaultLocked, vaultOf } from 'utils/vaults'
 import { assetImg, withParams, CDN } from 'utils/cdn'
 
+import apiSWR from 'utils/apiSWR'
 import useDivSize from 'hooks/useDivSize'
 import asset_types from 'constants/asset_types.json'
 import asset_type_names from 'constants/asset_type_names.json'
@@ -78,6 +79,17 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   const authors = Object.keys(data.authors).sort()
   const multiAuthor = authors.length > 1
 
+  // download_count and sponsors are the only two things on this page that change without a
+  // publish: dl_track increments one on every download, and the sponsor endpoints arrayUnion the
+  // other. Everything else here only moves when an asset is edited or published, which purges.
+  const { data: liveInfo } = apiSWR(`/info/${assetID}`, {
+    fallbackData: data,
+    revalidateOnMount: true, // Required when fallbackData is given
+    revalidateOnFocus: false,
+  })
+  const live = liveInfo || data
+  const downloadCount = live.download_count
+
   const msPerDay = 24 * 60 * 60 * 1000
   const monthAgo = new Date(Date.now() - 30 * msPerDay).toISOString().split('T')[0]
   const daysOld = (Date.now() - data.date_published * 1000) / msPerDay
@@ -87,7 +99,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   // a few hours. The label is just "per day", so there is no honest number to show until there has
   // been a whole day to divide by; null suppresses the tooltip instead of captioning the raw count
   // with a rate it isn't.
-  const downloadsPerDay = daysOld >= 1 ? Math.round(data.download_count / daysOld) : null
+  const downloadsPerDay = daysOld >= 1 ? Math.round(downloadCount / daysOld) : null
   let [ageValue, ageLabel] = timeago(data.date_published * 1000, tt, true)
   ageValue = ageValue === 0 ? tt('new') : ageValue
   ageLabel = ageLabel.replace(ageValue, '').trim()
@@ -443,9 +455,9 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
               />
             </div>
 
-            <InfoItem label={t('downloads')} condition={Boolean(data.download_count)} flex>
+            <InfoItem label={t('downloads')} condition={Boolean(downloadCount)} flex>
               <span data-tip={downloadsPerDay === null ? undefined : `${downloadsPerDay} ${t('downloads-pd')}`}>
-                {data.download_count}
+                {downloadCount}
               </span>
               {isOlderThanFourDays ? (
                 showDownloadGraph ? (
@@ -459,7 +471,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
             </InfoItem>
 
             <div className={styles.spacer} />
-            <SponsorList assetID={assetID} sponsors={data.sponsors} patron={patron} />
+            <SponsorList assetID={assetID} sponsors={live.sponsors} patron={patron} />
             <div className={styles.spacer} />
 
             <div ref={widthRef} style={{ marginTop: '1rem' }}>
