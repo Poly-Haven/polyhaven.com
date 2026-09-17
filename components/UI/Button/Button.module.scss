@@ -5,6 +5,10 @@
   display: inline-block;
   text-decoration: none;
   color: white;
+  // Resets for the <button> element this renders without an href; no-ops on the <a>.
+  border: none;
+  font: inherit;
+  text-align: inherit;
   padding: 0.75em 1em;
   margin: 0.5rem;
   cursor: pointer;

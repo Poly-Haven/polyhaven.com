@@ -15,3 +15,8 @@
   max-width: calc(100% / 6);
   min-width: 200px;
 }
+
+.more {
+  @include flex(row, true, true);
+  width: 100%;
+}

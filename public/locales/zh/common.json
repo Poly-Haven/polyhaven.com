@@ -48,6 +48,7 @@
   "invalid-name-url": "名称或网址无效",
   "loading": "正在加载...",
   "missing-invalid": "缺失或无效",
+  "more": "更多",
   "n-patrons-to-go": "还差 {{number}} 位赞助人！",
   "nav": {
     "about-contact": "关于/联系方式",

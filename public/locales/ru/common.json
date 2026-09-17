@@ -48,6 +48,7 @@
   "invalid-name-url": "Недопустимое имя или URL",
   "loading": "Загрузка...",
   "missing-invalid": "Отсутствует или недействителен",
+  "more": "Ещё",
   "n-patrons-to-go": "Осталось {{number}} патронов!",
   "nav": {
     "about-contact": "О нас/Контакты",

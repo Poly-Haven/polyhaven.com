@@ -48,6 +48,7 @@
   "invalid-name-url": "Недійсне ім'я або URL-адреса",
   "loading": "Завантаження...",
   "missing-invalid": "Відсутній або недійсний",
+  "more": "Більше",
   "n-patrons-to-go": "Ще {{number}} патронів до мети!",
   "nav": {
     "about-contact": "Про нас/Контакт",

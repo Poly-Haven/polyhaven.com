@@ -312,7 +312,7 @@ const Home = () => {
         <div className={styles.moreGallery}>
           <div className={styles.spacer} />
           <div style={{ pointerEvents: 'initial' }}>
-            <Button text={t('home:s7b')} href="/gallery" />
+            <Button text={tc('more')} href="/gallery" />
           </div>
         </div>
       </div>

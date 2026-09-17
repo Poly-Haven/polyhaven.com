@@ -48,6 +48,7 @@
   "invalid-name-url": "名前またはURLが無効です",
   "loading": "読み込んでいます...",
   "missing-invalid": "欠落または無効",
+  "more": "もっと見る",
   "n-patrons-to-go": "あと{{number}}人のパトロンが必要です！",
   "nav": {
     "about-contact": "会社概要/お問い合わせ",
