@@ -67,7 +67,7 @@
     "donate-access": "Donate 3 dollari su Patreon per scaricarlo, insieme a {{totalVaultedAssets, number}} altre risorse custodite.",
     "locked-in": "Questa risorsa è chiusa nel <vaultLink>caveau {{vault}}</vaultLink>.",
     "patrons-needed": "Quando avremo {{remaining, number}} più mecenati, verrà rilasciato gratuitamente per tutti.",
-    "title": "Attività a volta"
+    "title": "Risorsa nel caveau"
   },
   "wide": "largo",
   "zip-choose": "Scegli il contenuto ZIP:"
