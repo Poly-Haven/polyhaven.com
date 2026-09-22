@@ -67,7 +67,11 @@ export const categories = {
     color: `#607D8B`,
   },
   'Founder Salaries': {
-    description: 'Salaries paid to Greg and Rob.',
+    description: "Salaries paid to Greg and Rob. Superseded by Staff Salaries and Co-founder's Share.",
+    color: `#9C27B0`,
+  },
+  "Co-founder's Share": {
+    description: 'Revenue share paid to co-founder Rob Tuytel.',
     color: `#9C27B0`,
   },
   'Staff Salaries': {
@@ -146,6 +150,7 @@ export const categories = {
 
 export const operatingCostTypes = [
   'Founder Salaries',
+  "Co-founder's Share",
   'Staff Salaries',
   'Staff Overhead (Taxes)',
   'Contractors',
