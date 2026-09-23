@@ -226,6 +226,14 @@
       padding: 0.2rem 0;
       margin: 0;
     }
+    .apiLink {
+      font-size: 0.9rem;
+      overflow-wrap: anywhere;
+      vertical-align: top;
+      box-shadow: none !important;
+      color: $c-text-light;
+      opacity: 0.6;
+    }
     .flex {
       @include flex(row, true, false);
       gap: 0.25em;

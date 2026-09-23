@@ -1,0 +1,14 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.polyhaven.com/",
+      "service-desc": [{ "href": "https://api.polyhaven.com/api-docs/swagger.json", "type": "application/json" }],
+      "service-doc": [
+        { "href": "https://polyhaven.com/our-api", "type": "text/html" },
+        { "href": "https://polyhaven.com/llms.txt", "type": "text/plain" }
+      ],
+      "status": [{ "href": "https://status.polyhaven.org" }],
+      "terms-of-service": [{ "href": "https://github.com/Poly-Haven/Public-API/blob/master/ToS.md" }]
+    }
+  ]
+}

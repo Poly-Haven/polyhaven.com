@@ -229,6 +229,14 @@ const Grid = (props) => {
   const activeNode = props.categoryPath ? nodeFromPath(props.assetType, props.categoryPath) : null
   const categoryTrail = activeNode ? [...ancestorsOf(props.assetType, activeNode), activeNode] : []
 
+  // The same list in the public API, shown while the grid hasn't loaded - which, for crawlers and
+  // agents that don't run JavaScript, is forever. Without it they get an empty page.
+  const apiListUrl =
+    `https://api.polyhaven.com/assets?type=${props.assetType}` +
+    (activeNode ? `&category=${activeNode.slugPath}` : '') +
+    (props.collection ? `&collection=${props.collection.id}` : '') +
+    (props.vault ? `&vault=${props.vault.id}` : '')
+
   const setHeaderPath = () => {
     let path = ''
     let link = ''
@@ -363,6 +371,10 @@ const Grid = (props) => {
   // No answer for what is currently typed, and nothing broken. Shows the spinner, and keeps the
   // "No results" copy from claiming an empty library before there is anything to claim it about.
   const searchPending = Boolean(!searchFailed && (searchSettling || (searchQuery && !semanticKeys)))
+
+  // No asset list yet, so no count to give. The server render never has the list, so without this
+  // every library page's HTML said "0 results".
+  const listPending = !publicData && !publicError
 
   if (data) {
     sortedKeys = sortBy[props.sort](data)
@@ -536,8 +548,8 @@ const Grid = (props) => {
                 {props.search ? <MdClose className={styles.resetSearchIcon} onClick={resetSearch} /> : null}
               </div>
               {
-                <p className={styles.numResults} aria-busy={searchPending}>
-                  {searchPending ? <Loader /> : `${sortedKeys.length} ${t('library:results')}`}
+                <p className={styles.numResults} aria-busy={searchPending || listPending}>
+                  {searchPending || listPending ? <Loader /> : `${sortedKeys.length} ${t('library:results')}`}
                 </p>
               }
             </div>
@@ -657,6 +669,15 @@ const Grid = (props) => {
       ) : (
         <div className={styles.loading}>
           <Spinner />
+          {listPending ? (
+            <p className={styles.apiHint} lang="en" dir="ltr">
+              Still loading? This list is also available from our API:{' '}
+              <a href={apiListUrl} rel="nofollow">
+                {apiListUrl}
+              </a>{' '}
+              (<a href="/our-api">docs</a>)
+            </p>
+          ) : null}
         </div>
       )}
     </>

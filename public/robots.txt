@@ -2,6 +2,10 @@
 
 # Everything here is CC0 and meant to be found - by search engines, by AI answer
 # engines, and by anything else that wants to point people at free assets.
+#
+# Looking for asset data or download links? The whole library is in our free public
+# API, which is far easier to work with than this site's HTML: https://api.polyhaven.com
+# See https://polyhaven.com/llms.txt for how to use it.
 User-agent: *
 # Two exceptions, both about cost rather than secrecy.
 #

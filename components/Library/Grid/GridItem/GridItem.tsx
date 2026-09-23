@@ -154,6 +154,7 @@ const GridItem = ({ asset, assetID, onClick, blurUpcoming, thumbSize, showText }
       className={`${styles.gridItem} ${blur ? styles.blur : ''} ${showText ? styles.showText : ''}`}
       onClick={onClick}
       ref={wrapperRef}
+      prefetch={false}
     >
       <div className={styles.author}>
         <div className={styles.authorInner}>

@@ -50,6 +50,26 @@ module.exports = {
         permanent: true,
         locale: false,
       },
+      {
+        // Agents probe for this. The spec lives on the API host.
+        source: '/openapi.json',
+        destination: 'https://api.polyhaven.com/api-docs/swagger.json',
+        permanent: false,
+      },
+    ]
+  },
+  async headers() {
+    return [
+      {
+        // RFC 9727. With no file extension it would otherwise be served as application/octet-stream.
+        source: '/.well-known/api-catalog',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+          },
+        ],
+      },
     ]
   },
 }

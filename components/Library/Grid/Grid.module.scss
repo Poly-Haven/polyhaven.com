@@ -290,6 +290,27 @@
 .loading {
   min-height: 85vh;
   @include center;
+  align-content: center;
+  gap: 1em;
+}
+
+// In the HTML from the start, but held back for 2s so a normal load never shows it.
+.apiHint {
+  margin: 0 1em;
+  text-align: center;
+  font-size: 0.9em;
+  color: $c-gray;
+  overflow-wrap: anywhere;
+  animation: apiHintFadeIn 0.5s ease 2s backwards;
+}
+
+@keyframes apiHintFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .column {

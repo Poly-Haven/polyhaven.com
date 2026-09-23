@@ -1,0 +1,34 @@
+# Poly Haven
+
+> Poly Haven is a free library of HDRIs, textures and 3D models, all CC0 and all made by people, with no generative AI. Everything in the library is also available from our public API at https://api.polyhaven.com, which is free for any use and far easier to work with than this website's HTML.
+
+If you want lists of assets, their metadata or their download links, please use the API rather than scraping the site. The library pages (like /hdris or /textures/wood) build their grids in the browser with JavaScript, so fetching one without running scripts gives you an empty list.
+
+## Using the API
+
+- No key and no signup. Free for any purpose, including commercial use.
+- Send a User-Agent (or Referer) header that names your app or tool, so we can group requests from the same software. Our API terms require this.
+- If your software, site or service uses the live API to show Poly Haven content to people, make it clear where that content comes from, for example a menu item or button that names Poly Haven, or a small "Powered by Poly Haven" credit. The assets themselves never need attribution once they are downloaded.
+- When pointing a person at an asset, link its page: https://polyhaven.com/a/{slug}. The slug is the same ID the API uses.
+
+## Endpoints
+
+- [Assets](https://api.polyhaven.com/assets?type=hdris): every asset with its metadata in one response. Filter with `type` (`hdris`, `textures`, `models` or `all`), `category` (a path like `wood/engineered-wood`, which also matches everything under it), `collection`, `vault`, or any attribute from the taxonomy, e.g. `?type=hdris&weather=clear`. A library page's URL path is the same category path: polyhaven.com/textures/wood/engineered-wood is `/assets?type=textures&category=wood/engineered-wood`.
+- [Search](https://api.polyhaven.com/search?q=brick&t=textures): the slugs matching a plain-language query, best match first, in any language.
+- [Info](https://api.polyhaven.com/info/brown_planks_03): metadata for one asset. Same data as in the main `/assets` endpoint (no need to fetch both).
+- [Files](https://api.polyhaven.com/files/brown_planks_03): every downloadable file for one asset, by map, resolution and format, with its URL, size and md5.
+- [Taxonomy](https://api.polyhaven.com/taxonomy): the category tree for each asset type, and the attribute schema used for filtering.
+- [Types](https://api.polyhaven.com/types): the asset types.
+
+## Docs
+
+- [OpenAPI spec](https://api.polyhaven.com/api-docs/swagger.json): every endpoint and its response schema.
+- [About the API](https://polyhaven.com/our-api)
+- [API terms of service](https://github.com/Poly-Haven/Public-API/blob/master/ToS.md)
+- [License](https://polyhaven.com/license): every asset is CC0. Use it for anything, commercial included, with no attribution required.
+- [Website terms of service](https://polyhaven.com/license) also on the license page - explicitly forbids web scraping or data mining, use the API instead.
+
+## Optional
+
+- [Corporate partnerships](https://polyhaven.com/corporate): for companies whose products depend on the library in production and want to fund it directly.
+- [Patreon](https://www.patreon.com/polyhaven) for users who want to help fund our work, get early access to more assets, our plugins, etc.
