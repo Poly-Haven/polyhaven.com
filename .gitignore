@@ -57,3 +57,5 @@ pages/db_json*.json
 /.claude
 /.agents
 /.codex
+AGENTS.md
+CLAUDE.md
