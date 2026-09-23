@@ -66,8 +66,11 @@
     "already-patron": "Bereits ein Unterstützer? <loginLink>Logge dich ein</loginLink>.",
     "donate-access": "Spende 3 $ auf Patreon, um es zusammen mit {{totalVaultedAssets, number}} anderen Assets in Vaults herunterzuladen.",
     "locked-in": "Dieses Asset ist im <vaultLink>{{vault}}-Vault</vaultLink> eingeschlossen.",
+    "locked-in-upcoming": "Dieses Asset gehört zu einem kommenden Vault.",
     "patrons-needed": "Sobald wir {{remaining, number}} mehr Unterstützer haben, wird es für alle kostenlos veröffentlicht.",
-    "title": "Asset eines Vaults"
+    "released-upcoming": "Wenn sein Vault freigeschaltet wird",
+    "title": "Asset eines Vaults",
+    "upcoming-goal": "Wir arbeiten noch an dem Vault, aber sobald er fertig ist, bekommt er ein Patreon-Ziel, um ihn für alle kostenlos freizugeben."
   },
   "wide": "breit",
   "zip-choose": "Wähle den ZIP-Inhalt:"

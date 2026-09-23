@@ -66,8 +66,11 @@
     "already-patron": "כבר פטרון? <loginLink>התחברות</loginLink>.",
     "donate-access": "תרמו 3 דולר בפטריאון כדי להוריד אותו, יחד עם {{totalVaultedAssets, number}} נכסים אחרים המאוחסנים בכספת.",
     "locked-in": "נכס זה נעול ב-<vaultLink>כספת {{vault}}</vaultLink>.",
+    "locked-in-upcoming": "נכס זה הוא חלק מכספת עתידית.",
     "patrons-needed": "כאשר נקבל עוד {{remaining, number}} פטרונים, הוא יופץ בחינם לכולם.",
-    "title": "נכס מאובטח"
+    "released-upcoming": "כשהכספת שלו תיפתח",
+    "title": "נכס מאובטח",
+    "upcoming-goal": "אנחנו עדיין עובדים על הכספת, אבל כשהיא תהיה מוכנה יהיה לה יעד ב-Patreon כדי לשחרר אותה בחינם לכולם."
   },
   "wide": "רָחָב",
   "zip-choose": "בחר תוכן ZIP:"

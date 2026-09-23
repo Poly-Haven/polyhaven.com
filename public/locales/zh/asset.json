@@ -66,8 +66,11 @@
     "already-patron": "已经是赞助人？<loginLink>登录</loginLink>。",
     "donate-access": "在 Patreon 上捐赠 3 美元即可下载它，以及其他 {{totalVaultedAssets, number}} 项保险库资产。",
     "locked-in": "该资产被锁定在<vaultLink>{{vault}} 保险库</vaultLink>中。",
+    "locked-in-upcoming": "该资产属于一个即将推出的保险库。",
     "patrons-needed": "当我们再获得 {{remaining, number}} 位赞助人时，它将免费向所有人发布。",
-    "title": "保险库资产"
+    "released-upcoming": "当其保险库解锁时",
+    "title": "保险库资产",
+    "upcoming-goal": "我们仍在制作这个保险库，但准备就绪后，它将设定一个 Patreon 目标，达成后将免费向所有人发布。"
   },
   "wide": "宽",
   "zip-choose": "选择 ZIP 内容："

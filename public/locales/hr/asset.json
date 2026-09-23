@@ -66,8 +66,11 @@
     "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 dolara na Patreonu kako biste ga preuzeli, zajedno s {{totalVaultedAssets, number}} drugim trezorskim datotekama.",
     "locked-in": "Ova imovina je zaključana u <vaultLink>trezor {{vault}}</vaultLink>.",
+    "locked-in-upcoming": "Ova imovina dio je nadolazećeg trezora.",
     "patrons-needed": "Kada dobijemo još {{remaining, number}} korisnika, bit će besplatno dostupno svima.",
-    "title": "Trezorska imovina"
+    "released-upcoming": "Kada se njegov trezor otključa",
+    "title": "Trezorska imovina",
+    "upcoming-goal": "Još radimo na trezoru, ali kada bude spreman imat će cilj na Patreonu kako bi bio besplatno dostupan svima."
   },
   "wide": "širok",
   "zip-choose": "Odaberite ZIP sadržaj:"

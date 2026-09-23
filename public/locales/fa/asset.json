@@ -66,8 +66,11 @@
     "already-patron": "قبلاً حامی بوده‌اید؟ <loginLink>ورود</loginLink>.",
     "donate-access": "برای دانلود آن، به همراه {{totalVaultedAssets, number}} دارایی‌های ذخیره شده دیگر، ۳ دلار به Patreon اهدا کنید.",
     "locked-in": "این دارایی قفل شده است <vaultLink>{{vault}} خزانه</vaultLink>.",
+    "locked-in-upcoming": "این دارایی بخشی از یک خزانه‌ی آینده است.",
     "patrons-needed": "وقتی {{remaining, number}} مشتری بیشتر داشته باشیم، به صورت رایگان برای همه منتشر خواهد شد.",
-    "title": "دارایی خزانه‌داری شده"
+    "released-upcoming": "وقتی خزانه‌ی آن باز شود",
+    "title": "دارایی خزانه‌داری شده",
+    "upcoming-goal": "هنوز روی این خزانه کار می‌کنیم، اما وقتی آماده شود یک هدف در Patreon خواهد داشت تا برای همه رایگان منتشر شود."
   },
   "wide": "وسعت",
   "zip-choose": "محتویات فایل ZIP را انتخاب کنید:"

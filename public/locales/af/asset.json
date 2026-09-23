@@ -66,8 +66,11 @@
     "already-patron": "Reeds 'n beskermheer? <loginLink>Teken aan</loginLink>.",
     "donate-access": "Skenk $3 op Patreon om dit af te laai, saam met {{totalVaultedAssets, number}} ander gebergde bates.",
     "locked-in": "Hierdie bate is vasgesluit in die <vaultLink>{{vault}} kluis</vaultLink>.",
+    "locked-in-upcoming": "Hierdie bate is deel van 'n komende kluis.",
     "patrons-needed": "Wanneer ons {{remaining, number}} meer klante kry, sal dit gratis vir almal vrygestel word.",
-    "title": "Gekluiste Bate"
+    "released-upcoming": "Wanneer sy kluis oopgesluit word",
+    "title": "Gekluiste Bate",
+    "upcoming-goal": "Ons werk nog aan die kluis, maar wanneer dit gereed is, sal dit 'n Patreon-doelwit hê om dit gratis vir almal vry te stel."
   },
   "wide": "wyd",
   "zip-choose": "Kies ZIP-inhoud:"

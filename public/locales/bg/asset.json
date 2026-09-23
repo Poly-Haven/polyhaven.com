@@ -66,8 +66,11 @@
     "already-patron": "Вече сте абонат? <loginLink>Влезте</loginLink>.",
     "donate-access": "Дарете $3 в Patreon, за да го изтеглите, заедно с {{totalVaultedAssets, number}} други заключени активи.",
     "locked-in": "Този актив е заключен в <vaultLink>{{vault}} трезора</vaultLink>.",
+    "locked-in-upcoming": "Този актив е част от предстоящ трезор.",
     "patrons-needed": "Когато съберем още {{remaining, number}} абонати, ще бъде пуснат безплатно за всички.",
-    "title": "Актив от трезора"
+    "released-upcoming": "Когато трезорът му бъде отключен",
+    "title": "Актив от трезора",
+    "upcoming-goal": "Все още работим по трезора, но когато е готов, той ще има цел в Patreon, за да бъде пуснат безплатно за всички."
   },
   "wide": "широк",
   "zip-choose": "Изберете съдържанието на ZIP файла:"

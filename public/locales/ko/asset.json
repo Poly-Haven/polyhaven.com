@@ -66,8 +66,11 @@
     "already-patron": "이미 후원자이신가요? <loginLink>로그인하세요</loginLink>.",
     "donate-access": "Patreon에서 3달러를 기부하면 {{totalVaultedAssets, number}} 다른 Vault에 보관된 에셋과 함께 다운로드할 수 있습니다.",
     "locked-in": "이 에셋은 <vaultLink>{{vault}} Vault에 잠겨 있습니다.</vaultLink>",
+    "locked-in-upcoming": "이 에셋은 곧 공개될 금고의 일부입니다.",
     "patrons-needed": "후원자 {{remaining, number}}명을 확보하면 모든 사람에게 무료로 출시할 예정입니다.",
-    "title": "잠긴 에셋"
+    "released-upcoming": "금고가 잠금 해제되면",
+    "title": "잠긴 에셋",
+    "upcoming-goal": "아직 금고를 작업 중이지만, 준비가 되면 모두에게 무료로 공개하기 위한 Patreon 목표가 생깁니다."
   },
   "wide": "너비",
   "zip-choose": "ZIP 콘텐츠 선택:"

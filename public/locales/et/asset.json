@@ -66,8 +66,11 @@
     "already-patron": "Oled juba patroon? <loginLink>Logi sisse</loginLink>.",
     "donate-access": "Annetage 3 dollarit Patreonis, et see alla laadida, koos {{totalVaultedAssets, number}} muu eksklusiivse varaga.",
     "locked-in": "See vara on lukustatud <vaultLink>aadressil{{vault}}</vaultLink>.",
+    "locked-in-upcoming": "See vara kuulub tulevasse hoidlasse.",
     "patrons-needed": "Kui saame veel {{remaining, number}} patrooni, avaldatakse see kõigile tasuta.",
-    "title": "Eksklusiivne vara"
+    "released-upcoming": "Kui selle hoidla avatakse",
+    "title": "Eksklusiivne vara",
+    "upcoming-goal": "Töötame hoidla kallal veel, aga kui see valmis saab, on sellel Patreoni eesmärk, et see kõigile tasuta avaldada."
   },
   "wide": "lai",
   "zip-choose": "Valige ZIP-i sisu:"

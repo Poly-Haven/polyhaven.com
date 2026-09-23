@@ -66,8 +66,11 @@
     "already-patron": "Már támogatója vagy? <loginLink>Jelentkezzen be</loginLink>.",
     "donate-access": "Adományozz 3 dollárt a Patreonon, hogy letölthesd, valamint a {{totalVaultedAssets, number}} más páncélozott eszközöket.",
     "locked-in": "Ez az eszköz a <vaultLink>{{vault}} páncélteremben</vaultLink> van elzárva.",
+    "locked-in-upcoming": "Ez az eszköz egy hamarosan érkező páncélterem része.",
     "patrons-needed": "Ha több támogatót kapunk a {{remaining, number}} címen, akkor mindenki számára ingyenesen elérhetővé válik.",
-    "title": "Boltozatos eszköz"
+    "released-upcoming": "Amikor a páncélterme feloldódik",
+    "title": "Boltozatos eszköz",
+    "upcoming-goal": "Még dolgozunk a páncéltermen, de amikor elkészül, lesz egy Patreon-célja, amellyel mindenki számára ingyenesen elérhetővé válik."
   },
   "wide": "széles",
   "zip-choose": "Válassza ki a ZIP tartalmát:"

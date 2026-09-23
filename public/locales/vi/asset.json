@@ -66,8 +66,11 @@
     "already-patron": "Bạn đã là một người ủng hộ? <loginLink>Đăng nhập</loginLink>.",
     "donate-access": "Đóng góp $3 trên Patreon để tải xuống nó, cùng với {{totalVaultedAssets, number}} tài sản đã được Vault hóa khác.",
     "locked-in": "Tài sản này bị khóa trong <vaultLink>{{vault}} vault</vaultLink>.",
+    "locked-in-upcoming": "Tài sản này thuộc một vault sắp ra mắt.",
     "patrons-needed": "Khi chúng tôi có thêm {{remaining, number}} người ủng hộ, nó sẽ được phát hành miễn phí cho mọi người.",
-    "title": "Tài sản đã được Vault hóa"
+    "released-upcoming": "Khi vault của nó được mở khóa",
+    "title": "Tài sản đã được Vault hóa",
+    "upcoming-goal": "Chúng tôi vẫn đang thực hiện vault này, nhưng khi sẵn sàng, nó sẽ có một mục tiêu trên Patreon để phát hành miễn phí cho mọi người."
   },
   "wide": "rộng",
   "zip-choose": "Chọn nội dung ZIP:"

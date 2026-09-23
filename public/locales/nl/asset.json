@@ -66,8 +66,11 @@
     "already-patron": "Ben je al een patron? <loginLink>Aanmelden</loginLink>.",
     "donate-access": "Doneer $3 op Patreon om het te downloaden, samen met {{totalVaultedAssets, number}} andere opgesloten assets.",
     "locked-in": "Deze asset is opgesloten in de <vaultLink>{{vault}} kluis</vaultLink>.",
+    "locked-in-upcoming": "Deze asset maakt deel uit van een aankomende kluis.",
     "patrons-needed": "Als we {{remaining, number}} meer patrons hebben, zal het voor iedereen gratis worden uitgebracht.",
-    "title": "Opgesloten Asset"
+    "released-upcoming": "Wanneer de kluis wordt ontgrendeld",
+    "title": "Opgesloten Asset",
+    "upcoming-goal": "We werken nog aan de kluis, maar zodra die klaar is, krijgt hij een Patreon-doel om hem gratis voor iedereen vrij te geven."
   },
   "wide": "breed",
   "zip-choose": "Kies ZIP-inhoud:"

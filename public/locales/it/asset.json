@@ -66,8 +66,11 @@
     "already-patron": "Sei già un mecenate? Effettua <loginLink>il login</loginLink>.",
     "donate-access": "Donate 3 dollari su Patreon per scaricarlo, insieme a {{totalVaultedAssets, number}} altre risorse custodite.",
     "locked-in": "Questa risorsa è chiusa nel <vaultLink>caveau {{vault}}</vaultLink>.",
+    "locked-in-upcoming": "Questa risorsa fa parte di un caveau in arrivo.",
     "patrons-needed": "Quando avremo {{remaining, number}} più mecenati, verrà rilasciato gratuitamente per tutti.",
-    "title": "Risorsa nel caveau"
+    "released-upcoming": "Quando il suo caveau verrà sbloccato",
+    "title": "Risorsa nel caveau",
+    "upcoming-goal": "Stiamo ancora lavorando al caveau, ma quando sarà pronto avrà un obiettivo su Patreon per renderlo gratuito per tutti."
   },
   "wide": "largo",
   "zip-choose": "Scegli il contenuto ZIP:"

@@ -66,8 +66,11 @@
     "already-patron": "¿Ya eres mecenas? <loginLink>Conéctese</loginLink>.",
     "donate-access": "Dona 3 $ en Patreon para descargarlo, junto con {{totalVaultedAssets, number}} otros activos de bóveda.",
     "locked-in": "Este activo está guardado en la <vaultLink>cámara acorazada de {{vault}}</vaultLink>.",
+    "locked-in-upcoming": "Este activo forma parte de una próxima cámara acorazada.",
     "patrons-needed": "Cuando consigamos {{remaining, number}} más mecenas, se publicará gratuitamente para todo el mundo.",
-    "title": "Activo abovedado"
+    "released-upcoming": "Cuando se desbloquee su cámara acorazada",
+    "title": "Activo abovedado",
+    "upcoming-goal": "Todavía estamos trabajando en la cámara acorazada, pero cuando esté lista tendrá una meta en Patreon para publicarla gratis para todo el mundo."
   },
   "wide": "ancho",
   "zip-choose": "Elija contenido ZIP:"

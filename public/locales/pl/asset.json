@@ -66,8 +66,11 @@
     "already-patron": "Jesteś już patronem? <loginLink>Zaloguj się</loginLink>.",
     "donate-access": "Przekaż $3 na Patreonie, aby go pobrać oraz uzyskać dostęp do całej reszty {{totalVaultedAssets, number}} zasobów ze skarbców.",
     "locked-in": "Ten zasób jest zamknięty w <vaultLink>skarbcu {{vault}}</vaultLink>.",
+    "locked-in-upcoming": "Ten zasób jest częścią nadchodzącego skarbca.",
     "patrons-needed": "Gdy zdobędziemy {{remaining, number}} więcej patronów, zostanie on udostępniony za darmo dla wszystkich.",
-    "title": "Zasób ze skarbca"
+    "released-upcoming": "Gdy jego skarbiec zostanie odblokowany",
+    "title": "Zasób ze skarbca",
+    "upcoming-goal": "Wciąż pracujemy nad skarbcem, ale gdy będzie gotowy, otrzyma cel na Patreonie, po którego osiągnięciu zostanie udostępniony za darmo dla wszystkich."
   },
   "wide": "szerokość",
   "zip-choose": "Wybierz zawartość pliku ZIP:"

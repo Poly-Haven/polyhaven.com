@@ -66,8 +66,11 @@
     "already-patron": "Zaten bir kullanıcı mısınız? <loginLink>Giriş</loginLink> yapın.",
     "donate-access": "Patreon'da 3 dolar bağışlayarak {{totalVaultedAssets, number}} diğer tonozlu varlıklarla birlikte indirin.",
     "locked-in": "Bu varlık <vaultLink>{{vault}} kasasında</vaultLink> kilitli tutulmaktadır.",
+    "locked-in-upcoming": "Bu varlık yakında gelecek bir kasanın parçasıdır.",
     "patrons-needed": "{{remaining, number}} daha fazla kullanıcıya ulaştığımızda, herkes için ücretsiz olarak yayınlanacaktır.",
-    "title": "Tonozlu Varlık"
+    "released-upcoming": "Kasası açıldığında",
+    "title": "Tonozlu Varlık",
+    "upcoming-goal": "Kasa üzerinde hâlâ çalışıyoruz, ancak hazır olduğunda herkes için ücretsiz yayınlanması için bir Patreon hedefi olacak."
   },
   "wide": "geniş",
   "zip-choose": "ZIP içeriğini seçin:"

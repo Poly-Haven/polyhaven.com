@@ -66,8 +66,11 @@
     "already-patron": "すでにパトロンですか？<loginLink>ログイン</loginLink>",
     "donate-access": "Patreonで3ドル寄付すると、{{totalVaultedAssets, number}} 他の保管資産とともにダウンロードできる。",
     "locked-in": "このアセットは <vaultLink>{{vault}} ボールト</vaultLink> にロックされています。",
+    "locked-in-upcoming": "このアセットは近日公開予定のボールトの一部です。",
     "patrons-needed": "あと {{remaining, number}} 人のパトロンが集まったら、誰でも無料で利用できるようになります。",
-    "title": "保管された資産"
+    "released-upcoming": "ボールトがアンロックされたとき",
+    "title": "保管された資産",
+    "upcoming-goal": "このボールトはまだ制作中ですが、準備ができたら、すべての人に無料で公開するためのPatreonの目標が設定されます。"
   },
   "wide": "幅",
   "zip-choose": "ZIPコンテンツを選択してください："
