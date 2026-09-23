@@ -227,12 +227,11 @@
       margin: 0;
     }
     .apiLink {
-      font-size: 0.9rem;
-      overflow-wrap: anywhere;
-      vertical-align: top;
       box-shadow: none !important;
-      color: $c-text-light;
       opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
     }
     .flex {
       @include flex(row, true, false);
@@ -322,7 +321,8 @@
 
     // Tags and attributes are the same sort of thing to a reader, so they get one shared look. The
     // neutral outline sits back better than the old purple one, which competed with link colour.
-    .tag {
+    .tag,
+    .apiLink {
       display: inline-block;
       padding: 0.2em 0.45em;
       margin: 0.1em;

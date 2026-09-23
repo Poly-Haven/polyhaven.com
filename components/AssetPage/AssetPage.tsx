@@ -510,8 +510,11 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
             {/* For agents and scripts that would otherwise scrape this page for download links. Not
                 on early access or locked vault assets, where it would advertise a way around the lock. */}
             <InfoItem label="API" condition={!vaultLocked && daysOld >= 0}>
+              <a href={`https://api.polyhaven.com/info/${assetID}`} rel="nofollow" className={styles.apiLink}>
+                {`info/${assetID}`}
+              </a>
               <a href={`https://api.polyhaven.com/files/${assetID}`} rel="nofollow" className={styles.apiLink}>
-                {`api.polyhaven.com/files/${assetID}`}
+                {`files/${assetID}`}
               </a>
             </InfoItem>
           </div>
