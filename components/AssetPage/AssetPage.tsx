@@ -7,7 +7,7 @@ import Markdown from 'markdown-to-jsx'
 import { timeago } from 'utils/dateUtils'
 import { titleCase, formatNumber } from 'utils/stringUtils'
 import { inCollection } from 'utils/assetFiltering'
-import { isFormerlyVaulted, isUnlockedVault, isVaultLocked, vaultOf } from 'utils/vaults'
+import { isFormerlyVaulted, isUnlockedVault, isUpcomingVaultId, isVaultLocked, vaultOf } from 'utils/vaults'
 import { assetImg, withParams, CDN } from 'utils/cdn'
 
 import apiSWR from 'utils/apiSWR'
@@ -490,7 +490,10 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
               />
             </div>
             <InfoItem label={t('released')}>
-              {vaultLocked ? (
+              {vaultLocked && isUpcomingVaultId(vault) ? (
+                // Not announced yet, so there is no name to give and no page to link to.
+                <span style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>{t('vaulted.released-upcoming')}</span>
+              ) : vaultLocked ? (
                 <span style={{ fontSize: '0.9rem', fontStyle: 'italic' }}>
                   When the{' '}
                   <Link href={`/vaults/${vault}`} prefetch={false}>

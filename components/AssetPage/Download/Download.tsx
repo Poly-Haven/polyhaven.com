@@ -25,7 +25,7 @@ import Heart from 'components/UI/Icons/Heart'
 
 import { sortRes } from 'utils/arrayUtils'
 import { urlBaseName } from 'utils/stringUtils'
-import { countVaultAssets, isVaultLocked, vaultsByStatus } from 'utils/vaults'
+import { countVaultAssets, isUpcomingVaultId, isVaultLocked, vaultsByStatus } from 'utils/vaults'
 import threeDFormats from 'constants/3D_formats.json'
 import { useUserPatron } from 'contexts/UserPatronContext'
 
@@ -135,20 +135,40 @@ const Download = ({ assetID, data, files, setPreview, patron, texelDensity, call
   // assets released when their vault was unlocked keep the id so we can credit the vault.
   if (locked && !earlyAccess) {
     if (!patron.rewards || !patron.rewards.includes('Early Access')) {
+      // A vault that hasn't been announced has no page, name or goal to show yet. It is still
+      // released freely once it has one, and it has to say so - without the goal line this reads as
+      // a permanent paywall.
+      const upcoming = isUpcomingVaultId(vault)
       return (
         <div className={styles.unreleased}>
           <h3>
             <HeartLock /> {t('asset:vaulted.title')}
           </h3>
           <p>
-            <Trans
-              i18nKey="asset:vaulted.locked-in"
-              t={t}
-              values={{ vault }}
-              components={{ vaultLink: <Link href={`/vaults/${vault}`} /> }}
-            />
+            {upcoming ? (
+              t('asset:vaulted.locked-in-upcoming')
+            ) : (
+              <Trans
+                i18nKey="asset:vaulted.locked-in"
+                t={t}
+                values={{ vault }}
+                components={{ vaultLink: <Link href={`/vaults/${vault}`} /> }}
+              />
+            )}
           </p>
-          {targetPatrons && currentPatrons ? (
+          {upcoming ? (
+            <>
+              {/* The count is every locked vault's assets, which this one isn't among. */}
+              {totalVaultedAssets > 0 && (
+                <p>
+                  <strong>
+                    <Trans i18nKey="asset:vaulted.donate-access" t={t} values={{ totalVaultedAssets }} />
+                  </strong>
+                </p>
+              )}
+              <p>{t('asset:vaulted.upcoming-goal')}</p>
+            </>
+          ) : targetPatrons && currentPatrons ? (
             <>
               <p>
                 <strong>

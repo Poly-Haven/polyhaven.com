@@ -2,19 +2,26 @@ import { releaseStateOf } from './dateUtils'
 
 /**
  * A vault moves through three states. `upcoming` exists so assets can be uploaded and compiled
- * before the vault is announced - they stay out of the library and off /vaults, but their own
- * asset pages still render.
+ * before the vault is announced - they are early access like any other asset, but the api masks
+ * their vault (see UPCOMING_VAULT_ID) and the vault itself stays off /vaults.
  *
- * Vault docs written before the status field have none. They were only ever kept while locked
- * (releasing one used to delete the doc), so "no status" means locked.
+ * A vault with no status counts as upcoming, matching the api and admin, which hide any vault that
+ * isn't positively locked or unlocked.
  */
 export type VaultStatus = 'upcoming' | 'locked' | 'unlocked'
 
-export const vaultStatus = (vault): VaultStatus => vault?.status || 'locked'
+export const vaultStatus = (vault): VaultStatus => vault?.status || 'upcoming'
 
 export const isLockedVault = (vault) => vaultStatus(vault) === 'locked'
 export const isUnlockedVault = (vault) => vaultStatus(vault) === 'unlocked'
 export const isUpcomingVault = (vault) => vaultStatus(vault) === 'upcoming'
+
+/**
+ * What the api puts in an asset's `vault` while that vault hasn't been announced. The real id never
+ * reaches the site, so this is all it knows: "an upcoming vault", with no page, name or goal yet.
+ */
+export const UPCOMING_VAULT_ID = 'upcoming'
+export const isUpcomingVaultId = (id: string | null | undefined): boolean => id === UPCOMING_VAULT_ID
 
 /** The `/vaults` map narrowed to one status, preserving its (target-ascending) order. */
 export const vaultsByStatus = (vaults, status: VaultStatus) =>
