@@ -194,20 +194,22 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
   }
 
   const setPreviewImage = (src) => {
-    if (!activeImage.startsWith(src)) {
+    // Merged rather than concatenated: srcs arriving here already carry ?v=<img_version>, and
+    // some (render URLs) used to carry no query string at all - appending '?...' to the first
+    // kind would produce a second '?' and Bunny would ignore everything after it.
+    const displaySrc = src.startsWith(`${CDN}/`) ? withParams(src, { height: 760, quality: 95 }) : src
+    // Compared as finished URLs, not by prefix. The old `activeImage.startsWith(src)` only held
+    // while ?v= happened to come first in the sized URL; once it moved last, re-clicking the
+    // displayed image read as a change, showed the spinner, and - since an unchanged <img src>
+    // fires no onLoad - never hid it again.
+    if (activeImage !== displaySrc) {
       setImageLoading(true)
     }
     if (showWebGL) {
       setShowWebGL(false)
     }
     setActiveImageSrc(src)
-    if (src.startsWith(`${CDN}/`)) {
-      // Merged rather than concatenated: srcs arriving here already carry ?v=<img_version>, and
-      // some (render URLs) used to carry no query string at all - appending '?...' to the first
-      // kind would produce a second '?' and Bunny would ignore everything after it.
-      src = withParams(src, { height: 760, quality: 95 })
-    }
-    setActiveImage(src)
+    setActiveImage(displaySrc)
     setShowTilePreview('')
   }
   const imageLoaded = (e) => {

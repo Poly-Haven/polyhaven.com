@@ -49,20 +49,32 @@ export const cdnUrl = (path: string, params?: CdnParams, version?: string): stri
 //
 // This is also what AssetPage's setPreviewImage needs: it appends params to srcs that sometimes
 // already carry a query string and sometimes do not, where blind concatenation yields a double '?'.
+//
+// `v` is always emitted last, exactly as cdnUrl does, so that one image requested by two code paths
+// produces one URL. Without that, AssetPage fetched its main preview under two cache keys - the
+// initial render built `?height=760&quality=95&v=…` while a carousel click built
+// `?v=…&height=760&quality=95` - doubling the fetches and letting the two copies disagree.
 export const withParams = (url: string, params?: CdnParams): string => {
   const [base, existing] = url.split('?')
   const merged: CdnParams = {}
+  let version: string | undefined
   if (existing) {
     for (const pair of existing.split('&')) {
       if (!pair) continue
       const eq = pair.indexOf('=')
       if (eq === -1) continue
-      merged[pair.slice(0, eq)] = pair.slice(eq + 1)
+      const key = pair.slice(0, eq)
+      if (key === VERSION_PARAM) version = pair.slice(eq + 1)
+      else merged[key] = pair.slice(eq + 1)
     }
   }
-  Object.assign(merged, params || {})
+  for (const [key, value] of Object.entries(params || {})) {
+    if (key === VERSION_PARAM) version = value === undefined || value === null ? undefined : String(value)
+    else merged[key] = value
+  }
   const query = buildQuery(merged)
-  return `${base}${query ? '?' + query : ''}`
+  const v = version ? `${query ? '&' : ''}${VERSION_PARAM}=${version}` : ''
+  return `${base}${query || v ? '?' : ''}${query}${v}`
 }
 
 // Strips the query so a URL can be inspected by extension. Needed because these URLs now usually
