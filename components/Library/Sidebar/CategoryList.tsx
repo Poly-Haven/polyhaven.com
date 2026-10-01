@@ -130,8 +130,20 @@ const CategoryList = (props) => {
       const name = typeNames[asset.type]
       if (name) perType[name]++
     }
+    // Collection and vault pages share this view. There the link leaves the collection, so it
+    // can't carry the query (which holds the collection's route param) or be shallow.
+    const inGroup = Boolean(props.collection || props.vault)
     return (
       <div>
+        <Link
+          href={inGroup ? '/all' : { pathname: '/all', query }}
+          shallow={!inGroup}
+          className={`${styles.cat} ${!inGroup ? styles.catActive : ''}`}
+        >
+          <MdKeyboardArrowRight className={styles.caret} />
+          <span className={styles.catLabel}>{tc(assetTypeName('all'))}</span>
+          <div className={styles.num}>{Object.keys(scoped).length}</div>
+        </Link>
         {typeNames.map((type) => (
           <div key={type}>
             <Link href={`/${type}`} className={styles.cat}>
