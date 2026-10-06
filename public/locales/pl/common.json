@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Ucz się od nas</lnk> za pomocą pełnometrażowych kursów wideo.",
     "donate-monthly": "Wspieraj co miesiąc",
     "donate-once": "Przekaż darowiznę raz",
+    "fee-warning": "{{percent}}% twojej darowizny trafia do <tip>opłat za przetwarzanie</tip>",
+    "fee-warning-tip": "PayPal pobiera {{paypalPercent}}% + ${{paypalFixed}} od każdej darowizny, więc mniejsze darowizny są mniej skuteczne. Następnie tracimy kolejne {{exchangePercent}}% przy konwersji na randy południowoafrykańskie i {{withdrawalPercent}}% przy wypłacie na nasze konto bankowe.",
     "monthly": "Miesięcznie",
     "once": "Raz",
     "one-time-benefits-p1": "Jednorazowe darowizny nie obejmują żadnych korzyści Patreon ani nie liczą się do postępu Vault.",

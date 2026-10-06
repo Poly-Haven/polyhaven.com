@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Leer van ons</lnk> met volledige videolessen.",
     "donate-monthly": "Maandelijks doneren",
     "donate-once": "Eenmalig doneren",
+    "fee-warning": "{{percent}}% van uw donatie gaat naar <tip>verwerkingskosten</tip>",
+    "fee-warning-tip": "PayPal neemt {{paypalPercent}}% + ${{paypalFixed}} van elke donatie, dus kleinere donaties zijn minder effectief. Dan verliezen we nog eens {{exchangePercent}}% bij het omzetten naar Zuid-Afrikaanse randen en {{withdrawalPercent}}% bij het opnemen naar onze bank.",
     "monthly": "Maandelijks",
     "once": "Eenmaal",
     "one-time-benefits-p1": "Eenmalige donaties hebben geen Patreon-voordelen en tellen niet mee voor de voortgang van de kluizen.",

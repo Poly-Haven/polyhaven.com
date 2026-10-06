@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Bizden öğrenin</lnk> tam uzunlukta video kurslarıyla.",
     "donate-monthly": "Aylık bağış yapın",
     "donate-once": "Bir kez bağış yapın",
+    "fee-warning": "{{percent}}% bağışınızın <tip>işlem ücretlerine</tip> gidiyor",
+    "fee-warning-tip": "PayPal, her bağıştan {{paypalPercent}}% + ${{paypalFixed}} alır, bu nedenle daha küçük bağışlar daha az etkilidir. Sonra, bunu Güney Afrika randına çevirirken {{exchangePercent}}% kaybederiz ve bankamıza çekim yaparken {{withdrawalPercent}}% kaybederiz.",
     "monthly": "Aylık",
     "once": "Bir kez",
     "one-time-benefits-p1": "Tek seferlik bağışlar herhangi bir Patreon avantajı içermez veya Kasa ilerlemesine sayılmaz.",

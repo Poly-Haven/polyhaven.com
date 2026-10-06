@@ -27,6 +27,8 @@
     "b6-course": "<lnk>למדו מאיתנו</lnk> עם קורסים בווידאו באורך מלא.",
     "donate-monthly": "תרומה חודשית",
     "donate-once": "תרום פעם אחת",
+    "fee-warning": "{{percent}}% מהתרומה שלך הולך ל<tip>עמלות עיבוד</tip>",
+    "fee-warning-tip": "פייפאל לוקח {{paypalPercent}}% + ${{paypalFixed}} מכל תרומה, כך שתרומות קטנות פחות אפקטיביות. אז אנחנו מפסידים עוד {{exchangePercent}}% בהמרה לרנדים דרום אפריקאיים ו{{withdrawalPercent}}% במשיכה לחשבון הבנק שלנו.",
     "monthly": "יַרחוֹן",
     "once": "פַּעַם",
     "one-time-benefits-p1": "תרומות חד פעמיות אינן כוללות הטבות של Patreon, ואינן נחשבות כהתקדמות ב-Vault.",

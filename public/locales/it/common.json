@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Impara da noi</lnk> con corsi video completi.",
     "donate-monthly": "Donazione mensile",
     "donate-once": "Donare una volta",
+    "fee-warning": "{{percent}}% della tua donazione va a <tip>commissioni di elaborazione</tip>",
+    "fee-warning-tip": "PayPal prende {{paypalPercent}}% + ${{paypalFixed}} da ogni donazione, quindi le donazioni più piccole sono meno efficaci. Poi perdiamo un altro {{exchangePercent}}% convertendole in rand sudafricani e {{withdrawalPercent}}% prelevandole sul nostro conto bancario.",
     "monthly": "Mensile",
     "once": "Una volta",
     "one-time-benefits-p1": "Le donazioni una tantum non includono i vantaggi di Patreon e non contano per i progressi del Vault.",

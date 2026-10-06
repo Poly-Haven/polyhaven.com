@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Учите од нас</lnk> уз комплетне видео-курсеве.",
     "donate-monthly": "Донирајте месечно",
     "donate-once": "Донирајте једном",
+    "fee-warning": "{{percent}}% vaše donacije ide na <tip>obrada troškova</tip>",
+    "fee-warning-tip": "PayPal uzima {{paypalPercent}}% + ${{paypalFixed}} od svake donacije, tako da su manje donacije manje efikasne. Zatim gubimo još {{exchangePercent}}% prilikom konvertovanja u južnoafričke rande i {{withdrawalPercent}}% prilikom povlačenja na naš bankovni račun.",
     "monthly": "Месечно",
     "once": "Једном",
     "one-time-benefits-p1": "Једнократне донације не укључују никакве погодности са Patreon-а, нити се рачунају у напредак у Vault-у.",

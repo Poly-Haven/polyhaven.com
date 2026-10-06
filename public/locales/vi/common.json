@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Học từ chúng tôi</lnk> với các khóa học video đầy đủ.",
     "donate-monthly": "Đóng góp hàng tháng",
     "donate-once": "Đóng góp một lần",
+    "fee-warning": "{{percent}}% số tiền quyên góp của bạn sẽ được sử dụng cho <tip>phí xử lý</tip>",
+    "fee-warning-tip": "PayPal lấy {{paypalPercent}}% + ${{paypalFixed}} từ mỗi khoản quyên góp, vì vậy các khoản quyên góp nhỏ sẽ kém hiệu quả hơn. Sau đó, chúng tôi mất thêm {{exchangePercent}}% khi chuyển đổi sang đồng rand Nam Phi và {{withdrawalPercent}}% khi rút về ngân hàng của chúng tôi.",
     "monthly": "Hàng tháng",
     "once": "Một lần",
     "one-time-benefits-p1": "Các khoản đóng góp một lần không bao gồm bất kỳ lợi ích nào từ Patreon, hoặc không tính vào tiến trình Vault.",

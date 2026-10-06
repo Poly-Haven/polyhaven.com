@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Apprenez de nous</lnk> avec des cours vidéo complets.",
     "donate-monthly": "Faire un don mensuel",
     "donate-once": "Don unique",
+    "fee-warning": "{{percent}}% de votre don va à <tip>frais de traitement</tip>",
+    "fee-warning-tip": "PayPal prend {{paypalPercent}}% + ${{paypalFixed}} sur chaque don, donc les petits dons sont moins efficaces. Ensuite, nous perdons encore {{exchangePercent}}% en le convertissant en rands sud-africains et {{withdrawalPercent}}% en le retirant sur notre compte bancaire.",
     "monthly": "Mensuel",
     "once": "Unique",
     "one-time-benefits-p1": "Les dons uniques n'incluent aucun avantage Patreon et ne comptent pas pour la progression des Voûtes.",

@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Belajar dari kami</lnk> dengan kursus video panjang penuh.",
     "donate-monthly": "Donasi bulanan",
     "donate-once": "Donasi sekali",
+    "fee-warning": "{{percent}}% dari donasi Anda digunakan untuk <tip>pembayaran biaya</tip>",
+    "fee-warning-tip": "PayPal mengambil {{paypalPercent}}% + ${{paypalFixed}} dari setiap donasi, jadi donasi yang lebih kecil kurang efektif. Kemudian kami kehilangan lagi {{exchangePercent}}% saat mengonversinya ke rand Afrika Selatan dan {{withdrawalPercent}}% saat menariknya ke bank kami.",
     "monthly": "Bulanan",
     "once": "Sekali",
     "one-time-benefits-p1": "Donasi satu kali tidak termasuk manfaat Patreon, atau dihitung sebagai kemajuan Vault.",

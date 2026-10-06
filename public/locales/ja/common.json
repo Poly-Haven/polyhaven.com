@@ -27,6 +27,8 @@
     "b6-course": "<lnk>私たちから学ぶ</lnk> フルレングスのビデオコースで。",
     "donate-monthly": "毎月寄付する",
     "donate-once": "一度寄付します",
+    "fee-warning": "{{percent}}% の寄付金は<tip>処理手数料</tip>に使われます",
+    "fee-warning-tip": "PayPalは各寄付から{{paypalPercent}}% + ${{paypalFixed}}を取りますので、小額の寄付は効果が薄くなります。その後、南アフリカランドに換算する際にさらに{{exchangePercent}}%を失い、私たちの銀行に引き出す際に{{withdrawalPercent}}%を失います。",
     "monthly": "毎月",
     "once": "一度",
     "one-time-benefits-p1": "1回限りの寄付にはPatreonの特典は含まれず、Vaultの進捗にもカウントされません。",

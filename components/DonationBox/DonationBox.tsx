@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Button from 'components/UI/Button/Button'
 import Heart from 'components/UI/Icons/Heart'
 import Blender from 'components/UI/Icons/Blender'
+import Disabled from 'components/UI/Disabled/Disabled'
 
 import { TbCalendarSearch, TbCloudDown, TbSchool } from 'react-icons/tb'
 import { IoLockOpen } from 'react-icons/io5'
@@ -20,6 +21,20 @@ const tiers = {
 }
 
 const oneTimeTiers = [25, 50, 100]
+
+// Estimated cost of a one-time donation reaching us. PayPal's rate is for our South African account
+// receiving from abroad (paypal.com/za/webapps/mpp/merchant-fees, updated 2026-09-28), then what's
+// left is converted to ZAR and withdrawn to FNB.
+const paypalPercent = 4.4
+const paypalFixed = 0.3
+const exchangePercent = 3
+const withdrawalPercent = 1.5
+
+const feePercent = (amount: number) => {
+  const received =
+    (amount * (1 - paypalPercent / 100) - paypalFixed) * (1 - exchangePercent / 100) * (1 - withdrawalPercent / 100)
+  return Math.min(100, Math.round((1 - received / amount) * 100))
+}
 
 const Benefit = ({ text, icon, bold, excluded, cost }) => {
   return (
@@ -157,13 +172,15 @@ const DonationBox = () => {
             <span className={styles.dollarSign}>$</span>
             <input type="number" value={oneTimeAmount} onChange={(e) => setOneTimeAmount(Number(e.target.value))} />
           </div>
-          <Button
-            text={t('common:donation-box.donate-once')}
-            href={`https://paypal.me/polyhaven/${oneTimeAmount}`}
-            color="red"
-            icon={<Heart />}
-            style={removeButtonMargin}
-          />
+          <Disabled disabled={oneTimeAmount <= 1}>
+            <Button
+              text={t('common:donation-box.donate-once')}
+              href={oneTimeAmount > 1 ? `https://paypal.me/polyhaven/${oneTimeAmount}` : null}
+              color="red"
+              icon={<Heart />}
+              style={removeButtonMargin}
+            />
+          </Disabled>
           <div
             onClick={() => setOneTimeDonation(!oneTimeDonation)}
             className={`${btnStyles.button} ${btnStyles.hollowRed} ${styles.removeButtonMargin} ${styles.btnSmall}`}
@@ -186,6 +203,29 @@ const DonationBox = () => {
           >
             <div className={btnStyles.inner}>{t('common:donation-box.once')}</div>
           </div>
+        </div>
+      )}
+      {oneTimeDonation && oneTimeAmount > 0 && oneTimeAmount <= 5 && (
+        <div className={styles.feeWarning}>
+          ⚠️{' '}
+          <Trans
+            i18nKey="common:donation-box.fee-warning"
+            t={t}
+            values={{ percent: feePercent(oneTimeAmount) }}
+            components={{
+              // No title attribute: it would show the browser's own tooltip on top of this one.
+              tip: (
+                <abbr
+                  data-tip={t('common:donation-box.fee-warning-tip', {
+                    paypalPercent,
+                    paypalFixed: paypalFixed.toFixed(2),
+                    exchangePercent,
+                    withdrawalPercent,
+                  })}
+                />
+              ),
+            }}
+          />
         </div>
       )}
     </div>

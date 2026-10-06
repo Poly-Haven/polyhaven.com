@@ -27,6 +27,8 @@
     "b6-course": "<lnk>向我们学习</lnk>，观看完整的视频课程。",
     "donate-monthly": "每月捐款",
     "donate-once": "捐赠一次",
+    "fee-warning": "{{percent}}% 的捐款用于<tip>处理费用</tip>",
+    "fee-warning-tip": "PayPal 从每笔捐款中收取 {{paypalPercent}}% + ${{paypalFixed}}，因此较小的捐款效果较差。然后我们在将其转换为南非兰特时又损失了 {{exchangePercent}}%，在提取到我们的银行时损失了 {{withdrawalPercent}}%。",
     "monthly": "每月",
     "once": "一次",
     "one-time-benefits-p1": "一次性捐款不包含任何 Patreon 回馈，也不计入保险库进度。",

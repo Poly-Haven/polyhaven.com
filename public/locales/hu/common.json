@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Tanulj tőlünk</lnk> teljes hosszúságú videókurzusokkal.",
     "donate-monthly": "Havi adományozás",
     "donate-once": "Adományozzon egyszer",
+    "fee-warning": "{{percent}}% a támogatásodból a <tip>feldolgozási díjak</tip> fedezésére megy",
+    "fee-warning-tip": "A PayPal {{paypalPercent}}%-ot + ${{paypalFixed}}-ot von le minden adományból, így a kisebb adományok kevésbé hatékonyak. Ezután még {{exchangePercent}}%-ot veszítünk, amikor dél-afrikai randra váltjuk, és {{withdrawalPercent}}%-ot, amikor a bankunkhoz visszavonjuk.",
     "monthly": "Havi",
     "once": "Egyszer",
     "one-time-benefits-p1": "Az egyszeri adományok nem tartalmaznak semmilyen Patreon-előnyt, és nem számítanak bele a Vault előrehaladásába.",

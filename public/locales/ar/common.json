@@ -27,6 +27,8 @@
     "b6-course": "<lnk>تعلم منا</lnk> من خلال دورات فيديو كاملة.",
     "donate-monthly": "تبرع شهرياً",
     "donate-once": "تبرع مرة واحدة",
+    "fee-warning": "{{percent}}% من تبرعك يذهب إلى <tip>رسوم المعالجة</tip>",
+    "fee-warning-tip": "تأخذ باي بال {{paypalPercent}}% + ${{paypalFixed}} من كل تبرع، لذا فإن التبرعات الصغيرة تكون أقل فعالية. ثم نفقد {{exchangePercent}}% أخرى عند تحويلها إلى الراند الجنوب أفريقي و{{withdrawalPercent}}% عند سحبها إلى بنكنا.",
     "monthly": "شهرياً",
     "once": "مرة واحدة",
     "one-time-benefits-p1": "لا تشمل التبرعات لمرة واحدة أي مزايا من Patreon، ولا تُحتسب في تقدم Vault.",

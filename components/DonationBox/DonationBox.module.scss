@@ -82,6 +82,18 @@
   }
 }
 
+.feeWarning {
+  font-size: 0.8em;
+  text-align: center;
+  color: $c-text-light;
+
+  // Browsers only underline abbr[title], and this one has no title.
+  abbr {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+}
+
 .inputRow {
   @include flex(row);
 

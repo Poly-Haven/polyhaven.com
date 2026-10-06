@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Õppige meilt</lnk> täispikkade videokursustega.",
     "donate-monthly": "Annetada igakuiselt",
     "donate-once": "Annetage üks kord",
+    "fee-warning": "{{percent}}% teie annetusest läheb <tip>protsessimise tasudele</tip>",
+    "fee-warning-tip": "PayPal võtab iga annetuse pealt {{paypalPercent}}% + ${{paypalFixed}}, seega on väiksemad annetused vähem tõhusad. Siis kaotame veel {{exchangePercent}}% selle konverteerimisel Lõuna-Aafrika randideks ja {{withdrawalPercent}}% selle meie pangakontole väljavõtmisel.",
     "monthly": "Igakuiselt",
     "once": "Üks kord",
     "one-time-benefits-p1": "Ühekordsed annetused ei sisalda Patreoni soodustusi ega lähe arvesse Vaulti arengu puhul.",

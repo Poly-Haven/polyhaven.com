@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Leer van ons</lnk> met volledige video kursusse.",
     "donate-monthly": "Skenk maandeliks",
     "donate-once": "Skenk een keer",
+    "fee-warning": "{{percent}}% van jou donasie gaan na <tip>verwerkingsfooie</tip>",
+    "fee-warning-tip": "PayPal neem {{paypalPercent}}% + ${{paypalFixed}} van elke donasie, so kleiner donasies is minder effektief. Dan verloor ons nog {{exchangePercent}}% om dit na Suid-Afrikaanse rand om te skakel en {{withdrawalPercent}}% om dit na ons bank te onttrek.",
     "monthly": "Maandeliks",
     "once": "Eens",
     "one-time-benefits-p1": "Eenmalige skenkings sluit geen Patreon-voordele in nie, en tel ook nie vir Vault-vordering nie.",

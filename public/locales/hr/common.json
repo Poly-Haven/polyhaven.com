@@ -27,6 +27,8 @@
     "b6-course": "<lnk>Učite od nas</lnk> kroz cjelovite video tečajeve.",
     "donate-monthly": "Mjesečne donacije",
     "donate-once": "Donirajte jednom",
+    "fee-warning": "{{percent}}% vaše donacije ide na <tip>obrtnu naknadu</tip>",
+    "fee-warning-tip": "PayPal uzima {{paypalPercent}}% + ${{paypalFixed}} od svake donacije, pa su manje donacije manje učinkovite. Zatim gubimo još {{exchangePercent}}% prilikom konverzije u južnoafričke rande i {{withdrawalPercent}}% prilikom povlačenja na naš bankovni račun.",
     "monthly": "Mjesečno",
     "once": "Jednom",
     "one-time-benefits-p1": "Jednokratne donacije ne uključuju nikakve Patreon pogodnosti niti se računaju u napredak u Vaultu.",

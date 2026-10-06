@@ -27,6 +27,8 @@
     "b6-course": "<lnk>우리에게 배우세요</lnk> 전체 길이의 비디오 강좌와 함께.",
     "donate-monthly": "매월 기부하기",
     "donate-once": "한 번 기부하기",
+    "fee-warning": "{{percent}}%의 기부금은 <tip>처리 수수료</tip>에 사용됩니다.",
+    "fee-warning-tip": "PayPal은 각 기부금에서 {{paypalPercent}}% + ${{paypalFixed}}를 차감하므로, 작은 기부금은 효과가 덜합니다. 그런 다음 우리는 남아프리카 랜드로 변환하는 데 {{exchangePercent}}%를 잃고, 우리 은행으로 인출하는 데 {{withdrawalPercent}}%를 잃습니다.",
     "monthly": "월간",
     "once": "한 번",
     "one-time-benefits-p1": "일회성 기부에는 Patreon 혜택이 포함되지 않으며, Vault 진행률에 포함되지 않습니다.",
