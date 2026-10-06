@@ -1,6 +1,7 @@
 import { ancestorsOf, nodeFromPath } from 'utils/taxonomy'
 import { assetTypeName } from 'utils/assetTypeName'
 import { assetImg } from 'utils/cdn'
+import { releaseStateOf } from 'utils/dateUtils'
 import asset_types from 'constants/asset_types.json'
 
 /* ---------------------------------------------------------------------------
@@ -80,7 +81,10 @@ export function buildAssetJsonLd(assetID: string, data: any) {
 
   if (data.description) asset.description = data.description
   if (authors.length) asset.creator = authors.map((name) => ({ '@type': 'Person', name }))
-  if (data.date_published) {
+  // Only once it is actually out. Staging assets carry 36000000000000, which is past the largest
+  // date JS can represent - toISOString throws and the whole page 500s - and vault members' year
+  // 3000 placeholder or a scheduled date is not a publication date either.
+  if (data.date_published && releaseStateOf(data.date_published) === 'published') {
     asset.datePublished = new Date(data.date_published * 1000).toISOString().slice(0, 10)
   }
 
