@@ -85,7 +85,7 @@ const ToolsPage = () => {
             name="Gaffer"
             icon={<img src={siteImg('site_images/icons/gaffer.jpg', { height: 32, sharpen: 'true' })} alt="" />}
             description="A light and HDRI manager add-on for Blender."
-            link="https://superhivemarket.com/products/gaffer-light-manager"
+            link="https://superhivemarket.com/products/gaffer-light-manager?ref=3841"
           />
           <Tool
             name="Matalogue"
