@@ -6,6 +6,7 @@
   flex-grow: 1;
   overflow-y: auto;
   overflow-x: clip;
+  min-width: 0; // Chrome 156+ keeps clip beside auto (no longer computed as hidden), which stops this shrinking below its content
   display: flex;
   flex-direction: column;
 }
