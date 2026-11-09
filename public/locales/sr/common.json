@@ -3,8 +3,8 @@
   "All Things": "Све {{things}}",
   "Assets": "Средства",
   "Co-founder": "Суоснивач",
-  "Director": "Директор",
-  "Graphic-Design": "Графички Дизајн",
+  "Director": "Руководилац",
+  "Graphic-Design": "Графички дизајн",
   "HDRIs": "HDRI-ови",
   "Models": "Модели",
   "Textures": "Текстуре",
@@ -15,11 +15,11 @@
   "corporate-info": "О корпоративном спонзорству",
   "corporate-sponsor_one": "Корпоративни Спонзор",
   "corporate-sponsor_other": "Корпоративни Спонзори",
-  "corporate-sponsors": "Корпоративни Спонзори",
-  "display-name": "Прикажи име",
+  "corporate-sponsors": "Корпоративни спонзори",
+  "display-name": "Име за приказ",
   "donation-box": {
     "b1": "Помозите нам да направимо <lnk>бесплатна средства</lnk> за свакога!",
-    "b2": "<lnk>Рани приступ</lnk> на предстојећу имовину.",
+    "b2": "<lnk>Рани приступ</lnk> предстојећим моделима.",
     "b3": "Тренутни приступ свим садржајима у <lnk>Трезори</lnk>.",
     "b4": "Наш прегледач ресурса у Блендеру <lnk>додатак</lnk>.",
     "b5": "Групно преузимање и приступ ван мреже са <lnk>наш облак</lnk>.",
@@ -27,12 +27,12 @@
     "b6-course": "<lnk>Учите од нас</lnk> уз комплетне видео-курсеве.",
     "donate-monthly": "Донирајте месечно",
     "donate-once": "Донирајте једном",
-    "fee-warning": "{{percent}}% vaše donacije ide na <tip>obrada troškova</tip>",
-    "fee-warning-tip": "PayPal uzima {{paypalPercent}}% + ${{paypalFixed}} od svake donacije, tako da su manje donacije manje efikasne. Zatim gubimo još {{exchangePercent}}% prilikom konvertovanja u južnoafričke rande i {{withdrawalPercent}}% prilikom povlačenja na naš bankovni račun.",
+    "fee-warning": "{{percent}}% ваше донације иде на <tip>трошкове обраде</tip>",
+    "fee-warning-tip": "PayPal узима {{paypalPercent}}% + ${{paypalFixed}} од сваке донације, тако да су мање донације мање ефикасне. Затим губимо још {{exchangePercent}}% приликом конвертовања у јужноафричке ранде и {{withdrawalPercent}}% приликом повлачења на наш банковни рачун.",
     "monthly": "Месечно",
     "once": "Једном",
-    "one-time-benefits-p1": "Једнократне донације не укључују никакве погодности са Patreon-а, нити се рачунају у напредак у Vault-у.",
-    "one-time-benefits-p2": "Размислите о месечном донирању уместо тога."
+    "one-time-benefits-p1": "Једнократне донације не укључују никакве погодности са Patreon-а, нити се рачунају у напредак у Трезору.",
+    "one-time-benefits-p2": "Размислите о месечној донацији уместо тога."
   },
   "email-address": "Адреса е-поште",
   "footer": {
@@ -45,13 +45,13 @@
     "reached": "Дошли смо до нашег последњег циља! Ускоро би овде требало да се појави нешто ново :)",
     "to-go": "$ {{dollars}} до краја"
   },
-  "hidden": "Скривен",
+  "hidden": "Скривено",
   "invalid-email": "Погрешна адреса е-поште",
-  "invalid-name-url": "Неважеће име или url адреса",
+  "invalid-name-url": "Неважеће име или URL адреса",
   "loading": "Учитавање...",
   "missing-invalid": "Недостаје или неважеће",
   "more": "Још",
-  "n-patrons-to-go": "{{number}} посетилаца!",
+  "n-patrons-to-go": "Још {{number}} патрона!",
   "nav": {
     "about-contact": "Оpis/Контакт",
     "account": "Налог",
@@ -93,7 +93,7 @@
   },
   "support-polyhaven": "Подржите Poly Haven!",
   "tagline": "Јавна Библиотека 3D Средстава",
-  "unlocked-free": "Откључанo - бесплатно за све",
+  "unlocked-free": "Откључано - бесплатно за све",
   "unlocked-on": "Откључано {{date}}",
   "visible": "Видљиво"
 }
