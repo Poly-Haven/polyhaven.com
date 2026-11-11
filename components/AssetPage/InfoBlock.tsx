@@ -7,8 +7,11 @@ const InfoBlock = ({ value, label, condition, link, tip }) => {
   if (condition) {
     return <>
       {link ? (
+        // No prefetch: these open in a new tab, so prefetched page data is never used - and for
+        // the GPS link that is the whole map's data, fetched on every HDRI page view.
         (<Link
           href={link}
+          prefetch={false}
           target="_blank"
           className={styles.infoBlock}
           data-tip={tip}

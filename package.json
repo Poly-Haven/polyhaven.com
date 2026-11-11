@@ -30,7 +30,6 @@
     "firebase-admin": "^11.9.0",
     "fuse.js": "^6.6.2",
     "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet.markercluster": "^1.5.3",
     "lodash.debounce": "^4.0.8",
     "maplibre-gl": "^5.24.0",

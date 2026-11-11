@@ -1,4 +1,7 @@
 {
   "approximate": "A helyjelölők hozzávetőlegesek.",
-  "description": "Világtérkép azokról a helyekről, ahol HDRI-ket készítettünk."
+  "close": "Bezárás",
+  "description": "Világtérkép azokról a helyekről, ahol HDRI-ket készítettünk.",
+  "zoom-in": "Nagyítás",
+  "zoom-out": "Kicsinyítés"
 }

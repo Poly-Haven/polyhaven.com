@@ -1,4 +1,7 @@
 {
   "approximate": "Vị trí các điểm đánh dấu chỉ là tương đối.",
-  "description": "Bản đồ thế giới các địa điểm chúng tôi đã chụp HDRI."
+  "close": "Đóng",
+  "description": "Bản đồ thế giới các địa điểm chúng tôi đã chụp HDRI.",
+  "zoom-in": "Phóng to",
+  "zoom-out": "Thu nhỏ"
 }

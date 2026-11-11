@@ -1,4 +1,7 @@
 {
   "approximate": "Oznake lokacija su približne.",
-  "description": "Karta svijeta s lokacijama na kojima smo snimili HDRI-je."
+  "close": "Zatvori",
+  "description": "Karta svijeta s lokacijama na kojima smo snimili HDRI-je.",
+  "zoom-in": "Povećaj",
+  "zoom-out": "Smanji"
 }

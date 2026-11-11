@@ -1,4 +1,7 @@
 {
   "approximate": "Liggingsmerkers is by benadering.",
-  "description": "Wêreldkaart van plekke waar ons HDRI's vasgelê het."
+  "close": "Maak toe",
+  "description": "Wêreldkaart van plekke waar ons HDRI's vasgelê het.",
+  "zoom-in": "Zoom in",
+  "zoom-out": "Zoom uit"
 }

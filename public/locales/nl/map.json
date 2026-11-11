@@ -1,4 +1,7 @@
 {
   "approximate": "Locatiemarkeringen zijn bij benadering.",
-  "description": "Wereldkaart van de locaties waar we HDRI's hebben vastgelegd."
+  "close": "Sluiten",
+  "description": "Wereldkaart van de locaties waar we HDRI's hebben vastgelegd.",
+  "zoom-in": "Inzoomen",
+  "zoom-out": "Uitzoomen"
 }

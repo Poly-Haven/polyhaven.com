@@ -1,4 +1,7 @@
 {
   "approximate": "位置标记仅为大致位置。",
-  "description": "我们拍摄 HDRI 的地点的世界地图。"
+  "close": "关闭",
+  "description": "我们拍摄 HDRI 的地点的世界地图。",
+  "zoom-in": "放大",
+  "zoom-out": "缩小"
 }

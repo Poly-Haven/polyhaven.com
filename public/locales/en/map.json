@@ -1,4 +1,7 @@
 {
   "approximate": "Location markers are approximate.",
-  "description": "World map of locations where we've captured HDRIs."
+  "close": "Close",
+  "description": "World map of locations where we've captured HDRIs.",
+  "zoom-in": "Zoom in",
+  "zoom-out": "Zoom out"
 }

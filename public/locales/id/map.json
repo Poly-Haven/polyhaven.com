@@ -1,4 +1,7 @@
 {
   "approximate": "Penanda lokasi bersifat perkiraan.",
-  "description": "Peta dunia lokasi tempat kami mengambil HDRI."
+  "close": "Tutup",
+  "description": "Peta dunia lokasi tempat kami mengambil HDRI.",
+  "zoom-in": "Perbesar",
+  "zoom-out": "Perkecil"
 }

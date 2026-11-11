@@ -5,6 +5,11 @@
 .mapContainer {
   height: calc(100vh - #{$v-header-height});
   width: 100%;
+
+  // Leaflet sets its own Helvetica stack on the whole map; use the site's font instead.
+  &:global(.leaflet-container) {
+    font-family: inherit;
+  }
 }
 
 .cluster {
@@ -13,29 +18,205 @@
   justify-content: center;
   border-radius: 50%;
   background: $c-accent-dark;
-  box-shadow: 0 0 0 5px rgba($c-accent, 0.4);
+  box-shadow: 0 0 0 4px rgba($c-accent, 0.4);
   color: $c-text-bright;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
+}
+
+// A single HDRI: the clusters' accent, with a white edge so it holds up on any part of the map.
+.marker {
+  // drop-shadow's values without its `transition: all`: Leaflet places markers with transform,
+  // which that would animate, so markers would trail the map on every pan and zoom.
+  box-shadow: 2px 2px 9px -2px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.15s ease, background 0.15s ease;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: $c-accent;
+  border: 2px solid $c-text-bright;
+
+  // A ring like the clusters', not a scale: any scale or transform here combines with the
+  // translate Leaflet positions the marker with, and throws it across the map. Hover-capable
+  // devices only, so a tap doesn't leave it stuck on.
+  @media (hover: hover) {
+    &:hover {
+      background: $c-accent-light;
+      box-shadow: 0 0 0 4px rgba($c-accent, 0.4), 2px 2px 9px -2px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// Leaflet's popup, restyled as the site's own UI/Popup panel: page background, 1px accent
+// border at 50%, square corners, the standard drop shadow. The arrow follows the tooltip's:
+// same fill, same border, small.
+.popupShell {
+  :global(.leaflet-popup-content-wrapper) {
+    @include drop-shadow;
+    background: $c-background;
+    border: 1px solid rgba($c-accent, 0.5);
+    border-radius: 0;
+    padding: 0;
+    color: $c-text-light;
+  }
+
+  :global(.leaflet-popup-content) {
+    margin: 0;
+    line-height: normal;
+    // Leaflet sets this inline to 1px more than it measured. Left at 201px it either shows a
+    // sliver beside the 200px thumbnail or, stretched to fit, resamples it (blurry in Firefox).
+    width: 200px !important;
+  }
+
+  :global(.leaflet-popup-tip-container) {
+    width: 24px;
+    height: 9px;
+    margin-left: -12px;
+    // Overlap the wrapper's bottom border so the arrow reads as part of the panel.
+    margin-top: -1px;
+  }
+
+  :global(.leaflet-popup-tip) {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    margin: -7px auto 0;
+    background: $c-background;
+    border: 1px solid rgba($c-accent, 0.5);
+    box-shadow: none;
+  }
+
+  // Sits over the top-right of the thumbnail: a plain ×, with a shadow dense enough to read on
+  // bright skies. The 32px box is the tap target only; it has no fill. Scoped under
+  // .leaflet-container to outrank Leaflet's own rules, including its dark grey :focus colour.
+  :global(.leaflet-container) & a:global(.leaflet-popup-close-button) {
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 22px;
+    color: $c-text-bright;
+    font-weight: bold;
+    // Dense enough to read on the brightest thumbnails (old_quarry_gerlingen's corner is ~96% white).
+    text-shadow: 0 0 2px rgb(0, 0, 0), 0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6);
+    @include transition;
+
+    &:focus {
+      color: $c-text-bright;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $c-accent;
+      outline-offset: -4px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: $c-accent-light;
+      }
+    }
+  }
 }
 
 .popup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4em;
+  display: block;
   text-decoration: none;
+  // Leaflet left-aligns popup text; follow the page's direction instead, so in RTL locales the name
+  // lines up with the byline.
+  text-align: start;
 
   img {
     display: block;
-    height: auto;
   }
 
-  span {
+  // Fixed heights in whole pixels throughout, so every card is the same size and, since the popup
+  // is positioned from its bottom edge, the thumbnail sits on the pixel grid (a fractional height
+  // here would put it between pixels and blur it).
+
+  // One line; a longer name ends in an ellipsis (the full name is its title).
+  .name {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    // 15px: at 16px 142 of ~780 names were cut; at 15px it's 82 (at 14px, still 50).
+    font-size: 15px;
     font-weight: bold;
-    color: $c-text-dark;
+    color: $c-text-bright;
+    @include transition;
+
+    // Names are English. In a right-to-left page they would overflow from their start, showing
+    // "…on Train Tunnel West"; lay them out left-to-right but still aligned to the right edge.
+    :global([dir='rtl']) & {
+      direction: ltr;
+      text-align: right;
+    }
   }
 
-  &:hover span {
-    color: $c-accent-dark;
+  // Photographer's avatar and first name, and how long ago it was captured.
+  .meta {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    margin: 6px 12px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 20px;
+    color: $c-text-light;
+
+    // The avatar is fetched at 2x for high-DPI screens and drawn at 20px.
+    img {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-inline-end: 6px;
+    }
+
+    // The first name gives way (with an ellipsis); the date never does.
+    .firstName {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .separator,
+    .separatorSpaced {
+      flex-shrink: 0;
+    }
+
+    // The space after a comma, on whichever side the line runs.
+    .separatorSpaced {
+      margin-inline-end: 0.3em;
+    }
+
+    .ago {
+      flex-shrink: 0;
+    }
+
+    // Each piece takes its direction from its own text: an English name, or an English fallback
+    // date, inside a right-to-left page would otherwise come out reordered ("years ago 8").
+    .firstName,
+    .ago {
+      unicode-bidi: plaintext;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover .name {
+      color: $c-accent-light;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $c-accent;
+    outline-offset: -2px;
   }
 }

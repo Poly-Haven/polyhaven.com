@@ -1,4 +1,7 @@
 {
   "approximate": "I segnaposto sono approssimativi.",
-  "description": "Mappa del mondo dei luoghi in cui abbiamo catturato HDRI."
+  "close": "Chiudi",
+  "description": "Mappa del mondo dei luoghi in cui abbiamo catturato HDRI.",
+  "zoom-in": "Ingrandisci",
+  "zoom-out": "Riduci"
 }

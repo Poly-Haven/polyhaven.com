@@ -1,4 +1,7 @@
 {
   "approximate": "Znaczniki lokalizacji są przybliżone.",
-  "description": "Mapa świata z miejscami, w których wykonaliśmy HDRI."
+  "close": "Zamknij",
+  "description": "Mapa świata z miejscami, w których wykonaliśmy HDRI.",
+  "zoom-in": "Przybliż",
+  "zoom-out": "Oddal"
 }

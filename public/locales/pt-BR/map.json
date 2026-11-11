@@ -1,4 +1,7 @@
 {
   "approximate": "Os marcadores de localização são aproximados.",
-  "description": "Mapa-múndi dos locais onde capturamos HDRIs."
+  "close": "Fechar",
+  "description": "Mapa-múndi dos locais onde capturamos HDRIs.",
+  "zoom-in": "Aproximar",
+  "zoom-out": "Afastar"
 }

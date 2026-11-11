@@ -1,4 +1,7 @@
 {
   "approximate": "Konum işaretleri yaklaşıktır.",
-  "description": "HDRI çektiğimiz konumların dünya haritası."
+  "close": "Kapat",
+  "description": "HDRI çektiğimiz konumların dünya haritası.",
+  "zoom-in": "Yakınlaştır",
+  "zoom-out": "Uzaklaştır"
 }

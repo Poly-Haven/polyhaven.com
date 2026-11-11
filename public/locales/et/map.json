@@ -1,4 +1,7 @@
 {
   "approximate": "Asukohamärgid on ligikaudsed.",
-  "description": "Maailmakaart kohtadest, kus oleme HDRI-sid jäädvustanud."
+  "close": "Sulge",
+  "description": "Maailmakaart kohtadest, kus oleme HDRI-sid jäädvustanud.",
+  "zoom-in": "Suumi sisse",
+  "zoom-out": "Suumi välja"
 }

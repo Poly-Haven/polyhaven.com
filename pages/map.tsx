@@ -2,7 +2,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import Head from 'components/Head/Head'
 import Page from 'components/Layout/Page/Page'
-import type { MapHdri } from 'components/Map/Map'
+import { MapHdri, toMapHdri } from 'components/Map/mapData'
+import { getImageVersions } from 'utils/imageVersions'
 
 import dynamic from 'next/dynamic'
 const Map = dynamic(() => import('../components/Map/Map'), {
@@ -27,7 +28,7 @@ function handleErrors(response) {
 }
 
 // Markers are approximate anyway, and 4 decimals (~10m) keeps the page's __NEXT_DATA__ small now
-// that each entry also carries a name and image version.
+// that each entry also carries a name, image version, date and photographer.
 const round = (n: number) => Math.round(n * 1e4) / 1e4
 
 export const getStaticProps = async (ctx) => {
@@ -40,14 +41,17 @@ export const getStaticProps = async (ctx) => {
   const hdris: MapHdri[] = []
   for (const [slug, info] of Object.entries<any>(data)) {
     if (info['coords'] && !slug.endsWith('_puresky')) {
-      const [lat, lon] = info['coords']
-      hdris.push([slug, round(lat), round(lon), info['name'], info['img_version'] || null])
+      hdris.push(toMapHdri(slug, info, round))
     }
   }
+  const photographers = Array.from(new Set(hdris.map((h) => h[6]).filter(Boolean)))
 
   return {
     props: {
-      ...(await serverSideTranslations(ctx.locale, ['common', 'map'])),
+      // `time` for the popups' "12 weeks ago".
+      ...(await serverSideTranslations(ctx.locale, ['common', 'map', 'time'])),
+      // Avatar versions for just the photographers on the map, not the whole people/ folder.
+      imageVersions: await getImageVersions(photographers.map((name) => `people/${name}.`)),
       hdris,
     },
     revalidate: 60 * 60 * 4, // 4 hours

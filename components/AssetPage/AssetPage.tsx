@@ -443,6 +443,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
                 value={<MdLocationOn />}
                 label="GPS"
                 condition={Boolean(data.coords)}
+                tip="Show on the HDRI world map"
                 link={data.coords ? `/map?asset=${assetID}` : null}
               />
               <InfoBlock

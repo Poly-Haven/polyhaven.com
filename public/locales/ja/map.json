@@ -1,4 +1,7 @@
 {
   "approximate": "マーカーの位置はおおよそです。",
-  "description": "HDRIを撮影した場所の世界地図。"
+  "close": "閉じる",
+  "description": "HDRIを撮影した場所の世界地図。",
+  "zoom-in": "ズームイン",
+  "zoom-out": "ズームアウト"
 }
