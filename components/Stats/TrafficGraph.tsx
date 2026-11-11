@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import {
-  LineChart,
+  ComposedChart,
   Line,
+  Area,
   ReferenceLine,
   Brush,
   XAxis,
@@ -18,7 +19,7 @@ import Dropdown from 'components/UI/Dropdown/Dropdown'
 import { formatNumber } from 'utils/stringUtils'
 import { MdWarning } from 'react-icons/md'
 
-import { typeColors, typeNames } from './chartColors'
+import { typeColors, typeNames, seriesColors } from './chartColors'
 
 import styles from './Stats.module.scss'
 
@@ -30,12 +31,24 @@ interface AssetDates {
 
 type TypeCounts = { hdris: number | null; textures: number | null; models: number | null }
 
-// api /stats/cfdownloads: per UTC day, Cloudflare's asset downloads by type beside dlTrack's `unique`.
+type SourceCounts = { web: number | null; addon: number | null; selfref: number | null; other: number | null }
+
+// api /stats/cfdownloads: per UTC day, Cloudflare's asset downloads by type and by source, beside
+// dlTrack's `unique`.
 interface CfDownloads {
-  [day: string]: { cf: TypeCounts; dltrack: TypeCounts }
+  [day: string]: { cf: TypeCounts; sources?: SourceCounts; dltrack: TypeCounts }
 }
 
 const downloadTypes = ['hdris', 'textures', 'models']
+
+// Stacked bottom-up, so the website band sits on the axis where the dashed dlTrack line can be read
+// against it. `selfref` (links followed from our own non-site hosts, ~0.2%) is too thin to see as a
+// band of its own, so it is folded into other.
+const downloadSources = [
+  { key: 'web', name: 'Website', color: seriesColors[0] },
+  { key: 'addon', name: 'Blender add-on', color: seriesColors[1] },
+  { key: 'other', name: 'Other (scripts, tools, direct links)', color: seriesColors[2] },
+]
 
 const TrafficGraph = ({
   data,
@@ -131,6 +144,13 @@ const TrafficGraph = ({
         row[t] = d.cf[t]
         row[`dl:${t}`] = d.dltrack[t]
       }
+      const src = d.sources
+      if (src) {
+        row['src:web'] = src.web
+        row['src:addon'] = src.addon
+        row['src:other'] = src.other === null ? null : src.other + (src.selfref || 0)
+      }
+      row['dl:total'] = downloadTypes.reduce((sum, t) => sum + (d.dltrack[t] || 0), 0) || null
       return row
     })
 
@@ -219,8 +239,16 @@ const TrafficGraph = ({
       scale: 'linear',
       formatter: (value) => Math.round(value).toLocaleString(),
     }
+    dataTypes['sources'] = {
+      label: 'Download Sources',
+      tooltip:
+        'Asset downloads tracked on the server side by Cloudflare, stacked by where they came from: the website, our Blender add-on, and everything else (scripts, pipelines, mirrors, direct links). The dashed line is standard downloads from the website, for comparison with the website band.',
+      scale: 'linear',
+      formatter: (value) => Math.round(value).toLocaleString(),
+    }
   }
-  const isDownloads = dataType === 'downloads'
+  const isSources = dataType === 'sources'
+  const isDownloads = dataType === 'downloads' || isSources
 
   return (
     <div className={styles.graphSection}>
@@ -230,7 +258,7 @@ const TrafficGraph = ({
       </div>
       <div className={styles.bigGraph}>
         <ResponsiveContainer>
-          <LineChart data={isDownloads ? downloadsData : graphData}>
+          <ComposedChart data={isDownloads ? downloadsData : graphData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="day" />
             <YAxis
@@ -267,7 +295,34 @@ const TrafficGraph = ({
               }
             />
 
-            {isDownloads &&
+            {isSources &&
+              downloadSources.map((s) => (
+                <Area
+                  key={s.key}
+                  type="monotone"
+                  dataKey={`src:${s.key}`}
+                  name={s.name}
+                  stackId="sources"
+                  stroke={s.color}
+                  fill={s.color}
+                  fillOpacity={0.6}
+                  animationDuration={500}
+                />
+              ))}
+            {isSources && (
+              <Line
+                type="monotone"
+                dataKey="dl:total"
+                name="Website (dlTrack)"
+                stroke="rgba(255, 255, 255, 0.8)"
+                strokeWidth={1.5}
+                strokeDasharray="5 4"
+                animationDuration={500}
+                dot={false}
+              />
+            )}
+
+            {dataType === 'downloads' &&
               downloadTypes.map((t) => [
                 <Line
                   key={t}
@@ -322,7 +377,7 @@ const TrafficGraph = ({
                 label={<Label value={i + 1} position="insideTopLeft" fill="rgba(255, 70, 70, 0.75)" />}
               />
             ))}
-          </LineChart>
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
       {Object.keys(notes).length > 0 ? (
