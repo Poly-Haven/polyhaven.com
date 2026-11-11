@@ -39,6 +39,14 @@
     "join-ranks": "Gabung peringkat, dukung Poly Haven di Patreon",
     "thanks": "Terima kasih kepada <lnk>Pelindung</lnk> kami untuk membuat Poly Haven menjadi mungkin"
   },
+  "gen-ai": {
+    "minor": "Elemen minor",
+    "mostly": "Sebagian besar dihasilkan oleh AI",
+    "none": "Tidak ada",
+    "process": "Hanya proses",
+    "significant": "Signifikan",
+    "title": "AI Generatif"
+  },
   "goal": {
     "complete": "Lengkap!",
     "current": "Sasaran saat ini:",

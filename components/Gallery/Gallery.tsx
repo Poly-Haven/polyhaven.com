@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Masonry from 'react-masonry-css'
 import { isURL } from 'validator'
 import LazyLoad from 'react-lazy-load'
+import { MdHelp } from 'react-icons/md'
 
 import useDivSize from 'hooks/useDivSize'
 import useQuery from 'hooks/useQuery'
@@ -14,6 +15,7 @@ import { assetImg } from 'utils/cdn'
 
 import styles from './Gallery.module.scss'
 import { titleCase } from 'utils/stringUtils'
+import { isAiUseLevel } from 'utils/aiDisclosure'
 
 const URL_VALIDATION_OPTIONS = {
   require_protocol: true,
@@ -22,6 +24,7 @@ const URL_VALIDATION_OPTIONS = {
 
 const Gallery = ({ data, assetPage }) => {
   const { t } = useTranslation('gallery')
+  const { t: t_c } = useTranslation('common')
   const [didInitFromQuery, setDidInitFromQuery] = useState(false)
   const [lightboxData, setLightboxData] = useState(null)
   const widthRef = useRef(null)
@@ -134,6 +137,17 @@ const Gallery = ({ data, assetPage }) => {
               ) : (
                 <span>{lightboxData.author}</span>
               )}
+              {isAiUseLevel(lightboxData.ai_use) && lightboxData.ai_use !== 'none' ? (
+                <span className={styles.aiUse}>
+                  {t_c('gen-ai.title')}: {t_c(`gen-ai.${lightboxData.ai_use}`)}
+                  {lightboxData.ai_note ? (
+                    <>
+                      {' '}
+                      <MdHelp data-tip={lightboxData.ai_note} />
+                    </>
+                  ) : null}
+                </span>
+              ) : null}
             </>
           }
           detailsRight={

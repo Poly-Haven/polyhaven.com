@@ -39,6 +39,14 @@
     "join-ranks": "Sluit aan, ondersteun Poly Haven op Patreon",
     "thanks": "Danksy ons <lnk>Beskermhere</lnk> om Poly Haven moontlik te maak"
   },
+  "gen-ai": {
+    "minor": "Klein elemente",
+    "mostly": "Meestal gegenereer",
+    "none": "Geen",
+    "process": "Slegs proses",
+    "significant": "Beduidend",
+    "title": "Generatiewe KI"
+  },
   "goal": {
     "complete": "Bereik!",
     "current": "Huidige doelwit:",

@@ -39,6 +39,14 @@
     "join-ranks": "Schließ dich an, unterstütze Poly Haven auf Patreon",
     "thanks": "Vielen Dank an unsere <lnk>Unterstützer</lnk>, die Poly Haven möglich gemacht haben"
   },
+  "gen-ai": {
+    "minor": "Kleinere Elemente",
+    "mostly": "Überwiegend generiert",
+    "none": "Keine",
+    "process": "Nur im Prozess",
+    "significant": "Erheblich",
+    "title": "Generative KI"
+  },
   "goal": {
     "complete": "Ziel erreicht!",
     "current": "Aktuelles Ziel:",

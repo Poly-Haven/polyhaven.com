@@ -39,6 +39,14 @@
     "join-ranks": "Придружите се редовима, подржите Poly Haven на Patreon-у",
     "thanks": "Хвала нашим <lnk>Покровитељима</lnk> што чине Poly Haven могућим"
   },
+  "gen-ai": {
+    "minor": "Manji elementi",
+    "mostly": "Uglavnom generisano",
+    "none": "Nije korišćena",
+    "process": "Samo za obradu",
+    "significant": "Značajna",
+    "title": "Generativna veštačka inteligencija"
+  },
   "goal": {
     "complete": "Комплетан!",
     "current": "Тренутни циљ:",

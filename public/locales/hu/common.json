@@ -39,6 +39,14 @@
     "join-ranks": "Csatlakozz, és támogasd a Poly Havent a Patreonon",
     "thanks": "Köszönet a miénknek <lnk>Mecénások</lnk> amiért lehetővé tette a Poly Havent"
   },
+  "gen-ai": {
+    "minor": "Kisebb elemek",
+    "mostly": "Többnyire generált",
+    "none": "Nincs",
+    "process": "Csak a folyamatban",
+    "significant": "Jelentős",
+    "title": "Generatív MI"
+  },
   "goal": {
     "complete": "Teljes!",
     "current": "Jelenlegi cél:",

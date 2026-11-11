@@ -39,6 +39,14 @@
     "join-ranks": "Bize katılın, Poly Haven'ı Patreon'da destekleyin",
     "thanks": "<lnk>Kullanıcılarımıza</lnk> Poly Haven'ı mümkün kıldığı için teşekkürler."
   },
+  "gen-ai": {
+    "minor": "Küçük öğeler",
+    "mostly": "Çoğunlukla yapay zekâ tarafından oluşturulmuş",
+    "none": "Yok",
+    "process": "Yalnızca süreçte",
+    "significant": "Önemli ölçüde",
+    "title": "Üretken Yapay Zekâ"
+  },
   "goal": {
     "complete": "Tamamlandı!",
     "current": "Mevcut hedef:",

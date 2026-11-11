@@ -70,3 +70,15 @@
     margin-top: 2em;
   }
 }
+
+// The generative AI disclosure in the lightbox. The details row puts 1ch between items, and its empty spacer
+// makes that 2ch before "Assets used". This gives the same 2ch after the author. On a phone it wraps onto its
+// own line, where the gap would only indent it.
+.aiUse {
+  margin-left: 1ch;
+}
+@media screen and (max-width: 590px) {
+  .aiUse {
+    margin-left: 0;
+  }
+}

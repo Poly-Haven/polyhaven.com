@@ -74,6 +74,11 @@
   flex-grow: 1;
   margin: 0.5rem;
 }
+.optionDescription {
+  display: block;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
 .assetSelectionWrapper {
   flex-grow: 1;
   @include flex(column);

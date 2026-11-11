@@ -39,6 +39,14 @@
     "join-ranks": "Tham gia hàng ngũ, hỗ trợ Poly Haven trên Patreon",
     "thanks": "Cảm ơn các <lnk>Người ủng hộ</lnk> của chúng tôi đã làm cho Poly Haven trở thành hiện thực"
   },
+  "gen-ai": {
+    "minor": "Các yếu tố nhỏ",
+    "mostly": "Phần lớn được tạo bằng AI",
+    "none": "Không",
+    "process": "Chỉ trong quy trình",
+    "significant": "Đáng kể",
+    "title": "AI tạo sinh"
+  },
   "goal": {
     "complete": "Hoàn thành!",
     "current": "Mục tiêu hiện tại:",

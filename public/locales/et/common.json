@@ -39,6 +39,14 @@
     "join-ranks": "Liituge, toetage Poly Haven'i Patreonil",
     "thanks": "Tänu meie <lnk>patroonidele</lnk>, kes teevad Poly Haven'i võimalikuks."
   },
+  "gen-ai": {
+    "minor": "Väiksemad elemendid",
+    "mostly": "Peamiselt genereeritud",
+    "none": "Puudub",
+    "process": "Ainult töötluses",
+    "significant": "Märkimisväärne",
+    "title": "Generatiivne tehisintellekt"
+  },
   "goal": {
     "complete": "Täielik!",
     "current": "Praegune eesmärk:",

@@ -39,6 +39,14 @@
     "join-ranks": "به صفوف بپیوندید و از Poly Haven در Patreon حمایت کنید",
     "thanks": "با تشکر از <lnk>حامیانمان</lnk> برای امکان پذیر ساختن Poly Haven"
   },
+  "gen-ai": {
+    "minor": "عناصر جزئی",
+    "mostly": "عمدتاً تولیدشده",
+    "none": "هیچ",
+    "process": "فقط در فرایند",
+    "significant": "قابل‌توجه",
+    "title": "هوش مصنوعی مولد"
+  },
   "goal": {
     "complete": "کامل شده!",
     "current": "هدف فعلی:",

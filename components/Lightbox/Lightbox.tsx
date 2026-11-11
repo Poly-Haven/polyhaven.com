@@ -52,7 +52,8 @@ const Lightbox = ({
   const hasDetails = caption || detailsLeft || detailsRight
 
   const handleClose = (e: MouseEvent<HTMLDivElement>) => {
-    if (ignoreLinkClicks && e.target instanceof Element && e.target.closest('a')) {
+    // Tooltip targets too: on a phone, tapping one is how its tooltip is shown, so it must not close the lightbox.
+    if (ignoreLinkClicks && e.target instanceof Element && e.target.closest('a, [data-tip]')) {
       return
     }
 

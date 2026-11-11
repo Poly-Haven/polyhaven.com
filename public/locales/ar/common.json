@@ -39,6 +39,14 @@
     "join-ranks": "انضم إلى الرتب، وادعم Poly Haven على Patreon",
     "thanks": "شكرا ل <lnk>our Patrons</lnk> لجعل Poly Haven ممكنة"
   },
+  "gen-ai": {
+    "minor": "عناصر بسيطة",
+    "mostly": "مولّد في معظمه",
+    "none": "لا شيء",
+    "process": "المعالجة فقط",
+    "significant": "بشكل ملحوظ",
+    "title": "الذكاء الاصطناعي التوليدي"
+  },
   "goal": {
     "complete": "مكتمل!",
     "current": "الهدف الحالي:",

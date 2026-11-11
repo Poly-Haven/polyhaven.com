@@ -39,6 +39,14 @@
     "join-ranks": "Patreon에서 Poly Haven을 후원하고 후원등급을 받아보세요",
     "thanks": "Poly Haven이 있게 해준 <lnk>후원자</lnk>분들께 감사드립니다"
   },
+  "gen-ai": {
+    "minor": "일부 요소에 사용",
+    "mostly": "대부분 생성",
+    "none": "없음",
+    "process": "작업 과정에만 사용",
+    "significant": "상당 부분 사용",
+    "title": "생성형 AI"
+  },
   "goal": {
     "complete": "완료!",
     "current": "현재 목표:",

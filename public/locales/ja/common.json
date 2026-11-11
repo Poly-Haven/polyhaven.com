@@ -39,6 +39,14 @@
     "join-ranks": "参加して、Patreon で Poly Haven をサポートしてください。",
     "thanks": "Poly Havenを可能にしてくれた<lnk>パトロン</lnk>に感謝します"
   },
+  "gen-ai": {
+    "minor": "一部の要素",
+    "mostly": "ほぼ全て生成",
+    "none": "なし",
+    "process": "制作工程のみ",
+    "significant": "大部分",
+    "title": "生成AI"
+  },
   "goal": {
     "complete": "完了！",
     "current": "現在の目標：",

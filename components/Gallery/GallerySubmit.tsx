@@ -21,6 +21,7 @@ import styles from './GallerySubmit.module.scss'
 import btnStyles from 'components/UI/Button/Button.module.scss'
 import { selectStyle } from 'styles/select'
 import { titleCase } from 'utils/stringUtils'
+import { AI_USE_LEVELS, AI_NOTE_MAX_LENGTH } from 'utils/aiDisclosure'
 
 const URL_VALIDATION_OPTIONS = {
   require_protocol: true,
@@ -43,6 +44,8 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
   const [link, setLink] = useStoredState('gallery_link', '')
   const [assetsUsed, setAssetsUsed] = useState([])
   const [software, setSoftware] = useState([])
+  const [aiUse, setAiUse] = useState('none')
+  const [aiNote, setAiNote] = useState('')
   const [turnStile, setTurnStile] = useState(false)
 
   useEffect(() => {
@@ -76,6 +79,8 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     setArtName('')
     setAssetsUsed([])
     setSoftware([])
+    setAiUse('none')
+    setAiNote('')
   }
 
   // VALIDATE FIELDS ------------------------------------------------------------------------------
@@ -85,6 +90,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     Email: isEmail(email.trim()),
     Link: isURL(link.trim(), URL_VALIDATION_OPTIONS),
     'Assets used': assetsUsed.length > 0,
+    'AI details': aiUse === 'none' || aiNote.trim().length > 0,
   }
 
   let invalidFields = []
@@ -110,6 +116,8 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
       author_link: link.trim(),
       assets_used: assetsUsed.map((v) => v.value),
       software: software.map((v) => v.value),
+      ai_use: aiUse,
+      ai_note: aiUse === 'none' ? '' : aiNote.trim(),
       uuid: localStorage.getItem(`uuid`) || 'UNKNOWN',
     }
 
@@ -189,6 +197,23 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
     setSoftware(newValue)
   }
 
+  // Generative AI use
+  const aiUseOptions = AI_USE_LEVELS.map((level) => ({
+    value: level,
+    label: t_c(`gen-ai.${level}`),
+    description: t(`submit.form.ai-use-${level}-d`),
+  }))
+  // The description only in the open menu, the selected value is just the label.
+  const formatAiUseOption = (option, { context }) =>
+    context === 'menu' ? (
+      <>
+        <strong>{option.label}</strong>
+        <em className={styles.optionDescription}>{option.description}</em>
+      </>
+    ) : (
+      option.label
+    )
+
   // Assets Used
   let assetOptions = []
   for (const assetID of assets) {
@@ -237,6 +262,9 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
           <Trans i18nKey="submit.s2p2" t={t} components={{ strong: <strong /> }} />
         </li>
         <li>{t('submit.s2p3')}</li>
+        <li>
+          <Trans i18nKey="submit.s2p4" t={t} components={{ strong: <strong /> }} />
+        </li>
       </ol>
 
       <h2>{t('submit.s3')}</h2>
@@ -258,6 +286,7 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
         <li>
           <Trans i18nKey="submit.s3p5l6" t={t} components={{ strong: <strong /> }} />
         </li>
+        <li>{t('submit.s3p5l7')}</li>
       </ul>
 
       <div className={styles.form}>
@@ -354,6 +383,29 @@ const GallerySubmit = ({ assets, galleryApiUrl }) => {
               ) : null}
             </div>
           </GalleryFormItem>
+          <GalleryFormItem label={t('submit.form.ai-use')}>
+            <Select
+              styles={selectStyle}
+              className={styles.select}
+              onChange={(option) => setAiUse(option.value)}
+              options={aiUseOptions}
+              value={aiUseOptions.find((o) => o.value === aiUse)}
+              formatOptionLabel={formatAiUseOption}
+              isSearchable={false}
+            />
+          </GalleryFormItem>
+          {aiUse !== 'none' ? (
+            <GalleryFormItem label={t('submit.form.ai-note')}>
+              <input
+                type="text"
+                value={aiNote}
+                onChange={(e) => setAiNote(e.target.value)}
+                maxLength={AI_NOTE_MAX_LENGTH}
+                placeholder={t('submit.form.ai-note-d')}
+                title={t('submit.form.ai-note-d')}
+              />
+            </GalleryFormItem>
+          ) : null}
         </form>
         <div className={styles.submit}>
           <div className="spacer" />
