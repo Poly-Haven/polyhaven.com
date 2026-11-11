@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import IconButton from 'components/UI/Button/IconButton'
 import Page from 'components/Layout/Page/Page'
-import Gallery from 'components/Gallery/Gallery'
+import GalleryFeed from 'components/Gallery/GalleryFeed'
 
 import { MdAdd } from 'react-icons/md'
 
@@ -40,7 +40,7 @@ export default function GalleryPage(props) {
           <IconButton icon={<MdAdd />} label={t('gallery:add')} />
         </Link>
       </div>
-      <Gallery data={props.data} />
+      <GalleryFeed first={props.data} next={props.next ?? null} />
     </Page>
   )
 }
@@ -48,11 +48,12 @@ export default function GalleryPage(props) {
 export async function getStaticProps(context) {
   let error = null
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
-  const data = await fetch(`${baseUrl}/gallery`)
+  // The most popular renders, and the cursor GalleryFeed continues from with the rest.
+  const data = await fetch(`${baseUrl}/gallery/top?limit=60`)
     .then((response) => response.json())
     .catch((e) => (error = e))
 
-  if (error) {
+  if (error || !Array.isArray(data?.items)) {
     return {
       props: { ...(await serverSideTranslations(context.locale, ['common', 'gallery'])) },
       revalidate: 60 * 5, // 5 minutes
@@ -65,7 +66,8 @@ export async function getStaticProps(context) {
       // Non-asset image versions for _app's ImageVersionsProvider. Fetched here rather than per
       // pageview: getStaticProps runs at build time and on revalidation only.
       imageVersions: await getImageVersions(['people']),
-      data: data,
+      data: data.items,
+      next: data.next ?? null,
     },
     revalidate: 60 * 60 * 24, // 24 hours (fallback; updates happen on-demand via /api/revalidate)
   }
