@@ -10,7 +10,7 @@ import useQuery from 'hooks/useQuery'
 import Lightbox from 'components/Lightbox/Lightbox'
 
 import { assetImg, cdnUrl } from 'utils/cdn'
-import { layoutMosaic, extendMosaic, targetBandHeight, Mosaic } from 'utils/galleryLayout'
+import { layoutMosaic, extendMosaic, columnsFor, Mosaic } from 'utils/galleryLayout'
 
 import styles from './Gallery.module.scss'
 import { titleCase } from 'utils/stringUtils'
@@ -37,10 +37,9 @@ const thumbUrl = (fileName: string, width: number) =>
   cdnUrl(`gallery/${encodeURIComponent(fileName)}`, { width, quality: 95, format: 'webp' })
 
 // A layout keeps being reused while the container stays within 15% of the width it was computed
-// for, and in the same size class: it is drawn in percentages, so it just scales. Re-laying out on
-// every pixel of a resize would reshuffle the whole gallery.
-const sizeClass = (w: number) => (w < 600 ? 0 : w < 1000 ? 1 : 2)
-const closeEnough = (a: number, b: number) => sizeClass(a) === sizeClass(b) && Math.abs(a - b) / b < 0.15
+// for and the size target's column count is the same: it is drawn in percentages, so it just
+// scales. Re-laying out on every pixel of a resize would reshuffle the whole gallery.
+const closeEnough = (a: number, b: number) => columnsFor(a) === columnsFor(b) && Math.abs(a - b) / b < 0.15
 
 const useMosaic = (data, measuredWidth: number): Mosaic => {
   const cache = useRef<{ ids: string[]; mosaic: Mosaic } | null>(null)
@@ -143,14 +142,13 @@ const Gallery = ({ data, assetPage }) => {
   const W = mosaic.width
   const totalH = mosaic.height || 1
   // Tiles are sized in the layout's own pixels; `sizes` lets the browser pick 480 or 960 for its
-  // actual width and pixel density. A sparse page can grow past the usual band height.
+  // actual width and pixel density.
   const scale = (width || DEFAULT_WIDTH) / W
-  const maxTileHeight = targetBandHeight(W) * 2
 
   return (
     <div className={styles.wrapper} ref={widthRef}>
       <div className={styles.mosaic} style={{ paddingBottom: pct(mosaic.height, W) }}>
-        {mosaic.bands.flatMap((band) =>
+        {mosaic.bands.flatMap((band, bandIndex) =>
           band.rects.map((r) => {
             const d = renders[r.i]
             const name = d.artwork_name || d.name || ''
@@ -168,7 +166,8 @@ const Gallery = ({ data, assetPage }) => {
                   sizes={`${Math.ceil(r.w * scale)}px`}
                   width={d.width || undefined}
                   height={d.height || undefined}
-                  loading={r.y < maxTileHeight ? 'eager' : 'lazy'}
+                  // The first two bands are what's on screen when the page opens.
+                  loading={bandIndex < 2 ? 'eager' : 'lazy'}
                   decoding="async"
                   alt={name}
                   // A feed page cached before a render was deleted still lists it.
