@@ -1,0 +1,79 @@
+@import "constants/colors";
+@import "constants/mixins";
+
+.page {
+  width: calc(100% - 2rem);
+  max-width: 720px;
+  padding: 1rem;
+  margin: 2rem auto 5rem;
+
+  h1 {
+    margin: 0 0 0.5em;
+  }
+
+  p {
+    margin: 0.7em 0;
+    line-height: 1.5;
+  }
+}
+
+.terms {
+  margin: 1.5rem 0 1rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid $c-accent;
+  background: $c-background-light;
+  line-height: 1.5;
+  @include rounded();
+}
+
+.agree {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+
+  input {
+    width: 1.1em;
+    height: 1.1em;
+    cursor: pointer;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.key {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  text-align: center;
+  background: $c-background-dark;
+  @include rounded();
+
+  code {
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: white;
+    user-select: all;
+    overflow-wrap: anywhere;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.test {
+  padding: 0.5rem 0.75rem;
+  border: 1px dashed $c-accent;
+  @include rounded();
+}
+
+.notice {
+  color: $c-accent;
+}

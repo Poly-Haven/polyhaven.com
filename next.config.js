@@ -70,6 +70,11 @@ module.exports = {
           },
         ],
       },
+      {
+        // Unlisted Steam key page for patrons; the meta tag only exists once the client has rendered.
+        source: '/lighthouse-key',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
     ]
   },
 }
