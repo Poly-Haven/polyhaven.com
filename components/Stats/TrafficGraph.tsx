@@ -12,7 +12,10 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+import { filesize } from 'filesize'
+
 import Dropdown from 'components/UI/Dropdown/Dropdown'
+import { formatNumber } from 'utils/stringUtils'
 import { MdWarning } from 'react-icons/md'
 
 import { typeColors, typeNames } from './chartColors'
@@ -138,6 +141,7 @@ const TrafficGraph = ({
       scale: 'linear',
       color: 'rgb(243, 130, 55)',
       formatter: (value) => `${Math.round(value / 1024 / 1024 / 1024)} GB`,
+      axis: (value) => filesize(value, { round: 0 }),
     },
     requests: {
       label: 'Requests',
@@ -159,6 +163,7 @@ const TrafficGraph = ({
       scale: 'linear',
       color: 'rgb(243, 130, 55)',
       formatter: (value) => `${Math.round(value / 1024 / 1024)} MB`,
+      axis: (value) => filesize(value, { round: 0 }),
     },
     assetsPublished: {
       label: 'Assets Published',
@@ -232,6 +237,8 @@ const TrafficGraph = ({
               scale={dataTypes[dataType].scale}
               domain={[dataType === 'assetsPublished' ? 'auto' : dataTypes[dataType].scale === 'log' ? 1 : 0, 'auto']}
               allowDataOverflow
+              // Raw counts here run to 14 digits (bandwidth in bytes) and overflow the axis.
+              tickFormatter={(value) => (dataTypes[dataType].axis || ((v) => formatNumber(v, 1)))(value)}
             />
             <Brush dataKey="day" height={30} stroke="#666666" fill="#2d2d2d" />
 

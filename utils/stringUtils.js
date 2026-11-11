@@ -51,18 +51,20 @@ export function stringHash(str) {
   return hash
 }
 
-export function formatNumber(num) {
+// `decimals` keeps that many places where they matter: 12.4M rather than 12M, but 52K not 52.0K.
+export function formatNumber(num, decimals = 0) {
+  const round = (n) => parseFloat(n.toFixed(decimals)).toString()
   if (num < 1000) {
     return num.toString()
   }
   if (num < 1000000) {
-    return Math.round(num / 1000) + 'K'
+    return round(num / 1000) + 'K'
   }
   if (num < 1000000000) {
-    return Math.round(num / 1000000) + 'M'
+    return round(num / 1000000) + 'M'
   }
   if (num < 1000000000000) {
-    return Math.round(num / 1000000000) + 'B'
+    return round(num / 1000000000) + 'B'
   }
-  return Math.round(num / 1000000000000) + 'T'
+  return round(num / 1000000000000) + 'T'
 }
