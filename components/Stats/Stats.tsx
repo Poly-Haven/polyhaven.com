@@ -166,7 +166,7 @@ const Stats = ({ datasets }) => {
       <ErrorBoundary>
         <div className={styles.row}>
           <div className={styles.half}>
-            <TrafficGraph data={datasets.cfdaily} assetDates={datasets.assetDates} />
+            <TrafficGraph data={datasets.cfdaily} assetDates={datasets.assetDates} downloads={datasets.cfdownloads} />
           </div>
         </div>
       </ErrorBoundary>

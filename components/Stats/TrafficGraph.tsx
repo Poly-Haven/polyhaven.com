@@ -15,6 +15,8 @@ import {
 import Dropdown from 'components/UI/Dropdown/Dropdown'
 import { MdWarning } from 'react-icons/md'
 
+import { typeColors, typeNames } from './chartColors'
+
 import styles from './Stats.module.scss'
 
 const average = (array) => array.reduce((a, b) => a + b) / array.length
@@ -23,7 +25,24 @@ interface AssetDates {
   slug: number
 }
 
-const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates }) => {
+type TypeCounts = { hdris: number | null; textures: number | null; models: number | null }
+
+// api /stats/cfdownloads: per UTC day, Cloudflare's asset downloads by type beside dlTrack's `unique`.
+interface CfDownloads {
+  [day: string]: { cf: TypeCounts; dltrack: TypeCounts }
+}
+
+const downloadTypes = ['hdris', 'textures', 'models']
+
+const TrafficGraph = ({
+  data,
+  assetDates,
+  downloads,
+}: {
+  data: any
+  assetDates: AssetDates
+  downloads?: CfDownloads | null
+}) => {
   const [dataType, setdataType] = useState('bytes')
 
   let graphData = []
@@ -98,6 +117,19 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       notes[d] = n
     }
   }
+
+  // Downloads only exist from late Aug 2026, so they get their own day range rather than sitting at
+  // the end of a mostly empty year. `dl:` keys are dlTrack, drawn dashed in the same type colour.
+  const downloadsData = Object.entries(downloads || {})
+    .sort(([a], [b]) => (a < b ? -1 : 1))
+    .map(([day, d]) => {
+      const row = { day }
+      for (const t of downloadTypes) {
+        row[t] = d.cf[t]
+        row[`dl:${t}`] = d.dltrack[t]
+      }
+      return row
+    })
 
   const dataTypes = {
     bytes: {
@@ -174,6 +206,16 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       formatter: (value) => Math.round(value),
     },
   }
+  if (downloadsData.length) {
+    dataTypes['downloads'] = {
+      label: 'CF Downloads',
+      tooltip:
+        'Asset downloads tracked on the server side by Cloudflare, from all sources: the website, the Blender add-on, scripts and other tools (solid lines). Compared to standard downloads from the website (dashed lines).',
+      scale: 'linear',
+      formatter: (value) => Math.round(value).toLocaleString(),
+    }
+  }
+  const isDownloads = dataType === 'downloads'
 
   return (
     <div className={styles.graphSection}>
@@ -183,7 +225,7 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
       </div>
       <div className={styles.bigGraph}>
         <ResponsiveContainer>
-          <LineChart data={graphData}>
+          <LineChart data={isDownloads ? downloadsData : graphData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255, 0.2)" />
             <XAxis dataKey="day" />
             <YAxis
@@ -208,29 +250,62 @@ const TrafficGraph = ({ data, assetDates }: { data: any; assetDates: AssetDates 
                 textAlign: 'center',
                 marginTop: '-0.5em',
               }}
-              formatter={(value, name) => [
-                dataTypes[dataType].formatter(value),
-                String(name).startsWith('s:') ? 'Smoothed' : dataTypes[dataType].label,
-              ]}
+              formatter={(value, name) =>
+                isDownloads
+                  ? [dataTypes[dataType].formatter(value), name]
+                  : [
+                      dataTypes[dataType].formatter(value),
+                      String(name).startsWith('s:') ? 'Smoothed' : dataTypes[dataType].label,
+                    ]
+              }
             />
 
-            <Line
-              type="monotone"
-              dataKey={dataType}
-              stroke={dataTypes[dataType].color}
-              strokeWidth={1.5}
-              animationDuration={500}
-              dot={false}
-              opacity={0.5}
-            />
-            <Line
-              type="monotone"
-              dataKey={`s:${dataType}`}
-              stroke={dataTypes[dataType].color}
-              strokeWidth={3}
-              animationDuration={500}
-              dot={false}
-            />
+            {isDownloads &&
+              downloadTypes.map((t) => [
+                <Line
+                  key={t}
+                  type="monotone"
+                  dataKey={t}
+                  name={`${typeNames[t]}s (Cloudflare)`}
+                  stroke={typeColors[t]}
+                  strokeWidth={2}
+                  animationDuration={500}
+                  dot={false}
+                />,
+                <Line
+                  key={`dl:${t}`}
+                  type="monotone"
+                  dataKey={`dl:${t}`}
+                  name={`${typeNames[t]}s (website)`}
+                  stroke={typeColors[t]}
+                  strokeWidth={1.5}
+                  strokeDasharray="5 4"
+                  animationDuration={500}
+                  dot={false}
+                />,
+              ])}
+
+            {!isDownloads && (
+              <Line
+                type="monotone"
+                dataKey={dataType}
+                stroke={dataTypes[dataType].color}
+                strokeWidth={1.5}
+                animationDuration={500}
+                dot={false}
+                opacity={0.5}
+              />
+            )}
+            {!isDownloads && (
+              <Line
+                type="monotone"
+                dataKey={`s:${dataType}`}
+                stroke={dataTypes[dataType].color}
+                strokeWidth={3}
+                animationDuration={500}
+                dot={false}
+              />
+            )}
 
             {Object.keys(notes).map((d, i) => (
               <ReferenceLine
