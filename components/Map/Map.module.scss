@@ -2,9 +2,26 @@
 @import "constants/mixins";
 @import "constants/variables";
 
-.mapContainer {
+// The sidebar (components/Map/MapSidebar) beside the map; on phones it overlays it instead.
+.layout {
+  position: relative;
+  display: flex;
   height: calc(100vh - #{$v-header-height});
   width: 100%;
+}
+
+// Phones: the sidebar overlays the map at its own width, so move the map's buttons (the sidebar
+// toggle among them) out from under it.
+.sidebarOpen :global(.leaflet-left) {
+  @media screen and (max-width: 810px) {
+    left: $v-sidebar-width;
+  }
+}
+
+.mapContainer {
+  flex-grow: 1;
+  height: 100%;
+  min-width: 0;
 
   // Leaflet sets its own Helvetica stack on the whole map; use the site's font instead.
   &:global(.leaflet-container) {
@@ -22,6 +39,51 @@
   color: $c-text-bright;
   font-weight: bold;
   font-size: 0.8em;
+}
+
+// Shown in the sidebar's place if its code failed to load.
+.filtersFailed {
+  flex-shrink: 0;
+  width: $v-sidebar-width;
+  box-sizing: border-box;
+  padding: 0.6rem 0.9rem;
+  background: $c-background-dark;
+  color: rgba($c-text-light, 0.8);
+
+  p {
+    margin: 0 0 0.5rem;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    border: none;
+    background: none;
+    color: $c-accent-light;
+    cursor: pointer;
+  }
+}
+
+// The sidebar toggle, styled by Leaflet's .leaflet-bar like the zoom buttons below it.
+.toggle a {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+// Filters are active while the sidebar is closed.
+.toggleDot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $c-accent;
 }
 
 // A single HDRI: the clusters' accent, with a white edge so it holds up on any part of the map.

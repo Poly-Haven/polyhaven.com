@@ -27,7 +27,8 @@ const ANY_AUTHOR = '__any'
 
 const prettify = (value: string) => value.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
 
-const AttributeFilters = ({ assetType, assets, active, author }) => {
+// `exclude`: attribute keys not to offer (the HDRI map leaves some out). The library shows them all.
+const AttributeFilters = ({ assetType, assets, active, author, exclude = [] }) => {
   const router = useRouter()
   const { t } = useTranslation('library')
 
@@ -131,7 +132,7 @@ const AttributeFilters = ({ assetType, assets, active, author }) => {
     </div>
   ) : null
 
-  const entries = Object.entries(schema || {}) as [string, any][]
+  const entries = (Object.entries(schema || {}) as [string, any][]).filter(([key]) => !exclude.includes(key))
 
   const enumSections = entries
     .filter(([, spec]) => !isBoolean(spec))

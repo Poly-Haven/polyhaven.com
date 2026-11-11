@@ -2,6 +2,7 @@
   "approximate": "Location markers are approximate.",
   "close": "Close",
   "description": "World map of locations where we've captured HDRIs.",
+  "filter-hdris": "Search and filter HDRIs",
   "zoom-in": "Zoom in",
   "zoom-out": "Zoom out"
 }

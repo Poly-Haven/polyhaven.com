@@ -4,6 +4,10 @@
 // [slug, lat, lon, name, img_version, date_taken (unix seconds), photographer]
 export type MapHdri = [string, number, number, string, string | null, number | null, string | null]
 
+// Library attribute filters the map leaves out: not much use for picking a place, and the sidebar's
+// vertical space is precious. Ignored in the URL too, so nothing filters the map invisibly.
+export const MAP_HIDDEN_ATTRIBUTES = ['contrast']
+
 // The person to credit on the map: whoever captured it. HDRIs credit either one author with "All"
 // or a photographer plus someone else for "Processing" / "Backplates" (role case varies).
 export const photographerOf = (authors: Record<string, string> | undefined): string | null => {

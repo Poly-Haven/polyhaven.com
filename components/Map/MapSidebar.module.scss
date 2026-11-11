@@ -1,0 +1,138 @@
+@import "constants/colors";
+@import "constants/mixins";
+@import "constants/variables";
+
+// Looks like the library's #sidebar (components/Library/Sidebar/Sidebar.module.scss), whose
+// category and filter styles the shared parts bring with them - including its width.
+$panel-width: $v-sidebar-width;
+
+.panel {
+  @include flex(column);
+  flex-shrink: 0;
+  width: 0;
+  overflow: hidden;
+  background: $c-background-dark;
+  text-transform: capitalize;
+  transition: width 0.2s ease;
+
+  &.open {
+    width: $panel-width;
+  }
+
+  // Phones: over the map rather than squeezing it (Map.module.scss moves the map's buttons out
+  // from under it, so the toggle can close it again).
+  @media screen and (max-width: 810px) {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 1000;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.6rem 0.4rem;
+  width: $panel-width;
+  box-sizing: border-box;
+}
+
+// Same look as the library grid's search box.
+.search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  // Without these the input's default width holds the box wider than the panel.
+  min-width: 0;
+  height: calc(2.5rem - 2px);
+  padding: 0 0.3rem;
+  border: 1px solid rgba($c-text-light, 0.2);
+  background-color: $c-background;
+  text-transform: none;
+
+  input {
+    flex-grow: 1;
+    width: 0;
+    min-width: 0;
+    background-color: $c-background;
+    margin: 0;
+    padding: 0.2rem;
+    border: 0;
+    color: $c-text-light;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.searchIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.clearSearch,
+.retry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: $c-text-light;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    color: $c-accent-light;
+  }
+}
+
+.clearSearch {
+  font-size: 1.3rem;
+}
+
+.failed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  text-transform: none;
+  color: rgba($c-text-light, 0.8);
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+
+    svg {
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.retry {
+  gap: 0.3rem;
+  font-size: 1em;
+  color: $c-accent-light;
+}
+
+.inner {
+  flex-grow: 1;
+  width: $panel-width;
+  padding-bottom: 2em;
+  overflow: auto;
+  overflow-x: hidden;
+  @include dark_scrollbar;
+
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid $c-background-lightish;
+    margin: 0;
+  }
+}

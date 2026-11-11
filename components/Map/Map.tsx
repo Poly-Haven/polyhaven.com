@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState, MutableRefObject, ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, MutableRefObject, ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Router, { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -11,12 +12,44 @@ import '@maplibre/maplibre-gl-leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'maplibre-gl/dist/maplibre-gl.css'
+import { MdFirstPage, MdMenu, MdRefresh } from 'react-icons/md'
+import dynamic from 'next/dynamic'
 
 import styles from './Map.module.scss'
 import { assetImg } from 'utils/cdn'
 import { timeago } from 'utils/dateUtils'
 import Avatar from 'components/UI/Avatar/Avatar'
 import { MapHdri, toMapHdri } from './mapData'
+import type { FilterResult } from './MapFilters'
+import { MAP_HIDDEN_ATTRIBUTES } from './mapData'
+import attributeData from 'constants/attributes.json'
+
+// Search, filters and the sidebar: a separate chunk, fetched only once they're used (see MapFilters).
+const MapFilters = dynamic(() => import('./MapFilters'), {
+  ssr: false,
+  // The chunk failed to load (e.g. a tab left open across a deploy): offer a reload rather than a
+  // toggle that silently opens nothing. English only, on purpose: very rare, not worth translating.
+  loading: ({ error }) =>
+    error ? (
+      <div className={styles.filtersFailed}>
+        <p>Couldn't load the filters.</p>
+        <button type="button" onClick={() => window.location.reload()}>
+          <MdRefresh /> Try again
+        </button>
+      </div>
+    ) : null,
+})
+
+// Query params that filter the map, known without loading the filtering code: the same as the
+// library's (?s=, ?a=, attribute keys) plus ?c= for the category.
+const FILTER_PARAMS = [
+  's',
+  'a',
+  'c',
+  ...Object.keys((attributeData as any).types.hdris).filter((key) => !MAP_HIDDEN_ATTRIBUTES.includes(key)),
+]
+const hasFilterParams = (query: Record<string, any>) =>
+  FILTER_PARAMS.some((key) => typeof query[key] === 'string' && query[key].trim() !== '')
 
 // OpenFreeMap: free vector tiles of OSM data, no key or usage limits. Vector rather than raster
 // so the labels can be drawn in the visitor's language - raster OSM tiles bake in each place's
@@ -164,8 +197,10 @@ const sharesSpot = (hdri: MapHdri, all: MapHdri[]) => {
 // true during a zoom animation, which collapses any fan when it ends.
 type Busy = { _inZoomAnimation?: number; _animatingZoom?: boolean }
 
-// Runs `fn` once the map has stopped zooming and markercluster has finished re-clustering. Checked
-// a tick later, so markercluster's own zoomend handler has had its turn to start re-clustering.
+// Runs `fn` once the map has stopped zooming and markercluster has finished re-clustering. First
+// checked after the next animation frame: an animated setView/fitBounds only starts (and only sets
+// _animatingZoom) on the frame after it's called, so checking sooner mistook a queued zoom for an
+// idle map. Then a tick later, so markercluster's own zoomend handler has had its turn.
 const whenSettled = (map: L.Map, group: L.MarkerClusterGroup, fn: () => void) => {
   const check = () => {
     if ((map as L.Map & Busy)._animatingZoom) return void map.once('zoomend', () => setTimeout(check, 0))
@@ -173,7 +208,7 @@ const whenSettled = (map: L.Map, group: L.MarkerClusterGroup, fn: () => void) =>
       return void group.once('animationend', () => setTimeout(check, 0))
     fn()
   }
-  setTimeout(check, 0)
+  L.Util.requestAnimFrame(() => setTimeout(check, 0))
 }
 
 // Fans out `cluster` and then runs `then` - unless markercluster declined (it does while
@@ -280,26 +315,48 @@ const PopupCard = ({ hdri: [slug, , , name, version, dateTaken, photographer] }:
 
 const escapeHtml = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
+// Opens a marker's popup wherever the view is: fanning out its group if it shares a spot (going
+// to street level first, as zoomOrSpiderfy does), otherwise zooming until it's on its own. Used for
+// deep links, Back/Forward to a URL with ?asset=, and keeping a popup open through filter changes.
+const SHARED_SPOT_ZOOM = 15
+const focusMarker = (map: L.Map, group: L.MarkerClusterGroup, marker: L.Marker, shared: boolean) =>
+  whenSettled(map, group, () => {
+    if (!group.hasLayer(marker)) return setAssetParam(null)
+    // A shared spot is fanned out at street level. Go there unless already there: zoomToShowLayer
+    // would zoom all the way to max zoom to separate markers that never separate.
+    if (shared && (map.getZoom() < SHARED_SPOT_ZOOM || !map.getBounds().contains(marker.getLatLng()))) {
+      map.setView(marker.getLatLng(), Math.max(map.getZoom(), SHARED_SPOT_ZOOM))
+      return whenSettled(map, group, () => revealAndOpen(group, marker))
+    }
+    revealAndOpen(group, marker)
+  })
+
+const revealAndOpen = (group: L.MarkerClusterGroup, marker: L.Marker) => {
+  // Filtered out by the sidebar while this waited (a removed marker has no cluster parent, and
+  // zoomToShowLayer would throw on it): nothing to show, so drop it from the URL.
+  if (!group.hasLayer(marker)) return setAssetParam(null)
+  const parent = group.getVisibleParent(marker)
+  if (parent === marker) {
+    if (!marker.isPopupOpen()) marker.openPopup()
+  } else if (parent && isSingleSpot((parent as L.MarkerCluster).getBounds())) {
+    // Only ever a group on one spot: fanning out a wider cluster scattered whole regions.
+    spiderfyThen(group, parent as L.MarkerCluster, () => marker.openPopup())
+  } else {
+    group.zoomToShowLayer(marker, () => marker.openPopup())
+  }
+}
+
 // `/map?asset=<slug>` (linked from each asset page) opens zoomed in on that HDRI with its popup open.
 // One that shares its spot opens at SHARED_SPOT_ZOOM with its group fanned out (see zoomOrSpiderfy).
-const SHARED_SPOT_ZOOM = 15
 const FocusAsset = ({ slug, shared, group, markers }) => {
   const map = useMap()
   const done = useRef(false)
   useEffect(() => {
     const marker: L.Marker = markers.current[slug]
-    if (done.current || !group || !marker) return
+    // Not in the group: hidden by the sidebar's filters.
+    if (done.current || !group || !marker || !group.hasLayer(marker)) return
     done.current = true
-    // Settled first: the view may have just jumped (a looked-up slug), and markercluster ignores
-    // spiderfy() while it re-clusters after that.
-    whenSettled(map, group, () => {
-      const parent = group.getVisibleParent(marker)
-      if (shared && parent && parent !== marker) {
-        spiderfyThen(group, parent as L.MarkerCluster, () => marker.openPopup())
-      } else {
-        group.zoomToShowLayer(marker, () => marker.openPopup())
-      }
-    })
+    focusMarker(map, group, marker, shared)
   }, [map, slug, shared, group, markers])
   return null
 }
@@ -449,9 +506,161 @@ const PopupSync = ({
   return null
 }
 
+// The hamburger above the zoom buttons that opens the sidebar. A Leaflet control (so it sits in
+// the same corner stack as the zoom buttons, added first so it's on top) with React rendered into it.
+const SidebarToggle = ({ open, active, label, onToggle }) => {
+  const map = useMap()
+  const [container, setContainer] = useState<HTMLElement | null>(null)
+  useEffect(() => {
+    const Control = L.Control.extend({
+      onAdd: () => {
+        const div = L.DomUtil.create('div', `leaflet-bar ${styles.toggle}`)
+        L.DomEvent.disableClickPropagation(div)
+        return div
+      },
+    })
+    const control = new Control({ position: 'topleft' }).addTo(map)
+    setContainer(control.getContainer())
+    return () => {
+      control.remove()
+    }
+  }, [map])
+  if (!container) return null
+  return createPortal(
+    <a
+      href="#"
+      role="button"
+      title={label}
+      aria-label={label}
+      aria-expanded={open}
+      onClick={(e) => {
+        e.preventDefault()
+        // React handles this at the control (the portal's container), before the click reaches the
+        // map, and re-renders at once - swapping the icon removes the clicked element. Leaflet then
+        // can't tell the click came from a control, takes it as a click on the map, and closes the
+        // open popup. So the click stops here.
+        e.stopPropagation()
+        // detail is 0 for a click made with the keyboard (Enter on the focused button).
+        onToggle(e.detail === 0)
+      }}
+      // role="button" promises Space as well as Enter.
+      onKeyDown={(e) => {
+        if (e.key !== ' ') return
+        e.preventDefault()
+        e.stopPropagation()
+        onToggle(true)
+      }}
+    >
+      {open ? <MdFirstPage /> : <MdMenu />}
+      {/* Filters are narrowing the map while the panel is closed. */}
+      {active && !open ? <span className={styles.toggleDot} /> : null}
+    </a>,
+    container
+  )
+}
+
+// Shows only the markers the sidebar's search and filters leave (all of them when `visible` is
+// null). Done on the cluster group directly, in batches - removeLayers/addLayers re-cluster once,
+// where unmounting hundreds of <Marker>s would re-cluster per marker - and the markers stay mounted.
+// Fits the view to what's left whenever the filtering changes.
+//
+// Applied only once the map has settled, and only the latest change: markers added while a zoom
+// animation is still running (e.g. clearing two filters in quick succession, the second landing
+// mid-fit) were put in the group but never drawn - Bergen, Shudu Lake, Orbita and others simply
+// went missing until a reload.
+const sameMembers = (a: Set<string> | null, b: Set<string> | null) =>
+  a === b || (a !== null && b !== null && a.size === b.size && Array.from(a).every((slug) => b.has(slug)))
+
+const MarkerVisibility = ({ visible, pending, markers, markerCount, group, allBounds, focusSlug, sharedSlugs }) => {
+  const map = useMap()
+  const previous = useRef<Set<string> | null | undefined>(undefined)
+  useEffect(() => {
+    // Nothing to apply until the filters have an answer - and the first answer must not be spent on
+    // the "everything" shown while loading, or a deep link's popup gets fitted away when it lands.
+    if (!group || pending) return
+    let cancelled = false
+    whenSettled(map, group, () => {
+      if (cancelled) return
+      const toRemove: L.Marker[] = []
+      const toAdd: L.Marker[] = []
+      // The open popup, if the new set keeps its marker: removing the rest of a fanned group
+      // collapses the fan and closes it, so it's reopened below - and the view stays on it.
+      let keep: [string, L.Marker] | null = null
+      for (const [slug, marker] of Object.entries(markers.current) as [string, L.Marker][]) {
+        if (marker.isPopupOpen() && (!visible || visible.has(slug))) keep = [slug, marker]
+        const want = !visible || visible.has(slug)
+        const has = group.hasLayer(marker)
+        if (want && !has) toAdd.push(marker)
+        else if (!want && has) toRemove.push(marker)
+      }
+      if (toRemove.length) {
+        if (toRemove.some((m) => m.isPopupOpen())) map.closePopup()
+        group.removeLayers(toRemove)
+      }
+      if (toAdd.length) group.addLayers(toAdd)
+      if (keep && !keep[1].isPopupOpen()) focusMarker(map, group, keep[1], sharedSlugs.has(keep[0]))
+
+      // Fit only when what's shown actually changed. Opening a popup re-renders everything (it
+      // writes ?asset=), and re-fitting then zoomed away from the marker just clicked.
+      const first = previous.current === undefined
+      const changed = !first && !sameMembers(previous.current, visible)
+      previous.current = visible
+      if (keep) return
+      // A deep link keeps its own view - unless the filters hide the HDRI it points at, which would
+      // leave an empty, zoomed-in map.
+      const deepLinked = focusSlug && (!visible || visible.has(focusSlug))
+      if (first ? deepLinked || !visible : !changed) return
+      if (visible && !visible.size) return
+      const bounds = visible
+        ? L.latLngBounds(
+            Array.from(visible as Set<string>)
+              .map((slug) => markers.current[slug]?.getLatLng())
+              .filter(Boolean)
+          )
+        : allBounds
+      if (bounds?.isValid()) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 })
+    })
+    return () => {
+      cancelled = true
+    }
+    // markerCount: a marker added later (a looked-up ?asset=) has to be filtered too.
+  }, [visible, pending, markerCount, group, map, markers, allBounds, focusSlug, sharedSlugs])
+  return null
+}
+
+// The zoom floor for a map of `width` x `height` px: 2, or lower if that's what it takes to fit
+// every HDRI (a phone needs about 0.5). Worked out directly rather than with map.getBoundsZoom,
+// which never answers below the map's current minZoom - so the floor could rise but never fall.
+const zoomFloor = (bounds: L.LatLngBounds, width: number, height: number) => {
+  const crs = L.CRS.EPSG3857
+  const nw = crs.latLngToPoint(bounds.getNorthWest(), 0)
+  const se = crs.latLngToPoint(bounds.getSouthEast(), 0)
+  // max(1, ...): a window smaller than the padding would take the log of a negative (NaN).
+  const fit = Math.log2(Math.min(Math.max(1, width - 80) / (se.x - nw.x), Math.max(1, height - 80) / (se.y - nw.y)))
+  // A whole number, though zooms snap to 0.5: with a fractional floor (0.5, 1.5) markercluster drew
+  // some filtered markers nowhere - a filter showing 1 HDRI could draw 0 - and lost a few for good
+  // once the filter was cleared.
+  return Math.min(2, Math.max(0, Math.floor(fit)))
+}
+
+const windowZoomFloor = (bounds: L.LatLngBounds) => zoomFloor(bounds, window.innerWidth, window.innerHeight - 53) // 53: the site header
+
+// Leaflet only notices window resizes; the sidebar opening or closing resizes the map's container
+// without one.
+const ResizeWatcher = () => {
+  const map = useMap()
+  useEffect(() => {
+    const observer = new ResizeObserver(() => map.invalidateSize({ pan: false }))
+    observer.observe(map.getContainer())
+    return () => observer.disconnect()
+  }, [map])
+  return null
+}
+
 const Map = ({ hdris }: { hdris: MapHdri[] }) => {
   const { t } = useTranslation('map')
-  const { locale } = useRouter()
+  const router = useRouter()
+  const { locale } = router
   const markers = useRef<Record<string, L.Marker>>({})
   const slugs = useRef(new WeakMap<L.Marker, string>())
   const positions = useRef<Record<string, L.LatLngTuple>>({})
@@ -462,18 +671,41 @@ const Map = ({ hdris }: { hdris: MapHdri[] }) => {
   // widths cut off North America's and Japan's markers while showing empty polar sea.
   const [allBounds] = useState(() => (hdris.length ? L.latLngBounds(hdris.map((h) => [h[1], h[2]])) : null))
 
-  // The map is created with a low minimum so a phone-width screen can fit every HDRI (that needs
-  // about zoom 0.5); then the floor goes back to 2 wherever the screen is wide enough for that.
-  // Recomputed on resize, e.g. a phone rotated from landscape to portrait.
+  // The floor is zoom 2, lowered only as far as a narrow screen needs to fit every HDRI (a phone
+  // needs about 0.5). Recomputed when the window resizes, e.g. a phone rotated from landscape to
+  // portrait - from the window's size rather than the map's, so the sidebar opening and closing
+  // (which only resizes the map, and over an animation) never triggers the rebuild below.
+  //
+  // markercluster builds its per-zoom levels from the map's minZoom when it's added, and files every
+  // marker added later against the map's minZoom *at that time*. So the floor must be right before
+  // the cluster group exists (see initialMinZoom), and whenever it does change, the group has to be
+  // rebuilt - otherwise markers re-added by the sidebar's filters land on levels that were never
+  // built, and the lone, unclustered ones (Bergen, Amphitheatre Zanzibar Fort, ...) stop being drawn.
   useEffect(() => {
-    if (!map || !allBounds) return
-    const update = () => map.setMinZoom(Math.min(2, map.getBoundsZoom(allBounds, false, L.point(40, 40))))
-    update()
-    map.on('resize', update)
-    return () => {
-      map.off('resize', update)
+    if (!map || !group || !allBounds) return
+    const update = () => {
+      const floor = windowZoomFloor(allBounds)
+      if (floor === map.getMinZoom()) return
+      map.setMinZoom(floor)
+      const layers = group.getLayers() as L.Marker[]
+      const open = layers.find((m) => m.isPopupOpen())
+      group.clearLayers()
+      group.addLayers(layers)
+      // clearLayers collapses a fanned group too, so reopen through it (as after a zoom).
+      if (open)
+        whenSettled(map, group, () => {
+          const parent = group.getVisibleParent(open)
+          if (parent === open) open.openPopup()
+          else if (parent && isSingleSpot((parent as L.MarkerCluster).getBounds()))
+            spiderfyThen(group, parent as L.MarkerCluster, () => open.openPopup())
+        })
     }
-  }, [map, allBounds])
+    update()
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('resize', update)
+    }
+  }, [map, group, allBounds])
 
   // This component never renders on the server (see pages/map.tsx), so window is safe here, and
   // reading it directly avoids waiting for the router's query to become ready.
@@ -531,6 +763,63 @@ const Map = ({ hdris }: { hdris: MapHdri[] }) => {
   }, [map, focus, linkedSlug, hdris])
   const allHdris = useMemo(() => (extra ? [...hdris, extra] : hdris), [hdris, extra])
 
+  // --- sidebar: search and filters ---------------------------------------------------------------
+  // Whether the URL filters the map is known without the filtering code; MapFilters (loaded on first
+  // use) works out which HDRIs that leaves. Read from window until the router's query is ready.
+  const query = router.isReady ? router.query : Object.fromEntries(new URLSearchParams(window.location.search))
+  const filtering = hasFilterParams(query)
+  // Opens by itself when a link arrives with filters, so it's clear why markers are missing.
+  const [sidebarOpen, setSidebarOpen] = useState(filtering)
+  // Opened with the keyboard: move focus into the panel, where Tab would otherwise take ages to reach.
+  const [focusSearch, setFocusSearch] = useState(false)
+  // Escape in the panel: close it and put focus back on its toggle.
+  const closeFromPanel = useCallback(() => {
+    setSidebarOpen(false)
+    document.querySelector<HTMLElement>(`.${styles.toggle} a`)?.focus()
+  }, [])
+  // Once loaded, MapFilters stays mounted (it holds the sidebar), even with the sidebar closed.
+  const [filtersLoaded, setFiltersLoaded] = useState(filtering)
+  useEffect(() => {
+    if (sidebarOpen || filtering) setFiltersLoaded(true)
+  }, [sidebarOpen, filtering])
+  const [filterResult, setFilterResult] = useState<FilterResult>({ visible: null, pending: filtering })
+  const onFilterResult = useCallback((result: FilterResult) => setFilterResult(result), [])
+  // Pending while the URL filters but MapFilters hasn't answered yet, e.g. its chunk is loading.
+  const filterPending = filtering && (!filtersLoaded || filterResult.pending)
+  const slugList = useMemo(() => allHdris.map((h) => h[0]), [allHdris])
+
+  // HDRIs within SAME_SPOT_METRES of another, whose popups open by fanning their group out.
+  const sharedSlugs = useMemo(
+    () => new Set(allHdris.filter((h) => sharesSpot(h, allHdris)).map((h) => h[0])),
+    [allHdris]
+  )
+
+  // Back/Forward: the popup follows ?asset= - opening the one it names, or closing the open one when
+  // it names none. Only for history navigation: the page's own writes (opening a popup) arrive a
+  // few ms late, and acting on them reopened a popup the visitor had already moved on from.
+  // The first value is the deep link, which FocusAsset handles.
+  const assetParam = typeof query.asset === 'string' ? query.asset : null
+  const lastAssetParam = useRef(assetParam)
+  const historyNavAt = useRef(0)
+  useEffect(() => {
+    const onPopState = () => (historyNavAt.current = Date.now())
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+  useEffect(() => {
+    const previous = lastAssetParam.current
+    lastAssetParam.current = assetParam
+    if (!map || !group || assetParam === previous || Date.now() - historyNavAt.current > 2000) return
+    if (!assetParam) return void map.closePopup()
+    const marker = markers.current[assetParam]
+    if (!marker || marker.isPopupOpen()) return
+    focusMarker(map, group, marker, sharedSlugs.has(assetParam))
+  }, [assetParam, map, group, sharedSlugs])
+
+  // The zoom floor the map starts with: what Leaflet's getBoundsZoom would give for this screen,
+  // worked out before the map exists so markercluster is built with it (see the minZoom effect).
+  const [initialMinZoom] = useState(() => (allBounds ? windowZoomFloor(allBounds) : 2))
+
   // react-leaflet compares `position` by identity and answers a new array with setLatLng, which
   // markercluster handles by removing and re-adding the marker - closing and reopening its popup.
   // A rebuilt list (new props on a locale switch) would do that to all ~800 at once, so each
@@ -580,51 +869,82 @@ const Map = ({ hdris }: { hdris: MapHdri[] }) => {
   )
 
   return (
-    <MapContainer
-      ref={setMap}
-      {...(focus || !allBounds
-        ? { center: focus ? focus.center : [20, 5], zoom: focus ? (focus.shared ? SHARED_SPOT_ZOOM : 12) : 3 }
-        : { bounds: allBounds, boundsOptions: { padding: [20, 20] } })}
-      // Half steps, so fitting every HDRI on a wide screen isn't rounded down to a much smaller map.
-      zoomSnap={0.5}
-      minZoom={0}
-      maxZoom={18}
-      zoomControl={false}
-      scrollWheelZoom={true}
-      className={styles.mapContainer}
-    >
-      <PopupSync slugs={slugs} group={group} closeLabel={t('close')} />
-      <ZoomControl position="topleft" zoomInTitle={t('zoom-in')} zoomOutTitle={t('zoom-out')} />
-      {/* Leaflet writes attribution as HTML, so the translated text is escaped. */}
-      <VectorBaseMap locale={locale} attribution={`${escapeHtml(t('approximate'))} ${ATTRIBUTION}`} />
-      <MarkerClusterGroup
-        ref={setGroup}
-        iconCreateFunction={clusterIcon}
-        // Pixels within which markers merge. The default of 80 swallowed whole regions; raise
-        // this to group more eagerly, lower it to group less.
-        maxClusterRadius={30}
-        showCoverageOnHover={false}
-        // Both handled by zoomOrSpiderfy instead.
-        zoomToBoundsOnClick={false}
-        spiderfyOnMaxZoom={false}
-        eventHandlers={{
-          // markercluster's events, which Leaflet's own event map doesn't list.
-          ...({
-            clusterclick: (e: ClusterEvent) => map && group && zoomOrSpiderfy(map, group, e.layer),
-            clusterkeypress: (e: ClusterEvent) => {
-              if (!map || (e.originalEvent as KeyboardEvent)?.key !== 'Enter') return
-              if (group) zoomOrSpiderfy(map, group, e.layer)
-              // The focused cluster icon may be gone after the zoom; keep focus on the map so
-              // arrow-key panning still works (what markercluster's own handler does).
-              map.getContainer().focus()
-            },
-          } as L.LeafletEventHandlerFnMap),
-        }}
+    <div className={`${styles.layout} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
+      {filtersLoaded && (
+        <MapFilters
+          open={sidebarOpen}
+          focusSearch={focusSearch}
+          onEscape={closeFromPanel}
+          slugs={slugList}
+          onResult={onFilterResult}
+        />
+      )}
+      <MapContainer
+        ref={setMap}
+        {...(focus || !allBounds
+          ? { center: focus ? focus.center : [20, 5], zoom: focus ? (focus.shared ? SHARED_SPOT_ZOOM : 12) : 3 }
+          : { bounds: allBounds, boundsOptions: { padding: [20, 20] } })}
+        // Half steps, so fitting every HDRI on a wide screen isn't rounded down to a much smaller map.
+        zoomSnap={0.5}
+        minZoom={initialMinZoom}
+        maxZoom={18}
+        zoomControl={false}
+        scrollWheelZoom={true}
+        className={styles.mapContainer}
       >
-        {markerList}
-      </MarkerClusterGroup>
-      {focus && <FocusAsset slug={focus.slug} shared={focus.shared} group={group} markers={markers} />}
-    </MapContainer>
+        <PopupSync slugs={slugs} group={group} closeLabel={t('close')} />
+        <ResizeWatcher />
+        <SidebarToggle
+          open={sidebarOpen}
+          active={filtering}
+          label={t('filter-hdris')}
+          onToggle={(viaKeyboard: boolean) => {
+            setFocusSearch(viaKeyboard && !sidebarOpen)
+            setSidebarOpen((open) => !open)
+          }}
+        />
+        <ZoomControl position="topleft" zoomInTitle={t('zoom-in')} zoomOutTitle={t('zoom-out')} />
+        {/* Leaflet writes attribution as HTML, so the translated text is escaped. */}
+        <VectorBaseMap locale={locale} attribution={`${escapeHtml(t('approximate'))} ${ATTRIBUTION}`} />
+        <MarkerClusterGroup
+          ref={setGroup}
+          iconCreateFunction={clusterIcon}
+          // Pixels within which markers merge. The default of 80 swallowed whole regions; raise
+          // this to group more eagerly, lower it to group less.
+          maxClusterRadius={30}
+          showCoverageOnHover={false}
+          // Both handled by zoomOrSpiderfy instead.
+          zoomToBoundsOnClick={false}
+          spiderfyOnMaxZoom={false}
+          eventHandlers={{
+            // markercluster's events, which Leaflet's own event map doesn't list.
+            ...({
+              clusterclick: (e: ClusterEvent) => map && group && zoomOrSpiderfy(map, group, e.layer),
+              clusterkeypress: (e: ClusterEvent) => {
+                if (!map || (e.originalEvent as KeyboardEvent)?.key !== 'Enter') return
+                if (group) zoomOrSpiderfy(map, group, e.layer)
+                // The focused cluster icon may be gone after the zoom; keep focus on the map so
+                // arrow-key panning still works (what markercluster's own handler does).
+                map.getContainer().focus()
+              },
+            } as L.LeafletEventHandlerFnMap),
+          }}
+        >
+          {markerList}
+        </MarkerClusterGroup>
+        <MarkerVisibility
+          visible={filtering ? filterResult.visible : null}
+          pending={filterPending}
+          markers={markers}
+          markerCount={allHdris.length}
+          group={group}
+          allBounds={allBounds}
+          focusSlug={focus?.slug ?? null}
+          sharedSlugs={sharedSlugs}
+        />
+        {focus && <FocusAsset slug={focus.slug} shared={focus.shared} group={group} markers={markers} />}
+      </MapContainer>
+    </div>
   )
 }
 

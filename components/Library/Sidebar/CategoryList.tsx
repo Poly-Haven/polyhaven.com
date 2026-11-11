@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
@@ -26,22 +26,33 @@ import styles from './Sidebar.module.scss'
  * of making a server round-trip.
  */
 
+/**
+ * Where a category entry links to (null = "All ..."). The library's default navigates to the
+ * category's own path (/hdris/coast-water/beaches); the HDRI map keeps the category in its query
+ * string instead.
+ */
+export type CategoryHref = (node: TaxonomyNode | null, query: Record<string, any>) => LinkProps['href']
+
+const libraryCategoryHref =
+  (assetType: string): CategoryHref =>
+  (node, query) => ({ pathname: node ? `/${assetType}/${node.slugPath}` : `/${assetType}`, query })
+
 const CategoryNode = ({
   node,
-  assetType,
   activePath,
   counts,
   query,
   depth,
   t,
+  hrefFor,
 }: {
   node: TaxonomyNode
-  assetType: string
   activePath: string | null
   counts: Record<string, number>
   query: Record<string, any>
   depth: number
   t: any
+  hrefFor: CategoryHref
 }) => {
   const count = counts[node.path] || 0
   // Hide empty branches - nothing to browse there.
@@ -54,7 +65,7 @@ const CategoryNode = ({
   return (
     <div>
       <Link
-        href={{ pathname: `/${assetType}/${node.slugPath}`, query }}
+        href={hrefFor(node, query)}
         shallow
         title={node.description || undefined}
         className={`${styles.cat} ${isAncestor ? styles.catSemiActive : ''} ${isActive ? styles.catActive : ''}`}
@@ -73,12 +84,12 @@ const CategoryNode = ({
             <CategoryNode
               key={child.path}
               node={child}
-              assetType={assetType}
               activePath={activePath}
               counts={counts}
               query={query}
               depth={depth + 1}
               t={t}
+              hrefFor={hrefFor}
             />
           ))}
         </div>
@@ -88,11 +99,17 @@ const CategoryNode = ({
 }
 
 const CategoryList = (props) => {
+  const hrefFor: CategoryHref = props.categoryHref || libraryCategoryHref(props.assetType)
   const { t: tc } = useTranslation('common')
   const { t } = useTranslation('categories')
   const router = useRouter()
 
-  const { data, error } = apiSWR(`/assets?t=${props.assetType}&future=true`, { revalidateOnFocus: false })
+  // The library fetches its own (SWR dedupes it with the grid's). The HDRI map passes `assets`
+  // instead: only the HDRIs it plots, so the counts match its markers.
+  const { data: fetched, error } = apiSWR(props.assets ? null : `/assets?t=${props.assetType}&future=true`, {
+    revalidateOnFocus: false,
+  })
+  const data = props.assets || fetched
 
   // Everything except the catch-all route param carries over when changing category, so the
   // active attribute filters (and search) survive navigating the tree.
@@ -160,7 +177,7 @@ const CategoryList = (props) => {
   return (
     <div>
       <Link
-        href={{ pathname: `/${props.assetType}`, query }}
+        href={hrefFor(null, query)}
         shallow
         className={`${styles.cat} ${!props.categoryPath ? styles.catActive : ''}`}
       >
@@ -172,12 +189,12 @@ const CategoryList = (props) => {
         <CategoryNode
           key={node.path}
           node={node}
-          assetType={props.assetType}
           activePath={props.categoryPath || null}
           counts={counts}
           query={query}
           depth={0}
           t={t}
+          hrefFor={hrefFor}
         />
       ))}
     </div>

@@ -2,6 +2,7 @@
   "approximate": "Oznake lokacija su približne.",
   "close": "Zatvori",
   "description": "Karta svijeta s lokacijama na kojima smo snimili HDRI-je.",
+  "filter-hdris": "Pretraži i filtriraj HDRI-je",
   "zoom-in": "Povećaj",
   "zoom-out": "Smanji"
 }

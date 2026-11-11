@@ -2,6 +2,7 @@
   "approximate": "A helyjelölők hozzávetőlegesek.",
   "close": "Bezárás",
   "description": "Világtérkép azokról a helyekről, ahol HDRI-ket készítettünk.",
+  "filter-hdris": "HDRI-k keresése és szűrése",
   "zoom-in": "Nagyítás",
   "zoom-out": "Kicsinyítés"
 }

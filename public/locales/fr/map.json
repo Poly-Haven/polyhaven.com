@@ -2,6 +2,7 @@
   "approximate": "Les marqueurs de lieu sont approximatifs.",
   "close": "Fermer",
   "description": "Carte du monde des lieux où nous avons capturé des HDRI.",
+  "filter-hdris": "Rechercher et filtrer les HDRI",
   "zoom-in": "Zoom avant",
   "zoom-out": "Zoom arrière"
 }

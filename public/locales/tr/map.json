@@ -2,6 +2,7 @@
   "approximate": "Konum işaretleri yaklaşıktır.",
   "close": "Kapat",
   "description": "HDRI çektiğimiz konumların dünya haritası.",
+  "filter-hdris": "HDRI'ları ara ve filtrele",
   "zoom-in": "Yakınlaştır",
   "zoom-out": "Uzaklaştır"
 }

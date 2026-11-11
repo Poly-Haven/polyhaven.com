@@ -2,6 +2,7 @@
   "approximate": "위치 표시는 대략적입니다.",
   "close": "닫기",
   "description": "HDRI를 촬영한 장소의 세계 지도입니다.",
+  "filter-hdris": "HDRI 검색 및 필터",
   "zoom-in": "확대",
   "zoom-out": "축소"
 }

@@ -1,3 +1,8 @@
+// SISTER COMPONENT: components/Map/MapSidebar.tsx is the HDRI map's version of this panel. Both
+// are built from the same parts (CategoryList, AttributeFilters, and the useAssetSearch hook behind
+// the grid's search box), so a change to how browsing or filtering works here - a new filter, a
+// changed query param, a change to search - probably wants making there too, and the reverse.
+
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'

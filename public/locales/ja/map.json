@@ -2,6 +2,7 @@
   "approximate": "マーカーの位置はおおよそです。",
   "close": "閉じる",
   "description": "HDRIを撮影した場所の世界地図。",
+  "filter-hdris": "HDRIを検索・絞り込み",
   "zoom-in": "ズームイン",
   "zoom-out": "ズームアウト"
 }
