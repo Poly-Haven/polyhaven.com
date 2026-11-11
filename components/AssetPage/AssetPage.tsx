@@ -443,11 +443,7 @@ const AssetPage = ({ assetID, data, files, renders, postDownloadStats, vaultInfo
                 value={<MdLocationOn />}
                 label="GPS"
                 condition={Boolean(data.coords)}
-                link={
-                  data.coords
-                    ? `https://www.openstreetmap.org/?mlat=${data.coords[0]}&mlon=${data.coords[1]}&zoom=14#map=13/${data.coords[0]}/${data.coords[1]}`
-                    : null
-                }
+                link={data.coords ? `/map?asset=${assetID}` : null}
               />
               <InfoBlock
                 value={formatNumber(data.polycount)}

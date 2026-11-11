@@ -33,6 +33,7 @@ module.exports = {
     'home',
     'library',
     'license',
+    'map',
     'time',
     'vaults',
   ],

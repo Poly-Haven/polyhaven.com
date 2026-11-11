@@ -6,3 +6,36 @@
   height: calc(100vh - #{$v-header-height});
   width: 100%;
 }
+
+.cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $c-accent-dark;
+  box-shadow: 0 0 0 5px rgba($c-accent, 0.4);
+  color: $c-text-bright;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  text-decoration: none;
+
+  img {
+    display: block;
+    height: auto;
+  }
+
+  span {
+    font-weight: bold;
+    color: $c-text-dark;
+  }
+
+  &:hover span {
+    color: $c-accent-dark;
+  }
+}
