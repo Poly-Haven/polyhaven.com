@@ -100,10 +100,11 @@ export default async function handler(req: NextRequest) {
           {sortedKeys.map((key) => (
             <img
               key={key}
-              src={assetImg.thumb(key, { width: 371, height: 278, quality: 95 }, data[key]?.img_version)}
+              // format=png: satori can't decode WebP, which Bunny serves (and Cloudflare caches) for a URL that leaves the format to Accept
+              src={assetImg.thumb(key, { width: 371, height: 278, quality: 95, format: 'png' }, data[key]?.img_version)}
               style={{
                 margin: '10px',
-                width: `${thumbWidth}px}`,
+                width: `${thumbWidth}px`,
                 maxHeight: `${thumbHeight}px`,
               }}
             />
