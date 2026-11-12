@@ -71,6 +71,8 @@ const LecturePage = ({ course, lecture }) => {
 }
 
 export async function getServerSideProps(context) {
+  // Interpolated into the API path, so reject anything that isn't a plain slug.
+  if (!/^[a-zA-Z0-9_-]+$/.test(String(context.params.course))) return { notFound: true }
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   const course = await fetch(`${baseUrl}/courses/${context.params.course}`)
     .then((r) => (r.ok ? r.json() : null))

@@ -94,6 +94,10 @@ export async function getStaticProps(context) {
   const id = context.params.id
   const baseUrl = apiBase
 
+  // The id is interpolated into API paths below, so anything that isn't a plain slug (an encoded
+  // slash, `..`, a `?`) could steer the request to another endpoint. No real asset id fails this.
+  if (!/^[a-zA-Z0-9_-]+$/.test(String(id))) return { notFound: true, revalidate: 60 }
+
   let error = null
   // Tracked separately from `error`: only /info can say whether an asset exists. /files and
   // /renders are not authoritative enough to 404 a page on.
