@@ -132,7 +132,10 @@ const Stats = ({ datasets }) => {
                 {/* Deliberately not "in the last N hours": these come from a nightly rollup, so the
                     window ends whenever that last ran rather than now. meta still carries the exact
                     span if it is ever wanted here. */}
-                Based on {datasets.searches.meta.total.toLocaleString()} recent searches.
+                {/* Pinned to en-US like the rest of this page's English text: a bare toLocaleString()
+                    follows the server's locale in the static HTML and the visitor's in the browser,
+                    and the two disagree ("435 927" vs "435,927"), which fails hydration. */}
+                Based on {datasets.searches.meta.total.toLocaleString('en-US')} recent searches.
               </div>
             </div>
           )}
