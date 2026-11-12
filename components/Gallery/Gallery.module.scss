@@ -39,7 +39,9 @@
   overflow: hidden;
   cursor: pointer;
   background: $c-background-lightish;
-  @include transition;
+  // Only the hover. Every tile's top and height are percentages of the whole mosaic, so appending
+  // renders changes them all; animating that made the whole page visibly jump and settle.
+  transition: filter 0.15s ease;
 
   img {
     display: block;
