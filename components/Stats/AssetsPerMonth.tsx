@@ -54,6 +54,8 @@ const AssetsPerMonth = ({ data }: { data: DataSet }) => {
     '2025-06': `Moon vault released.`,
     '2025-09': `Fabric vault released.`,
     '2026-01': `Studio HDRI vault released.`,
+    '2026-06': `Project Lighthouse community assets published.`,
+    '2026-08': `Wood texture vault released.`,
   }
 
   return (
