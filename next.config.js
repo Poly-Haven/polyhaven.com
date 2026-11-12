@@ -7,8 +7,11 @@ module.exports = {
   // so it doesn't clobber the .next used by an already-running `next dev` server.
   distDir: process.env.CLAUDE_VERIFY_BUILD ? '.next-verify' : '.next',
   staticPageGenerationTimeout: 300,
+  // Nothing uses next/image (images are resized by Bunny from cdn URLs), so turn the optimizer off:
+  // with a domain allowed, /_next/image was a public endpoint anyone could run billed optimizations
+  // through, and it is where Next's image-processing advisories live.
   images: {
-    domains: ['cdn.polyhaven.com'],
+    unoptimized: true,
   },
   generateBuildId: () => nextBuildId({ dir: __dirname }),
   webpack: (config, { webpack, buildId, isServer }) => {
