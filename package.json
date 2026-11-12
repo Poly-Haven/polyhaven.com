@@ -32,7 +32,7 @@
     "lodash.debounce": "^4.0.8",
     "maplibre-gl": "^5.24.0",
     "markdown-to-jsx": "^7.2.1",
-    "next": "14.2.35",
+    "next": "15.5.29",
     "next-build-id": "^3.0.0",
     "next-i18next": "^14.0.0",
     "prettier": "^2.8.8",
@@ -51,7 +51,7 @@
     "recharts": "^2.7.2",
     "sass": "^1.63.6",
     "swr": "^2.1.5",
-    "three": "^0.153.0",
+    "three": "^0.160.1",
     "three-stdlib": "^2.23.10",
     "uuid": "^9.0.0",
     "validator": "^13.9.0"

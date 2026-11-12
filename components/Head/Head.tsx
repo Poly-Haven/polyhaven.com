@@ -25,7 +25,7 @@ const HeadComponent = ({ title, description, keywords, url, author, assetType, i
   const locale = router?.locale || defaultLocale
   // router.locales is the enabled set from next.config; utils/locales also lists
   // languages that are translated but not yet switched on, which must not get hreflang.
-  const enabledLocales: string[] = router?.locales || [defaultLocale]
+  const enabledLocales: readonly string[] = router?.locales || [defaultLocale]
 
   let defaultKeywords = 'Arch-viz,Game,Unreal,Unity,Blender,Maya,Max,free,cc0,creative commons'
   if (assetType === 0) {
