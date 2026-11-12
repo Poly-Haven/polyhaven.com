@@ -26,8 +26,6 @@
     "dotenv": "^16.3.1",
     "fast-xml-parser": "^4.2.4",
     "filesize": "^10.0.7",
-    "firebase": "^9.22.2",
-    "firebase-admin": "^11.9.0",
     "fuse.js": "^6.6.2",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
@@ -61,6 +59,7 @@
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.2.13",
+    "firebase-admin": "^14.5.1",
     "i18nexus-cli": "3.0.0",
     "json-sort-cli": "2.0.15",
     "typescript": "^5.1.3"
