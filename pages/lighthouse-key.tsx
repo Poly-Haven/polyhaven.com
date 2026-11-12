@@ -2,10 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { MdInfo } from 'react-icons/md'
 
 import Page from 'components/Layout/Page/Page'
 import CenteredPage from 'components/Layout/Page/CenteredPage'
 import Button from 'components/UI/Button/Button'
+import InfoBox from 'components/UI/InfoBox/InfoBox'
 import Loader from 'components/UI/Loader/Loader'
 
 import styles from 'components/LighthouseKey/LighthouseKey.module.scss'
@@ -49,11 +51,16 @@ const REASONS = {
   not_active: <p>Your Patreon membership isn't active at the moment. Keys are for current patrons.</p>,
   under_minimum: (
     <p>
-      Keys are for patrons who have paid at least $3 in total. If you've only just joined, your first payment can take
-      a little while to show up here, so please try again later.
+      Our system hasn't seen your payment yet, sometimes it can take a little while to show up. Please try again later,
+      or <a href="/about-contact">let us know</a> about the issue.
     </p>
   ),
-  joined_too_late: <p>Keys are for patrons who joined before the game's release on 27 March 2027.</p>,
+  joined_too_late: (
+    <p>
+      Sorry, Steam keys for Project Lighthouse were only given to Patreon members who supported us before the game's
+      release.
+    </p>
+  ),
 }
 
 const NotFound = () => (
@@ -172,7 +179,11 @@ const LighthouseKeyPage = () => {
       body = (
         <>
           <p>As a thank you for supporting Poly Haven, here's a Steam key for Project Lighthouse.</p>
-          <div className={styles.terms}>{status.terms?.text}</div>
+          <div className={styles.terms}>
+            <InfoBox type="info" header="This key is just for you" icon={<MdInfo />}>
+              <p>{status.terms?.text}</p>
+            </InfoBox>
+          </div>
           <label className={styles.agree}>
             <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />I agree
           </label>
@@ -213,12 +224,6 @@ const LighthouseKeyPage = () => {
       </Head>
       <div className={styles.page}>
         <h1>Project Lighthouse</h1>
-        {status.test ? (
-          <p className={styles.test}>
-            {status.state === 'claimed' ? 'Test key: this one came from the private pool.' : 'Test mode: claims are closed, so your key will come from the private pool.'}
-            {status.would_be ? ` As a regular patron you'd be told you aren't eligible (${status.would_be.replace(/_/g, ' ')}).` : ''}
-          </p>
-        ) : null}
         {notice ? <p className={styles.notice}>{notice}</p> : null}
         {body}
       </div>
