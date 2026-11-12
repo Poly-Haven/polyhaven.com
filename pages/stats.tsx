@@ -111,67 +111,74 @@ export async function getStaticProps(context) {
     monthlyAssets[k] = months[k]
   }
 
-  // Resolution graphs
-  let resolutions = {
-    hdris: { total: 0 },
-    textures: { total: 0 },
-    models: { total: 0 },
-  }
-  const ignoredRes = ['12k'] // Ignore some uncommon resolutions
-  for (const stat of resolutionsData) {
-    const type = Object.keys(resolutions)[parseInt(stat.slug.substring(1, 2))]
-    if (!type) continue
-    let resStr = stat.slug.substring(4)
-    if (ignoredRes.includes(resStr)) continue
-    if (!resStr.endsWith('k')) continue
-    const resNumStr = resStr.substr(0, resStr.length - 1)
-    if (isNaN(resNumStr)) continue
-    const res = parseInt(resNumStr)
-    if (res >= 16) {
-      resStr = '16k+'
+  // Resolution and format graphs: each bar is how often an option is picked when the asset offers it.
+  // A share of every download of the type made options few assets have (16k textures, backplates) look
+  // unpopular. The denominators come from `eligible_res` / `eligible_backplates` on each day's
+  // TYPE doc (see admin utils/downloadEligibility.ts), which the three-month fetch already carries.
+  // Only days that have them are counted, so a type with none falls back to the plain share.
+  const typeNames = ['hdris', 'textures', 'models']
+  const eligibleDays = {}
+  const eligibleRes = {}
+  const eligibleBackplates = {}
+  for (const [type, docs] of Object.entries({ hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod })) {
+    eligibleDays[type] = new Set()
+    eligibleRes[type] = {}
+    eligibleBackplates[type] = 0
+    for (const doc of docs || []) {
+      if (doc.day < aMonthAgo || !doc.eligible_res) continue
+      eligibleDays[type].add(doc.day)
+      for (const [r, n] of Object.entries(doc.eligible_res)) eligibleRes[type][r] = (eligibleRes[type][r] || 0) + n
+      eligibleBackplates[type] += doc.eligible_backplates || 0
     }
-    resolutions[type][resStr] = resolutions[type][resStr] || 0
-    resolutions[type][resStr] += stat.downloads
-    resolutions[type].total += stat.downloads
   }
-  for (const [type, reses] of Object.entries(resolutions)) {
-    const sortedKeys = Object.keys(reses).sort((a, b) => parseInt(a) - parseInt(b))
+  const counted = (type, day) => !eligibleDays[type].size || eligibleDays[type].has(day)
+  const toPercentages = (type, counts, total, denominatorFor) => {
     let tmp = {}
-    for (const r of sortedKeys) {
-      if (r === 'total') continue
-      tmp[r] = (reses[r] / reses.total) * 100
+    for (const k of Object.keys(counts).sort((a, b) => parseInt(a) - parseInt(b))) {
+      const d = eligibleDays[type].size ? denominatorFor(k) : total
+      if (d) tmp[k] = (counts[k] / d) * 100
     }
-    resolutions[type] = tmp
+    return tmp
   }
 
-  // Format graphs
-  let formats = {
-    hdris: { total: 0 },
-    textures: { total: 0 },
-    models: { total: 0 },
+  let resolutions = {}
+  for (const type of typeNames) {
+    let counts = {}
+    let total = 0
+    for (const stat of resolutionsData || []) {
+      if (typeNames[parseInt(stat.slug.substring(1, 2))] !== type || !counted(type, stat.day)) continue
+      const m = stat.slug.substring(4).match(/^(\d+)k$/)
+      if (!m) continue
+      const res = parseInt(m[1])
+      // Only the standard ladder. The odd sizes (9k, 12k, 14k...) are a few assets' own maximums, and
+      // as a take rate one asset's audience would plot as a large bar of its own.
+      if (res < 16 && (res & (res - 1)) !== 0) continue
+      const k = res >= 16 ? '16k+' : `${res}k`
+      counts[k] = (counts[k] || 0) + stat.downloads
+      total += stat.downloads
+    }
+    // Every asset that offers anything at or above 16k also offers 16k itself.
+    resolutions[type] = toPercentages(type, counts, total, (k) => eligibleRes[type][k === '16k+' ? '16k' : k])
   }
-  for (const stat of formatsData) {
-    const type = Object.keys(formats)[parseInt(stat.slug.substring(1, 2))]
-    if (!type) continue
-    let fmtStr = stat.slug.substring(4)
-    if (fmtStr.includes(':')) {
-      fmtStr = fmtStr.split(':').pop()
+
+  let formats = {}
+  for (const type of typeNames) {
+    let counts = {}
+    let total = 0
+    for (const stat of formatsData || []) {
+      if (typeNames[parseInt(stat.slug.substring(1, 2))] !== type || !counted(type, stat.day)) continue
+      let fmtStr = stat.slug.substring(4)
+      if (fmtStr.includes(':')) {
+        fmtStr = fmtStr.split(':').pop()
+      }
+      if (type === 'hdris' && ['jpg_plain', 'jpg_pretty', 'raw'].includes(fmtStr)) {
+        fmtStr = 'backplate'
+      }
+      counts[fmtStr] = (counts[fmtStr] || 0) + stat.downloads
+      total += stat.downloads
     }
-    if (type === 'hdris' && ['jpg_plain', 'jpg_pretty', 'raw'].includes(fmtStr)) {
-      fmtStr = 'backplate'
-    }
-    formats[type][fmtStr] = formats[type][fmtStr] || 0
-    formats[type][fmtStr] += stat.downloads
-    formats[type].total += stat.downloads
-  }
-  for (const [type, fmts] of Object.entries(formats)) {
-    const sortedKeys = Object.keys(fmts).sort((a, b) => parseInt(a) - parseInt(b))
-    let tmp = {}
-    for (const r of sortedKeys) {
-      if (r === 'total') continue
-      tmp[r] = (fmts[r] / fmts.total) * 100
-    }
-    formats[type] = tmp
+    // Backplates are the only format not every asset of its type offers.
+    formats[type] = toPercentages(type, counts, total, (k) => (k === 'backplate' ? eligibleBackplates[type] : total))
   }
 
   // Asset downloads
@@ -199,7 +206,13 @@ export async function getStaticProps(context) {
       // on the chart match the names in the library's own filter sidebar.
       ...(await serverSideTranslations(context.locale, ['common', 'library'])),
       datasets: {
-        threeMonths: { hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod },
+        // The eligibility fields were only needed above; dropped so they don't ride along in __NEXT_DATA__.
+        threeMonths: Object.fromEntries(
+          Object.entries({ hdris: threeMonthsHDRI, textures: threeMonthsTex, models: threeMonthsMod }).map(([t, docs]) => [
+            t,
+            docs && docs.map(({ eligible_res, eligible_backplates, ...doc }) => doc),
+          ])
+        ),
         relativeType,
         taxonomy,
         monthlyAssets,
