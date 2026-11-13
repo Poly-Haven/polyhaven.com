@@ -31,9 +31,14 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
         </a>
       </h4>
       {sponsorData.length ? sponsorData.map((s, i) => <span key={i}>{s}</span>) : null}
-      {/* Any patron with unspent tokens can sponsor, whatever their current tier: tokens outlive a tier change.
-      AddSponsor renders nothing when none are left. */}
-      {patron.sponsor_tokens && !sponsors.includes(patron.uuid) && (
+      {/* Any active patron with unspent tokens can sponsor, whatever their current tier: tokens outlive a
+      tier change. `rewards` is only non-empty for an active patron (pages/api/patronInfo), so a lapsed
+      patron's banked tokens stay hidden. AddSponsor renders nothing when none are left. The sponsor list
+      holds Patreon `uid`s; the token map also covers a sponsorship the cached list doesn't show yet. */}
+      {patron.rewards?.length > 0 &&
+        patron.sponsor_tokens &&
+        !sponsors.includes(patron.uid) &&
+        !Object.values(patron.sponsor_tokens).includes(assetID) && (
         <AddSponsor assetID={assetID} patron={patron} />
       )}
     </div>
