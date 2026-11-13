@@ -1,66 +1,66 @@
 {
   "account": "Račun",
-  "hi": "Pozdrav",
+  "hi": "bok",
   "login": {
-    "li2": "Rani pristup resursima prije njihove javne objave.",
-    "li3": "Pristup našoj usluzi u oblaku za sinkronizaciju svih naših resursa s vašim računalom.",
-    "li4": "Svakog mjeseca možete trajno sponzorirati jedan resurs, pri čemu će vaše ime i poveznica biti prikazani pokraj gumba za preuzimanje.",
+    "li2": "Rani pristup imovini, prije nego što se javno objavi.",
+    "li3": "Pristup našoj usluzi u oblaku za sinkronizaciju svih naših sredstava na vaš tvrdi disk.",
+    "li4": "Stalno sponzorirajte sredstvo svakog mjeseca, prikazujući svoje ime i vezu pored gumba za preuzimanje.",
     "p1": "Ako ste a <lnk>pokrovitelj</lnk> Poly Havena, prijavom ovdje dobit ćete pristup svojim nagradama izravno na ovoj stranici.",
-    "p2": "Ovisno o razini vaše podrške, vaše pogodnosti mogu uključivati:"
+    "p2": "Ovisno o vašoj razini podrške, vaše nagrade mogu uključivati:"
   },
   "not-patron": "Čini se da nisi pokrovitelj Poly Havena :( ako je ovo netočno, molim te <lnk>javiti se</lnk> tako da možemo istražiti problem na ovoj stranici. Trebat će nam sljedeće informacije:",
-  "not-patron-anymore": "Čini se da više niste podržavatelj Poly Havena. Nema problema, zahvalni smo vam na dosadašnjoj podršci :)",
-  "reward_one": "Time ostvarujete pravo na sljedeće pogodnosti:",
+  "not-patron-anymore": "Čini se da više nisi pokrovitelj Poly Havena. To je u redu, i cijenimo vašu prethodnu podršku :)",
+  "reward_one": "Time dobivate sljedeću nagradu:",
   "reward_other": "Time dobivate sljedeće nagrade:",
   "rewards": {
     "course-access": {
-      "cta": "Pregledaj tečajeve",
-      "p1": "Vaše članstvo uključuje neograničen pristup našim <lnk>tečajevima</lnk>, koje možete gledati izravno na ovoj web-stranici",
-      "p2": "Vaš napredak sprema se na vaš korisnički račun, pa možete nastaviti ondje gdje ste stali na bilo kojem uređaju.",
+      "cta": "Idite na tečajeve",
+      "p1": "Vaše članstvo uključuje potpuni pristup <lnk> našim tečajevima </lnk>, koji se emitiraju upravo ovdje na stranici.",
+      "p2": "Vaš napredak se sprema na vaš račun, tako da možete nastaviti gdje ste stali na bilo kojem uređaju.",
       "title": "Pristup tečaju"
     },
     "credit": {
-      "invalid": "Neispravno ime",
+      "invalid": "Nevažeći naziv",
       "p1": "Vaše ime je trenutno",
-      "p2": "{{hidden}} na popisu podržavatelja u podnožju web-stranice",
-      "p3": "Nakon promjene ove postavke može proći nekoliko sati dok se promjena ne prikaže na svim stranicama web-mjesta",
+      "p2": "{{hidden}} u popisu pokrovitelja u podnožju ove stranice.",
+      "p3": "Promjena ove postavke može potrajati nekoliko sati za ažuriranje svake stranice web-mjesta.",
       "p4": "Ime za prikaz:",
-      "title": "Navođenje imena u podnožju stranice"
+      "title": "Kredit za podnožje"
     },
     "early-access": {
       "p1": "Sada kada ste prijavljeni, <lnk>Knjižnica sredstava</lnk> će uključivati materijale koje smo planirali objaviti u budućnosti.",
-      "p2": "Označeni su plavim krugom i logotipom Patreona u gornjem desnom kutu, kao što je prikazano ovdje:",
-      "p3": "Već ih sada možete preuzeti, prije svih ostalih :)",
+      "p2": "Označeni su plavim krugom i logotipom Patreona u gornjem desnom kutu, ovako:",
+      "p3": "Već ih možete preuzeti, prije svih :)",
       "title": "Rani pristup"
     },
     "offline-access": {
-      "p1": "Unesite svoju adresu e-pošte kako biste si poslali pozivnicu za pristup našoj mapi u oblaku:",
-      "p2": "Provjerite svoju e-poštu :)",
+      "p1": "Unesite svoju adresu e-pošte kako biste sebi poslali pozivnicu za našu mapu u oblaku:",
+      "p2": "Provjerite e-poštu :)",
       "p3": "Poziv je uspješno poslan. Ako imate problema ili trebate promijeniti e-poštu računa, <lnk>molimo kontaktirajte nas</lnk>.",
       "p4": "Vidjeti <lnk>ovaj post</lnk> za daljnje upute o tome kako postaviti Nextcloud i započeti sinkronizaciju imovine s vašim računalom.",
       "title": "Izvanmrežni pristup"
     },
     "sponsor": {
-      "p1": "Svakog mjeseca možete odabrati jedan resurs uz koji će vaše ime i poveznica biti trajno prikazani. Za to koristimo sustav \"tokena\"",
-      "p2": "Početkom svakog mjeseca, nakon što Patreon obradi vašu uplatu, automatski dobivate jedan <ticket /> <b>sponzorski token</b> .",
-      "p3": "Ovaj token možete iskoristiti na dva načina:",
-      "p3li1": "Posjetite stranicu resursa koji želite sponzorirati i kliknite gumb \"<ticket /> Sponzoriraj ovaj resurs\" na desnoj strani stranice.",
-      "p3li2": "Također možete uključiti automatsko sponzoriranje u nastavku, pri čemu će se svakog mjeseca za vas nasumično odabrati jedan resurs.",
-      "p4": "Tokeni nemaju rok valjanosti, stoga se možete vratiti nakon nekoliko mjeseci i iskoristiti svoje prikupljene tokene.",
-      "p5": "Nakon što se token iskoristi, nije ga moguće povući niti prenijeti na drugi resurs.",
-      "p6": "Automatski sponzoriraj nasumično odabrani resurs svakog mjeseca:",
-      "p7": "15. dana svakog mjeseca svi vaši preostali tokeni automatski će se iskoristiti za sponzoriranje nasumično odabranih resursa. Tako imate 15 dana da, ako želite, sami odlučite na koje ćete resurse potrošiti svoje tokene.",
-      "p8": "Ako želite primiti obavijest kada se resurs automatski odabere za vas, unesite svoju adresu e-pošte u nastavku:",
-      "p9": "Kako biste prestali primati obavijesti, izbrišite svoju adresu e-pošte iz gornjeg polja i kliknite gumb za spremanje",
+      "p1": "Svaki mjesec možete odabrati sredstvo uz koje ćete zauvijek staviti svoje ime i vezu. Da bismo to učinili, radimo sa sustavom \"žetona\".",
+      "p2": "Na početku svakog mjeseca nakon što Patreon obradi tvoju uplatu, automatski ćeš dobiti jednu<ticket /> <b>Token sponzora</b> .",
+      "p3": "Postoje dva načina da potrošite ovaj token:",
+      "p3li1": "Posjetom stranici sredstva koje želite sponzorirati i klikom na \"<ticket /> Sponzoriraj ovo sredstvo\" gumb na desnoj strani stranice.",
+      "p3li2": "Ili u nastavku možete uključiti automatska sponzorstva koja će za vas svaki mjesec odabrati nasumično sredstvo.",
+      "p4": "Tokeni ne ističu, tako da se možete vratiti nakon nekoliko mjeseci i potrošiti svoje akumulirane tokene.",
+      "p5": "Nakon što se token potroši, ne može se opozvati ili premjestiti na drugo sredstvo.",
+      "p6": "Automatski sponzorirajte nasumično sredstvo svaki mjesec:",
+      "p7": "15. dana svakog mjeseca svi dostupni tokeni koje imate potrošit će se na nasumična sredstva. To vam daje 15 dana da ručno potrošite svoje tokene ako to želite.",
+      "p8": "Ako želite biti obaviješteni kada se sredstvo automatski odabere za vas, unesite svoju adresu e-pošte u nastavku:",
+      "p9": "Da biste otkazali pretplatu na obavijesti, obrišite svoju gornju e-mail adresu i kliknite gumb Spremi.",
       "title": "Sponzor"
     },
     "stakeholder": {
-      "p1": "Kao dionik projekta Poly Haven, dobivate prošireni pristup našim internim komunikacijskim kanalima kako biste mogli sudjelovati u raspravama o budućim aktivnostima i pratiti razvoj našeg projekta.",
+      "p1": "Kao dionik tvrtke Poly Haven, dobivate dublji pristup našim internim komunikacijskim kanalima kako biste nam pomogli da razgovaramo o tome na čemu raditi i pratimo na našem putu.",
       "p2": "Ako vas već nismo kontaktirali, molimo <lnk>javiti se</lnk> kako bismo vam mogli omogućiti pristup tim kanalima i predstaviti vas timu.",
-      "title": "Dioničar projekta"
+      "title": "Sudionik"
     }
   },
-  "support-amount": "Trenutačno podržavate Poly Haven s {{amount}} $ mjesečno, hvala vam!",
-  "support-amount-yearly": "Trenutno podržavate Poly Haven s $ {{amount}} godišnje, hvala vam!",
-  "title": "Prijava"
+  "support-amount": "Trenutno podržavate Poly Haven s {{amount}} $ mjesečno, hvala!",
+  "support-amount-yearly": "Trenutno podržavate Poly Haven s $ {{amount}} godišnje, hvala!",
+  "title": "Prijaviti se"
 }
