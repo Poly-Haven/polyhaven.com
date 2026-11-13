@@ -1,9 +1,9 @@
 {
   "add-yours": "Dodajte svoje",
-  "author-donate": "Donirajte {{name}}",
+  "author-donate": "Donirajte korisniku {{name}}",
   "author-donated": "Autor je ovaj materijal besplatno donirao Poly Havenu :)",
   "author-email": "Kopiraj adresu e-pošte korisnika {{name}}",
-  "author-website": "Web-stranica tvrtke {{name}}",
+  "author-website": "Web-stranica korisnika {{name}}",
   "author_one": "Autor",
   "author_other": "Autori",
   "backplates": "Stražnje ploče",
@@ -22,7 +22,7 @@
     "scanning": "skeniranje"
   },
   "download": "Preuzmi",
-  "download-options": "Opcije preuzimanja",
+  "download-options": "Mogućnosti preuzimanja",
   "downloads": "Preuzimanja",
   "downloads-pd": "dnevno",
   "early-access": {
@@ -55,9 +55,9 @@
   "tags": "Oznake",
   "tall": "visok",
   "unvaulted": {
-    "freed": "Ova imovina je bila zaključana u <vaultLink>{{vault}} Vaultu</vaultLink> dok naši donatori nisu dostigli cilj financiranja i oslobodili je za sve.",
-    "help-unlock": "Pomozi otključati sljedeći Vault",
-    "title": "Otključano od strane zajednice"
+    "freed": "Ovaj resurs bio je zaključan u Vaultu <vaultLink>{{vault}} Vaultu</vaultLink> sve dok naši podržavatelji nisu ostvarili cilj financiranja i omogućili svima besplatan pristup.",
+    "help-unlock": "Pomozite otključati sljedeći Vault",
+    "title": "Otključala zajednica"
   },
   "user-renders": "Korisnički prikazi:",
   "vaulted": {
@@ -66,11 +66,11 @@
     "already-patron": "Već ste pokrovitelj? <loginLink>Prijava</loginLink>.",
     "donate-access": "Donirajte 3 dolara na Patreonu kako biste ga preuzeli, zajedno s {{totalVaultedAssets, number}} drugim trezorskim datotekama.",
     "locked-in": "Ova imovina je zaključana u <vaultLink>trezor {{vault}}</vaultLink>.",
-    "locked-in-upcoming": "Ova imovina dio je nadolazećeg trezora.",
+    "locked-in-upcoming": "Ovaj resurs dio je nadolazećeg Vaulta.",
     "patrons-needed": "Kada dobijemo još {{remaining, number}} korisnika, bit će besplatno dostupno svima.",
-    "released-upcoming": "Kada se njegov trezor otključa",
+    "released-upcoming": "Kada se Vault kojem pripada otključa",
     "title": "Trezorska imovina",
-    "upcoming-goal": "Još radimo na trezoru, ali kada bude spreman imat će cilj na Patreonu kako bi bio besplatno dostupan svima."
+    "upcoming-goal": "Još uvijek radimo na ovom Vaultu, ali kada bude spreman, postavit ćemo cilj financiranja na Patreonu kako bi mogao postati besplatno dostupan svima."
   },
   "wide": "širok",
   "zip-choose": "Odaberite ZIP sadržaj:"
