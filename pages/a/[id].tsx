@@ -6,6 +6,8 @@ import { assetTypeName } from 'utils/assetTypeName'
 import { assetImg } from 'utils/cdn'
 import { vaultOf, vaultStatus } from 'utils/vaults'
 import { releaseStateOf } from 'utils/dateUtils'
+import { ancestorsOf, nodeFromPath } from 'utils/taxonomy'
+import asset_types from 'constants/asset_types.json'
 
 import AssetPage from 'components/AssetPage/AssetPage'
 import ErrorPage from 'components/Layout/Page/CenteredPage'
@@ -43,6 +45,29 @@ const fetchOncePerBuild = (path) => {
   // Never let one failed request poison every remaining page in the build.
   request.catch(() => buildCache.delete(path))
   return request
+}
+
+// The `categories` namespace is a label for every node in the taxonomy (~46KB in en, more in other
+// locales, which also carry the en fallback), serialised into this page's __NEXT_DATA__. The page
+// only looks up its own category trail (CategoryBreadcrumb) and its tags (TagsList), so keep just
+// those keys. Any other lookup would fall back to its defaultValue / key - but nothing makes one.
+// next-i18next gives every call its own per-locale objects whose namespace values are shared with
+// its resource cache, so swap in a new object rather than deleting keys from the shared one.
+const pruneCategories = (translations, info) => {
+  const keep = new Set<string>(info.tags || [])
+  const assetType = Object.keys(asset_types)[info.type]
+  const node = nodeFromPath(assetType, info.category)
+  if (node) {
+    for (const n of [...ancestorsOf(assetType, node), node]) keep.add(n.slugPath)
+  }
+  const store = translations._nextI18Next?.initialI18nStore || {}
+  for (const lng of Object.keys(store)) {
+    const categories = store[lng].categories
+    if (categories) {
+      store[lng].categories = Object.fromEntries(Object.entries(categories).filter(([key]) => keep.has(key)))
+    }
+  }
+  return translations
 }
 
 const Page = ({ assetID, data, files, renders, postDownloadStats, vaultInfo }) => {
@@ -208,7 +233,10 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time'])),
+      ...pruneCategories(
+        await serverSideTranslations(context.locale, ['common', 'asset', 'categories', 'library', 'time']),
+        info
+      ),
       // Versions for the non-asset images this page renders. Narrowed to THIS asset's authors
       // rather than the whole people/ folder: whatever goes in here is serialised into the page's
       // __NEXT_DATA__, and Next already warns that some asset pages exceed its 128KB threshold.
