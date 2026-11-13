@@ -2,7 +2,6 @@
   "account": "Rekening",
   "hi": "Haai",
   "login": {
-    "li1": "Permanente verwydering van advertensies.",
     "li2": "Vroeë toegang tot bates, voordat dit in die openbaar vrygestel word.",
     "li3": "Toegang tot ons wolkdiens, om al ons bates met jou hardeskyf te sinkroniseer.",
     "li4": "Borg 'n bate permanent elke maand, met jou naam en skakel langs die aflaai-knoppies.",
@@ -33,11 +32,6 @@
       "p2": "Hulle word gemerk deur 'n blou sirkel en die Patreon-logo regs bo, soos volg:",
       "p3": "Jy kan hulle reeds aflaai, voor almal anders :)",
       "title": "Vroeë toegang"
-    },
-    "no-ads": {
-      "p1": "Ons gebruik Google AdSense op polyhaven.com. Om hierdie advertensies te versteek, aktiveer eenvoudig hierdie skakelaar:",
-      "p2": "Advertensies is nou:",
-      "title": "Geen Advertensies"
     },
     "offline-access": {
       "p1": "Voer jou e-posadres in om vir jouself 'n uitnodiging na ons wolklêergids te stuur:",

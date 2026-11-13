@@ -2,7 +2,6 @@
   "account": "Akun",
   "hi": "Hai",
   "login": {
-    "li1": "Penghapusan iklan secara permanen.",
     "li2": "Akses awal ke aset, sebelum dirilis ke publik.",
     "li3": "Akses ke layanan cloud kami, untuk menyinkronkan semua aset kami ke hard drive Anda.",
     "li4": "Mensponsori aset secara permanen setiap bulan, menunjukkan nama dan tautan Anda di sebelah tombol unduh.",
@@ -33,11 +32,6 @@
       "p2": "Mereka ditandai dengan lingkaran biru dan logo Patreon di kanan atas, seperti ini:",
       "p3": "Anda sudah dapat mengunduhnya, di depan dari orang lain :)",
       "title": "Akses Awal"
-    },
-    "no-ads": {
-      "p1": "Kami menggunakan Google AdSense di polyhaven.com. Untuk menyembunyikan iklan ini, cukup aktifkan sakelar ini:",
-      "p2": "Iklan sekarang:",
-      "title": "Tanpa Iklan"
     },
     "offline-access": {
       "p1": "Masukkan alamat email Anda untuk dikirimi undangan ke folder cloud kami:",

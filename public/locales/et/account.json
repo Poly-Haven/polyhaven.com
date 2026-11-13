@@ -2,7 +2,6 @@
   "account": "Konto",
   "hi": "Tere",
   "login": {
-    "li1": "Reklaamide püsiv eemaldamine.",
     "li2": "Varajane juurdepääs varadele, enne kui need avalikustatakse.",
     "li3": "Juurdepääs meie pilveteenusele, et sünkroonida kõik meie varad teie kõvakettale.",
     "li4": "Sponsoreerige püsivalt iga kuu ühte vara, näidates oma nime ja linki allalaadimisnuppude kõrval.",
@@ -33,11 +32,6 @@
       "p2": "Need on tähistatud sinise ringiga ja Patreoni logoga üleval paremal:",
       "p3": "Saate neid juba alla laadida, enne kõiki teisi :}}",
       "title": "Varajane juurdepääs"
-    },
-    "no-ads": {
-      "p1": "Me kasutame Google AdSense'i veebilehel polyhaven.com. Nende reklaamide peitmiseks lülitage lihtsalt see lüliti sisse:",
-      "p2": "Reklaamid on nüüd:",
-      "title": "Pole reklaame"
     },
     "offline-access": {
       "p1": "Sisestage oma e-posti aadress, et saata endale kutse meie pilvekausta:",

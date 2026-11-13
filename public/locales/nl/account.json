@@ -2,7 +2,6 @@
   "account": "Account",
   "hi": "Hallo",
   "login": {
-    "li1": "Permanente verwijdering van advertenties.",
     "li2": "Vroege toegang tot assets, voordat ze openbaar worden vrijgegeven.",
     "li3": "Toegang tot onze cloudservice om al onze assets te synchroniseren met uw harde schijf.",
     "li4": "Sponsor elke maand permanent een asset, met uw naam en link naast de downloadknoppen.",
@@ -33,11 +32,6 @@
       "p2": "Ze zijn gemarkeerd door een blauwe cirkel en het Patreon-logo in de rechterbovenhoek, zoals dit:",
       "p3": "Je kunt ze nu al downloaden, voor iedereen :)",
       "title": "Vroege toegang"
-    },
-    "no-ads": {
-      "p1": "We gebruiken Google AdSense op polyhaven.com. Schakel deze schakelaar in om deze advertenties te verbergen:",
-      "p2": "Advertenties zijn nu:",
-      "title": "Geen advertenties"
     },
     "offline-access": {
       "p1": "Voer uw e-mailadres in om uzelf een uitnodiging voor onze cloudmap te sturen:",

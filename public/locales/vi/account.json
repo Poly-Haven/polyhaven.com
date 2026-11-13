@@ -2,7 +2,6 @@
   "account": "Tài khoản",
   "hi": "Chào",
   "login": {
-    "li1": "Xóa quảng cáo vĩnh viễn.",
     "li2": "Truy cập sớm vào tài sản, trước khi chúng được phát hành công khai.",
     "li3": "Truy cập vào dịch vụ đám mây của chúng tôi, để đồng bộ tất cả tài sản của chúng tôi với ổ cứng của bạn.",
     "li4": "Tài trợ một tài sản vĩnh viễn mỗi tháng, hiển thị tên và liên kết của bạn bên cạnh các nút tải xuống.",
@@ -33,11 +32,6 @@
       "p2": "Chúng được đánh dấu bằng một vòng tròn màu xanh và logo Patreon ở góc trên bên phải, như thế này:",
       "p3": "Bạn đã có thể tải xuống chúng, trước mọi người khác :)",
       "title": "Truy cập sớm"
-    },
-    "no-ads": {
-      "p1": "Chúng tôi sử dụng Google AdSense trên polyhaven.com. Để ẩn những quảng cáo này, chỉ cần bật công tắc này:",
-      "p2": "Quảng cáo hiện tại là:",
-      "title": "Không có quảng cáo"
     },
     "offline-access": {
       "p1": "Nhập địa chỉ email của bạn để gửi cho mình một lời mời đến thư mục đám mây của chúng tôi:",

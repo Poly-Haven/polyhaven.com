@@ -2,7 +2,6 @@
   "account": "Konto",
   "hi": "Cześć",
   "login": {
-    "li1": "Trwałe usunięcie reklam.",
     "li2": "Wczesny dostęp do zasobów, zanim zostaną one udostępnione publicznie.",
     "li3": "Dostęp do naszej usługi w chmurze, która pozwala zsynchronizować wszystkie nasze zasoby z Twoim dyskiem twardym.",
     "li4": "Sponsoruj wybrany przez Ciebie zasób co miesiąc, pokazując swoje imię i nazwisko oraz link (do portfolio/strony) obok przycisków pobierania.",
@@ -33,11 +32,6 @@
       "p2": "Są one oznaczone niebieskim kółkiem i logo Patreon w prawym górnym rogu, w taki sposób :",
       "p3": "Możesz je już pobrać, przed wszystkimi :)",
       "title": "Wczesny dostęp"
-    },
-    "no-ads": {
-      "p1": "Używamy Google AdSense na polyhaven.com. Aby ukryć te reklamy, po prostu włącz ten przełącznik:",
-      "p2": "Reklamy są teraz:",
-      "title": "Brak Reklam"
     },
     "offline-access": {
       "p1": "Wpisz swój adres e-mail, aby uzyskać zaproszenie do naszego folderu w chmurze:",

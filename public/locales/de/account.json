@@ -2,7 +2,6 @@
   "account": "Konto",
   "hi": "Hallo",
   "login": {
-    "li1": "Dauerhafte Entfernung der Anzeigen.",
     "li2": "Früher Zugang zu Assets, bevor sie öffentlich freigegeben werden.",
     "li3": "Zugang zu unserem Cloud-Service, um alle unsere Assets mit deiner Festplatte zu synchronisieren.",
     "li4": "Sponsere jeden Monat ein Asset und zeige deinen Namen und Link neben den Download-Schaltflächen.",
@@ -33,11 +32,6 @@
       "p2": "Sie sind durch einen blauen Kreis und das Patreon-Logo oben rechts gekennzeichnet, etwa so:",
       "p3": "Du kannst sie schon jetzt herunterladen, noch vor allen anderen :)",
       "title": "Vorab Zugang"
-    },
-    "no-ads": {
-      "p1": "Wir verwenden Google AdSense auf polyhaven.com. Um diese Anzeigen auszublenden, aktiviere einfach diesen Schalter:",
-      "p2": "Anzeigen sind jetzt:",
-      "title": "Keine Werbung"
     },
     "offline-access": {
       "p1": "Gib deine E-Mail-Adresse ein, um dir eine Einladung zu unserem Cloud-Ordner zu schicken:",

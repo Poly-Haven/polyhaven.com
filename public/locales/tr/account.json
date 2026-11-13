@@ -2,7 +2,6 @@
   "account": "Hesap",
   "hi": "Merhaba!",
   "login": {
-    "li1": "Reklamların kalıcı olarak kaldır.",
     "li2": "Kamuya açıklanmadan önce varlıklara erken erişim.",
     "li3": "Tüm varlıklarımızı sabit sürücünüzle senkronize etmek için bulut hizmetimize erişim sağlayın.",
     "li4": "İndirme düğmelerinin yanında adınızı ve bağlantınızı göstererek her ay kalıcı olarak bir varlığa sponsor olun.",
@@ -33,11 +32,6 @@
       "p2": "Mavi bir daire ve sağ üstte Patreon logosu ile işaretli, şöyle:",
       "p3": "Onları zaten indirebilirsiniz, tabi ki herkesten önce :)",
       "title": "Erken Erişim"
-    },
-    "no-ads": {
-      "p1": "Polyhaven.com'da Google AdSense kullanıyoruz. Bu reklamları gizlemek için bu anahtarı etkinleştirmeniz yeterlidir:",
-      "p2": "Reklamlar şuan:",
-      "title": "Reklamsız"
     },
     "offline-access": {
       "p1": "Kendinize bulut klasörümüze davet göndermek için kendi e-posta adresinizi girin:",

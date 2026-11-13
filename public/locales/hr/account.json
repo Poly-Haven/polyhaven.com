@@ -2,7 +2,6 @@
   "account": "Račun",
   "hi": "bok",
   "login": {
-    "li1": "Trajno uklanjanje oglasa.",
     "li2": "Rani pristup imovini, prije nego što se javno objavi.",
     "li3": "Pristup našoj usluzi u oblaku za sinkronizaciju svih naših sredstava na vaš tvrdi disk.",
     "li4": "Stalno sponzorirajte sredstvo svakog mjeseca, prikazujući svoje ime i vezu pored gumba za preuzimanje.",
@@ -33,11 +32,6 @@
       "p2": "Označeni su plavim krugom i logotipom Patreona u gornjem desnom kutu, ovako:",
       "p3": "Već ih možete preuzeti, prije svih :)",
       "title": "Rani pristup"
-    },
-    "no-ads": {
-      "p1": "Koristimo Google AdSense na polyhaven.com. Da biste sakrili te oglase, jednostavno uključite ovaj prekidač:",
-      "p2": "Oglasi su sada:",
-      "title": "Bez reklama"
     },
     "offline-access": {
       "p1": "Unesite svoju adresu e-pošte kako biste sebi poslali pozivnicu za našu mapu u oblaku:",

@@ -2,7 +2,6 @@
   "account": "Account",
   "hi": "Hi",
   "login": {
-    "li1": "Permanent removal of ads.",
     "li2": "Early access to assets, before they are released publicly.",
     "li3": "Access to our cloud service, to sync all of our assets to your hard drive.",
     "li4": "Sponsor an asset permanently every month, showing your name and link next to the download buttons.",
@@ -33,11 +32,6 @@
       "p2": "They are marked by a blue circle and the Patreon logo in the top right, like this:",
       "p3": "You can already download them, ahead of everyone else :)",
       "title": "Early Access"
-    },
-    "no-ads": {
-      "p1": "We use Google AdSense on polyhaven.com. To hide these ads, simply enable this switch:",
-      "p2": "Ads are now:",
-      "title": "No Ads"
     },
     "offline-access": {
       "p1": "Enter your email address to send yourself an invite to our cloud folder:",

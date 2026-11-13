@@ -2,7 +2,6 @@
   "account": "fiók",
   "hi": "Szia",
   "login": {
-    "li1": "A hirdetések végleges eltávolítása.",
     "li2": "Korai hozzáférés az eszközökhöz, még mielőtt azok nyilvánosan megjelennének.",
     "li3": "Hozzáférés felhőszolgáltatásunkhoz, hogy szinkronizálhassa az összes eszközünket a merevlemezével.",
     "li4": "Állandóan szponzorálj minden hónapban egy elemet, a letöltés gombok mellett a neved és a hivatkozásod feltüntetésével.",
@@ -33,11 +32,6 @@
       "p2": "Ezeket egy kék kör és a Patreon logó jelöli a jobb felső sarokban, így:",
       "p3": "Már letöltheted őket, mindenkit megelőzve :)",
       "title": "Korai hozzáférés"
-    },
-    "no-ads": {
-      "p1": "A polyhaven.com webhelyen a Google AdSense szolgáltatást használjuk. A hirdetések elrejtéséhez egyszerűen engedélyezze ezt a kapcsolót:",
-      "p2": "A hirdetések most:",
-      "title": "Nincsenek hirdetések"
     },
     "offline-access": {
       "p1": "Adja meg e-mail címét, hogy meghívót küldjön magának felhőmappánkba:",

@@ -2,7 +2,6 @@
   "account": "Account",
   "hi": "Ciao",
   "login": {
-    "li1": "Rimozione permanente degli annunci.",
     "li2": "Accesso anticipato alle risorse, prima che vengano rese pubbliche.",
     "li3": "Accedi al nostro servizio cloud, per sincronizzare tutti i nostri asset sul tuo disco rigido.",
     "li4": "Sponsorizza una risorsa in modo permanente ogni mese, mostrando il tuo nome e il link accanto ai pulsanti per scaricarla.",
@@ -33,11 +32,6 @@
       "p2": "Sono contrassegnati da un cerchio blu e dal logo Patreon in alto a destra, in questo modo:",
       "p3": "Puoi già scaricarli, prima di tutti gli altri :)",
       "title": "Accesso anticipato"
-    },
-    "no-ads": {
-      "p1": "Utilizziamo Google AdSense su polyhaven.com. Per nascondere questi annunci, abilita semplicemente questo interruttore:",
-      "p2": "Gli annunci al momento sono:",
-      "title": "Nessuna pubblicità"
     },
     "offline-access": {
       "p1": "Inserisci il tuo indirizzo email per ricevere un invito alla nostra cartella cloud:",
