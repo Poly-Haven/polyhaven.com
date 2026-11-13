@@ -53,6 +53,26 @@ module.exports = {
         permanent: true,
         locale: false,
       },
+      // Placeholder index pages. Redirecting here instead of from getServerSideProps saves a function
+      // invocation per hit, and these are linked sitewide (every DonationBox links /learn), in every locale.
+      {
+        // Unused for now: there is only one course. Turn into a real course list when there's more.
+        source: '/learn',
+        destination: '/learn/photogrammetry',
+        permanent: false,
+      },
+      {
+        // Unused for now: there is only one plugin.
+        source: '/plugins',
+        destination: '/plugins/blender',
+        permanent: false,
+      },
+      {
+        // The Unreal HDRI Browser plugin has been removed.
+        source: '/plugins/unreal',
+        destination: '/tools',
+        permanent: false,
+      },
       {
         // Agents probe for this. The spec lives on the API host.
         source: '/openapi.json',
