@@ -277,7 +277,7 @@ const Nav = () => {
               Learn
             </span>
           }
-          link="/learn"
+          link="/learn/photogrammetry"
         />
         <NavItem text={t('common:nav.gallery')} link="/gallery" />
         <NavItem

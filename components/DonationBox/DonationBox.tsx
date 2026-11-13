@@ -113,7 +113,7 @@ const DonationBox = () => {
       // Untranslated locales fall back to English instead.
       text: (
         <span>
-          <Trans i18nKey="common:donation-box.b6-course" t={t} components={{ lnk: <Link href={`/learn`} /> }} />
+          <Trans i18nKey="common:donation-box.b6-course" t={t} components={{ lnk: <Link href="/learn/photogrammetry" /> }} />
         </span>
       ),
       icon: <TbSchool />,

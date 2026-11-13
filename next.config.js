@@ -54,7 +54,9 @@ module.exports = {
         locale: false,
       },
       // Placeholder index pages. Redirecting here instead of from getServerSideProps saves a function
-      // invocation per hit, and these are linked sitewide (every DonationBox links /learn), in every locale.
+      // invocation per hit. These only catch full page loads (external links, typed URLs): config
+      // redirects are not applied to client-side navigation, which would route /learn into the
+      // [...assets] catch-all and 404. So in-app links must point straight at the destination.
       {
         // Unused for now: there is only one course. Turn into a real course list when there's more.
         source: '/learn',

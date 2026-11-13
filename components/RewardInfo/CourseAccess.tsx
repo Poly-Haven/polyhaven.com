@@ -14,10 +14,10 @@ const CourseAccess = () => {
     <div>
       <h1>{t('account:rewards.course-access.title')}</h1>
       <p>
-        <Trans i18nKey="account:rewards.course-access.p1" t={t} components={{ lnk: <LinkText href="/learn" /> }} />
+        <Trans i18nKey="account:rewards.course-access.p1" t={t} components={{ lnk: <LinkText href="/learn/photogrammetry" /> }} />
       </p>
       <p>{t('account:rewards.course-access.p2')}</p>
-      <Button text={t('account:rewards.course-access.cta')} href="/learn" icon={<MdRocketLaunch />} />
+      <Button text={t('account:rewards.course-access.cta')} href="/learn/photogrammetry" icon={<MdRocketLaunch />} />
     </div>
   )
 }
