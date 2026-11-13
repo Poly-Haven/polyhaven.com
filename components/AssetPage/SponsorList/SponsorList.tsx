@@ -31,7 +31,9 @@ const SponsorList = ({ assetID, sponsors, patron }) => {
         </a>
       </h4>
       {sponsorData.length ? sponsorData.map((s, i) => <span key={i}>{s}</span>) : null}
-      {patron.rewards && patron.rewards.includes('Sponsor') && !sponsors.includes(patron.uuid) && (
+      {/* Any patron with unspent tokens can sponsor, whatever their current tier: tokens outlive a tier change.
+      AddSponsor renders nothing when none are left. */}
+      {patron.sponsor_tokens && !sponsors.includes(patron.uuid) && (
         <AddSponsor assetID={assetID} patron={patron} />
       )}
     </div>
