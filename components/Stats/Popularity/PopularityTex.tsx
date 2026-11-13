@@ -46,7 +46,7 @@ const Popularity = ({ data }) => {
                   </Link>
                 </td>
                 <td>
-                  <Link href={`/a/${pop.slug}`} legacyBehavior>{pop.name}</Link>
+                  <Link href={`/a/${pop.slug}`}>{pop.name}</Link>
                   {pop.backplates ? <abbr title="Includes backplates (+40% popularity)"> +B</abbr> : null}
                 </td>
                 <td>

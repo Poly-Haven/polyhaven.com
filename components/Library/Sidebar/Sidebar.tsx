@@ -145,11 +145,11 @@ const Sidebar = (props) => {
               style={{ padding: '0.5em', margin: 0 }}
             />
             <p>
-              <Link href={`https://docs.polyhaven.com/${router.locale}/faq`} legacyBehavior>
+              <Link href={`https://docs.polyhaven.com/${router.locale}/faq`}>
                 {t_c('nav.faq')}
               </Link>
               <br />
-              <Link href="/license" legacyBehavior>
+              <Link href="/license">
                 {t_c('nav.license')}
               </Link>
             </p>
