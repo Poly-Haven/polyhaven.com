@@ -199,20 +199,21 @@ const Contribute = ({ authors }) => {
   )
 }
 
+function handleErrors(response) {
+  if (!response.ok) {
+    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+  }
+  return response
+}
+
+// API failures throw rather than returning partial props: on revalidation that keeps the last good
+// page in place, where partial props rendered a crash.
 export async function getStaticProps({ locale }) {
-  let error = null
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
   const authors = await fetch(`${baseUrl}/authors`)
+    .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  if (error) {
-    return {
-      props: { ...(await serverSideTranslations(locale, ['common'])) },
-      revalidate: 5 * 60, // 5 minutes
-    }
-  }
 
   return {
     props: {

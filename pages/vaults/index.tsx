@@ -35,12 +35,12 @@ function handleErrors(response) {
 
 export async function getStaticProps({ locale }) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
-  let error = null
 
+  // Let failures throw: on revalidation that keeps the last good page, where the caught Error used
+  // to be returned as the `vaults` prop.
   const vaults = await fetch(`${baseUrl}/vaults`)
     .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
 
   return {
     props: {

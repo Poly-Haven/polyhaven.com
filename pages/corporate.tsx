@@ -191,14 +191,22 @@ const Corporate = (props) => {
   )
 }
 
+function handleErrors(response) {
+  if (!response.ok) {
+    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+  }
+  return response
+}
+
+// API failures throw rather than returning partial props: on revalidation that keeps the last good
+// page in place, where partial props rendered a crash.
 export async function getStaticProps(context) {
-  let error = null
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
 
   // Patron count
   const patrons = await fetch(`${baseUrl}/patrons`)
+    .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
 
   // Asset downloads
   const now = new Date()
@@ -208,8 +216,8 @@ export async function getStaticProps(context) {
   const dailyDownloads = await fetch(
     `${baseUrl}/stats/downloads?type=ALL&slug=ALL&date_from=${dateFrom}&date_to=${dateTo}`
   )
+    .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
   let monthlyDownloads = 0
   for (const day of dailyDownloads) {
     monthlyDownloads += day.downloads
@@ -217,15 +225,8 @@ export async function getStaticProps(context) {
 
   // Traffic
   const traffic = await fetch(`${baseUrl}/stats/cfmonth`)
+    .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  if (error) {
-    return {
-      props: { ...(await serverSideTranslations(context.locale, ['common', 'time'])) },
-      revalidate: 60 * 5, // 5 minutes
-    }
-  }
 
   return {
     props: {

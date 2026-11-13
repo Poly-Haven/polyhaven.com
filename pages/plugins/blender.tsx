@@ -28,12 +28,12 @@ function handleErrors(response) {
 
 export async function getStaticProps({ locale }) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
-  let error = null
 
+  // Let failures throw: on revalidation that keeps the last good page, where the caught Error used
+  // to leave numAssets undefined, which Next refuses to serialise.
   const data = await fetch(`${baseUrl}/categories/all?future=true`)
     .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
 
   const numAssets = data['all']
 

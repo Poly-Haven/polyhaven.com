@@ -13,19 +13,20 @@ export default function GalleryPage(props) {
   )
 }
 
+function handleErrors(response) {
+  if (!response.ok) {
+    throw new Error(`HTTP error! (${response.url}) Status: ${response.status} ${response.statusText}`)
+  }
+  return response
+}
+
+// API failures throw rather than returning partial props: on revalidation that keeps the last good
+// page in place, where partial props rendered a crash.
 export async function getStaticProps(context) {
-  let error = null
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.polyhaven.com'
   const assets = await fetch(`${baseUrl}/assets?future=true`)
+    .then(handleErrors)
     .then((response) => response.json())
-    .catch((e) => (error = e))
-
-  if (error) {
-    return {
-      props: { ...(await serverSideTranslations(context.locale, ['common', 'gallery'])) },
-      revalidate: 60 * 5, // 5 minutes
-    }
-  }
 
   const sortedKeys = Object.keys(assets).sort((a, b) => assets[a].name.localeCompare(assets[b].name))
 
