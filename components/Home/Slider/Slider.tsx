@@ -121,20 +121,24 @@ const Slider = () => {
   const imageA = useRef(null)
   const imageB = useRef(null)
 
-  // Initialize
+  // Initialize. Once per mount, and the timers are cleared on unmount: they used to outlive the page,
+  // and a resize in the first 5 seconds started a second chain.
   useEffect(() => {
-    if (imageIndex === null) {
-      setImages(shuffleArray(imageSet))
-      setTimeout((_) => {
-        // First tick happens after 5 seconds
+    setImages(shuffleArray([...imageSet]))
+    let interval
+    const timeout = setTimeout((_) => {
+      // First tick happens after 5 seconds
+      setTick((tick) => tick + 1)
+      interval = setInterval((_) => {
+        // Subsequent ticks happen every 9 seconds
         setTick((tick) => tick + 1)
-        setInterval((_) => {
-          // Subsequent ticks happen every 9 seconds
-          setTick((tick) => tick + 1)
-        }, 9000)
-      }, 5000)
+      }, 9000)
+    }, 5000)
+    return () => {
+      clearTimeout(timeout)
+      clearInterval(interval)
     }
-  }, [width])
+  }, [])
 
   // Auto change image on tick
   useEffect(() => {
